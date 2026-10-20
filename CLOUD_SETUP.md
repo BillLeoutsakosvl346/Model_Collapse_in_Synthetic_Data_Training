@@ -11,6 +11,32 @@ Create a cloud environment for `BillLeoutsakosvl346/Model_Collapse_in_Synthetic_
 
 OPT-125M and WikiText-2 are publicly downloadable. A Hugging Face token is optional for those downloads. A write token is needed only if the task uses a private Hugging Face repository as an artifact backup destination. Use a private destination for large artifacts unless public distribution has been explicitly authorized.
 
+## Configure both services without browser automation
+
+The cloud task should use API/SDK/CLI calls for Runpod and Hugging Face. A laptop browser session is not part of the runtime. Runpod's hosted MCP server is an optional control-plane interface; direct API/CLI access is sufficient. No Hugging Face MCP connection is needed to download models or upload artifacts with `huggingface_hub`.
+
+Configure these values privately in the cloud environment or its Personal vault, and ensure the environment requests the matching keys:
+
+| Key | Purpose | Required access |
+| --- | --- | --- |
+| `RUNPOD_API_KEY` | Discover GPUs and prices; create, inspect, and stop this task's Pod and storage | The necessary Runpod read/write permissions; read-only access cannot provision or stop compute |
+| `HF_TOKEN` | Authenticate Hugging Face calls and back up selected checkpoints and synthetic datasets privately | Write access to the chosen private artifact repositories; public OPT/WikiText downloads alone do not require it |
+| `HF_MODEL_REPO` | Optional explicit model-backup destination in `owner/name` form | Existing private repository accessible to the token |
+| `HF_DATASET_REPO` | Optional explicit dataset-backup destination in `owner/name` form | Existing private repository accessible to the token |
+
+Create a dedicated Runpod key from [Credentials > API keys](https://console.runpod.io/user/credentials), and a dedicated Hugging Face token from [Access Tokens](https://huggingface.co/settings/tokens). For narrowly scoped Hugging Face access, create the private artifact repositories first and grant the token write access only to those destinations. Alternatively, the agent may create private task repositories if the supplied token already authorizes that operation. Repository IDs are non-secret; token values are private.
+
+Use private environment-variable values when a program or remote Pod must read the actual token. Use destination-scoped network secrets when all credential use stays in supported HTTPS requests from Codex Cloud. The distinction below matters when the job forwards credentials to a remote process.
+
+Before the long run, require the cloud agent to:
+
+1. Authenticate to Runpod and read the account/Pod state and GPU catalog.
+2. Authenticate to Hugging Face, resolve OPT-125M and WikiText-2, and verify any configured private backup destinations.
+3. If using Hugging Face backup, upload a tiny probe file to a task-owned location, download it again, and compare its checksum before trusting a large checkpoint upload. Do not overwrite or delete existing user data.
+4. Verify that remote execution, status retrieval, artifact backup, and GPU shutdown can work without the laptop or an open browser.
+
+Once these checks pass, the browser is only needed to view progress or results. An expired/insufficient token or a network restriction is a setup blocker, not a reason to request ongoing local browser access. Use Hugging Face Hub storage within existing account limits; do not enable paid Hugging Face inference, training jobs, subscriptions, or upgrades.
+
 Network secrets and direct environment variables have different behavior. Current Codex Cloud network secrets give programs a placeholder that is substituted in allowed HTTPS requests. If a remote Runpod process needs a credential for self-shutdown, do not forward that placeholder to the Pod. Use an appropriate private environment variable or another tested remote shutdown design. Never log its value.
 
 Cloud networking can differ from the laptop. Do not assume outbound SSH works. Verify the intended execution and monitoring path; a Pod startup job controlled over HTTPS is an alternative when SSH is unavailable.
@@ -30,5 +56,9 @@ Cloud networking can differ from the laptop. Do not assume outbound SSH works. V
 - [Codex Cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environments)
 - [Local and cloud execution modes](https://learn.chatgpt.com/docs/environments/modes)
 - [Runpod agent setup](https://docs.runpod.io/agent-setup.md)
+- [Runpod credentials](https://docs.runpod.io/get-started/credentials)
+- [Runpod hosted MCP server](https://docs.runpod.io/get-started/mcp-servers)
+- [Hugging Face tokens and scopes](https://huggingface.co/docs/hub/security-tokens)
+- [Hugging Face environment variables](https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables)
 
 These instructions prepare a future cloud task. They do not mean training has already run or that a cloud environment has already been published.

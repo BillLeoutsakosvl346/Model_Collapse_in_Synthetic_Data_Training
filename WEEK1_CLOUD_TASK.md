@@ -12,6 +12,7 @@ Implement and execute a reproducible study of recursive synthetic-data fine-tuni
 - Do not modify or stop pre-existing account resources. Record the IDs of every resource created by this task and operate only on those IDs.
 - Do not add novel mitigation, filtering, real/synthetic mixtures, LoRA, quantization, or decoding ablations to the main experiment.
 - Check all required credentials before spending. If access is missing or denied, finish useful local work and identify the exact blocker. Never solicit keys in ordinary chat output, retry a permission denial with broader credentials, or invent a successful connection.
+- Use programmatic Runpod and Hugging Face access from the cloud environment and Pod. Do not depend on the user's local browser or sign-ins. Read `CLOUD_SETUP.md` for credential names, optional private artifact repositories, and raw-token versus proxy-secret behavior. Hugging Face supplies model/data access and optional private backups; do not provision paid Hugging Face compute or upgrades.
 
 ## Research context and sources
 
@@ -123,7 +124,7 @@ Commit code, configurations, README, tests, report, summary metrics, and reasona
 
 ### Preflight before creating paid resources
 
-1. Verify GitHub read/write and Runpod control-plane access without printing credentials. Read the starting account balance, live GPU price/availability, image/template configuration, and storage prices. Do not infer API access from a browser login.
+1. Verify GitHub read/write and Runpod control-plane access without printing credentials. Read the starting account balance, live GPU price/availability, image/template configuration, and storage prices. Do not infer API access from a browser login. Resolve the public Hugging Face model and dataset programmatically. If `HF_TOKEN` is supplied, verify its identity and the actual permissions needed by the chosen private artifact destinations; a successful identity read does not prove write permission. Honor optional `HF_MODEL_REPO` and `HF_DATASET_REPO` destinations. Before relying on private uploads, complete a tiny task-owned upload/download/checksum probe. If the token can create repositories and no destinations are configured, create clearly named private task repositories and record their returned IDs. Check existing storage limits; do not incur an unapproved Hugging Face charge.
 2. Read the current official Runpod tools/docs and inspect live command help. Prefer connected MCP tools for supported operations and current CLI/API for the rest. The local machine's installed skills are not automatically in Cloud; install the official skills or read official guides if needed.
 3. Choose a single GPU that supports this full-parameter workload. The user prioritizes speed within budget. A stocked RTX 4090 is a reasonable initial candidate; consider a cheaper suitable GPU or a 5090 only from current prices, compatibility, and expected/measured cost. Do not use old advertised rates as a deployment quote.
 4. Prefer an official PyTorch Pod image and Secure Cloud, unless the user has explicitly requested another cloud type. Match the host CUDA floor to the selected image, and co-locate any volume with actual GPU stock. Set only the needed ports and credentials.
