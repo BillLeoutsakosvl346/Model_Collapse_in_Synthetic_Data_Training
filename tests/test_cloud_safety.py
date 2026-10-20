@@ -38,6 +38,28 @@ def test_expired_independent_watchdog_calls_provider_stop(tmp_path, monkeypatch)
     assert read_json(tmp_path / "watchdog_exit.json")["reason"] == "budget_exhausted"
 
 
+def test_stalled_receipt_never_blocks_budget_shutdown(tmp_path, monkeypatch):
+    import threading,time
+    release = threading.Event()
+    entered = threading.Event()
+    stopped = []
+    atomic_json(tmp_path / "resources.json", {"created_at": 0, "session_allowance_usd": .01,
+                "guard_hourly_usd": 1, "pod_id": "owned", "repos": {"dataset": "test/private"}})
+    def slow_receipt(*args):
+        entered.set()
+        release.wait(5)
+    def stop(pod):
+        stopped.append(pod)
+        release.set()
+    monkeypatch.setattr(supervisor, "_publish_shutdown_intent", slow_receipt)
+    monkeypatch.setattr(supervisor, "INTENT_BACKUP_TIMEOUT_SECONDS", .05)
+    monkeypatch.setattr(supervisor, "Runpod", lambda: SimpleNamespace(stop=stop))
+    start = time.perf_counter()
+    supervisor.watchdog(tmp_path)
+    assert entered.is_set() and stopped == ["owned"]
+    assert time.perf_counter() - start < 1
+
+
 def test_worker_failure_requests_shutdown(tmp_path, monkeypatch):
     monkeypatch.setattr(supervisor.subprocess, "Popen", lambda *a, **kw: SimpleNamespace(poll=lambda: 1, returncode=1))
     with pytest.raises(RuntimeError, match="Worker failed"):

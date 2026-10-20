@@ -5,10 +5,25 @@ import os
 import subprocess
 import sys
 import time
+import threading
 from pathlib import Path
 
 from .common import atomic_json, event, now, read_json
 from .runpod_api import Runpod
+
+INTENT_BACKUP_TIMEOUT_SECONDS = 5
+
+
+def _publish_shutdown_intent(root, resources):
+    try:
+        for site in Path("/opt/iib-venv/lib").glob("python*/site-packages"):
+            sys.path.insert(0, str(site))
+        from huggingface_hub import HfApi, get_token
+        HfApi(token=os.environ.get("HF_TOKEN") or get_token()).upload_file(
+            path_or_fileobj=str(root / "watchdog_exit.json"), path_in_repo=f"{root.name}/watchdog_exit.json",
+            repo_id=resources["repos"]["dataset"], repo_type="dataset", commit_message="Record automatic compute shutdown")
+    except Exception:
+        pass
 
 
 def deadline(resources):
@@ -38,15 +53,11 @@ def watchdog(root):
             reason = "budget_exhausted" if expired else "validation_budget_guard" if tested else "supervisor_died" if dead else request["reason"]
             event(root, "watchdog_shutdown_requested", reason=reason)
             atomic_json(root / "watchdog_exit.json", {"reason": reason, "time": now(), "pod_id": resources["pod_id"]})
-            # Save the shutdown intent off-Pod before calling the API; do not block shutdown on backup errors.
+            # The Hub SDK can wait indefinitely. Its optional receipt must never delay stop beyond five seconds.
             try:
-                # Bootstrap started this process before the venv existed. Reuse its now-installed Hub client.
-                for site in Path("/opt/iib-venv/lib").glob("python*/site-packages"):
-                    sys.path.insert(0, str(site))
-                from huggingface_hub import HfApi, get_token
-                HfApi(token=os.environ.get("HF_TOKEN") or get_token()).upload_file(
-                    path_or_fileobj=str(root / "watchdog_exit.json"), path_in_repo=f"{root.name}/watchdog_exit.json",
-                    repo_id=resources["repos"]["dataset"], repo_type="dataset", commit_message="Record automatic compute shutdown")
+                receipt = threading.Thread(target=_publish_shutdown_intent, args=(root, resources), daemon=True)
+                receipt.start()
+                receipt.join(timeout=INTENT_BACKUP_TIMEOUT_SECONDS)
             except Exception:
                 pass
             # Keep retrying while this host remains alive, even after a transient API outage.
