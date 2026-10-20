@@ -1,7 +1,7 @@
 {
   "run_id": "20261020T193206Z-smoke",
   "scope": "smoke only; full experiment not launched",
-  "unit_tests_passed": 18,
+  "unit_tests_passed": 19,
   "checks": {
     "fresh_base_every_generation_and_weights_changed": true,
     "both_exact_dataset_handoffs_and_fixed_real_prompts": true,
@@ -17,11 +17,11 @@
   },
   "verified_files": 120,
   "verified_bytes": 1514391611,
-  "observed_setup_debit_usd": 0.0996520194999988,
+  "observed_setup_debit_usd": 0.10421138619999937,
   "final_current_hourly_usd": 0,
   "remaining_pods": 0,
   "remaining_volumes": 0,
-  "source_code_sha256": "e6f9483efbef7457e2fdc39996c83f1e6d807a4229cfcbb313414e57631f1ba0",
+  "source_code_sha256": "fb93b7cec0cf6ccf32e0941cf3c37ef4d0b0edefd744b332201d799e61604dea",
   "initial_training_source_code_sha256": "daff8112861ef8e66086a3d3ccfa6779159494253b97a25ae879b4eeccbf2f86",
   "cold_dependency_seconds": 68.93995213508606,
   "restored_test_perplexity": 110.82846489892034,
@@ -39,5 +39,15 @@
       "estimated_compute_and_running_storage_usd": 3.3403805105519284,
       "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."
     }
-  ]
+  ],
+  "stalled_receipt_gpu_shutdown": {
+    "passed": true,
+    "source_code_sha256": "fb93b7cec0cf6ccf32e0941cf3c37ef4d0b0edefd744b332201d799e61604dea",
+    "forced_receipt_delay_seconds": 60,
+    "receipt_wait_limit_seconds": 5,
+    "seconds_from_guard_start_to_provider_exited": 7.307110786437988,
+    "sender_started": true,
+    "provider_state": "EXITED",
+    "shutdown_reason": "budget_exhausted"
+  }
 }

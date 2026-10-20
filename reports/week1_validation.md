@@ -21,18 +21,18 @@ These small runs validate the pipeline, not a full reproduction or statistically
 
 ## Verification
 
-- **18 local tests passed**, covering numerical loss/perplexity, partial batches, five-epoch optimizer/scheduler recovery, budget refusal, concurrent-launch refusal, transfer retries, cleanup ownership, and affordable G5/G10 admission without paid provisioning.
+- **19 local tests passed**, covering numerical loss/perplexity, partial batches, five-epoch optimizer/scheduler recovery, budget refusal, concurrent-launch refusal, transfer retries, cleanup ownership, and affordable G5/G10 admission without paid provisioning.
 - Real G0 -> D1 -> G1 -> D2 -> G2 handoffs passed. All three initial model hashes matched the original pretrained weights; all selected models changed their weights.
 - Exactly 64 continuation tokens followed each fixed 64-token real training prompt. Real prompts were excluded from subsequent training targets.
 - Two deliberate worker exits recovered: after the first generation shard and after G1. Saved work was reused; completed G1 files remained unchanged.
 - The detached supervisor and watchdog survived the launcher/SSH disconnect. Independent budget-guard shutdown stopped paid compute, verified by provider reads.
 - **120 artifacts, 1.514 GB**, including all three selected models, were downloaded from private Hugging Face backups and SHA-256 verified.
 - Restored G2 test perplexity matched **110.8284648989** exactly. Direct log-probability versus cross-entropy calculation had maximum error **0.0**.
-- A fresh Pod resumed the completed chain without retraining and exercised the optimized cold start and automatic shutdown again. Deployed, local and validated source hashes matched.
+- A fresh Pod resumed the completed chain without retraining and exercised the optimized cold start and automatic shutdown again. The final runtime was also deployed in the separate guard fault test; its source hash matched the local and validated code.
 
 ## Infrastructure and cost
 
-The observed Runpod balance debit for this setup was **$0.0997**, below the $3 setup ceiling. This comes from authenticated before/after balance reads. The current-day aggregated billing API had not yet returned records; its empty response was not treated as zero spend. The internal cost ledger uses conservative runtime estimates separately.
+The observed Runpod balance debit for this setup was **$0.1042**, below the $3 setup ceiling. This comes from authenticated before/after balance reads. The current-day aggregated billing API had not yet returned records; its empty response was not treated as zero spend. The internal cost ledger uses conservative runtime estimates separately.
 
 **Final provider read: no Pods, no network volumes, $0/hour.** Automatic payments remained disabled. No extra credits or paid Hugging Face services were purchased. Models and data remain in private Hub repositories and locally in the ignored run directory.
 
@@ -41,6 +41,8 @@ Training and generation used **NVIDIA RTX 4000 Ada, 20 GB, $0.28/hour**, with of
 The optimized dependency phase took **68.9 seconds**, versus approximately 573 seconds installing on network storage. Dependencies now use local container disk; research artifacts and caches use persistent storage.
 
 The initial smoke driver version was not captured. The final code records drivers and environments per launch and preserves the original environment when resuming. Initial training and final source hashes are retained in validation metadata.
+
+The final guard-only trial used an available Secure Cloud GPU partition at $0.69/hour. A receipt sender was deliberately stalled for 60 seconds; its daemon thread was allowed five seconds, and the provider reported the GPU stopped after **7.3 seconds**. The Pod was then removed. No models were retrained. [Raw guard-fault evidence](shutdown_receipt_fault.json).
 
 ## Full-data forecast
 
