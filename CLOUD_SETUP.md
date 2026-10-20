@@ -1,3 +1,6 @@
+# Current workflow
+The implemented workflow builds locally and launches a detached Runpod batch job. Follow README.md. Codex Cloud and browser control are optional; no OpenAI API key is required for the experiment. The current setup task stops after smoke validation. The remaining Cloud setup notes are an optional alternative, not an instruction to start a full run automatically.
+
 # Codex Cloud setup for Week 1
 
 Create a cloud environment for `BillLeoutsakosvl346/Model_Collapse_in_Synthetic_Data_Training`, using the branch containing `WEEK1_CLOUD_TASK.md`. The cloud task will implement the experiment and run GPU work on Runpod. The laptop can be switched off after the cloud environment has been published and the task has actually started.
@@ -62,7 +65,3 @@ Cloud networking can differ from the laptop. Do not assume outbound SSH works. V
 - [Hugging Face environment variables](https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables)
 
 These instructions prepare a future cloud task. They do not mean training has already run or that a cloud environment has already been published.
-# Current workflow
-
-The implemented workflow builds locally and launches a detached Runpod batch job. Follow README.md. Codex Cloud and browser control are optional; no OpenAI API key is required for the experiment. The current setup task stops after smoke validation. The remaining Cloud setup notes are an optional alternative, not an instruction to start a full run automatically.
-

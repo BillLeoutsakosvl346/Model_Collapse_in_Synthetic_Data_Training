@@ -21,7 +21,8 @@ def test_five_epoch_resume_matches_uninterrupted_training(tmp_path, monkeypatch)
     monkeypatch.setattr(engine, "load_model", loader)
     c = {"seed": 42, "epochs": 5, "learning_rate": 2e-5, "min_learning_rate": 1e-6, "weight_decay": .01,
          "microbatch": 2, "effective_batch": 4, "eval_batch": 2, "precision": "fp32"}
-    blocks = np.random.default_rng(1).integers(4, 32, size=(8, 64), dtype=np.int32)
+    # Seven blocks exercise both a partial accumulation window and a partial microbatch.
+    blocks = np.random.default_rng(1).integers(4, 32, size=(7, 64), dtype=np.int32)
     base_hash = engine.weights_hash(loader(c))
     control = engine.train(tmp_path / "control", 0, blocks, blocks[:2], c, base_hash)
     normal_eval = engine.evaluate

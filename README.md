@@ -6,7 +6,7 @@ Evaluate untouched pretrained OPT, fine-tune G0 on real text, then train G1-G10 
 
 ## Install on Windows
 
-Python 3.10+ and PyTorch are required locally. The official Runpod image supplies remote GPU PyTorch.
+Python 3.12 is the tested version. A working PyTorch installation is required locally; the official Runpod image supplies remote GPU PyTorch. If local PyTorch is absent, CPU wheels suffice for launch/reporting: after creating the venv, run `uv pip install --python .venv\Scripts\python.exe torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu`. Retain an existing working CUDA installation.
 
 ```powershell
 uv venv --system-site-packages .venv
@@ -26,7 +26,7 @@ python -m model_collapse smoke
 
 The smoke test uses 256 training blocks, 64 validation/test blocks each, one epoch and G0-G2. It deliberately exits after a saved generation shard and after G1, resumes each, checks G1 files are unchanged, uploads artifacts, builds plots, then exercises actual budget-guard shutdown. **Smoke results validate plumbing; they are not evidence of collapse.**
 
-Before a full-data launch, fetch and validate a completed smoke run. Validation checks provenance, re-evaluates a restored checkpoint, and reads the provider's stopped-Pod state. The launcher requires this validation for the current source version. The tested setup has already completed these steps; see the validation report linked below when available.
+Before a full-data launch, fetch and validate a completed smoke run. Validation checks provenance, re-evaluates a restored checkpoint, and reads the provider's stopped-Pod state. The launcher requires this validation for the current source version. This setup passed: [validation report, metrics and graphs](reports/week1_validation.md). The full experiment remains unstarted.
 
 The full experiment is a separate command:
 

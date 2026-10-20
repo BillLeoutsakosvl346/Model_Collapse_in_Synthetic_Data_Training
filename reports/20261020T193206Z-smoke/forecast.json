@@ -1,0 +1,18 @@
+{
+  "benchmark_gpu": "NVIDIA RTX 4000 Ada Generation",
+  "hourly_usd": 0.2856164383561644,
+  "forecasts": [
+    {
+      "synthetic_generations": 5,
+      "estimated_hours": 6.025900863423271,
+      "estimated_compute_and_running_storage_usd": 1.7210963424982904,
+      "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."
+    },
+    {
+      "synthetic_generations": 10,
+      "estimated_hours": 11.695337039342482,
+      "estimated_compute_and_running_storage_usd": 3.3403805105519284,
+      "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."
+    }
+  ]
+}

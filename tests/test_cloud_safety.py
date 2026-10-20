@@ -99,3 +99,28 @@ def test_concurrent_launch_is_rejected_before_provisioning(tmp_path, monkeypatch
     with FileLock(str(tmp_path / "launch.lock")):
         with pytest.raises(Timeout):
             remote.launch()
+
+
+@pytest.mark.parametrize("generations", [5, 10])
+def test_full_launch_admits_validated_affordable_plan_without_spending(tmp_path, monkeypatch, generations):
+    class ReachedProvisioningBoundary(Exception):
+        pass
+    calls = []
+    class API:
+        def request(self, method, path, body=None):
+            calls.append((method, path))
+            assert method == "GET"
+            return {"pods": []} if path == "/pods" else {"templates": [{"id": "runpod-torch-v280", "image": "test-image"}]}
+        def candidates(self):
+            return [{"gpu": "test", "data_center": "test", "hourly_usd": .28}]
+    monkeypatch.setattr(remote, "STATE", tmp_path)
+    monkeypatch.setattr(remote, "Runpod", API)
+    monkeypatch.setattr(remote, "preflight", lambda **kw: {"account": {"clientBalance": 30}})
+    monkeypatch.setattr(remote, "source_archive", lambda: ("unused", "tested-code"))
+    monkeypatch.setattr(remote, "register_key", lambda _: (_ for _ in ()).throw(ReachedProvisioningBoundary()))
+    atomic_json(tmp_path / "validation.json", {"source_code_sha256": "tested-code"})
+    atomic_json(tmp_path / "benchmark.json", {"training_target_tokens_per_second": 29715, "generation_new_tokens_per_second": 1135,
+                "full_split_blocks": {"train": 37946, "validation": 3922, "test": 4494}})
+    with pytest.raises(ReachedProvisioningBoundary):
+        remote.launch(generations=generations)
+    assert all(method == "GET" for method, path in calls)

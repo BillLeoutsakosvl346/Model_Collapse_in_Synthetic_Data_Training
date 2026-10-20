@@ -1,0 +1,43 @@
+{
+  "run_id": "20261020T193206Z-smoke",
+  "scope": "smoke only; full experiment not launched",
+  "unit_tests_passed": 18,
+  "checks": {
+    "fresh_base_every_generation_and_weights_changed": true,
+    "both_exact_dataset_handoffs_and_fixed_real_prompts": true,
+    "continuations_exactly_64_tokens": true,
+    "finite_token_weighted_perplexity_all_generations": true,
+    "completed_g1_unchanged_after_resume": true,
+    "two_real_worker_exits_and_resume": true,
+    "partial_generation_reused_saved_shard": true,
+    "independent_budget_guard_requested_actual_shutdown": true,
+    "restored_checkpoint_hash_and_evaluation": true,
+    "nll_matches_direct_log_probability_calculation": true,
+    "provider_readback_confirms_compute_stopped": true
+  },
+  "verified_files": 120,
+  "verified_bytes": 1514391611,
+  "observed_setup_debit_usd": 0.0996520194999988,
+  "final_current_hourly_usd": 0,
+  "remaining_pods": 0,
+  "remaining_volumes": 0,
+  "source_code_sha256": "e6f9483efbef7457e2fdc39996c83f1e6d807a4229cfcbb313414e57631f1ba0",
+  "initial_training_source_code_sha256": "daff8112861ef8e66086a3d3ccfa6779159494253b97a25ae879b4eeccbf2f86",
+  "cold_dependency_seconds": 68.93995213508606,
+  "restored_test_perplexity": 110.82846489892034,
+  "nll_calculation_max_error": 0.0,
+  "forecasts": [
+    {
+      "synthetic_generations": 5,
+      "estimated_hours": 6.025900863423271,
+      "estimated_compute_and_running_storage_usd": 1.7210963424982904,
+      "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."
+    },
+    {
+      "synthetic_generations": 10,
+      "estimated_hours": 11.695337039342482,
+      "estimated_compute_and_running_storage_usd": 3.3403805105519284,
+      "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."
+    }
+  ]
+}
