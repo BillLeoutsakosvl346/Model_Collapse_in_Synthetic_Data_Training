@@ -40,6 +40,9 @@ def watchdog(root):
             atomic_json(root / "watchdog_exit.json", {"reason": reason, "time": now(), "pod_id": resources["pod_id"]})
             # Save the shutdown intent off-Pod before calling the API; do not block shutdown on backup errors.
             try:
+                # Bootstrap started this process before the venv existed. Reuse its now-installed Hub client.
+                for site in Path("/workspace/project/.venv/lib").glob("python*/site-packages"):
+                    sys.path.insert(0, str(site))
                 from huggingface_hub import HfApi, get_token
                 HfApi(token=os.environ.get("HF_TOKEN") or get_token()).upload_file(
                     path_or_fileobj=str(root / "watchdog_exit.json"), path_in_repo=f"{root.name}/watchdog_exit.json",

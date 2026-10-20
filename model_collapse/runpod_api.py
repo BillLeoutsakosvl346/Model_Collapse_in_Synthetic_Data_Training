@@ -26,8 +26,11 @@ class Runpod:
                 raw = response.read()
                 return json.loads(raw) if raw else None
         except urllib.error.HTTPError as e:
-            # Server responses to create/read may contain env values. Never echo them.
-            raise RuntimeError(f"Runpod {method} {path}: HTTP {e.code}") from None
+            raw = e.read(2000).decode(errors="replace")
+            for secret in (self.key, os.environ.get("HF_TOKEN")):
+                if secret:
+                    raw = raw.replace(secret, "[REDACTED]")
+            raise RuntimeError(f"Runpod {method} {path}: HTTP {e.code}: {raw[:1000]}") from None
 
     def account(self):
         d = self.request("POST", "", {"query": "query { myself { clientBalance currentSpendPerHr isAutoPayEnabled enableBackupPayments } }"}, graphql=True)

@@ -113,6 +113,7 @@ def ssh_connect(pod, key):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(endpoint["host"], port=endpoint["port"], username=endpoint["username"], key_filename=str(key),
                    timeout=20, auth_timeout=20, banner_timeout=20, look_for_keys=False, allow_agent=False)
+    client.get_transport().set_keepalive(15)
     client.save_host_keys(str(known))
     return client
 
@@ -155,7 +156,7 @@ def launch(generations=10, smoke=False, resume_id=None):
     c = read_json(PROJECT / "runs" / resume_id / "config.json") if previous else config(PROJECT / "configs" / ("smoke.yaml" if smoke else "full.yaml"))
     if not previous:
         c["generations"] = generations if not smoke else 2
-    if previous and previous["code_sha256"] != code_hash:
+    if previous and previous["code_sha256"] != code_hash and c["kind"] != "smoke":
         raise RuntimeError("Resume requires the original code; restore its recorded commit")
     if previous:
         choices = [x for x in choices if x["data_center"] == previous["data_center"]]
@@ -231,8 +232,10 @@ def launch(generations=10, smoke=False, resume_id=None):
         atomic_json(local / "resources.json", resources)
         command(client, "mkdir -p /workspace/project " + shlex.quote(resources["remote_root"]))
         sftp = client.open_sftp()
+        sftp.get_channel().settimeout(120)
         sftp.put(str(archive), "/workspace/project-code.tar.gz")
         command(client, "tar -xzf /workspace/project-code.tar.gz -C /workspace/project")
+        atomic_json(local / "launch_phase.json", {"phase": "code_transferred", "time": now()})
         upload_json(sftp, resources["remote_root"] + "/resources.json", resources)
         upload_json(sftp, resources["remote_root"] + "/config.json", c)
         reset = "import pathlib; p=pathlib.Path(" + repr(resources["remote_root"]) + "); [(p/n).unlink(missing_ok=True) for n in ['stop_request.json','supervisor.json','watchdog.json','watchdog_exit.json','validation_guard_deadline.json']]"
@@ -243,15 +246,19 @@ def launch(generations=10, smoke=False, resume_id=None):
             f.write("export RUNPOD_API_KEY=" + shlex.quote(api.key) + "\nexport HF_TOKEN=" + shlex.quote(os.environ.get("HF_TOKEN") or get_token()) + "\n")
         sftp.chmod(secret_path, 0o600)
         prefix = "cd /workspace/project && . /run/iib-week1-secrets && export PYTHONPATH=/workspace/project HF_HOME=/workspace/hf-cache TOKENIZERS_PARALLELISM=false HF_HUB_DOWNLOAD_TIMEOUT=120 && "
-        command(client, prefix + "setsid python3 -m model_collapse watchdog --root " + shlex.quote(resources["remote_root"]) + " >/workspace/watchdog.log 2>&1 </dev/null &", timeout=30)
+        guard_cmd = "setsid python3 -m model_collapse watchdog --root " + shlex.quote(resources["remote_root"]) + " >/workspace/watchdog.log 2>&1 </dev/null &"
+        command(client, prefix + "sh -c " + shlex.quote(guard_cmd), timeout=30)
+        atomic_json(local / "launch_phase.json", {"phase": "watchdog_started", "time": now()})
         command(client, prefix + "python3 -m venv --system-site-packages .venv && .venv/bin/pip install --quiet -e '.[test]' >/workspace/install.log 2>&1", timeout=600)
+        atomic_json(local / "launch_phase.json", {"phase": "dependencies_installed", "time": now()})
         gpu = command(client, prefix + ".venv/bin/python -c 'import torch,json; print(json.dumps({\"torch\":torch.__version__,\"cuda\":torch.cuda.is_available(),\"bf16\":torch.cuda.is_bf16_supported(),\"gpu\":torch.cuda.get_device_name()}))'")
         atomic_json(local / "gpu_check.json", json.loads(gpu))
         if not json.loads(gpu)["cuda"] or not json.loads(gpu)["bf16"]:
             raise RuntimeError("Pod CUDA/BF16 check failed")
         command(client, prefix + ".venv/bin/pip freeze >" + shlex.quote(resources["remote_root"] + "/requirements-tested.txt"))
-        command(client, prefix + "setsid .venv/bin/python -m model_collapse supervisor --root " + shlex.quote(resources["remote_root"]) +
-                (" --validation" if c["kind"] == "smoke" else "") + " >" + shlex.quote(resources["remote_root"] + "/supervisor.log") + " 2>&1 </dev/null &", timeout=30)
+        supervisor_cmd = ("setsid .venv/bin/python -m model_collapse supervisor --root " + shlex.quote(resources["remote_root"]) +
+            (" --validation" if c["kind"] == "smoke" else "") + " >" + shlex.quote(resources["remote_root"] + "/supervisor.log") + " 2>&1 </dev/null &")
+        command(client, prefix + "sh -c " + shlex.quote(supervisor_cmd), timeout=30)
         for _ in range(30):
             try:
                 live = json.loads(command(client, ". /run/iib-week1-secrets; python3 -c " + shlex.quote(

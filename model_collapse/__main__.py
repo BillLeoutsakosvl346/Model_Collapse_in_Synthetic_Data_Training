@@ -66,5 +66,5 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as e:
-        print(f"ERROR: {e}", file=sys.stderr, flush=True)
+        print(f"ERROR: {type(e).__name__}: {e}", file=sys.stderr, flush=True)
         raise SystemExit(1)
