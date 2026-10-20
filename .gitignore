@@ -1,0 +1,37 @@
+# Local credentials and tool state
+.env
+.env.*
+!.env.example
+.runpod/
+.ssh/
+
+# Python environment and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Bulk experimental artifacts stay in verified artifact storage
+/data/
+/cache/
+/.cache/
+/runs/
+/artifacts/
+/checkpoints/
+/logs/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+
+# User-provided local reference documents
+/Project_Proposal.docx
+/Shumallov_2024.pdf
+
+# Operating system files
+.DS_Store
+Thumbs.db
