@@ -1,5 +1,7 @@
 # Autonomous Week 1 model collapse experiment
 
+**Current execution boundary:** implementation and smoke validation only (G0-G2, 256 training blocks, one epoch, maximum USD 3). Do not execute the full-data priorities below until the user separately launches that experiment. Use README.md for the implemented workflow. No extra seeds or ablations are automatically authorized for this setup task.
+
 Implement and execute a reproducible study of recursive synthetic-data fine-tuning with OPT-125M and WikiText-2. Deliver measured results, plots, checkpoints, synthetic datasets, a clear account of what ran, and a repository that can repeat it. Carry the work through execution and analysis, not just code generation.
 
 ## Scope and authorization
