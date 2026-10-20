@@ -76,7 +76,7 @@ def evaluate(model, blocks, c, export=None):
     model.eval()
     losses = []
     sync()
-    start = time.monotonic()
+    start = time.perf_counter()
     for offset in range(0, len(blocks), c["eval_batch"]):
         ids = tensor(blocks[offset:offset + c["eval_batch"]])
         with autocast(c):
@@ -90,7 +90,7 @@ def evaluate(model, blocks, c, export=None):
         raise RuntimeError("Empty evaluation or non-finite loss")
     seq_nll = np.asarray(losses) / (blocks.shape[1] - 1)
     result = {"nll_sum": total, "scored_tokens": scored, "loss": total / scored,
-              "perplexity": math.exp(total / scored), "seconds": time.monotonic() - start,
+              "perplexity": math.exp(total / scored), "seconds": time.perf_counter() - start,
               "mean_sequence_perplexity": float(np.exp(seq_nll).mean()),
               "std_sequence_perplexity": float(np.exp(seq_nll).std()), "context_tokens": blocks.shape[1]}
     if export:
@@ -129,7 +129,7 @@ def train(root, generation, blocks, val, c, expected_base_hash=None):
     seed_all(c["seed"])
     if device() == "cuda":
         torch.cuda.reset_peak_memory_stats()
-    start = time.monotonic()
+    start = time.perf_counter()
     for epoch in range(first_epoch, c["epochs"]):
         # Epoch-local deterministic order/dropout makes epoch-boundary resume exact.
         seed_all(c["seed"] + epoch)
@@ -138,7 +138,7 @@ def train(root, generation, blocks, val, c, expected_base_hash=None):
         total_loss, count = 0.0, 0
         lr = optimizer.param_groups[0]["lr"]
         sync()
-        epoch_start = time.monotonic()
+        epoch_start = time.perf_counter()
         for start_idx in range(0, len(order), c["effective_batch"]):
             window = order[start_idx:start_idx + c["effective_batch"]]
             optimizer.zero_grad(set_to_none=True)
@@ -157,7 +157,7 @@ def train(root, generation, blocks, val, c, expected_base_hash=None):
                 raise RuntimeError("Non-finite gradients")
             optimizer.step()
         sync()
-        train_seconds = time.monotonic() - epoch_start
+        train_seconds = time.perf_counter() - epoch_start
         val_metrics = evaluate(model, val, c)
         history.append({"epoch": epoch + 1, "learning_rate": lr, "train_loss": total_loss / count,
                         "validation_loss": val_metrics["loss"], "train_seconds": train_seconds,
@@ -183,7 +183,7 @@ def train(root, generation, blocks, val, c, expected_base_hash=None):
         raise RuntimeError("Training did not change any model weights")
     done = {"generation": generation, "initial_weights_sha256": initial, "selected_weights_sha256": final_hash,
             "input_tokens_sha256": input_hash, "training_blocks": len(blocks), "selected_epoch": selected_epoch,
-            "best_validation_loss": best, "seconds": time.monotonic() - start,
+            "best_validation_loss": best, "seconds": time.perf_counter() - start,
             "peak_allocated_gpu_bytes": torch.cuda.max_memory_allocated() if device() == "cuda" else 0,
             "checkpoint_files": checkpoint_manifest(dest / "checkpoint")}
     atomic_json(dest / "training.json", done)
@@ -212,7 +212,7 @@ def generate(root, generation, model, prompts, c, parent_hash, inject=False):
     model.eval()
     generated, shards = [], {}
     sync()
-    start_time = time.monotonic()
+    start_time = time.perf_counter()
     reused = 0
     for start in range(0, len(prompts), c["generation_shard"]):
         end = min(start + c["generation_shard"], len(prompts))
@@ -253,7 +253,7 @@ def generate(root, generation, model, prompts, c, parent_hash, inject=False):
     values = np.concatenate(generated)
     save_array(dest / "tokens.npy", values)
     sync()
-    elapsed = time.monotonic() - start_time
+    elapsed = time.perf_counter() - start_time
     done = {"provenance": provenance, "continuation_tokens_sha256": hashlib.sha256(values.astype(np.int32).tobytes()).hexdigest(),
             "files": {"tokens.npy": sha256(dest / "tokens.npy"), **shards},
             "seconds": elapsed, "reused_continuations": reused,

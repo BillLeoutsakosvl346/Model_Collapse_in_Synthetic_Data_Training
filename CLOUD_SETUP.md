@@ -62,3 +62,7 @@ Cloud networking can differ from the laptop. Do not assume outbound SSH works. V
 - [Hugging Face environment variables](https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables)
 
 These instructions prepare a future cloud task. They do not mean training has already run or that a cloud environment has already been published.
+# Current workflow
+
+The implemented workflow builds locally and launches a detached Runpod batch job. Follow README.md. Codex Cloud and browser control are optional; no OpenAI API key is required for the experiment. The current setup task stops after smoke validation. The remaining Cloud setup notes are an optional alternative, not an instruction to start a full run automatically.
+

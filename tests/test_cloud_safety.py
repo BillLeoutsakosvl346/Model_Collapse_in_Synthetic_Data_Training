@@ -67,6 +67,7 @@ def test_exhausted_task_budget_prevents_provisioning(monkeypatch):
 def test_cleanup_only_removes_registry_owned_resources(tmp_path, monkeypatch):
     root = tmp_path / "runs/test"
     atomic_json(root / "recovery_verified.json", {"verified_files": 1})
+    atomic_json(root / "artifact_index.json", {"files": {}})
     records = [{"id": "old", "status": "EXITED"}, {"id": "new", "status": "EXITED"}, {"id": "foreign", "status": "RUNNING"}]
     deleted = []
     class API:
@@ -89,3 +90,12 @@ def test_cleanup_only_removes_registry_owned_resources(tmp_path, monkeypatch):
     remote.cleanup("test")
     assert set(deleted) == {"/pods/old", "/pods/new", "/network-volumes/vol"}
     assert records == [{"id": "foreign", "status": "RUNNING"}]
+
+
+def test_concurrent_launch_is_rejected_before_provisioning(tmp_path, monkeypatch):
+    from filelock import FileLock, Timeout
+    monkeypatch.setattr(remote, "STATE", tmp_path)
+    monkeypatch.setattr(remote, "_launch", lambda *args: pytest.fail("Provisioning must not run while another launcher holds the lock"))
+    with FileLock(str(tmp_path / "launch.lock")):
+        with pytest.raises(Timeout):
+            remote.launch()

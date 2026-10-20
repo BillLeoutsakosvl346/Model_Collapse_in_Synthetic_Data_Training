@@ -142,6 +142,13 @@ def local_resources(run_id):
 
 
 def launch(generations=10, smoke=False, resume_id=None):
+    from filelock import FileLock
+    STATE.mkdir(exist_ok=True)
+    with FileLock(str(STATE / "launch.lock"), timeout=0):
+        return _launch(generations, smoke, resume_id)
+
+
+def _launch(generations=10, smoke=False, resume_id=None):
     from .pipeline import forecast
     load_secrets()
     api = Runpod()
@@ -320,6 +327,11 @@ def cleanup(run_id):
     local = PROJECT / "runs" / run_id
     if not read_json(local / "recovery_verified.json"):
         raise RuntimeError("Fetch and checksum-verify artifacts before removing the recovery volume")
+    from .common import verify_files
+    index = read_json(local / "artifact_index.json")
+    if not index:
+        raise RuntimeError("Artifact index missing; fetch the latest run state before cleanup")
+    verify_files(local, index["files"])
     api = Runpod()
     if read_json(local / "cleanup_verified.json"):
         return read_json(local / "cleanup_verified.json")

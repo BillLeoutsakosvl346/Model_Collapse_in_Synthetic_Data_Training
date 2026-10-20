@@ -26,6 +26,8 @@ python -m model_collapse smoke
 
 The smoke test uses 256 training blocks, 64 validation/test blocks each, one epoch and G0-G2. It deliberately exits after a saved generation shard and after G1, resumes each, checks G1 files are unchanged, uploads artifacts, builds plots, then exercises actual budget-guard shutdown. **Smoke results validate plumbing; they are not evidence of collapse.**
 
+Before a full-data launch, fetch and validate a completed smoke run. Validation checks provenance, re-evaluates a restored checkpoint, and reads the provider's stopped-Pod state. The launcher requires this validation for the current source version. The tested setup has already completed these steps; see the validation report linked below when available.
+
 The full experiment is a separate command:
 
 ```powershell
@@ -67,5 +69,7 @@ Corpus perplexity = exp(total NLL / scored shifted targets). Each unpadded 64-to
 `runs/RUN_ID/` contains config/environment/resource records, manifests, frozen token arrays, generation shards, selected model checkpoints, per-sequence losses, samples and report. Private Hub repositories mirror recoverable artifacts. Large files, caches, credentials and local proposal/paper stay out of Git. CSV and PNG plots cover perplexity, diversity/repetition, G0 reference scores and timing.
 
 The modular implementation separates preparation (`data.py`), training/generation/evaluation (`engine.py`), recursion (`pipeline.py`), reporting (`report.py`), lifecycle (`remote.py`) and independent supervision (`supervisor.py`). Completed stages are verified before reuse; unfinished training resumes at epoch boundaries. Fixed seeds do not guarantee bitwise equality across different GPU/library versions.
+
+For individual local stages, use `prepare --root PATH --config configs/smoke.yaml`, followed by `train`, `generate` or `evaluate` with `--root PATH --generation 0`. Use `evaluate --generation -1` for the untouched pretrained model. These commands reuse the same functions; use `launch` for remotely supervised execution. Remote dependencies install on local container disk for speed; all research artifacts and caches remain on the network volume. Transfers use the pinned native Hub client and bounded retries for transient HTTP failures.
 
 The cumulative ceiling is $25, including the $3 setup allocation; $2 is held back for shutdown/storage. The independent watchdog enforces a price-derived deadline that does not reset across trainer restarts. A provider/API outage can delay shutdown despite retries; validation proves the tested path, not a provider billing guarantee. Partial or budget-paused chains are reported honestly. Mitigation methods and extra seeds are outside this setup.

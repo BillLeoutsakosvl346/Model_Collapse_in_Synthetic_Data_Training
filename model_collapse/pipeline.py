@@ -43,7 +43,7 @@ def benchmark(root, c, prompts, stats):
     for step in range(5):
         optimizer.zero_grad(set_to_none=True)
         sync()
-        start = time.monotonic()
+        start = time.perf_counter()
         for offset in range(0, c["effective_batch"], c["microbatch"]):
             rows = np.arange(offset, offset + c["microbatch"]) % len(prompts)
             ids = tensor(prompts[rows])
@@ -52,7 +52,7 @@ def benchmark(root, c, prompts, stats):
             (loss / (c["effective_batch"] / c["microbatch"])).backward()
         optimizer.step()
         sync()
-        times.append(time.monotonic() - start)
+        times.append(time.perf_counter() - start)
     train_tps = c["effective_batch"] * 63 / float(np.median(times[2:]))
     del optimizer
     gc.collect()
@@ -62,13 +62,13 @@ def benchmark(root, c, prompts, stats):
         for step in range(3):
             ids = tensor(prompts[:c["generation_batch"]])
             sync()
-            start = time.monotonic()
+            start = time.perf_counter()
             with autocast(c):
                 model.generate(input_ids=ids, attention_mask=torch.ones_like(ids), num_beams=5, do_sample=False,
                                min_new_tokens=64, max_new_tokens=64, repetition_penalty=1.0,
                                forced_eos_token_id=None, use_cache=True)
             sync()
-            gen_times.append(time.monotonic() - start)
+            gen_times.append(time.perf_counter() - start)
     result = {"training_target_tokens_per_second": train_tps,
               "generation_new_tokens_per_second": c["generation_batch"] * 64 / float(np.median(gen_times[1:])),
               "training_step_seconds": times, "generation_batch_seconds": gen_times,
