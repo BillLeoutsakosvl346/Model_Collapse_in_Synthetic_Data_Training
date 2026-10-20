@@ -13,14 +13,23 @@ def main():
     launch = sub.add_parser("launch")
     launch.add_argument("--generations", type=int, choices=range(1, 11), default=10)
     sub.add_parser("smoke")
-    for name in ("status", "resume", "fetch", "report", "cleanup"):
+    for name in ("status", "resume", "fetch", "report", "cleanup", "validate"):
         s = sub.add_parser(name)
         s.add_argument("run_id")
     for name in ("worker", "supervisor", "watchdog"):
         s = sub.add_parser(name)
         s.add_argument("--root", required=True)
         s.add_argument("--validation", action="store_true")
+    for name in ("prepare", "train", "generate", "evaluate"):
+        s = sub.add_parser(name, help="Run one local stage (use launch for guarded remote execution)")
+        s.add_argument("--root", required=True)
+        s.add_argument("--generation", type=int, default=0)
+        s.add_argument("--config", default="configs/full.yaml")
     a = p.parse_args()
+    if a.command in ("prepare", "train", "generate", "evaluate"):
+        from .stages import stage
+        print(json.dumps(stage(a.command, a.root, a.generation, a.config), indent=2))
+        return
     if a.command == "watchdog":
         from .supervisor import watchdog
         return watchdog(a.root)
@@ -59,6 +68,9 @@ def main():
     elif a.command == "report":
         from .report import report
         result = report(PROJECT / "runs" / a.run_id, PROJECT / "reports" / a.run_id)
+    elif a.command == "validate":
+        from .validate import validate
+        result = validate(PROJECT / "runs" / a.run_id)
     print(json.dumps(result, indent=2), flush=True)
 
 

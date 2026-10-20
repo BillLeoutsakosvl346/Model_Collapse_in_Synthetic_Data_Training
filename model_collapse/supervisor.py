@@ -41,7 +41,7 @@ def watchdog(root):
             # Save the shutdown intent off-Pod before calling the API; do not block shutdown on backup errors.
             try:
                 # Bootstrap started this process before the venv existed. Reuse its now-installed Hub client.
-                for site in Path("/workspace/project/.venv/lib").glob("python*/site-packages"):
+                for site in Path("/opt/iib-venv/lib").glob("python*/site-packages"):
                     sys.path.insert(0, str(site))
                 from huggingface_hub import HfApi, get_token
                 HfApi(token=os.environ.get("HF_TOKEN") or get_token()).upload_file(

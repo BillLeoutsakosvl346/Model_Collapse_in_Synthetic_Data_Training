@@ -4,6 +4,7 @@ import gc
 import importlib.metadata
 import os
 import platform
+import subprocess
 import time
 from pathlib import Path
 
@@ -20,7 +21,10 @@ from .hub import backup
 
 
 def environment():
-    return {"python": platform.python_version(), "torch": torch.__version__, "cuda": torch.version.cuda,
+    driver = None
+    if torch.cuda.is_available():
+        driver = subprocess.run(["nvidia-smi", "--query-gpu=driver_version", "--format=csv,noheader"], capture_output=True, text=True, check=True).stdout.strip()
+    return {"python": platform.python_version(), "torch": torch.__version__, "cuda": torch.version.cuda, "driver_version": driver,
             "gpu": torch.cuda.get_device_name() if torch.cuda.is_available() else None,
             "packages": {x: importlib.metadata.version(x) for x in ("transformers", "datasets", "numpy", "huggingface-hub", "matplotlib")},
             "determinism": "Fixed seeds and epoch-local shuffle; TF32 disabled; no promise of bitwise equality across GPU/library versions."}
@@ -28,6 +32,8 @@ def environment():
 
 def benchmark(root, c, prompts, stats):
     dest = Path(root) / "benchmark.json"
+    if not (Path(root) / "benchmark_resources.json").exists():
+        atomic_json(Path(root) / "benchmark_resources.json", read_json(Path(root) / "resources.json"))
     if dest.exists():
         return read_json(dest)
     model = load_model(c)
@@ -104,7 +110,10 @@ def _run(root, validation):
     if frozen and frozen["config_hash"] != digest(c):
         raise RuntimeError("Cannot resume with changed experimental settings")
     seed_all(c["seed"])
-    atomic_json(root / "environment.json", environment())
+    session_environment = environment()
+    if not (root / "environment.json").exists():
+        atomic_json(root / "environment.json", session_environment)
+    atomic_json(root / ("environment_" + resources["launch_id"] + ".json"), session_environment)
     atomic_json(root / "status.json", {"state": "running", "pid": os.getpid(), "time": now()})
     tokenizer = AutoTokenizer.from_pretrained(c["model"], revision=c["model_revision"])
     data_manifest = prepare(root, c, tokenizer)
@@ -145,6 +154,9 @@ def _run(root, validation):
                 backup(root)
                 return
         atomic_json(root / "status.json", {"state": "running", "generation": g, "stage": "training", "pid": os.getpid(), "time": now()})
+        if not (gen / "config.json").exists():
+            atomic_json(gen / "config.json", {"training_config": c, "environment": session_environment,
+                        "launch_id": resources["launch_id"], "code_sha256": resources["code_sha256"]})
         training = train(root, g, blocks, val, c, expected)
         if g:
             parent = read_json(previous / "manifest.json")

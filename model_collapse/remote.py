@@ -73,7 +73,7 @@ def source_archive():
     files = [p for folder in ("model_collapse", "configs") for p in (PROJECT / folder).rglob("*")
              if p.is_file() and "__pycache__" not in p.parts]
     files += [PROJECT / "pyproject.toml"]
-    code_hash = digest({p.relative_to(PROJECT).as_posix(): sha256(p) for p in sorted(files)})
+    code_hash = digest({p.relative_to(PROJECT).as_posix(): hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest() for p in sorted(files)})
     archive = STATE / f"code-{code_hash}.tar.gz"
     STATE.mkdir(exist_ok=True)
     with tarfile.open(archive, "w:gz") as tar:
@@ -170,6 +170,9 @@ def launch(generations=10, smoke=False, resume_id=None):
     if allowance <= 0.1:
         raise RuntimeError("Insufficient budget after shutdown/storage reserve")
     if c["kind"] == "full":
+        validation = read_json(STATE / "validation.json")
+        if not validation or validation.get("source_code_sha256") != code_hash:
+            raise RuntimeError("Validate the complete smoke test for this source version before a full-data launch")
         b = read_json(STATE / "benchmark.json")
         if not b:
             raise RuntimeError("Run the validated smoke test and fetch its benchmark before launching full data")
@@ -200,8 +203,10 @@ def launch(generations=10, smoke=False, resume_id=None):
             "startSsh": True, "startJupyter": False, "ports": ["22/tcp"]})
     except Exception:
         # Do not retry a timed-out create: reconcile by exact unique name first.
-        matches = [x for x in api.request("GET", "/pods")["pods"] if x["name"] == "iib-" + run_id]
+        matches = [x for x in api.request("GET", "/pods")["pods"] if x["name"] == "iib-" + run_id and x["status"] not in ("EXITED", "TERMINATED")]
         if len(matches) != 1:
+            if not matches and not previous:
+                api.request("DELETE", "/network-volumes/" + volume["id"])
             raise RuntimeError("Pod create failed/uncertain; pending_volume.json records the allocated storage. No blind retry.") from None
         pod = matches[0]
     resources = {"run_id": run_id, "launch_id": launch_id, "kind": c["kind"], "pod_id": pod["id"], "volume_id": volume["id"],
@@ -238,6 +243,9 @@ def launch(generations=10, smoke=False, resume_id=None):
         atomic_json(local / "launch_phase.json", {"phase": "code_transferred", "time": now()})
         upload_json(sftp, resources["remote_root"] + "/resources.json", resources)
         upload_json(sftp, resources["remote_root"] + "/config.json", c)
+        if previous and read_json(local / "benchmark.json") and not read_json(local / "benchmark_resources.json"):
+            atomic_json(local / "benchmark_resources.json", previous)
+            upload_json(sftp, resources["remote_root"] + "/benchmark_resources.json", previous)
         reset = "import pathlib; p=pathlib.Path(" + repr(resources["remote_root"]) + "); [(p/n).unlink(missing_ok=True) for n in ['stop_request.json','supervisor.json','watchdog.json','watchdog_exit.json','validation_guard_deadline.json']]"
         command(client, "python3 -c " + shlex.quote(reset))
         # Secrets live only on ephemeral disk and in process environments, never in archives/backups.
@@ -249,14 +257,14 @@ def launch(generations=10, smoke=False, resume_id=None):
         guard_cmd = "setsid python3 -m model_collapse watchdog --root " + shlex.quote(resources["remote_root"]) + " >/workspace/watchdog.log 2>&1 </dev/null &"
         command(client, prefix + "sh -c " + shlex.quote(guard_cmd), timeout=30)
         atomic_json(local / "launch_phase.json", {"phase": "watchdog_started", "time": now()})
-        command(client, prefix + "python3 -m venv --system-site-packages .venv && .venv/bin/pip install --quiet -e '.[test]' >/workspace/install.log 2>&1", timeout=600)
+        command(client, prefix + "python3 -m venv --system-site-packages /opt/iib-venv && /opt/iib-venv/bin/pip install --progress-bar off -e '.[test]' >/workspace/install.log 2>&1", timeout=900)
         atomic_json(local / "launch_phase.json", {"phase": "dependencies_installed", "time": now()})
-        gpu = command(client, prefix + ".venv/bin/python -c 'import torch,json; print(json.dumps({\"torch\":torch.__version__,\"cuda\":torch.cuda.is_available(),\"bf16\":torch.cuda.is_bf16_supported(),\"gpu\":torch.cuda.get_device_name()}))'")
+        gpu = command(client, prefix + "/opt/iib-venv/bin/python -c 'import torch,json; print(json.dumps({\"torch\":torch.__version__,\"cuda\":torch.cuda.is_available(),\"bf16\":torch.cuda.is_bf16_supported(),\"gpu\":torch.cuda.get_device_name()}))'")
         atomic_json(local / "gpu_check.json", json.loads(gpu))
         if not json.loads(gpu)["cuda"] or not json.loads(gpu)["bf16"]:
             raise RuntimeError("Pod CUDA/BF16 check failed")
-        command(client, prefix + ".venv/bin/pip freeze >" + shlex.quote(resources["remote_root"] + "/requirements-tested.txt"))
-        supervisor_cmd = ("setsid .venv/bin/python -m model_collapse supervisor --root " + shlex.quote(resources["remote_root"]) +
+        command(client, prefix + "/opt/iib-venv/bin/pip freeze >" + shlex.quote(resources["remote_root"] + "/requirements-tested.txt"))
+        supervisor_cmd = ("setsid /opt/iib-venv/bin/python -m model_collapse supervisor --root " + shlex.quote(resources["remote_root"]) +
             (" --validation" if c["kind"] == "smoke" else "") + " >" + shlex.quote(resources["remote_root"] + "/supervisor.log") + " 2>&1 </dev/null &")
         command(client, prefix + "sh -c " + shlex.quote(supervisor_cmd), timeout=30)
         for _ in range(30):
@@ -285,7 +293,8 @@ def status(run_id):
     r = local_resources(run_id)
     api = Runpod()
     pod = api.pod(r["pod_id"])
-    result = {"run_id": run_id, "pod_id": r["pod_id"], "pod_state": pod["status"], "current_pod_hourly_usd": pod["cost"]}
+    result = {"run_id": run_id, "pod_id": r["pod_id"], "pod_state": pod["status"], "reported_pod_rate_usd": pod["cost"],
+              "compute_running": pod["status"] not in ("EXITED", "TERMINATED")}
     if pod["status"] == "RUNNING":
         client = ssh_connect(pod, STATE / "runpod_ed25519")
         try:
@@ -312,16 +321,25 @@ def cleanup(run_id):
     if not read_json(local / "recovery_verified.json"):
         raise RuntimeError("Fetch and checksum-verify artifacts before removing the recovery volume")
     api = Runpod()
-    p = api.pod(r["pod_id"])
-    if p["status"] not in ("EXITED", "TERMINATED"):
-        api.stop(r["pod_id"])
-    api.request("DELETE", "/pods/" + r["pod_id"])
-    if any(p["id"] == r["pod_id"] for p in api.request("GET", "/pods")["pods"]):
+    if read_json(local / "cleanup_verified.json"):
+        return read_json(local / "cleanup_verified.json")
+    owned = {x["pod_id"] for x in ledger()["launches"] if x["run_id"] == run_id}
+    for p in api.request("GET", "/pods")["pods"]:
+        if p["id"] not in owned:
+            continue
+        if p["status"] not in ("EXITED", "TERMINATED"):
+            api.stop(p["id"])
+        api.request("DELETE", "/pods/" + p["id"])
+    if any(p["id"] in owned for p in api.request("GET", "/pods")["pods"]):
         raise RuntimeError("Pod deletion not verified")
     api.request("DELETE", "/network-volumes/" + r["volume_id"])
     if any(v["id"] == r["volume_id"] for v in api.request("GET", "/network-volumes")["networkVolumes"]):
         raise RuntimeError("Volume deletion not verified")
     actual = max(0, r["starting_balance_usd"] - api.account()["clientBalance"])
+    try:
+        atomic_json(local / "billing_read.json", api.billing())
+    except RuntimeError as e:
+        atomic_json(local / "billing_read.json", {"unavailable": str(e)})
     d = update_ledger(r, state="removed", stopped_at=now(), estimated_usd=(now() - r["created_at"]) / 3600 * r["guard_hourly_usd"], actual_usd=actual)
     atomic_json(local / "cleanup_verified.json", {"pod_removed": True, "volume_removed": True, "actual_account_balance_delta_usd": actual, "ledger": d})
     return {"run_id": run_id, "pod_removed": True, "volume_removed": True, "account_balance_delta_usd": actual}

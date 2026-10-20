@@ -41,6 +41,7 @@ Replace `RUN_ID` with the ID returned by the launcher.
 ```powershell
 python -m model_collapse status RUN_ID
 python -m model_collapse fetch RUN_ID
+python -m model_collapse validate RUN_ID  # Smoke audit and restored checkpoint evaluation
 python -m model_collapse report RUN_ID
 python -m model_collapse cleanup RUN_ID
 ```

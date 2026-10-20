@@ -75,6 +75,22 @@ def report(root, out=None):
     fig.savefig(out / "runtime.png", dpi=180)
     plt.close(fig)
     baseline = read_json(seed_root / "pretrained" / "metrics.json")
+    from .pipeline import forecast
+    from .common import atomic_json
+    resources = read_json(root / "resources.json")
+    bench = read_json(root / "benchmark.json")
+    benchmark_resources = read_json(root / "benchmark_resources.json", resources)
+    hourly = benchmark_resources.get("actual_pod_hourly_usd", benchmark_resources["quoted_gpu_hourly_usd"]) + 30 * .07 / 730 + 20 * .1 / 730
+    forecasts = [forecast(bench, g, hourly) for g in (5, 10)]
+    atomic_json(out / "forecast.json", {"benchmark_gpu": bench["gpu"], "hourly_usd": hourly, "forecasts": forecasts})
+    fig, axes = plt.subplots(1, 2, figsize=(9, 4), layout="constrained")
+    axes[0].bar(["G5", "G10"], [f["estimated_hours"] for f in forecasts])
+    axes[1].bar(["G5", "G10"], [f["estimated_compute_and_running_storage_usd"] for f in forecasts])
+    axes[0].set_ylabel("Estimated hours")
+    axes[1].set_ylabel("Estimated compute/running storage USD")
+    fig.suptitle(f"Full-data forecast from warmed benchmark; {bench['gpu']}")
+    fig.savefig(out / "forecast.png", dpi=180)
+    plt.close(fig)
     lines = [f"# Week 1 {c['kind']} experiment", "", f"Experiment: `{root.name}`. Seed: {c['seed']}.", "",
              "This small smoke experiment validates plumbing, not evidence of model collapse." if c["kind"] == "smoke" else "One seed is preliminary evidence; non-monotonic changes are reported without adjustment.", "",
              f"Untouched pretrained test corpus perplexity: {baseline['test']['perplexity']:.4f}.", "",
@@ -86,5 +102,8 @@ def report(root, out=None):
               "", "All training starts from the pinned original pretrained model. Prompts are fixed real training blocks; only continuation token IDs are used as subsequent training targets. Validation selects the best epoch; test data only reports results.",
               "", "Reconstruction differences: split-wide concatenation (authors group map batches); explicit fresh-base initialization; BF16 autocast; corrected token-weighted corpus PPL; repetition penalty 1.0 for the paper's main condition (released code hardcodes 3.0). No real training targets retained after G0.",
               "", "Paper: https://doi.org/10.1038/s41586-024-07566-y ; authors' code: https://github.com/iliaishacked/curse_recurse"]
+    lines += ["", "## Full-data forecasts", "", f"Measured on {bench['gpu']} at compute plus running storage rate ${hourly:.4f}/hour. These are conservative estimates, not completed full runs; setup validation spend and retained-storage reserve are additional.", ""]
+    for f in forecasts:
+        lines.append(f"- G{f['synthetic_generations']}: {f['estimated_hours']:.2f} hours; ${f['estimated_compute_and_running_storage_usd']:.2f}.")
     (out / "report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     return {"report": str(out / "report.md"), "completed_generations": len(metrics)}

@@ -41,6 +41,9 @@ class Runpod:
     def pod(self, pod_id):
         return self.request("GET", "/pods/" + pod_id)
 
+    def billing(self):
+        return self.request("GET", "/billing?lastN=1&bucketSize=day")
+
     def stop(self, pod_id):
         for attempt in range(8):
             try:

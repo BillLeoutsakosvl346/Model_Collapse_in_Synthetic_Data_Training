@@ -2,11 +2,26 @@ from __future__ import annotations
 
 import os
 import uuid
+import time
 from pathlib import Path
 
 from huggingface_hub import HfApi, get_token, hf_hub_download
+from requests.exceptions import RequestException
 
 from .common import STATE, atomic_json, load_secrets, read_json, sha256, verify_files
+
+
+def retry_transfer(call, *args, **kwargs):
+    """Retry transient transport/server failures; permission denials remain terminal."""
+    for attempt in range(4):
+        try:
+            return call(*args, **kwargs)
+        except RequestException as e:
+            response = getattr(e, "response", None)
+            status = response.status_code if response is not None else None
+            if attempt == 3 or (status is not None and status < 500 and status != 429):
+                raise
+            time.sleep(min(2 ** (attempt + 1), 10))
 
 
 def destinations(probe=False):
@@ -60,7 +75,7 @@ def backup(root, repos=None):
         if kind == "dataset":
             paths += ["artifact_index.json", "events.jsonl", "status.json"]
         # Exact allow list prevents accidental credential/cache uploads.
-        api.upload_folder(repo_id=repos[kind], repo_type=kind, folder_path=root, path_in_repo=root.name,
+        retry_transfer(api.upload_folder, repo_id=repos[kind], repo_type=kind, folder_path=root, path_in_repo=root.name,
                           allow_patterns=paths, commit_message=f"Save {root.name} verified pipeline state")
     return index
 
@@ -72,10 +87,20 @@ def fetch(run_id, repos, out):
     index = read_json(idxpath)
     import shutil
     for rel, meta in index["files"].items():
-        src = hf_hub_download(repos[meta["repo_type"]], f"{run_id}/{rel}", repo_type=meta["repo_type"], token=api.token)
+        src = retry_transfer(hf_hub_download, repos[meta["repo_type"]], f"{run_id}/{rel}", repo_type=meta["repo_type"], token=api.token)
         dst = out / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(src, dst)
     atomic_json(out / "artifact_index.json", index)
     verify_files(out, index["files"])
-    return {"verified_files": len(index["files"]), "verified_bytes": sum(x["bytes"] for x in index["files"].values()), "path": str(out)}
+    operational = []
+    from huggingface_hub.errors import EntryNotFoundError
+    for name in ("events.jsonl", "status.json", "watchdog_exit.json"):
+        try:
+            src = hf_hub_download(repos["dataset"], f"{run_id}/{name}", repo_type="dataset", token=api.token, force_download=True)
+            shutil.copyfile(src, out / name)
+            operational.append(name)
+        except EntryNotFoundError:
+            pass
+    return {"verified_files": len(index["files"]), "verified_bytes": sum(x["bytes"] for x in index["files"].values()),
+            "operational_files_outside_immutable_index": operational, "path": str(out)}
