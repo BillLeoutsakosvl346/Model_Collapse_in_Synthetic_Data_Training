@@ -1,0 +1,38 @@
+{
+  "run_id": "20261020T211121Z-full",
+  "scope": "Checksum-verified metadata audit. Large model/token arrays remain in cloud; they were not independently downloaded or re-evaluated in this audit.",
+  "checks": {
+    "All 11 generation records complete": true,
+    "Identical original base initialization recorded for every generation": true,
+    "Five completed training epochs per generation": true,
+    "Selected epoch has lowest validation loss": true,
+    "All 10 recorded parent dataset hashes match": true,
+    "Fixed real validation/test scoring counts": true,
+    "Finite corpus perplexity agrees with NLL and CSV": true,
+    "Recorded continuation count/length agrees with saved array file sizes": true,
+    "Identical prompt hashes across full synthetic generation batches": true,
+    "Checkpoint file hash records agree with cloud artifact index": true,
+    "Frozen split file hashes agree between manifests and index": true
+  },
+  "checksum_verified_metadata_files": 37,
+  "metadata_bytes": 334584,
+  "selected_epochs_g0_to_g10": [
+    3,
+    1,
+    1,
+    1,
+    3,
+    2,
+    3,
+    1,
+    3,
+    2,
+    1
+  ],
+  "blocks": {
+    "train": 37946,
+    "validation": 3922,
+    "test": 4494
+  },
+  "all_passed": true
+}

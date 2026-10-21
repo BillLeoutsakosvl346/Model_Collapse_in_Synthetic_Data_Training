@@ -4,6 +4,18 @@ Cambridge Engineering IIB, Week 1. A recursive OPT-125M / WikiText-2 experiment 
 
 Evaluate untouched pretrained OPT, fine-tune G0 on real text, then train G1-G10 on the previous model's continuations. **Every generation reloads the identical original pretrained model.** Evaluation text remains fixed. The remote worker, backups, reports and GPU shutdown operate independently of the laptop.
 
+## Completed Week 1 results
+
+The first full-data experiment, `20261020T211121Z-full` (seed 42), completed G0-G10 on 21 October 2026. It took 9.02 hours from provisioning to completion, with an observed Runpod account debit of approximately $2.23 through the subsequent status check. GPU compute stopped automatically; retained storage continues to accrue a small charge.
+
+[Results report](reports/20261020T211121Z-full/report.md) | [Metrics CSV](reports/20261020T211121Z-full/metrics.csv) | [Consistency audit](reports/20261020T211121Z-full/consistency_audit.json)
+
+![Full experiment: perplexity and repetition](reports/20261020T211121Z-full/results_overview.png)
+
+Test corpus perplexity changed from **33.88 (G0)** to **62.49 (G1)**, then broadly plateaued around **52-54**, reaching **52.83 at G10**. Repeated 4-grams on the fixed 256-prompt probe increased overall from **48.87% to 59.05%**. This is one preliminary run: the measurements show a lasting performance loss relative to real-data fine-tuning, not worsening test perplexity at every generation.
+
+Small results, figures, configuration and provenance records are included here. The complete artifact index points to private Hugging Face backups containing all 11 model checkpoints and synthetic token datasets; bulk weights/data remain outside ordinary Git history.
+
 ## Install on Windows
 
 Python 3.12 is the tested version. A working PyTorch installation is required locally; the official Runpod image supplies remote GPU PyTorch. If local PyTorch is absent, CPU wheels suffice for launch/reporting: after creating the venv, run `uv pip install --python .venv\Scripts\python.exe torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu`. Retain an existing working CUDA installation.
@@ -26,7 +38,7 @@ python -m model_collapse smoke
 
 The smoke test uses 256 training blocks, 64 validation/test blocks each, one epoch and G0-G2. It deliberately exits after a saved generation shard and after G1, resumes each, checks G1 files are unchanged, uploads artifacts, builds plots, then exercises actual budget-guard shutdown. **Smoke results validate plumbing; they are not evidence of collapse.**
 
-Before a full-data launch, fetch and validate a completed smoke run. Validation checks provenance, re-evaluates a restored checkpoint, and reads the provider's stopped-Pod state. The launcher requires this validation for the current source version. This setup passed: [validation report, metrics and graphs](reports/week1_validation.md). The full experiment remains unstarted.
+Before a full-data launch, fetch and validate a completed smoke run. Validation checks provenance, re-evaluates a restored checkpoint, and reads the provider's stopped-Pod state. The launcher requires this validation for the current source version. This setup passed: [validation report, metrics and graphs](reports/week1_validation.md). The first full experiment subsequently completed; the commands below are for a new, explicitly requested run.
 
 The full experiment is a separate command:
 

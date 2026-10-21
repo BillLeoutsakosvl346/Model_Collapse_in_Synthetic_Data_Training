@@ -1,0 +1,32 @@
+{
+  "preprocessing_config_hash": "bbc368d7994031cf6ec2fe8c9567f01423b7eeb9fbe1c5ca1a67919b9118c343",
+  "stats": {
+    "train": {
+      "rows": 36718,
+      "full_blocks": 37946,
+      "used_blocks": 37946,
+      "discarded_remainder_tokens": 58,
+      "fingerprint": "5d4fb603254a7a5b"
+    },
+    "validation": {
+      "rows": 3760,
+      "full_blocks": 3922,
+      "used_blocks": 3922,
+      "discarded_remainder_tokens": 41,
+      "fingerprint": "51d84d52d095f90d"
+    },
+    "test": {
+      "rows": 4358,
+      "full_blocks": 4494,
+      "used_blocks": 4494,
+      "discarded_remainder_tokens": 29,
+      "fingerprint": "a46124b21ac53738"
+    }
+  },
+  "files": {
+    "train.npy": "546f467e177406cd4da4571e490de15ad691b7a63ea317dfea99b219433d8c31",
+    "validation.npy": "f7cab8d76a7700b1db3c4f3bfc2be399249c068c7ac1cdff94acaceb7c25f22a",
+    "test.npy": "baa63f2fa9961e122c02ef8cc239baa6e5abcfd58c84f629392750f597d4f72d"
+  },
+  "policy": "Preserve row strings; OPT default special tokens per row; concatenate once per split; disjoint 64-token blocks; discard split remainder only."
+}

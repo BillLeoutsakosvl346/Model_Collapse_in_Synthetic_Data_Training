@@ -1,6 +1,6 @@
 # Week 1 setup validation - 20 October 2026
 
-**Implemented and validated. The full-data experiment has not been started.**
+**Setup was implemented and validated on 20 October 2026.** At this setup handoff the full-data experiment had not started. The user subsequently authorized it, and G0-G10 completed on 21 October: [full experiment results](20261020T211121Z-full/report.md).
 
 Experiment `20261020T193206Z-smoke`: actual OPT-125M, seed 42, 256 training blocks, 64 validation blocks, 64 test blocks, one epoch and two optimizer updates per model. G1 and G2 use only the previous model's continuation tokens.
 
@@ -34,7 +34,7 @@ These small runs validate the pipeline, not a full reproduction or statistically
 
 The observed Runpod balance debit for this setup was **$0.1042**, below the $3 setup ceiling. This comes from authenticated before/after balance reads. The current-day aggregated billing API had not yet returned records; its empty response was not treated as zero spend. The internal cost ledger uses conservative runtime estimates separately.
 
-**Final provider read: no Pods, no network volumes, $0/hour.** Automatic payments remained disabled. No extra credits or paid Hugging Face services were purchased. Models and data remain in private Hub repositories and locally in the ignored run directory.
+**End-of-setup provider read: no Pods, no network volumes, $0/hour.** Automatic payments remained disabled. No extra credits or paid Hugging Face services were purchased. Models and data remain in private Hub repositories and locally in the ignored run directory. This is a historical setup snapshot, not the later full run's storage state.
 
 Training and generation used **NVIDIA RTX 4000 Ada, 20 GB, $0.28/hour**, with official image `runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404`, PyTorch 2.8.0 and CUDA 12.8. An initial RTX 2000 Ada bootstrap trial ($0.24/hour) failed before training and stopped safely. The final cold-start control test used an available RTX PRO 4000 Blackwell ($0.57/hour), verifying and reusing completed scientific stages. Only one GPU was active at a time.
 
@@ -57,7 +57,7 @@ These estimates use the tested $0.28/hour GPU rate plus running storage, a 50% c
 
 ![Forecast](20261020T193206Z-smoke/forecast.png)
 
-## Start later
+## Original setup handoff: launch procedure
 
 From the project directory:
 

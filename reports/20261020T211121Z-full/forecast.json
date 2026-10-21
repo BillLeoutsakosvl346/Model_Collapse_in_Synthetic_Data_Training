@@ -1,0 +1,18 @@
+{
+  "benchmark_gpu": "NVIDIA RTX 2000 Ada Generation",
+  "hourly_usd": 0.24561643835616437,
+  "forecasts": [
+    {
+      "synthetic_generations": 5,
+      "estimated_hours": 7.131481218111098,
+      "estimated_compute_and_running_storage_usd": 1.7516090169963285,
+      "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."
+    },
+    {
+      "synthetic_generations": 10,
+      "estimated_hours": 13.76649848597071,
+      "estimated_compute_and_running_storage_usd": 3.381278326759655,
+      "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "initial_weights_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+  "validation": {
+    "nll_sum": 1176758.4389295145,
+    "scored_tokens": 247086,
+    "loss": 4.7625459917984605,
+    "perplexity": 117.0435387680319,
+    "seconds": 3.8900075900019147,
+    "mean_sequence_perplexity": 152.07125213308237,
+    "std_sequence_perplexity": 143.17814557888113,
+    "context_tokens": 64
+  },
+  "test": {
+    "nll_sum": 1344455.3564077304,
+    "scored_tokens": 283122,
+    "loss": 4.748678507525838,
+    "perplexity": 115.4316416454772,
+    "seconds": 4.481106760009425,
+    "mean_sequence_perplexity": 149.87841533131166,
+    "std_sequence_perplexity": 144.89621187003954,
+    "context_tokens": 64
+  }
+}

@@ -2,7 +2,7 @@
 
 This Cambridge Engineering IIB project studies model collapse in language models trained recursively on synthetic data. Week 1 establishes a reproducible baseline with OPT-125M and WikiText-2. Novel mitigation methods are out of scope.
 
-The current task is implementation and validation only: a tiny real GPU G0-G2 smoke experiment, recovery, private backups and shutdown. Stop after validation; DO NOT launch the full-data experiment. Setup and validation must remain below USD 3, included within the USD 25 total task budget. The user will launch the full experiment separately. This supersedes older automatic-execution priorities in WEEK1_CLOUD_TASK.md.
+Setup and validation completed, including a tiny real GPU G0-G2 smoke experiment, recovery, private backups and shutdown, below the USD 3 setup allowance. The user subsequently explicitly authorized the full-data experiment `20261020T211121Z-full`; G0-G10 completed on 21 October 2026 and GPU compute stopped automatically. Results are in `reports/20261020T211121Z-full/`, with bulk checkpoints and datasets in private Hugging Face backups. Current work is analysis, reporting and publication to the existing GitHub repository. Do not launch additional paid experiments unless explicitly requested by the user. This supersedes older automatic-execution priorities in WEEK1_CLOUD_TASK.md.
 
 Read [WEEK1_CLOUD_TASK.md](WEEK1_CLOUD_TASK.md) for the scientific protocol. Use README.md for the implemented local-to-Runpod workflow; Codex Cloud is optional.
 
