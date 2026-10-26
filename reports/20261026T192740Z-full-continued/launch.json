@@ -1,0 +1,208 @@
+{
+  "run_id": "20261026T192740Z-full-continued",
+  "state_at_handoff": "running",
+  "results_complete": false,
+  "resources": {
+    "run_id": "20261026T192740Z-full-continued",
+    "launch_id": "20261026T192740185830Z",
+    "kind": "full",
+    "pod_id": "itwdnizndn5hws",
+    "volume_id": "z6ziujxxus",
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1793042861.635894,
+    "quoted_gpu_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6619589041095889,
+    "session_allowance_usd": 19.813264431903452,
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "code_sha256": "48d1f6210cf295a83a39236b0e2bbb9fc5ff4ba899f9197b362f4ae9b3b82557",
+    "starting_balance_usd": 27.0665629673,
+    "remote_root": "/workspace/runs/20261026T192740Z-full-continued",
+    "actual_pod_hourly_usd": 0.57
+  },
+  "config": {
+    "kind": "full",
+    "seed": 42,
+    "generations": 10,
+    "model": "facebook/opt-125m",
+    "model_revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+    "dataset": "Salesforce/wikitext",
+    "dataset_config": "wikitext-2-raw-v1",
+    "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+    "block_size": 64,
+    "new_tokens": 64,
+    "num_beams": 5,
+    "repetition_penalty": 1.0,
+    "epochs": 5,
+    "learning_rate": 2e-05,
+    "min_learning_rate": 1e-06,
+    "weight_decay": 0.01,
+    "microbatch": 32,
+    "effective_batch": 128,
+    "generation_batch": 32,
+    "generation_shard": 256,
+    "eval_batch": 32,
+    "precision": "bf16",
+    "probe_count": 256,
+    "train_blocks": null,
+    "validation_blocks": null,
+    "test_blocks": null,
+    "initialization": "continued",
+    "start_checkpoint": {
+      "repo": "Bill11235813/iib-model-collapse-week1-models",
+      "revision": "1f9d4b4179536e58474e927b34d43820f2d70f22",
+      "path": "20261020T211121Z-full/seed_42/gen_00/checkpoint",
+      "weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "files": {
+        "config.json": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+        "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+        "model.safetensors": "b20c1bb996d49f227a1de2b0288d90eeb34d2f7bf458416485a3d427db012580"
+      }
+    }
+  },
+  "launch_verified": {
+    "watchdog": {
+      "pid": 139,
+      "time": 1793042933.6860778,
+      "deadline": 1793150614.173872
+    },
+    "supervisor": {
+      "pid": 252,
+      "child_pid": 254,
+      "time": 1793042935.0230725
+    },
+    "status": {
+      "state": "running",
+      "pid": 254,
+      "time": 1793042934.8470376
+    }
+  },
+  "post_disconnect_observation": {
+    "observed_at": 1793043051.241236,
+    "status": {
+      "state": "running",
+      "generation": 0,
+      "stage": "generation",
+      "pid": 254,
+      "time": 1793042982.4348526
+    },
+    "supervisor": {
+      "pid": 252,
+      "child_pid": 254,
+      "time": 1793043049.9211915
+    },
+    "watchdog": {
+      "pid": 139,
+      "time": 1793043048.9631317,
+      "deadline": 1793150614.173872
+    },
+    "verified_first_shard": {
+      "filename": "shard_0000000.npy",
+      "shape": [
+        256,
+        64
+      ],
+      "sha256": "1a23d505b48f1a3cc04bd760a816b2972e5014db5e430f1a9e75decd5a409868",
+      "provenance": {
+        "parent_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+        "prompt_tokens_sha256": "f40d2891212b57f027105d0952c9725959ceb716a6a8af2064f0c359dd767a67",
+        "prompt_count": 37946,
+        "new_tokens": 64,
+        "num_beams": 5,
+        "repetition_penalty": 1.0
+      }
+    },
+    "latest_events": [
+      "{\"time\": 1793043019.9616275, \"event\": \"generation_shard_complete\", \"generation\": 0, \"completed\": 768, \"total\": 37946, \"reused\": false}",
+      "{\"time\": 1793043032.3840091, \"event\": \"generation_shard_complete\", \"generation\": 0, \"completed\": 1024, \"total\": 37946, \"reused\": false}",
+      "{\"time\": 1793043044.897732, \"event\": \"generation_shard_complete\", \"generation\": 0, \"completed\": 1280, \"total\": 37946, \"reused\": false}"
+    ]
+  },
+  "full_data_manifest": {
+    "preprocessing_config_hash": "bbc368d7994031cf6ec2fe8c9567f01423b7eeb9fbe1c5ca1a67919b9118c343",
+    "stats": {
+      "train": {
+        "rows": 36718,
+        "full_blocks": 37946,
+        "used_blocks": 37946,
+        "discarded_remainder_tokens": 58,
+        "fingerprint": "5d4fb603254a7a5b"
+      },
+      "validation": {
+        "rows": 3760,
+        "full_blocks": 3922,
+        "used_blocks": 3922,
+        "discarded_remainder_tokens": 41,
+        "fingerprint": "51d84d52d095f90d"
+      },
+      "test": {
+        "rows": 4358,
+        "full_blocks": 4494,
+        "used_blocks": 4494,
+        "discarded_remainder_tokens": 29,
+        "fingerprint": "a46124b21ac53738"
+      }
+    },
+    "files": {
+      "train.npy": "546f467e177406cd4da4571e490de15ad691b7a63ea317dfea99b219433d8c31",
+      "validation.npy": "f7cab8d76a7700b1db3c4f3bfc2be399249c068c7ac1cdff94acaceb7c25f22a",
+      "test.npy": "baa63f2fa9961e122c02ef8cc239baa6e5abcfd58c84f629392750f597d4f72d"
+    },
+    "policy": "Preserve row strings; OPT default special tokens per row; concatenate once per split; disjoint 64-token blocks; discard split remainder only."
+  },
+  "full_splits_identical_to_prior_experiment": true,
+  "starting_model_tensor_hash_verified": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+  "benchmark": {
+    "training_target_tokens_per_second": 34258.08655347406,
+    "generation_new_tokens_per_second": 1304.6823085081423,
+    "training_step_seconds": [
+      0.6378201820189133,
+      0.20963779708836228,
+      0.23419258801732212,
+      0.23709482210688293,
+      0.23538967908825725
+    ],
+    "generation_batch_seconds": [
+      1.7842486499575898,
+      1.5712722890311852,
+      1.5681893050204962
+    ],
+    "effective_batch": 128,
+    "microbatch": 32,
+    "generation_batch": 32,
+    "num_beams": 5,
+    "precision": "bf16",
+    "full_split_blocks": {
+      "train": 37946,
+      "validation": 3922,
+      "test": 4494
+    },
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell"
+  },
+  "forecast": {
+    "synthetic_generations": 10,
+    "initialization": "continued",
+    "estimated_hours": 10.105914092387815,
+    "estimated_compute_and_running_storage_usd": 5.817130276193643,
+    "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."
+  },
+  "authorization": {
+    "authorized_at_utc": "2026-10-26T19:27:05.265436+00:00",
+    "instruction": "Start the full ten-cycle continued-weight experiment; report only after detached worker and budget watchdog are verified.",
+    "generations": 10,
+    "initialization": "continued",
+    "total_task_budget_usd": 25,
+    "source_code_sha256": "48d1f6210cf295a83a39236b0e2bbb9fc5ff4ba899f9197b362f4ae9b3b82557",
+    "preflight_forecast": {
+      "synthetic_generations": 10,
+      "initialization": "continued",
+      "estimated_hours": 14.923355615658014,
+      "estimated_compute_and_running_storage_usd": 8.59012880780753,
+      "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."
+    }
+  }
+}
