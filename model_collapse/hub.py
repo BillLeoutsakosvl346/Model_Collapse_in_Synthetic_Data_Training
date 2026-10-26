@@ -80,19 +80,20 @@ def backup(root, repos=None):
     return index
 
 
-def fetch(run_id, repos, out):
+def fetch(run_id, repos, out, *, metadata_only=False):
     out = Path(out)
     api = HfApi(token=os.environ.get("HF_TOKEN") or get_token())
     idxpath = hf_hub_download(repos["dataset"], f"{run_id}/artifact_index.json", repo_type="dataset", token=api.token, force_download=True)
     index = read_json(idxpath)
     import shutil
-    for rel, meta in index["files"].items():
+    selected = {p: m for p, m in index["files"].items() if not (metadata_only and p.endswith((".npy", ".safetensors")))}
+    for rel, meta in selected.items():
         src = retry_transfer(hf_hub_download, repos[meta["repo_type"]], f"{run_id}/{rel}", repo_type=meta["repo_type"], token=api.token)
         dst = out / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(src, dst)
     atomic_json(out / "artifact_index.json", index)
-    verify_files(out, index["files"])
+    verify_files(out, selected)
     operational = []
     from huggingface_hub.errors import EntryNotFoundError
     for name in ("events.jsonl", "status.json", "watchdog_exit.json"):
@@ -102,5 +103,6 @@ def fetch(run_id, repos, out):
             operational.append(name)
         except EntryNotFoundError:
             pass
-    return {"verified_files": len(index["files"]), "verified_bytes": sum(x["bytes"] for x in index["files"].values()),
+    return {"verified_files": len(selected), "verified_bytes": sum(x["bytes"] for x in selected.values()),
+            "metadata_only": metadata_only,
             "operational_files_outside_immutable_index": operational, "path": str(out)}

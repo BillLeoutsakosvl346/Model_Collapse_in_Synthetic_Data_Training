@@ -1,0 +1,94 @@
+{
+  "generation": 0,
+  "training": {
+    "generation": 0,
+    "initialization": "existing_real_data_g0",
+    "source_checkpoint": {
+      "repo": "Bill11235813/iib-model-collapse-week1-models",
+      "revision": "1f9d4b4179536e58474e927b34d43820f2d70f22",
+      "path": "20261020T211121Z-full/seed_42/gen_00/checkpoint",
+      "weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "files": {
+        "config.json": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+        "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+        "model.safetensors": "b20c1bb996d49f227a1de2b0288d90eeb34d2f7bf458416485a3d427db012580"
+      }
+    },
+    "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+    "selected_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+    "input_tokens_sha256": null,
+    "training_blocks": 0,
+    "selected_epoch": null,
+    "seconds": 0.0,
+    "checkpoint_files": {
+      "config.json": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+      "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "model.safetensors": "b20c1bb996d49f227a1de2b0288d90eeb34d2f7bf458416485a3d427db012580"
+    }
+  },
+  "validation": {
+    "nll_sum": 13814.515453756045,
+    "scored_tokens": 4032,
+    "loss": 3.4262191105545745,
+    "perplexity": 30.760121991852863,
+    "seconds": 0.4268692440818995,
+    "mean_sequence_perplexity": 36.88293484890449,
+    "std_sequence_perplexity": 24.514028708201543,
+    "context_tokens": 64
+  },
+  "test": {
+    "nll_sum": 14545.628526065344,
+    "scored_tokens": 4032,
+    "loss": 3.6075467574566824,
+    "perplexity": 36.87547726871685,
+    "seconds": 0.06530494301114231,
+    "mean_sequence_perplexity": 41.32005496083457,
+    "std_sequence_perplexity": 19.51818635482646,
+    "context_tokens": 64
+  },
+  "diversity": {
+    "distinct_1": 0.107421875,
+    "distinct_2": 0.2923487103174603,
+    "distinct_3": 0.42830141129032256,
+    "repeated_4gram_rate": 0.4886654713114754,
+    "repeated_4gram_denominator": 15616,
+    "duplicate_continuation_rate": 0.0,
+    "token_entropy_nats": 5.771973541026846,
+    "probe_count": 256
+  },
+  "generation_timing": {
+    "provenance": {
+      "parent_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "prompt_tokens_sha256": "c08bdd419e10f17781318fa8a0573b52dc1ee9b6514f88f0071b31a84298edb8",
+      "prompt_count": 256,
+      "new_tokens": 64,
+      "num_beams": 5,
+      "repetition_penalty": 1.0
+    },
+    "continuation_tokens_sha256": "4af501e1389c8fc91b227959fc6963ae27a7a071b2bfa85a4e8b05338d8bf02c",
+    "files": {
+      "tokens.npy": "52f87c04c0d2208acea9ce5be0b472c47bf637a67ae8756c73c431657cc4536e",
+      "shard_0000000.npy": "d01fbdaf31900bbd588dbe68fade149fee423790e8046d8f247aa63de9c36b11",
+      "shard_0000032.npy": "6925f0c09785d5b1937b75afa7591e4b95a4c930b0f589e499337ad550df6eb9",
+      "shard_0000064.npy": "b351d3a8f09c5763e1f23dbe7978262e33b1857918cf368cdae0a88115f2e856",
+      "shard_0000096.npy": "e9bba12bc1b8149c8f466c88207d755550a52bd53ad9184add43f54afbbbe155",
+      "shard_0000128.npy": "e260ac4cc00dd35a8d5572e9c53317e8ec912aaa791611b0863f3cdb9fd59170",
+      "shard_0000160.npy": "5e9b69572ac55a85f9f561ea8231b8f20d8866a5858022d8cabaef82a9f19bb7",
+      "shard_0000192.npy": "8d3482e533ebec060a7c156f406dc4ed99e89808cc026114dc4bc7b8739234e2",
+      "shard_0000224.npy": "fa61d2472431ece9398cc7ce783fe5fa3997b2c6cb7a05e0b9faac177b4f9273"
+    },
+    "seconds": 16.5231249849312,
+    "reused_continuations": 32,
+    "new_tokens_per_second": 867.6324855663913
+  },
+  "frozen_g0_reference": {
+    "nll_sum": 23619.41313143592,
+    "scored_tokens": 16128,
+    "loss": 1.4644973419789136,
+    "perplexity": 4.3253685125973895,
+    "seconds": 0.25795964896678925,
+    "mean_sequence_perplexity": 5.123447599151756,
+    "std_sequence_perplexity": 4.70727479125017,
+    "context_tokens": 64
+  }
+}

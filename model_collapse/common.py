@@ -62,6 +62,12 @@ def config(path):
 
 
 def validate_config(c):
+    if c.get("initialization", "fresh_base") not in ("fresh_base", "continued"):
+        raise ValueError("Unknown model initialization mode")
+    if c.get("initialization") == "continued":
+        start = c.get("start_checkpoint", {})
+        if len(start.get("revision", "")) != 40 or len(start.get("weights_sha256", "")) != 64 or not start.get("files"):
+            raise ValueError("Continued mode requires a pinned, checksummed starting checkpoint")
     for key in ("model_revision", "dataset_revision"):
         if len(c[key]) != 40:
             raise ValueError(f"{key} must be a pinned commit SHA")

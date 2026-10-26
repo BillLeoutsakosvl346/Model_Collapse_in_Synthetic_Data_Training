@@ -1,0 +1,15 @@
+{
+  "python": "3.12.3",
+  "torch": "2.8.0+cu128",
+  "cuda": "12.8",
+  "driver_version": "595.91.07",
+  "gpu": "NVIDIA RTX 2000 Ada Generation",
+  "packages": {
+    "transformers": "4.37.2",
+    "datasets": "3.4.1",
+    "numpy": "2.1.2",
+    "huggingface-hub": "0.34.4",
+    "matplotlib": "3.9.4"
+  },
+  "determinism": "Fixed seeds and epoch-local shuffle; TF32 disabled; no promise of bitwise equality across GPU/library versions."
+}

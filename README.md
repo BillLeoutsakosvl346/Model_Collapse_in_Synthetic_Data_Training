@@ -2,7 +2,47 @@
 
 Cambridge Engineering IIB, Week 1. A recursive OPT-125M / WikiText-2 experiment following [Shumailov et al. (2024)](https://doi.org/10.1038/s41586-024-07566-y).
 
-Evaluate untouched pretrained OPT, fine-tune G0 on real text, then train G1-G10 on the previous model's continuations. **Every generation reloads the identical original pretrained model.** Evaluation text remains fixed. The remote worker, backups, reports and GPU shutdown operate independently of the laptop.
+Two explicit modes share the same data preparation, generation, evaluation and cloud controls. The original `fresh_base` experiment reloads the pretrained weights each generation. The new `continued` mode carries the previous selected model's weights forward. Evaluation text remains fixed. The remote worker, backups, reports and GPU shutdown operate independently of the laptop.
+
+## Continued training on the model's own output
+
+This separate variant starts from the saved **real-data-trained G0** of `20261020T211121Z-full`, rather than its final synthetic G10. The private Hugging Face commit, checkpoint file checksums and model tensor hash are pinned in `configs/full-continued.yaml` and `configs/smoke-continued.yaml`.
+
+```text
+S0 = saved real-data G0
+S0 generates D1; train S0 on D1 -> S1
+S1 generates D2; train S1 on D2 -> S2
+... S9 generates D10; train S9 on D10 -> S10
+```
+
+Each training cycle loads the preceding selected checkpoint: it does **not** reload the original pretrained weights. AdamW and the epoch cosine schedule restart each cycle. The same five-epoch full-data training settings and lowest fixed-real-validation-loss checkpoint selection remain in use; test text never selects checkpoints. Each selected epoch is a newly trained model, not a rollback candidate to the untrained parent. This is a documented continued-weight variant, not a claim of exact paper reproduction. Only the mode of weight initialization changes relative to the previous training protocol.
+
+The ten-cycle configuration generates 37,946 continuations of 64 tokens for every training dataset: **2,428,544 synthetic tokens per cycle**, exactly the previous real-data training budget. All cycles use the same 64-token real training prompts, five deterministic beams and continuation-only training targets. S10 generates an additional 256-continuation measurement probe; no S11 is trained. S0 is recorded as `gen_00`, S1 as `gen_01`, and so on, in a new experiment directory. Existing full-run results are preserved.
+
+Validate this mode independently:
+
+```powershell
+python -m model_collapse smoke --mode continued
+python -m model_collapse status RUN_ID
+python -m model_collapse fetch RUN_ID --metadata-only
+python -m model_collapse validate RUN_ID
+python -m model_collapse report RUN_ID
+python -m model_collapse cleanup RUN_ID
+```
+
+The small test uses 256 training blocks, 64 validation/test blocks, one epoch and two actual continued-training cycles. It injects two worker exits, checks both weight/data handoffs, resumes saved generation shards, and verifies that completed cycle 1 remains unchanged. Before shutdown, the GPU downloads all smoke backups from private Hugging Face storage, verifies every checksum, reloads the restored S2 and re-evaluates it. A direct next-token log-probability calculation checks the loss accounting. The independent budget watchdog then stops the GPU and local validation confirms the provider's stopped state.
+
+`--metadata-only` downloads reports, examples and manifests while leaving tensor/token files in the cloud. Smoke cleanup accepts this only when the remote restore audit verifies the skipped bulk objects. For a full run, `fetch RUN_ID` downloads **all** artifacts (several GB); retrieve and verify those before deleting its retained volume. A metadata-only fetch alone does not authorize full-run cleanup.
+
+The full command is separate and must be explicitly requested:
+
+```powershell
+python -m model_collapse launch --mode continued --generations 10
+```
+
+The launcher requires a completed **continued-mode** smoke validation for the current source version; the old fresh-base test cannot authorize this mode. After it returns `detached_supervisor_and_watchdog_verified: true`, the laptop and browser can close. Each cycle saves weights, synthetic token IDs, text examples, fixed-real-text loss/perplexity, diversity/repetition, frozen-S0 scores, timing and provenance hashes. Completion creates CSVs and plots automatically and shuts down compute. Use the same `status`, `resume`, `fetch`, `report` and `cleanup` commands with its new run ID.
+
+**Validated, full run not started:** [26 October continued-mode acceptance report](reports/20261026T182856Z-smoke-continued/report.md). All 26 local tests and 13 GPU acceptance checks passed. The observed setup account debit was $0.02655; its temporary Pod and volume were removed. The measured conservative ten-cycle forecast is 14.92 hours / $3.67 at the tested rate, including a 1.5x compute margin; this is an estimate, not a completed experiment.
 
 ## Completed Week 1 results
 

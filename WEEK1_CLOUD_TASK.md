@@ -1,5 +1,7 @@
 # Autonomous Week 1 model collapse experiment
 
+**Continued-weight variant (26 October 2026):** the user separately requested carrying model weights forward and authorized a small validation only. This mode is configured in `configs/*-continued.yaml` and documented in README.md. It starts from the saved real-trained G0; each model generates its own next training dataset and supplies the weights for that training. AdamW/scheduler and validation checkpoint selection remain as below. Smoke `20261026T182856Z-smoke-continued` passed; its GPU/temporary volume were removed. Do not start its full ten-cycle run without a new explicit instruction. The original fresh-base protocol and completed results below remain unchanged.
+
 **Current execution boundary:** setup and smoke validation completed below the USD 3 setup allowance. After the user's separate launch instruction, full-data experiment `20261020T211121Z-full` completed G0-G10 on 21 October 2026. See [results](reports/20261020T211121Z-full/report.md) and README.md. The remaining instructions describe the original protocol; additional paid runs, seeds or ablations require an explicit user request.
 
 Implement and execute a reproducible study of recursive synthetic-data fine-tuning with OPT-125M and WikiText-2. Deliver measured results, plots, checkpoints, synthetic datasets, a clear account of what ran, and a repository that can repeat it. Carry the work through execution and analysis, not just code generation.

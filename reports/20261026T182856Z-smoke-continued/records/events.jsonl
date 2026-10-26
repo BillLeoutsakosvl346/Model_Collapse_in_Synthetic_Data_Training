@@ -1,0 +1,38 @@
+{"time": 1793039435.4348402, "event": "benchmark_complete", "training_target_tokens_per_second": 18118.5905851091, "generation_new_tokens_per_second": 916.0274734852665, "training_step_seconds": [0.781566102989018, 0.4470291070174426, 0.4445746779674664, 0.44945026410277933, 0.4450677309650928], "generation_batch_seconds": [2.407101691002026, 2.2361363999079913, 2.235345207969658], "effective_batch": 128, "microbatch": 32, "generation_batch": 32, "num_beams": 5, "precision": "bf16", "full_split_blocks": {"train": 37946, "validation": 3922, "test": 4494}, "gpu": "NVIDIA RTX 2000 Ada Generation"}
+{"time": 1793039451.5749063, "event": "generation_shard_complete", "generation": 0, "completed": 32, "total": 256, "reused": false}
+{"time": 1793039451.5896468, "event": "validation_generation_interruption", "generation": 0, "completed": 32}
+{"time": 1793039454.676475, "event": "validation_worker_resumed", "interruption": 1}
+{"time": 1793039459.786852, "event": "generation_shard_complete", "generation": 0, "completed": 32, "total": 256, "reused": true}
+{"time": 1793039462.3265977, "event": "generation_shard_complete", "generation": 0, "completed": 64, "total": 256, "reused": false}
+{"time": 1793039464.661943, "event": "generation_shard_complete", "generation": 0, "completed": 96, "total": 256, "reused": false}
+{"time": 1793039466.9694793, "event": "generation_shard_complete", "generation": 0, "completed": 128, "total": 256, "reused": false}
+{"time": 1793039469.261941, "event": "generation_shard_complete", "generation": 0, "completed": 160, "total": 256, "reused": false}
+{"time": 1793039471.5693903, "event": "generation_shard_complete", "generation": 0, "completed": 192, "total": 256, "reused": false}
+{"time": 1793039473.9447439, "event": "generation_shard_complete", "generation": 0, "completed": 224, "total": 256, "reused": false}
+{"time": 1793039476.2617152, "event": "generation_shard_complete", "generation": 0, "completed": 256, "total": 256, "reused": false}
+{"time": 1793039476.8632057, "event": "generation_complete", "generation": 0, "validation_perplexity": 30.760121991852863, "test_perplexity": 36.87547726871685, "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10", "input_tokens_sha256": null}
+{"time": 1793039495.0260742, "event": "epoch_complete", "generation": 1, "epoch": 1, "learning_rate": 2e-05, "train_loss": 1.4421297460794449, "validation_loss": 3.4765675325016288, "train_seconds": 1.0406165830790997, "training_target_tokens_per_second": 15498.503735428243}
+{"time": 1793039500.9573405, "event": "generation_shard_complete", "generation": 1, "completed": 32, "total": 256, "reused": false}
+{"time": 1793039503.3199286, "event": "generation_shard_complete", "generation": 1, "completed": 64, "total": 256, "reused": false}
+{"time": 1793039505.6676278, "event": "generation_shard_complete", "generation": 1, "completed": 96, "total": 256, "reused": false}
+{"time": 1793039508.0336168, "event": "generation_shard_complete", "generation": 1, "completed": 128, "total": 256, "reused": false}
+{"time": 1793039510.3678098, "event": "generation_shard_complete", "generation": 1, "completed": 160, "total": 256, "reused": false}
+{"time": 1793039512.7638855, "event": "generation_shard_complete", "generation": 1, "completed": 192, "total": 256, "reused": false}
+{"time": 1793039515.1702013, "event": "generation_shard_complete", "generation": 1, "completed": 224, "total": 256, "reused": false}
+{"time": 1793039517.6222088, "event": "generation_shard_complete", "generation": 1, "completed": 256, "total": 256, "reused": false}
+{"time": 1793039519.0927012, "event": "generation_complete", "generation": 1, "validation_perplexity": 32.34849613375164, "test_perplexity": 38.3116902560419, "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10", "input_tokens_sha256": "4af501e1389c8fc91b227959fc6963ae27a7a071b2bfa85a4e8b05338d8bf02c"}
+{"time": 1793039536.0370188, "event": "validation_training_interruption", "completed_generation": 1}
+{"time": 1793039539.4327784, "event": "validation_worker_resumed", "interruption": 2}
+{"time": 1793039543.020333, "event": "generation_reused", "generation": 0, "metrics_sha256": "e9ac4c6b54a9471b2a342d4a027d9449fb7831e2d6e87a06199e8eb995d7b007"}
+{"time": 1793039543.5260696, "event": "training_reused", "generation": 1, "input_tokens_sha256": "4af501e1389c8fc91b227959fc6963ae27a7a071b2bfa85a4e8b05338d8bf02c"}
+{"time": 1793039543.537465, "event": "generation_reused", "generation": 1, "metrics_sha256": "ea83b49cd1d1d4ded65d63d6baccd067824414047331dfbe4aa5b749cc968ccd"}
+{"time": 1793039552.9116993, "event": "epoch_complete", "generation": 2, "epoch": 1, "learning_rate": 2e-05, "train_loss": 1.7163021713495255, "validation_loss": 3.5563181055870614, "train_seconds": 1.4101870279992, "training_target_tokens_per_second": 11436.78085231199}
+{"time": 1793039558.4682963, "event": "generation_shard_complete", "generation": 2, "completed": 32, "total": 256, "reused": false}
+{"time": 1793039560.9385264, "event": "generation_shard_complete", "generation": 2, "completed": 64, "total": 256, "reused": false}
+{"time": 1793039563.3802555, "event": "generation_shard_complete", "generation": 2, "completed": 96, "total": 256, "reused": false}
+{"time": 1793039565.77663, "event": "generation_shard_complete", "generation": 2, "completed": 128, "total": 256, "reused": false}
+{"time": 1793039568.1678102, "event": "generation_shard_complete", "generation": 2, "completed": 160, "total": 256, "reused": false}
+{"time": 1793039570.5648384, "event": "generation_shard_complete", "generation": 2, "completed": 192, "total": 256, "reused": false}
+{"time": 1793039572.9695432, "event": "generation_shard_complete", "generation": 2, "completed": 224, "total": 256, "reused": false}
+{"time": 1793039575.3547297, "event": "generation_shard_complete", "generation": 2, "completed": 256, "total": 256, "reused": false}
+{"time": 1793039576.960075, "event": "generation_complete", "generation": 2, "validation_perplexity": 35.033968015990766, "test_perplexity": 41.481705720741815, "initial_weights_sha256": "b251ad84413af915c826eac1db5b29ad1a8bd7255dbc759d01d6fb67831ab7a8", "input_tokens_sha256": "c38bb105b61d461fd9399d0c0c402385f370e672043cce73089cbcd397781f75"}

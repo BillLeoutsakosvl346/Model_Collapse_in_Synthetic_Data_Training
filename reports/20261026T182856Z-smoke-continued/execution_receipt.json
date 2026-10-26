@@ -1,0 +1,23 @@
+{
+  "run_id": "20261026T182856Z-smoke-continued",
+  "validated_source_code_sha256": "48d1f6210cf295a83a39236b0e2bbb9fc5ff4ba899f9197b362f4ae9b3b82557",
+  "local_tests_passed": 26,
+  "gpu_acceptance_checks_passed": 13,
+  "observed_account_debit_usd": 0.02654688149999984,
+  "cost_basis": "Starting balance minus balance at cleanup; account-wide observed debit, including retained storage, not an itemized invoice.",
+  "provisioning_to_pipeline_completion_minutes": 6.10818780263265,
+  "provisioning_to_guard_shutdown_minutes": 6.537623123327891,
+  "new_pod_removed": true,
+  "new_volume_removed": true,
+  "any_gpu_running": false,
+  "retained_prior_volume_ids": [
+    "wortjkxvr7"
+  ],
+  "full_continued_run_started": false,
+  "account_balance_at_final_read_usd": 27.069479634,
+  "account_spend_rate_at_final_read_usd_per_hour": 0.003,
+  "final_provider_read_utc": "2026-10-26T18:39:49.132982+00:00",
+  "metadata_download_verified_bytes": 11018971,
+  "cloud_restored_verified_bytes": 1514437305,
+  "cloud_restored_verified_files": 121
+}

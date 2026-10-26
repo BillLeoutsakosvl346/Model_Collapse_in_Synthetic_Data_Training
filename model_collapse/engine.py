@@ -98,7 +98,7 @@ def evaluate(model, blocks, c, export=None):
     return result
 
 
-def train(root, generation, blocks, val, c, expected_base_hash=None):
+def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_checkpoint=None):
     dest = Path(root) / f"seed_{c['seed']}" / f"gen_{generation:02d}"
     dest.mkdir(parents=True, exist_ok=True)
     done = read_json(dest / "training.json")
@@ -109,10 +109,12 @@ def train(root, generation, blocks, val, c, expected_base_hash=None):
         verify_files(dest / "checkpoint", done["checkpoint_files"])
         event(root, "training_reused", generation=generation, input_tokens_sha256=input_hash)
         return done
-    model = load_model(c)
+    if c.get("initialization") == "continued" and initial_checkpoint is None:
+        raise RuntimeError("Continued training requires the preceding model checkpoint")
+    model = load_model(c, initial_checkpoint)
     initial = weights_hash(model)
     if expected_base_hash and initial != expected_base_hash:
-        raise RuntimeError("Generation did not start from original pretrained weights")
+        raise RuntimeError("Generation did not start from the expected initial weights")
     optimizer = torch.optim.AdamW(model.parameters(), lr=c["learning_rate"], betas=(0.9, 0.999), eps=1e-8,
                                  weight_decay=c["weight_decay"])
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=c["epochs"], eta_min=c["min_learning_rate"])
@@ -122,6 +124,8 @@ def train(root, generation, blocks, val, c, expected_base_hash=None):
         state = torch.load(resume, map_location=device(), weights_only=False)
         if state["input_hash"] != input_hash:
             raise RuntimeError("Interrupted training input changed")
+        if state.get("initial_hash", initial) != initial:
+            raise RuntimeError("Interrupted training parent weights changed")
         model.load_state_dict(state["model"])
         optimizer.load_state_dict(state["optimizer"])
         scheduler.load_state_dict(state["scheduler"])
@@ -169,7 +173,7 @@ def train(root, generation, blocks, val, c, expected_base_hash=None):
         resume.parent.mkdir(parents=True, exist_ok=True)
         torch.save({"model": model.state_dict(), "optimizer": optimizer.state_dict(), "scheduler": scheduler.state_dict(),
                     "epoch": epoch + 1, "best": best, "selected_epoch": selected_epoch, "history": history,
-                    "input_hash": input_hash}, resume.with_suffix(".partial"))
+                    "input_hash": input_hash, "initial_hash": initial}, resume.with_suffix(".partial"))
         resume.with_suffix(".partial").replace(resume)
         atomic_json(dest / "training_history.json", history)
         event(root, "epoch_complete", generation=generation, **history[-1])
@@ -186,6 +190,9 @@ def train(root, generation, blocks, val, c, expected_base_hash=None):
             "best_validation_loss": best, "seconds": time.perf_counter() - start,
             "peak_allocated_gpu_bytes": torch.cuda.max_memory_allocated() if device() == "cuda" else 0,
             "checkpoint_files": checkpoint_manifest(dest / "checkpoint")}
+    if initial_checkpoint is not None:
+        done.update(initialization="continued", optimizer_initialization="fresh_each_cycle",
+                    checkpoint_selection="lowest_fixed_real_validation_loss")
     atomic_json(dest / "training.json", done)
     # Retain one resume state until the entire generation is committed; the backup excludes it.
     del selected

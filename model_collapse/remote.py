@@ -52,6 +52,8 @@ def accrued(d, kind=None):
             continue
         estimate = x.get("estimated_usd", max(0, now() - x["created_at"]) / 3600 * x["guard_hourly_usd"])
         total += max(estimate, x.get("actual_usd", 0))
+        if x.get("volume_retained_since") and x.get("volume_hourly_usd"):
+            total += max(0, now() - x["volume_retained_since"]) / 3600 * x["volume_hourly_usd"]
     return total
 
 
@@ -141,14 +143,27 @@ def local_resources(run_id):
     return value
 
 
-def launch(generations=10, smoke=False, resume_id=None):
+def verify_start_checkpoint(c):
+    if c.get("initialization") != "continued":
+        return
+    start = c["start_checkpoint"]
+    entries = HfApi().get_paths_info(start["repo"], [f"{start['path']}/{name}" for name in start["files"]],
+                                    revision=start["revision"])
+    if len(entries) != len(start["files"]):
+        raise RuntimeError("Pinned initial checkpoint is incomplete or inaccessible")
+    for entry in entries:
+        if getattr(entry, "lfs", None) and entry.lfs.sha256 != start["files"][entry.path.rsplit("/", 1)[-1]]:
+            raise RuntimeError("Starting checkpoint metadata checksum mismatch")
+
+
+def launch(generations=10, smoke=False, resume_id=None, mode="fresh_base"):
     from filelock import FileLock
     STATE.mkdir(exist_ok=True)
     with FileLock(str(STATE / "launch.lock"), timeout=0):
-        return _launch(generations, smoke, resume_id)
+        return _launch(generations, smoke, resume_id, mode)
 
 
-def _launch(generations=10, smoke=False, resume_id=None):
+def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base"):
     from .pipeline import forecast
     load_secrets()
     api = Runpod()
@@ -160,7 +175,10 @@ def _launch(generations=10, smoke=False, resume_id=None):
         raise RuntimeError("No compatible Secure Cloud GPU with Standard network storage is available")
     archive, code_hash = source_archive()
     previous = local_resources(resume_id) if resume_id else None
-    c = read_json(PROJECT / "runs" / resume_id / "config.json") if previous else config(PROJECT / "configs" / ("smoke.yaml" if smoke else "full.yaml"))
+    if mode not in ("fresh_base", "continued"):
+        raise ValueError("Unknown experiment mode")
+    suffix = "-continued" if mode == "continued" else ""
+    c = read_json(PROJECT / "runs" / resume_id / "config.json") if previous else config(PROJECT / "configs" / (("smoke" if smoke else "full") + suffix + ".yaml"))
     if not previous:
         c["generations"] = generations if not smoke else 2
     if previous and previous["code_sha256"] != code_hash and c["kind"] != "smoke":
@@ -173,23 +191,26 @@ def _launch(generations=10, smoke=False, resume_id=None):
     spent = accrued(ledger())
     allowance = min(TOTAL_BUDGET - spent - RESERVE, p["account"]["clientBalance"] - RESERVE)
     if c["kind"] == "smoke":
-        allowance = min(allowance, SETUP_BUDGET - accrued(ledger(), "smoke") - 0.15)
+        allowance = min(allowance, SETUP_BUDGET - accrued(ledger(), "smoke") - 0.15, 0.75)
     if allowance <= 0.1:
         raise RuntimeError("Insufficient budget after shutdown/storage reserve")
     if c["kind"] == "full":
-        validation = read_json(STATE / "validation.json")
+        validation = read_json(STATE / ("validation_continued.json" if c.get("initialization") == "continued" else "validation.json"))
         if not validation or validation.get("source_code_sha256") != code_hash:
             raise RuntimeError("Validate the complete smoke test for this source version before a full-data launch")
         b = read_json(STATE / "benchmark.json")
         if not b:
             raise RuntimeError("Run the validated smoke test and fetch its benchmark before launching full data")
-        estimate = forecast(b, c["generations"], choice["hourly_usd"] + VOLUME_HOURLY + CONTAINER_HOURLY)
+        estimate = forecast(b, c["generations"], choice["hourly_usd"] + VOLUME_HOURLY + CONTAINER_HOURLY,
+                            continued=c.get("initialization") == "continued")
         if estimate["estimated_compute_and_running_storage_usd"] > allowance:
             raise RuntimeError("Conservative full-run estimate exceeds remaining budget; select fewer generations")
+    # Resolve the private source, including its weight-file checksum, before spending.
+    verify_start_checkpoint(c)
     templates = api.request("GET", "/catalog/templates?source=official")["templates"]
     template = next(t for t in templates if t["id"] == "runpod-torch-v280")
     key = register_key(api)
-    run_id = resume_id or dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + c["kind"]
+    run_id = resume_id or dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + c["kind"] + ("-continued" if c.get("initialization") == "continued" else "")
     launch_id = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     local = PROJECT / "runs" / run_id
     local.mkdir(parents=True, exist_ok=True)
@@ -331,7 +352,13 @@ def cleanup(run_id):
     index = read_json(local / "artifact_index.json")
     if not index:
         raise RuntimeError("Artifact index missing; fetch the latest run state before cleanup")
-    verify_files(local, index["files"])
+    if read_json(local / "recovery_verified.json").get("metadata_only"):
+        from .continued import verify_recovery
+        verify_recovery(local)
+        if not read_json(local / "validation_results.json", {}).get("checks", {}).get("independent_budget_guard_and_provider_stop_verified"):
+            raise RuntimeError("Validate cloud-restored artifacts before cleanup")
+    else:
+        verify_files(local, index["files"])
     api = Runpod()
     if read_json(local / "cleanup_verified.json"):
         return read_json(local / "cleanup_verified.json")

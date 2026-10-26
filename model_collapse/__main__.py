@@ -12,10 +12,14 @@ def main():
     pre.add_argument("--probe", action="store_true", help="Verify private upload/download checksums")
     launch = sub.add_parser("launch")
     launch.add_argument("--generations", type=int, choices=range(1, 11), default=10)
-    sub.add_parser("smoke")
+    launch.add_argument("--mode", choices=("fresh_base", "continued"), default="fresh_base")
+    smoke = sub.add_parser("smoke")
+    smoke.add_argument("--mode", choices=("fresh_base", "continued"), default="fresh_base")
     for name in ("status", "resume", "fetch", "report", "cleanup", "validate"):
         s = sub.add_parser(name)
         s.add_argument("run_id")
+        if name == "fetch":
+            s.add_argument("--metadata-only", action="store_true", help="Keep model weights and token arrays in cloud storage")
     for name in ("worker", "supervisor", "watchdog"):
         s = sub.add_parser(name)
         s.add_argument("--root", required=True)
@@ -49,7 +53,7 @@ def main():
     if a.command == "preflight":
         result = remote.preflight(probe=a.probe)
     elif a.command in ("launch", "smoke"):
-        result = remote.launch(generations=getattr(a, "generations", 2), smoke=a.command == "smoke")
+        result = remote.launch(generations=getattr(a, "generations", 2), smoke=a.command == "smoke", mode=a.mode)
     elif a.command == "status":
         result = remote.status(a.run_id)
     elif a.command == "resume":
@@ -60,7 +64,7 @@ def main():
         from .hub import fetch
         r = remote.local_resources(a.run_id)
         out = PROJECT / "runs" / a.run_id
-        result = fetch(a.run_id, r["repos"], out)
+        result = fetch(a.run_id, r["repos"], out, metadata_only=a.metadata_only)
         atomic_json(out / "recovery_verified.json", result)
         bench = read_json(out / "benchmark.json")
         if bench:
@@ -69,8 +73,13 @@ def main():
         from .report import report
         result = report(PROJECT / "runs" / a.run_id, PROJECT / "reports" / a.run_id)
     elif a.command == "validate":
-        from .validate import validate
-        result = validate(PROJECT / "runs" / a.run_id)
+        root = PROJECT / "runs" / a.run_id
+        if read_json(root / "config.json").get("initialization") == "continued":
+            from .continued import validate_local
+            result = validate_local(root)
+        else:
+            from .validate import validate
+            result = validate(root)
     print(json.dumps(result, indent=2), flush=True)
 
 

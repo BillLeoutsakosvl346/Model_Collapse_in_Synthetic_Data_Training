@@ -1,0 +1,19 @@
+{
+  "generation": 2,
+  "initial_weights_sha256": "b251ad84413af915c826eac1db5b29ad1a8bd7255dbc759d01d6fb67831ab7a8",
+  "selected_weights_sha256": "b4e7cf8db3616e2abd7bfdcc7a6db3068ddac31091bc1cf992c2be9c4de3640a",
+  "input_tokens_sha256": "c38bb105b61d461fd9399d0c0c402385f370e672043cce73089cbcd397781f75",
+  "training_blocks": 256,
+  "selected_epoch": 1,
+  "best_validation_loss": 3.5563181055870614,
+  "seconds": 7.706917937961407,
+  "peak_allocated_gpu_bytes": 4214024192,
+  "checkpoint_files": {
+    "config.json": "33835f36364ee11649f54c240b7de6a311f0db2f46624153ba0061497ff808b7",
+    "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "model.safetensors": "7bcd1671b203ea1b94d96ae827943bee89bbb9a44a4603d88067d71b6df426e2"
+  },
+  "initialization": "continued",
+  "optimizer_initialization": "fresh_each_cycle",
+  "checkpoint_selection": "lowest_fixed_real_validation_loss"
+}

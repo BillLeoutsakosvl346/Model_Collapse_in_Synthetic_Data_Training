@@ -1,0 +1,22 @@
+{
+  "run_id": "20261026T182856Z-smoke-continued",
+  "launch_id": "20261026T182856858250Z",
+  "kind": "smoke",
+  "pod_id": "fojtwmsdsiwr02",
+  "volume_id": "o85qysxvua",
+  "data_center": "EU-RO-1",
+  "gpu": "NVIDIA RTX 2000 Ada Generation",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "created_at": 1793039338.0077806,
+  "quoted_gpu_hourly_usd": 0.24,
+  "guard_hourly_usd": 0.282458904109589,
+  "session_allowance_usd": 0.75,
+  "repos": {
+    "model": "Bill11235813/iib-model-collapse-week1-models",
+    "dataset": "Bill11235813/iib-model-collapse-week1-data"
+  },
+  "code_sha256": "48d1f6210cf295a83a39236b0e2bbb9fc5ff4ba899f9197b362f4ae9b3b82557",
+  "starting_balance_usd": 27.0960265155,
+  "remote_root": "/workspace/runs/20261026T182856Z-smoke-continued",
+  "actual_pod_hourly_usd": 0.24
+}

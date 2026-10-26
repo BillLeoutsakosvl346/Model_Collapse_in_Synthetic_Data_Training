@@ -84,14 +84,14 @@ def benchmark(root, c, prompts, stats):
     return result
 
 
-def forecast(bench, generations, hourly_usd):
+def forecast(bench, generations, hourly_usd, *, continued=False):
     n = bench["full_split_blocks"]["train"]
     # Includes 1.5x compute margin, epoch validation/test estimates, checkpoint saves/uploads, and setup.
-    train_seconds = (generations + 1) * 5 * n * 63 / bench["training_target_tokens_per_second"]
+    train_seconds = (generations + (0 if continued else 1)) * 5 * n * 63 / bench["training_target_tokens_per_second"]
     gen_seconds = (generations * n + 256) * 64 / bench["generation_new_tokens_per_second"]
     evaluation_seconds = (generations + 2) * (6 * bench["full_split_blocks"]["validation"] + bench["full_split_blocks"]["test"]) * 63 / bench["training_target_tokens_per_second"]
     seconds = (train_seconds + gen_seconds + evaluation_seconds) * 1.5 + 300 + 180 * (generations + 1)
-    return {"synthetic_generations": generations, "estimated_hours": seconds / 3600,
+    return {"synthetic_generations": generations, "initialization": "continued" if continued else "fresh_base", "estimated_hours": seconds / 3600,
             "estimated_compute_and_running_storage_usd": seconds / 3600 * hourly_usd,
             "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."}
 
@@ -105,6 +105,7 @@ def run(root, validation=False):
 
 def _run(root, validation):
     c = read_json(root / "config.json")
+    continued = c.get("initialization") == "continued"
     resources = read_json(root / "resources.json")
     frozen = read_json(root / "manifest.json")
     if frozen and frozen["config_hash"] != digest(c):
@@ -130,14 +131,25 @@ def _run(root, validation):
         atomic_json(baseline_path, baseline)
         del model
         gc.collect()
-    expected = baseline["initial_weights_sha256"]
+    base_hash = baseline["initial_weights_sha256"]
     for g in range(c["generations"] + 1):
         gen = root / f"seed_{c['seed']}" / f"gen_{g:02d}"
         previous = root / f"synthetic_for_gen_{g:02d}"
         blocks = real if g == 0 else np.load(previous / "tokens.npy", mmap_mode="r")
+        parent_checkpoint = None
+        expected = base_hash
+        if continued and g:
+            parent_gen = root / f"seed_{c['seed']}" / f"gen_{g - 1:02d}"
+            expected = read_json(parent_gen / "training.json")["selected_weights_sha256"]
+            parent_checkpoint = parent_gen / "checkpoint"
+        def training_stage():
+            if continued and g == 0:
+                from .continued import initialize
+                return initialize(root, c)
+            return train(root, g, blocks, val, c, expected, initial_checkpoint=parent_checkpoint)
         metrics_path = gen / "metrics.json"
         if metrics_path.exists():
-            training = train(root, g, blocks, val, c, expected)
+            training = training_stage()
             event(root, "generation_reused", generation=g, metrics_sha256=sha256(metrics_path))
             continue
         if c["kind"] == "full":
@@ -157,11 +169,13 @@ def _run(root, validation):
         if not (gen / "config.json").exists():
             atomic_json(gen / "config.json", {"training_config": c, "environment": session_environment,
                         "launch_id": resources["launch_id"], "code_sha256": resources["code_sha256"]})
-        training = train(root, g, blocks, val, c, expected)
+        training = training_stage()
         if g:
             parent = read_json(previous / "manifest.json")
             if training["input_tokens_sha256"] != parent["continuation_tokens_sha256"]:
                 raise RuntimeError("Previous generation's continuations were not used exactly")
+            if continued and parent["provenance"]["parent_weights_sha256"] != expected:
+                raise RuntimeError("The model generating these data must also initialize their training")
         model = load_model(c, gen / "checkpoint")
         tokenizer.save_pretrained(gen / "tokenizer")
         metrics = {"generation": g, "training": training, "validation": evaluate(model, val, c),
@@ -185,7 +199,7 @@ def _run(root, validation):
         if device() == "cuda":
             torch.cuda.empty_cache()
         event(root, "generation_complete", generation=g, validation_perplexity=metrics["validation"]["perplexity"],
-              test_perplexity=metrics["test"]["perplexity"], initial_weights_sha256=expected,
+              test_perplexity=metrics["test"]["perplexity"], initial_weights_sha256=training["initial_weights_sha256"],
               input_tokens_sha256=training["input_tokens_sha256"])
         backup(root)
         if validation and g == 1 and not (root / ".injection_g1_consumed").exists():
@@ -200,6 +214,9 @@ def _run(root, validation):
         verify_files(root, snapshot)
     from .report import report
     report(root)
+    if validation and continued:
+        from .continued import validate_remote
+        validate_remote(root)
     atomic_json(root / "status.json", {"state": "complete", "generations": c["generations"], "time": now()})
     atomic_json(root / "completion.json", {"complete": True, "generations": c["generations"], "time": now(),
                                             "validation_g1_unchanged": bool(snapshot)})
