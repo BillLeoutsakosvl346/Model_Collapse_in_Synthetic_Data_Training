@@ -1,0 +1,1720 @@
+{
+  "audit_date": "2026-10-27",
+  "baseline_commit": "a76d77d58757af1ab6af4f855631416460b3e5da",
+  "scope": "Tracked baseline before audit documents; local working-tree byte hashes, not Git blob hashes. Credential contents, ignored private state and bulk artifact contents excluded.",
+  "tracked_file_count": 238,
+  "tracked_bytes": 6786935,
+  "roles": {
+    "repository_documentation_or_metadata": 8,
+    "scientific_configuration": 4,
+    "runtime_source": 14,
+    "published_run_output": 48,
+    "raw_run_evidence": 152,
+    "cloud_original_export": 3,
+    "historical_analysis_script": 3,
+    "manual_paid_probe": 1,
+    "offline_test": 5
+  },
+  "offline_validation": {
+    "pytest": "26 passed, 3 dependency deprecation warnings in 27.75 seconds",
+    "python_ast_files": 23,
+    "json_files": 169,
+    "yaml_files": 4,
+    "csv_files": 6,
+    "jsonl_files": 1,
+    "parse_failures": 0
+  },
+  "indexed_public_record_checks": [
+    {
+      "run_id": "20261020T211121Z-full",
+      "indexed_records_matching": 37,
+      "mismatches": [],
+      "records_outside_historical_index": []
+    },
+    {
+      "run_id": "20261026T182856Z-smoke-continued",
+      "indexed_records_matching": 28,
+      "mismatches": [],
+      "records_outside_historical_index": [
+        "artifact_index.json",
+        "events.jsonl",
+        "validation_results.json",
+        "watchdog_exit.json"
+      ]
+    },
+    {
+      "run_id": "20261026T192740Z-full-continued",
+      "indexed_records_matching": 83,
+      "mismatches": [],
+      "records_outside_historical_index": []
+    }
+  ],
+  "files": [
+    {
+      "path": ".env.example",
+      "role": "repository_documentation_or_metadata",
+      "working_tree_bytes": 470,
+      "working_tree_sha256": "7f202cad0247ea73955fdcdb5249ee7eba006a5bc6f57bb5bfb3298581565a27",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": ".gitattributes",
+      "role": "repository_documentation_or_metadata",
+      "working_tree_bytes": 245,
+      "working_tree_sha256": "079fa44857ae555132ad06b27ec040bfb752bb6e780c01504bc910b682dcfd66",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": ".gitignore",
+      "role": "repository_documentation_or_metadata",
+      "working_tree_bytes": 583,
+      "working_tree_sha256": "e873d97c36a11d005fbd44924328bc7a52f354be637b4a2d0ff91ffccf810ab4",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "AGENTS.md",
+      "role": "repository_documentation_or_metadata",
+      "working_tree_bytes": 4854,
+      "working_tree_sha256": "86dfed65681afc0d3843b156e37ced50fdc4fa39562c2c152cf5a3584b6c9de8",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "CLOUD_SETUP.md",
+      "role": "repository_documentation_or_metadata",
+      "working_tree_bytes": 8324,
+      "working_tree_sha256": "52c3b6f36db0fbfa278a09c306be2471d7195c857378f4d144712ae074fa6763",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "README.md",
+      "role": "repository_documentation_or_metadata",
+      "working_tree_bytes": 14122,
+      "working_tree_sha256": "21a7eb79b4b6c6e0338f376eb5d448a032ecc49e869cab98d7342f042cac3d7b",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "WEEK1_CLOUD_TASK.md",
+      "role": "repository_documentation_or_metadata",
+      "working_tree_bytes": 21956,
+      "working_tree_sha256": "79bd741d8817c8e5e5777c5fda24b6e858b7f7714f69031f8ad208e24fd78dc5",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "configs/full-continued.yaml",
+      "role": "scientific_configuration",
+      "working_tree_bytes": 1171,
+      "working_tree_sha256": "5e9aabd13559a79f874d681387c3cfa17eb6f254b476465c22a03868dfb6fb66",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "configs/full.yaml",
+      "role": "scientific_configuration",
+      "working_tree_bytes": 601,
+      "working_tree_sha256": "f78063b5b8a338602c33eeb8b1c3324440d79f4d8003e6aed69d6d8a529f85af",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "configs/smoke-continued.yaml",
+      "role": "scientific_configuration",
+      "working_tree_bytes": 1165,
+      "working_tree_sha256": "90410378010de9047a0b76e4b7571a61250d931aabad0702e5956b2dac50e098",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "configs/smoke.yaml",
+      "role": "scientific_configuration",
+      "working_tree_bytes": 595,
+      "working_tree_sha256": "b1b91424b81d16a637fa6441edd741a66dfff105b383b20cc88c3285b2e24843",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/__init__.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 342,
+      "working_tree_sha256": "22c829d442ad2e8038e9d36006516546b4374dc5ebce4aac6da360c82e2a50a6",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/__main__.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 4094,
+      "working_tree_sha256": "8eb40bf685c1b99e14edd717c818b01de1d850a2ff83cf94c564f0e0c3afcd28",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/common.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 3407,
+      "working_tree_sha256": "91a46551d0fdc2878f52df610d6fdbf15a8dc53491f5fa7bde77415eec2e24bc",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/continued.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 10307,
+      "working_tree_sha256": "6fe18eb4a456ad5f2aeca23b7e309a803733ad23ac8541ef151b7858463b975f",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/data.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 2842,
+      "working_tree_sha256": "54dd3d396184fb4372b78a902c59f7fbb81605c6dda7260052549f65107f91b9",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/engine.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 14093,
+      "working_tree_sha256": "df8ceb710189ed4a1f532bd512ca0b6e3293037001ef34ccb480da07c3e8473f",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/hub.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 5404,
+      "working_tree_sha256": "e0583587570155777f0b4cec56c8feaea157045741a6c59372daf73f2db944d9",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/pipeline.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 12847,
+      "working_tree_sha256": "051c0ae91f56b3b8666652a5fcbf3f4caf0d0753c261369f39c2d8881a69649b",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/remote.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 22307,
+      "working_tree_sha256": "9abca07a25a6a02cd8e5eff45e776093f5c3f701ba9cdf8e9da3babd0bbdcfba",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/report.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 8481,
+      "working_tree_sha256": "03c89ee64c68f1a5a8e5b5407a1f530cd05d561fa14f2fe050576fdbe6145592",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/runpod_api.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 3407,
+      "working_tree_sha256": "54d2d816e0b7fcec4d546fdd0135ff348c2d158fc6c4787a662b0acc45ab5fe9",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/stages.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 2784,
+      "working_tree_sha256": "d74cfe74949c5cdca0024bbdeb1f2a342f1983154c9c786848d7414409e5038f",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/supervisor.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 5269,
+      "working_tree_sha256": "6f2276928ff65f783d355af83d348325a6cdd754ae6469bfca6057f5122a5f70",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "model_collapse/validate.py",
+      "role": "runtime_source",
+      "working_tree_bytes": 5465,
+      "working_tree_sha256": "cf5a526710b5cccad02e6a776bf8614e489de8e70a6c3ddcde13cc4c34c6b189",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "pyproject.toml",
+      "role": "repository_documentation_or_metadata",
+      "working_tree_bytes": 612,
+      "working_tree_sha256": "33d9b07326d0efc3f4b8939a689a29337e9329e02b8be55019599d0cc6fab243",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/benchmark.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 653,
+      "working_tree_sha256": "e1e56d61146f1107b3ae6532395eeeadbbc36e75dcba06884e4e94cc82048456",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/diversity.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 72314,
+      "working_tree_sha256": "ec99207380e66877614f58a90a69bea047cf6a45f5d9e754d29ced013df6e61c",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/environment.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 415,
+      "working_tree_sha256": "447d3c0ddb04e553ed4dbf88c899a6542509c8e8b0d05ae2b12e37a0bbd2bd7d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/forecast.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 783,
+      "working_tree_sha256": "499969f44bd9dda589ba0bd20dd771209f485eb81d5ed3af30e59e608896a775",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/forecast.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 53637,
+      "working_tree_sha256": "ba083f42be656b51b0a5902b68be8b8d2ab0c7acbb91126dacee6b657e83981e",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/metrics.csv",
+      "role": "published_run_output",
+      "working_tree_bytes": 918,
+      "working_tree_sha256": "ccfbfb05e971997095a839d65c3a9c5c78bdd5dabb21c039bf5f3bf308247b58",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/perplexity.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 104713,
+      "working_tree_sha256": "477cc0299b812b40309299d44904606ed1bcfc13b30acc4bc91d2447fc54fbeb",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/pretrained_metrics.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 752,
+      "working_tree_sha256": "7e097437b76595e5db9759c51e9173ef1fba8bbb2ab3d6c9912bf6f91d97c867",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/reference_scores.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 39716,
+      "working_tree_sha256": "c1ec7581f60dd0602df2db4708a1da21849f38db75671d7e1f740c95bd08406b",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/report.md",
+      "role": "published_run_output",
+      "working_tree_bytes": 1873,
+      "working_tree_sha256": "8b7b1f4c467c0569a95d1db60e9051916007a78aebc80b9f733b41b50625ae64",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/requirements-tested.txt",
+      "role": "published_run_output",
+      "working_tree_bytes": 3513,
+      "working_tree_sha256": "b433c2d1141c4794f0fa5d00f37fd06af01a62b3d0d726bbc8e4f9a10a1f7d13",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/runtime.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 28952,
+      "working_tree_sha256": "1752d98fa8f481d9a224f7c20566e6eb2de013c9ae5c9ff545577a3f23814260",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T193206Z-smoke/validation_results.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 1556,
+      "working_tree_sha256": "8c247684c26a68a0acfbc5f1975818f815b362c968f37e2418786a9b56cbc858",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/artifact_index.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 620279,
+      "working_tree_sha256": "45f9d15726e9e50ba9c1d140f560e4bf1177d2261920511b6320f835c392f2d1",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/completion.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 110,
+      "working_tree_sha256": "0c97d311776754af5d2642261a6678fe61ffd5f9ad5c3e64c62cf523deb537dd",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/consistency_audit.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 1265,
+      "working_tree_sha256": "cd5cc09fbbb8886e06bb663e6b45e50ea2594d1bf49ab99c97a5d2ea73c28c2d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/diversity.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 130473,
+      "working_tree_sha256": "e074f54995920f4959773a3585183c2512f26872e895df5f32cf721222e0f471",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/execution_receipt.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 742,
+      "working_tree_sha256": "37cd933e6d4b199a70a03c536fc8a144cf878505afa12187fea09322678340c9",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/forecast.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 764,
+      "working_tree_sha256": "0f1038741bbe10c74aa9cb9c00498b4608f706075983f69ca3bfd12fe760c2df",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/forecast.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 62162,
+      "working_tree_sha256": "36ef9bb2db324f35d7446baf2ce7245b558df3b1e5fcb87ed7a3b34abc109b80",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/metrics.csv",
+      "role": "published_run_output",
+      "working_tree_bytes": 2699,
+      "working_tree_sha256": "e4d5b8fba595e1c842574667b8fb8a654d7483b6b922d240c5d9b0d49a527866",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/perplexity.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 108813,
+      "working_tree_sha256": "0b4aaf4f2c5be02c5e426f7603e2340a652d2ac6f0c8dedf736433ed9ccb39e4",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/config.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 662,
+      "working_tree_sha256": "0c7e4c2a54ddb6eb90314fae3d694ef6bdbc52fe6b12f28b61175909bb5c3450",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/data/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1087,
+      "working_tree_sha256": "f4989871f76309348e25ff58b787998099256369d8bcb17eb285d1948c8a9ab5",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 285,
+      "working_tree_sha256": "4a84c187d61e18d364c5ae4981a7d8fc8553265cd71ea48c7cedde1334273d06",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_00/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16968,
+      "working_tree_sha256": "34071fd9b3df279efe7d88aa6dd2f4a00791aab8a2377765ae8c0cc43680f846",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_00/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1233,
+      "working_tree_sha256": "7cd04b83afb757d8e61ec43cdd8f4c51f95985fd2d26d948afaf79d508691f18",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_01/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16978,
+      "working_tree_sha256": "0bddc5470c40403d016f716cc640869c9be7954bfb5effdb9f214b7be7962615",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_01/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1230,
+      "working_tree_sha256": "3274a8dc2d23c14edec4a7376be69d36f5ddc6cda363dbdfb227250b252528f4",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_02/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16980,
+      "working_tree_sha256": "b1b2fb9033ef267fae1dda5119ad8c7fde98d7b36ec5e699a798fcf1853f3935",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_02/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1229,
+      "working_tree_sha256": "007bf298861d608ac896e17494090369ec826f436bcd4a90f83ba2cda7504d60",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_03/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16978,
+      "working_tree_sha256": "2f4ced95863041b8bfc040ab58a443324c115d251dd94a3e75d3eda955f46a7a",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_03/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1234,
+      "working_tree_sha256": "c4ed3daad154653ce918d7a2341c1b418977361d0d77943637910c17278c1e8b",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_04/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16976,
+      "working_tree_sha256": "d722e3b9674f5ecfacbfdd94ca3b08c56a35c8da1cb352baf957175bee76ad25",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_04/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1232,
+      "working_tree_sha256": "0ab7f182b5b84e37f97b69c6807996e13720e6a7136f9e6389cccd75b2baaaf1",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_05/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16974,
+      "working_tree_sha256": "0348d20da40eaff5bf9a952cfde92472171f532a19e0c548262cf9e4371a51c5",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_05/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1234,
+      "working_tree_sha256": "3c4b78f45c445194892ba0b2772eb4a2776f40bc98925b9d403acb079e12ccae",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_06/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16978,
+      "working_tree_sha256": "a5e20cfbc3c70c698265a9d4966aab5f95bc33a192b88e4f18fb58852ebe6cd9",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_06/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1236,
+      "working_tree_sha256": "74343571b374b13e36a80151ea62e8d7c37f3820680ca7763e33463095535744",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_07/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16975,
+      "working_tree_sha256": "b4b0aea924eb892843080a9342f4f3dde38de420b6fc68e6e01540414e22f89d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_07/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1233,
+      "working_tree_sha256": "ebe59be20d6d6f16ed7ecab0e075303d3accdc9f50161f7bf066a5dc70957f0f",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_08/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16977,
+      "working_tree_sha256": "18a64f88992991d6e3909f4f0883d1d98a616ca1d7f761616a4661f846f49e0e",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_08/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1232,
+      "working_tree_sha256": "ae8c7f240be570795b8033aab9b22b5187bc6429e6e4d40f0f65c95fd169e242",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_09/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16975,
+      "working_tree_sha256": "94e20f4019a2b4724a3d3f423bfd4c07ccbe0ed99bf45899c035f94c7c727210",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_09/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1232,
+      "working_tree_sha256": "0b067400b3e6d1b836c39e7f54a8b7a8b4092d3ce7355b74bcc5d5d1be69c0cd",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_10/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 2922,
+      "working_tree_sha256": "52fb08f3ffbf6d4c234c402f473d5972878626e042e1a2603aa285e719f05a6c",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/gen_10/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1233,
+      "working_tree_sha256": "121570de7fa9e69e5367a8b4622379465e6542e5deb299c590760a1a73900b6e",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/seed_42/pretrained/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 729,
+      "working_tree_sha256": "1ee559b655237f64b2443f0166b1b3d34758b65e514ace1b60ac52e0096976e6",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_01/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14487,
+      "working_tree_sha256": "e66f695c4ee69ebf058ebba46a4052d7959f652d5c080e9d9df1521276a02bcd",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_02/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14486,
+      "working_tree_sha256": "ee5c664c2667ed323eea1c9712a0d49303a6f72d4b19e5d834abc97dc8c96899",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_03/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14486,
+      "working_tree_sha256": "c33b213644c8cc3713da9150836fc0c08cf9d78d91f9dc2553f732bee41a1463",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_04/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14487,
+      "working_tree_sha256": "09e6ae47d00781d975ed9e2f0e6a383c4ef55d519901be805322807ccf426d48",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_05/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14486,
+      "working_tree_sha256": "988e0b287f4f123c19c08a4ca9ed4255cd03ddb2495428f4f54035867abc29bc",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_06/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14486,
+      "working_tree_sha256": "5e7b7f8b0457bb8b4b586d5b02779d4a7b9174ae6b3f8b7ccf7973ca03ecf5bc",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_07/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14487,
+      "working_tree_sha256": "19aef0de14649c7364766c35ef80efc7c0151d08097f13ccbe5515b35087274d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_08/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14485,
+      "working_tree_sha256": "1838fe2dd595f20f17e1c0ca617191452fd49e791ac3935d08f5e7e986ed550e",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_09/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14486,
+      "working_tree_sha256": "8d8bca7b43c8f51ed3bb3aac507360a8f35b33a20c00b3d4f2acd22b63d73fc5",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_10/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14486,
+      "working_tree_sha256": "a655107106ae80479c0a91d011df9aeef39a5c95e2df13cccd30cf4ece0d1582",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/records/synthetic_for_gen_11/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 720,
+      "working_tree_sha256": "164236b8bebe565ec097c30cd49ef83e68806abe05766d0c0f55d051ce795c07",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/reference_scores.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 66379,
+      "working_tree_sha256": "2c8bad202bcf8342b28884bbfcb1143eb0c81234a1dcaba5156ed76f58fa2268",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/report.md",
+      "role": "published_run_output",
+      "working_tree_bytes": 7600,
+      "working_tree_sha256": "a1dd13a766999d50c4c27303fa305831099770738f3a83030b662a58dcd02a61",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/report_cloud_original.md",
+      "role": "cloud_original_export",
+      "working_tree_bytes": 2245,
+      "working_tree_sha256": "79e8b4f7745e78cc12bcd6945c0319c3c02a12171cd395540eee4d2c26bca17d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/reproduce_overview.py",
+      "role": "historical_analysis_script",
+      "working_tree_bytes": 1607,
+      "working_tree_sha256": "bdcd6202b172ad81312d1d54cd69d2e2d02462f2f587f9a57c915a172dd6d795",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/results_overview.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 105359,
+      "working_tree_sha256": "fdcf3ffc53adf7bb2135edf090f0741c76885c27deac6995202d73d8ad730b17",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261020T211121Z-full/runtime.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 35951,
+      "working_tree_sha256": "6ed8ace5a9df3f4d5eaa6992881e6a6dee2799622bbd11d56de8e004fb88a93a",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/execution_receipt.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 1059,
+      "working_tree_sha256": "9a1b1bbd18b5afa6df490c7283c6b52cfa364656e115a5397643d21383e476ce",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/figures/diversity.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 92093,
+      "working_tree_sha256": "7caba92218b0adc22ee996d67cbd0ee07aa4427e31ef03e9e79d09fae6622a84",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/figures/forecast.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 838,
+      "working_tree_sha256": "0befc526abf400cd72f0e7b7a3fc883aba1f0eb2e4a75ea8600f11b079966c03",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/figures/forecast.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 62373,
+      "working_tree_sha256": "4edf41c8abe0b348d732db16f07cd28cc3a64590704518cd270bf8ac5ff9006e",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/figures/metrics.csv",
+      "role": "published_run_output",
+      "working_tree_bytes": 1401,
+      "working_tree_sha256": "6635defe7e33ad4475c6e0d85a97d185931d95d9ae56e55fc6b4815457abdaaf",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/figures/perplexity.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 107403,
+      "working_tree_sha256": "e3c7db107963fc492b81abdd37ea2f3de8d19bb53fa76811b6416c19ef5c2a21",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/figures/reference_scores.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 40364,
+      "working_tree_sha256": "c4dbe46cfa2892258b9c001695b8ed385e67f9367a2d6276576a83d057f2fcaf",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/figures/report.md",
+      "role": "published_run_output",
+      "working_tree_bytes": 2245,
+      "working_tree_sha256": "2f148669442d8397ca640de4ea065a4676dc7fcc61a3f48d9ea30f7d54aa0dfb",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/figures/runtime.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 33935,
+      "working_tree_sha256": "a17136667a48a97d6492a8edb22586cb844c884956429eba63c42d72795ab5ac",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/artifact_index.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 23553,
+      "working_tree_sha256": "10e9a610c8470b6d1d89cc44b337f5d2c1a4c337616c1b97df4381c9c8a00425",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/benchmark.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 623,
+      "working_tree_sha256": "0488a4cfb279d142891bee674082e3d6c061abc32ad158e7464778004aa1a54f",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/benchmark_resources.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 813,
+      "working_tree_sha256": "25a171d24201109715bb8acee1221b861a3fd25d038b7318376dff7c1e255638",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/completion.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 108,
+      "working_tree_sha256": "6d9f889925f050b7ea43a711037575e451a5bc69bab0c0323445df4661aed321",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/config.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1243,
+      "working_tree_sha256": "a7d7f9a6b1a895bd70c21a628eadaa2905d54ee07d5f4528e8ce6db41a42e078",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/data/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1081,
+      "working_tree_sha256": "f898b53fb42b7345cb07787ebf543160933db21cfde3a5cc3a678ba5223d9c7f",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/environment.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 434,
+      "working_tree_sha256": "173fa0e662e278d29e374feb9a941d39092e5dff22cb2995fa685a12ac05fefa",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/events.jsonl",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6302,
+      "working_tree_sha256": "ee1e806e2b6a2824885158487e31e5b3a569c6ec31399bdef167baaad216a5cb",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 286,
+      "working_tree_sha256": "0e412a4ee1e2a0bb2059badc7c4e4e5290a1c8c712a0e37c669fd5554fd49d8a",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/remote_validation.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 15718,
+      "working_tree_sha256": "a1fe272b6abf897a6a9572a09d1f9aa15be30802f0185f64d1acf6d80a35b6e4",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/resources.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 764,
+      "working_tree_sha256": "1a0fb746cecefdde7d0b57bf038c0c22d3a3fddada00d47eff4e703abd84f654",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_00/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 4079,
+      "working_tree_sha256": "e9ac4c6b54a9471b2a342d4a027d9449fb7831e2d6e87a06199e8eb995d7b007",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_00/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6149,
+      "working_tree_sha256": "c185b25ce97a3ca74ea058023a60d6f9d79ec091fec08e983555788d7af4b64d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_00/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1569,
+      "working_tree_sha256": "9b455cbf446756e6280a3c93e8d07c906b37bb850ae458a90679c412d1ae811c",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_00/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1272,
+      "working_tree_sha256": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_01/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 3728,
+      "working_tree_sha256": "ea83b49cd1d1d4ded65d63d6baccd067824414047331dfbe4aa5b749cc968ccd",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_01/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6124,
+      "working_tree_sha256": "efa2fe46a74cade9b2795d744f178a2a148452319f8cf7e2f73de4f84e0b8940",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_01/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1574,
+      "working_tree_sha256": "1192b4c3006d42d7d284758ceca23cb8641f89094e35b1cc9bf0bf0cfc0bf51a",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_01/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 929,
+      "working_tree_sha256": "c00284a578c860fc56abb3b710b1619bf1d44d1e45d42933dd97e574924b7093",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_01/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 238,
+      "working_tree_sha256": "ffb29391749bae14b6240058db0fc20e62458ef080da7513c4632d77ad7fa5ef",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_02/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 3735,
+      "working_tree_sha256": "8beaf71f33c79e13d92aad93504af2f5c6e4cecf14c69d001d669f91d224393d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_02/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6109,
+      "working_tree_sha256": "5590c9093ddc9e14d0b46b962485bdc28b9a37eb9b9981a7068866edad80e987",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_02/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1567,
+      "working_tree_sha256": "3efca45e714c39e071aa30fb84967e1dc9fcf27d40715af20d320da424b1b7d1",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_02/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 929,
+      "working_tree_sha256": "bbd0b7ca6c818ed589f4842a6611ea07ce7b090a0a2ce47a795904653d126379",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/gen_02/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 234,
+      "working_tree_sha256": "d07e51827422c7a2dffc0777978d50f0df507941944b4cfcc045c8dcdf9c8446",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/seed_42/pretrained/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 727,
+      "working_tree_sha256": "86ca1b2ed9791ce581994aa7619145affe90adf1972ff5d79289709a8ff44721",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/synthetic_for_gen_01/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1370,
+      "working_tree_sha256": "729af538c5cd3037133d1175ffb909f3a0be073474276e3a72ec1998dce877a7",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/synthetic_for_gen_02/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1370,
+      "working_tree_sha256": "a063a67d02ab7277b7c93e53d1f574450b7650304acf1943446b155972204bb3",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/synthetic_for_gen_03/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1371,
+      "working_tree_sha256": "8f8de27c2f8ef08d42fa0a21bc6316d18534baee36e4a9bebed1db11627d6053",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/validation_g1_snapshot.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1661,
+      "working_tree_sha256": "7d36b10a2f04fd3f0e0aac221e39a2a29a44f71a838191194d25bd06879958d8",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/validation_results.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 16097,
+      "working_tree_sha256": "30ed664bce9ba0d5ca280e4152373644a7a09138e7318e697113831d6897f11b",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/records/watchdog_exit.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 101,
+      "working_tree_sha256": "6fd64fc3dc7eeff4a00ea957aaf1d81445ace14211b219d919e7aa65d411f0ce",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/report.md",
+      "role": "published_run_output",
+      "working_tree_bytes": 6977,
+      "working_tree_sha256": "a7cce730702863a940b5f467ec172af7c0156eb8f81df5283048e075834eff0e",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T182856Z-smoke-continued/reproduce_figures.py",
+      "role": "historical_analysis_script",
+      "working_tree_bytes": 281,
+      "working_tree_sha256": "7b38e25c6b0f1d63293bcfc31d180c2d962da58cb708345025f7a5f48d5ca111",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/analyse_week2.py",
+      "role": "historical_analysis_script",
+      "working_tree_bytes": 11352,
+      "working_tree_sha256": "e389e5fb85c69d94c71dd40077d9a24e5df606c015a1feb2e994337d4424b1aa",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/artifact_index.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 620101,
+      "working_tree_sha256": "edaaee7e8039bdabe5f8165726ef548e57efbd1a29b3d1016110e82b9cc9b070",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/consistency_audit.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 4593,
+      "working_tree_sha256": "06cb0184dcdd2bc689e0537a570ca10ed59a292d79ae359316dd63a2b34c6a01",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/execution_receipt.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 916,
+      "working_tree_sha256": "a1aaaa9b4cd923b2bebac15906eca47f348afac39bdce57fc177c0e5be003a91",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/launch.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 7688,
+      "working_tree_sha256": "c7eb000e7b2c3f071887be3606e67abe7ed4bfe519951def74395c7c99954945",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/launch.md",
+      "role": "published_run_output",
+      "working_tree_bytes": 3518,
+      "working_tree_sha256": "96c078f0e2afe9f3a8d46340eac61d0dfda5257222569a0959332aa2e3ec548f",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/metrics.csv",
+      "role": "published_run_output",
+      "working_tree_bytes": 4003,
+      "working_tree_sha256": "b1e5c82c07b06d4fa99748b2a5effd206d8d66a126a48fdaa4aaa8dca6d16e64",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/metrics_cloud_original.csv",
+      "role": "cloud_original_export",
+      "working_tree_bytes": 4380,
+      "working_tree_sha256": "3ab9e15b88a446c87b3e865ad880dde5e67864a0c5e121aa21325ccfd9af6126",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/benchmark.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 630,
+      "working_tree_sha256": "d9790af6c340055d0231dc21e4236e710784deed5fad6daf7d870ff1e62dab90",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/completion.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 109,
+      "working_tree_sha256": "6f197afe81e9edca1653c42adf65c92a4cd323c33d740e6bd5c5ba1060ce8754",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/config.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1249,
+      "working_tree_sha256": "6058c63db6d187cae166c664f3e23edb339d68a58cb24ceacd260354350d5f24",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/data/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1087,
+      "working_tree_sha256": "f4989871f76309348e25ff58b787998099256369d8bcb17eb285d1948c8a9ab5",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/environment.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 433,
+      "working_tree_sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/resources.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 774,
+      "working_tree_sha256": "91087c1d6fb8238798be3ec428a60186ee67f496b030ca2ea29e15633bc58d2f",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_00/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 17483,
+      "working_tree_sha256": "60aa02252cbd4cf60a3c255a88c1894efa60f4c94378d8c24b9b85803198cbad",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_00/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6159,
+      "working_tree_sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_00/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 163542,
+      "working_tree_sha256": "6e84823cf412b56ae8d28fc581c9cd7961e320e44c4357313e391c5408d4b1a6",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_00/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 105278,
+      "working_tree_sha256": "3092e70292de9abba36ee4fdfe507a9085872257712bfa5144a806f86571d893",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_00/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1272,
+      "working_tree_sha256": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_01/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 17131,
+      "working_tree_sha256": "c6ffecf964818f31946b8c18cf32f63d1344b0329d256f3cc65278b50a35e572",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_01/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6142,
+      "working_tree_sha256": "42a0eae563c113219c9bc202cb595b34b28fecd21e71895243736b0eb8a10c50",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_01/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 164804,
+      "working_tree_sha256": "0112ae1c44ccbdddfcf2650047c390fa997cfd11c7eba6576cde6c0e2bce989d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_01/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 104675,
+      "working_tree_sha256": "8ccb604fffed911d3f33896819eb528c6b3d52935438bac4503ac5c536dc52ab",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_01/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 931,
+      "working_tree_sha256": "3b0ee31f2cedef4023492543a12d44ea86ba13b7bfdf011be1ba08e76378e53c",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_01/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1231,
+      "working_tree_sha256": "7572c8eaa01de37b3fbb485bf456c7f5c5388f18001bef4feff9b39b4b803190",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_02/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 17134,
+      "working_tree_sha256": "b4ef3040318f462e016a1158dd638dd61483eeab4880ccdf8edd4607311ccf0d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_02/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6099,
+      "working_tree_sha256": "584bb063233a6e1837a5d777fb9f3d5f4c6ce2cd0b5e2945307cc1abed7a8177",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_02/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 166272,
+      "working_tree_sha256": "f668b7085964d980897583332abceecc1422da0eaa396286cc866b2291f45ba7",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_02/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 105000,
+      "working_tree_sha256": "119661eb4c605160310d9250ef7564972262a9baff7b5f2209a6eac5fdeba6cf",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_02/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 931,
+      "working_tree_sha256": "44a60bb3d0f33c6c788adbcfe18728709bc8fb880b392845072ac670331a8eee",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_02/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1231,
+      "working_tree_sha256": "87559513eed58cafbc4d1e053e9345fbfa5311ea4dabe6d0867b8c7759561978",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_03/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 17133,
+      "working_tree_sha256": "10a11c5f54ee8faa3301cd43f9915ba7e5c8179214dff5109c4ce2dad99fb6ec",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_03/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6108,
+      "working_tree_sha256": "6434bd54e61c196b7b81d9db3ede066e905ec8e6c7371746c2e4a4f5d973059b",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_03/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 165245,
+      "working_tree_sha256": "a7a1d7445f359f49add706bc2e96d6ab0a70133473e6c23c541f1e961a4d3200",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_03/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 104947,
+      "working_tree_sha256": "e9b8622f7d41fd0bcb79b55da3c4771a2cbf72668b2d58ef145777e53a5bd4e4",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_03/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 931,
+      "working_tree_sha256": "502fbc4815d4491ae16533286924215b389f5c4f2e986a7dc5c2b20317f30111",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_03/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1230,
+      "working_tree_sha256": "1badc241776c290d3f175a1c057c62f4b3f8fe319f86bfe780edaecfe05bdfed",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_04/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 17141,
+      "working_tree_sha256": "9ad7a7c3eff86dac8fcec050cde2e4371f451dad0f0c57e10424ea37450cf0f1",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_04/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6104,
+      "working_tree_sha256": "079db5dff8d2746eb67e317351d1845fd43f36d4a6e09d8edf1be90ce7732f1c",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_04/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 162055,
+      "working_tree_sha256": "5005bf9391b691e0a8efa8b6304281e23661fe24b24d51fb60b6ecd946355dda",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_04/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 104923,
+      "working_tree_sha256": "642c292ab7b489c72cacf8d6de4484bded6cf1e11ae5c0ed167cf88b3756daba",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_04/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 932,
+      "working_tree_sha256": "ec47aa89e2d56d0aab58d0790ec084e019a01dd4247595d6dbb0e497f052ef9a",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_04/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1233,
+      "working_tree_sha256": "667dd69ca105078f8712592bc6b0c10e10346e93a1f39790b2aefea3592aa2f0",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_05/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 17133,
+      "working_tree_sha256": "b6e47d47ed77ea461f1b23d43356fad2f2a3c1f98bae5a28478850e372ad9036",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_05/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6102,
+      "working_tree_sha256": "02350b0bb2483866721f49fab1e009b2fb94ef8aefaad2c36dfc2ee4f54ed170",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_05/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 160121,
+      "working_tree_sha256": "7299ccaa5699754d8dc8471d6a3c65b4735b51ca9e441a2f7817a35e532266ce",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_05/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 104895,
+      "working_tree_sha256": "6e13be84b7e16a61c9307de8c9783a9e3106a38e2133322d9aec1925b22e1be6",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_05/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 931,
+      "working_tree_sha256": "d63209ad27bbcc9aa003e41605fc180a1995d2179f557c5f147289ae93a96a54",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_05/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1227,
+      "working_tree_sha256": "f62ea3ca531318cbcd0990bbb37a08ee208ca3179f9abc6bd9a901c24216627a",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_06/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 17131,
+      "working_tree_sha256": "ed6f5e3207e44b29d203ce81b3c2b2b40dcf35efabe01cc7be94fa9e06b9ca9e",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_06/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6109,
+      "working_tree_sha256": "d9d0183d8f142bab211c6fdd80210b124b980e192b1ccbed7434cf3a2a0f548d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_06/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 158199,
+      "working_tree_sha256": "acbc47b50f1b8c7ab14e665303238dd36d0daaa6e10b651b9808132b46d91f22",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_06/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 104819,
+      "working_tree_sha256": "0ff7ed03d33beea51518d68e88ad1b6e6ac1536c321048629bdf0c62cd6b36e9",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_06/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 930,
+      "working_tree_sha256": "0a7062a3391e66e0d59bcc0936ab53a5d320836922075579b9f513aa3a97f990",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_06/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1232,
+      "working_tree_sha256": "5aea8f02ea922ddf0f70913bdcc015757fccc99e1269fc69e200056e29bd082c",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_07/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 17128,
+      "working_tree_sha256": "9d02df402b0825826e9a4e4a33bc4ef9acec36a80beb8c27fc17c8d926ccd531",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_07/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6082,
+      "working_tree_sha256": "6004e7ff7199896918b632217a045ebc9e4ad8c6c49d44dbe5f0970c4b038951",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_07/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 158994,
+      "working_tree_sha256": "1a517bf7c1ba30df2fdf98873ca90a264872f69ef70cc22034cb9fc871a22189",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_07/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 104744,
+      "working_tree_sha256": "a5fdd75c23d69af217071e54428e4f0a1c5f7bf39f48c160484890b441f95303",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_07/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 931,
+      "working_tree_sha256": "bd0803cb283b2b02522552877acbfe2dcd7da8c2dfc700b7633530471b16a140",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_07/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1232,
+      "working_tree_sha256": "37fa4882e5bc4faf0de077f70b227f5b8bc36780a565f478de31c828f24c7c13",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_08/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 17135,
+      "working_tree_sha256": "a15dbed40c2b05a966c4a579834169b5471f13c4a93fb066c435d01d685cf904",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_08/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6113,
+      "working_tree_sha256": "fc0faae35ddddde5212ba529ff2b6bfaa5f52c0ba3efc6d10156e2582b0b5a00",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_08/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 158882,
+      "working_tree_sha256": "c7b54fa2d8eb62994a8aedbd725bc50d9c2161e4b44dc8e3351e3f133feef562",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_08/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 104704,
+      "working_tree_sha256": "6a44bd2986368dd13e27796ca198e39adc70966238d7871a628e553e306f7779",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_08/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 930,
+      "working_tree_sha256": "4a120c2cc094efabe2d706a43816b964c213316a9d8c938b8c9d9f758c971331",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_08/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1228,
+      "working_tree_sha256": "767873b63542fcc86915d54d3ca6f6c2f33e3d7b343e3580036077e9d5250dc5",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_09/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 17137,
+      "working_tree_sha256": "50fbca850750c9e1f5425b1180d170d9c50888251aa3fa8034d0e83c5cb442f5",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_09/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6120,
+      "working_tree_sha256": "0fa3a8e4b06b8735dc9e2e2bd718ff2daa4853289c662876beef98fbfdd6fb6a",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_09/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 156754,
+      "working_tree_sha256": "a99c1d448af461469089e6d3613e9e6897bbbdb67156cb7c60af8ae680d8ac8b",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_09/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 104559,
+      "working_tree_sha256": "56339d78cde7ab7c65266a3e50ba948cfa62c570158b84f216e9ed972a46a08d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_09/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 931,
+      "working_tree_sha256": "52de34f0394e940a4fd051f27328348eb35cbdbc7e4a8f326e8f18bfeee859c7",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_09/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1230,
+      "working_tree_sha256": "53307c75e36a0a49303cb470c7c72908439f3bed621488761a9b6594a4ae20dd",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_10/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 3074,
+      "working_tree_sha256": "88f87be369edc579bd4717e6e3ae3f390b9d23abe8393f01f40d868c967904cb",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_10/reference_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 6115,
+      "working_tree_sha256": "bcf1935b41b215089635bc45083cec406da24b650f4c6786c68fb794ced6d32c",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_10/samples.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 158677,
+      "working_tree_sha256": "7283f11d8637983be26fc744e95075ed6e7d45a290c8383c0b49a8654dd60030",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_10/test_sequences.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 104486,
+      "working_tree_sha256": "3994a3b778423808b334fe0038153cde6a9f2afb0b5a3b5d1fb7ca94af35352b",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_10/training.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 932,
+      "working_tree_sha256": "b5577717b1bdda6ca746a274882054669b4d8aa74030d5a15e8fe2efccea49fd",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/gen_10/training_history.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 1227,
+      "working_tree_sha256": "4a9365d79a5652320222e17043022d239bd65e5a557aff8560e5f21a9ca9d59a",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/seed_42/pretrained/metrics.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 729,
+      "working_tree_sha256": "8dadb74863a9acf065227092f63595b1c61a4138a057ad052c6bc7f411082ad1",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_01/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14487,
+      "working_tree_sha256": "5f18f37c9b042a7246553a977046f1e8cb8db287af34380ef99e20898fd07c96",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_02/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14487,
+      "working_tree_sha256": "bd9ea395296b31a319256e36b3b51ceb24149b262677a6e24edf2e0deeb289ca",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_03/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14487,
+      "working_tree_sha256": "9f8ed9433842b29ddf0d8150db39d1f0254a6b82e74f440b3289cdcc8ba0e70b",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_04/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14487,
+      "working_tree_sha256": "7eeec58ecddba26ca22c85a60d713caf78e52055eb12b8a30f328018e711a418",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_05/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14487,
+      "working_tree_sha256": "dcaffba724a7bf26a6188c0959a2bb598dd76606b66372e3f4fd53b73db3839b",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_06/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14485,
+      "working_tree_sha256": "c625469b57aba49ddabb6223a4804ea394527048277131ecc9639c90c7dbe3d9",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_07/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14487,
+      "working_tree_sha256": "98eb2ed6939fef1a23690a66320f57f47ff538f866b460fcd18d33c3424fb15f",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_08/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14486,
+      "working_tree_sha256": "25c464055823012e85ff890a59c7eb25e491c8329856a1328f57fc07955127b7",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_09/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14487,
+      "working_tree_sha256": "5a471fbee219a4db5c6006afa08adf4741ef63c72e21dcde5f9047ff5f350d5f",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_10/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 14486,
+      "working_tree_sha256": "87689c16c886e78310c555e118299593b85618a84b66b6965bddd8804909b1a6",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/records/synthetic_for_gen_11/manifest.json",
+      "role": "raw_run_evidence",
+      "working_tree_bytes": 721,
+      "working_tree_sha256": "c9c8b0f194e2e7d76d765c1e2b80dec26e8d69897ccd71a978a9d72a3d981fef",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/report.md",
+      "role": "published_run_output",
+      "working_tree_bytes": 9985,
+      "working_tree_sha256": "93d76d55e53113416f5200f00a1d22769aaf669b247011cfbb2c4e49bff6a1a9",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/report_cloud_original.md",
+      "role": "cloud_original_export",
+      "working_tree_bytes": 2612,
+      "working_tree_sha256": "0a92e55982a138a277a78e7d4b03ac34dd61762b4889c81ae7da1f0675c86746",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/training_history.csv",
+      "role": "published_run_output",
+      "working_tree_bytes": 4978,
+      "working_tree_sha256": "385734f22435e81817dbbd24f8a3a589c4e36c7a134b23842fe9a4f8dd04a5d4",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/20261026T192740Z-full-continued/week2_metrics_panels.png",
+      "role": "published_run_output",
+      "working_tree_bytes": 325455,
+      "working_tree_sha256": "e0ce6986cc01d3bdf386433b4b96f21800331407246c17affcfff0fa2bb8135d",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/shutdown_receipt_fault.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 361,
+      "working_tree_sha256": "f8bc257b7b76036180532d0a9e701c8eff4834920c0b8200f5315e9eb6450b47",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/validation.json",
+      "role": "published_run_output",
+      "working_tree_bytes": 2407,
+      "working_tree_sha256": "9ba3754aa52f24cbea5b5673a396b38af3aeddab35a181a6837dae6f8ac9ac47",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "reports/week1_validation.md",
+      "role": "published_run_output",
+      "working_tree_bytes": 7336,
+      "working_tree_sha256": "2afeddceb82a4569eed9f903ce6ec21f0f4e7a3a4d059458e626a69abe73c694",
+      "disposition": "preserve_existing_path_and_bytes"
+    },
+    {
+      "path": "scripts/check_shutdown_timeout.py",
+      "role": "manual_paid_probe",
+      "working_tree_bytes": 6460,
+      "working_tree_sha256": "f9b7b6b7713c2153a11f54e8ddea1c7495205d5a2346802bf286deda6a6728a8",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "tests/test_cloud_safety.py",
+      "role": "offline_test",
+      "working_tree_bytes": 7521,
+      "working_tree_sha256": "201dc3a8d6e76b56b907e5a0174d03435b88c38d0e6e56414646af5505789e26",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "tests/test_continued.py",
+      "role": "offline_test",
+      "working_tree_bytes": 5746,
+      "working_tree_sha256": "90683edbca64f179f07268e572def33197914be56c64f87b9cbe7d8d4c4b5aba",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "tests/test_epoch_resume.py",
+      "role": "offline_test",
+      "working_tree_bytes": 2462,
+      "working_tree_sha256": "a4a008eb3e3d0264ed1ab23d9a7545b8bd40adb85166b5ca2adebef272f2ff71",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "tests/test_recovery.py",
+      "role": "offline_test",
+      "working_tree_bytes": 2719,
+      "working_tree_sha256": "cfa1c1ba21db6ef44ab4c535e272cb65c2b636c16420aeb5b1f00e69b906f896",
+      "disposition": "retain_until_staged_migration"
+    },
+    {
+      "path": "tests/test_science.py",
+      "role": "offline_test",
+      "working_tree_bytes": 2872,
+      "working_tree_sha256": "086ce78ca0b9a1b69edb4acaed90281ca7352d7eef130a04ccfce74405d35111",
+      "disposition": "retain_until_staged_migration"
+    }
+  ]
+}
