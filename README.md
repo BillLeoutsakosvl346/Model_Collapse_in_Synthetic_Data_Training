@@ -42,7 +42,13 @@ python -m model_collapse launch --mode continued --generations 10
 
 The launcher requires a completed **continued-mode** smoke validation for the current source version; the old fresh-base test cannot authorize this mode. After it returns `detached_supervisor_and_watchdog_verified: true`, the laptop and browser can close. Each cycle saves weights, synthetic token IDs, text examples, fixed-real-text loss/perplexity, diversity/repetition, frozen-S0 scores, timing and provenance hashes. Completion creates CSVs and plots automatically and shuts down compute. Use the same `status`, `resume`, `fetch`, `report` and `cleanup` commands with its new run ID.
 
-**Validated and subsequently launched:** [26 October continued-mode acceptance report](reports/20261026T182856Z-smoke-continued/report.md). All 26 local tests and 13 GPU acceptance checks passed. The observed setup account debit was $0.02655; its temporary Pod and volume were removed. The user then authorized full run [`20261026T192740Z-full-continued`](reports/20261026T192740Z-full-continued/launch.md), which is running on a live-priced RTX PRO 4000 Blackwell at $0.57/hour. Its warmed benchmark gives a conservative **10.11 hours / $5.82** estimate, including a 1.5x compute margin. These are forecasts, not completed results; use `status` for its actual state.
+**Validated and completed:** [26 October continued-mode acceptance report](reports/20261026T182856Z-smoke-continued/report.md). All 26 local tests and 13 GPU acceptance checks passed. The full run [`20261026T192740Z-full-continued`](reports/20261026T192740Z-full-continued/report.md) subsequently completed S0-S10 on 27 October at 02:13 London time, after **6.77 hours**. Observed account debit through the status check was approximately **$3.99**, including retained storage; compute stopped automatically. See the [complete metric table](reports/20261026T192740Z-full-continued/metrics.csv) and [consistency audit](reports/20261026T192740Z-full-continued/consistency_audit.json).
+
+Test perplexity was **33.89 at S0**, **48.38 at S1**, **42.72 at S3**, and **55.56 at S10**. It increased every cycle after S3. Output diversity/repetition metrics are mixed; the report compares them with Week 1 and records the different GPU architectures and one-seed limitation. Real validation selected **epoch 1 in all ten cycles**, so the inherited weight chain contains ten additional selected epochs although fifty epochs were executed. Rebuild the six-panel comparison figure from the small committed records without network access or a GPU:
+
+```powershell
+python reports/20261026T192740Z-full-continued/analyse_week2.py --figures-only
+```
 
 ## Completed Week 1 results
 

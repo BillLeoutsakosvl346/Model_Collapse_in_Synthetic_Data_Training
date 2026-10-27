@@ -1,0 +1,98 @@
+{
+  "run_id": "20261026T192740Z-full-continued",
+  "scope": "Checksummed statistics, saved lineage, evaluation exports and directly recomputed 256-continuation probe metrics. No bulk-model re-evaluation or full synthetic-array download.",
+  "checks": {
+    "all_statistic_files_match_index": true,
+    "same_starting_g0_tensor_hash_as_week1": true,
+    "all_ten_weight_and_data_handoffs": true,
+    "fixed_real_splits_byte_identical_to_week1": true,
+    "all_11_probe_diversity_metrics_recomputed": true,
+    "all_corpus_ppl_and_passage_statistics_recomputed": true,
+    "all_50_epochs_and_checkpoint_selection_verified": true
+  },
+  "statistic_files_verified": 83,
+  "selected_epochs": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "handoffs": [
+    {
+      "cycle": 1,
+      "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "selected_weights_sha256": "5cbccf4740806deeb6d972426309982ae9713651fa1b41602d81cb0ff421f91f",
+      "input_tokens_sha256": "daf84582d4081b899a7f146faf2a0b6f15213a09ca6c25e355c9fd66a5ea0fc6"
+    },
+    {
+      "cycle": 2,
+      "initial_weights_sha256": "5cbccf4740806deeb6d972426309982ae9713651fa1b41602d81cb0ff421f91f",
+      "selected_weights_sha256": "1bc0099cd1068bdf072e9b9b360bfd92607455cd980ce45b9094fb013cbbc6ab",
+      "input_tokens_sha256": "4ed3a1b44b031cad1e2a6ba72cb368c0e2efb7a848237e262ce744a3de255e42"
+    },
+    {
+      "cycle": 3,
+      "initial_weights_sha256": "1bc0099cd1068bdf072e9b9b360bfd92607455cd980ce45b9094fb013cbbc6ab",
+      "selected_weights_sha256": "1fee5f906c7c788c79d55f19504ef60beb91b300ddc5a5bcec007843cb19b6b4",
+      "input_tokens_sha256": "b0b2a1e5917ec5df2664bd2b916dcfe9409fd72191398e7b81bc5afc1167ad28"
+    },
+    {
+      "cycle": 4,
+      "initial_weights_sha256": "1fee5f906c7c788c79d55f19504ef60beb91b300ddc5a5bcec007843cb19b6b4",
+      "selected_weights_sha256": "4ec84cc3f5162a7b0ffc73c52799e6a072a70e8f92d76acf71cdc8c685a5b91f",
+      "input_tokens_sha256": "0278692ee7111723deada489a0829f35d8b1bb95940bafcf275e8a30e8b8c855"
+    },
+    {
+      "cycle": 5,
+      "initial_weights_sha256": "4ec84cc3f5162a7b0ffc73c52799e6a072a70e8f92d76acf71cdc8c685a5b91f",
+      "selected_weights_sha256": "516e89cd76c1123586794aee5500f96e8613996d38d2c3965c6e170ca2772d2e",
+      "input_tokens_sha256": "557fd9e33179746153720175f90eee7e45a57fe33c6bdc1c9fe7dfc6b6d0edbf"
+    },
+    {
+      "cycle": 6,
+      "initial_weights_sha256": "516e89cd76c1123586794aee5500f96e8613996d38d2c3965c6e170ca2772d2e",
+      "selected_weights_sha256": "7f235c9b7ec1cddd4d8900bd9b8e2d3b4e75509a65647dbda2bb529b3ae394ab",
+      "input_tokens_sha256": "328efbf892fc7aa625476f45c3e1b591b1e0fdd5b4cefc2b9726b0f32d134734"
+    },
+    {
+      "cycle": 7,
+      "initial_weights_sha256": "7f235c9b7ec1cddd4d8900bd9b8e2d3b4e75509a65647dbda2bb529b3ae394ab",
+      "selected_weights_sha256": "ceedb9b4fe429479798231fdff543ff1ccea5518f60b1aba11a97b0f13bacca1",
+      "input_tokens_sha256": "085308e106ae0bc1b18645f161ef160367468500bc70d3a677749d24ee2fc392"
+    },
+    {
+      "cycle": 8,
+      "initial_weights_sha256": "ceedb9b4fe429479798231fdff543ff1ccea5518f60b1aba11a97b0f13bacca1",
+      "selected_weights_sha256": "b9311737b67b3c4c5c56a112c7b850169c348632f63866080df45c5d1011d7fe",
+      "input_tokens_sha256": "34a5353aea7db5d25b1fd298569a126c585a6f476dd6494e7a0ee702bdbd1c28"
+    },
+    {
+      "cycle": 9,
+      "initial_weights_sha256": "b9311737b67b3c4c5c56a112c7b850169c348632f63866080df45c5d1011d7fe",
+      "selected_weights_sha256": "cb4fc048f1f52aadc3879cb529c6b0cff08db0986c4cbbfa386285fef0672b2f",
+      "input_tokens_sha256": "7b48752d07ed48fed828e61dd29c830bf68cdcccc5ce231bd5d5e0eb031c87f2"
+    },
+    {
+      "cycle": 10,
+      "initial_weights_sha256": "cb4fc048f1f52aadc3879cb529c6b0cff08db0986c4cbbfa386285fef0672b2f",
+      "selected_weights_sha256": "276d7b13f00077653f9c5d970e6b3514929c198b0242abca17ae3fee85168421",
+      "input_tokens_sha256": "a492c0cc9737a19e0041ad4b3fe8242f15bef6d236e2bead8f88b52e51d0f574"
+    }
+  ],
+  "changes": {
+    "test_ppl_s0_to_s10_percent": 63.95644283799415,
+    "test_ppl_s3_to_s10_percent": 30.052873316581884,
+    "repetition_s0_to_s10_percentage_points": 3.8101946721311397,
+    "distinct2_s2_to_s10_percent": -19.626704953338113
+  },
+  "synthetic_input_tokens_per_cycle": 2428544,
+  "training_input_token_exposures_executed": 121427200,
+  "selected_parent_update_epochs": 10,
+  "probe_npy_bytes_downloaded": 722304
+}

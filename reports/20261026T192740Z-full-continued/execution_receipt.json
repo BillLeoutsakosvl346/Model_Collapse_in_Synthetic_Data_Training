@@ -1,0 +1,26 @@
+{
+  "run_id": "20261026T192740Z-full-continued",
+  "completion": {
+    "complete": true,
+    "generations": 10,
+    "time": 1793067217.780281,
+    "validation_g1_unchanged": false
+  },
+  "finished_london": "2026-10-27T02:13:37.780281+00:00",
+  "hours_from_provisioning": 6.765595663057433,
+  "checkpoints_indexed": 11,
+  "artifacts_indexed": 3191,
+  "indexed_bytes": 5758767544,
+  "model_metrics_rows": 11,
+  "selected_test_perplexities": {
+    "0": 33.88507148759166,
+    "1": 48.38207737863404,
+    "2": 42.97496988097854,
+    "5": 45.854481295061944,
+    "10": 55.55675786416668
+  },
+  "observed_account_debit_usd": 3.9899655982000013,
+  "account_current_spend_per_hour": 0.006,
+  "gpu_state": "EXITED",
+  "evidence_basis": "Completion record, all 11 CSV rows, full checkpoint/dataset artifact index, and live provider state; bulk artifacts were not downloaded for this status check."
+}
