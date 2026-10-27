@@ -1,5 +1,7 @@
 # Shared-start experiment: implementation handoff
 
+**Subsequent launch:** after this setup handoff, the user explicitly authorized full run `20261027T211852Z-full-reset-s0`, launched at 21:18 UTC/London on 27 October. It is in progress; [launch record](validation/2026-10-27_reset-full-launch.json). The text below records the earlier setup-completion state. Do not repeat its launch command for the active run.
+
 27 October 2026. **Setup complete; the full reset experiment is unlaunched.** Historical Week 1/2 reports, configurations, source archives and private state were preserved. The [accepted plan](plans/repository-and-shared-start.md) and [audit](audits/2026-10-27_repository_audit.md) describe the scope.
 
 ## Repository and runtime

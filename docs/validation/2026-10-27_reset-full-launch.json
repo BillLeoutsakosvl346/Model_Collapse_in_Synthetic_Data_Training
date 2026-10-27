@@ -1,0 +1,93 @@
+{
+  "run_id": "20261027T211852Z-full-reset-s0",
+  "state": "running",
+  "measurement_scope": "Launch snapshot, not completion evidence.",
+  "authorized_by": "Explicit user launch instruction after final independent review.",
+  "provisioned_utc": "2026-10-27T21:18:53.846470+00:00",
+  "checked_utc": "2026-10-27T21:21:32.778747+00:00",
+  "pod_id": "m3s3z9i92lvdx9",
+  "volume_id": "08ypgkuw40",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "data_center": "EU-RO-1",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "quoted_gpu_usd_per_hour": 0.57,
+  "runtime_sha256": "5d56bf37476583b20fd9d74c40941b322af6bcb2720a48a7a463f9aca6dde49e",
+  "configuration_sha256": "907eab97b77d4f80331ee291ac986d410dc55518e3fa8034dd18069f41f66f9c",
+  "source_git_commit": "3d9e35898a4823407eeda8683033f041f6f56bb9",
+  "current_repository_documentation_commit": "79439033d0ca93f73bfd33b829e78e031b518f6c",
+  "historical_continued_run": "20261026T192740Z-full-continued",
+  "source_revisions": {
+    "model": "fdb4344e95f391cdf5eb274c214a987f1bc0c269",
+    "dataset": "ce57ed40c620bc98b92aa029bab788640d4640f2"
+  },
+  "shared_prefix_verified": true,
+  "full_d2_tokens_sha256": "4ed3a1b44b031cad1e2a6ba72cb368c0e2efb7a848237e262ce744a3de255e42",
+  "shared_stages_reexecuted": false,
+  "first_new_cycle": 2,
+  "last_cycle": 10,
+  "new_training_stages": 9,
+  "epochs_per_stage": 5,
+  "full_training_blocks": 37946,
+  "tokens_per_training_dataset": 2428544,
+  "status_after_launcher_disconnection": {
+    "state": "running",
+    "generation": 2,
+    "stage": "training",
+    "pid": 256,
+    "time": 1793136081.6456053
+  },
+  "detached_supervisor_and_watchdog_verified": true,
+  "post_disconnect_heartbeats": {
+    "watchdog": {
+      "pid": 140,
+      "time": 1793136090.1511476,
+      "deadline": 1793217342.9244454
+    },
+    "supervisor": {
+      "pid": 254,
+      "child_pid": 256,
+      "time": 1793136090.8719351
+    }
+  },
+  "gpu_check": {
+    "torch": "2.8.0+cu128",
+    "cuda": true,
+    "bf16": true,
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell"
+  },
+  "environment_match": {
+    "required": {
+      "torch": "2.8.0+cu128",
+      "transformers": "4.37.2",
+      "datasets": "3.4.1"
+    },
+    "actual": {
+      "torch": "2.8.0+cu128",
+      "transformers": "4.37.2",
+      "datasets": "3.4.1"
+    },
+    "verified": true
+  },
+  "recovery_route": "Preflight private Hub upload/download/checksum probe passed before provisioning; checkpoints/datasets saved on network volume and backed up after completed stages.",
+  "automatic_shutdown": [
+    "completion",
+    "worker_failure",
+    "budget_exhaustion"
+  ],
+  "total_task_budget_usd": 25,
+  "storage_shutdown_reserve_usd": 2,
+  "session_allowance_usd": 14.969295567060467,
+  "forecast": {
+    "synthetic_generations": 10,
+    "initialization": "reset_s0",
+    "estimated_hours": 8.213429681130012,
+    "estimated_compute_and_running_storage_usd": 4.727785139740864,
+    "new_training_stages": 9,
+    "new_full_generation_stages": 8,
+    "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+  },
+  "forecast_finish_utc": "2026-10-28T05:31:42.193322+00:00",
+  "forecast_note": "Warmed production-batch benchmark plus conservative margin; not a completion guarantee.",
+  "previous_failed_preflight_attempts": "One Hugging Face timeout and one TLS EOF; both before provisioning; no GPU resources created by either attempt.",
+  "full_run_complete": false
+}
