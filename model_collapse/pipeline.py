@@ -15,9 +15,11 @@ from transformers import AutoTokenizer
 
 from .common import atomic_json, digest, event, now, read_json, sha256
 from .data import load_blocks, prepare
-from .engine import (ValidationInterruption, autocast, device, diversity, evaluate, generate,
+from .engine import (ValidationInterruption, autocast, decoding_settings, device, diversity, evaluate, generate,
                      load_model, seed_all, sync, tensor, train, weights_hash)
 from .hub import backup
+from .workflow.lineage import training_lineage, verify_completed_stage
+from .analysis.forecasts import forecast
 
 
 def environment():
@@ -64,16 +66,15 @@ def benchmark(root, c, prompts, stats):
             sync()
             start = time.perf_counter()
             with autocast(c):
-                model.generate(input_ids=ids, attention_mask=torch.ones_like(ids), num_beams=5, do_sample=False,
-                               min_new_tokens=64, max_new_tokens=64, repetition_penalty=1.0,
-                               forced_eos_token_id=None, use_cache=True)
+                model.generate(input_ids=ids, attention_mask=torch.ones_like(ids), **decoding_settings(c))
             sync()
             gen_times.append(time.perf_counter() - start)
     result = {"training_target_tokens_per_second": train_tps,
               "generation_new_tokens_per_second": c["generation_batch"] * 64 / float(np.median(gen_times[1:])),
               "training_step_seconds": times, "generation_batch_seconds": gen_times,
               "effective_batch": c["effective_batch"], "microbatch": c["microbatch"], "generation_batch": c["generation_batch"],
-              "num_beams": 5, "precision": c["precision"], "full_split_blocks": {k: v["full_blocks"] for k, v in stats.items()},
+              "num_beams": c.get("num_beams", 5), "repetition_penalty": c.get("repetition_penalty", 1.0),
+              "precision": c["precision"], "full_split_blocks": {k: v["full_blocks"] for k, v in stats.items()},
               "gpu": torch.cuda.get_device_name() if device() == "cuda" else "cpu"}
     atomic_json(dest, result)
     del model
@@ -82,18 +83,6 @@ def benchmark(root, c, prompts, stats):
         torch.cuda.empty_cache()
     event(root, "benchmark_complete", **result)
     return result
-
-
-def forecast(bench, generations, hourly_usd, *, continued=False):
-    n = bench["full_split_blocks"]["train"]
-    # Includes 1.5x compute margin, epoch validation/test estimates, checkpoint saves/uploads, and setup.
-    train_seconds = (generations + (0 if continued else 1)) * 5 * n * 63 / bench["training_target_tokens_per_second"]
-    gen_seconds = (generations * n + 256) * 64 / bench["generation_new_tokens_per_second"]
-    evaluation_seconds = (generations + 2) * (6 * bench["full_split_blocks"]["validation"] + bench["full_split_blocks"]["test"]) * 63 / bench["training_target_tokens_per_second"]
-    seconds = (train_seconds + gen_seconds + evaluation_seconds) * 1.5 + 300 + 180 * (generations + 1)
-    return {"synthetic_generations": generations, "initialization": "continued" if continued else "fresh_base", "estimated_hours": seconds / 3600,
-            "estimated_compute_and_running_storage_usd": seconds / 3600 * hourly_usd,
-            "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment."}
 
 
 def run(root, validation=False):
@@ -106,12 +95,17 @@ def run(root, validation=False):
 def _run(root, validation):
     c = read_json(root / "config.json")
     continued = c.get("initialization") == "continued"
+    branch = c.get("initialization") == "reset_s0"
     resources = read_json(root / "resources.json")
     frozen = read_json(root / "manifest.json")
     if frozen and frozen["config_hash"] != digest(c):
         raise RuntimeError("Cannot resume with changed experimental settings")
     seed_all(c["seed"])
     session_environment = environment()
+    for key, expected_value in c.get("required_environment", {}).items():
+        actual_value = session_environment.get(key, session_environment["packages"].get(key))
+        if actual_value != expected_value:
+            raise RuntimeError(f"Matched environment requirement failed for {key}: expected {expected_value}, got {actual_value}")
     if not (root / "environment.json").exists():
         atomic_json(root / "environment.json", session_environment)
     atomic_json(root / ("environment_" + resources["launch_id"] + ".json"), session_environment)
@@ -122,34 +116,36 @@ def _run(root, validation):
     atomic_json(root / "manifest.json", {"config_hash": digest(c), "data_manifest_sha256": sha256(root / "data" / "manifest.json"),
                                          "code_sha256": resources["code_sha256"], "kind": c["kind"]})
     bench = benchmark(root, c, real, data_manifest["stats"])
+    if branch:
+        from .workflow.branch import import_shared_prefix
+        import_shared_prefix(root, c)
     baseline_path = root / f"seed_{c['seed']}" / "pretrained" / "metrics.json"
     baseline = read_json(baseline_path)
-    if baseline is None:
+    if baseline is None and not branch:
         model = load_model(c)
         baseline = {"initial_weights_sha256": weights_hash(model), "validation": evaluate(model, val, c),
                     "test": evaluate(model, test, c, baseline_path.parent / "test_sequences.json")}
         atomic_json(baseline_path, baseline)
         del model
         gc.collect()
-    base_hash = baseline["initial_weights_sha256"]
-    for g in range(c["generations"] + 1):
+    base_hash = c["start_checkpoint"]["weights_sha256"] if branch else baseline["initial_weights_sha256"]
+    first_new = 2 if branch else 0
+    first_training = first_new if branch else 1
+    for g in range(first_new, c["generations"] + 1):
         gen = root / f"seed_{c['seed']}" / f"gen_{g:02d}"
         previous = root / f"synthetic_for_gen_{g:02d}"
-        blocks = real if g == 0 else np.load(previous / "tokens.npy", mmap_mode="r")
-        parent_checkpoint = None
-        expected = base_hash
-        if continued and g:
-            parent_gen = root / f"seed_{c['seed']}" / f"gen_{g - 1:02d}"
-            expected = read_json(parent_gen / "training.json")["selected_weights_sha256"]
-            parent_checkpoint = parent_gen / "checkpoint"
+        blocks, expected, parent_checkpoint, lineage = training_lineage(root, g, c, base_hash)
+        if g == 0:
+            blocks = real
         def training_stage():
             if continued and g == 0:
                 from .continued import initialize
                 return initialize(root, c)
-            return train(root, g, blocks, val, c, expected, initial_checkpoint=parent_checkpoint)
+            return train(root, g, blocks, val, c, expected, initial_checkpoint=parent_checkpoint, lineage=lineage)
         metrics_path = gen / "metrics.json"
         if metrics_path.exists():
             training = training_stage()
+            verify_completed_stage(root, g, c, training)
             event(root, "generation_reused", generation=g, metrics_sha256=sha256(metrics_path))
             continue
         if c["kind"] == "full":
@@ -162,7 +158,7 @@ def _run(root, validation):
                 event(root, "budget_stage_declined", generation=g, estimated_stage_seconds=next_seconds, remaining_seconds=remaining)
                 if g:
                     from .report import report
-                    report(root)
+                    report(root, for_backup=True)
                 backup(root)
                 return
         atomic_json(root / "status.json", {"state": "running", "generation": g, "stage": "training", "pid": os.getpid(), "time": now()})
@@ -182,7 +178,8 @@ def _run(root, validation):
                    "test": evaluate(model, test, c, gen / "test_sequences.json")}
         prompts = real if g < c["generations"] else real[:c["probe_count"]]
         atomic_json(root / "status.json", {"state": "running", "generation": g, "stage": "generation", "pid": os.getpid(), "time": now()})
-        values, generation = generate(root, g, model, prompts, c, training["selected_weights_sha256"], inject=validation and g == 0)
+        values, generation = generate(root, g, model, prompts, c, training["selected_weights_sha256"],
+                                      inject=validation and g == first_new)
         probe = values[:c["probe_count"]]
         metrics["diversity"] = diversity(probe)
         metrics["generation_timing"] = generation
@@ -191,6 +188,11 @@ def _run(root, validation):
         reference = model if g == 0 else load_model(c, root / f"seed_{c['seed']}" / "gen_00" / "checkpoint")
         metrics["frozen_g0_reference"] = evaluate(reference, probe, c, gen / "reference_sequences.json")
         atomic_json(metrics_path, metrics)
+        stage_files = {p.relative_to(gen).as_posix(): sha256(p) for p in gen.rglob("*")
+                       if p.is_file() and "resume" not in p.parts and p.name != "stage_completion.json"
+                       and not p.name.endswith(".partial")}
+        atomic_json(gen / "stage_completion.json", {"generation": g, "files": stage_files,
+                                                     "selected_weights_sha256": training["selected_weights_sha256"]})
         resume_state = gen / "resume" / "epoch.pt"
         if resume_state.exists():
             resume_state.unlink()
@@ -202,23 +204,25 @@ def _run(root, validation):
               test_perplexity=metrics["test"]["perplexity"], initial_weights_sha256=training["initial_weights_sha256"],
               input_tokens_sha256=training["input_tokens_sha256"])
         backup(root)
-        if validation and g == 1 and not (root / ".injection_g1_consumed").exists():
+        if validation and g == first_training and not (root / ".injection_g1_consumed").exists():
             snapshot = {str(p.relative_to(root)): sha256(p) for p in gen.rglob("*") if p.is_file() and "resume" not in p.parts}
             atomic_json(root / "validation_g1_snapshot.json", snapshot)
             (root / ".injection_g1_consumed").touch()
-            event(root, "validation_training_interruption", completed_generation=1)
-            raise ValidationInterruption("Injected process exit after completed G1")
+            event(root, "validation_training_interruption", completed_generation=g)
+            raise ValidationInterruption(f"Injected process exit after completed cycle {g}")
     snapshot = read_json(root / "validation_g1_snapshot.json")
     if snapshot:
         from .common import verify_files
         verify_files(root, snapshot)
     from .report import report
-    report(root)
-    if validation and continued:
+    report(root, for_backup=True)
+    if validation and (continued or branch):
         from .continued import validate_remote
         validate_remote(root)
     atomic_json(root / "status.json", {"state": "complete", "generations": c["generations"], "time": now()})
     atomic_json(root / "completion.json", {"complete": True, "generations": c["generations"], "time": now(),
-                                            "validation_g1_unchanged": bool(snapshot)})
+                                            "validation_g1_unchanged": bool(snapshot),
+                                            "validation_completed_cycle_unchanged": bool(snapshot),
+                                            "first_new_cycle": first_new})
     backup(root)
     event(root, "pipeline_complete", generations=c["generations"])

@@ -11,15 +11,21 @@ def main():
     pre = sub.add_parser("preflight")
     pre.add_argument("--probe", action="store_true", help="Verify private upload/download checksums")
     launch = sub.add_parser("launch")
-    launch.add_argument("--generations", type=int, choices=range(1, 11), default=10)
-    launch.add_argument("--mode", choices=("fresh_base", "continued"), default="fresh_base")
+    launch.add_argument("--generations", type=int, choices=range(1, 11), default=None)
+    launch_selection = launch.add_mutually_exclusive_group()
+    launch_selection.add_argument("--mode", choices=("fresh_base", "continued"), default=None)
+    launch_selection.add_argument("--config", help="Explicit experiment configuration")
     smoke = sub.add_parser("smoke")
-    smoke.add_argument("--mode", choices=("fresh_base", "continued"), default="fresh_base")
+    smoke_selection = smoke.add_mutually_exclusive_group()
+    smoke_selection.add_argument("--mode", choices=("fresh_base", "continued"), default=None)
+    smoke_selection.add_argument("--config", help="Explicit smoke configuration")
     for name in ("status", "resume", "fetch", "report", "cleanup", "validate"):
         s = sub.add_parser(name)
         s.add_argument("run_id")
         if name == "fetch":
             s.add_argument("--metadata-only", action="store_true", help="Keep model weights and token arrays in cloud storage")
+        if name == "report":
+            s.add_argument("--out", help="New analysis destination; published reports are protected")
     for name in ("worker", "supervisor", "watchdog"):
         s = sub.add_parser(name)
         s.add_argument("--root", required=True)
@@ -53,7 +59,13 @@ def main():
     if a.command == "preflight":
         result = remote.preflight(probe=a.probe)
     elif a.command in ("launch", "smoke"):
-        result = remote.launch(generations=getattr(a, "generations", 2), smoke=a.command == "smoke", mode=a.mode)
+        generations = getattr(a, "generations", 2)
+        if a.command == "launch" and generations is None and not a.config:
+            generations = 10
+        options = {"generations": generations, "smoke": a.command == "smoke", "mode": a.mode or "fresh_base"}
+        if a.config:
+            options["config_path"] = a.config
+        result = remote.launch(**options)
     elif a.command == "status":
         result = remote.status(a.run_id)
     elif a.command == "resume":
@@ -71,10 +83,10 @@ def main():
             atomic_json(STATE / "benchmark.json", bench)
     elif a.command == "report":
         from .report import report
-        result = report(PROJECT / "runs" / a.run_id, PROJECT / "reports" / a.run_id)
+        result = report(PROJECT / "runs" / a.run_id, a.out)
     elif a.command == "validate":
         root = PROJECT / "runs" / a.run_id
-        if read_json(root / "config.json").get("initialization") == "continued":
+        if read_json(root / "config.json").get("initialization") in ("continued", "reset_s0"):
             from .continued import validate_local
             result = validate_local(root)
         else:

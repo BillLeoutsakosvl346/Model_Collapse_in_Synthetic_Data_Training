@@ -6,7 +6,6 @@ import hashlib
 import math
 import random
 import time
-from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -16,6 +15,7 @@ from transformers import AutoModelForCausalLM
 
 from .common import atomic_json, checkpoint_manifest, event, read_json, sha256, verify_files
 from .data import save_array
+from .science.metrics import diversity  # Compatibility import for published scripts.
 
 
 def seed_all(seed):
@@ -98,7 +98,7 @@ def evaluate(model, blocks, c, export=None):
     return result
 
 
-def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_checkpoint=None):
+def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_checkpoint=None, lineage=None):
     dest = Path(root) / f"seed_{c['seed']}" / f"gen_{generation:02d}"
     dest.mkdir(parents=True, exist_ok=True)
     done = read_json(dest / "training.json")
@@ -106,11 +106,13 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
     if done:
         if done["input_tokens_sha256"] != input_hash or done["initial_weights_sha256"] != expected_base_hash:
             raise RuntimeError("Generation provenance changed")
+        if lineage is not None and done.get("lineage") != lineage:
+            raise RuntimeError("Generation generator/initializer lineage changed")
         verify_files(dest / "checkpoint", done["checkpoint_files"])
         event(root, "training_reused", generation=generation, input_tokens_sha256=input_hash)
         return done
-    if c.get("initialization") == "continued" and initial_checkpoint is None:
-        raise RuntimeError("Continued training requires the preceding model checkpoint")
+    if c.get("initialization") in ("continued", "reset_s0") and initial_checkpoint is None:
+        raise RuntimeError("Continued training requires the preceding model checkpoint or fixed-S0 checkpoint")
     model = load_model(c, initial_checkpoint)
     initial = weights_hash(model)
     if expected_base_hash and initial != expected_base_hash:
@@ -190,9 +192,10 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
             "best_validation_loss": best, "seconds": time.perf_counter() - start,
             "peak_allocated_gpu_bytes": torch.cuda.max_memory_allocated() if device() == "cuda" else 0,
             "checkpoint_files": checkpoint_manifest(dest / "checkpoint")}
-    if initial_checkpoint is not None:
-        done.update(initialization="continued", optimizer_initialization="fresh_each_cycle",
-                    checkpoint_selection="lowest_fixed_real_validation_loss")
+    done.update(initialization=c.get("initialization", "fresh_base"), optimizer_initialization="fresh_each_cycle",
+                checkpoint_selection="lowest_fixed_real_validation_loss")
+    if lineage is not None:
+        done["lineage"] = lineage
     atomic_json(dest / "training.json", done)
     # Retain one resume state until the entire generation is committed; the backup excludes it.
     del selected
@@ -204,12 +207,26 @@ class ValidationInterruption(Exception):
     pass
 
 
+def decoding_settings(c):
+    """One validated decoding definition shared by generation and throughput benchmarks."""
+    block, new, beams = (c.get("block_size", 64), c.get("new_tokens", 64), c.get("num_beams", 5))
+    penalty = c.get("repetition_penalty", 1.0)
+    if block != 64 or new != 64 or beams != 5 or not math.isfinite(penalty) or penalty <= 0:
+        raise ValueError("Generation requires 64-token blocks/continuations, five beams and a finite positive repetition penalty")
+    return {"num_beams": beams, "do_sample": False, "min_new_tokens": new, "max_new_tokens": new,
+            "repetition_penalty": penalty, "no_repeat_ngram_size": 0, "forced_eos_token_id": None, "use_cache": True}
+
+
 @torch.inference_mode()
 def generate(root, generation, model, prompts, c, parent_hash, inject=False):
     dest = Path(root) / f"synthetic_for_gen_{generation + 1:02d}"
     dest.mkdir(parents=True, exist_ok=True)
+    settings = decoding_settings(c)
     provenance = {"parent_weights_sha256": parent_hash, "prompt_tokens_sha256": hashlib.sha256(np.asarray(prompts).tobytes()).hexdigest(),
-                  "prompt_count": len(prompts), "new_tokens": 64, "num_beams": 5, "repetition_penalty": 1.0}
+                  "prompt_count": len(prompts), "new_tokens": settings["max_new_tokens"], "num_beams": settings["num_beams"],
+                  "repetition_penalty": settings["repetition_penalty"]}
+    if np.asarray(prompts).ndim != 2 or np.asarray(prompts).shape[1] != 64 or not len(prompts):
+        raise ValueError("Generation requires nonempty 64-token prompts")
     done = read_json(dest / "manifest.json")
     if done:
         if done["provenance"] != provenance:
@@ -236,10 +253,7 @@ def generate(root, generation, model, prompts, c, parent_hash, inject=False):
             for offset in range(start, end, c["generation_batch"]):
                 ids = tensor(prompts[offset:min(end, offset + c["generation_batch"])])
                 with autocast(c):
-                    outputs = model.generate(input_ids=ids, attention_mask=torch.ones_like(ids), num_beams=5,
-                                             do_sample=False, min_new_tokens=64, max_new_tokens=64,
-                                             repetition_penalty=1.0, no_repeat_ngram_size=0,
-                                             forced_eos_token_id=None, use_cache=True)
+                    outputs = model.generate(input_ids=ids, attention_mask=torch.ones_like(ids), **settings)
                 continuation = outputs[:, 64:].cpu().numpy()
                 if outputs.shape[1] != 128 or continuation.shape[1] != 64:
                     raise RuntimeError("Generation length invariant failed")
@@ -267,22 +281,3 @@ def generate(root, generation, model, prompts, c, parent_hash, inject=False):
             "new_tokens_per_second": (len(prompts) - reused) * 64 / max(elapsed, 1e-9)}
     atomic_json(dest / "manifest.json", done)
     return values, done
-
-
-def diversity(values):
-    values = np.asarray(values)
-    result = {}
-    for n in (1, 2, 3, 4):
-        grams = Counter(tuple(row[i:i + n]) for row in values.tolist() for i in range(len(row) - n + 1))
-        total = sum(grams.values())
-        if n < 4:
-            result[f"distinct_{n}"] = len(grams) / total
-        else:
-            result["repeated_4gram_rate"] = (total - len(grams)) / total
-            result["repeated_4gram_denominator"] = total
-    result["duplicate_continuation_rate"] = 1 - len(set(map(tuple, values.tolist()))) / len(values)
-    counts = np.asarray(list(Counter(values.flatten().tolist()).values()), dtype=float)
-    p = counts / counts.sum()
-    result["token_entropy_nats"] = float(-(p * np.log(p)).sum())
-    result["probe_count"] = len(values)
-    return result

@@ -19,6 +19,14 @@ def validate(root):
     c = read_json(root / "config.json")
     if c["kind"] != "smoke":
         raise ValueError("validate audits the fault-injected smoke configuration")
+    # An acceptance certificate must describe the runtime that produced this run.
+    # Check before checkpoint loading, expensive evaluation, or provider reads.
+    from .remote import source_archive
+    resources = read_json(root / "resources.json") or {}
+    tested_source = resources.get("code_sha256")
+    current_source = source_archive()[1]
+    if not tested_source or tested_source != current_source:
+        raise RuntimeError("Smoke source differs from current runtime; run a new acceptance test")
     index = read_json(root / "artifact_index.json")
     verify_files(root, index["files"])
     seed = root / f"seed_{c['seed']}"
@@ -84,15 +92,13 @@ def validate(root):
               "max_nll_calculation_error": error, "verified_artifact_files": len(index["files"])}
     from .runpod_api import Runpod
     from .common import STATE
-    from .remote import source_archive
-    resources = read_json(root / "resources.json")
     pods = Runpod().request("GET", "/pods")["pods"]
     state = next((p["status"] for p in pods if p["id"] == resources["pod_id"]), "ABSENT")
     if state not in ("EXITED", "TERMINATED", "ABSENT") or guard["pod_id"] != resources["pod_id"]:
         raise RuntimeError("Provider has not verified stopped task compute")
     checks["provider_readback_confirms_compute_stopped"] = True
     result["provider_pod_state"] = state
-    result["source_code_sha256"] = source_archive()[1]
+    result["source_code_sha256"] = tested_source
     result["validated_run_id"] = root.name
     atomic_json(root / "validation_results.json", result)
     atomic_json(STATE / "validation.json", result)

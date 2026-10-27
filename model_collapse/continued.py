@@ -117,6 +117,66 @@ def audit_chain(root):
             "recorded_test": metrics[-1]["test"]}
 
 
+def audit_reset_chain(root):
+    """Audit actual reset updates independently from the imported full-data measurements."""
+    from .data import load_blocks
+    from .workflow.lineage import token_hash, training_lineage, verify_completed_stage
+    root = Path(root)
+    c = read_json(root / "config.json")
+    if c.get("initialization") != "reset_s0" or c["kind"] != "smoke":
+        raise ValueError("This acceptance audit requires a reset-S0 smoke experiment")
+    index = read_json(root / "artifact_index.json")
+    verify_files(root, index["files"])
+    shared = read_json(root / "shared_prefix.json")
+    assert shared["first_new_cycle"] == 2
+    verify_files(root, shared["files"])
+    real = load_blocks(root, "train")
+    assert real.shape == (256, 64)
+    expected = c["start_checkpoint"]["weights_sha256"]
+    handoffs = []
+    for g in range(2, c["generations"] + 1):
+        blocks, initializer, checkpoint, lineage = training_lineage(root, g, c, expected)
+        gen = root / f"seed_{c['seed']}" / f"gen_{g:02d}"
+        t = read_json(gen / "training.json")
+        m = verify_completed_stage(root, g, c, t)
+        assert initializer == t["initial_weights_sha256"] == expected
+        assert t["lineage"] == lineage
+        assert lineage["generator_weights_sha256"] != expected
+        assert t["selected_weights_sha256"] != expected
+        assert t["input_tokens_sha256"] == token_hash(blocks)
+        assert t["optimizer_initialization"] == "fresh_each_cycle"
+        assert t["initialization"] == "reset_s0"
+        assert blocks.shape == real.shape
+        output = np.load(root / f"synthetic_for_gen_{g+1:02d}/tokens.npy", allow_pickle=False)
+        assert output.shape == (256, 64)
+        p = m["generation_timing"]["provenance"]
+        assert p["parent_weights_sha256"] == t["selected_weights_sha256"]
+        assert p["prompt_count"] == 256 and p["new_tokens"] == 64
+        assert p["prompt_tokens_sha256"] == hashlib.sha256(np.asarray(real).tobytes()).hexdigest()
+        for split in ("validation", "test"):
+            a = m[split]
+            assert a["scored_tokens"] == len(load_blocks(root, split)) * 63
+            assert math.isfinite(a["loss"])
+            assert math.isclose(a["perplexity"], math.exp(a["nll_sum"] / a["scored_tokens"]), rel_tol=1e-12)
+        handoffs.append({"cycle": g, **lineage, "trained_weights_sha256": t["selected_weights_sha256"]})
+    snapshot = read_json(root / "validation_g1_snapshot.json")
+    assert snapshot
+    verify_files(root, snapshot)
+    names = [json.loads(x)["event"] for x in (root / "events.jsonl").read_text().splitlines()]
+    assert names.count("validation_worker_resumed") == 2
+    assert "validation_generation_interruption" in names and "validation_training_interruption" in names
+    first = read_json(root / f"seed_{c['seed']}/gen_02/metrics.json")
+    assert first["generation_timing"]["reused_continuations"] > 0
+    return {"checks": {"exact_pinned_shared_prefix_import": True, "shared_evidence_scope_preserved": True,
+                        "fixed_s0_weights_and_separate_generator_handoffs": True,
+                        "weights_changed_each_training_cycle": True, "fixed_real_prompts_and_evaluation": True,
+                        "continuation_only_64_token_datasets": True, "finite_token_weighted_perplexity": True,
+                        "two_real_worker_exits_and_resume": True, "partial_generation_shard_reused": True,
+                        "completed_first_new_cycle_unchanged_after_resume": True},
+            "handoffs": handoffs, "recorded_test": m["test"], "shared_prefix": shared,
+            "source_revisions": c["branch_source"]["revisions"], "first_new_cycle": 2}
+
+
 def validate_remote(root):
     """Download actual private backups on the Pod and independently reload/evaluate S2."""
     from .engine import autocast, evaluate, load_model, shifted_nll, tensor, weights_hash
@@ -124,8 +184,8 @@ def validate_remote(root):
     from .hub import backup, fetch
     root = Path(root)
     backup(root)
-    result = audit_chain(root)
     c = read_json(root / "config.json")
+    result = audit_reset_chain(root) if c.get("initialization") == "reset_s0" else audit_chain(root)
     repos = read_json(root / "resources.json")["repos"]
     with tempfile.TemporaryDirectory(prefix="iib-hub-restore-", dir=root.parent) as temp:
         restored = Path(temp)
@@ -158,6 +218,7 @@ def validate_remote(root):
 
 def verify_recovery(root):
     """Metadata stays local; remote acceptance evidence verifies the cloud-only bulk files."""
+    from .hub import verify_recovered_files
     root = Path(root)
     index = read_json(root / "artifact_index.json")
     recovery = read_json(root / "recovery_verified.json", {})
@@ -166,7 +227,7 @@ def verify_recovery(root):
         raise RuntimeError("Artifact index is missing")
     for rel, meta in index["files"].items():
         if (root / rel).is_file():
-            verify_files(root, {rel: meta})
+            verify_recovered_files(root, {rel: meta})
         elif (recovery.get("metadata_only") and rel.endswith((".npy", ".safetensors"))
               and audit.get("verified_recovered_files", {}).get(rel) == meta["sha256"]):
             continue
@@ -192,7 +253,8 @@ def validate_local(root):
     if result["source_code_sha256"] != code_hash:
         raise RuntimeError("Source changed after the GPU test")
     result["checks"].update(independent_budget_guard_and_provider_stop_verified=True)
-    result.update(provider_pod_state=pod["status"], validated_run_id=root.name, initialization="continued")
+    mode = read_json(root / "config.json").get("initialization", "continued")
+    result.update(provider_pod_state=pod["status"], validated_run_id=root.name, initialization=mode)
     atomic_json(root / "validation_results.json", result)
-    atomic_json(STATE / "validation_continued.json", result)
+    atomic_json(STATE / f"validation_{mode}.json", result)
     return result

@@ -1,0 +1,53 @@
+kind: smoke
+seed: 42
+generations: 3
+model: facebook/opt-125m
+model_revision: 27dcfa74d334bc871f3234de431e71c6eeba5dd6
+dataset: Salesforce/wikitext
+dataset_config: wikitext-2-raw-v1
+dataset_revision: b08601e04326c79dfdd32d625aee71d232d685c3
+block_size: 64
+new_tokens: 64
+num_beams: 5
+repetition_penalty: 1.0
+epochs: 1
+learning_rate: 2.0e-05
+min_learning_rate: 1.0e-06
+weight_decay: 0.01
+microbatch: 32
+effective_batch: 128
+generation_batch: 32
+generation_shard: 32
+eval_batch: 32
+precision: bf16
+probe_count: 256
+train_blocks: 256
+validation_blocks: 64
+test_blocks: 64
+initialization: reset_s0
+start_checkpoint:
+  repo: Bill11235813/iib-model-collapse-week1-models
+  revision: 1f9d4b4179536e58474e927b34d43820f2d70f22
+  path: 20261020T211121Z-full/seed_42/gen_00/checkpoint
+  weights_sha256: dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10
+  files:
+    config.json: 166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814
+    generation_config.json: 60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c
+    model.safetensors: b20c1bb996d49f227a1de2b0288d90eeb34d2f7bf458416485a3d427db012580
+experiment_id: reset_to_real_s0
+schema_version: 2
+required_gpu: NVIDIA RTX PRO 4000 Blackwell
+branch_source:
+  run_id: 20261026T192740Z-full-continued
+  repos:
+    model: Bill11235813/iib-model-collapse-week1-models
+    dataset: Bill11235813/iib-model-collapse-week1-data
+  revisions:
+    model: fdb4344e95f391cdf5eb274c214a987f1bc0c269
+    dataset: ce57ed40c620bc98b92aa029bab788640d4640f2
+  first_new_cycle: 2
+  artifact_index_sha256: 174a004dc2834696e9e4ffbbf436b00676c0ed702ba44c7c60a90b60875a5330
+required_environment:
+  torch: 2.8.0+cu128
+  transformers: 4.37.2
+  datasets: 3.4.1

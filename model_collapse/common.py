@@ -6,8 +6,7 @@ import os
 import time
 from pathlib import Path
 
-PROJECT = Path(__file__).resolve().parent.parent
-STATE = PROJECT / ".state"
+from .paths import PROJECT, STATE
 
 
 def now():
@@ -62,18 +61,28 @@ def config(path):
 
 
 def validate_config(c):
-    if c.get("initialization", "fresh_base") not in ("fresh_base", "continued"):
+    if c.get("initialization", "fresh_base") not in ("fresh_base", "continued", "reset_s0"):
         raise ValueError("Unknown model initialization mode")
-    if c.get("initialization") == "continued":
+    if c.get("initialization") in ("continued", "reset_s0"):
         start = c.get("start_checkpoint", {})
         if len(start.get("revision", "")) != 40 or len(start.get("weights_sha256", "")) != 64 or not start.get("files"):
-            raise ValueError("Continued mode requires a pinned, checksummed starting checkpoint")
+            raise ValueError("Checkpoint initialization requires a pinned, checksummed starting checkpoint")
+    if c.get("initialization") == "reset_s0":
+        branch = c.get("branch_source", {})
+        if not branch.get("run_id") or set(branch.get("repos", {})) != {"model", "dataset"}:
+            raise ValueError("reset_s0 requires a source run and model/dataset repositories")
+        if branch.get("first_new_cycle") != 2 or c["generations"] < 2:
+            raise ValueError("The shared-start branch imports cycles 0/1 and first trains cycle 2")
+        if any(len(v) != 40 for v in branch.get("revisions", {}).values()):
+            raise ValueError("Branch repository revisions must be immutable commit SHAs")
     for key in ("model_revision", "dataset_revision"):
         if len(c[key]) != 40:
             raise ValueError(f"{key} must be a pinned commit SHA")
     if c["block_size"] != 64 or c["new_tokens"] != 64 or c["num_beams"] != 5:
-        raise ValueError("Week 1 requires 64-token blocks/continuations and five beams")
-    if c["effective_batch"] % c["microbatch"] or c["microbatch"] <= 0:
+        raise ValueError("These protocols require 64-token blocks/continuations and five beams")
+    if c.get("repetition_penalty", 1.0) != 1.0:
+        raise ValueError("These validated protocols require repetition_penalty=1.0")
+    if c["microbatch"] <= 0 or c["effective_batch"] <= 0 or c["effective_batch"] % c["microbatch"]:
         raise ValueError("microbatch must divide the effective batch")
     if c["generations"] < 0 or c["epochs"] < 1 or c["precision"] not in ("bf16", "fp32"):
         raise ValueError("Invalid training settings")
