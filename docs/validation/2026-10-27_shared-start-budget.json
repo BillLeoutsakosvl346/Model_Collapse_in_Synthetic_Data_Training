@@ -1,0 +1,44 @@
+{
+  "verified_utc": "2026-10-27T20:52:31.730811+00:00",
+  "new_acceptance_limit_usd": 0.75,
+  "acceptance_window_observed_account_debit_usd": 0.14219219239999958,
+  "balance_before_acceptance_usd": 23.0240973694,
+  "balance_at_check_usd": 22.881905177,
+  "scope": "Account difference across both acceptance attempts, includes concurrent retained storage and billing timing; not an itemized compute invoice.",
+  "conservative_cumulative_ledger_estimate_usd": 8.028179150809901,
+  "conservative_setup_ledger_estimate_usd": 0.42514595769321856,
+  "total_limit_usd": 25,
+  "setup_limit_usd": 3,
+  "reserve_usd": 2,
+  "account_spend_usd_per_hour": 0.006,
+  "automatic_payments_enabled": false,
+  "backup_payments_enabled": false,
+  "remaining_pods": [
+    {
+      "id": "itwdnizndn5hws",
+      "status": "EXITED"
+    },
+    {
+      "id": "5h4prisj4todis",
+      "status": "EXITED"
+    }
+  ],
+  "gpu_compute_running": false,
+  "removed_acceptance_resources": [
+    {
+      "run_id": "20261027T202525Z-smoke-reset-s0",
+      "pod_id": "znaxmymhfagg24",
+      "volume_id": "i6ct6780vi",
+      "pod_removed": true,
+      "volume_removed": true
+    },
+    {
+      "run_id": "20261027T203952Z-smoke-reset-s0",
+      "pod_id": "j307pr1yr8vwt2",
+      "volume_id": "6ayzn1yrp5",
+      "pod_removed": true,
+      "volume_removed": true
+    }
+  ],
+  "full_reset_experiment_launched": false
+}

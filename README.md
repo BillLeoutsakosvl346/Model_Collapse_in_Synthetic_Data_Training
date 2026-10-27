@@ -8,11 +8,13 @@ Cambridge Engineering IIB: reproducible OPT-125M / WikiText-2 experiments on rec
 | --- | --- | --- |
 | [Pretrained reset](experiments/opt125m_wikitext2/pretrained_reset/README.md) | Original pretrained OPT at every synthetic cycle | [Completed Week 1](reports/20261020T211121Z-full/report.md) |
 | [Continued from real S0](experiments/opt125m_wikitext2/continued_from_real_s0/README.md) | Previous selected checkpoint | [Completed Week 2](reports/20261026T192740Z-full-continued/report.md) |
-| [Reset to real S0](experiments/opt125m_wikitext2/reset_to_real_s0/README.md) | Fixed real-data-trained S0, after an imported shared first cycle | Planned full run; setup does not launch it |
+| [Reset to real S0](experiments/opt125m_wikitext2/reset_to_real_s0/README.md) | Fixed real-data-trained S0, after an imported shared first cycle | [GPU-validated setup](reports/20261027T203952Z-smoke-reset-s0/report.md); full run unlaunched |
 
 The [experiment catalogue](experiments/catalog.yaml) records run IDs and recovery scope. The [shared-start comparison](comparisons/shared_s0_s1_reset_vs_continue/README.md) uses the **same saved S0, S1 and D2** from Week 2, then compares resetting to S0 with continuing from the previous checkpoint. It preserves both earlier experiments. Week labels are presentation aliases, not configuration modes.
 
 The completed runs use one seed and different GPU architectures. Their results are preliminary: perplexity need not rise at every generation, and the diversity measurements are mixed. Read the reports before interpreting a curve as monotonic collapse.
+
+The [implementation handoff](docs/implementation-handoff.md) records **86 offline tests and 14 GPU acceptance checks**, recovery and automatic shutdown. Both test Pods and volumes were deleted. The measured remaining-work estimate is about **8.3 hours / USD 4.75** for cycles 2-10; this estimate is subject to live pricing and capacity. No full reset experiment has started.
 
 ## Install locally
 

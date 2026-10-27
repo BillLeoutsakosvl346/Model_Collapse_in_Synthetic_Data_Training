@@ -4,6 +4,8 @@
 
 **State:** the continued arm is complete; the reset arm's full run is planned. Existing Week 1 and Week 2 evidence remains unchanged. [Machine-readable definition](comparison.yaml).
 
+The reset setup passed [current-source GPU acceptance](../../reports/20261027T203952Z-smoke-reset-s0/report.md). This confirms the branch implementation and recovery, not full-data behaviour. [Handoff](../../docs/implementation-handoff.md).
+
 ## Common prefix and branch point
 
 Use the completed continued run `20261026T192740Z-full-continued`:

@@ -1,0 +1,29 @@
+{
+  "checked_utc": "2026-10-27T20:54:53.500165+00:00",
+  "offline_suite": {
+    "passed": 86,
+    "warnings": 17,
+    "seconds": 68.39,
+    "scope": "Previously executed final-source pytest suite; this receipt additionally verifies repository publication."
+  },
+  "protected_historical_files_unchanged": 210,
+  "publication_manifests": {
+    "20261027T202525Z-smoke-reset-s0": {
+      "verified_files": 86,
+      "verified_bytes": 1462839,
+      "manifest_sha256": "126a1698874f11e9df39868a815062ef347e51f3441b493024c058caac2dbfec"
+    },
+    "20261027T203952Z-smoke-reset-s0": {
+      "verified_files": 86,
+      "verified_bytes": 1462731,
+      "manifest_sha256": "8653fa91e980dacf7d30a2b2d1cbd65e246d2499de0eab79352f25e7e04498cf"
+    }
+  },
+  "python_files_parsed": 39,
+  "markdown_files_links_checked": 18,
+  "source_bundle_members": 30,
+  "accepted_runtime_sha256": "5d56bf37476583b20fd9d74c40941b322af6bcb2720a48a7a463f9aca6dde49e",
+  "runtime_identity_unchanged": true,
+  "historical_private_state_moved_or_deleted": false,
+  "full_reset_experiment_launched": false
+}

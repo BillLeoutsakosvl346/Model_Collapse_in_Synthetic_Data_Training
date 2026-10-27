@@ -74,6 +74,25 @@ conditions:
     shared_cycles: [0, 1]
     first_new_cycle: 2
     target_last_cycle: 10
-    acceptance: not_yet_recorded
+    acceptance: current_runtime_gpu_passed
+    acceptance_run_id: 20261027T203952Z-smoke-reset-s0
+    acceptance_report: ../reports/20261027T203952Z-smoke-reset-s0/report.md
+    accepted_runtime_sha256: 5d56bf37476583b20fd9d74c40941b322af6bcb2720a48a7a463f9aca6dde49e
     full_run_id: null
-    runs: []
+    runs:
+      - id: 20261027T203952Z-smoke-reset-s0
+        kind: smoke
+        seed: 42
+        state: validated_resources_removed
+        imported_cycles: [0, 1]
+        completed_new_cycles: [2, 3]
+        report: ../reports/20261027T203952Z-smoke-reset-s0/report.md
+        recovery_scope: bulk_verified_remotely
+        recovery_note: "129 backup files restored and checked on the GPU, including final checkpoint re-evaluation; 105 metadata files recovered locally."
+      - id: 20261027T202525Z-smoke-reset-s0
+        kind: smoke
+        seed: 42
+        state: historical_validation_superseded
+        report: ../reports/20261027T202525Z-smoke-reset-s0/report.md
+        recovery_scope: bulk_verified_remotely
+        recovery_note: "Successful earlier-source acceptance; its certificate does not authorize the final changed runtime."

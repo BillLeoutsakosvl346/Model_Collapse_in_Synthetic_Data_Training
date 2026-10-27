@@ -1,6 +1,6 @@
 # Reset-to-real-S0 condition
 
-**State:** full run planned; no full result claimed. Condition ID: `reset_to_real_s0`. Initialisation policy: `reset_s0`.
+**State:** setup GPU-validated; full run planned and unlaunched. Condition ID: `reset_to_real_s0`. Initialisation policy: `reset_s0`.
 
 This condition shares the first training cycle with the completed [continued run](../continued_from_real_s0/README.md), then resets training to the **fixed real-data-trained S0** on every new stage. It does not reset to untouched pretrained OPT.
 
@@ -25,4 +25,6 @@ Every new training stage records its initializer, generator, training tokens and
 
 The intended full comparison matches Week 2's RTX PRO 4000 Blackwell/software, packing, prompts, frozen real evaluation, decoding, token budget, seed, precision and selection rule. If matching hardware is unavailable, leave the full launch pending rather than silently substituting an execution environment.
 
-Run the explicit smoke acceptance before calling this condition ready. Setup ends after validation and does not start the full run. Do not treat a folder, configuration or previous continued-mode smoke certificate as evidence that the changed workflow passed.
+The [final-source acceptance](../../../reports/20261027T203952Z-smoke-reset-s0/report.md) passed 14 GPU/provider checks after 86 offline tests. It verified imports, two actual training updates from S0, both injected exits, shard recovery, private checkpoint restoration/re-evaluation and independent shutdown. Temporary resources were deleted. The full-run estimate from warmed production-batch benchmarks is about 8.3 hours / USD 4.75, with a conservative margin.
+
+Setup ends after validation and does not start the full run. A later runtime change requires fresh acceptance. See the [handoff and launch command](../../../docs/implementation-handoff.md); no full result is claimed from this smoke test.

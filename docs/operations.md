@@ -61,6 +61,8 @@ The reset smoke imports verified shared artifacts, uses a small 256-training-blo
 
 A current source-bound acceptance certificate is required for a full launch. An old certificate cannot establish that changed runtime passed. Do not restamp a previous smoke with today's source hash.
 
+Current acceptance: [`20261027T203952Z-smoke-reset-s0`](../reports/20261027T203952Z-smoke-reset-s0/report.md), 14 passed checks, runtime SHA-256 `5d56bf37476583b20fd9d74c40941b322af6bcb2720a48a7a463f9aca6dde49e`. Both temporary test resources were removed. The full reset run remains unlaunched; see the [handoff](implementation-handoff.md) for measured estimates and limits. Repeating acceptance rents a new GPU and is unnecessary while the accepted runtime is unchanged.
+
 The full command is separate and requires the user's launch instruction:
 
 ```powershell
@@ -111,6 +113,8 @@ python reports/20261026T192740Z-full-continued/analyse_week2.py --figures-only
 ```
 
 Its historical reproduction path remains valid; new reusable analysis belongs in the shared package and writes separate derived output.
+
+After a successful acceptance has been fetched, validated and cleaned up, publish its small evidence offline using `python scripts/analysis/export_acceptance.py RUN_ID --offline-tests COUNT`. This exports records, analysis and a byte-level publication manifest; it refuses to overwrite published acceptance. See [export notes](../scripts/analysis/README.md). It makes no cloud requests and does not download bulk artifacts.
 
 ## Retention and cleanup
 
