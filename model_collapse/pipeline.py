@@ -151,8 +151,9 @@ def _run(root, validation):
         if c["kind"] == "full":
             from .supervisor import deadline
             remaining = deadline(resources) - now()
-            next_seconds = (5 * len(real) * 63 / bench["training_target_tokens_per_second"] +
-                            len(real) * 64 / bench["generation_new_tokens_per_second"]) * 1.5 + 240
+            next_prompt_count = len(real) if g < c["generations"] else min(len(real), c["probe_count"])
+            next_seconds = (c["epochs"] * len(real) * (c["block_size"] - 1) / bench["training_target_tokens_per_second"] +
+                            next_prompt_count * c["new_tokens"] / bench["generation_new_tokens_per_second"]) * 1.5 + 240
             if next_seconds > remaining:
                 atomic_json(root / "status.json", {"state": "budget_paused", "next_generation": g, "time": now()})
                 event(root, "budget_stage_declined", generation=g, estimated_stage_seconds=next_seconds, remaining_seconds=remaining)

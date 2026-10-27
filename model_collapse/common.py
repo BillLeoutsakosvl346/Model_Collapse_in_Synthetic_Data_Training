@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 import time
 from pathlib import Path
@@ -61,6 +62,10 @@ def config(path):
 
 
 def validate_config(c):
+    limit = c.get("max_session_usd")
+    if limit is not None and (isinstance(limit, bool) or not isinstance(limit, (int, float))
+                              or not math.isfinite(limit) or limit <= 0):
+        raise ValueError("max_session_usd must be a positive finite amount")
     if c.get("initialization", "fresh_base") not in ("fresh_base", "continued", "reset_s0"):
         raise ValueError("Unknown model initialization mode")
     if c.get("initialization") in ("continued", "reset_s0"):

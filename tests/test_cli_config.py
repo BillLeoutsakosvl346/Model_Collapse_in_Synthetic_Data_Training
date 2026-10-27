@@ -75,3 +75,79 @@ def test_source_resolution_loads_environment_before_authentication(monkeypatch):
     monkeypatch.setattr(remote, "Runpod", lambda: (_ for _ in ()).throw(Boundary()))
     with pytest.raises(Boundary):
         remote._launch(smoke=True, config_path=PROJECT / "experiments/opt125m_wikitext2/reset_to_real_s0/smoke.yaml")
+
+
+def test_full_reset_launch_reaches_provisioning_boundary_without_spending(tmp_path, monkeypatch):
+    from model_collapse.common import atomic_json
+    from model_collapse.workflow import branch
+    from model_collapse import pipeline
+    calls = []
+    class Boundary(Exception):
+        pass
+    class API:
+        def request(self, method, path, body=None):
+            calls.append((method, path))
+            assert method == "GET", "A dry-run admission test must never provision"
+            return ({"pods": []} if path == "/pods" else
+                    {"templates": [{"id": "runpod-torch-v280", "image": "recorded-image"}]})
+        def candidates(self):
+            return [{"gpu": "NVIDIA RTX PRO 4000 Blackwell", "hourly_usd": .57, "data_center": "EU-RO-1"}]
+    monkeypatch.setattr(remote, "STATE", tmp_path)
+    monkeypatch.setattr(remote, "Runpod", API)
+    monkeypatch.setattr(remote, "preflight", lambda **kwargs: {"account": {"clientBalance": 23}})
+    monkeypatch.setattr(remote, "ledger", lambda: {"launches": []})
+    monkeypatch.setattr(remote, "source_archive", lambda: ("unused", "tested-runtime"))
+    monkeypatch.setattr(branch, "resolve_branch_source", lambda c: c)
+    monkeypatch.setattr(remote, "verify_start_checkpoint", lambda c: None)
+    monkeypatch.setattr(remote, "register_key", lambda api: (_ for _ in ()).throw(Boundary()))
+    original_forecast = pipeline.forecast
+    def forecast(*args, **kwargs):
+        estimate = original_forecast(*args, **kwargs)
+        assert estimate["initialization"] == "reset_s0"
+        assert estimate["new_training_stages"] == 9
+        assert estimate["new_full_generation_stages"] == 8
+        return estimate
+    monkeypatch.setattr(pipeline, "forecast", forecast)
+    atomic_json(tmp_path / "validation_reset_s0.json", {"source_code_sha256": "tested-runtime"})
+    atomic_json(tmp_path / "benchmark.json", {"training_target_tokens_per_second": 30000,
+                "generation_new_tokens_per_second": 1300,
+                "full_split_blocks": {"train": 37946, "validation": 3922, "test": 4494}})
+    with pytest.raises(Boundary):
+        remote.launch(generations=10, config_path=PROJECT / "experiments/opt125m_wikitext2/reset_to_real_s0/full.yaml")
+    assert calls and all(method == "GET" for method, _ in calls)
+
+
+@pytest.mark.parametrize("value", [0, -1, float("nan"), True])
+def test_invalid_session_caps_are_rejected(value):
+    from model_collapse.common import validate_config
+    with pytest.raises(ValueError, match="positive finite"):
+        validate_config({"max_session_usd": value})
+
+
+def test_smoke_session_cap_reaches_provisioning_as_configured(tmp_path, monkeypatch, capsys):
+    import json
+    from model_collapse.workflow import branch
+    class Boundary(Exception):
+        pass
+    class API:
+        def candidates(self):
+            return [{"gpu": "NVIDIA RTX PRO 4000 Blackwell", "hourly_usd": .57, "data_center": "EU-RO-1"}]
+        def request(self, method, path, body=None):
+            if method == "POST":
+                assert path == "/network-volumes"
+                raise Boundary()
+            return ({"pods": []} if path == "/pods" else
+                    {"templates": [{"id": "runpod-torch-v280", "image": "recorded-image"}]})
+    monkeypatch.setattr(remote, "PROJECT", tmp_path)
+    monkeypatch.setattr(remote, "Runpod", API)
+    monkeypatch.setattr(remote, "STATE", tmp_path / "state")
+    monkeypatch.setattr(remote, "preflight", lambda **kwargs: {"account": {"clientBalance": 23}})
+    monkeypatch.setattr(remote, "ledger", lambda: {"launches": []})
+    monkeypatch.setattr(remote, "source_archive", lambda: ("unused", "runtime"))
+    monkeypatch.setattr(branch, "resolve_branch_source", lambda c: c)
+    monkeypatch.setattr(remote, "verify_start_checkpoint", lambda c: None)
+    monkeypatch.setattr(remote, "register_key", lambda api: "unused")
+    with pytest.raises(Boundary):
+        remote.launch(smoke=True, config_path=PROJECT / "experiments/opt125m_wikitext2/reset_to_real_s0/smoke.yaml")
+    output = json.loads(capsys.readouterr().out)
+    assert output["session_allowance_usd"] == .60

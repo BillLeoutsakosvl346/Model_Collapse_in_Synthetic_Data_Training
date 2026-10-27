@@ -292,6 +292,8 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     choice = choices[0]
     spent = accrued(ledger())
     allowance = min(TOTAL_BUDGET - spent - RESERVE, p["account"]["clientBalance"] - RESERVE)
+    if c.get("max_session_usd") is not None:
+        allowance = min(allowance, c["max_session_usd"])
     if c["kind"] == "smoke":
         allowance = min(allowance, SETUP_BUDGET - accrued(ledger(), "smoke") - 0.15, 0.75)
     if allowance <= 0.1:
@@ -306,6 +308,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             raise RuntimeError("Run the validated smoke test and fetch its benchmark before launching full data")
         estimate_kwargs = {"continued": c.get("initialization") in ("continued", "reset_s0")}
         if c.get("initialization") == "reset_s0":
+            estimate_kwargs["initialization"] = "reset_s0"
             estimate_kwargs["first_new_cycle"] = 2
         estimate = forecast(b, c["generations"], choice["hourly_usd"] + VOLUME_HOURLY + CONTAINER_HOURLY, **estimate_kwargs)
         if estimate["estimated_compute_and_running_storage_usd"] > allowance:
