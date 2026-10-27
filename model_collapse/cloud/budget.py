@@ -31,4 +31,3 @@ def accrued_cost(d, timestamp, kind=None, *, default_volume_hourly=30 * 0.07 / 7
         end = volume.get("deleted_at") or timestamp
         total += max(0, end - volume["charge_started_at"]) / 3600 * volume["hourly_usd"]
     return total
-

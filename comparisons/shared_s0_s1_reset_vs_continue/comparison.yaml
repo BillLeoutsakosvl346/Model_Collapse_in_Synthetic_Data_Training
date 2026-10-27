@@ -1,0 +1,60 @@
+schema_version: 1
+id: shared_s0_s1_reset_vs_continue
+state: planned_reset_arm
+question: "After the same first synthetic-training cycle, compare reset-to-real-S0 with continued weights."
+shared_source_run: 20261026T192740Z-full-continued
+shared_evaluation_generations: [0, 1]
+first_new_training_generation: 2
+last_generation: 10
+shared_artifacts:
+  s0:
+    generation: 0
+    weights_sha256: dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10
+  s1:
+    generation: 1
+    weights_sha256: 5cbccf4740806deeb6d972426309982ae9713651fa1b41602d81cb0ff421f91f
+  d2:
+    generated_by: s1
+    training_generation: 2
+    tokens_sha256: 4ed3a1b44b031cad1e2a6ba72cb368c0e2efb7a848237e262ce744a3de255e42
+    full_shape: [37946, 64]
+artifact_import:
+  revisions:
+    model: fdb4344e95f391cdf5eb274c214a987f1bc0c269
+    dataset: ce57ed40c620bc98b92aa029bab788640d4640f2
+  artifact_index_sha256: 174a004dc2834696e9e4ffbbf436b00676c0ed702ba44c7c60a90b60875a5330
+  resolve_model_and_dataset_commits: true
+  verify_index_and_required_file_checksums: true
+  preserve_source_measurement_identity: true
+arms:
+  continue:
+    condition: continued_from_real_s0
+    run_id: 20261026T192740Z-full-continued
+    state: completed
+    initialize_each_cycle: previous_selected_checkpoint
+    report: ../../reports/20261026T192740Z-full-continued/report.md
+  reset:
+    condition: reset_to_real_s0
+    run_id: null
+    state: planned
+    initialize_each_new_cycle: shared_s0
+    config: ../../experiments/opt125m_wikitext2/reset_to_real_s0/full.yaml
+    smoke_config: ../../experiments/opt125m_wikitext2/reset_to_real_s0/smoke.yaml
+matched_factors:
+  - model_and_tokenizer_revisions
+  - real_split_arrays_and_fixed_prompt_order
+  - synthetic_token_budget_and_continuation_only_targets
+  - decoding_and_length_constraints
+  - training_epochs_optimizer_scheduler_and_batches
+  - seed_precision_and_checkpoint_selection
+  - metric_definitions_and_fixed_probe
+  - gpu_class_and_software_environment
+required_gpu_class: NVIDIA RTX PRO 4000 Blackwell
+hardware_fallback: leave_full_launch_pending
+limits:
+  seeds: [42]
+  independent_replicates: false
+  continued_arm_is_historical: true
+  no_claim_of_bitwise_cross_launch_determinism: true
+analysis_directory: analyses
+new_full_run_started_by_setup: false

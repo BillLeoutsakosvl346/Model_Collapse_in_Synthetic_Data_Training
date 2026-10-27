@@ -1,0 +1,79 @@
+schema_version: 1
+updated: "2026-10-27"
+description: "Scientific conditions and their recorded runs; week labels are presentation aliases."
+methodology: ../docs/methodology.md
+metrics: ../docs/metrics.md
+conditions:
+  pretrained_reset:
+    name: "OPT-125M / WikiText-2: reset to original pretrained weights"
+    initialization: fresh_base
+    state: completed
+    definition: opt125m_wikitext2/pretrained_reset/README.md
+    configs:
+      full: opt125m_wikitext2/pretrained_reset/full.yaml
+      smoke: opt125m_wikitext2/pretrained_reset/smoke.yaml
+    legacy_configs:
+      full: ../configs/full.yaml
+      smoke: ../configs/smoke.yaml
+    runs:
+      - id: 20261020T211121Z-full
+        presentation_alias: "Week 1"
+        kind: full
+        seed: 42
+        state: completed
+        completed_cycles: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        report: ../reports/20261020T211121Z-full/report.md
+        metrics: ../reports/20261020T211121Z-full/metrics.csv
+        recovery_scope: metadata_only
+        recovery_note: "Public records audited; private bulk backups indexed. No claim of independent full bulk recovery."
+      - id: 20261020T193206Z-smoke
+        kind: smoke
+        state: historical_validation
+        report: ../reports/week1_validation.md
+        recovery_scope: bulk_verified
+        recovery_note: "Original setup report documents restore/re-evaluation; historical acceptance does not certify changed runtime."
+  continued_from_real_s0:
+    name: "OPT-125M / WikiText-2: continue from previous selected checkpoint"
+    initialization: continued
+    state: completed
+    definition: opt125m_wikitext2/continued_from_real_s0/README.md
+    configs:
+      full: opt125m_wikitext2/continued_from_real_s0/full.yaml
+      smoke: opt125m_wikitext2/continued_from_real_s0/smoke.yaml
+    legacy_configs:
+      full: ../configs/full-continued.yaml
+      smoke: ../configs/smoke-continued.yaml
+    runs:
+      - id: 20261026T192740Z-full-continued
+        presentation_alias: "Week 2"
+        kind: full
+        seed: 42
+        state: completed
+        completed_cycles: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        report: ../reports/20261026T192740Z-full-continued/report.md
+        metrics: ../reports/20261026T192740Z-full-continued/metrics.csv
+        recovery_scope: probe_verified
+        recovery_note: "1,675 metadata files and 11 small probe arrays verified; bulk checkpoints/datasets remain private."
+      - id: 20261026T182856Z-smoke-continued
+        kind: smoke
+        seed: 42
+        state: historical_validation
+        report: ../reports/20261026T182856Z-smoke-continued/report.md
+        recovery_scope: bulk_verified
+        recovery_note: "Remote private-backup restore and S2 re-evaluation passed; historical acceptance does not certify changed runtime."
+  reset_to_real_s0:
+    name: "OPT-125M / WikiText-2: reset to fixed real-trained S0 after shared S1"
+    initialization: reset_s0
+    state: planned
+    definition: opt125m_wikitext2/reset_to_real_s0/README.md
+    configs:
+      full: opt125m_wikitext2/reset_to_real_s0/full.yaml
+      smoke: opt125m_wikitext2/reset_to_real_s0/smoke.yaml
+    comparison: ../comparisons/shared_s0_s1_reset_vs_continue/comparison.yaml
+    shared_source_run: 20261026T192740Z-full-continued
+    shared_cycles: [0, 1]
+    first_new_cycle: 2
+    target_last_cycle: 10
+    acceptance: not_yet_recorded
+    full_run_id: null
+    runs: []

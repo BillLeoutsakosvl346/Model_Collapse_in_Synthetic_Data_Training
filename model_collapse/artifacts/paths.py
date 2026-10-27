@@ -49,5 +49,3 @@ def atomic_copy(src, dst, expected=None):
         os.replace(tmp, dst)
     finally:
         tmp.unlink(missing_ok=True)
-
-
