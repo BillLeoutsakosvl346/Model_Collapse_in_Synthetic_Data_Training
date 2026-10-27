@@ -1,0 +1,80 @@
+{
+  "run_id": "20261027T202525Z-smoke-reset-s0",
+  "source_git_commit": "16fc6828538e898681fc97cbd8269d6d15feba35",
+  "runtime_sha256": "686e0ff403f6cd9d35f153b3a8fdbe303958e41e10b377de84f3556fb93afb57",
+  "status": "historical_acceptance_superseded",
+  "finished_utc": "2026-10-27T20:32:09.578319+00:00",
+  "minutes_provisioning_to_pipeline_complete": 6.717731678485871,
+  "observed_account_debit_usd": 0.05303928789999901,
+  "account_debit_scope": "Observed account balance difference, includes concurrent retained storage; not an itemized invoice.",
+  "pod_id": "znaxmymhfagg24",
+  "volume_id": "i6ct6780vi",
+  "pod_removed": true,
+  "volume_removed": true,
+  "checks": {
+    "exact_pinned_shared_prefix_import": true,
+    "shared_evidence_scope_preserved": true,
+    "fixed_s0_weights_and_separate_generator_handoffs": true,
+    "weights_changed_each_training_cycle": true,
+    "fixed_real_prompts_and_evaluation": true,
+    "continuation_only_64_token_datasets": true,
+    "finite_token_weighted_perplexity": true,
+    "two_real_worker_exits_and_resume": true,
+    "partial_generation_shard_reused": true,
+    "completed_first_new_cycle_unchanged_after_resume": true,
+    "private_hub_download_hashes_verified": true,
+    "restored_checkpoint_tensor_hash_and_evaluation": true,
+    "direct_shifted_nll_calculation": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "offline_tests_passed": 80,
+  "restored_test": {
+    "nll_sum": 14674.273786877224,
+    "scored_tokens": 4032,
+    "loss": 3.6394528241262956,
+    "perplexity": 38.07099949269318,
+    "seconds": 0.048117377096787095,
+    "mean_sequence_perplexity": 42.46065107537106,
+    "std_sequence_perplexity": 19.595250258255685,
+    "context_tokens": 64
+  },
+  "max_nll_error": 0.0,
+  "recovery": {
+    "metadata_verified_files": 105,
+    "local_bytes": 14873593,
+    "bulk_restored_and_verified_remotely": 2019179150,
+    "bulk_files_verified_remotely": 129
+  },
+  "source_revisions": {
+    "model": "fdb4344e95f391cdf5eb274c214a987f1bc0c269",
+    "dataset": "ce57ed40c620bc98b92aa029bab788640d4640f2"
+  },
+  "stages": [
+    {
+      "cycle": 2,
+      "test_perplexity": 38.15908413972456,
+      "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "selected_weights_sha256": "5b6309dc0976325c930714a32faba6d73c308eef70ef257db52a4add78112b60",
+      "generator_weights_sha256": "5cbccf4740806deeb6d972426309982ae9713651fa1b41602d81cb0ff421f91f",
+      "input_tokens_sha256": "5ee2c628c648d2b3da984d8fdbb5ac1604f3c156e07cb2ffc9093570874c4771"
+    },
+    {
+      "cycle": 3,
+      "test_perplexity": 38.07099949269318,
+      "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "selected_weights_sha256": "94bea506e9131a9caa400b10b3f10bb743e0c4850faf8ae122855b88679a43bf",
+      "generator_weights_sha256": "5b6309dc0976325c930714a32faba6d73c308eef70ef257db52a4add78112b60",
+      "input_tokens_sha256": "026b5ea977cadb96a776c8f5a9a5a75a7d556454b449fa43d51d2d6e050c8674"
+    }
+  ],
+  "remaining_full_run_forecast": {
+    "synthetic_generations": 10,
+    "initialization": "reset_s0",
+    "estimated_hours": 8.268087589470726,
+    "estimated_compute_and_running_storage_usd": 4.759247130267943,
+    "new_training_stages": 9,
+    "new_full_generation_stages": 8,
+    "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+  },
+  "full_experiment_launched": false
+}

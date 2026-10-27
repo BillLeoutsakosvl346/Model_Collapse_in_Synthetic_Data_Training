@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-27T20:42:45.198651+00:00",
+  "run_id": "20261027T202525Z-smoke-reset-s0",
+  "initialization": "reset_s0",
+  "scientific_config_sha256": "cfabef01bd97b7363c20335c6b98d9e71a61c49083551d48b327aea28299f226",
+  "source_runtime_identity": "686e0ff403f6cd9d35f153b3a8fdbe303958e41e10b377de84f3556fb93afb57",
+  "source_root": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261027T202525Z-smoke-reset-s0",
+  "inputs": {
+    "config.json": {
+      "sha256": "b95e0e8efe19aefbcf1d6a61026c6c8e681c499d1adc49b4fb3dbe34be56d309",
+      "bytes": 8177
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "60aa02252cbd4cf60a3c255a88c1894efa60f4c94378d8c24b9b85803198cbad",
+      "bytes": 17483
+    },
+    "seed_42/gen_01/metrics.json": {
+      "sha256": "c6ffecf964818f31946b8c18cf32f63d1344b0329d256f3cc65278b50a35e572",
+      "bytes": 17131
+    },
+    "seed_42/gen_02/metrics.json": {
+      "sha256": "80372fb62826811a6c8488a9c283bef0d20998501c8a491438ee13353a72255f",
+      "bytes": 13439
+    },
+    "seed_42/gen_03/metrics.json": {
+      "sha256": "0a1e6a35bb6225691d821a0a80bd5cf25d7b35a9e54d05a776484766f5705e54",
+      "bytes": 13440
+    },
+    "seed_42/gen_00/import.json": {
+      "sha256": "44c76dad0d0f44c2649f68e03b0f20f18111bdb0bb04b5ed1f39243c4c4a79e1",
+      "bytes": 377
+    },
+    "seed_42/gen_00/test_sequences.json": {
+      "sha256": "3092e70292de9abba36ee4fdfe507a9085872257712bfa5144a806f86571d893",
+      "bytes": 105278
+    },
+    "seed_42/gen_00/reference_sequences.json": {
+      "sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+      "bytes": 6159
+    },
+    "seed_42/gen_01/import.json": {
+      "sha256": "9669d7c6088484e57b8a30557fcfa488c20af9713df679905165b8bb6ff5db00",
+      "bytes": 377
+    },
+    "seed_42/gen_01/test_sequences.json": {
+      "sha256": "8ccb604fffed911d3f33896819eb528c6b3d52935438bac4503ac5c536dc52ab",
+      "bytes": 104675
+    },
+    "seed_42/gen_01/reference_sequences.json": {
+      "sha256": "42a0eae563c113219c9bc202cb595b34b28fecd21e71895243736b0eb8a10c50",
+      "bytes": 6142
+    },
+    "seed_42/gen_02/test_sequences.json": {
+      "sha256": "de06f2e971e931ac314d33ecba56bb314470f49a6266dee1eb8fb2d18cf0e9f7",
+      "bytes": 1562
+    },
+    "seed_42/gen_02/reference_sequences.json": {
+      "sha256": "cbb4d55835a76a59879910d4eea84bd416afcecc9050c6f1d7664a487ff2423a",
+      "bytes": 6113
+    },
+    "seed_42/gen_03/test_sequences.json": {
+      "sha256": "a20e63cedffffb768284a5240d241eeaee4d91fc25defccf7b7e4c8eb3727c36",
+      "bytes": 1570
+    },
+    "seed_42/gen_03/reference_sequences.json": {
+      "sha256": "7d723e472daee75166283d55d94f0a0d87df177db5d425767e8bd1a42132864b",
+      "bytes": 6113
+    },
+    "resources.json": {
+      "sha256": "a2379e99b0a8ea8a5e4f1c9944ad274d5f88bcb367e427bc6b366c17bb243c48",
+      "bytes": 1213
+    },
+    "manifest.json": {
+      "sha256": "37397f2792057260bb60fb17225350915c580e48e9d7602b129f90ba9e6419b8",
+      "bytes": 286
+    },
+    "environment.json": {
+      "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+      "bytes": 433
+    },
+    "shared_prefix.json": {
+      "sha256": "f4195f31cc73e2b054a23d529a428d5b4fcb4427073521e04e848f583e8b6f2b",
+      "bytes": 4863
+    },
+    "benchmark.json": {
+      "sha256": "18e04a02acbc39616b10a429316444dcf3a59b2e494217b27a9ecc40e15078ca",
+      "bytes": 659
+    },
+    "benchmark_resources.json": {
+      "sha256": "1ad3855761a46f0ffc0017650fd8518558d4097de75beb390b6c3dee179b4206",
+      "bytes": 1185
+    }
+  },
+  "analysis": {
+    "git_revision": "3d9e35898a4823407eeda8683033f041f6f56bb9",
+    "source_files": {
+      "model_collapse/analysis/__init__.py": "8e3555a627a9852f3fc0eb0983d750f6d3e0368bc1972169e38f696209a82777",
+      "model_collapse/analysis/forecasts.py": "1c9bbf016e7fecf84d8a47deada3edc46755f8dd8be6c2457a9dc5b92e3fa6db",
+      "model_collapse/analysis/records.py": "227dcdcc9db8f230762cd2ca9946f44d5dde438fc83329583db1c4478075c67b",
+      "model_collapse/analysis/reporting.py": "9a99156ec69fb88e2169649775f8cfa3c58bada84a59a930928bebaddff4753b",
+      "model_collapse/report.py": "4c1aa2cd93eb45e0384a9c70aef9807473fdbb12441fff9d296b3ad254c69eb2"
+    },
+    "source_sha256": "cda8598a8549794a0c90e96c9d9b18c6348a00dab5bca19d3c1f58195546dfb2",
+    "environment": {
+      "python": "3.12.1",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "packages": {
+        "numpy": "2.1.2",
+        "matplotlib": "3.9.4"
+      }
+    }
+  },
+  "outputs": {
+    "diversity.png": {
+      "sha256": "75974853913c4da35d5483c6d2e4841c513042a046879ca5b6f1b5db3563b258",
+      "bytes": 81143
+    },
+    "forecast.json": {
+      "sha256": "d693b7e847aac37ec0052eed772a0b1f2629d2c863c7223cab4b88ab88200fcf",
+      "bytes": 1177
+    },
+    "metric_definitions.json": {
+      "sha256": "c75ceb48b2e98ebdf6f60fc0af7b63f337451fd3b992c60d4e09f3b109941a59",
+      "bytes": 1480
+    },
+    "metrics.csv": {
+      "sha256": "4fb6d6906c7809f69372571276369d337ccdb3cb3ca69d88c13840d172635d34",
+      "bytes": 2867
+    },
+    "perplexity.png": {
+      "sha256": "fffde1d7f1ca07ddf364fc932b83f2adf02cf50c7add5bc4a50501ddd5ddaecc",
+      "bytes": 102651
+    },
+    "reference_scores.png": {
+      "sha256": "ec5856fe492662f6c3cdae2d31560059fca13c466b534e043fd92e1b93b43834",
+      "bytes": 39099
+    },
+    "report.md": {
+      "sha256": "41b4159fc10b46fed60660f8110ce518978f786aae17445074c1ebe1b1f211e7",
+      "bytes": 3257
+    },
+    "runtime.png": {
+      "sha256": "ab405395a4eba4ce8e03cd32d1824fcf2095ff6942c93d95a97b73b391425091",
+      "bytes": 40119
+    }
+  },
+  "imported_stage_receipts": {
+    "0": {
+      "source_run_id": "20261026T192740Z-full-continued",
+      "source_stage_index": 0,
+      "source_revisions": {
+        "model": "fdb4344e95f391cdf5eb274c214a987f1bc0c269",
+        "dataset": "ce57ed40c620bc98b92aa029bab788640d4640f2"
+      },
+      "measurement_scope": "original_source_splits",
+      "execution": "imported_shared_stage",
+      "new_training_seconds": 0,
+      "new_generation_seconds": 0
+    },
+    "1": {
+      "source_run_id": "20261026T192740Z-full-continued",
+      "source_stage_index": 1,
+      "source_revisions": {
+        "model": "fdb4344e95f391cdf5eb274c214a987f1bc0c269",
+        "dataset": "ce57ed40c620bc98b92aa029bab788640d4640f2"
+      },
+      "measurement_scope": "original_source_splits",
+      "execution": "imported_shared_stage",
+      "new_training_seconds": 0,
+      "new_generation_seconds": 0
+    }
+  },
+  "scope": "Offline saved measurements; no independent model re-evaluation; original evidence untouched.",
+  "manifest_hash_scope": "Output hashes exclude this self-referential manifest."
+}

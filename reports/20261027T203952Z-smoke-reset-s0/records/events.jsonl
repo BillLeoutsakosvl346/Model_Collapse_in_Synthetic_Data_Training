@@ -1,0 +1,29 @@
+{"time": 1793133710.0427, "event": "benchmark_complete", "training_target_tokens_per_second": 34530.11187546111, "generation_new_tokens_per_second": 1303.5434311519123, "training_step_seconds": [0.6052811440313235, 0.2087616459466517, 0.23353529896121472, 0.23292831401340663, 0.23411415400914848], "generation_batch_seconds": [2.1195582289947197, 1.5786489029414952, 1.563555569970049], "effective_batch": 128, "microbatch": 32, "generation_batch": 32, "num_beams": 5, "repetition_penalty": 1.0, "precision": "bf16", "full_split_blocks": {"train": 37946, "validation": 3922, "test": 4494}, "gpu": "NVIDIA RTX PRO 4000 Blackwell"}
+{"time": 1793133754.583563, "event": "epoch_complete", "generation": 2, "epoch": 1, "learning_rate": 2e-05, "train_loss": 1.89249287545681, "validation_loss": 3.4661848550583274, "train_seconds": 0.5481430049985647, "training_target_tokens_per_second": 29422.97877183023}
+{"time": 1793133759.3274765, "event": "generation_shard_complete", "generation": 2, "completed": 32, "total": 256, "reused": false}
+{"time": 1793133759.347927, "event": "validation_generation_interruption", "generation": 2, "completed": 32}
+{"time": 1793133761.8251882, "event": "validation_worker_resumed", "interruption": 1}
+{"time": 1793133768.1642346, "event": "training_reused", "generation": 2, "input_tokens_sha256": "5ee2c628c648d2b3da984d8fdbb5ac1604f3c156e07cb2ffc9093570874c4771"}
+{"time": 1793133769.692742, "event": "generation_shard_complete", "generation": 2, "completed": 32, "total": 256, "reused": true}
+{"time": 1793133771.6394596, "event": "generation_shard_complete", "generation": 2, "completed": 64, "total": 256, "reused": false}
+{"time": 1793133773.355532, "event": "generation_shard_complete", "generation": 2, "completed": 96, "total": 256, "reused": false}
+{"time": 1793133775.029185, "event": "generation_shard_complete", "generation": 2, "completed": 128, "total": 256, "reused": false}
+{"time": 1793133776.6911798, "event": "generation_shard_complete", "generation": 2, "completed": 160, "total": 256, "reused": false}
+{"time": 1793133778.3729692, "event": "generation_shard_complete", "generation": 2, "completed": 192, "total": 256, "reused": false}
+{"time": 1793133780.0741222, "event": "generation_shard_complete", "generation": 2, "completed": 224, "total": 256, "reused": false}
+{"time": 1793133781.770869, "event": "generation_shard_complete", "generation": 2, "completed": 256, "total": 256, "reused": false}
+{"time": 1793133783.6202645, "event": "generation_complete", "generation": 2, "validation_perplexity": 32.01436969768798, "test_perplexity": 38.15908413972456, "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10", "input_tokens_sha256": "5ee2c628c648d2b3da984d8fdbb5ac1604f3c156e07cb2ffc9093570874c4771"}
+{"time": 1793133828.2245343, "event": "validation_training_interruption", "completed_generation": 2}
+{"time": 1793133831.6213236, "event": "validation_worker_resumed", "interruption": 2}
+{"time": 1793133838.127267, "event": "training_reused", "generation": 2, "input_tokens_sha256": "5ee2c628c648d2b3da984d8fdbb5ac1604f3c156e07cb2ffc9093570874c4771"}
+{"time": 1793133839.2572122, "event": "generation_reused", "generation": 2, "metrics_sha256": "339cadb269461218fcf0f261e46bec99d3eb36e52431fc723bb6aea5709aa017"}
+{"time": 1793133849.5485556, "event": "epoch_complete", "generation": 3, "epoch": 1, "learning_rate": 2e-05, "train_loss": 2.0139071494340897, "validation_loss": 3.4637483487446223, "train_seconds": 1.0342474200297147, "training_target_tokens_per_second": 15593.947529051251}
+{"time": 1793133854.465378, "event": "generation_shard_complete", "generation": 3, "completed": 32, "total": 256, "reused": false}
+{"time": 1793133856.1639233, "event": "generation_shard_complete", "generation": 3, "completed": 64, "total": 256, "reused": false}
+{"time": 1793133857.8683653, "event": "generation_shard_complete", "generation": 3, "completed": 96, "total": 256, "reused": false}
+{"time": 1793133859.5641854, "event": "generation_shard_complete", "generation": 3, "completed": 128, "total": 256, "reused": false}
+{"time": 1793133861.2596922, "event": "generation_shard_complete", "generation": 3, "completed": 160, "total": 256, "reused": false}
+{"time": 1793133862.9679651, "event": "generation_shard_complete", "generation": 3, "completed": 192, "total": 256, "reused": false}
+{"time": 1793133864.655854, "event": "generation_shard_complete", "generation": 3, "completed": 224, "total": 256, "reused": false}
+{"time": 1793133866.3381758, "event": "generation_shard_complete", "generation": 3, "completed": 256, "total": 256, "reused": false}
+{"time": 1793133868.3423853, "event": "generation_complete", "generation": 3, "validation_perplexity": 31.936461434320343, "test_perplexity": 38.07099949269318, "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10", "input_tokens_sha256": "026b5ea977cadb96a776c8f5a9a5a75a7d556454b449fa43d51d2d6e050c8674"}

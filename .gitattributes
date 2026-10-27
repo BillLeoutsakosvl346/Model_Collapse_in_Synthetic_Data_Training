@@ -5,3 +5,5 @@
 /reports/**/records/** -text
 /reports/**/report_cloud_original.md -text
 /reports/**/metrics_cloud_original.csv -text
+# Acceptance publications carry byte-level manifests for every exported role.
+/reports/*-smoke-reset-s0/** -text

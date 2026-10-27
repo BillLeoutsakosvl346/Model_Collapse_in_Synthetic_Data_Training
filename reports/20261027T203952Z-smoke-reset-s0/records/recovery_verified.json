@@ -1,0 +1,30 @@
+{
+  "run_id": "20261027T203952Z-smoke-reset-s0",
+  "repos": {
+    "model": "Bill11235813/iib-model-collapse-week1-models",
+    "dataset": "Bill11235813/iib-model-collapse-week1-data"
+  },
+  "revisions": {
+    "model": "108dda0dc7db73628d8c68014ee58e86af77bd65",
+    "dataset": "0e977455d97037fde8f6516178b33a1eeb5e8548"
+  },
+  "artifact_index_sha256": "a2fe0a4610ca05758fe871b95f0b3f498fbc726a506c32735dd11086fa98bc6f",
+  "indexed_files": 131,
+  "verified_files": 105,
+  "verified_bytes": 14873728,
+  "metadata_only": true,
+  "scope": "metadata_only",
+  "preserved_control_files": {
+    "resources.json": {
+      "recovered_path": "fetched_control/a4b990ad11584ba398b61976235efe642be1453ca9acbdc4fac22aeaf7858081/resources.json",
+      "sha256": "a4b990ad11584ba398b61976235efe642be1453ca9acbdc4fac22aeaf7858081",
+      "authoritative_local_sha256": "dfaa186a2b193176390617a25fb37f638fd06e204f4d8d728d8821ad7c061854"
+    }
+  },
+  "operational_files_outside_immutable_index": [
+    "events.jsonl",
+    "status.json",
+    "watchdog_exit.json"
+  ],
+  "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261027T203952Z-smoke-reset-s0"
+}

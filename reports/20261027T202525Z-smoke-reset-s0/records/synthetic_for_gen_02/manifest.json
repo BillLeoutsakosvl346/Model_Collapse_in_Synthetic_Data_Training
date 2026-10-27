@@ -1,0 +1,28 @@
+{
+  "provenance": {
+    "parent_weights_sha256": "5cbccf4740806deeb6d972426309982ae9713651fa1b41602d81cb0ff421f91f",
+    "prompt_tokens_sha256": "f40d2891212b57f027105d0952c9725959ceb716a6a8af2064f0c359dd767a67",
+    "prompt_count": 37946,
+    "new_tokens": 64,
+    "num_beams": 5,
+    "repetition_penalty": 1.0
+  },
+  "continuation_tokens_sha256": "5ee2c628c648d2b3da984d8fdbb5ac1604f3c156e07cb2ffc9093570874c4771",
+  "files": {
+    "tokens.npy": "591515b62e93b2f9858ee16fb5dd06242e607bf66063d8076cbca423b605882a"
+  },
+  "seconds": 1873.5873140959302,
+  "reused_continuations": 0,
+  "new_tokens_per_second": 1296.2000658997072,
+  "imported_source": {
+    "run_id": "20261026T192740Z-full-continued",
+    "revisions": {
+      "model": "fdb4344e95f391cdf5eb274c214a987f1bc0c269",
+      "dataset": "ce57ed40c620bc98b92aa029bab788640d4640f2"
+    },
+    "full_tokens_sha256": "4ed3a1b44b031cad1e2a6ba72cb368c0e2efb7a848237e262ce744a3de255e42",
+    "full_blocks": 37946,
+    "used_blocks": 256,
+    "subset": "first_blocks"
+  }
+}

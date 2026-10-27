@@ -1,0 +1,28 @@
+{
+  "run_id": "20261027T203952Z-smoke-reset-s0",
+  "launch_id": "20261027T203952028694Z",
+  "kind": "smoke",
+  "pod_id": "j307pr1yr8vwt2",
+  "volume_id": "6ayzn1yrp5",
+  "data_center": "EU-RO-1",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "created_at": 1793133593.2249112,
+  "quoted_gpu_hourly_usd": 0.57,
+  "guard_hourly_usd": 0.6619589041095889,
+  "compute_hourly_usd": 0.6586506849315067,
+  "volume_hourly_usd": 0.0028767123287671234,
+  "volume_created_at": 1793133592.0367851,
+  "session_allowance_usd": 0.6,
+  "repos": {
+    "model": "Bill11235813/iib-model-collapse-week1-models",
+    "dataset": "Bill11235813/iib-model-collapse-week1-data"
+  },
+  "code_sha256": "5d56bf37476583b20fd9d74c40941b322af6bcb2720a48a7a463f9aca6dde49e",
+  "starting_balance_usd": 22.9542951732,
+  "remote_root": "/workspace/runs/20261027T203952Z-smoke-reset-s0",
+  "runtime_sha256": "5d56bf37476583b20fd9d74c40941b322af6bcb2720a48a7a463f9aca6dde49e",
+  "git_commit": "3d9e35898a4823407eeda8683033f041f6f56bb9",
+  "configuration_sha256": "a756c0a033f2dfd4be3af1b0a117768d4fbb2fa57de3858b0a151935acb8927d",
+  "actual_pod_hourly_usd": 0.57
+}
