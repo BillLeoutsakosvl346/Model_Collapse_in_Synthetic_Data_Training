@@ -267,10 +267,10 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             raise ValueError("The command must match the configuration kind (smoke or full)")
     from .common import validate_config
     validate_config(c)
+    load_secrets()
     if c.get("initialization") == "reset_s0":
         from .workflow.branch import resolve_branch_source
         c = resolve_branch_source(c)
-    load_secrets()
     api = Runpod()
     p = preflight(probe=True)
     if any(x["status"] not in ("EXITED", "TERMINATED") for x in api.request("GET", "/pods")["pods"]):

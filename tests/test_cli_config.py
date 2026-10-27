@@ -60,3 +60,18 @@ def test_launch_kind_mismatch_is_rejected_before_network(monkeypatch, smoke, kin
     monkeypatch.setattr(remote, "Runpod", lambda: pytest.fail("A mismatched command must not contact providers"))
     with pytest.raises(ValueError, match="configuration kind"):
         remote._launch(smoke=smoke, config_path=PROJECT / f"configs/{kind}.yaml")
+
+
+def test_source_resolution_loads_environment_before_authentication(monkeypatch):
+    from model_collapse.workflow import branch
+    loaded = []
+    monkeypatch.setattr(remote, "load_secrets", lambda: loaded.append(True))
+    def resolve(c):
+        assert loaded, "Private Hub source resolution needs .env credentials first"
+        return c
+    monkeypatch.setattr(branch, "resolve_branch_source", resolve)
+    class Boundary(Exception):
+        pass
+    monkeypatch.setattr(remote, "Runpod", lambda: (_ for _ in ()).throw(Boundary()))
+    with pytest.raises(Boundary):
+        remote._launch(smoke=True, config_path=PROJECT / "experiments/opt125m_wikitext2/reset_to_real_s0/smoke.yaml")
