@@ -68,7 +68,8 @@ def test_worker_failure_requests_shutdown(tmp_path, monkeypatch):
     assert read_json(tmp_path / "status.json")["state"] == "failed"
 
 
-def test_exhausted_task_budget_prevents_provisioning(monkeypatch):
+def test_exhausted_task_budget_prevents_provisioning(tmp_path, monkeypatch):
+    monkeypatch.setattr(remote, "STATE", tmp_path)
     calls = []
     class API:
         def request(self, method, path, body=None):
