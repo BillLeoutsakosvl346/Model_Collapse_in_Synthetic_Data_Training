@@ -1,0 +1,460 @@
+{
+  "title": "Understanding our model-collapse graphs",
+  "pages": [
+    {
+      "title": "Understanding our model-collapse graphs",
+      "image": "00_protocols",
+      "caption": "Reading guide to the completed OPT-125M / WikiText-2 experiments. No new training was run for this guide.",
+      "subtitle": "Graph families, equations, intuition and measured results | 28 October 2026",
+      "items": [
+        {
+          "kind": "body",
+          "text": "Two questions run through the report: can a model still predict genuine text, and what happens to the text it generates? The figures measure both, because the answers can differ."
+        },
+        {
+          "kind": "bullet",
+          "text": "Cycle 0: the real-data-trained reference, called G0 in Week 1 and S0 in Week 2. It is different from untouched pretrained OPT."
+        },
+        {
+          "kind": "bullet",
+          "text": "Shared beginning: the Week 2 reset/continued arms reuse the exact same S0, S1 and D2. Grey means one shared measurement pair; the arms first differ at cycle 2."
+        },
+        {
+          "kind": "bullet",
+          "text": "Fair comparisons: Week 1 and continued training have different first-step initializers and used different GPU classes. The shared-start pair matches the beginning and recorded primary environment."
+        },
+        {
+          "kind": "bullet",
+          "text": "Fixed measurements: all models see the same real validation/test blocks. Output statistics use the first 256 fixed training prompts, each producing exactly 64 new tokens."
+        },
+        {
+          "kind": "bullet",
+          "text": "Tokens: words, parts of words, punctuation or special symbols. Output statistics use token IDs, including special tokens; a 64-token output is not necessarily 64 words."
+        },
+        {
+          "kind": "body",
+          "text": "Read each section in this order: inspect the graph, read its equation, then connect the intuitive example to our measured results. All logarithms are natural; probability-based losses and entropy use nats."
+        }
+      ]
+    },
+    {
+      "title": "1. Real-text loss and perplexity",
+      "image": "01_perplexity",
+      "caption": "A/B: fixed real validation and test sets. C: matched test comparison. The shared prefix is reused; the untouched pretrained value 115.43 is omitted from these axes.",
+      "subtitle": null,
+      "items": [
+        {
+          "kind": "body",
+          "text": "Question: how much probability does the current model assign to the next token actually present in held-out real WikiText? Evaluation supplies the correct real prefix at every position."
+        },
+        {
+          "kind": "bullet",
+          "text": "Equation: x_i is an actual next token, p_theta is the current model and N is the number of scored targets. NLL L averages negative log-probability; perplexity is exp(L). Lower values mean better real-text prediction."
+        },
+        {
+          "kind": "bullet",
+          "text": "Intuition: assigning probability 0.1 to the correct token costs -ln(0.1) = 2.303 nats; probability 0.01 costs 4.605. Confident mistakes receive a larger penalty."
+        },
+        {
+          "kind": "bullet",
+          "text": "Perplexity scale: PPL 50 corresponds to a geometric mean correct-token probability of 1/50, or 2%. It is not an accuracy percentage. Loss and perplexity are two scales for the same measurement."
+        },
+        {
+          "kind": "bullet",
+          "text": "Our curves: Week 1 goes 33.88 -> 62.49 -> 52.83. Continued goes 33.89 -> 48.38, recovers to 42.72 at S3, then reaches 55.56. Final reset is 42.10, versus continued 55.56."
+        },
+        {
+          "kind": "bullet",
+          "text": "Validation versus test: validation chooses the lowest-loss checkpoint; test reports its performance. Neither split is used as training targets. Corpus PPL is exp(total NLL / scored targets), never an average of batch perplexities."
+        },
+        {
+          "kind": "body",
+          "text": "A plateau or dip does not contradict increased output repetition: predicting real next tokens and generating a whole continuation are different measurements. These trajectories alone do not identify the mechanism causing the dip."
+        }
+      ]
+    },
+    {
+      "title": "2. Distinct-n: variety of token combinations",
+      "image": "02_distinct",
+      "caption": "A/B show distinct-1/2/3 within each historical condition. C compares distinct-2 after the identical Week 2 beginning. Higher means more unique combinations per occurrence.",
+      "subtitle": null,
+      "items": [
+        {
+          "kind": "body",
+          "text": "Question: how many different individual tokens, pairs or triples occur in the fixed output sample? An n-gram is n consecutive tokens."
+        },
+        {
+          "kind": "bullet",
+          "text": "Equation: U_n is the number of unique n-gram types and T_n is their total number of occurrences. We form n-grams within each continuation, then pool counts across outputs."
+        },
+        {
+          "kind": "bullet",
+          "text": "Toy example: A B A B has distinct-1 = 2/4 = 50%; its pairs AB, BA, AB give distinct-2 = 2/3 = 66.7%; its triples ABA, BAB give distinct-3 = 2/2 = 100%."
+        },
+        {
+          "kind": "bullet",
+          "text": "Read the lines: compare each n with the same n across cycles. Longer sequences have more possible combinations, so distinct-3 naturally tends to exceed distinct-1."
+        },
+        {
+          "kind": "bullet",
+          "text": "Our results: Week 1 distinct-3 falls 42.83% -> 38.15%, although distinct-2 rises 29.23% -> 30.58%. Continued finishes above S0 on all three ratios; its distinct-2 still falls 19.6% from the S2 peak."
+        },
+        {
+          "kind": "bullet",
+          "text": "Matched final models: reset distinct-2 is 31.05%, versus continued 34.71%. Reset distinct-3 is 39.02%, versus S0 42.66%. Diversity changes are therefore mixed."
+        },
+        {
+          "kind": "body",
+          "text": "Interpretation limit: these ratios measure token-combination variety, not semantic variety or factual accuracy. Sample sizes are fixed because unique/total ratios depend on output length and sample size."
+        }
+      ]
+    },
+    {
+      "title": "3. Repeated four-token phrases",
+      "image": "03_repetition",
+      "caption": "The same 15,616 within-continuation four-gram positions are counted at every model. Higher values mean more occurrences beyond the first appearance of each four-gram.",
+      "subtitle": null,
+      "items": [
+        {
+          "kind": "body",
+          "text": "Question: how much of the generated sample reuses four-token combinations that have already appeared?"
+        },
+        {
+          "kind": "bullet",
+          "text": "Equation: T_4 counts all four-gram occurrences; U_4 counts unique four-gram types. Subtracting unique types leaves the excess occurrences after each first appearance."
+        },
+        {
+          "kind": "bullet",
+          "text": "Toy example: ten four-gram occurrences containing six unique types give (10 - 6)/10 = 40% repetition."
+        },
+        {
+          "kind": "bullet",
+          "text": "Scope: a phrase can repeat inside one output or across different outputs. No four-gram crosses an output boundary. Shared Wikipedia-style language can contribute even without a visible looping sentence."
+        },
+        {
+          "kind": "bullet",
+          "text": "Our results: Week 1 rises 48.87% -> 59.05%; continued rises 48.55% -> 52.36%. The matched reset model finishes at 57.66%, above continued's 52.36%."
+        },
+        {
+          "kind": "bullet",
+          "text": "Direction: rising repetition can indicate concentrated output, but neither every repeat nor every fluctuation establishes collapse. The initial real-trained model already has substantial phrase reuse."
+        },
+        {
+          "kind": "body",
+          "text": "A 57.66% rate does not mean 57.66% of sentences are identical. This is a four-token occurrence statistic. It equals one minus distinct-4 under the same counting rule; we report distinct-1/2/3 separately."
+        }
+      ]
+    },
+    {
+      "title": "4. Exact duplicate continuations",
+      "image": "04_duplicates",
+      "caption": "Each curve compares 256 complete 64-token outputs generated from the fixed prompt set. Exact equality is tested on token IDs.",
+      "subtitle": null,
+      "items": [
+        {
+          "kind": "body",
+          "text": "Question: do different prompts lead the model to produce exactly the same complete continuation? This is a stricter comparison than shared phrases."
+        },
+        {
+          "kind": "bullet",
+          "text": "Equation: subtract the number of unique continuation rows from 256 and divide by 256. The result counts extra copies after the first occurrence."
+        },
+        {
+          "kind": "bullet",
+          "text": "Toy example: ten outputs with eight unique rows contain two excess copies, so the duplicate rate is 20%. One pair among 256 contributes one extra copy: 1/256 = 0.39%."
+        },
+        {
+          "kind": "bullet",
+          "text": "Our results: Week 1 ends at 13/256 excess copies (5.08%). Continued ends at 7/256 (2.73%). The shared-start reset model ends at 15/256 (5.86%)."
+        },
+        {
+          "kind": "bullet",
+          "text": "Intuition: convergence to the same complete output across prompts suggests reduced responsiveness or output variety. In this experiment deterministic five-beam decoding is held fixed."
+        },
+        {
+          "kind": "body",
+          "text": "Interpretation limit: near-identical outputs differing by one token count as distinct. This metric can miss heavy repetition inside each output, so it should be read alongside repeated four-grams and examples."
+        }
+      ]
+    },
+    {
+      "title": "5. Empirical token entropy",
+      "image": "05_entropy",
+      "caption": "Entropy is calculated from observed token counts in the 16,384-token output probe. The vertical axis is nats, not a percentage.",
+      "subtitle": null,
+      "items": [
+        {
+          "kind": "body",
+          "text": "Question: is token usage spread across many tokens, or dominated by a small set? Entropy incorporates token frequencies as well as which token types appear."
+        },
+        {
+          "kind": "bullet",
+          "text": "Equation: p-hat(t) is token t's observed frequency divided by the total token count. H averages the surprisal -ln p-hat(t). Lower entropy means a more concentrated empirical distribution."
+        },
+        {
+          "kind": "bullet",
+          "text": "Toy example: two equally frequent tokens have H = ln(2) = 0.693 nats. If one token appears 99% of the time, H is only about 0.056 nats, despite having the same two-token vocabulary."
+        },
+        {
+          "kind": "bullet",
+          "text": "Difference from distinct-1: distinct-1 counts unique types relative to sample size. Entropy also notices whether a few of those types dominate almost all occurrences."
+        },
+        {
+          "kind": "bullet",
+          "text": "Our results: Week 1 moves 5.772 -> 5.675. Continued ends at 5.745, close to S0's 5.736. Reset falls to 5.125, showing stronger concentration in token use."
+        },
+        {
+          "kind": "body",
+          "text": "This is observed-output entropy, not the entropy of the model's predicted next-token probabilities. Its exponential is therefore not our real-test perplexity. High entropy can also come from incoherent text; it is not automatically a quality improvement."
+        }
+      ]
+    },
+    {
+      "title": "6. Outputs scored by the frozen real-trained model",
+      "image": "06_reference",
+      "caption": "Week 1 uses frozen G0; Week 2 uses frozen S0. Within each panel the reference weights are held fixed while the generated texts change.",
+      "subtitle": null,
+      "items": [
+        {
+          "kind": "body",
+          "text": "Question: how predictable are later outputs under the original real-data-trained reference model? Here the model doing the scoring stays fixed, while the text being scored changes."
+        },
+        {
+          "kind": "bullet",
+          "text": "Equation: y is a saved continuation from cycle g. The fixed reference scores targets 2-64 of each of 256 continuations: 16,128 targets. The original prompt is excluded."
+        },
+        {
+          "kind": "bullet",
+          "text": "Direction: a larger score means the generated continuations are less predictable under the reference; a smaller score means they are more predictable. Neither direction is a stand-alone quality verdict."
+        },
+        {
+          "kind": "bullet",
+          "text": "Our results: continued rises 1.446 -> 2.343 nats per target. Final reset scores 2.127. Reset output is more predictable under S0 than continued output, while also being more repetitive on several measures."
+        },
+        {
+          "kind": "bullet",
+          "text": "Compare with real-test PPL: real evaluation changes the scoring model but fixes the text. Frozen-reference scoring fixes the model but changes the text. These experiments answer different questions."
+        },
+        {
+          "kind": "body",
+          "text": "The saved reference-score histograms show the spread of these scores across continuations, instead of just their mean: rightward means less predictable. The score is cross-entropy-like and depends on the generated text's own uncertainty as well as mismatch; it is not KL divergence, factuality or prompt relevance."
+        }
+      ]
+    },
+    {
+      "title": "7. Passage losses, distributions and P95",
+      "image": "07_distributions",
+      "caption": "A: continued S0/S1/S10 real-test block losses, using common bins. B: final reset/continued cumulative losses on the same 4,494 blocks. The Week 1 histogram uses the same definition.",
+      "subtitle": null,
+      "items": [
+        {
+          "kind": "body",
+          "text": "Question: does an average hide which passages get harder? Each separately scored 64-token test block has 63 scored next-token targets. Its mean NLL is one observation in these plots."
+        },
+        {
+          "kind": "bullet",
+          "text": "Histogram A: the horizontal axis is block loss; the vertical axis is density. Area, rather than bar height alone, represents a fraction of passages. A rightward shift indicates higher losses."
+        },
+        {
+          "kind": "bullet",
+          "text": "Cumulative curve B: at any loss threshold, the height is the percentage of blocks at or below it. A curve further left generally indicates lower losses. A height of 80% means 80% of blocks have loss no greater than that x-value."
+        },
+        {
+          "kind": "bullet",
+          "text": "Median and P95: the median is the middle block loss. P95 is the 95th percentile: approximately 95% of blocks have loss at or below it. Final P95 is 4.629 for reset versus 4.998 for continued."
+        },
+        {
+          "kind": "bullet",
+          "text": "Paired result: reset has lower loss on 4,340/4,494 blocks (96.57%). Its mean test NLL is 3.740 versus 4.017, a 0.277-nat difference. The 96.57% is a descriptive passage fraction, not a confidence level."
+        },
+        {
+          "kind": "body",
+          "text": "Mean passage PPL averages exp(block loss); corpus PPL exponentiates the overall mean loss. They differ because exponentiation is nonlinear. Continued S10 has corpus PPL 55.56, but passage-PPL mean 67.50 and SD 44.79. This SD describes passage variation, not uncertainty across training runs. High-loss blocks do not by themselves identify rare-token loss."
+        }
+      ]
+    },
+    {
+      "title": "8. Epochs, validation and checkpoint selection",
+      "image": "08_selection",
+      "caption": "Horizontal axes now count epochs within a cycle, not recursive cycles. Stars identify the lowest real-validation-loss checkpoint among epochs 1-5.",
+      "subtitle": null,
+      "items": [
+        {
+          "kind": "body",
+          "text": "Question: which checkpoint should produce the next dataset, and what happens if synthetic training continues for more epochs? An epoch is one pass over that cycle's training dataset."
+        },
+        {
+          "kind": "bullet",
+          "text": "Selection equation: e-star is the epoch with the smallest fixed real validation NLL. Validation chooses the checkpoint; test data never make that choice. The unmodified starting checkpoint is not among the candidates."
+        },
+        {
+          "kind": "bullet",
+          "text": "Read the curves: in these cycles real validation loss rises after epoch 1, so the first epoch is selected. Further fitting of synthetic targets can worsen prediction on real text."
+        },
+        {
+          "kind": "bullet",
+          "text": "Executed versus inherited: continued training executed 50 epochs, but S10 inherits the ten selected synthetic epochs after S0. The reset branch executed 45 new epochs, but A10 starts from S0 and retains its own selected cycle-10 epoch. Its data still carry earlier recursive history."
+        },
+        {
+          "kind": "bullet",
+          "text": "Training loss: the mean negative log-probability on the current training targets. It can fall while real validation loss rises. Training datasets change between cycles, so their losses also reflect different target difficulty."
+        },
+        {
+          "kind": "body",
+          "text": "Fresh optimizer: both Week 2 arms restart AdamW and the learning-rate scheduler every cycle. Continued weights do not mean continued optimizer state. Epoch 1 was selected in every synthetic cycle of the continued and new reset arms."
+        }
+      ]
+    },
+    {
+      "title": "9. Data size, runtime and resource statistics",
+      "image": "09_resources",
+      "caption": "New work only: Week 1 trains G0-G10; continued imports S0; reset imports S0/S1 and runs A2-A10. Reset hours/debit are rounded report values. Debit includes storage and differing observation windows.",
+      "subtitle": null,
+      "items": [
+        {
+          "kind": "body",
+          "text": "Question: did the data budget stay constant, and where did the computation go? These are accounting measurements that make the experiment interpretable and reproducible."
+        },
+        {
+          "kind": "bullet",
+          "text": "Equal dataset size: every full training dataset has 37,946 blocks x 64 = 2,428,544 input tokens. There are 37,946 x 63 = 2,390,598 prediction targets per epoch. Prompts are excluded from synthetic training targets."
+        },
+        {
+          "kind": "bullet",
+          "text": "Fixed evaluation/probe sizes: validation scores 247,086 targets; test scores 283,122. The output probe has 256 x 64 = 16,384 tokens and 15,616 within-output four-gram positions. It is a fixed contiguous prompt slice, not a random full-corpus sample."
+        },
+        {
+          "kind": "bullet",
+          "text": "Runtime A: bars sum recorded new training/generation durations; diamonds show provisioning-to-completion time. Gaps include other work and accounting scope. Five-beam generation dominates these runs. The final model generates only a 256-output probe, not a full next training dataset."
+        },
+        {
+          "kind": "bullet",
+          "text": "Epochs B: 55, 50 and 45 new executed epochs respectively. Shared checkpoints and datasets retain their history but are not counted as newly executed work."
+        },
+        {
+          "kind": "bullet",
+          "text": "Cost C: about $2.23, $3.99 and $3.36 observed account debits. Hardware, work scopes and retained-storage windows differ; these are not itemized compute invoices or matched efficiency comparisons."
+        },
+        {
+          "kind": "body",
+          "text": "Throughput means scored training targets per second or generated continuations per second under a stated workload. Peak allocated GPU bytes measure the training process's allocator peak, not total machine VRAM. Forecast plots are benchmark-based estimates, separate from actual completed-run time and debit."
+        }
+      ]
+    },
+    {
+      "title": "10. Reading the measurements together",
+      "image": "10_synthesis",
+      "caption": "Same Week 2 reference and final models, viewed through three different measurements. Prediction, phrase reuse and token-frequency spread do not rank the models identically.",
+      "subtitle": null,
+      "items": [
+        {
+          "kind": "bullet",
+          "text": "Real-text prediction: reset A10 has lower PPL than continued B10, but both remain worse than S0. The advantage is broad across the fixed test blocks."
+        },
+        {
+          "kind": "bullet",
+          "text": "Generated output: reset has more repeated four-grams, more exact duplicates and lower entropy than continued. Its real-test advantage does not establish preserved output diversity."
+        },
+        {
+          "kind": "bullet",
+          "text": "Mixed metrics: continued ends above S0 on distinct-1/2/3 and near S0 in entropy, even though real-text PPL worsens. One example of a repeated sentence cannot establish a uniform vocabulary collapse."
+        },
+        {
+          "kind": "bullet",
+          "text": "Protocol scope: fixed real prompts, deterministic five-beam decoding, real-validation checkpoint selection and one seeded chain per condition. Passage variation does not supply independent training replicates."
+        },
+        {
+          "kind": "body",
+          "text": "Original report map: Week 1 A-F correspond to Sections 1, 2, 3, 4, 5 and 7 here. Standalone Week 2 A-F correspond to Sections 1, 2, 3/4, 5, 6 and 8. Shared-start A-F correspond to Sections 1, 2, 3, 4, 5 and 6. The final two panels correspond to Sections 7 and 8."
+        },
+        {
+          "kind": "label",
+          "text": "Sources and exact definitions"
+        },
+        {
+          "kind": "link",
+          "text": "Project report: methodology, tables and saved-text examples",
+          "url": "https://docs.google.com/document/d/1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk"
+        },
+        {
+          "kind": "link",
+          "text": "Reproducible metric definitions and implementation",
+          "url": "https://github.com/BillLeoutsakosvl346/Model_Collapse_in_Synthetic_Data_Training/blob/4fc263f68c68a96d5699285ac64f2868cde25ec9/docs/metrics.md"
+        },
+        {
+          "kind": "link",
+          "text": "Week 1 / continued / matched-pair evidence and figures",
+          "url": "https://github.com/BillLeoutsakosvl346/Model_Collapse_in_Synthetic_Data_Training/blob/4fc263f68c68a96d5699285ac64f2868cde25ec9/experiments/catalog.yaml"
+        }
+      ]
+    }
+  ],
+  "figures": {
+    "00_protocols": {
+      "file": "00_protocols.png",
+      "sha256": "9edba09a609f8fcd4f2e78b2876d192a1b8f3d685cdd0b1103604ebe728edd45",
+      "width_pt": 450.72,
+      "height_pt": 136.79999999999998
+    },
+    "01_perplexity": {
+      "file": "01_perplexity.png",
+      "sha256": "177061093d1a4dd6299c848890ac27d7e2c32662eed504deee92dd15b351c43f",
+      "width_pt": 450.72,
+      "height_pt": 190.79999999999998
+    },
+    "02_distinct": {
+      "file": "02_distinct.png",
+      "sha256": "b7189b2784eddab9439b271fbdad3c45e3529292e90af58c7470da8c0a281f03",
+      "width_pt": 450.72,
+      "height_pt": 190.79999999999998
+    },
+    "03_repetition": {
+      "file": "03_repetition.png",
+      "sha256": "3fab2e6d5d8c455be183c064c9e87a332f1102d182524a6aa7e0c53904d47c43",
+      "width_pt": 450.72,
+      "height_pt": 190.79999999999998
+    },
+    "04_duplicates": {
+      "file": "04_duplicates.png",
+      "sha256": "ca54ef398e91848cad5edbe11a79aff3a515b40b6897ce48895616655d4311cc",
+      "width_pt": 450.72,
+      "height_pt": 190.79999999999998
+    },
+    "05_entropy": {
+      "file": "05_entropy.png",
+      "sha256": "8f9e0b1a7a6c936871107645737866d6a6d48e6ac45cab07d3d999430203a43f",
+      "width_pt": 450.72,
+      "height_pt": 190.79999999999998
+    },
+    "06_reference": {
+      "file": "06_reference.png",
+      "sha256": "5aa34d3a8a265a69c59acf8d9fc9fd0cab725f237ba73d0daf71b1de4d8aaeba",
+      "width_pt": 450.72,
+      "height_pt": 212.4
+    },
+    "07_distributions": {
+      "file": "07_distributions.png",
+      "sha256": "67b77acddc06ccfb9f0f979cc019df43520b78610516b7552110513ea6bd2cec",
+      "width_pt": 450.72,
+      "height_pt": 201.6
+    },
+    "08_selection": {
+      "file": "08_selection.png",
+      "sha256": "172322994c4742ea123195a923ad62e64e632aeaa09650a88e3ffad85c472340",
+      "width_pt": 450.72,
+      "height_pt": 190.79999999999998
+    },
+    "09_resources": {
+      "file": "09_resources.png",
+      "sha256": "fd384a3b48030ebfe782461a3c759d417a06614f01635ef442356a1699177a02",
+      "width_pt": 450.72,
+      "height_pt": 169.20000000000002
+    },
+    "10_synthesis": {
+      "file": "10_synthesis.png",
+      "sha256": "271568f90f528a923348a16446a529fa3d62d333c3779afc5ac672aac74561e6",
+      "width_pt": 450.72,
+      "height_pt": 165.6
+    }
+  }
+}
