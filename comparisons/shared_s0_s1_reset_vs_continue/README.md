@@ -2,7 +2,7 @@
 
 **Question:** after one identical synthetic-training cycle, does returning to a fixed real-data-trained checkpoint behave differently from repeatedly updating the preceding selected checkpoint?
 
-**State:** both arms are complete. Reset run `20261027T211852Z-full-reset-s0` finished at 02:56 UTC/London on 28 October; detailed comparison analysis is pending. Existing Week 1 and Week 2 evidence remains unchanged. [Machine-readable definition](comparison.yaml) · [Completion record](../../docs/validation/2026-10-28_reset-full-completion.json).
+**State:** both arms are complete and the [single-seed comparison is analysed](../../reports/20261027T211852Z-full-reset-s0/report.md). Reset run `20261027T211852Z-full-reset-s0` finished at 02:56 UTC/London on 28 October. Existing Week 1 and Week 2 evidence remains unchanged. [Machine-readable definition](comparison.yaml) · [Completion record](../../docs/validation/2026-10-28_reset-full-completion.json).
 
 The reset setup passed [current-source GPU acceptance](../../reports/20261027T203952Z-smoke-reset-s0/report.md). This confirms the branch implementation and recovery, not full-data behaviour. [Handoff](../../docs/implementation-handoff.md).
 
@@ -46,3 +46,17 @@ New comparison analyses belong under `analyses/<analysis_id>/`, with input hashe
 This is still one seeded pair with a historical continued arm. Matching hardware/software reduces confounding but does not create independent replicates, guarantee bitwise deterministic recomputation or establish a general causal law. If the intended environment cannot be matched, do not label the comparison fully matched; leave the launch pending or plan a separately authorised paired rerun.
 
 The old pretrained-reset arm remains scientifically useful, but is not this reset arm: it starts from original pretrained OPT rather than real-trained S0. Its first-cycle difference should not be presented as the branch point in this comparison.
+
+## Recorded result and reproduction
+
+Shared test PPL is exactly 33.8851 at S0 and 48.3821 at S1. At cycle 2, reset A2 is 40.9465 versus continued B2 at 42.9750. Final A10 is 42.1009 versus B10 at 55.5568; reset has lower real-test loss on 96.57% of matched blocks. Yet reset's final repeated 4-grams are higher (57.66% versus 52.36%), exact duplicates are 15 versus 7 among 256 outputs, and entropy is lower. These are different observed properties, not a uniform improvement or proof that collapse was prevented.
+
+The [analysis directory](../../reports/20261027T211852Z-full-reset-s0/analysis/) contains all 22 arm/cycle rows (the two shared points are references), 95 synthetic-training epoch records, cycle contrasts, all decoded examples, figures and input/output hash manifests. The audit checks 170 statistics files, fixed prompts/splits, initialization/data handoffs, recorded environment equality and all 20 unique probe arrays. Raw statistics for the new arm are preserved separately under its `records/` directory.
+
+Reproduce both figures from committed small records, with no network, GPU or model weights:
+
+```powershell
+python comparisons/shared_s0_s1_reset_vs_continue/analyse.py --figures-only --out reports/20261027T211852Z-full-reset-s0/generated/review
+```
+
+Choose a new output directory each time. The default full audit also requires the verified metadata in ignored `runs/` and the small `probe_tokens/` arrays: eleven historical probes and nine new first-shard probes (256 rows each). They were recovered from the pinned backups recorded in the completion/recovery receipts, not by downloading full model weights or synthetic datasets. The script checks inputs before calculating statistics and refuses to overwrite an existing analysis destination. The frozen publication is in `reports/.../analysis/`; future generated comparisons use a new directory.

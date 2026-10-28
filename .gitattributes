@@ -7,3 +7,6 @@
 /reports/**/metrics_cloud_original.csv -text
 # Acceptance publications carry byte-level manifests for every exported role.
 /reports/*-smoke-reset-s0/** -text
+# Preserve the shared-start publication's byte-level evidence and analysis hashes.
+/reports/20261027T211852Z-full-reset-s0/** -text
+/comparisons/shared_s0_s1_reset_vs_continue/analyse.py text eol=lf

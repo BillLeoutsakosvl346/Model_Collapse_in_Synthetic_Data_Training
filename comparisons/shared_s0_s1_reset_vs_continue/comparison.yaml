@@ -1,6 +1,6 @@
 schema_version: 1
 id: shared_s0_s1_reset_vs_continue
-state: both_arms_completed_analysis_pending
+state: analysed_single_seed_pair
 setup_state: validated_full_run_completed
 acceptance_run_id: 20261027T203952Z-smoke-reset-s0
 acceptance_report: ../../reports/20261027T203952Z-smoke-reset-s0/report.md
@@ -61,5 +61,11 @@ limits:
   continued_arm_is_historical: true
   no_claim_of_bitwise_cross_launch_determinism: true
 analysis_directory: analyses
+published_analysis:
+  report: ../../reports/20261027T211852Z-full-reset-s0/report.md
+  metrics: ../../reports/20261027T211852Z-full-reset-s0/analysis/metrics.csv
+  manifest: ../../reports/20261027T211852Z-full-reset-s0/analysis/analysis_manifest.json
+  script: analyse.py
+  google_doc: https://docs.google.com/document/d/1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk
 new_full_run_started_by_setup: false
 subsequent_user_authorized_full_run: 20261027T211852Z-full-reset-s0

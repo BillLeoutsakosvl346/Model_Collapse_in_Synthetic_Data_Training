@@ -88,8 +88,11 @@ conditions:
         completed_new_cycles: [2, 3, 4, 5, 6, 7, 8, 9, 10]
         launch_record: ../docs/validation/2026-10-27_reset-full-launch.json
         completion_record: ../docs/validation/2026-10-28_reset-full-completion.json
-        recovery_scope: completion_metadata_verified
-        recovery_note: "33 small records verified against pinned private backups; all nine new stages and live shutdown checked. Bulk checkpoints and arrays not independently restored in this status check."
+        report: ../reports/20261027T211852Z-full-reset-s0/report.md
+        metrics: ../reports/20261027T211852Z-full-reset-s0/analysis/metrics.csv
+        consistency_audit: ../reports/20261027T211852Z-full-reset-s0/analysis/consistency_audit.json
+        recovery_scope: probe_verified
+        recovery_note: "1,392 metadata files / 41,509,308 bytes verified, plus nine new 256-output probes / 590,976 bytes; diversity recomputed with the historical arm. Bulk checkpoints and full synthetic arrays not independently restored."
       - id: 20261027T203952Z-smoke-reset-s0
         kind: smoke
         seed: 42

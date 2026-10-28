@@ -1,0 +1,819 @@
+{
+  "created_utc": "2026-10-28T10:48:06.935413+00:00",
+  "analysis_script": "comparisons\\shared_s0_s1_reset_vs_continue\\analyse.py",
+  "analysis_script_sha256": "c38d78941a2e50ad8ef3ae11bd2a12b6ea9b72cc4126822a571465efff01dd4b",
+  "analysis_base_git_revision": "52adaa50a6022a3ebb68041785a14c1ed0850eba",
+  "environment": {
+    "python": "3.12.1",
+    "numpy": "2.1.2",
+    "matplotlib": "3.9.4"
+  },
+  "sources": {
+    "continued": {
+      "run_id": "20261026T192740Z-full-continued",
+      "index_sha256": "edaaee7e8039bdabe5f8165726ef548e57efbd1a29b3d1016110e82b9cc9b070"
+    },
+    "reset_s0": {
+      "run_id": "20261027T211852Z-full-reset-s0",
+      "index_sha256": "cb71aa5bbbf1b0ff1e8ea179f89856b5efb3e952990902df450e706fa5d63254"
+    }
+  },
+  "input_hashes": {
+    "20261026T192740Z-full-continued/probe/gen_00": {
+      "sha256": "1a23d505b48f1a3cc04bd760a816b2972e5014db5e430f1a9e75decd5a409868",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/probe/gen_01": {
+      "sha256": "591515b62e93b2f9858ee16fb5dd06242e607bf66063d8076cbca423b605882a",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/probe/gen_02": {
+      "sha256": "39f71c8e42d5f7b314567c044da9e68affc0a370ec8ed2a336f983202da0fb34",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/probe/gen_03": {
+      "sha256": "9ec9e1251313242f7ff61f52c2392a69abc08abf0790a3dd30d93e4de93a9625",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/probe/gen_04": {
+      "sha256": "879cef284aa60fccae8c71df837db1bb27d92c867b2c393be33b75cec4891a9d",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/probe/gen_05": {
+      "sha256": "3f54060558fbf0a59d761a0cc884532dd629dd214afc87be0682856fc0c14b76",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/probe/gen_06": {
+      "sha256": "259b216b737d4f4639f7b3d307fc14a787f9152561a99a2e6e1b1b6e7d0dea5f",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/probe/gen_07": {
+      "sha256": "f77baf0290fc9b082f6e21f4ad6c6a90a5a776f2ee97b63cc25475633528071e",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/probe/gen_08": {
+      "sha256": "4793effda1506b107e14fe6ad64f8c638fe39f259f3f4bc29eecbefaf4356b29",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/probe/gen_09": {
+      "sha256": "aa754c4cf36a4da6a519a6e7bb33027b825b09c09cc27e22ade5654e034f9f86",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/probe/gen_10": {
+      "sha256": "a78ce77320dab1b97cdb418c037583b850c1de3d1ee9e5ae31cf9fa036ec321f",
+      "bytes": 65664
+    },
+    "20261026T192740Z-full-continued/config.json": {
+      "sha256": "6058c63db6d187cae166c664f3e23edb339d68a58cb24ceacd260354350d5f24",
+      "bytes": 1249
+    },
+    "20261026T192740Z-full-continued/environment.json": {
+      "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+      "bytes": 433
+    },
+    "20261026T192740Z-full-continued/data/manifest.json": {
+      "sha256": "f4989871f76309348e25ff58b787998099256369d8bcb17eb285d1948c8a9ab5",
+      "bytes": 1087
+    },
+    "20261026T192740Z-full-continued/completion.json": {
+      "sha256": "6f197afe81e9edca1653c42adf65c92a4cd323c33d740e6bd5c5ba1060ce8754",
+      "bytes": 109
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_00/metrics.json": {
+      "sha256": "60aa02252cbd4cf60a3c255a88c1894efa60f4c94378d8c24b9b85803198cbad",
+      "bytes": 17483
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_00/training.json": {
+      "sha256": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+      "bytes": 1272
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_00/test_sequences.json": {
+      "sha256": "3092e70292de9abba36ee4fdfe507a9085872257712bfa5144a806f86571d893",
+      "bytes": 105278
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_00/reference_sequences.json": {
+      "sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+      "bytes": 6159
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_00/samples.json": {
+      "sha256": "6e84823cf412b56ae8d28fc581c9cd7961e320e44c4357313e391c5408d4b1a6",
+      "bytes": 163542
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_01/manifest.json": {
+      "sha256": "5f18f37c9b042a7246553a977046f1e8cb8db287af34380ef99e20898fd07c96",
+      "bytes": 14487
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_01/metrics.json": {
+      "sha256": "c6ffecf964818f31946b8c18cf32f63d1344b0329d256f3cc65278b50a35e572",
+      "bytes": 17131
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_01/training.json": {
+      "sha256": "3b0ee31f2cedef4023492543a12d44ea86ba13b7bfdf011be1ba08e76378e53c",
+      "bytes": 931
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_01/test_sequences.json": {
+      "sha256": "8ccb604fffed911d3f33896819eb528c6b3d52935438bac4503ac5c536dc52ab",
+      "bytes": 104675
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_01/reference_sequences.json": {
+      "sha256": "42a0eae563c113219c9bc202cb595b34b28fecd21e71895243736b0eb8a10c50",
+      "bytes": 6142
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_01/samples.json": {
+      "sha256": "0112ae1c44ccbdddfcf2650047c390fa997cfd11c7eba6576cde6c0e2bce989d",
+      "bytes": 164804
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_01/training_history.json": {
+      "sha256": "7572c8eaa01de37b3fbb485bf456c7f5c5388f18001bef4feff9b39b4b803190",
+      "bytes": 1231
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_02/manifest.json": {
+      "sha256": "bd9ea395296b31a319256e36b3b51ceb24149b262677a6e24edf2e0deeb289ca",
+      "bytes": 14487
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_02/metrics.json": {
+      "sha256": "b4ef3040318f462e016a1158dd638dd61483eeab4880ccdf8edd4607311ccf0d",
+      "bytes": 17134
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_02/training.json": {
+      "sha256": "44a60bb3d0f33c6c788adbcfe18728709bc8fb880b392845072ac670331a8eee",
+      "bytes": 931
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_02/test_sequences.json": {
+      "sha256": "119661eb4c605160310d9250ef7564972262a9baff7b5f2209a6eac5fdeba6cf",
+      "bytes": 105000
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_02/reference_sequences.json": {
+      "sha256": "584bb063233a6e1837a5d777fb9f3d5f4c6ce2cd0b5e2945307cc1abed7a8177",
+      "bytes": 6099
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_02/samples.json": {
+      "sha256": "f668b7085964d980897583332abceecc1422da0eaa396286cc866b2291f45ba7",
+      "bytes": 166272
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_02/training_history.json": {
+      "sha256": "87559513eed58cafbc4d1e053e9345fbfa5311ea4dabe6d0867b8c7759561978",
+      "bytes": 1231
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_03/manifest.json": {
+      "sha256": "9f8ed9433842b29ddf0d8150db39d1f0254a6b82e74f440b3289cdcc8ba0e70b",
+      "bytes": 14487
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_03/metrics.json": {
+      "sha256": "10a11c5f54ee8faa3301cd43f9915ba7e5c8179214dff5109c4ce2dad99fb6ec",
+      "bytes": 17133
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_03/training.json": {
+      "sha256": "502fbc4815d4491ae16533286924215b389f5c4f2e986a7dc5c2b20317f30111",
+      "bytes": 931
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_03/test_sequences.json": {
+      "sha256": "e9b8622f7d41fd0bcb79b55da3c4771a2cbf72668b2d58ef145777e53a5bd4e4",
+      "bytes": 104947
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_03/reference_sequences.json": {
+      "sha256": "6434bd54e61c196b7b81d9db3ede066e905ec8e6c7371746c2e4a4f5d973059b",
+      "bytes": 6108
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_03/samples.json": {
+      "sha256": "a7a1d7445f359f49add706bc2e96d6ab0a70133473e6c23c541f1e961a4d3200",
+      "bytes": 165245
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_03/training_history.json": {
+      "sha256": "1badc241776c290d3f175a1c057c62f4b3f8fe319f86bfe780edaecfe05bdfed",
+      "bytes": 1230
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_04/manifest.json": {
+      "sha256": "7eeec58ecddba26ca22c85a60d713caf78e52055eb12b8a30f328018e711a418",
+      "bytes": 14487
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_04/metrics.json": {
+      "sha256": "9ad7a7c3eff86dac8fcec050cde2e4371f451dad0f0c57e10424ea37450cf0f1",
+      "bytes": 17141
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_04/training.json": {
+      "sha256": "ec47aa89e2d56d0aab58d0790ec084e019a01dd4247595d6dbb0e497f052ef9a",
+      "bytes": 932
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_04/test_sequences.json": {
+      "sha256": "642c292ab7b489c72cacf8d6de4484bded6cf1e11ae5c0ed167cf88b3756daba",
+      "bytes": 104923
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_04/reference_sequences.json": {
+      "sha256": "079db5dff8d2746eb67e317351d1845fd43f36d4a6e09d8edf1be90ce7732f1c",
+      "bytes": 6104
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_04/samples.json": {
+      "sha256": "5005bf9391b691e0a8efa8b6304281e23661fe24b24d51fb60b6ecd946355dda",
+      "bytes": 162055
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_04/training_history.json": {
+      "sha256": "667dd69ca105078f8712592bc6b0c10e10346e93a1f39790b2aefea3592aa2f0",
+      "bytes": 1233
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_05/manifest.json": {
+      "sha256": "dcaffba724a7bf26a6188c0959a2bb598dd76606b66372e3f4fd53b73db3839b",
+      "bytes": 14487
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_05/metrics.json": {
+      "sha256": "b6e47d47ed77ea461f1b23d43356fad2f2a3c1f98bae5a28478850e372ad9036",
+      "bytes": 17133
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_05/training.json": {
+      "sha256": "d63209ad27bbcc9aa003e41605fc180a1995d2179f557c5f147289ae93a96a54",
+      "bytes": 931
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_05/test_sequences.json": {
+      "sha256": "6e13be84b7e16a61c9307de8c9783a9e3106a38e2133322d9aec1925b22e1be6",
+      "bytes": 104895
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_05/reference_sequences.json": {
+      "sha256": "02350b0bb2483866721f49fab1e009b2fb94ef8aefaad2c36dfc2ee4f54ed170",
+      "bytes": 6102
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_05/samples.json": {
+      "sha256": "7299ccaa5699754d8dc8471d6a3c65b4735b51ca9e441a2f7817a35e532266ce",
+      "bytes": 160121
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_05/training_history.json": {
+      "sha256": "f62ea3ca531318cbcd0990bbb37a08ee208ca3179f9abc6bd9a901c24216627a",
+      "bytes": 1227
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_06/manifest.json": {
+      "sha256": "c625469b57aba49ddabb6223a4804ea394527048277131ecc9639c90c7dbe3d9",
+      "bytes": 14485
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_06/metrics.json": {
+      "sha256": "ed6f5e3207e44b29d203ce81b3c2b2b40dcf35efabe01cc7be94fa9e06b9ca9e",
+      "bytes": 17131
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_06/training.json": {
+      "sha256": "0a7062a3391e66e0d59bcc0936ab53a5d320836922075579b9f513aa3a97f990",
+      "bytes": 930
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_06/test_sequences.json": {
+      "sha256": "0ff7ed03d33beea51518d68e88ad1b6e6ac1536c321048629bdf0c62cd6b36e9",
+      "bytes": 104819
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_06/reference_sequences.json": {
+      "sha256": "d9d0183d8f142bab211c6fdd80210b124b980e192b1ccbed7434cf3a2a0f548d",
+      "bytes": 6109
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_06/samples.json": {
+      "sha256": "acbc47b50f1b8c7ab14e665303238dd36d0daaa6e10b651b9808132b46d91f22",
+      "bytes": 158199
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_06/training_history.json": {
+      "sha256": "5aea8f02ea922ddf0f70913bdcc015757fccc99e1269fc69e200056e29bd082c",
+      "bytes": 1232
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_07/manifest.json": {
+      "sha256": "98eb2ed6939fef1a23690a66320f57f47ff538f866b460fcd18d33c3424fb15f",
+      "bytes": 14487
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_07/metrics.json": {
+      "sha256": "9d02df402b0825826e9a4e4a33bc4ef9acec36a80beb8c27fc17c8d926ccd531",
+      "bytes": 17128
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_07/training.json": {
+      "sha256": "bd0803cb283b2b02522552877acbfe2dcd7da8c2dfc700b7633530471b16a140",
+      "bytes": 931
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_07/test_sequences.json": {
+      "sha256": "a5fdd75c23d69af217071e54428e4f0a1c5f7bf39f48c160484890b441f95303",
+      "bytes": 104744
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_07/reference_sequences.json": {
+      "sha256": "6004e7ff7199896918b632217a045ebc9e4ad8c6c49d44dbe5f0970c4b038951",
+      "bytes": 6082
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_07/samples.json": {
+      "sha256": "1a517bf7c1ba30df2fdf98873ca90a264872f69ef70cc22034cb9fc871a22189",
+      "bytes": 158994
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_07/training_history.json": {
+      "sha256": "37fa4882e5bc4faf0de077f70b227f5b8bc36780a565f478de31c828f24c7c13",
+      "bytes": 1232
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_08/manifest.json": {
+      "sha256": "25c464055823012e85ff890a59c7eb25e491c8329856a1328f57fc07955127b7",
+      "bytes": 14486
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_08/metrics.json": {
+      "sha256": "a15dbed40c2b05a966c4a579834169b5471f13c4a93fb066c435d01d685cf904",
+      "bytes": 17135
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_08/training.json": {
+      "sha256": "4a120c2cc094efabe2d706a43816b964c213316a9d8c938b8c9d9f758c971331",
+      "bytes": 930
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_08/test_sequences.json": {
+      "sha256": "6a44bd2986368dd13e27796ca198e39adc70966238d7871a628e553e306f7779",
+      "bytes": 104704
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_08/reference_sequences.json": {
+      "sha256": "fc0faae35ddddde5212ba529ff2b6bfaa5f52c0ba3efc6d10156e2582b0b5a00",
+      "bytes": 6113
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_08/samples.json": {
+      "sha256": "c7b54fa2d8eb62994a8aedbd725bc50d9c2161e4b44dc8e3351e3f133feef562",
+      "bytes": 158882
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_08/training_history.json": {
+      "sha256": "767873b63542fcc86915d54d3ca6f6c2f33e3d7b343e3580036077e9d5250dc5",
+      "bytes": 1228
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_09/manifest.json": {
+      "sha256": "5a471fbee219a4db5c6006afa08adf4741ef63c72e21dcde5f9047ff5f350d5f",
+      "bytes": 14487
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_09/metrics.json": {
+      "sha256": "50fbca850750c9e1f5425b1180d170d9c50888251aa3fa8034d0e83c5cb442f5",
+      "bytes": 17137
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_09/training.json": {
+      "sha256": "52de34f0394e940a4fd051f27328348eb35cbdbc7e4a8f326e8f18bfeee859c7",
+      "bytes": 931
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_09/test_sequences.json": {
+      "sha256": "56339d78cde7ab7c65266a3e50ba948cfa62c570158b84f216e9ed972a46a08d",
+      "bytes": 104559
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_09/reference_sequences.json": {
+      "sha256": "0fa3a8e4b06b8735dc9e2e2bd718ff2daa4853289c662876beef98fbfdd6fb6a",
+      "bytes": 6120
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_09/samples.json": {
+      "sha256": "a99c1d448af461469089e6d3613e9e6897bbbdb67156cb7c60af8ae680d8ac8b",
+      "bytes": 156754
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_09/training_history.json": {
+      "sha256": "53307c75e36a0a49303cb470c7c72908439f3bed621488761a9b6594a4ae20dd",
+      "bytes": 1230
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_10/manifest.json": {
+      "sha256": "87689c16c886e78310c555e118299593b85618a84b66b6965bddd8804909b1a6",
+      "bytes": 14486
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_10/metrics.json": {
+      "sha256": "88f87be369edc579bd4717e6e3ae3f390b9d23abe8393f01f40d868c967904cb",
+      "bytes": 3074
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_10/training.json": {
+      "sha256": "b5577717b1bdda6ca746a274882054669b4d8aa74030d5a15e8fe2efccea49fd",
+      "bytes": 932
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_10/test_sequences.json": {
+      "sha256": "3994a3b778423808b334fe0038153cde6a9f2afb0b5a3b5d1fb7ca94af35352b",
+      "bytes": 104486
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_10/reference_sequences.json": {
+      "sha256": "bcf1935b41b215089635bc45083cec406da24b650f4c6786c68fb794ced6d32c",
+      "bytes": 6115
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_10/samples.json": {
+      "sha256": "7283f11d8637983be26fc744e95075ed6e7d45a290c8383c0b49a8654dd60030",
+      "bytes": 158677
+    },
+    "20261026T192740Z-full-continued/seed_42/gen_10/training_history.json": {
+      "sha256": "4a9365d79a5652320222e17043022d239bd65e5a557aff8560e5f21a9ca9d59a",
+      "bytes": 1227
+    },
+    "20261026T192740Z-full-continued/synthetic_for_gen_11/manifest.json": {
+      "sha256": "c9c8b0f194e2e7d76d765c1e2b80dec26e8d69897ccd71a978a9d72a3d981fef",
+      "bytes": 721
+    },
+    "20261027T211852Z-full-reset-s0/probe/gen_02": {
+      "sha256": "cd9660ebc5ec98f8cb0f033838fe34fd503d671785935c005836162af76aa7cf",
+      "bytes": 65664
+    },
+    "20261027T211852Z-full-reset-s0/probe/gen_03": {
+      "sha256": "5427c86b61951f7824b630ac5d7205aae92fccd4b7e3448173d0df0429a6b3a5",
+      "bytes": 65664
+    },
+    "20261027T211852Z-full-reset-s0/probe/gen_04": {
+      "sha256": "27b865be5c7661a599007f87602bad0c1ae1bf0c16f6c9c664e88e1b5a226866",
+      "bytes": 65664
+    },
+    "20261027T211852Z-full-reset-s0/probe/gen_05": {
+      "sha256": "af8336f6369671c520e5bc82ab7169587b1b776e81551c1f355a39719ee30cb7",
+      "bytes": 65664
+    },
+    "20261027T211852Z-full-reset-s0/probe/gen_06": {
+      "sha256": "f2e582bfd3f69ddd187ada0220d2c487c9851584793d4820a65a93e1b442a7f9",
+      "bytes": 65664
+    },
+    "20261027T211852Z-full-reset-s0/probe/gen_07": {
+      "sha256": "f3bb4fc8f6b3f1abb445ff6a9898b3350d188aa5f965c4a3ae31c384d0158b31",
+      "bytes": 65664
+    },
+    "20261027T211852Z-full-reset-s0/probe/gen_08": {
+      "sha256": "43b5e07876fabff5dec72b29d5c585c2bbf2486dcb0c8c9049f8dcc60162cd42",
+      "bytes": 65664
+    },
+    "20261027T211852Z-full-reset-s0/probe/gen_09": {
+      "sha256": "50e206d1409d5c444ce5f06a0c14880bb14f6baa694cd3e51011eecccb48ddfd",
+      "bytes": 65664
+    },
+    "20261027T211852Z-full-reset-s0/probe/gen_10": {
+      "sha256": "0d2ced3db863298292c599e269ced86f3af8835b5af4382e8dae81190950f4cf",
+      "bytes": 65664
+    },
+    "20261027T211852Z-full-reset-s0/config.json": {
+      "sha256": "477516f7e1dc8a9035d4b333c8988157a88c0ec54e5bf37a924711bf430f62f6",
+      "bytes": 8183
+    },
+    "20261027T211852Z-full-reset-s0/environment.json": {
+      "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+      "bytes": 433
+    },
+    "20261027T211852Z-full-reset-s0/data/manifest.json": {
+      "sha256": "f4989871f76309348e25ff58b787998099256369d8bcb17eb285d1948c8a9ab5",
+      "bytes": 1087
+    },
+    "20261027T211852Z-full-reset-s0/completion.json": {
+      "sha256": "0be586b50599a8b44802dc46278ac13ca658251ed4c86164398f0ddfb5525df5",
+      "bytes": 183
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_00/metrics.json": {
+      "sha256": "60aa02252cbd4cf60a3c255a88c1894efa60f4c94378d8c24b9b85803198cbad",
+      "bytes": 17483
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_00/training.json": {
+      "sha256": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+      "bytes": 1272
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_00/test_sequences.json": {
+      "sha256": "3092e70292de9abba36ee4fdfe507a9085872257712bfa5144a806f86571d893",
+      "bytes": 105278
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_00/reference_sequences.json": {
+      "sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+      "bytes": 6159
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_00/samples.json": {
+      "sha256": "6e84823cf412b56ae8d28fc581c9cd7961e320e44c4357313e391c5408d4b1a6",
+      "bytes": 163542
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_00/import.json": {
+      "sha256": "44c76dad0d0f44c2649f68e03b0f20f18111bdb0bb04b5ed1f39243c4c4a79e1",
+      "bytes": 377
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_01/metrics.json": {
+      "sha256": "c6ffecf964818f31946b8c18cf32f63d1344b0329d256f3cc65278b50a35e572",
+      "bytes": 17131
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_01/training.json": {
+      "sha256": "3b0ee31f2cedef4023492543a12d44ea86ba13b7bfdf011be1ba08e76378e53c",
+      "bytes": 931
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_01/test_sequences.json": {
+      "sha256": "8ccb604fffed911d3f33896819eb528c6b3d52935438bac4503ac5c536dc52ab",
+      "bytes": 104675
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_01/reference_sequences.json": {
+      "sha256": "42a0eae563c113219c9bc202cb595b34b28fecd21e71895243736b0eb8a10c50",
+      "bytes": 6142
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_01/samples.json": {
+      "sha256": "0112ae1c44ccbdddfcf2650047c390fa997cfd11c7eba6576cde6c0e2bce989d",
+      "bytes": 164804
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_01/import.json": {
+      "sha256": "9669d7c6088484e57b8a30557fcfa488c20af9713df679905165b8bb6ff5db00",
+      "bytes": 377
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_02/metrics.json": {
+      "sha256": "33e9403ed104d6188b3592347150541d8739eda441d0d4bd1246bf9c18b7d0e0",
+      "bytes": 26836
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_02/training.json": {
+      "sha256": "ec4200b99363eaabd05a4375ce1f9cf863fc4d965324bef6089a2c74041721bb",
+      "bytes": 10198
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_02/test_sequences.json": {
+      "sha256": "4ec940a7cf2679a9becc8706294ad4057b9c62dac9957dec1687c07935d10b0e",
+      "bytes": 104937
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_02/reference_sequences.json": {
+      "sha256": "cec25ac72a99b1cbe98e1b2d501c1256348821a03d5e32bae88e62be8a194582",
+      "bytes": 6098
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_02/samples.json": {
+      "sha256": "f910f073a7c4afec1abf30bf858bc5ae6e167b6ac8f59401e3a4727f3734c334",
+      "bytes": 166402
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_02/stage_completion.json": {
+      "sha256": "1fb8b02499951c9c6903735bb9a405bdbfefe7a09999d9d3db53cc1546ace098",
+      "bytes": 1599
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_02/training_history.json": {
+      "sha256": "b20c944e2f28477ca6f252b8abed30d1c7fe3eff9520a9d623dad4b5c0b53832",
+      "bytes": 1229
+    },
+    "20261027T211852Z-full-reset-s0/synthetic_for_gen_03/manifest.json": {
+      "sha256": "8a6923b653bcac2235c2b53438c1831e6e069ed128503989624fe02575f920f4",
+      "bytes": 14486
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_03/metrics.json": {
+      "sha256": "dac1f35de515061bf1d4208bbdfd852af9fc36b3df9994a078256f863c695ce6",
+      "bytes": 26837
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_03/training.json": {
+      "sha256": "4e672ec318f5fa384cafb7c37f1e2c93597059c7e140ecb7d25a8ab3180d1b5f",
+      "bytes": 10197
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_03/test_sequences.json": {
+      "sha256": "abf1b7a460cedabbe730ded06eb9048adf420c6fcf39041518e553787c183219",
+      "bytes": 105056
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_03/reference_sequences.json": {
+      "sha256": "bb1af5d2d833640693642724d9d1f1a405e4134cb222d86c13ddcc8904c24817",
+      "bytes": 6097
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_03/samples.json": {
+      "sha256": "9c529722249546c682e945f27b3c669014c00669c089602f6099e3c120403225",
+      "bytes": 165391
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_03/stage_completion.json": {
+      "sha256": "db9a81113c5ddb28f45c30cac083e397b104d8e075e9ced6e0fd9e3c3721e9bf",
+      "bytes": 1599
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_03/training_history.json": {
+      "sha256": "fee11741292d05a67f10275203cef2d72179a18fe1f50e6e22e3c205889fdeef",
+      "bytes": 1233
+    },
+    "20261027T211852Z-full-reset-s0/synthetic_for_gen_04/manifest.json": {
+      "sha256": "5cb1bde0c93659364046f7f7804d9ecfccb6d51d6323e94e20e17a5caa06ba88",
+      "bytes": 14486
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_04/metrics.json": {
+      "sha256": "686e30724b0caf2df1d3eb1001e73341a120ca44d59d637de47024ffa309ac40",
+      "bytes": 26830
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_04/training.json": {
+      "sha256": "3be6bd4f350a816721462631268a623d822e54c07669900e792fc808c30dca33",
+      "bytes": 10199
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_04/test_sequences.json": {
+      "sha256": "eba78c231031a4af4fbf9bb9f266828e90e093688c40c7adfe8e56e7e15c90fe",
+      "bytes": 105036
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_04/reference_sequences.json": {
+      "sha256": "58e329640fddf0ec3c65884ee99d3ca7189329176d4a054539c71b1395d26cfd",
+      "bytes": 6093
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_04/samples.json": {
+      "sha256": "43c36c671a341c1244e6802ed6b6ce3bd1e7d1ef3f94ba0b0fb509b0c39b4d88",
+      "bytes": 159421
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_04/stage_completion.json": {
+      "sha256": "5ddf4526e78d87876deaebfbe9434f1f2d6e6c411a2cb4eeff1a9ee76b33031a",
+      "bytes": 1599
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_04/training_history.json": {
+      "sha256": "9d659708aef6498499b23b04b57754f485d6b66f17113fb6ce0f3912debe5454",
+      "bytes": 1234
+    },
+    "20261027T211852Z-full-reset-s0/synthetic_for_gen_05/manifest.json": {
+      "sha256": "e93b32eaee8c9fbae549f6e6d942ec5d209543f9a0cdb6d25d895ced8852fd5a",
+      "bytes": 14486
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_05/metrics.json": {
+      "sha256": "e4aea0943376331f0ae745c7439e4b31782f7935b37e0aab4549ce414d609e1c",
+      "bytes": 26843
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_05/training.json": {
+      "sha256": "03ac4980eca21ec3fdf2213e33909011dfcf5b9bf8039946d34a2d260d2d9152",
+      "bytes": 10198
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_05/test_sequences.json": {
+      "sha256": "f5cdcecc947444c7bcc513e6307496bffeda2650af3fa679b030daeae9ec5ea2",
+      "bytes": 105030
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_05/reference_sequences.json": {
+      "sha256": "aca64627d02ee6b5948dd82acf30a3fabe0f3b9f4d0f4ccdbcd99e12797c41a4",
+      "bytes": 6107
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_05/samples.json": {
+      "sha256": "03b200343c21bedfaa83d230c6b574a2c86efc06bedab3d1fe5272d7601f7a06",
+      "bytes": 158236
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_05/stage_completion.json": {
+      "sha256": "9c331adc4e5aa88f3f0f09597e131e6e07d2f629038d341e074e4da2ce8b22e8",
+      "bytes": 1599
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_05/training_history.json": {
+      "sha256": "83ea0f03f9b531c0d07ba07594cab42415721e703663c1286d667983e6811558",
+      "bytes": 1230
+    },
+    "20261027T211852Z-full-reset-s0/synthetic_for_gen_06/manifest.json": {
+      "sha256": "c49b631d25b02308e5464758ffef00fc0f761c2a6abb4924cd10eb71a0950822",
+      "bytes": 14487
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_06/metrics.json": {
+      "sha256": "0eea24200970bd5a9d6ef65b8a3308706d8a0670edc697b9e5a11bf43ea83607",
+      "bytes": 26836
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_06/training.json": {
+      "sha256": "e6e185d6164a34e4ada5649e5d75164bf238aaee3ebdf1d3178e645441e1f7f3",
+      "bytes": 10198
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_06/test_sequences.json": {
+      "sha256": "18e085686c48f9c26bc133c942e9b45c281e686c0bbed332327a3b29b009c8eb",
+      "bytes": 104943
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_06/reference_sequences.json": {
+      "sha256": "4ea393a222bbdb28f15f8c365cba595b57246a559cbbd9022ab72e1aa90bab4a",
+      "bytes": 6117
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_06/samples.json": {
+      "sha256": "80aa9c53beb44eb6a55d631e6e377c23e745fa12379822288b41ae80d06eed8f",
+      "bytes": 157039
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_06/stage_completion.json": {
+      "sha256": "19ed41a0bd02c1e6f7bbb477f9ff991b3c3abfa70bdbce27c581ad8943c6acea",
+      "bytes": 1599
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_06/training_history.json": {
+      "sha256": "0cae4465be20b518b1828d034b00eaaf9aa855bf0bca1c879af37bdcd8c6be77",
+      "bytes": 1229
+    },
+    "20261027T211852Z-full-reset-s0/synthetic_for_gen_07/manifest.json": {
+      "sha256": "c0dc58d88b1cce199adce8b4312b3dc9e1268b29b994dc0e085f16b42c47e7e5",
+      "bytes": 14487
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_07/metrics.json": {
+      "sha256": "fd9dc6d09f48ceadbd1ef372fbe56acef6bc545543df01c4763b6b7dfea3ad1b",
+      "bytes": 26830
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_07/training.json": {
+      "sha256": "08a513424475bb8e978e99b428a75b0fe4343d7a870a4660ee7178e6d248a1b9",
+      "bytes": 10197
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_07/test_sequences.json": {
+      "sha256": "2e382e4ff49587cc22bab21fad89366b03ca7480b5273fc7bfbd497a7c7c4234",
+      "bytes": 104970
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_07/reference_sequences.json": {
+      "sha256": "10de1443e9b3f78d9edc9c14ad764fc5b1909a5874e3a996ebb9316396efd73d",
+      "bytes": 6108
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_07/samples.json": {
+      "sha256": "d745cb1811ab1f78c258ef09310247d12424a19565e1f1203fc972fa75cda901",
+      "bytes": 155135
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_07/stage_completion.json": {
+      "sha256": "f26098a8ee0ceccc6873c3c13aa1275d62bd3c8c5a20317b1f74ee3fa42790d5",
+      "bytes": 1599
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_07/training_history.json": {
+      "sha256": "deb974e9b970f6cea56be65813fceb023bde9e31db76fbe4ef13143ce54a952e",
+      "bytes": 1227
+    },
+    "20261027T211852Z-full-reset-s0/synthetic_for_gen_08/manifest.json": {
+      "sha256": "7fafa5493c09338a381e27afc303dad7d2fe86cd3a7eb561104c3f59fc11ea43",
+      "bytes": 14486
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_08/metrics.json": {
+      "sha256": "f004b83c5f57cdf567f0d835781634375a0651c1c9c7981691987db5d79b4d46",
+      "bytes": 26833
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_08/training.json": {
+      "sha256": "0fcc69073c32f69cba21d26d898785b50e61b750500766b440cde546217ebb4c",
+      "bytes": 10195
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_08/test_sequences.json": {
+      "sha256": "b9d9b480df3aace463a7c11e1d2740e3e7d780dede25553e259eee83ac700114",
+      "bytes": 104976
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_08/reference_sequences.json": {
+      "sha256": "bbae7091ac2c334f4847fc883c727534d4775033ffcdd2624af1cb7b51a42cab",
+      "bytes": 6116
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_08/samples.json": {
+      "sha256": "96b27bf942720b6d5b1a31dc352dd9b299c3b1666eb024b74808af1ccc4b9584",
+      "bytes": 154171
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_08/stage_completion.json": {
+      "sha256": "07a1154d927b125191dcd830b901c0200767c4e42067b07b77a3568ab7ffb99d",
+      "bytes": 1599
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_08/training_history.json": {
+      "sha256": "44d00a31cc625d5447498e47a5212ec6d71d6850aec3dda3a83768dc011a0f6c",
+      "bytes": 1232
+    },
+    "20261027T211852Z-full-reset-s0/synthetic_for_gen_09/manifest.json": {
+      "sha256": "1e90e8396c3ccadd18c6f6ff8dcb7dac5970cb629b7420333be62ef21e33021f",
+      "bytes": 14487
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_09/metrics.json": {
+      "sha256": "9a8ff2ac1b0a20e612bed443fbf1fdeb57af73974313c8d6d15739e19a96a0ce",
+      "bytes": 26834
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_09/training.json": {
+      "sha256": "a96f2e46d11aab259459f9a7bf49a46f765acb20dae27a116f75733c44dce76f",
+      "bytes": 10198
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_09/test_sequences.json": {
+      "sha256": "3aa86f9bec840703562d85c9b2e89c1406de58242f777170581c300b505662fe",
+      "bytes": 104978
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_09/reference_sequences.json": {
+      "sha256": "b99b998b1bb944da331a145778e770995201061ac6a2a145a45e9918e8df14f3",
+      "bytes": 6118
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_09/samples.json": {
+      "sha256": "aa14f3e4842ed3ca58a862e9f9aa767b8b0eb61d689b932e2c88fd0fc879bbce",
+      "bytes": 155351
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_09/stage_completion.json": {
+      "sha256": "67b9f806265ea644c52db4a3ce7b6f473aa76afc3cee271b25c29b23347029e6",
+      "bytes": 1599
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_09/training_history.json": {
+      "sha256": "67114105d33164c2771a575c3c64c800c66949061c7380180d808c9b0cf73fde",
+      "bytes": 1226
+    },
+    "20261027T211852Z-full-reset-s0/synthetic_for_gen_10/manifest.json": {
+      "sha256": "6f38bdfe03848b1de0a25d24136e611c3497936740dad47339317c92a939fcf3",
+      "bytes": 14487
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_10/metrics.json": {
+      "sha256": "14747f3864eec15765a081765fd2c8dd6feac6d85f852a76b3acdd027921fe6c",
+      "bytes": 12778
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_10/training.json": {
+      "sha256": "2b283a0006fe492abf6e2dfc34237db3d157ca40abf7d2c5728791cb935fcb55",
+      "bytes": 10199
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_10/test_sequences.json": {
+      "sha256": "d00f98125f935637176033e6e2fc155376779851e51bc4bdd433d7080d608238",
+      "bytes": 104966
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_10/reference_sequences.json": {
+      "sha256": "585e62c83d87cac5255bcd48be6cdac85be90d1b75c1d9f31e8cd8d6930d6490",
+      "bytes": 6117
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_10/samples.json": {
+      "sha256": "95131a3a7bec3c68032d021940dc31857622c347e1cd8b3d87838123c5be6c01",
+      "bytes": 155742
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_10/stage_completion.json": {
+      "sha256": "60366721b362d0ab4ff16a063a9895ab1c1405c3c08a1a5e305ec6f327078bb8",
+      "bytes": 1600
+    },
+    "20261027T211852Z-full-reset-s0/seed_42/gen_10/training_history.json": {
+      "sha256": "6a84cf0837db5f47fa9021349aefe5e18ce6b5a964f5d3ab9c12a9e3a866b510",
+      "bytes": 1229
+    },
+    "20261027T211852Z-full-reset-s0/synthetic_for_gen_11/manifest.json": {
+      "sha256": "94f961794f5ec6169e50fb4a0d21818ae9a566f8736b8123a28637b164ae0e41",
+      "bytes": 721
+    },
+    "20261027T211852Z-full-reset-s0/shared_prefix.json": {
+      "sha256": "f799ef347469b41c1e02ca3b90de2f84d07b8d36e00726fdc0ceb021a4b802ac",
+      "bytes": 4863
+    },
+    "20261027T211852Z-full-reset-s0/synthetic_for_gen_02/manifest.json": {
+      "sha256": "423eeaaa390270d528eb11d20f5067b6d6b7e11667689bd0a4d1af59df759722",
+      "bytes": 1017
+    }
+  },
+  "output_files": {
+    "consistency_audit.json": {
+      "sha256": "120f33799173b2f24fa6ccefe72923571f735d7cf98ea9e7053eba15e315f329",
+      "bytes": 37027
+    },
+    "cycle_comparison.csv": {
+      "sha256": "8da4db3dbb6034070039d50b2e67cb8420fcfc4c51f4fab4247035f1e407cf2f",
+      "bytes": 1206
+    },
+    "generalization_and_selection.png": {
+      "sha256": "d1a6c78a8b3c0e8a9c665cc819e9400cc859405a00a1b9c4ad3e9c3ccc0795ab",
+      "bytes": 121421
+    },
+    "generated_examples.json": {
+      "sha256": "ce9f20cea247b62b9cf8f5528628b93c181e2eee6b040460fa56bcf417a35816",
+      "bytes": 3669983
+    },
+    "metrics.csv": {
+      "sha256": "ac77134a1f5d69592f122b11a762065810fcfd8e2b7e40353372da750dbc7c08",
+      "bytes": 14781
+    },
+    "shared_start_metrics.png": {
+      "sha256": "dc24d9b51dc72aac7e129d200a2354c9e347bb09eeafd44e1b3ac04c917b35aa",
+      "bytes": 320357
+    },
+    "summary.json": {
+      "sha256": "5f742b443a2d1c8713dd28ef107aa7ef14c41c4b3db507afa906944dbc3f1f95",
+      "bytes": 4239
+    },
+    "training_history.csv": {
+      "sha256": "a579ad66db9b115882c705fcb4c2f01d8ef33b4081ee12b3791348033d30bdfd",
+      "bytes": 11142
+    }
+  },
+  "scope": "Saved statistics and lineage plus recomputed first-256-output probes; no bulk checkpoint re-evaluation or full synthetic-array download.",
+  "hash_scope": "Output hashes exclude this self-referential analysis manifest."
+}
