@@ -1,5 +1,5 @@
 schema_version: 1
-updated: "2026-10-27"
+updated: "2026-10-28"
 description: "Scientific conditions and their recorded runs; week labels are presentation aliases."
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
@@ -64,7 +64,7 @@ conditions:
   reset_to_real_s0:
     name: "OPT-125M / WikiText-2: reset to fixed real-trained S0 after shared S1"
     initialization: reset_s0
-    state: running
+    state: completed
     definition: opt125m_wikitext2/reset_to_real_s0/README.md
     configs:
       full: opt125m_wikitext2/reset_to_real_s0/full.yaml
@@ -83,12 +83,13 @@ conditions:
       - id: 20261027T211852Z-full-reset-s0
         kind: full
         seed: 42
-        state: running
+        state: completed
         imported_cycles: [0, 1]
-        planned_new_cycles: [2, 3, 4, 5, 6, 7, 8, 9, 10]
+        completed_new_cycles: [2, 3, 4, 5, 6, 7, 8, 9, 10]
         launch_record: ../docs/validation/2026-10-27_reset-full-launch.json
-        recovery_scope: in_progress
-        recovery_note: "User-authorized full run; detached worker/watchdog verified. Completion and backup recovery must be checked later."
+        completion_record: ../docs/validation/2026-10-28_reset-full-completion.json
+        recovery_scope: completion_metadata_verified
+        recovery_note: "33 small records verified against pinned private backups; all nine new stages and live shutdown checked. Bulk checkpoints and arrays not independently restored in this status check."
       - id: 20261027T203952Z-smoke-reset-s0
         kind: smoke
         seed: 42

@@ -1,7 +1,7 @@
 schema_version: 1
 id: shared_s0_s1_reset_vs_continue
-state: running_reset_arm
-setup_state: validated_full_run_authorized_and_launched
+state: both_arms_completed_analysis_pending
+setup_state: validated_full_run_completed
 acceptance_run_id: 20261027T203952Z-smoke-reset-s0
 acceptance_report: ../../reports/20261027T203952Z-smoke-reset-s0/report.md
 question: "After the same first synthetic-training cycle, compare reset-to-real-S0 with continued weights."
@@ -39,7 +39,8 @@ arms:
   reset:
     condition: reset_to_real_s0
     run_id: 20261027T211852Z-full-reset-s0
-    state: running
+    state: completed
+    completion_record: ../../docs/validation/2026-10-28_reset-full-completion.json
     initialize_each_new_cycle: shared_s0
     config: ../../experiments/opt125m_wikitext2/reset_to_real_s0/full.yaml
     smoke_config: ../../experiments/opt125m_wikitext2/reset_to_real_s0/smoke.yaml

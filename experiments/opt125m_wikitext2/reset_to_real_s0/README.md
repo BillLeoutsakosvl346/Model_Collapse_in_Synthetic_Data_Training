@@ -1,6 +1,6 @@
 # Reset-to-real-S0 condition
 
-**State:** setup GPU-validated; user-authorized full run `20261027T211852Z-full-reset-s0` running. No completed full result claimed. [Launch record](../../../docs/validation/2026-10-27_reset-full-launch.json). Condition ID: `reset_to_real_s0`. Initialisation policy: `reset_s0`.
+**State:** full run `20261027T211852Z-full-reset-s0` completed on 28 October at 02:56 UTC/London; detailed comparison analysis pending. [Completion record](../../../docs/validation/2026-10-28_reset-full-completion.json) · [Historical launch record](../../../docs/validation/2026-10-27_reset-full-launch.json). Condition ID: `reset_to_real_s0`. Initialisation policy: `reset_s0`.
 
 This condition shares the first training cycle with the completed [continued run](../continued_from_real_s0/README.md), then resets training to the **fixed real-data-trained S0** on every new stage. It does not reset to untouched pretrained OPT.
 
@@ -27,4 +27,4 @@ The intended full comparison matches Week 2's RTX PRO 4000 Blackwell/software, p
 
 The [final-source acceptance](../../../reports/20261027T203952Z-smoke-reset-s0/report.md) passed 14 GPU/provider checks after 86 offline tests. It verified imports, two actual training updates from S0, both injected exits, shard recovery, private checkpoint restoration/re-evaluation and independent shutdown. Temporary resources were deleted. The full-run estimate from warmed production-batch benchmarks is about 8.3 hours / USD 4.75, with a conservative margin.
 
-Setup ended after validation. The user subsequently explicitly authorized the separate full launch on 27 October at 21:18 UTC/London; it is in progress. A later runtime change requires fresh acceptance. See the [setup handoff](../../../docs/implementation-handoff.md). Do not launch a duplicate or treat smoke results as full-run findings.
+Setup ended after validation. The user subsequently explicitly authorized the separate full launch on 27 October at 21:18 UTC/London; it completed all nine new stages after 5.62 hours, with five epochs per stage and automatic GPU shutdown. Small completion/lineage records and private artifact indexes were checked; bulk restore and detailed comparison remain separate. A later runtime change requires fresh acceptance. See the [setup handoff](../../../docs/implementation-handoff.md). Do not launch a duplicate or treat smoke results as full-run findings.

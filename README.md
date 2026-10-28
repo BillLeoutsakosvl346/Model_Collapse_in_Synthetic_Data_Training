@@ -8,13 +8,13 @@ Cambridge Engineering IIB: reproducible OPT-125M / WikiText-2 experiments on rec
 | --- | --- | --- |
 | [Pretrained reset](experiments/opt125m_wikitext2/pretrained_reset/README.md) | Original pretrained OPT at every synthetic cycle | [Completed Week 1](reports/20261020T211121Z-full/report.md) |
 | [Continued from real S0](experiments/opt125m_wikitext2/continued_from_real_s0/README.md) | Previous selected checkpoint | [Completed Week 2](reports/20261026T192740Z-full-continued/report.md) |
-| [Reset to real S0](experiments/opt125m_wikitext2/reset_to_real_s0/README.md) | Fixed real-data-trained S0, after an imported shared first cycle | [Running full experiment](docs/validation/2026-10-27_reset-full-launch.json): `20261027T211852Z-full-reset-s0` |
+| [Reset to real S0](experiments/opt125m_wikitext2/reset_to_real_s0/README.md) | Fixed real-data-trained S0, after an imported shared first cycle | [Completed full experiment](docs/validation/2026-10-28_reset-full-completion.json); comparison analysis pending |
 
 The [experiment catalogue](experiments/catalog.yaml) records run IDs and recovery scope. The [shared-start comparison](comparisons/shared_s0_s1_reset_vs_continue/README.md) uses the **same saved S0, S1 and D2** from Week 2, then compares resetting to S0 with continuing from the previous checkpoint. It preserves both earlier experiments. Week labels are presentation aliases, not configuration modes.
 
 The completed runs use one seed and different GPU architectures. Their results are preliminary: perplexity need not rise at every generation, and the diversity measurements are mixed. Read the reports before interpreting a curve as monotonic collapse.
 
-The [implementation handoff](docs/implementation-handoff.md) records **86 offline tests and 14 GPU acceptance checks**, recovery and automatic shutdown. Both test Pods and volumes were deleted. The user subsequently authorized the full reset experiment, launched on 27 October at 21:18 UTC/London. The benchmark estimate is about **8.3 hours / USD 4.75** for cycles 2-10, subject to actual throughput and upload time. Completion has not yet been verified.
+The [implementation handoff](docs/implementation-handoff.md) records **86 offline tests and 14 GPU acceptance checks**, recovery and automatic shutdown. Both test Pods and volumes were deleted. The separately authorized full reset run completed cycles 2-10 at **02:56 UTC/London on 28 October**, after **5.62 hours**. All stage metrics/handoffs and live GPU shutdown were checked; bulk recovery and detailed comparison analysis remain to do. [Completion evidence](docs/validation/2026-10-28_reset-full-completion.json).
 
 ## Install locally
 
@@ -44,7 +44,7 @@ python -m model_collapse validate RUN_ID
 
 Smoke, preflight with `--probe`, and cleanup have real external effects; the smoke command rents compute. They are not part of the offline test suite. Acceptance must match the source and protocol that actually ran. Check the resulting validation report before describing a changed workflow as ready.
 
-The full command below was used for the separately authorized launch. **Do not repeat it while `20261027T211852Z-full-reset-s0` is active**; inspect that run using `status` instead. Future launches require current-source acceptance and live budget/environment checks:
+The full command below was used for the separately authorized launch. **The run `20261027T211852Z-full-reset-s0` is complete; do not launch a duplicate.** Use status/fetch/report to inspect it. Future launches require new user authorization, current-source acceptance and live budget/environment checks:
 
 ```powershell
 python -m model_collapse launch --config experiments/opt125m_wikitext2/reset_to_real_s0/full.yaml --generations 10

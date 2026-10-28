@@ -2,7 +2,7 @@
 
 **Question:** after one identical synthetic-training cycle, does returning to a fixed real-data-trained checkpoint behave differently from repeatedly updating the preceding selected checkpoint?
 
-**State:** the continued arm is complete; the reset full run `20261027T211852Z-full-reset-s0` is running following separate user authorization. Existing Week 1 and Week 2 evidence remains unchanged. [Machine-readable definition](comparison.yaml) · [Launch record](../../docs/validation/2026-10-27_reset-full-launch.json).
+**State:** both arms are complete. Reset run `20261027T211852Z-full-reset-s0` finished at 02:56 UTC/London on 28 October; detailed comparison analysis is pending. Existing Week 1 and Week 2 evidence remains unchanged. [Machine-readable definition](comparison.yaml) · [Completion record](../../docs/validation/2026-10-28_reset-full-completion.json).
 
 The reset setup passed [current-source GPU acceptance](../../reports/20261027T203952Z-smoke-reset-s0/report.md). This confirms the branch implementation and recovery, not full-data behaviour. [Handoff](../../docs/implementation-handoff.md).
 

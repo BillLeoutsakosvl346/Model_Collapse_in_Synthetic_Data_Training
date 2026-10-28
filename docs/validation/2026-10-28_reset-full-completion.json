@@ -1,0 +1,94 @@
+{
+  "run_id": "20261027T211852Z-full-reset-s0",
+  "checked_utc": "2026-10-28T10:18:32.387516+00:00",
+  "completion": {
+    "complete": true,
+    "generations": 10,
+    "time": 1793156161.1780179,
+    "validation_g1_unchanged": false,
+    "validation_completed_cycle_unchanged": false,
+    "first_new_cycle": 2
+  },
+  "finished_london": "2026-10-28T02:56:01.178018+00:00",
+  "hours_from_provisioning": 5.6187032078372106,
+  "gpu_state": "EXITED",
+  "shutdown_reason": "complete",
+  "watchdog_receipt": {
+    "reason": "complete",
+    "time": 1793156314.4338362,
+    "pod_id": "m3s3z9i92lvdx9"
+  },
+  "checkpoints_indexed": 11,
+  "artifacts_indexed": 2609,
+  "indexed_bytes": 5729580012,
+  "model_metrics_rows": 11,
+  "new_training_stages_verified": 9,
+  "new_training_epochs_verified": 45,
+  "stage_histories": [
+    {
+      "cycle": 2,
+      "epochs": 5,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 3,
+      "epochs": 5,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 4,
+      "epochs": 5,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 5,
+      "epochs": 5,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 6,
+      "epochs": 5,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 7,
+      "epochs": 5,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 8,
+      "epochs": 5,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 9,
+      "epochs": 5,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 10,
+      "epochs": 5,
+      "selected_epoch": 1
+    }
+  ],
+  "shared_source_run": "20261026T192740Z-full-continued",
+  "shared_d2_exact": true,
+  "selected_test_perplexities": {
+    "0": 33.88507148759166,
+    "1": 48.38207737863404,
+    "2": 40.94647607412681,
+    "5": 41.616827687081425,
+    "10": 42.10094698647158
+  },
+  "backup_revisions": {
+    "model": "5a006b0df21504d6c4c8038dbc6971f96625c6dd",
+    "dataset": "86f5b714733318c36a3b7e32fd0edd91c638be98"
+  },
+  "artifact_index_sha256": "cb71aa5bbbf1b0ff1e8ea179f89856b5efb3e952990902df450e706fa5d63254",
+  "small_records_checksum_verified": 33,
+  "small_record_bytes": 301046,
+  "observed_account_debit_usd": 3.357239398000001,
+  "account_current_spend_per_hour": 0.009,
+  "network_volume_retained": "08ypgkuw40",
+  "evidence_basis": "Pinned completion/config/manifest, all 11 model metrics, all nine new epoch histories and stage manifests, backup index, and live provider shutdown. Bulk artifacts not downloaded or independently re-evaluated in this status check. Account debit includes retained storage and provider billing timing; not an itemized compute invoice."
+}
