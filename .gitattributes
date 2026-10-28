@@ -10,3 +10,6 @@
 # Preserve the shared-start publication's byte-level evidence and analysis hashes.
 /reports/20261027T211852Z-full-reset-s0/** -text
 /comparisons/shared_s0_s1_reset_vs_continue/analyse.py text eol=lf
+# Preserve editorial figure and delivery-manifest bytes across platforms.
+/reports/presentation_revisions/** -text
+/scripts/analysis/continued_only_figure.py text eol=lf
