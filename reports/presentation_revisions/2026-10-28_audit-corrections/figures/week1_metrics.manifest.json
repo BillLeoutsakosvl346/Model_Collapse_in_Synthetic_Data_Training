@@ -1,0 +1,67 @@
+{
+  "scope": "New presentation revision; original measurements and historical figure preserved.",
+  "inputs": {
+    "reports\\20261020T211121Z-full\\metrics.csv": {
+      "sha256": "e4d5b8fba595e1c842574667b8fb8a654d7483b6b922d240c5d9b0d49a527866",
+      "bytes": 2699
+    },
+    "reports\\presentation_revisions\\2026-10-28_audit-corrections\\inputs\\week1_block_losses.csv": {
+      "sha256": "91203f4f2d7b7a353ba96bfce0b19a59c021758373cd7f27e8de7be2363b8e9d",
+      "bytes": 251055
+    }
+  },
+  "histogram": {
+    "common_bin_edges": [
+      1.0,
+      1.2,
+      1.4,
+      1.6,
+      1.8,
+      2.0,
+      2.2,
+      2.4000000000000004,
+      2.6,
+      2.8,
+      3.0,
+      3.2,
+      3.4000000000000004,
+      3.6,
+      3.8000000000000003,
+      4.0,
+      4.2,
+      4.4,
+      4.6,
+      4.800000000000001,
+      5.0,
+      5.2,
+      5.4,
+      5.6000000000000005,
+      5.800000000000001,
+      6.0,
+      6.2,
+      6.4,
+      6.6000000000000005,
+      6.800000000000001,
+      7.0,
+      7.2,
+      7.4,
+      7.6000000000000005,
+      7.800000000000001,
+      8.0
+    ],
+    "density": true,
+    "blocks_per_series": 4494,
+    "all_blocks_in_range": true
+  },
+  "script_sha256": "aa5bf9d2760e8dc062bed11ce703a7b9b32cd8d6ddfb828266cfe2a795e9e31d",
+  "analysis_revision": "f44962f5f979b821fd4c378aebaab1fc4f7ccfc4",
+  "environment": {
+    "python": "3.12.1",
+    "numpy": "2.1.2",
+    "matplotlib": "3.9.4"
+  },
+  "output": {
+    "file": "week1_metrics.png",
+    "sha256": "5afd11495a67001cc54f6e5b5eab6307afaa9dfaa0bb8c882eeb08ac7efc8655"
+  }
+}

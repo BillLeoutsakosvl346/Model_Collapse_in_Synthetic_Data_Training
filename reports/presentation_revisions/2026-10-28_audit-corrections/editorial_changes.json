@@ -1,0 +1,223 @@
+{
+  "scope": "Corrections and interpretation after independent audit; original evidence preserved.",
+  "main_report": [
+    {
+      "start": 9142,
+      "end": 9235,
+      "old": "Largest change: the initial real-to-synthetic transition produces the largest measured loss.",
+      "text": "Largest change: the largest increase in real-test loss occurs from G0 to G1, at the first synthetic-training transition."
+    },
+    {
+      "start": 9235,
+      "end": 9428,
+      "old": "Possible plateau mechanism: a stable, biased distribution may emerge; pretrained initialization, real prompts and validation selection may constrain drift. This explanation is not established.",
+      "text": "Unexpected plateau: later perplexity stays near 52–54 rather than rising continuously. Fresh pretrained weights, fixed real prompts and validation selection may constrain drift. A stable biased regime is possible; its cause was not isolated."
+    },
+    {
+      "start": 9428,
+      "end": 9595,
+      "old": "Different measurements: perplexity scores real next tokens given correct real prefixes; beam-generated text follows the model’s own outputs, so the trends can differ.",
+      "text": "Different measurements: real-text perplexity uses correct real prefixes; generated text follows the model’s own outputs. Repetitive preferred continuations can coexist with reasonable probabilities for many real next tokens."
+    },
+    {
+      "start": 9787,
+      "end": 9853,
+      "old": "Sampling limit: the probe contains the first 256 training blocks.",
+      "text": "Sampling limit: output metrics use the first 256 consecutive prompts from six adjacent articles (0.675% of the prompt pool), not a random corpus sample."
+    },
+    {
+      "start": 16994,
+      "end": 17124,
+      "old": "Observed pattern: fitting synthetic targets while real validation loss worsens is consistent with a synthetic/real-text mismatch.",
+      "text": "Expected mismatch: synthetic training loss can fall while real-validation loss rises. The model is fitting its generated practice material while predicting human text worse."
+    },
+    {
+      "start": 17124,
+      "end": 17237,
+      "old": "Possible mechanism: repeated weight updates may accumulate that mismatch; this run does not establish the cause.",
+      "text": "Unexpected early recovery: test PPL falls from 48.38 at S1 to 42.72 at S3, then rises to 55.56. Changing datasets, beam choices and checkpoint selection may contribute; the precise dip is unexplained."
+    },
+    {
+      "start": 15226,
+      "end": 15348,
+      "old": "Mixed diversity: final distinct-n ratios remain above S0 and entropy is similar; distinct-2 falls 19.6% from its S2 peak.",
+      "text": "Mixed diversity: final distinct-n ratios exceed S0 and pooled entropy stays similar. Yet mean entropy within an output falls from 2.966 to 2.708 nats: different outputs can repeat different tokens."
+    },
+    {
+      "start": 24404,
+      "end": 24538,
+      "old": "Coverage: reset improves most fixed test blocks, beyond a few extreme passages. These blocks are not independent training replicates.",
+      "text": "Coverage: A10 has lower loss than B10 on 4,340/4,494 blocks. Against S0, loss is higher on 4,072 blocks for A10 and 4,377 for B10. The arm-to-arm advantage does not mean recovery to S0."
+    },
+    {
+      "start": 24959,
+      "end": 25155,
+      "old": "Possible mechanism: fixed-S0 initialization may limit accumulated weight drift while deterministic feedback concentrates synthetic text; this is an interpretation, not an isolated mechanism test.",
+      "text": "Possible explanation: restoring S0 prevents direct inheritance of earlier synthetic weight updates; the data still carry recursive history. This may constrain real-text deterioration, but it does not guarantee varied generation."
+    },
+    {
+      "start": 25719,
+      "end": 25896,
+      "old": "Measurement limits: a fixed 256-prompt probe; tail block loss does not identify rare-token loss. This compares two defined protocols, not every condition of the original paper.",
+      "text": "Measurement limits: output metrics use a consecutive six-article probe and count formatting tokens. P95 does not identify rare-token loss; this is a defined protocol comparison, not every condition of the paper."
+    },
+    {
+      "start": 22554,
+      "end": 22823,
+      "old": "Complete saved 64-token continuations for prompt 0, whose last words are “…Valkyria Chronicles III outside”. Only display whitespace is normalized. Generated factual claims are unverified; these examples illustrate behaviour and do not establish aggregate frequencies.",
+      "text": "Complete saved 64-token continuations for prompt 0, ending “…Valkyria Chronicles III outside”. Continued B10 loops more in this particular example; that ranking differs from the pooled output metrics. Section 9 explains why. Generated claims are unverified."
+    },
+    {
+      "start": 2419,
+      "end": 2559,
+      "old": "Generation: the preceding model receives all 37,946 real training blocks as 64-token prompts and produces exactly 64 new tokens per prompt.",
+      "text": "Generation: the preceding model receives all 37,946 real training blocks as 64-token prompts and produces exactly 64 new tokens. EOS is suppressed throughout to enforce that length; continuation IDs alone become training targets."
+    },
+    {
+      "start": 6240,
+      "end": 6536,
+      "old": "Figure 1. One-seed results. (a) Fixed real validation/test sets; pretrained baseline 115.43 is omitted for readability. (b-e) Fixed 256-prompt probe. (f) Same 4,494 test blocks and common bins. This distribution describes variation among blocks, not uncertainty across independent training runs.",
+      "text": "Figure 1. One-seed results. (a) Fixed real validation/test sets; untouched pretrained PPL 115.43 omitted. (b–e) Fixed 256-prompt probe, including formatting tokens. (f) The same 4,494 test blocks, with 35 explicit common bins from 1 to 8 nats. New presentation; original measurements preserved."
+    },
+    {
+      "start": 25633,
+      "end": 25719,
+      "old": "Protocol scope: real prompts at every cycle and real-validation checkpoint selection.",
+      "text": "Protocol scope: fixed real prompts at every cycle, exact 64-token continuations with EOS suppressed, and real-validation checkpoint selection."
+    }
+  ],
+  "guide": [
+    {
+      "start": 1207,
+      "end": 1378,
+      "old": "Fixed measurements: all models see the same real validation/test blocks. Output statistics use the first 256 fixed training prompts, each producing exactly 64 new tokens.",
+      "text": "Fixed measurements: real validation/test blocks stay fixed. Output statistics use the first 256 consecutive training prompts from six articles. At cycle k, real scores assess the model trained on Dk; output metrics describe its next-dataset D(k+1)-style text."
+    },
+    {
+      "start": 1378,
+      "end": 1547,
+      "old": "Tokens: words, parts of words, punctuation or special symbols. Output statistics use token IDs, including special tokens; a 64-token output is not necessarily 64 words.",
+      "text": "Tokens: words, word parts, punctuation and formatting such as '='. Statistics count original token IDs. Exactly 64 new tokens are forced, suppressing EOS throughout; 64 tokens need not be 64 words."
+    },
+    {
+      "start": 1547,
+      "end": 1868,
+      "old": "How to read the explanations: intuition describes the model's behaviour in everyday terms. 'Likely causes' are interpretations of our results, not established mechanisms. Specific dips and peaks can remain unexplained. Equations and numerical examples show how each measurement is calculated. All logarithms are natural.",
+      "text": "How to read the explanations: measured patterns and possible explanations are distinguished below. The data establish what changed; they do not identify the cause of every dip or peak. Intuition describes behaviour; equations specify the metric. All logarithms are natural."
+    },
+    {
+      "start": 3211,
+      "end": 3418,
+      "old": "Likely cause of the first jump: replacing human targets with selected synthetic continuations shifts the patterns being learned [1]. Week 1 and continued training also use different first-step initializers.",
+      "text": "Expected deterioration: after synthetic training, real-text PPL is higher than S0/G0. Replacing human targets with generated continuations changes the training distribution [1]. This is consistent with the first jump, although its precise size is not causally isolated."
+    },
+    {
+      "start": 3418,
+      "end": 3661,
+      "old": "Likely cause of the later separation: resetting to real-trained S0 may limit accumulated weight drift; continued updates may compound the synthetic/real mismatch. This is consistent with the matched curves, but not an isolated mechanism test.",
+      "text": "Possible explanation for the separation: restoring S0 removes inherited synthetic weight updates; continued training carries them forward. This may constrain real-text deterioration. Both arms still learn from recursively altered data."
+    },
+    {
+      "start": 3661,
+      "end": 3923,
+      "old": "Unresolved dip and plateau: changing synthetic datasets, beam-search choices and real-validation selection could produce partial recovery or a stable biased regime. We have not established why the early dip occurs, or why Week 1 settles at its particular level.",
+      "text": "Unexpected dip and plateau: collapse does not require PPL to increase every cycle. Changing synthetic data, preferred beams and validation-selected checkpoints can produce nonmonotonic scores. The exact early recovery and Week 1 plateau remain unexplained."
+    },
+    {
+      "start": 5637,
+      "end": 5956,
+      "old": "Likely causes: early fine-tuning changes which continuations beam search prefers, potentially increasing measured variety. Later feedback can reinforce recurring templates and reduce combination variety. That could explain the early peaks and later declines, but it does not uniquely explain the exact peak at cycle 2.",
+      "text": "Unexpected early increase: distinct-n can rise while real-text prediction worsens. New combinations or different mistakes increase surface variety. Later reset outputs contain more repeated '=' markers, which reduce raw-token distinctness; see Section 5a."
+    },
+    {
+      "start": 5956,
+      "end": 6228,
+      "old": "Why the measures disagree: a model can introduce new individual tokens while recombining them in familiar longer phrases. Thus distinct-1/2 can remain above S0 while distinct-3 falls. Similar or even incoherent answers can still contain many different token combinations.",
+      "text": "Why the measures disagree: a model can introduce individual tokens while repeatedly combining them into familiar phrases. Longer phrase variety, token-frequency spread and real-text prediction measure different behaviour; none is a factuality score."
+    },
+    {
+      "start": 7805,
+      "end": 8092,
+      "old": "Likely causes: deterministic beam search favours high-probability sequences and can produce repetitive text [2]. Training on those outputs may then reinforce the same patterns. The later reset arm is consistent with stronger phrase concentration despite its better real-test perplexity.",
+      "text": "Possible explanation: beam search prefers high-probability sequences and can loop [2]; synthetic training may reinforce them. The observed final reset/continued ranking is also strongly affected by heading-symbol repetition, not just repeated natural-language phrases."
+    },
+    {
+      "start": 8092,
+      "end": 8311,
+      "old": "Why the curve can dip: a change in preferred continuations can temporarily introduce more unique four-grams. The early drop is real, but its precise cause was not isolated. Token reuse need not increase at every cycle.",
+      "text": "Unexpected dip: preferred phrases can change, temporarily introducing more unique four-grams. Removing equality-containing windows diagnostically reverses the final repetition ranking slightly (44.61% reset, 45.22% continued); the retained windows differ, so this does not replace the primary metric."
+    },
+    {
+      "start": 9076,
+      "end": 9336,
+      "old": "Behavioural intuition: imagine asking several different questions and receiving the same complete answer. More duplicates mean the model is producing fewer distinct full responses across our prompt set, suggesting reduced output variety or prompt sensitivity.",
+      "text": "Behavioural intuition: several prompts can receive exactly the same complete continuation. More duplicates mean fewer distinct full outputs on this prompt set. Related article contexts can also encourage convergence; prompt sensitivity was not independently measured."
+    },
+    {
+      "start": 9546,
+      "end": 9824,
+      "old": "Likely causes: common templates can become preferred for several prompts as synthetic feedback reinforces them. Deterministic decoding repeats the preferred choice; our fixed prompt slice also contains related Wikipedia contexts, so some convergence may reflect similar inputs.",
+      "text": "Possible explanation: recurring templates or formatting loops can become preferred for several related prompts. The final reset probe has 64 outputs with at least half their tokens equal to '=', versus 25 for continued. This concentration can accompany complete duplicates."
+    },
+    {
+      "start": 10378,
+      "end": 10614,
+      "old": "Behavioural intuition: think of the model's word-use habits. Is it spreading its output across many tokens, or letting a small group dominate? Lower entropy means a more concentrated mix, even if occasional unusual tokens still appear.",
+      "text": "Behavioural intuition: think of the mix of tokens the model emits, including punctuation and formatting. Lower entropy means a few tokens dominate more strongly. It does not directly measure confidence, correctness or the order of repeated phrases."
+    },
+    {
+      "start": 11561,
+      "end": 11875,
+      "old": "Likely causes: the reset arm's later entropy fall is consistent with repeated templates making some tokens disproportionately frequent. Continued training changes the frequency mix differently and ends near S0. Its early rise could reflect a broader or more even mix of tokens, rather than improved understanding.",
+      "text": "Measured driver: '=' accounts for 22.82% of final reset tokens versus 11.00% of continued tokens. Excluding it diagnostically shrinks the entropy gap from 0.620 to 0.122 nats. The original graph correctly includes those generated symbols."
+    },
+    {
+      "start": 11875,
+      "end": 12151,
+      "old": "What remains uncertain: these curves do not identify which token frequencies caused each rise or dip. Similar final entropy can hide different vocabularies and phrase structures, so continued entropy returning near S0 does not establish recovery of the original distribution.",
+      "text": "Unexpected stability: continued pooled entropy ends near S0, but mean within-output entropy falls from 2.966 to 2.708. Different answers can repeat different tokens. Why reset training favours more heading loops remains untested; Section 5a separates the measurements."
+    },
+    {
+      "start": 13590,
+      "end": 13897,
+      "old": "Likely causes of the hump: synthetic training initially changes the generated wording, making it less expected under S0. Later concentration on phrases S0 already considers likely could pull the score down. The reset arm's falling late score alongside rising repetition is consistent with this explanation.",
+      "text": "Possible explanation for the hump: early outputs may become less familiar to S0, then later favour more predictable phrases or formatting. The score also depends on what text is generated. Its exact peak is unexplained, and falling reference NLL does not establish better answers."
+    },
+    {
+      "start": 13897,
+      "end": 14159,
+      "old": "Why real-test PPL can still rise: the reference is becoming less surprised by the generated text, while the changing model is becoming more surprised by real text. These are different scoring directions. We have not isolated the cause of the exact mid-run peak.",
+      "text": "Why the two scores can disagree: a frozen model can find generated loops predictable while the evolving model predicts real passages worse. The reference is fixed in one measurement; the text is fixed in the other. They do not supply the same quality test."
+    },
+    {
+      "start": 15194,
+      "end": 15369,
+      "old": "Paired result: reset has lower loss on 4,340/4,494 blocks (96.57%); mean NLL is 3.740 versus 4.017, a 0.277-nat difference. The percentage describes passages, not confidence.",
+      "text": "Paired final-arm result: A10 has lower loss than B10 on 4,340/4,494 blocks (96.57%). Mean NLL is 3.740 versus 4.017. This is a descriptive comparison between arms, not a confidence level or a baseline comparison."
+    },
+    {
+      "start": 15631,
+      "end": 15967,
+      "old": "Likely causes: a broad rightward shift is consistent with synthetic training changing predictions across many real contexts. Resetting to S0 may preserve more of the real-trained predictions, explaining its leftward advantage over continued training. The matched-block result supports broad deterioration, but does not prove its cause.",
+      "text": "Baseline comparison: relative to S0, loss rises on 4,072/4,494 blocks for reset A10 and 4,377/4,494 for continued B10. Both show broad deterioration from baseline; A10’s final advantage over B10 is a separate result. These counts do not identify a mechanism."
+    },
+    {
+      "start": 18221,
+      "end": 18492,
+      "old": "Likely cause: further updates favour the synthetic distribution at the expense of real-text prediction, consistent with overfitting or distribution mismatch. These curves cannot separate the mechanisms. Selection does not imply epoch 0 was worse; it was not a candidate.",
+      "text": "Expected transfer mismatch: in continued cycle 1, train loss falls 1.112 to 0.889 while real-validation loss rises 3.892 to 4.007. Further updates fit the synthetic data better but transfer worse to real text. Overfitting and distribution mismatch are possible explanations; this comparison does not separate them."
+    },
+    {
+      "start": 21398,
+      "end": 21677,
+      "old": "Likely explanation: resetting may preserve the real-trained starting knowledge while recursively generated data still concentrate output. Continued training additionally carries weight changes forward. This is a plausible account of the matched pair, not proof of the mechanism.",
+      "text": "Possible explanation: restoring S0 limits direct weight inheritance, while synthetic data still carry recursive errors. The concrete observed output concentration includes heading-symbol loops. Why those loops differ between arms is unresolved."
+    },
+    {
+      "start": 21180,
+      "end": 21398,
+      "old": "Observed result: reset A10 has lower PPL than continued B10, but higher four-gram repetition, more exact duplicates and lower entropy. Both final perplexities remain worse than S0; diversity does not change uniformly.",
+      "text": "Observed result: A10 predicts held-out real text better than B10, but has more raw-token repetition and lower pooled entropy. Much of that output difference reflects '=' loops on this probe. Both final perplexities remain worse than S0."
+    }
+  ]
+}

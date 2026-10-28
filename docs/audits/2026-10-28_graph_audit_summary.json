@@ -1,0 +1,284 @@
+{
+  "audit_date": "2026-10-28",
+  "audited_git_revision": "f44962f5f979b821fd4c378aebaab1fc4f7ccfc4",
+  "reviewer_count": 5,
+  "verdict": "No numerical error found in saved metrics or traced plotted data; interpretation/presentation/reproducibility corrections recommended.",
+  "metric_checks": {
+    "count": 3961,
+    "failures": 0,
+    "reported_stage_rows": 33,
+    "distinct_probe_arrays": 31,
+    "executed_training_stages": 30,
+    "executed_epoch_records": 150,
+    "maximum_absolute_discrepancies": {
+      "corpus_nll_from_sums": 0.0,
+      "corpus_ppl_from_sums": 0.0,
+      "distinct_repetition_duplicate_rates": 0.0,
+      "entropy_nats": 1.7763568394002505e-15,
+      "per_block_reconstructed_nll_sum": 7.275957614183426e-12,
+      "passage_ppl_mean": 1.4210854715202004e-14,
+      "passage_ppl_population_sd": 7.105427357601002e-15,
+      "metric_csv_numeric_fields": 1.4210854715202004e-14,
+      "rounded_report_tables": 0.0
+    }
+  },
+  "plot_checks": {
+    "numerical_checks": 353,
+    "failures": 0,
+    "native_images_byte_identical": 15,
+    "publication_assets_byte_regenerated": 16,
+    "original_cloud_images_pixel_regenerated": 5,
+    "current_week1_six_panel_generator_retained": false,
+    "current_week1_exact_histogram_recipe_verified": false
+  },
+  "execution": {
+    "verdict": "No proven graph-changing execution bug or protocol deviation found in inspected evidence.",
+    "archived_runtime_identities": {
+      "20261020T211121Z-full": "fb93b7cec0cf6ccf32e0941cf3c37ef4d0b0edefd744b332201d799e61604dea",
+      "20261026T192740Z-full-continued": "48d1f6210cf295a83a39236b0e2bbb9fc5ff4ba899f9197b362f4ae9b3b82557",
+      "20261027T211852Z-full-reset-s0": "5d56bf37476583b20fd9d74c40941b322af6bcb2720a48a7a463f9aca6dde49e"
+    },
+    "independently_reconstructed_real_splits": {
+      "train": {
+        "rows": 36718,
+        "blank_rows": 12951,
+        "full_blocks": 37946,
+        "discarded_remainder_tokens": 58,
+        "npy_sha256": "546f467e177406cd4da4571e490de15ad691b7a63ea317dfea99b219433d8c31",
+        "token_content_sha256": "f40d2891212b57f027105d0952c9725959ceb716a6a8af2064f0c359dd767a67",
+        "special_token_counts": {
+          "0": 0,
+          "1": 0,
+          "2": 36717
+        }
+      },
+      "validation": {
+        "rows": 3760,
+        "blank_rows": 1299,
+        "full_blocks": 3922,
+        "discarded_remainder_tokens": 41,
+        "npy_sha256": "f7cab8d76a7700b1db3c4f3bfc2be399249c068c7ac1cdff94acaceb7c25f22a",
+        "token_content_sha256": "4e96b67903e3afe16e7683e99519b76970579c968f6c8d149af7a7db07c1588e",
+        "special_token_counts": {
+          "0": 0,
+          "1": 0,
+          "2": 3753
+        }
+      },
+      "test": {
+        "rows": 4358,
+        "blank_rows": 1467,
+        "full_blocks": 4494,
+        "discarded_remainder_tokens": 29,
+        "npy_sha256": "baa63f2fa9961e122c02ef8cc239baa6e5abcfd58c84f629392750f597d4f72d",
+        "token_content_sha256": "51d7da3e6f1602a7179a777aee1b9dbe8b3bed704f1d80c912bb1f1954eddcec",
+        "special_token_counts": {
+          "0": 0,
+          "1": 0,
+          "2": 4357
+        }
+      }
+    },
+    "shared_prefix_hash_metadata_consistent": true
+  },
+  "offline_tests": {
+    "command": ".venv/Scripts/python.exe -m pytest -q",
+    "passed": 86,
+    "warnings": 17,
+    "seconds": 58.46
+  },
+  "preservation": {
+    "checked_files": 312,
+    "matched_files": 312,
+    "historical_failures": []
+  },
+  "final_output_diagnostics": {
+    "reset_s0": {
+      "run_id": "20261027T211852Z-full-reset-s0",
+      "probe_shape": [
+        256,
+        64
+      ],
+      "probe_file_sha256": "0d2ced3db863298292c599e269ced86f3af8835b5af4382e8dae81190950f4cf",
+      "entropy_nats": 5.124534428787924,
+      "prompt0_entropy_nats": 3.0604269915486526,
+      "prompt0_internal_repeated_4gram_rate": 0.360655737704918,
+      "mean_per_output_entropy_nats": 2.382120476563459,
+      "equals_token_id": 5457,
+      "equals_token_count": 3739,
+      "equals_token_fraction": 0.22821044921875,
+      "outputs_with_at_least_32_equals_tokens": 64,
+      "entropy_excluding_token_5457_nats": 5.94388648421935,
+      "retained_tokens_after_exclusion": 12645
+    },
+    "continued": {
+      "run_id": "20261026T192740Z-full-continued",
+      "probe_shape": [
+        256,
+        64
+      ],
+      "probe_file_sha256": "a78ce77320dab1b97cdb418c037583b850c1de3d1ee9e5ae31cf9fa036ec321f",
+      "entropy_nats": 5.7445950027080155,
+      "prompt0_entropy_nats": 2.049677636178968,
+      "prompt0_internal_repeated_4gram_rate": 0.6885245901639344,
+      "mean_per_output_entropy_nats": 2.707540664315534,
+      "equals_token_id": 5457,
+      "equals_token_count": 1803,
+      "equals_token_fraction": 0.11004638671875,
+      "outputs_with_at_least_32_equals_tokens": 25,
+      "entropy_excluding_token_5457_nats": 6.0654652260535915,
+      "retained_tokens_after_exclusion": 14581
+    }
+  },
+  "sensitivity_caveat": "Post-hoc exclusion of token5457 renormalizes frequencies and changes retained sample sizes; this is not a replacement primary metric or semantic-quality measure.",
+  "sampling_scope": {
+    "selection": "first 256 consecutive 64-token training blocks",
+    "fraction_of_training_prompt_pool": 0.006746429136140832,
+    "adjacent_source_articles": 6,
+    "representative_random_sample": false,
+    "first_three_articles_fraction_of_probe_tokens": 0.79388427734375
+  },
+  "verification_limits": [
+    "No full-run model tensors independently recovered or re-evaluated.",
+    "No full synthetic training token arrays independently recovered or checksummed here.",
+    "Stored S0/S1/D2 content identities are metadata/checksum evidence plus historical worker verification, not a new tensor/array-content check.",
+    "No across-seed replication or causal mechanism test.",
+    "Exact source/binning of current Week1 six-panel histogram unavailable."
+  ],
+  "actions": {
+    "paid_run_started": false,
+    "cloud_resources_changed": false,
+    "runtime_changed": false,
+    "historical_measurements_changed": false,
+    "google_docs_changed": false
+  },
+  "private_evidence_receipts": {
+    ".state\\2026-10-28_graph-audit\\metrics\\findings.json": {
+      "bytes": 3759,
+      "sha256": "33ed3cf8e363162ced1de539a96ea3e44d65bd8e424e042b21b36eafe79c7524"
+    },
+    ".state\\2026-10-28_graph-audit\\metrics\\independent_results.json": {
+      "bytes": 24178,
+      "sha256": "ee9a016905921a3fb828da084f5f083f44ad10278851cb334d37806d939058a4"
+    },
+    ".state\\2026-10-28_graph-audit\\metrics\\independent_audit.py": {
+      "bytes": 15779,
+      "sha256": "c33afd7422ccfd37707fd144991146b6bd9692566d0873034780bdaaeb28dc25"
+    },
+    ".state\\2026-10-28_graph-audit\\metrics\\independent_metrics.csv": {
+      "bytes": 18956,
+      "sha256": "3150884682f536316640433bd55f1d5e5d55edbe45aac9df8e6681ef9bd32a46"
+    },
+    ".state\\2026-10-28_graph-audit\\metrics\\paired_block_results.json": {
+      "bytes": 3091,
+      "sha256": "124d70c8c5088e26c3e04b8c3c2459518f85e47a4996d626c1ff32845f13377e"
+    },
+    ".state\\2026-10-28_graph-audit\\metrics\\week1_recovery_receipt.json": {
+      "bytes": 6695,
+      "sha256": "cbbcf78905e40c3b4ba1bd03841b46fe13572667658410a29e79ae8bedac7943"
+    },
+    ".state\\2026-10-28_graph-audit\\execution\\summary.json": {
+      "bytes": 5236,
+      "sha256": "3943288a86128830a928851bb4a7c14cdc0f52d5eb72ae33e93bc7c22e06f080"
+    },
+    ".state\\2026-10-28_graph-audit\\execution\\audit_evidence.json": {
+      "bytes": 20669,
+      "sha256": "8f29c2fcc2487430a6cf96f3da550f14f770dc88022f42f8544c6a64b7529cd7"
+    },
+    ".state\\2026-10-28_graph-audit\\execution\\audit_execution.py": {
+      "bytes": 12960,
+      "sha256": "a8dfe2060b87deaab1d623812c964a6ea13cae2c8c346c6268c6ea6c9b85c0fc"
+    },
+    ".state\\2026-10-28_graph-audit\\plots\\NOTES.md": {
+      "bytes": 7891,
+      "sha256": "fd31417d632d4ccf23d8f712ca8b134e2b73ecc4fd05fb4d0c4a7494b48a3a1d"
+    },
+    ".state\\2026-10-28_graph-audit\\plots\\numeric_audit.json": {
+      "bytes": 95335,
+      "sha256": "62920166ecc624f494b8ebee6b58d61bc42b2596b995d573ab5f5e8bd57a4056"
+    },
+    ".state\\2026-10-28_graph-audit\\plots\\native_image_matches.json": {
+      "bytes": 6996,
+      "sha256": "9526eb76e732c42208acad75a71c9626cdc4226d93ac10e49d978ecce3556459"
+    },
+    ".state\\2026-10-28_graph-audit\\plots\\regeneration_matches.json": {
+      "bytes": 17002,
+      "sha256": "be12cefb5cdc2cbb87fe5e0796bc493e6c690077f18132962b37a42c0be29d0f"
+    },
+    ".state\\2026-10-28_graph-audit\\plots\\historical_regeneration_matches.json": {
+      "bytes": 478,
+      "sha256": "d4509507e85fe739e2cb5038cec2cdff040a6b1ee3692df6d19d8b232adb01c0"
+    },
+    ".state\\2026-10-28_graph-audit\\plots\\generation_manifest_scope.json": {
+      "bytes": 3787,
+      "sha256": "289724831949ea50b869cffa4c6b8efd96d62da0b0b15789627305bbf18d617a"
+    },
+    ".state\\2026-10-28_graph-audit\\plots\\w1_raster_marker_check.json": {
+      "bytes": 21655,
+      "sha256": "968286e4c968b1446a853c3620d73a4ad7fa8792d2c6d22b96ca295dfa343733"
+    },
+    ".state\\2026-10-28_graph-audit\\interpretation\\findings.md": {
+      "bytes": 10364,
+      "sha256": "312604486e8a32544bb13a70fcaae7455ad6686d1b338a2080a7663ff80538a7"
+    },
+    ".state\\2026-10-28_graph-audit\\preservation_audit.json": {
+      "bytes": 54289,
+      "sha256": "668fbc9fa8241d34a24a39576d54ce2401cdfc68c0faf8af9ca5ba2fbb9f9eb3"
+    },
+    ".state\\2026-10-28_graph-audit\\sampling\\findings.txt": {
+      "bytes": 10035,
+      "sha256": "423dd8e29bb9380f7b1c27d38208001463711c9f98a1a6d8cb90b406a0da915a"
+    },
+    ".state\\2026-10-28_graph-audit\\sampling\\sampling_summary.json": {
+      "bytes": 10789,
+      "sha256": "b9b12d7c4d70179525e4184bf5098d3674394dc0e070bd19512087038b7acf8f"
+    },
+    ".state\\2026-10-28_graph-audit\\sampling\\per_cycle.csv": {
+      "bytes": 13495,
+      "sha256": "db48fabfc6dcb2c67af7ec12522889c466e6113705717d886bfb9d52d2772778"
+    },
+    ".state\\2026-10-28_graph-audit\\sampling\\per_output.csv": {
+      "bytes": 747529,
+      "sha256": "645e119fd2c48f2e857550e5613af927191532866cb5ba2b5658ed1eb7ee1c99"
+    },
+    ".state\\2026-10-28_graph-audit\\sampling\\source_article_coverage.json": {
+      "bytes": 221789,
+      "sha256": "55ff92a9e48d97d5dfdc7aa959afd920e3f854db6418164527e5553918c528c7"
+    },
+    ".state\\2026-10-28_graph-audit\\sampling\\sampling_diagnostics.png": {
+      "bytes": 337683,
+      "sha256": "9ff1a519a5d2cba1ba724d11017b97664dbb5632c11f63ec8cec0c3bec8138a4"
+    },
+    ".state\\2026-10-28_graph-audit\\sampling\\plot_diagnostics.py": {
+      "bytes": 3663,
+      "sha256": "f0a1aa9350b994970c0294ef2fbcb81a0db68b523c52b1340bbf6d3c3908da5c"
+    },
+    ".state\\2026-10-28_graph-audit\\sampling\\audit_sampling.py": {
+      "bytes": 15291,
+      "sha256": "cca3d8d2015058877507fb38c6b58a9b9f5cc8abc47c189f5f1e1107ecd5c3fe"
+    }
+  },
+  "sampling_independent_checks": {
+    "all_8448_continuation_decodes_match_saved_samples": true,
+    "all_8448_prompts_match_frozen_array": true,
+    "all_probe_arrays_match_index_sha256": true,
+    "all_sample_jsons_match_index_sha256": true,
+    "all_saved_real_train_ids_recreated_from_pinned_public_source": true,
+    "zero_generated_special_ids_0_1_2_3_in_all_views": true,
+    "31_unique_probe_paths": true
+  },
+  "report_findings": [
+    "One fixed example reverses pooled rankings; explain local and pooled scope.",
+    "Formatting tokens strongly affect generated-token metrics.",
+    "Probe covers first256 contiguous prompts from six adjacent articles.",
+    "Name the A10/B10 comparator for the4340/4494 block count.",
+    "Calibrate causal hypotheses as possible explanations.",
+    "Move legends that obscure data in future figure revisions.",
+    "Retain a generator and input manifest for current Week1 six-panel figure.",
+    "State exact-length EOS suppression and model/output cycle offset explicitly."
+  ],
+  "public_audit_note": {
+    "path": "docs/audits/2026-10-28_graph_and_protocol_audit.md",
+    "sha256": "0e6d2dcbbf371caaefe678cc914d3f93f263b57400c1f54a43fb2d012c2f00e6"
+  }
+}

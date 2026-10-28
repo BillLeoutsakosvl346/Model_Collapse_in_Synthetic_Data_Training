@@ -1,0 +1,126 @@
+[
+  {
+    "doc": 0,
+    "oldIndex": 26334,
+    "items": [
+      {
+        "kind": "heading",
+        "text": "9. Interpreting formatting and unexpected results",
+        "start": 27019,
+        "end": 27069
+      },
+      {
+        "kind": "image",
+        "text": "□",
+        "start": 27069,
+        "end": 27071
+      },
+      {
+        "kind": "caption",
+        "text": "Figure 5. Fixed 256-prompt diagnostics: (A) '=' frequency; (B) raw entropy (solid) and exclusion sensitivity (dashed); (C) entropy within each output; (D) paired final outputs, with prompt 0 highlighted. Exclusion changes sample sizes; it is supplementary, not a replacement metric.",
+        "start": 27071,
+        "end": 27354
+      },
+      {
+        "kind": "label",
+        "text": "What the additional measurements show",
+        "start": 27354,
+        "end": 27392
+      },
+      {
+        "kind": "bullet",
+        "text": "Measured concentration: '=' is 22.82% of final reset tokens versus 11.00% of continued tokens. In 64 reset outputs versus 25 continued outputs, at least half the tokens are '='.",
+        "start": 27392,
+        "end": 27570
+      },
+      {
+        "kind": "bullet",
+        "text": "Example versus aggregate: prompt 0 has entropy 3.060 for reset versus 2.050 for continued. That one passage reverses the pooled ranking; the graph counts all 256 outputs.",
+        "start": 27570,
+        "end": 27741
+      },
+      {
+        "kind": "bullet",
+        "text": "Formatting sensitivity: excluding '=' shrinks the entropy gap from 0.620 to 0.122 nats. Repeated-four-gram rates on retained original windows become 44.61% versus 45.22% (reset/continued), with different retained counts.",
+        "start": 27741,
+        "end": 27962
+      },
+      {
+        "kind": "bullet",
+        "text": "Interpretation: real-text prediction and generated-token concentration are different behaviours. Reset preserves better real-test scores while emitting more heading loops. The symbol concentration is measured; why the training policy favours those loops is untested.",
+        "start": 27962,
+        "end": 28229
+      },
+      {
+        "kind": "bullet",
+        "text": "Scope: six adjacent articles supply this probe; 79.39% of its prompt tokens come from the first three. These are descriptive diagnostics, not full-corpus diversity or evidence of semantic quality.",
+        "start": 28229,
+        "end": 28426
+      }
+    ],
+    "index": 27019,
+    "text": "9. Interpreting formatting and unexpected results\n□\nFigure 5. Fixed 256-prompt diagnostics: (A) '=' frequency; (B) raw entropy (solid) and exclusion sensitivity (dashed); (C) entropy within each output; (D) paired final outputs, with prompt 0 highlighted. Exclusion changes sample sizes; it is supplementary, not a replacement metric.\nWhat the additional measurements show\nMeasured concentration: '=' is 22.82% of final reset tokens versus 11.00% of continued tokens. In 64 reset outputs versus 25 continued outputs, at least half the tokens are '='.\nExample versus aggregate: prompt 0 has entropy 3.060 for reset versus 2.050 for continued. That one passage reverses the pooled ranking; the graph counts all 256 outputs.\nFormatting sensitivity: excluding '=' shrinks the entropy gap from 0.620 to 0.122 nats. Repeated-four-gram rates on retained original windows become 44.61% versus 45.22% (reset/continued), with different retained counts.\nInterpretation: real-text prediction and generated-token concentration are different behaviours. Reset preserves better real-test scores while emitting more heading loops. The symbol concentration is measured; why the training policy favours those loops is untested.\nScope: six adjacent articles supply this probe; 79.39% of its prompt tokens come from the first three. These are descriptive diagnostics, not full-corpus diversity or evidence of semantic quality.\n"
+  },
+  {
+    "doc": 1,
+    "oldIndex": 12151,
+    "items": [
+      {
+        "kind": "heading",
+        "text": "5a. Why one example can disagree",
+        "start": 12187,
+        "end": 12220
+      },
+      {
+        "kind": "image",
+        "text": "□",
+        "start": 12220,
+        "end": 12222
+      },
+      {
+        "kind": "caption",
+        "text": "A: '=' frequency. B: raw entropy (solid), excluding '=' (dashed). C: individual-output entropy. D: matched final prompts; pink marks the quoted passage. All panels use the fixed 256-prompt probe.",
+        "start": 12222,
+        "end": 12418
+      },
+      {
+        "kind": "body",
+        "text": "Intuition: one answer can repeat Nintendo while other answers repeat different words. Pooling all their tokens can still give a broad mix. The graph and an individual passage answer different questions.",
+        "start": 12418,
+        "end": 12621
+      },
+      {
+        "kind": "bullet",
+        "text": "The quoted passage: continued is more repetitive here. Its entropy is 2.050 nats versus reset's 3.060; its internal repeated-four-gram rate is 68.85% versus 36.07%.",
+        "start": 12621,
+        "end": 12786
+      },
+      {
+        "kind": "bullet",
+        "text": "The measured overall driver: '=' takes 22.82% of reset tokens versus 11.00% of continued tokens. Reset has 64 outputs with at least 32 '=' tokens; continued has 25. These are actual generated symbols.",
+        "start": 12786,
+        "end": 12987
+      },
+      {
+        "kind": "bullet",
+        "text": "Pooling can conceal loops: continued pooled entropy stays near S0, while mean entropy within an output falls 2.966 to 2.708. Different passages can repeat different tokens.",
+        "start": 12987,
+        "end": 13160
+      },
+      {
+        "kind": "bullet",
+        "text": "Sensitivity check: excluding '=' shrinks the entropy gap 0.620 to 0.122 nats. Frequencies are renormalized over 12,645 versus 14,581 remaining tokens; this does not replace the primary metric.",
+        "start": 13160,
+        "end": 13353
+      },
+      {
+        "kind": "bullet",
+        "text": "What this means: formatting strongly affects raw-token diversity. It does not measure semantic knowledge. The probe covers six adjacent articles; why reset produces more heading loops remains unresolved.",
+        "start": 13353,
+        "end": 13557
+      }
+    ],
+    "index": 12187,
+    "text": "5a. Why one example can disagree\n□\nA: '=' frequency. B: raw entropy (solid), excluding '=' (dashed). C: individual-output entropy. D: matched final prompts; pink marks the quoted passage. All panels use the fixed 256-prompt probe.\nIntuition: one answer can repeat Nintendo while other answers repeat different words. Pooling all their tokens can still give a broad mix. The graph and an individual passage answer different questions.\nThe quoted passage: continued is more repetitive here. Its entropy is 2.050 nats versus reset's 3.060; its internal repeated-four-gram rate is 68.85% versus 36.07%.\nThe measured overall driver: '=' takes 22.82% of reset tokens versus 11.00% of continued tokens. Reset has 64 outputs with at least 32 '=' tokens; continued has 25. These are actual generated symbols.\nPooling can conceal loops: continued pooled entropy stays near S0, while mean entropy within an output falls 2.966 to 2.708. Different passages can repeat different tokens.\nSensitivity check: excluding '=' shrinks the entropy gap 0.620 to 0.122 nats. Frequencies are renormalized over 12,645 versus 14,581 remaining tokens; this does not replace the primary metric.\nWhat this means: formatting strongly affects raw-token diversity. It does not measure semantic knowledge. The probe covers six adjacent articles; why reset produces more heading loops remains unresolved.\n"
+  }
+]

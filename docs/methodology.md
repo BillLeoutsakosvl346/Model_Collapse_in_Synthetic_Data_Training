@@ -13,7 +13,7 @@ The full prepared data contains 37,946 training blocks / 2,428,544 tokens, 3,922
 
 ## Generation and synthetic targets
 
-Every training block is a fixed 64-token prompt drawn from the original real training split. At each cycle, the selected model generates exactly 64 new tokens after each prompt using five deterministic beams, `do_sample=false`, repetition penalty `1.0`, no added no-repeat constraint and KV caching. Early-EOS handling enforces the required continuation length.
+Every training block is a fixed 64-token prompt drawn from the original real training split. At each cycle, the selected model generates exactly 64 new tokens after each prompt using five deterministic beams, `do_sample=false`, repetition penalty `1.0`, no added no-repeat constraint and KV caching. Setting both `min_new_tokens` and `max_new_tokens` to 64 suppresses EOS throughout the continuation. This intentional fixed-length policy changes special-token frequencies relative to real packed data; its contribution to measured trajectories has not been isolated.
 
 Save continuation token IDs directly. The prompt tokens are excluded from subsequent training, and no decoding/re-encoding step modifies the training targets. Each full synthetic dataset has 37,946 rows of 64 tokens, exactly the original training token budget. Ten complete synthetic datasets therefore contain 24,285,440 tokens. A final model's 256-output measurement probe is additional output and does not imply another training cycle.
 

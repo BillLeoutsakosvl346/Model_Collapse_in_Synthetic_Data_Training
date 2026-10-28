@@ -1,0 +1,22 @@
+{
+  "condition": "continued",
+  "run_id": "20261026T192740Z-full-continued",
+  "scope": "Presentation revision only; one experiment, no Week 1 or reset-arm overlays.",
+  "source_hashes": {
+    "metrics.csv": "b1e5c82c07b06d4fa99748b2a5effd206d8d66a126a48fdaa4aaa8dca6d16e64",
+    "records/seed_42/gen_01/training_history.json": "7572c8eaa01de37b3fbb485bf456c7f5c5388f18001bef4feff9b39b4b803190",
+    "records/seed_42/gen_05/training_history.json": "f62ea3ca531318cbcd0990bbb37a08ee208ca3179f9abc6bd9a901c24216627a",
+    "records/seed_42/gen_10/training_history.json": "4a9365d79a5652320222e17043022d239bd65e5a557aff8560e5f21a9ca9d59a"
+  },
+  "script_sha256": "e22de0fdc47a61bfd4b3c00e8582999c32c2862d464ef66464242718fcfdd017",
+  "analysis_revision": "f44962f5f979b821fd4c378aebaab1fc4f7ccfc4",
+  "environment": {
+    "python": "3.12.1",
+    "numpy": "2.1.2",
+    "matplotlib": "3.9.4"
+  },
+  "output": {
+    "file": "continued_metrics.png",
+    "sha256": "bac28f8ed27cbca8a9c224e4079115af53dbaddd1398a98f4e870c10e926f519"
+  }
+}

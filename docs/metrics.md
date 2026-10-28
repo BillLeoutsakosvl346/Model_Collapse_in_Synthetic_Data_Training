@@ -23,7 +23,11 @@ All comparisons must use matching tokenisation, context, masks, output counts an
 
 An independent 64-token real block has **63 scored targets**. Full real train, validation and test arrays contain 2,390,598, 247,086 and 283,122 such targets respectively.
 
-Generated-text metrics use the same **first 256 real training prompts** at each generation, each with 64 continuation tokens: 16,384 tokens, 16,128 reference-scored targets and 15,616 four-gram positions. This is a fixed probe, not a random representative sample or a full-corpus diversity measurement. N-grams form within each continuation; no n-gram crosses a continuation boundary. Counts are then pooled across continuations, and tokenizer special tokens remain included.
+Generated-text metrics use the same **first 256 real training prompts** at each generation, each with 64 continuation tokens: 16,384 tokens, 16,128 reference-scored targets and 15,616 four-gram positions. They span six adjacent source articles, with 79.39% of prompt tokens from the first three. This is a fixed probe, not a random representative sample or a full-corpus diversity measurement. N-grams form within each continuation; no n-gram crosses a continuation boundary. Counts are then pooled across continuations. Every original generated token ID counts, including formatting and any special tokens present; EOS suppression means the inspected probes contain no EOS or padding IDs.
+
+Pooled token entropy ignores ordering and combines all outputs. It can remain stable while individual outputs become more repetitive, if different outputs repeat different tokens. Mean per-output entropy and within-output repetition are supplementary diagnostics with different definitions; they must not be substituted for historical pooled curves.
+
+The [28 October audit](audits/2026-10-28_graph_and_protocol_audit.md) found that ` =` accounts for 22.82% of final reset-S0 probe tokens versus 11.00% for continued training. Excluding that token diagnostically shrinks the entropy gap from 0.620 to 0.122 nats. Exclusion renormalizes unequal retained sample sizes; it neither replaces the primary metric nor measures semantic quality. Raw-token distinctness and repetition also respond to formatting loops. A single quoted passage can reverse the aggregate model ranking.
 
 At generation Sk, probe metrics describe D(k+1)-style output. Real-text evaluation at Sk measures the model after its training on Dk. Do not attribute a model's own output dataset to the training stage that already produced it.
 

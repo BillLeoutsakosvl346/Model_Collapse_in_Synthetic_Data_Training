@@ -1,0 +1,20 @@
+{
+  "scope": "Supplementary post-hoc diagnostic, fixed first256 prompts from six adjacent articles. No new inference.",
+  "caveat": "Excluding equality IDs renormalizes frequencies and changes retained sample sizes; higher entropy is not semantic quality.",
+  "input_hashes": {
+    "reports\\presentation_revisions\\2026-10-28_audit-corrections\\inputs\\probe_diagnostics.csv": "db48fabfc6dcb2c67af7ec12522889c466e6113705717d886bfb9d52d2772778",
+    "reports\\presentation_revisions\\2026-10-28_audit-corrections\\inputs\\final_output_metrics.csv": "3faca28fbea3eb0b0a37d796973baa9953e294601d67b70f40bff95ce6ad701c"
+  },
+  "script_sha256": "f64a9117ea5403cc297a9fe79cdfa97ab46c658f894a19ec89f32b4738804948",
+  "analysis_revision": "f44962f5f979b821fd4c378aebaab1fc4f7ccfc4",
+  "environment": {
+    "python": "3.12.1",
+    "numpy": "2.1.2",
+    "matplotlib": "3.9.4",
+    "pandas": "2.2.3"
+  },
+  "output": {
+    "file": "formatting_diagnostics.png",
+    "sha256": "8695331b130b2faecfa5ae83b9acc98b860ada906ffcc468d168b99a3724902a"
+  }
+}

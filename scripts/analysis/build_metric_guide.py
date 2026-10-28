@@ -62,7 +62,17 @@ def build(out: Path):
 
     def save(fig, name, formula=None, height=2.65, footer=.16):
         fig.set_size_inches(6.26, height)
-        if formula:
+        if name == "02_distinct":
+            # Separate legends, axis labels and equation into explicit bands.
+            fig.subplots_adjust(left=.085, right=.985, top=.80, bottom=.40, wspace=.55)
+            for ax in fig.axes:
+                ax.set_xlabel("Cycle", fontsize=7.5)
+                box = ax.get_position()
+                ax.legend(loc="upper center", bbox_transform=fig.transFigure,
+                          bbox_to_anchor=((box.x0 + box.x1) / 2, .275),
+                          fontsize=6.6, frameon=False)
+            fig.text(.5, .015, formula, ha="center", va="bottom", fontsize=12)
+        elif formula:
             fig.text(.5, .015, formula, ha="center", va="bottom", fontsize=12)
             fig.tight_layout(rect=(0, footer, 1, 1), pad=.6, w_pad=.9)
         else:
@@ -115,13 +125,16 @@ def build(out: Path):
     for ax, rr, title in ((axes[0], w, "A  Week 1"), (axes[1], c, "B  Continued")):
         for n, col in ((1, BLUE), (2, ORANGE), (3, "#43855d")):
             ax.plot(range(11), vals(rr, f"distinct_{n}", 100), "o-", ms=2.5, color=col, label=f"Distinct-{n}")
-        decorate(ax, title, "Unique / total n-grams (%)")
+        decorate(ax, title, "Unique n-grams (%)")
         ax.set_ylim(0, 58)
-        ax.legend()
+        ax.legend(loc="upper center", bbox_to_anchor=(.5, -.34),
+                  ncol=1, fontsize=6.6, frameon=False)
     match(axes[2], "distinct_2", 100)
-    decorate(axes[2], "C  Shared-start distinct-2", "Unique / total bigrams (%)")
-    axes[2].legend()
-    save(fig, "02_distinct", r"$\mathrm{distinct}\!\!-\!n=\frac{U_n}{T_n},\qquad T_n=256(64-n+1)$")
+    decorate(axes[2], "C  Shared-start\nDistinct-2", "Unique bigrams (%)")
+    axes[2].legend(loc="upper center", bbox_to_anchor=(.5, -.34),
+                   ncol=1, fontsize=6.6, frameon=False)
+    save(fig, "02_distinct", r"$\mathrm{distinct}\!\!-\!n=\frac{U_n}{T_n},\qquad T_n=256(64-n+1)$",
+         height=3.05, footer=.31)
 
     for name, key, ylabel, formula in (
         ("03_repetition", "repeated_4gram_rate", "Repeated 4-grams (%)", r"$R_4=\frac{T_4-U_4}{T_4},\qquad T_4=256\times61=15{,}616$"),

@@ -37,7 +37,9 @@ def render(out):
     for n, color in ((1, "#437f97"), (2, orange), (3, "#4a8c63")):
         axes[0, 1].plot(x, values(f"distinct_{n}", 100), "o-", color=color, label=f"Distinct-{n}", ms=3)
     axes[0, 1].set(title="B  Output diversity", ylabel="Unique / total n-grams (%)")
-    axes[0, 1].legend(fontsize=7.5)
+    axes[0, 1].legend(fontsize=6.8, loc="lower center",
+                      bbox_to_anchor=(.5, 1.01), ncol=3, frameon=False)
+    axes[0, 1].set_title("B  Output diversity", pad=26)
     axes[1, 0].plot(x, values("repeated_4gram_rate", 100), "o-", color=orange, label="Repeated 4-grams", ms=3)
     axes[1, 0].plot(x, values("duplicate_continuation_rate", 100), "s--", color=purple, label="Exact duplicates", ms=3)
     axes[1, 0].set(title="C  Repetition and duplication", ylabel="Probe fraction (%)")

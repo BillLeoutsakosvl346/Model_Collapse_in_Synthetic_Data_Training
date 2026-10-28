@@ -1,0 +1,21 @@
+{
+  "main_repro": {
+    "old": "Reproducibility: 1,392 metadata files (41.51 MB) were checksum-verified; nine new probe arrays added 590,976 bytes. The comparison audit checks 170 statistics files, all 95 executed historical/new epoch records and the exact common prefix. The complete per-cycle CSV, all 256 saved outputs per model, figures and audit are retained with pinned private backup revisions.",
+    "text": "Reproducibility: 1,392 verified metadata files; complete metrics and pinned backups below."
+  },
+  "guide_removed_duplicate": "Observed evidence: in continued cycle 1, training loss falls from 1.112 to 0.889 over epochs 1-5, while real validation loss rises from 3.892 to 4.007. The model fits its synthetic targets better while predicting real text worse.",
+  "links": [
+    {
+      "doc": 0,
+      "text": "Supplementary diagnostic calculations and figure sources.",
+      "url": "https://github.com/BillLeoutsakosvl346/Model_Collapse_in_Synthetic_Data_Training/tree/main/reports/presentation_revisions/2026-10-28_audit-corrections",
+      "index": 28147
+    },
+    {
+      "doc": 1,
+      "text": "Supplementary audit: exact calculations and formatting diagnostics",
+      "url": "https://github.com/BillLeoutsakosvl346/Model_Collapse_in_Synthetic_Data_Training/blob/main/docs/audits/2026-10-28_graph_and_protocol_audit.md",
+      "index": 23498
+    }
+  ]
+}

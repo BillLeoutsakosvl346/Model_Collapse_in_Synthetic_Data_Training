@@ -1,0 +1,63 @@
+{
+  "scope": "Native report and explanation-guide corrections after independent audit; no new inference or training.",
+  "date": "2026-10-28",
+  "documents": [
+    {
+      "document_id": "1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk",
+      "url": null,
+      "revision_id": "AHj4eMTPh-yaABGBey4m8eawKBajMLRYCX3hTJ0Re96kAw3nV5JFugJ7SaX7LlKGj5KwtmZStlTUlr0vmQnf5HzV2QjugqLGSR6mnZO7Fn0",
+      "pdf_pages": 15,
+      "native_snapshot_sha256": "07206b052d55f3911b62af5fc50c1b5e6d012e5c36e0a5ae38e6d31c41f4e79f",
+      "private_pdf_sha256": "122d61444ce2e7fc3d3e1d4d614b085b1cc0c7ff01d7acd80afdf46d2c5379f9",
+      "inline_images": 5
+    },
+    {
+      "document_id": "1L5MvYS4gLw8jF7-F4Guoxl-6RAEAUFoDsvFFKo0nnGA",
+      "url": null,
+      "revision_id": "AHj4eMSxjMCLCMfN8i_1R7WGBCKfvXMQPLFqWBOy-fZzEtvfgtaI18i7KkrPGBsnhySrfbn4TWTZ2Hz5acfOlziDXg15mzEnp5sGNQVupHQ",
+      "pdf_pages": 12,
+      "native_snapshot_sha256": "4a639fdece2f9f9e13ef008a18c73c1c877a4d23a5185c0e0de6d5f94cd2ed89",
+      "private_pdf_sha256": "c22ab8a44e57b36f08efd2dcfc805a9adf308cdc72e053dbde1814495cf1a45c",
+      "inline_images": 12
+    }
+  ],
+  "verification": {
+    "native_tables_preserved": 11,
+    "original_four_week_plan_preserved": true,
+    "native_images_byte_matched": 17,
+    "authoring_plan_matches_every_guide_paragraph": true,
+    "historical_and_prior_editorial_hashes_unchanged": 330,
+    "analysis_tests": {
+      "command": "python -m pytest -q tests/test_analysis.py",
+      "passed": 9,
+      "warnings": 14,
+      "seconds": 5.23
+    },
+    "visual_qa": "All pages screened; revised plots, diagnostic pages, distinctness guide and final interpretation pages inspected at reading resolution. No blank overflow pages; no visible glyphs outside one-point margin tolerance.",
+    "runtime_sha256_unchanged": "5d56bf37476583b20fd9d74c40941b322af6bcb2720a48a7a463f9aca6dde49e"
+  },
+  "limitations": [
+    "Formatting exclusions are post-hoc sensitivity checks with unequal retained samples, not revised primary metrics.",
+    "Output diversity describes first256 consecutive real prompts from six adjacent articles.",
+    "Mechanisms behind exact dips/peaks and heading-loop preference remain unisolated.",
+    "No fresh inference from full model checkpoints."
+  ],
+  "private_evidence": {
+    ".state/2026-10-28_report-corrections/semantic_checks.json": {
+      "sha256": "facb5592526de452a356de81d72c84b9fec3e776c462d8b054d95819456e9c63",
+      "bytes": 422
+    },
+    ".state/2026-10-28_report-corrections/preservation_checks.json": {
+      "sha256": "78eb804678ee7268ca13ec75f6d90009d92edbcba128bef8070813cdd2f34763",
+      "bytes": 41716
+    },
+    ".state/2026-10-28_report-corrections/visible_glyph_checks.json": {
+      "sha256": "6f293f7938d44a59b089ace58a7a199e83008b705f32fe884e69264488155305",
+      "bytes": 327
+    },
+    ".state/2026-10-28_report-corrections/native_image_checks.json": {
+      "sha256": "3007d8f59470e4113a4fe8a936cd7991bacef9c74bfa96da8de7739eb7f42531",
+      "bytes": 5673
+    }
+  }
+}
