@@ -1,0 +1,80 @@
+{
+  "scope": "Behavioural explanation and labelled causal interpretation; no new training or cloud-resource actions.",
+  "base_repository_revision": "15b786a9796f7f72d3ebba4d30b5e9ad9c59df61",
+  "inputs": {
+    "reports/presentation_revisions/2026-10-28_metric-guide/guide.json": {
+      "sha256": "5ea197ea5eba42cb8deda7b6734d301a57122ba2efc9cd16f082c88ca038ff82",
+      "bytes": 25719
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/manifest.json": {
+      "sha256": "5ff1dc6e09684b9c2a7fcab308b6a62390b7bb83b1a5ae0731d6c36d5fceb761",
+      "bytes": 7087
+    },
+    "reports/20261026T192740Z-full-continued/training_history.csv": {
+      "sha256": "385734f22435e81817dbbd24f8a3a589c4e36c7a134b23842fe9a4f8dd04a5d4",
+      "bytes": 4978
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/00_protocols.png": {
+      "sha256": "9edba09a609f8fcd4f2e78b2876d192a1b8f3d685cdd0b1103604ebe728edd45",
+      "bytes": 68422
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/01_perplexity.png": {
+      "sha256": "177061093d1a4dd6299c848890ac27d7e2c32662eed504deee92dd15b351c43f",
+      "bytes": 125117
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/02_distinct.png": {
+      "sha256": "b7189b2784eddab9439b271fbdad3c45e3529292e90af58c7470da8c0a281f03",
+      "bytes": 149714
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/03_repetition.png": {
+      "sha256": "3fab2e6d5d8c455be183c064c9e87a332f1102d182524a6aa7e0c53904d47c43",
+      "bytes": 113833
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/04_duplicates.png": {
+      "sha256": "ca54ef398e91848cad5edbe11a79aff3a515b40b6897ce48895616655d4311cc",
+      "bytes": 105107
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/05_entropy.png": {
+      "sha256": "8f9e0b1a7a6c936871107645737866d6a6d48e6ac45cab07d3d999430203a43f",
+      "bytes": 109409
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/06_reference.png": {
+      "sha256": "5aa34d3a8a265a69c59acf8d9fc9fd0cab725f237ba73d0daf71b1de4d8aaeba",
+      "bytes": 112668
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/07_distributions.png": {
+      "sha256": "67b77acddc06ccfb9f0f979cc019df43520b78610516b7552110513ea6bd2cec",
+      "bytes": 108524
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/08_selection.png": {
+      "sha256": "172322994c4742ea123195a923ad62e64e632aeaa09650a88e3ffad85c472340",
+      "bytes": 120512
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/09_resources.png": {
+      "sha256": "fd384a3b48030ebfe782461a3c759d417a06614f01635ef442356a1699177a02",
+      "bytes": 82378
+    },
+    "reports/presentation_revisions/2026-10-28_metric-guide/10_synthesis.png": {
+      "sha256": "271568f90f528a923348a16446a529fa3d62d333c3779afc5ac672aac74561e6",
+      "bytes": 79789
+    }
+  },
+  "background_sources": [
+    "https://www.nature.com/articles/s41586-024-07566-y",
+    "https://arxiv.org/abs/1904.09751"
+  ],
+  "outputs": {
+    "google_doc_delivery.json": {
+      "sha256": "e683fe9610328adde1cf6f03733901343a8d8b483894e2caf35f7a678a697d86",
+      "bytes": 1429
+    },
+    "guide.json": {
+      "sha256": "e28e36a8ef5261a0a5db25be771b9d4fe2b5d895f852598fb92cbedda3d1a409",
+      "bytes": 34042
+    },
+    "README.md": {
+      "sha256": "e7a43192ddd0b116f7405a2c36809a3559de17e837e58f75c8b67ee3eee4cfa7",
+      "bytes": 1087
+    }
+  }
+}
