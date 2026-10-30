@@ -28,6 +28,8 @@ def validate_pair_config(c):
         end = 10 if c["kind"] == "full" else (2 if name == "continued" else 3)
         if arm["generations"] != end:
             raise ValueError("Paired endpoints must be full 10/10 or smoke 2/3")
+        if c["kind"] == "smoke" and [arm[k] for k in ("train_blocks", "validation_blocks", "test_blocks")] != [256, 64, 64]:
+            raise ValueError("Paired smoke requires exactly 256/64/64 blocks")
         if arm.get("required_gpu") != c.get("required_gpu") or arm.get("required_environment") != c.get("required_environment"):
             raise ValueError("Both arms must use the parent's matched GPU/software environment")
         if arm.get("required_image") != c.get("required_image"):
@@ -249,10 +251,11 @@ def run_pair(root, validation=False):
                         "unique_training_stages": 4, "executed_epochs": 20})
         report_pair(root, for_backup=True)
         atomic_json(root / "status.json", {"state": "complete", "phase": "complete", "time": now()})
+        unique_stages = sum(a["generations"] for a in c["arms"].values()) - 1
         atomic_json(root / "completion.json", {"complete": True, "workflow": "paired", "time": now(),
                     "children": {name: child.name for name, child in roots.items()},
                     "source_seal_sha256": sha256(root / "continued_seal.json"),
-                    "unique_training_stages": 4 if validation else 19, "executed_epochs": 20 if validation else 95})
+                    "unique_training_stages": unique_stages, "executed_epochs": unique_stages * 5})
         backup(root)
 
 
