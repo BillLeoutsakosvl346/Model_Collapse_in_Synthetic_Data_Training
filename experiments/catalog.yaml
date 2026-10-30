@@ -9,7 +9,10 @@ conditions:
     initialization: continued
     checkpoint_selection: final_epoch
     epochs: 5
-    state: gpu_validated_full_unlaunched
+    state: full_running
+    full_pair_run_id: 20261030T180755Z-full-paired-final5
+    full_run_id: 20261030T180755Z-full-paired-final5-continued
+    launch_record: ../docs/validation/2026-10-30_final-epoch5-full-launch.json
     acceptance_run_id: 20261030T172428Z-smoke-paired-final5
     accepted_runtime_sha256: 962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca
     definition: ../comparisons/shared_start_final_epoch5/README.md
@@ -17,13 +20,16 @@ conditions:
     paired_smoke_config: ../comparisons/shared_start_final_epoch5/smoke.yaml
     paired_arm: continued
     comparison: ../comparisons/shared_start_final_epoch5/comparison.yaml
-    full_experiment_launched: false
+    full_experiment_launched: true
   reset_s0_final_epoch5:
     name: "OPT-125M / WikiText-2: fixed-S0 reset, always retain epoch 5"
     initialization: reset_s0
     checkpoint_selection: final_epoch
     epochs: 5
-    state: gpu_validated_full_unlaunched
+    state: full_queued_in_running_pair
+    full_pair_run_id: 20261030T180755Z-full-paired-final5
+    full_run_id: 20261030T180755Z-full-paired-final5-reset-s0
+    launch_record: ../docs/validation/2026-10-30_final-epoch5-full-launch.json
     acceptance_run_id: 20261030T172428Z-smoke-paired-final5
     accepted_runtime_sha256: 962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca
     definition: ../comparisons/shared_start_final_epoch5/README.md
@@ -31,7 +37,7 @@ conditions:
     paired_smoke_config: ../comparisons/shared_start_final_epoch5/smoke.yaml
     paired_arm: reset
     comparison: ../comparisons/shared_start_final_epoch5/comparison.yaml
-    full_experiment_launched: false
+    full_experiment_launched: true
   pretrained_reset:
     name: "OPT-125M / WikiText-2: reset to original pretrained weights"
     initialization: fresh_base

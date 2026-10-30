@@ -1,0 +1,231 @@
+{
+  "run_id": "20261030T180755Z-full-paired-final5",
+  "state": "running",
+  "measurement_scope": "Launch snapshot, not completion evidence.",
+  "authorized_by": "Explicit user instruction to start both final-epoch-5 training arms on 30 October 2026.",
+  "provisioned_utc": "2026-10-30T18:07:57.475233+00:00",
+  "checked_utc": "2026-10-30T18:11:06.659571+00:00",
+  "pod_id": "0quyi2z2jv8vd6",
+  "volume_id": "axxpvi80iq",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "data_center": "EU-RO-1",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "runtime_sha256": "962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca",
+  "configuration_sha256": "db8bc58311aab66ef202b2bb555ed069fbf8f4ade6faa80dba82d3336263be6a",
+  "source_git_commit": "50f0ffec92702fdb9d98b1d5d1c0efa4f86e124d",
+  "acceptance_run_id": "20261030T172428Z-smoke-paired-final5",
+  "runtime_changed_since_acceptance": false,
+  "workflow": "paired",
+  "child_run_ids": {
+    "continued": "20261030T180755Z-full-paired-final5-continued",
+    "reset": "20261030T180755Z-full-paired-final5-reset-s0"
+  },
+  "scientific_protocol": {
+    "epochs_per_stage": 5,
+    "checkpoint_selection": "final_epoch",
+    "unique_training_stages": 19,
+    "executed_epochs_when_complete": 95,
+    "final_cycle": 10,
+    "new_full_shared_s1_d2": true,
+    "historical_d1_imported": true,
+    "training_blocks": 37946,
+    "tokens_per_training_dataset": 2428544,
+    "optimizer_restart_each_cycle": true
+  },
+  "detached_supervisor_and_watchdog_verified": true,
+  "post_disconnect_progress": {
+    "pod_id": "0quyi2z2jv8vd6",
+    "launch_id": "20261030T180755982930Z",
+    "run_id": "20261030T180755Z-full-paired-final5",
+    "progress_after_disconnect": true,
+    "observations": [
+      {
+        "time": 1793383777.1310158,
+        "status": {
+          "state": "running",
+          "phase": "continued",
+          "active_child": "20261030T180755Z-full-paired-final5-continued",
+          "time": 1793383763.1405442
+        },
+        "child_status": {
+          "state": "running",
+          "pid": 304,
+          "time": 1793383766.3531208
+        },
+        "event_bytes": 0,
+        "epochs": 0,
+        "supervisor": {
+          "pid": 253,
+          "child_pid": 255,
+          "time": 1793383774.873243
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1793383774.8334548,
+          "deadline": 1793440522.9052894
+        }
+      },
+      {
+        "time": 1793383798.9877625,
+        "status": {
+          "state": "running",
+          "phase": "continued",
+          "active_child": "20261030T180755Z-full-paired-final5-continued",
+          "time": 1793383763.1405442
+        },
+        "child_status": {
+          "state": "running",
+          "pid": 304,
+          "time": 1793383766.3531208
+        },
+        "event_bytes": 635,
+        "epochs": 0,
+        "supervisor": {
+          "pid": 253,
+          "child_pid": 255,
+          "time": 1793383796.0636585
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1793383796.1583288,
+          "deadline": 1793440522.9052894
+        }
+      }
+    ],
+    "observations_sha256": "f1dcbfb330d65a5eb07bf4ece0e48c7d96983a804c2b4fbb2bfc76d4b3a07380",
+    "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+  },
+  "status_after_launcher_disconnection": {
+    "pod_state": "RUNNING",
+    "compute_running": true,
+    "remote": {
+      "status": {
+        "state": "running",
+        "phase": "continued",
+        "active_child": "20261030T180755Z-full-paired-final5-continued",
+        "time": 1793383763.1405442
+      },
+      "watchdog": {
+        "pid": 139,
+        "time": 1793383863.3392165,
+        "deadline": 1793440522.9052894
+      },
+      "supervisor": {
+        "pid": 253,
+        "child_pid": 255,
+        "time": 1793383862.784519
+      }
+    },
+    "active_child": {
+      "state": "running",
+      "generation": 1,
+      "stage": "training",
+      "pid": 304,
+      "time": 1793383830.268836
+    }
+  },
+  "gpu_check": {
+    "torch": "2.8.0+cu128",
+    "cuda": true,
+    "bf16": true,
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell"
+  },
+  "environment_match": {
+    "required": {
+      "torch": "2.8.0+cu128",
+      "transformers": "4.37.2",
+      "datasets": "3.4.1"
+    },
+    "actual": {
+      "torch": "2.8.0+cu128",
+      "transformers": "4.37.2",
+      "datasets": "3.4.1"
+    },
+    "verified": true
+  },
+  "private_recovery_probe_passed": true,
+  "recovery_route": "Task-owned network volume and private Hugging Face backups after completed stages; metadata-only local recovery remains available.",
+  "automatic_shutdown_reasons": [
+    "completion",
+    "worker_failure",
+    "budget_exhaustion"
+  ],
+  "budget": {
+    "total_task_ceiling_usd": 25,
+    "storage_shutdown_reserve_usd": 2,
+    "session_allowance_usd": 10.452594051022645,
+    "quoted_gpu_usd_per_hour": 0.57,
+    "guard_hourly_usd": 0.6619589041095889,
+    "budget_deadline_utc": "2026-10-31T09:55:22.905289+00:00",
+    "maximum_session_hours": 15.790397237870428,
+    "historical_shutdown_correction": {
+      "schema_version": 1,
+      "checked_utc": "2026-10-30T18:06:37.258935+00:00",
+      "pod_id": "m3s3z9i92lvdx9",
+      "provider_status": {
+        "id": "m3s3z9i92lvdx9",
+        "lastStatusChange": "Exited by user: Wed Oct 28 2026 02:58:40 GMT+0000 (Coordinated Universal Time)"
+      },
+      "verified_compute_stopped_at": 1793156320.0,
+      "previous_compute_stopped_at": 1793182616.2046697,
+      "historical_ledger_sha256": "8ea49f419623f39fbc17adca682d483e06feefd290439f74408417a99be5148d",
+      "provider_hourly_billing_sha256": "a4370ee1006eddb22fb2ff0417876f493724eb41ae7c15f4fb9462d1c8d64886",
+      "provider_billed_gpu_cpu_disk_usd": 3.2434894046746194,
+      "scope": "Correct delayed observation time to independently verified provider shutdown. Preserve compute rates, original receipts, all other launches and all storage intervals. No account debit used as an itemized invoice."
+    },
+    "reconciliation_private_backup_revision": "d82bd40838bb795cfb72fece6ba6c42b4c4846b7"
+  },
+  "forecast": {
+    "arms": {
+      "continued": {
+        "synthetic_generations": 10,
+        "initialization": "continued",
+        "estimated_hours": 9.437466068185604,
+        "estimated_compute_and_running_storage_usd": 5.43236060527615,
+        "new_training_stages": 10,
+        "new_full_generation_stages": 9,
+        "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+      },
+      "reset": {
+        "synthetic_generations": 10,
+        "initialization": "reset_s0",
+        "estimated_hours": 8.361715996355509,
+        "estimated_compute_and_running_storage_usd": 4.813141180367923,
+        "new_training_stages": 9,
+        "new_full_generation_stages": 8,
+        "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+      }
+    },
+    "estimated_hours": 18.049182064541114,
+    "estimated_compute_and_running_storage_usd": 10.389405895233116,
+    "new_training_stages": 19,
+    "epochs_per_stage": 5,
+    "executed_epochs": 95,
+    "method": "Sequential matched arms, shared S1/D2 and imported D1; margins include both arms and handoff."
+  },
+  "forecast_note": "Conservative forecast is 18.05 hours / USD10.39. The padded budget watchdog allows 15.79 hours, so completion is not guaranteed: a slow pair can pause before completion. Previous comparable arms totalled about12.4 hours; this is context, not a measured duration for the new pair.",
+  "historical_resources": "Three historical Pods remain exited; their recovery volumes are preserved. Only the new paired Pod is running.",
+  "full_run_complete": false,
+  "initial_dataset_import": {
+    "source_identity": "c12d0f6d209b3ca135c1b1fe3aac5e01c7407c7587ca5508c148d8350359220f",
+    "files": {
+      "synthetic_for_gen_01/tokens.npy": "160400a28478163487b9c08ea07ee594710e41bf9c80f141f7cb1d472fa71803",
+      "synthetic_for_gen_01/manifest.json": "71d013b5094c54a1215bb4d13c46f9dcbf35328a0d7947e2706ec2541fdedea2"
+    },
+    "full_tokens_sha256": "daf84582d4081b899a7f146faf2a0b6f15213a09ca6c25e355c9fd66a5ea0fc6",
+    "active_tokens_sha256": "daf84582d4081b899a7f146faf2a0b6f15213a09ca6c25e355c9fd66a5ea0fc6",
+    "new_generation_seconds": 0
+  },
+  "observed_first_stage_history": [
+    {
+      "epoch": 1,
+      "learning_rate": 2e-05,
+      "train_loss": 1.1124292160132296,
+      "validation_loss": 3.8915206638398074,
+      "train_seconds": 66.67504868202377,
+      "training_target_tokens_per_second": 35854.46201023214
+    }
+  ],
+  "final_launch_check_utc": "2026-10-30T18:12:38.974783+00:00",
+  "observed_gpu_utilization": "92 %, 4826 MiB"
+}

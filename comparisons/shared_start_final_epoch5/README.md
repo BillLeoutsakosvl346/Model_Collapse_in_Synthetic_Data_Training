@@ -1,6 +1,6 @@
 # Shared start, final epoch 5
 
-**GPU validated; full pair unlaunched.** See the [acceptance report](../../reports/20261030T172428Z-smoke-paired-final5/report.md) and [handoff, including the current budget gate](../../docs/final-epoch5-handoff.md). The actual full profile matches the new runtime/protocol certificate; its current conservative cost estimate exceeds the remaining task allowance.
+**Full pair launched on 30 October at 18:07 UTC/London:** `20261030T180755Z-full-paired-final5`. Continued training runs first; reset follows automatically. See the [launch receipt](../../docs/validation/2026-10-30_final-epoch5-full-launch.json), [acceptance report](../../reports/20261030T172428Z-smoke-paired-final5/report.md) and [handoff](../../docs/final-epoch5-handoff.md). Runtime and scientific settings match GPU acceptance. Historical cost reconciliation passed the unchanged $25 budget gate. Do not launch a duplicate.
 
 This is a new matched comparison. Historical Week 2 trained five epochs but selected epoch 1. This condition **retains epoch 5**, even if real validation loss worsens. It does not retrain or change the existing real-trained S0.
 
@@ -22,7 +22,7 @@ python -m model_collapse report PAIR_ID
 python -m model_collapse cleanup PAIR_ID
 ```
 
-The separately authorised future full launch is:
+The separately authorised full launch used this command; it is already running:
 
 ```powershell
 python -m model_collapse launch --config comparisons/shared_start_final_epoch5/full.yaml --generations 10
