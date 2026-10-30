@@ -42,6 +42,8 @@ The independent Pod-side watchdog enforces a price-derived allowance with a shut
 
 ## Small acceptance and full launch
 
+The [new paired final-epoch workflow](../comparisons/shared_start_final_epoch5/README.md) uses its own five-epoch smoke/full configs. After its smoke launcher returns, run `verify-detached PAIR_ID` while compute is active; it closes SSH between observations, verifies real stage/epoch/event progress and advancing remote heartbeats, and records the evidence. Then fetch metadata, validate the pair and clean up its resources. Parent cleanup requires matching pinned recovery for **both** children. The commands below document the earlier single-arm workflow.
+
 The offline suite never provisions infrastructure:
 
 ```powershell

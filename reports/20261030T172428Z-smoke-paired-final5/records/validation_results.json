@@ -1,0 +1,25 @@
+{
+  "workflow": "paired",
+  "checks": {
+    "both_child_audits": true,
+    "four_five_epoch_training_stages": true,
+    "epoch_five_checkpoints": true,
+    "exact_shared_prefix": true,
+    "handoff_restart": true,
+    "continued_evidence_unchanged": true,
+    "single_owner_and_deadline": true,
+    "both_private_restores": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "source_code_sha256": "962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca",
+  "protocol_fingerprint": "0a32588cd9d4a4735bac2e47ac160ce6b00a05dc5d600709a0c5bf62e8290340",
+  "child_audits": {
+    "continued": "74ddf52b077078a5d0ac6c54a6fb8b6c0d54469d9de427db7df1671559ea4a33",
+    "reset": "e1c56dff574eb262cd369d2babe814b77b2554bb39d733bdaa81bdb98ddfc8a8"
+  },
+  "unique_training_stages": 4,
+  "executed_epochs": 20,
+  "validated_run_id": "20261030T172428Z-smoke-paired-final5",
+  "provider_pod_state": "EXITED"
+}

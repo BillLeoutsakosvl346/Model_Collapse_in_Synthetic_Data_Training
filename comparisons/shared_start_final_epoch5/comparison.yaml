@@ -1,0 +1,38 @@
+schema_version: 1
+id: shared_start_final_epoch5
+state: gpu_validated_full_unlaunched
+acceptance_run_id: 20261030T172428Z-smoke-paired-final5
+accepted_runtime_sha256: 962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca
+acceptance_report: ../../reports/20261030T172428Z-smoke-paired-final5/report.md
+handoff: ../../docs/final-epoch5-handoff.md
+full_launch_budget_state: requires_reconciliation_of_existing_conservative_receipts
+question: Compare reset-to-real-S0 and continued weights when every synthetic stage retains epoch 5.
+workflow: paired
+configs:
+  full: full.yaml
+  smoke: smoke.yaml
+historical_d1_source: 20261026T192740Z-full-continued
+historical_s0_preserved: true
+historical_s1_d2_reused: false
+shared_new_stages: [0, 1]
+first_divergent_training_cycle: 2
+arms:
+  continued:
+    initialization: previous_final_epoch_checkpoint
+    new_full_cycles: [1, 10]
+  reset:
+    initialization: fixed_real_s0
+    new_full_cycles: [2, 10]
+epochs_per_stage: 5
+checkpoint_selection: final_epoch
+unique_full_training_stages: 19
+full_executed_epochs: 95
+required_gpu: NVIDIA RTX PRO 4000 Blackwell
+hardware_fallback: leave_pending
+resources: one_parent_pod_volume_watchdog_and_cost_interval
+reporting: Existing per-arm graph families plus paired curves, tidy metrics and analysis manifests.
+limitations:
+  seeds: [42]
+  independent_replicates: false
+  smoke_is_pipeline_validation_only: true
+full_experiment_launched: false

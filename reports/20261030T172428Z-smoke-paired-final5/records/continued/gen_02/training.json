@@ -1,0 +1,34 @@
+{
+  "generation": 2,
+  "initial_weights_sha256": "62c71588a0fdd5b355683c7bf2bc5f9639a2e060bd149163acae22e07faabf14",
+  "selected_weights_sha256": "ab9e8be3786740168ae1c7fe37157805ea93a2ccb96ba5de466914e59bf4cf99",
+  "input_tokens_sha256": "9ac82c76c760389c201dddf9ea287d6601bde97fb3bdebe443ced910ebf4ae90",
+  "training_blocks": 256,
+  "selected_epoch": 5,
+  "best_validation_loss": 3.5773019409387117,
+  "best_validation_epoch": 2,
+  "selected_validation_loss": 3.59487042760181,
+  "executed_epochs": 5,
+  "terminal_weights_sha256": "ab9e8be3786740168ae1c7fe37157805ea93a2ccb96ba5de466914e59bf4cf99",
+  "training_contract_sha256": "031691cf92818565b52f7248b11f6e7e2fc0c5794d59a06cffc68b351e77bed4",
+  "seconds": 29.756591842975467,
+  "peak_allocated_gpu_bytes": 4214024192,
+  "checkpoint_files": {
+    "config.json": "2d6f33e621ddc32addf8b95dfa6d109c9374b7b3f444d8f91b6cac77c520d0a9",
+    "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "model.safetensors": "4607d6c86a80dcccce99352a4c0c4ff256ddedeb114e65455b557960ada84c1f"
+  },
+  "initialization": "continued",
+  "optimizer_initialization": "fresh_each_cycle",
+  "checkpoint_selection": "final_epoch",
+  "lineage": {
+    "initializer_weights_sha256": "62c71588a0fdd5b355683c7bf2bc5f9639a2e060bd149163acae22e07faabf14",
+    "initializer_checkpoint": "seed_42/gen_01/checkpoint",
+    "training_dataset": "synthetic_for_gen_02",
+    "training_dataset_file_sha256": "588087c6d57fa9b0d46af7083a50062d02e726879db35df019153acc203c2f02",
+    "training_tokens_sha256": "9ac82c76c760389c201dddf9ea287d6601bde97fb3bdebe443ced910ebf4ae90",
+    "generator_checkpoint": "seed_42/gen_01/checkpoint",
+    "generator_weights_sha256": "62c71588a0fdd5b355683c7bf2bc5f9639a2e060bd149163acae22e07faabf14",
+    "branch_origin": null
+  }
+}

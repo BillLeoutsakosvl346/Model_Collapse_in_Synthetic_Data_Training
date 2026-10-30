@@ -1,0 +1,211 @@
+{
+  "date": "2026-10-30",
+  "run_id": "20261030T172428Z-smoke-paired-final5",
+  "setup_state": "gpu_validated",
+  "full_experiment_launched": false,
+  "runtime_sha256": "962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca",
+  "implementation_commit": "50f0ffec92702fdb9d98b1d5d1c0efa4f86e124d",
+  "protocol_fingerprint": "0a32588cd9d4a4735bac2e47ac160ce6b00a05dc5d600709a0c5bf62e8290340",
+  "offline_tests": {
+    "passed": 131,
+    "warnings": 17,
+    "log_sha256": "9164718506918eef36b13849357ec3281cfe91f9e9aaa9d8f9c87560724f9b25"
+  },
+  "fresh_independent_review": "five_epoch_plan_review: blockers fixed, final revised source reviewed",
+  "gpu_checks": {
+    "both_child_audits": true,
+    "four_five_epoch_training_stages": true,
+    "epoch_five_checkpoints": true,
+    "exact_shared_prefix": true,
+    "handoff_restart": true,
+    "continued_evidence_unchanged": true,
+    "single_owner_and_deadline": true,
+    "both_private_restores": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "child_checks": {
+    "continued": {
+      "pinned_previous_real_g0_start": true,
+      "both_weights_and_data_handoffs": true,
+      "weights_changed_each_training_cycle": true,
+      "fixed_real_prompts_and_evaluation": true,
+      "continuation_only_64_token_datasets": true,
+      "finite_token_weighted_perplexity": true,
+      "two_real_worker_exits_and_resume": true,
+      "partial_generation_shard_reused": true,
+      "completed_cycle_1_unchanged_after_resume": true,
+      "private_hub_download_hashes_verified": true,
+      "restored_checkpoint_tensor_hash_and_evaluation": true,
+      "direct_shifted_nll_calculation": true
+    },
+    "reset": {
+      "exact_pinned_shared_prefix_import": true,
+      "shared_evidence_scope_preserved": true,
+      "fixed_s0_weights_and_separate_generator_handoffs": true,
+      "weights_changed_each_training_cycle": true,
+      "fixed_real_prompts_and_evaluation": true,
+      "continuation_only_64_token_datasets": true,
+      "finite_token_weighted_perplexity": true,
+      "two_real_worker_exits_and_resume": true,
+      "partial_generation_shard_reused": true,
+      "completed_first_new_cycle_unchanged_after_resume": true,
+      "private_hub_download_hashes_verified": true,
+      "restored_checkpoint_tensor_hash_and_evaluation": true,
+      "direct_shifted_nll_calculation": true
+    }
+  },
+  "stages": [
+    {
+      "arm": "continued",
+      "cycle": 1,
+      "selected_epoch": 5,
+      "executed_epochs": 5,
+      "best_validation_epoch": 1,
+      "validation_perplexity": 37.35518651135085,
+      "test_perplexity": 44.03230707501202,
+      "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "selected_weights_sha256": "62c71588a0fdd5b355683c7bf2bc5f9639a2e060bd149163acae22e07faabf14",
+      "terminal_weights_sha256": "62c71588a0fdd5b355683c7bf2bc5f9639a2e060bd149163acae22e07faabf14",
+      "training_tokens_sha256": "43127a0d04a384a7e44851e3e785472fbea53324f5f61c692d4918460c3581c0"
+    },
+    {
+      "arm": "continued",
+      "cycle": 2,
+      "selected_epoch": 5,
+      "executed_epochs": 5,
+      "best_validation_epoch": 2,
+      "validation_perplexity": 36.41098182397837,
+      "test_perplexity": 45.10835585834614,
+      "initial_weights_sha256": "62c71588a0fdd5b355683c7bf2bc5f9639a2e060bd149163acae22e07faabf14",
+      "selected_weights_sha256": "ab9e8be3786740168ae1c7fe37157805ea93a2ccb96ba5de466914e59bf4cf99",
+      "terminal_weights_sha256": "ab9e8be3786740168ae1c7fe37157805ea93a2ccb96ba5de466914e59bf4cf99",
+      "training_tokens_sha256": "9ac82c76c760389c201dddf9ea287d6601bde97fb3bdebe443ced910ebf4ae90"
+    },
+    {
+      "arm": "reset",
+      "cycle": 2,
+      "selected_epoch": 5,
+      "executed_epochs": 5,
+      "best_validation_epoch": 1,
+      "validation_perplexity": 38.05534921016347,
+      "test_perplexity": 46.21490970120272,
+      "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "selected_weights_sha256": "e3bc489e4bcee2eb67d0dc6af5b707ab28fd8d659e6d397fe072c76e88f48652",
+      "terminal_weights_sha256": "e3bc489e4bcee2eb67d0dc6af5b707ab28fd8d659e6d397fe072c76e88f48652",
+      "training_tokens_sha256": "9ac82c76c760389c201dddf9ea287d6601bde97fb3bdebe443ced910ebf4ae90"
+    },
+    {
+      "arm": "reset",
+      "cycle": 3,
+      "selected_epoch": 5,
+      "executed_epochs": 5,
+      "best_validation_epoch": 1,
+      "validation_perplexity": 38.18439221645813,
+      "test_perplexity": 46.98765765837568,
+      "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "selected_weights_sha256": "39b763fd4098a169192cfde4000234580a682ff071cdd0e7db943f14de2e2a2a",
+      "terminal_weights_sha256": "39b763fd4098a169192cfde4000234580a682ff071cdd0e7db943f14de2e2a2a",
+      "training_tokens_sha256": "28943b170bd23423249b6d50e770e78910435668b4386c784b43d0b578fc56aa"
+    }
+  ],
+  "executed_epochs": 20,
+  "cloud_resources": {
+    "pod_id": "1f5peckcr6lgwg",
+    "volume_id": "8kcglgf2t4",
+    "pod_removed": true,
+    "volume_removed": true,
+    "active_pods_after_cleanup": []
+  },
+  "recovery": {
+    "parent": {
+      "indexed_files": 32,
+      "verified_files": 32,
+      "verified_bytes": 843046,
+      "revisions": {
+        "model": "72d0717556366954ac0e1c751ce16ad5870b96c7",
+        "dataset": "02e78f7370e6d09418353a2b3d5eefc26d7a20a8"
+      },
+      "artifact_index_sha256": "a053b3709516b8bfdf8a31eb038c8ae0ac1dde4eb92898e00689e5e71e3fd4eb"
+    },
+    "children": {
+      "continued": {
+        "run_id": "20261030T172428Z-smoke-paired-final5-continued",
+        "indexed_files": 112,
+        "verified_files": 87,
+        "verified_bytes": 11027655,
+        "revisions": {
+          "model": "1f7326aa1fd9a5d283d88758903e4267946e8b33",
+          "dataset": "21b97f3f7e8680dc3dc9c6e9eda8847eb83edece"
+        },
+        "artifact_index_sha256": "9c0f7aac98886b75e827f37b1276783f976e7d69f9a7192fc72ff06356afe84a"
+      },
+      "reset": {
+        "run_id": "20261030T172428Z-smoke-paired-final5-reset-s0",
+        "indexed_files": 133,
+        "verified_files": 107,
+        "verified_bytes": 14661582,
+        "revisions": {
+          "model": "72d0717556366954ac0e1c751ce16ad5870b96c7",
+          "dataset": "85a0737057c5e85bc000946512c718df694955fd"
+        },
+        "artifact_index_sha256": "60ad65f29a48d5a8495a6acd7b3b5864fa2b5d961dddcbafbf174fb9ac147915"
+      }
+    },
+    "bulk_scope": "All child indexed bulk files restored, checksum-verified and final checkpoints re-evaluated remotely; laptop fetch is metadata only."
+  },
+  "observed_account_debit_usd": 0.1543642277999986,
+  "billing_scope": "Account balance change through cleanup, including concurrent retained storage and billing timing; not an itemized compute invoice.",
+  "limits": {
+    "combined_acceptance_usd": 0.75,
+    "task_ceiling_usd": 25,
+    "reserve_usd": 2
+  },
+  "full_launch_preflight": {
+    "full_profile_matches_actual_certificate": true,
+    "forecast": {
+      "arms": {
+        "continued": {
+          "synthetic_generations": 10,
+          "initialization": "continued",
+          "estimated_hours": 9.437466068185604,
+          "estimated_compute_and_running_storage_usd": 5.43236060527615,
+          "new_training_stages": 10,
+          "new_full_generation_stages": 9,
+          "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+        },
+        "reset": {
+          "synthetic_generations": 10,
+          "initialization": "reset_s0",
+          "estimated_hours": 8.361715996355509,
+          "estimated_compute_and_running_storage_usd": 4.813141180367923,
+          "new_training_stages": 9,
+          "new_full_generation_stages": 8,
+          "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+        }
+      },
+      "estimated_hours": 18.049182064541114,
+      "estimated_compute_and_running_storage_usd": 10.389405895233116,
+      "new_training_stages": 19,
+      "epochs_per_stage": 5,
+      "executed_epochs": 95,
+      "method": "Sequential matched arms, shared S1/D2 and imported D1; margins include both arms and handoff."
+    },
+    "estimated_task_accrued_usd": 17.35538843573588,
+    "remaining_conservative_allowance_usd": 5.644611564264121,
+    "full_pair_affordable_under_current_guard": false,
+    "account": {
+      "clientBalance": 18.8832182179,
+      "currentSpendPerHr": 0.009,
+      "isAutoPayEnabled": false,
+      "enableBackupPayments": false
+    },
+    "active_pods": [],
+    "retained_volumes": [
+      "08ypgkuw40",
+      "z6ziujxxus",
+      "wortjkxvr7"
+    ]
+  },
+  "full_command": "python -m model_collapse launch --config comparisons/shared_start_final_epoch5/full.yaml --generations 10"
+}

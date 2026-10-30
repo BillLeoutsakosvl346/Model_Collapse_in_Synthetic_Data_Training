@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-30T17:45:19.376383+00:00",
+  "run_id": "20261030T172428Z-smoke-paired-final5-reset-s0",
+  "initialization": "reset_s0",
+  "scientific_config_sha256": "22d282ef64fe092bf6a451a1ee8dc362da3ac7448b0ed2fb52295c254d6ffd0d",
+  "source_runtime_identity": "962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca",
+  "source_root": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261030T172428Z-smoke-paired-final5-reset-s0",
+  "inputs": {
+    "config.json": {
+      "sha256": "4ee57803cd181c92355088c3c26e17d199ed45d7daa3c25defa46e1b8418e121",
+      "bytes": 10380
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "d24985ab3f77b733d0cb90568084b75688c884d6d85e48655d82408542233625",
+      "bytes": 21423
+    },
+    "seed_42/gen_01/metrics.json": {
+      "sha256": "d6d360d212d654a82eca70d42e9608bfd30e9b9094d0ad675e7fc174e069ce19",
+      "bytes": 4653
+    },
+    "seed_42/gen_02/metrics.json": {
+      "sha256": "cec8a116b507b20db4164d39a3575d1a3b9cfc50c4bb278ad3a3309ea060265f",
+      "bytes": 14153
+    },
+    "seed_42/gen_03/metrics.json": {
+      "sha256": "66158a8fa6092a475f5d7bf9702d95f50a98442bb239b4c97a42793826e27015",
+      "bytes": 14153
+    },
+    "seed_42/gen_00/import.json": {
+      "sha256": "0b30cb87c8a925c46a0e1018d7ca4094f4754fe8b1019cc920a2b42ec9c2dd16",
+      "bytes": 392
+    },
+    "seed_42/gen_00/test_sequences.json": {
+      "sha256": "e28fa97c53c7239a02c1730f076e110d771dc641076a421429762c2970301aa4",
+      "bytes": 1565
+    },
+    "seed_42/gen_00/reference_sequences.json": {
+      "sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+      "bytes": 6159
+    },
+    "seed_42/gen_01/import.json": {
+      "sha256": "c203e1d2d92e2627898866cbd0c2f48e6ed00112202cdcabf83122421f76423b",
+      "bytes": 392
+    },
+    "seed_42/gen_01/test_sequences.json": {
+      "sha256": "b8ee5053de73db8752c24b39a44f9838fea122b7dcbd694ca767d814f3561785",
+      "bytes": 1568
+    },
+    "seed_42/gen_01/reference_sequences.json": {
+      "sha256": "97e7ddef0f9bc1ce295a0c7171f078421a43408b46e50c526a03344f72b42342",
+      "bytes": 6131
+    },
+    "seed_42/gen_02/test_sequences.json": {
+      "sha256": "7d30afcb6fe6ffc19c9d1a3d899b9d4aa2d8c16098786d247986c621984177c0",
+      "bytes": 1554
+    },
+    "seed_42/gen_02/reference_sequences.json": {
+      "sha256": "d2d651b9e5763b365f04b16c9b27b1a86bb0dfa07b356e4313316f984945135b",
+      "bytes": 6112
+    },
+    "seed_42/gen_03/test_sequences.json": {
+      "sha256": "45d371c1b31ad71e8615e1e5b2956d2a2789beafeaf625169a436eb0c90c5058",
+      "bytes": 1563
+    },
+    "seed_42/gen_03/reference_sequences.json": {
+      "sha256": "5de8c5e23066fe4f43e88b0d449270f8fa93eba14897a1842b9c673443924047",
+      "bytes": 6119
+    },
+    "resources.json": {
+      "sha256": "9c5267540d317423289d343ef385c13e064e1b13f15f79425f87d8e2062755b5",
+      "bytes": 1402
+    },
+    "manifest.json": {
+      "sha256": "cb2a8c7f721ad28c8d1524fb4e9f4725ddfecf2e92300e49fe56a61c32e1c87d",
+      "bytes": 286
+    },
+    "environment.json": {
+      "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+      "bytes": 433
+    },
+    "shared_prefix.json": {
+      "sha256": "cc8601c16dda8bf935f8bac9fd06cfcd74be1cd0f1ed41311d6e037b8c771100",
+      "bytes": 5102
+    },
+    "benchmark.json": {
+      "sha256": "aa0f9e01d3bd9182a36bdb4fc8aec8d8d19a4fe608e03f066e1e723cc187eecd",
+      "bytes": 658
+    },
+    "benchmark_resources.json": {
+      "sha256": "9c5267540d317423289d343ef385c13e064e1b13f15f79425f87d8e2062755b5",
+      "bytes": 1402
+    }
+  },
+  "analysis": {
+    "git_revision": "50f0ffec92702fdb9d98b1d5d1c0efa4f86e124d",
+    "source_files": {
+      "model_collapse/analysis/__init__.py": "8e3555a627a9852f3fc0eb0983d750f6d3e0368bc1972169e38f696209a82777",
+      "model_collapse/analysis/forecasts.py": "65d8cfe4da3601696cf564079ce8a0ab71df60876740d6603b027a3f263dd481",
+      "model_collapse/analysis/records.py": "227dcdcc9db8f230762cd2ca9946f44d5dde438fc83329583db1c4478075c67b",
+      "model_collapse/analysis/reporting.py": "5b519dd4a3c9c51fa13dd2dbbf28526fc6500eda1e3d6f7150e1ff104b0e3faf",
+      "model_collapse/report.py": "df3786668a77ddf906f58c59f59992615fabf2d673761ba578dd5014e2d8b70f"
+    },
+    "source_sha256": "23e58d30c8f6adabd0f9f2310ead5ac51bd14d9e74041aaf3d4e969d52d3e6a7",
+    "environment": {
+      "python": "3.12.1",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "packages": {
+        "numpy": "2.1.2",
+        "matplotlib": "3.9.4"
+      }
+    }
+  },
+  "outputs": {
+    "diversity.png": {
+      "sha256": "7c43783949e87c95b79cabe390f9f490af63f307df2b18b737bc01b2b34a3eb3",
+      "bytes": 80152
+    },
+    "forecast.json": {
+      "sha256": "568c2589c4f8f7c79789a7b3c17c3b9018c1be11924f905ed1cd37ba680e1fa7",
+      "bytes": 1177
+    },
+    "metric_definitions.json": {
+      "sha256": "c75ceb48b2e98ebdf6f60fc0af7b63f337451fd3b992c60d4e09f3b109941a59",
+      "bytes": 1480
+    },
+    "metrics.csv": {
+      "sha256": "67e8d150cf336e60f33343bba4792f16f67ac3276db6f0f5d2a9bafc2fe2d0ef",
+      "bytes": 2971
+    },
+    "perplexity.png": {
+      "sha256": "ba8716a8b8512b7cbe910d5c240191ae946f4da03b16a143b19abad808891f76",
+      "bytes": 95368
+    },
+    "reference_scores.png": {
+      "sha256": "0fa8456375e7e72f1318ea54b0ede38486ac378c5329333769f06d98f5d09e09",
+      "bytes": 36752
+    },
+    "report.md": {
+      "sha256": "a87087d5634566f86f81a5a11b2e668429f25e8eca154ee1be9eb31f257de28e",
+      "bytes": 3302
+    },
+    "runtime.png": {
+      "sha256": "db137253bf2b994eb5ca635e7d80396129245ca5245691f745c1db79ec5b7c78",
+      "bytes": 38807
+    }
+  },
+  "imported_stage_receipts": {
+    "0": {
+      "source_run_id": "20261030T172428Z-smoke-paired-final5-continued",
+      "source_stage_index": 0,
+      "source_revisions": {
+        "model": "1f7326aa1fd9a5d283d88758903e4267946e8b33",
+        "dataset": "21b97f3f7e8680dc3dc9c6e9eda8847eb83edece"
+      },
+      "measurement_scope": "original_source_splits",
+      "execution": "imported_shared_stage",
+      "new_training_seconds": 0,
+      "new_generation_seconds": 0
+    },
+    "1": {
+      "source_run_id": "20261030T172428Z-smoke-paired-final5-continued",
+      "source_stage_index": 1,
+      "source_revisions": {
+        "model": "1f7326aa1fd9a5d283d88758903e4267946e8b33",
+        "dataset": "21b97f3f7e8680dc3dc9c6e9eda8847eb83edece"
+      },
+      "measurement_scope": "original_source_splits",
+      "execution": "imported_shared_stage",
+      "new_training_seconds": 0,
+      "new_generation_seconds": 0
+    }
+  },
+  "scope": "Offline saved measurements; no independent model re-evaluation; original evidence untouched.",
+  "manifest_hash_scope": "Output hashes exclude this self-referential manifest."
+}

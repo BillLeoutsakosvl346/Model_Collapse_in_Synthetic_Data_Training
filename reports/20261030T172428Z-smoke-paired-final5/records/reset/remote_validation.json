@@ -1,0 +1,717 @@
+{
+  "checks": {
+    "exact_pinned_shared_prefix_import": true,
+    "shared_evidence_scope_preserved": true,
+    "fixed_s0_weights_and_separate_generator_handoffs": true,
+    "weights_changed_each_training_cycle": true,
+    "fixed_real_prompts_and_evaluation": true,
+    "continuation_only_64_token_datasets": true,
+    "finite_token_weighted_perplexity": true,
+    "two_real_worker_exits_and_resume": true,
+    "partial_generation_shard_reused": true,
+    "completed_first_new_cycle_unchanged_after_resume": true,
+    "private_hub_download_hashes_verified": true,
+    "restored_checkpoint_tensor_hash_and_evaluation": true,
+    "direct_shifted_nll_calculation": true
+  },
+  "handoffs": [
+    {
+      "cycle": 2,
+      "initializer_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "initializer_checkpoint": "seed_42/gen_00/checkpoint",
+      "training_dataset": "synthetic_for_gen_02",
+      "training_dataset_file_sha256": "588087c6d57fa9b0d46af7083a50062d02e726879db35df019153acc203c2f02",
+      "training_tokens_sha256": "9ac82c76c760389c201dddf9ea287d6601bde97fb3bdebe443ced910ebf4ae90",
+      "generator_checkpoint": "seed_42/gen_01/checkpoint",
+      "generator_weights_sha256": "62c71588a0fdd5b355683c7bf2bc5f9639a2e060bd149163acae22e07faabf14",
+      "branch_origin": {
+        "run_id": "20261030T172428Z-smoke-paired-final5-continued",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "1f7326aa1fd9a5d283d88758903e4267946e8b33",
+          "dataset": "21b97f3f7e8680dc3dc9c6e9eda8847eb83edece"
+        },
+        "artifact_index_sha256": "9c0f7aac98886b75e827f37b1276783f976e7d69f9a7192fc72ff06356afe84a",
+        "first_new_cycle": 2,
+        "required_files": {
+          "completion.json": {
+            "sha256": "0681cf2416efd202777cb78ee93597c3033a5e3d1b5663cfd1965e51b3a28f49",
+            "bytes": 180,
+            "repo_type": "dataset"
+          },
+          "config.json": {
+            "sha256": "d8d1b3c5af6115c5aa267d62dfb92decabfe17d80fa2888c8c7bea58120f4d47",
+            "bytes": 4000,
+            "repo_type": "dataset"
+          },
+          "data/manifest.json": {
+            "sha256": "f898b53fb42b7345cb07787ebf543160933db21cfde3a5cc3a678ba5223d9c7f",
+            "bytes": 1081,
+            "repo_type": "dataset"
+          },
+          "data/test.npy": {
+            "sha256": "1314c0bd85110ec473ad6368e2839e054d517d3bfb9add50c80bd5b2b8c92285",
+            "bytes": 16512,
+            "repo_type": "dataset"
+          },
+          "data/train.npy": {
+            "sha256": "672cb2d0b73f2eeb4339ded72b555e292ba78d897883fddf0cf13b41edb1f740",
+            "bytes": 65664,
+            "repo_type": "dataset"
+          },
+          "data/validation.npy": {
+            "sha256": "2cfeaee772904930fa3801c19ea7e7cefba79df73679ba66725e803ffda5e702",
+            "bytes": 16512,
+            "repo_type": "dataset"
+          },
+          "manifest.json": {
+            "sha256": "ba5a4dd329785126b45e4c3a0317bef61b5874e9ec22f58b8cd6d3e24f7afc6d",
+            "bytes": 286,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/checkpoint/config.json": {
+            "sha256": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+            "bytes": 747,
+            "repo_type": "model"
+          },
+          "seed_42/gen_00/checkpoint/generation_config.json": {
+            "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+            "bytes": 132,
+            "repo_type": "model"
+          },
+          "seed_42/gen_00/checkpoint/model.safetensors": {
+            "sha256": "b20c1bb996d49f227a1de2b0288d90eeb34d2f7bf458416485a3d427db012580",
+            "bytes": 500979600,
+            "repo_type": "model"
+          },
+          "seed_42/gen_00/config.json": {
+            "sha256": "723b850dc7194cb06bdda13ac9c09e9bcb38992fd05418f264a71c9569f6bf63",
+            "bytes": 4846,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/metrics.json": {
+            "sha256": "d24985ab3f77b733d0cb90568084b75688c884d6d85e48655d82408542233625",
+            "bytes": 21423,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/reference_sequences.json": {
+            "sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+            "bytes": 6159,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/samples.json": {
+            "sha256": "6e84823cf412b56ae8d28fc581c9cd7961e320e44c4357313e391c5408d4b1a6",
+            "bytes": 163542,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/stage_completion.json": {
+            "sha256": "be17c8279356ef30d66e796b468a4418f17641efdd980f9bbb9ea9399742be7e",
+            "bytes": 1502,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/test_sequences.json": {
+            "sha256": "e28fa97c53c7239a02c1730f076e110d771dc641076a421429762c2970301aa4",
+            "bytes": 1565,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/tokenizer/merges.txt": {
+            "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+            "bytes": 456318,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/tokenizer/special_tokens_map.json": {
+            "sha256": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+            "bytes": 548,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/tokenizer/tokenizer.json": {
+            "sha256": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+            "bytes": 2108630,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/tokenizer/tokenizer_config.json": {
+            "sha256": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+            "bytes": 669,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/tokenizer/vocab.json": {
+            "sha256": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+            "bytes": 798293,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/training.json": {
+            "sha256": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+            "bytes": 1272,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/checkpoint/config.json": {
+            "sha256": "8cfbbd582421db2bb2ef667d608b8fbe724a43978bd23bbf507d400ae6ae7e52",
+            "bytes": 818,
+            "repo_type": "model"
+          },
+          "seed_42/gen_01/checkpoint/generation_config.json": {
+            "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+            "bytes": 132,
+            "repo_type": "model"
+          },
+          "seed_42/gen_01/checkpoint/model.safetensors": {
+            "sha256": "a25308150dfd85a3ae00e3c64b4c2a50b3bfd641dfa1a44586402f840abec547",
+            "bytes": 500979600,
+            "repo_type": "model"
+          },
+          "seed_42/gen_01/config.json": {
+            "sha256": "723b850dc7194cb06bdda13ac9c09e9bcb38992fd05418f264a71c9569f6bf63",
+            "bytes": 4846,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/metrics.json": {
+            "sha256": "d6d360d212d654a82eca70d42e9608bfd30e9b9094d0ad675e7fc174e069ce19",
+            "bytes": 4653,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/reference_sequences.json": {
+            "sha256": "97e7ddef0f9bc1ce295a0c7171f078421a43408b46e50c526a03344f72b42342",
+            "bytes": 6131,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/samples.json": {
+            "sha256": "433805d7fe3bf6c708c70217d86dd6e4ba9b317783c738a34104990cfd19f8c4",
+            "bytes": 164941,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/stage_completion.json": {
+            "sha256": "0d59ed700b08642b92a7d5033e7e460c796b11f4f0ce132450ff7dca81912644",
+            "bytes": 1599,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/test_sequences.json": {
+            "sha256": "b8ee5053de73db8752c24b39a44f9838fea122b7dcbd694ca767d814f3561785",
+            "bytes": 1568,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/tokenizer/merges.txt": {
+            "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+            "bytes": 456318,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/tokenizer/special_tokens_map.json": {
+            "sha256": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+            "bytes": 548,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/tokenizer/tokenizer.json": {
+            "sha256": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+            "bytes": 2108630,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/tokenizer/tokenizer_config.json": {
+            "sha256": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+            "bytes": 669,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/tokenizer/vocab.json": {
+            "sha256": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+            "bytes": 798293,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/training.json": {
+            "sha256": "f9545aab1fdcb9c8dd1fd4d95900d46c5bd84790cdaa262edfb3beee061d0e1f",
+            "bytes": 1820,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/training_history.json": {
+            "sha256": "3ff2bb48018701cc403efba2ac23deecb1f33908118a3ee6eaef087c687dd10c",
+            "bytes": 1234,
+            "repo_type": "dataset"
+          },
+          "synthetic_for_gen_02/manifest.json": {
+            "sha256": "38b4f347c2914ab0a17f3d50e4b220633a95b725532564ed69fa8cd0ff083c24",
+            "bytes": 1372,
+            "repo_type": "dataset"
+          },
+          "synthetic_for_gen_02/tokens.npy": {
+            "sha256": "588087c6d57fa9b0d46af7083a50062d02e726879db35df019153acc203c2f02",
+            "bytes": 65664,
+            "repo_type": "dataset"
+          }
+        },
+        "s0_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+        "s1_weights_sha256": "62c71588a0fdd5b355683c7bf2bc5f9639a2e060bd149163acae22e07faabf14",
+        "d2_tokens_sha256": "9ac82c76c760389c201dddf9ea287d6601bde97fb3bdebe443ced910ebf4ae90",
+        "source_config_sha256": "d8d1b3c5af6115c5aa267d62dfb92decabfe17d80fa2888c8c7bea58120f4d47"
+      },
+      "trained_weights_sha256": "e3bc489e4bcee2eb67d0dc6af5b707ab28fd8d659e6d397fe072c76e88f48652"
+    },
+    {
+      "cycle": 3,
+      "initializer_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "initializer_checkpoint": "seed_42/gen_00/checkpoint",
+      "training_dataset": "synthetic_for_gen_03",
+      "training_dataset_file_sha256": "f5b8fa96a6af3fe5acde1f0cad4865c5959f3670ac4653288660b22addb01ad7",
+      "training_tokens_sha256": "28943b170bd23423249b6d50e770e78910435668b4386c784b43d0b578fc56aa",
+      "generator_checkpoint": "seed_42/gen_02/checkpoint",
+      "generator_weights_sha256": "e3bc489e4bcee2eb67d0dc6af5b707ab28fd8d659e6d397fe072c76e88f48652",
+      "branch_origin": {
+        "run_id": "20261030T172428Z-smoke-paired-final5-continued",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "1f7326aa1fd9a5d283d88758903e4267946e8b33",
+          "dataset": "21b97f3f7e8680dc3dc9c6e9eda8847eb83edece"
+        },
+        "artifact_index_sha256": "9c0f7aac98886b75e827f37b1276783f976e7d69f9a7192fc72ff06356afe84a",
+        "first_new_cycle": 2,
+        "required_files": {
+          "completion.json": {
+            "sha256": "0681cf2416efd202777cb78ee93597c3033a5e3d1b5663cfd1965e51b3a28f49",
+            "bytes": 180,
+            "repo_type": "dataset"
+          },
+          "config.json": {
+            "sha256": "d8d1b3c5af6115c5aa267d62dfb92decabfe17d80fa2888c8c7bea58120f4d47",
+            "bytes": 4000,
+            "repo_type": "dataset"
+          },
+          "data/manifest.json": {
+            "sha256": "f898b53fb42b7345cb07787ebf543160933db21cfde3a5cc3a678ba5223d9c7f",
+            "bytes": 1081,
+            "repo_type": "dataset"
+          },
+          "data/test.npy": {
+            "sha256": "1314c0bd85110ec473ad6368e2839e054d517d3bfb9add50c80bd5b2b8c92285",
+            "bytes": 16512,
+            "repo_type": "dataset"
+          },
+          "data/train.npy": {
+            "sha256": "672cb2d0b73f2eeb4339ded72b555e292ba78d897883fddf0cf13b41edb1f740",
+            "bytes": 65664,
+            "repo_type": "dataset"
+          },
+          "data/validation.npy": {
+            "sha256": "2cfeaee772904930fa3801c19ea7e7cefba79df73679ba66725e803ffda5e702",
+            "bytes": 16512,
+            "repo_type": "dataset"
+          },
+          "manifest.json": {
+            "sha256": "ba5a4dd329785126b45e4c3a0317bef61b5874e9ec22f58b8cd6d3e24f7afc6d",
+            "bytes": 286,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/checkpoint/config.json": {
+            "sha256": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+            "bytes": 747,
+            "repo_type": "model"
+          },
+          "seed_42/gen_00/checkpoint/generation_config.json": {
+            "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+            "bytes": 132,
+            "repo_type": "model"
+          },
+          "seed_42/gen_00/checkpoint/model.safetensors": {
+            "sha256": "b20c1bb996d49f227a1de2b0288d90eeb34d2f7bf458416485a3d427db012580",
+            "bytes": 500979600,
+            "repo_type": "model"
+          },
+          "seed_42/gen_00/config.json": {
+            "sha256": "723b850dc7194cb06bdda13ac9c09e9bcb38992fd05418f264a71c9569f6bf63",
+            "bytes": 4846,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/metrics.json": {
+            "sha256": "d24985ab3f77b733d0cb90568084b75688c884d6d85e48655d82408542233625",
+            "bytes": 21423,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/reference_sequences.json": {
+            "sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+            "bytes": 6159,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/samples.json": {
+            "sha256": "6e84823cf412b56ae8d28fc581c9cd7961e320e44c4357313e391c5408d4b1a6",
+            "bytes": 163542,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/stage_completion.json": {
+            "sha256": "be17c8279356ef30d66e796b468a4418f17641efdd980f9bbb9ea9399742be7e",
+            "bytes": 1502,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/test_sequences.json": {
+            "sha256": "e28fa97c53c7239a02c1730f076e110d771dc641076a421429762c2970301aa4",
+            "bytes": 1565,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/tokenizer/merges.txt": {
+            "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+            "bytes": 456318,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/tokenizer/special_tokens_map.json": {
+            "sha256": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+            "bytes": 548,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/tokenizer/tokenizer.json": {
+            "sha256": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+            "bytes": 2108630,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/tokenizer/tokenizer_config.json": {
+            "sha256": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+            "bytes": 669,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/tokenizer/vocab.json": {
+            "sha256": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+            "bytes": 798293,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_00/training.json": {
+            "sha256": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+            "bytes": 1272,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/checkpoint/config.json": {
+            "sha256": "8cfbbd582421db2bb2ef667d608b8fbe724a43978bd23bbf507d400ae6ae7e52",
+            "bytes": 818,
+            "repo_type": "model"
+          },
+          "seed_42/gen_01/checkpoint/generation_config.json": {
+            "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+            "bytes": 132,
+            "repo_type": "model"
+          },
+          "seed_42/gen_01/checkpoint/model.safetensors": {
+            "sha256": "a25308150dfd85a3ae00e3c64b4c2a50b3bfd641dfa1a44586402f840abec547",
+            "bytes": 500979600,
+            "repo_type": "model"
+          },
+          "seed_42/gen_01/config.json": {
+            "sha256": "723b850dc7194cb06bdda13ac9c09e9bcb38992fd05418f264a71c9569f6bf63",
+            "bytes": 4846,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/metrics.json": {
+            "sha256": "d6d360d212d654a82eca70d42e9608bfd30e9b9094d0ad675e7fc174e069ce19",
+            "bytes": 4653,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/reference_sequences.json": {
+            "sha256": "97e7ddef0f9bc1ce295a0c7171f078421a43408b46e50c526a03344f72b42342",
+            "bytes": 6131,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/samples.json": {
+            "sha256": "433805d7fe3bf6c708c70217d86dd6e4ba9b317783c738a34104990cfd19f8c4",
+            "bytes": 164941,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/stage_completion.json": {
+            "sha256": "0d59ed700b08642b92a7d5033e7e460c796b11f4f0ce132450ff7dca81912644",
+            "bytes": 1599,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/test_sequences.json": {
+            "sha256": "b8ee5053de73db8752c24b39a44f9838fea122b7dcbd694ca767d814f3561785",
+            "bytes": 1568,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/tokenizer/merges.txt": {
+            "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+            "bytes": 456318,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/tokenizer/special_tokens_map.json": {
+            "sha256": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+            "bytes": 548,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/tokenizer/tokenizer.json": {
+            "sha256": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+            "bytes": 2108630,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/tokenizer/tokenizer_config.json": {
+            "sha256": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+            "bytes": 669,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/tokenizer/vocab.json": {
+            "sha256": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+            "bytes": 798293,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/training.json": {
+            "sha256": "f9545aab1fdcb9c8dd1fd4d95900d46c5bd84790cdaa262edfb3beee061d0e1f",
+            "bytes": 1820,
+            "repo_type": "dataset"
+          },
+          "seed_42/gen_01/training_history.json": {
+            "sha256": "3ff2bb48018701cc403efba2ac23deecb1f33908118a3ee6eaef087c687dd10c",
+            "bytes": 1234,
+            "repo_type": "dataset"
+          },
+          "synthetic_for_gen_02/manifest.json": {
+            "sha256": "38b4f347c2914ab0a17f3d50e4b220633a95b725532564ed69fa8cd0ff083c24",
+            "bytes": 1372,
+            "repo_type": "dataset"
+          },
+          "synthetic_for_gen_02/tokens.npy": {
+            "sha256": "588087c6d57fa9b0d46af7083a50062d02e726879db35df019153acc203c2f02",
+            "bytes": 65664,
+            "repo_type": "dataset"
+          }
+        },
+        "s0_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+        "s1_weights_sha256": "62c71588a0fdd5b355683c7bf2bc5f9639a2e060bd149163acae22e07faabf14",
+        "d2_tokens_sha256": "9ac82c76c760389c201dddf9ea287d6601bde97fb3bdebe443ced910ebf4ae90",
+        "source_config_sha256": "d8d1b3c5af6115c5aa267d62dfb92decabfe17d80fa2888c8c7bea58120f4d47"
+      },
+      "trained_weights_sha256": "39b763fd4098a169192cfde4000234580a682ff071cdd0e7db943f14de2e2a2a"
+    }
+  ],
+  "recorded_test": {
+    "nll_sum": 15522.736175697004,
+    "scored_tokens": 4032,
+    "loss": 3.8498849642105664,
+    "perplexity": 46.98765765837568,
+    "seconds": 0.03252352401614189,
+    "mean_sequence_perplexity": 51.90673326094756,
+    "std_sequence_perplexity": 22.692040660307253,
+    "context_tokens": 64
+  },
+  "shared_prefix": {
+    "source_identity": "d38c328f4b01f7e9a4aea5d458ddfdfae1c6fdc3c54d622b34ede2cbddd67339",
+    "source_run_id": "20261030T172428Z-smoke-paired-final5-continued",
+    "source_revisions": {
+      "model": "1f7326aa1fd9a5d283d88758903e4267946e8b33",
+      "dataset": "21b97f3f7e8680dc3dc9c6e9eda8847eb83edece"
+    },
+    "first_new_cycle": 2,
+    "files": {
+      "shared_source/completion.json": "0681cf2416efd202777cb78ee93597c3033a5e3d1b5663cfd1965e51b3a28f49",
+      "shared_source/config.json": "d8d1b3c5af6115c5aa267d62dfb92decabfe17d80fa2888c8c7bea58120f4d47",
+      "shared_source/data/manifest.json": "f898b53fb42b7345cb07787ebf543160933db21cfde3a5cc3a678ba5223d9c7f",
+      "shared_source/manifest.json": "ba5a4dd329785126b45e4c3a0317bef61b5874e9ec22f58b8cd6d3e24f7afc6d",
+      "seed_42/gen_00/checkpoint/config.json": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+      "seed_42/gen_00/checkpoint/generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "seed_42/gen_00/checkpoint/model.safetensors": "b20c1bb996d49f227a1de2b0288d90eeb34d2f7bf458416485a3d427db012580",
+      "seed_42/gen_00/config.json": "723b850dc7194cb06bdda13ac9c09e9bcb38992fd05418f264a71c9569f6bf63",
+      "seed_42/gen_00/metrics.json": "d24985ab3f77b733d0cb90568084b75688c884d6d85e48655d82408542233625",
+      "seed_42/gen_00/reference_sequences.json": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+      "seed_42/gen_00/samples.json": "6e84823cf412b56ae8d28fc581c9cd7961e320e44c4357313e391c5408d4b1a6",
+      "seed_42/gen_00/stage_completion.json": "be17c8279356ef30d66e796b468a4418f17641efdd980f9bbb9ea9399742be7e",
+      "seed_42/gen_00/test_sequences.json": "e28fa97c53c7239a02c1730f076e110d771dc641076a421429762c2970301aa4",
+      "seed_42/gen_00/tokenizer/merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+      "seed_42/gen_00/tokenizer/special_tokens_map.json": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+      "seed_42/gen_00/tokenizer/tokenizer.json": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+      "seed_42/gen_00/tokenizer/tokenizer_config.json": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+      "seed_42/gen_00/tokenizer/vocab.json": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+      "seed_42/gen_00/training.json": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+      "seed_42/gen_01/checkpoint/config.json": "8cfbbd582421db2bb2ef667d608b8fbe724a43978bd23bbf507d400ae6ae7e52",
+      "seed_42/gen_01/checkpoint/generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "seed_42/gen_01/checkpoint/model.safetensors": "a25308150dfd85a3ae00e3c64b4c2a50b3bfd641dfa1a44586402f840abec547",
+      "seed_42/gen_01/config.json": "723b850dc7194cb06bdda13ac9c09e9bcb38992fd05418f264a71c9569f6bf63",
+      "seed_42/gen_01/metrics.json": "d6d360d212d654a82eca70d42e9608bfd30e9b9094d0ad675e7fc174e069ce19",
+      "seed_42/gen_01/reference_sequences.json": "97e7ddef0f9bc1ce295a0c7171f078421a43408b46e50c526a03344f72b42342",
+      "seed_42/gen_01/samples.json": "433805d7fe3bf6c708c70217d86dd6e4ba9b317783c738a34104990cfd19f8c4",
+      "seed_42/gen_01/stage_completion.json": "0d59ed700b08642b92a7d5033e7e460c796b11f4f0ce132450ff7dca81912644",
+      "seed_42/gen_01/test_sequences.json": "b8ee5053de73db8752c24b39a44f9838fea122b7dcbd694ca767d814f3561785",
+      "seed_42/gen_01/tokenizer/merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+      "seed_42/gen_01/tokenizer/special_tokens_map.json": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+      "seed_42/gen_01/tokenizer/tokenizer.json": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+      "seed_42/gen_01/tokenizer/tokenizer_config.json": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+      "seed_42/gen_01/tokenizer/vocab.json": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+      "seed_42/gen_01/training.json": "f9545aab1fdcb9c8dd1fd4d95900d46c5bd84790cdaa262edfb3beee061d0e1f",
+      "seed_42/gen_01/training_history.json": "3ff2bb48018701cc403efba2ac23deecb1f33908118a3ee6eaef087c687dd10c",
+      "shared_source/synthetic_for_gen_02/manifest.json": "38b4f347c2914ab0a17f3d50e4b220633a95b725532564ed69fa8cd0ff083c24",
+      "synthetic_for_gen_02/tokens.npy": "588087c6d57fa9b0d46af7083a50062d02e726879db35df019153acc203c2f02",
+      "synthetic_for_gen_02/manifest.json": "51a674220649e2bd9ddc2a9f228ac093ea46faa7d2555af848548e8e322ccd96",
+      "seed_42/gen_00/import.json": "0b30cb87c8a925c46a0e1018d7ca4094f4754fe8b1019cc920a2b42ec9c2dd16",
+      "seed_42/gen_01/import.json": "c203e1d2d92e2627898866cbd0c2f48e6ed00112202cdcabf83122421f76423b"
+    },
+    "d2_full_tokens_sha256": "9ac82c76c760389c201dddf9ea287d6601bde97fb3bdebe443ced910ebf4ae90",
+    "d2_active_tokens_sha256": "9ac82c76c760389c201dddf9ea287d6601bde97fb3bdebe443ced910ebf4ae90",
+    "shared_metrics_scope": "original_source_splits_not_recomputed_for_smoke",
+    "newly_executed_shared_stages": 0
+  },
+  "source_revisions": {
+    "model": "1f7326aa1fd9a5d283d88758903e4267946e8b33",
+    "dataset": "21b97f3f7e8680dc3dc9c6e9eda8847eb83edece"
+  },
+  "first_new_cycle": 2,
+  "artifact_recovery": {
+    "run_id": "20261030T172428Z-smoke-paired-final5-reset-s0",
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "revisions": {
+      "model": "72d0717556366954ac0e1c751ce16ad5870b96c7",
+      "dataset": "e14e029e1b6b6f1fcded42c669fd2e900027a9e2"
+    },
+    "artifact_index_sha256": "32f62527001e210ac159d1e1d1f9d1e1b23dc8e0587c43a975ce6adac29db60f",
+    "indexed_files": 131,
+    "verified_files": 131,
+    "verified_bytes": 2018965786,
+    "metadata_only": false,
+    "scope": "full",
+    "preserved_control_files": {},
+    "operational_files_outside_immutable_index": [
+      "events.jsonl",
+      "status.json"
+    ],
+    "path": "/workspace/runs/iib-hub-restore-cpfj9oan"
+  },
+  "verified_recovered_files": {
+    "benchmark.json": "aa0f9e01d3bd9182a36bdb4fc8aec8d8d19a4fe608e03f066e1e723cc187eecd",
+    "benchmark_resources.json": "9c5267540d317423289d343ef385c13e064e1b13f15f79425f87d8e2062755b5",
+    "config.json": "4ee57803cd181c92355088c3c26e17d199ed45d7daa3c25defa46e1b8418e121",
+    "data/manifest.json": "f898b53fb42b7345cb07787ebf543160933db21cfde3a5cc3a678ba5223d9c7f",
+    "data/test.npy": "1314c0bd85110ec473ad6368e2839e054d517d3bfb9add50c80bd5b2b8c92285",
+    "data/train.npy": "672cb2d0b73f2eeb4339ded72b555e292ba78d897883fddf0cf13b41edb1f740",
+    "data/validation.npy": "2cfeaee772904930fa3801c19ea7e7cefba79df73679ba66725e803ffda5e702",
+    "environment.json": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+    "environment_20261030T172428940677Z.json": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+    "generated/20261030T173718Z-bf123e2b/analysis_manifest.json": "e412d1de0480f13ad8a8bc51403cea95794ab0cb88e7b0ccc255cfeef620b5f1",
+    "generated/20261030T173718Z-bf123e2b/diversity.png": "6c930edfbdd28df5ff5d7452650d2692c0a57929bf0c417432a47cb2355f0491",
+    "generated/20261030T173718Z-bf123e2b/forecast.json": "8a80308a09281ba753bcd883f4bd724a550bd9a6acc21a4a3c06d692b85f930d",
+    "generated/20261030T173718Z-bf123e2b/metric_definitions.json": "edcc959c5638c8a6d050dc9f5fbd3b85cf5823ad546ae6df3c8ced62d56f1dfe",
+    "generated/20261030T173718Z-bf123e2b/metrics.csv": "67e8d150cf336e60f33343bba4792f16f67ac3276db6f0f5d2a9bafc2fe2d0ef",
+    "generated/20261030T173718Z-bf123e2b/perplexity.png": "e4a07d5dcb0475b093e6537938cd543331edf4d4dcb3532e4556309eec3428ea",
+    "generated/20261030T173718Z-bf123e2b/reference_scores.png": "b00afa388ed439e73d9436599decdcdc547c8b652490cab9192f9da1e7cdb146",
+    "generated/20261030T173718Z-bf123e2b/report.md": "5d92581e855e1b72e161f5d43535645b3ac4f08e6251faf0bdc855853372a118",
+    "generated/20261030T173718Z-bf123e2b/runtime.png": "3ca6920622bbda6e6bc621cc725ed02f0c3af8bc299b99c7916660487fe1132f",
+    "manifest.json": "cb2a8c7f721ad28c8d1524fb4e9f4725ddfecf2e92300e49fe56a61c32e1c87d",
+    "requirements-tested.txt": "1643fcd0ba5075dc5f5f03c5b8ab032d5299e25e4329b025cf19342dbc9d8a49",
+    "resources.json": "9c5267540d317423289d343ef385c13e064e1b13f15f79425f87d8e2062755b5",
+    "seed_42/gen_00/checkpoint/config.json": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+    "seed_42/gen_00/checkpoint/generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "seed_42/gen_00/checkpoint/model.safetensors": "b20c1bb996d49f227a1de2b0288d90eeb34d2f7bf458416485a3d427db012580",
+    "seed_42/gen_00/config.json": "723b850dc7194cb06bdda13ac9c09e9bcb38992fd05418f264a71c9569f6bf63",
+    "seed_42/gen_00/import.json": "0b30cb87c8a925c46a0e1018d7ca4094f4754fe8b1019cc920a2b42ec9c2dd16",
+    "seed_42/gen_00/metrics.json": "d24985ab3f77b733d0cb90568084b75688c884d6d85e48655d82408542233625",
+    "seed_42/gen_00/reference_sequences.json": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+    "seed_42/gen_00/samples.json": "6e84823cf412b56ae8d28fc581c9cd7961e320e44c4357313e391c5408d4b1a6",
+    "seed_42/gen_00/stage_completion.json": "be17c8279356ef30d66e796b468a4418f17641efdd980f9bbb9ea9399742be7e",
+    "seed_42/gen_00/test_sequences.json": "e28fa97c53c7239a02c1730f076e110d771dc641076a421429762c2970301aa4",
+    "seed_42/gen_00/tokenizer/merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+    "seed_42/gen_00/tokenizer/special_tokens_map.json": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+    "seed_42/gen_00/tokenizer/tokenizer.json": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+    "seed_42/gen_00/tokenizer/tokenizer_config.json": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+    "seed_42/gen_00/tokenizer/vocab.json": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+    "seed_42/gen_00/training.json": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+    "seed_42/gen_01/checkpoint/config.json": "8cfbbd582421db2bb2ef667d608b8fbe724a43978bd23bbf507d400ae6ae7e52",
+    "seed_42/gen_01/checkpoint/generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "seed_42/gen_01/checkpoint/model.safetensors": "a25308150dfd85a3ae00e3c64b4c2a50b3bfd641dfa1a44586402f840abec547",
+    "seed_42/gen_01/config.json": "723b850dc7194cb06bdda13ac9c09e9bcb38992fd05418f264a71c9569f6bf63",
+    "seed_42/gen_01/import.json": "c203e1d2d92e2627898866cbd0c2f48e6ed00112202cdcabf83122421f76423b",
+    "seed_42/gen_01/metrics.json": "d6d360d212d654a82eca70d42e9608bfd30e9b9094d0ad675e7fc174e069ce19",
+    "seed_42/gen_01/reference_sequences.json": "97e7ddef0f9bc1ce295a0c7171f078421a43408b46e50c526a03344f72b42342",
+    "seed_42/gen_01/samples.json": "433805d7fe3bf6c708c70217d86dd6e4ba9b317783c738a34104990cfd19f8c4",
+    "seed_42/gen_01/stage_completion.json": "0d59ed700b08642b92a7d5033e7e460c796b11f4f0ce132450ff7dca81912644",
+    "seed_42/gen_01/test_sequences.json": "b8ee5053de73db8752c24b39a44f9838fea122b7dcbd694ca767d814f3561785",
+    "seed_42/gen_01/tokenizer/merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+    "seed_42/gen_01/tokenizer/special_tokens_map.json": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+    "seed_42/gen_01/tokenizer/tokenizer.json": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+    "seed_42/gen_01/tokenizer/tokenizer_config.json": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+    "seed_42/gen_01/tokenizer/vocab.json": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+    "seed_42/gen_01/training.json": "f9545aab1fdcb9c8dd1fd4d95900d46c5bd84790cdaa262edfb3beee061d0e1f",
+    "seed_42/gen_01/training_history.json": "3ff2bb48018701cc403efba2ac23deecb1f33908118a3ee6eaef087c687dd10c",
+    "seed_42/gen_02/checkpoint/config.json": "a4c6f97ed0bdf58bc07d18788b3a1291054974aead9e5b01893c8553610afb87",
+    "seed_42/gen_02/checkpoint/generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "seed_42/gen_02/checkpoint/model.safetensors": "60174082e24e6cdd2b868a59d24658e1026f0a822c1c42ec0a888f2fbba792ae",
+    "seed_42/gen_02/config.json": "e5a0a37d78e5bb98bc09a5603ab1063fa906a35f9bfe374ebc2226b347a49435",
+    "seed_42/gen_02/metrics.json": "cec8a116b507b20db4164d39a3575d1a3b9cfc50c4bb278ad3a3309ea060265f",
+    "seed_42/gen_02/reference_sequences.json": "d2d651b9e5763b365f04b16c9b27b1a86bb0dfa07b356e4313316f984945135b",
+    "seed_42/gen_02/samples.json": "d9baf5bd43b3e860b7c314fe70a054901b9854eb1c0babd73eca6be9534a4026",
+    "seed_42/gen_02/stage_completion.json": "76d3f2f2dc31d4ef37c30f119a2f985f1dd2193a4ee0415916dd56ca64ceb660",
+    "seed_42/gen_02/test_sequences.json": "7d30afcb6fe6ffc19c9d1a3d899b9d4aa2d8c16098786d247986c621984177c0",
+    "seed_42/gen_02/tokenizer/merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+    "seed_42/gen_02/tokenizer/special_tokens_map.json": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+    "seed_42/gen_02/tokenizer/tokenizer.json": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+    "seed_42/gen_02/tokenizer/tokenizer_config.json": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+    "seed_42/gen_02/tokenizer/vocab.json": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+    "seed_42/gen_02/training.json": "f0678db39009611d63a0407764aaef1039d426ad5fee5e80bc25feb58ec2b6a8",
+    "seed_42/gen_02/training_history.json": "2e72f337bd16363b1bbd726b1b9a2c255e18d3a458b0172d204d130e83ffb052",
+    "seed_42/gen_03/checkpoint/config.json": "a4c6f97ed0bdf58bc07d18788b3a1291054974aead9e5b01893c8553610afb87",
+    "seed_42/gen_03/checkpoint/generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "seed_42/gen_03/checkpoint/model.safetensors": "806dec39f434eeedb52f7d1df8c350a362affed6635eca2e9e4053307858a14a",
+    "seed_42/gen_03/config.json": "e5a0a37d78e5bb98bc09a5603ab1063fa906a35f9bfe374ebc2226b347a49435",
+    "seed_42/gen_03/metrics.json": "66158a8fa6092a475f5d7bf9702d95f50a98442bb239b4c97a42793826e27015",
+    "seed_42/gen_03/reference_sequences.json": "5de8c5e23066fe4f43e88b0d449270f8fa93eba14897a1842b9c673443924047",
+    "seed_42/gen_03/samples.json": "127d796d1cd9ab0b98ab66f33cfb716d8999a6c14dd4e0de5030e8e77f95520b",
+    "seed_42/gen_03/stage_completion.json": "e238dbf674e42802fb56ec89d267f896b2ab711aba2b0746b96a072c8ce07302",
+    "seed_42/gen_03/test_sequences.json": "45d371c1b31ad71e8615e1e5b2956d2a2789beafeaf625169a436eb0c90c5058",
+    "seed_42/gen_03/tokenizer/merges.txt": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+    "seed_42/gen_03/tokenizer/special_tokens_map.json": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+    "seed_42/gen_03/tokenizer/tokenizer.json": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+    "seed_42/gen_03/tokenizer/tokenizer_config.json": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+    "seed_42/gen_03/tokenizer/vocab.json": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+    "seed_42/gen_03/training.json": "4b93ab5c2e2181c922d8793251b3145a5f459b685f5d635945cbfd32514021a2",
+    "seed_42/gen_03/training_history.json": "aaa53ad72e928991179f2277405aa753a2b6ad1245eb8f295f77f1e12c968c0d",
+    "shared_prefix.json": "cc8601c16dda8bf935f8bac9fd06cfcd74be1cd0f1ed41311d6e037b8c771100",
+    "shared_source/completion.json": "0681cf2416efd202777cb78ee93597c3033a5e3d1b5663cfd1965e51b3a28f49",
+    "shared_source/config.json": "d8d1b3c5af6115c5aa267d62dfb92decabfe17d80fa2888c8c7bea58120f4d47",
+    "shared_source/data/manifest.json": "f898b53fb42b7345cb07787ebf543160933db21cfde3a5cc3a678ba5223d9c7f",
+    "shared_source/manifest.json": "ba5a4dd329785126b45e4c3a0317bef61b5874e9ec22f58b8cd6d3e24f7afc6d",
+    "shared_source/synthetic_for_gen_02/manifest.json": "38b4f347c2914ab0a17f3d50e4b220633a95b725532564ed69fa8cd0ff083c24",
+    "synthetic_for_gen_02/manifest.json": "51a674220649e2bd9ddc2a9f228ac093ea46faa7d2555af848548e8e322ccd96",
+    "synthetic_for_gen_02/tokens.npy": "588087c6d57fa9b0d46af7083a50062d02e726879db35df019153acc203c2f02",
+    "synthetic_for_gen_03/manifest.json": "50b2dc54ad7a42c40c8c4b9d01fdd658f4d1f0aca4b58e4bdef5b6ecabd2f6a1",
+    "synthetic_for_gen_03/shard_0000000.json": "c3a66d0fd26db546e6e1586bf4f7432454dfd300bdbcd5ec370d0f5d68a3d6b1",
+    "synthetic_for_gen_03/shard_0000000.npy": "9951fa77d5d4a37b99b39fc20c86a1d39054073f463fc406ee4cba60ace04ebe",
+    "synthetic_for_gen_03/shard_0000032.json": "da49f483dd8a57a63b468e2e82b7c8333aae00cc55887b03dd2e59a93401ca05",
+    "synthetic_for_gen_03/shard_0000032.npy": "84c13650fff62dc9ee234412b2cf36de2c1200e066b0fbd58ff33e81f27e4dea",
+    "synthetic_for_gen_03/shard_0000064.json": "70ae27997d4679fda91bb5d381137e9e205197860c6e85046a116a0542174e66",
+    "synthetic_for_gen_03/shard_0000064.npy": "5c06c08eb1bfc02dfcc59ba73293fb70a6a0dca90dd826dc6bf91f693b502b9b",
+    "synthetic_for_gen_03/shard_0000096.json": "f742b722cf743e3304089eb0fe1573235b4791cf221c3ade7e521fc08c043096",
+    "synthetic_for_gen_03/shard_0000096.npy": "f0a67b2d7ebd138afa3c5cb467db33ef66e41fc552a9088d5b8553c5019976fe",
+    "synthetic_for_gen_03/shard_0000128.json": "b5b6886d92dd264772c971e70eab31b09ba040f9e47734cf0b01d948436854cd",
+    "synthetic_for_gen_03/shard_0000128.npy": "22876e4a682d00e3c6d2ad292488cdea3c548e87ecd6cc7bc02905b10a88860e",
+    "synthetic_for_gen_03/shard_0000160.json": "f86dd4f2869c72a8a95fa26f636d088159cd407d206d723ba492c4e13c308f0c",
+    "synthetic_for_gen_03/shard_0000160.npy": "e1f0cb10964c7e44da09f243ab0dfc4f6570e0abb154987aaf4ac4e341916157",
+    "synthetic_for_gen_03/shard_0000192.json": "9ed62cdde6ef8b69e7dcf1df747035f499b25d8b40956c86a08c40e5beb43fd7",
+    "synthetic_for_gen_03/shard_0000192.npy": "833b4ca67113a5ecde418001a022ecc86f7a6a2901f6ec5d6802ec23be524e35",
+    "synthetic_for_gen_03/shard_0000224.json": "332db68db67429bd0c23313d0c708f3aa1fbfc99b420ceaa034e474a5a199219",
+    "synthetic_for_gen_03/shard_0000224.npy": "63fd02f6174f27779795a555571a5bbb5e79be059365f0afa3951ab018fac0bd",
+    "synthetic_for_gen_03/tokens.npy": "f5b8fa96a6af3fe5acde1f0cad4865c5959f3670ac4653288660b22addb01ad7",
+    "synthetic_for_gen_04/manifest.json": "0d83ec309b9511a464278587b2925d4ce085297fe8395dde2589c37c8b5cc6a0",
+    "synthetic_for_gen_04/shard_0000000.json": "450caa1b087f3018b734f847f8d7a50447c63b956f7aa02cb64aa54c7c745763",
+    "synthetic_for_gen_04/shard_0000000.npy": "945f369e755162594a55198d5341664340ce87df1265cadab2bfa0ecaeb4495b",
+    "synthetic_for_gen_04/shard_0000032.json": "bc3200a793c8665fa5bf050321a12454b1843f05c158925722da0ee4307e45b1",
+    "synthetic_for_gen_04/shard_0000032.npy": "a6e0484e610a87a9a275c86e4b8c15fec63cfffed43f374907792a4808fbeace",
+    "synthetic_for_gen_04/shard_0000064.json": "a9af3bb33ca591eedbcf7b251df95172295d2d885d06fc7e7a89e80813d400f9",
+    "synthetic_for_gen_04/shard_0000064.npy": "d60280ac86a125b28932f21d43262992f70903d80eb5128c10180d88b2deee28",
+    "synthetic_for_gen_04/shard_0000096.json": "ebe4a01bb57748223702e91afc253bd6b3c568d0e0814739c689a8e3a676ca1b",
+    "synthetic_for_gen_04/shard_0000096.npy": "f89aa10f58b6074f1450d8539a86e36c80105dd9762df0d1da5fb6537866b940",
+    "synthetic_for_gen_04/shard_0000128.json": "7ae72d686b9b5d1817b5eac5676219e4ac022f3513714be49c6525936bac4fe7",
+    "synthetic_for_gen_04/shard_0000128.npy": "4a9d2067b9eaa563a80379d9ee96e791300135a484afe496f0d03d3468e3976a",
+    "synthetic_for_gen_04/shard_0000160.json": "ba2034aafc2560fbfff585a00e617232e39c5a029e7c3d14d22b126e695a2fd5",
+    "synthetic_for_gen_04/shard_0000160.npy": "33e8f7b0bfb8f130ce203aff7b15398b9041f0d25242a1ac677d93646d3971ba",
+    "synthetic_for_gen_04/shard_0000192.json": "a364fb24442c888a6188090f44e044e5c76b78d4e67eedfe827c6d7d59226ca1",
+    "synthetic_for_gen_04/shard_0000192.npy": "bd9ce15d398970c4e428827dd494130021d2a869ac6d5ebf5930a4ea3b9ab00c",
+    "synthetic_for_gen_04/shard_0000224.json": "5808d3b977f9fd3d5887b1d970822bf939100011b342112c86b9b381011721a2",
+    "synthetic_for_gen_04/shard_0000224.npy": "a4cced4236dba1a6c148c7e0c2738c152d83ac056705968662701eef2ca1cad4",
+    "synthetic_for_gen_04/tokens.npy": "eb5a4fc5d4e8ee7d2efbb4a74cd29353018e01f0c09bb7bb195b01b0e7003ee3",
+    "validation_g1_snapshot.json": "e233ae1647ae71c6cfe17a82c6e13710b95a0f3daf6690464febe24351c1094d"
+  },
+  "restored_test": {
+    "nll_sum": 15522.736175697004,
+    "scored_tokens": 4032,
+    "loss": 3.8498849642105664,
+    "perplexity": 46.98765765837568,
+    "seconds": 0.04108914406970143,
+    "mean_sequence_perplexity": 51.90673326094756,
+    "std_sequence_perplexity": 22.692040660307253,
+    "context_tokens": 64
+  },
+  "max_nll_calculation_error": 0.0,
+  "source_code_sha256": "962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca"
+}

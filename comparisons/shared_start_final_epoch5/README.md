@@ -1,5 +1,7 @@
 # Shared start, final epoch 5
 
+**GPU validated; full pair unlaunched.** See the [acceptance report](../../reports/20261030T172428Z-smoke-paired-final5/report.md) and [handoff, including the current budget gate](../../docs/final-epoch5-handoff.md). The actual full profile matches the new runtime/protocol certificate; its current conservative cost estimate exceeds the remaining task allowance.
+
 This is a new matched comparison. Historical Week 2 trained five epochs but selected epoch 1. This condition **retains epoch 5**, even if real validation loss worsens. It does not retrain or change the existing real-trained S0.
 
 The exact historical continued-run D1 is imported from immutable private backups. S0 trains on D1 once to create the new shared S1, which generates one new D2. Continued weights then train S1 on D2; reset trains fixed S0 on that exact D2. Each arm subsequently uses its own previous output dataset. AdamW and the cosine scheduler restart each cycle.

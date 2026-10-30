@@ -25,6 +25,8 @@ Full runs use full-parameter fine-tuning for five epochs per stage: AdamW with l
 
 Evaluate after each epoch on the frozen real validation blocks. The newly trained epoch with the lowest validation loss supplies the checkpoint; the untrained parent is not a rollback candidate. Test metrics never select checkpoints or tune settings. Record both executed epochs and the selected epoch: running five epochs and selecting epoch 1 does not pass five epochs of weight updates to the next cycle.
 
+This paragraph describes the historical/default `lowest_fixed_real_validation_loss` policy. The separately named [final-epoch-5 comparison](../comparisons/shared_start_final_epoch5/README.md) uses `checkpoint_selection: final_epoch`: all five epochs run and epoch 5 always supplies the checkpoint. Real validation is diagnostic; it does not select or stop training. The exact historical real-trained S0 and continued-run D1 are retained, but a new shared S1/D2 is constructed. Continued S10 inherits 50 synthetic epochs; reset A10 inherits its own five from S0, with recursive data history in both arms.
+
 The untouched pretrained model is evaluated separately from the real-data-fine-tuned baseline G0/S0. Historical `gen_00` denotes the real-trained baseline, not untouched OPT.
 
 ## Three initialisation conditions

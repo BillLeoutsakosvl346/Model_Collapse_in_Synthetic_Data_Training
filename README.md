@@ -9,6 +9,7 @@ Cambridge Engineering IIB: reproducible OPT-125M / WikiText-2 experiments on rec
 | [Pretrained reset](experiments/opt125m_wikitext2/pretrained_reset/README.md) | Original pretrained OPT at every synthetic cycle | [Completed Week 1](reports/20261020T211121Z-full/report.md) |
 | [Continued from real S0](experiments/opt125m_wikitext2/continued_from_real_s0/README.md) | Previous selected checkpoint | [Completed Week 2](reports/20261026T192740Z-full-continued/report.md) |
 | [Reset to real S0](experiments/opt125m_wikitext2/reset_to_real_s0/README.md) | Fixed real-data-trained S0, after an imported shared first cycle | [Completed and analysed](reports/20261027T211852Z-full-reset-s0/report.md) |
+| [Matched final epoch 5](comparisons/shared_start_final_epoch5/README.md) | New shared S1, then continued weights versus fixed S0 | [GPU validated; full pair unlaunched](reports/20261030T172428Z-smoke-paired-final5/report.md) |
 
 The [experiment catalogue](experiments/catalog.yaml) records run IDs and recovery scope. The [shared-start comparison](comparisons/shared_s0_s1_reset_vs_continue/README.md) uses the **same saved S0, S1 and D2** from Week 2, then compares resetting to S0 with continuing from the previous checkpoint. It preserves both earlier experiments. Week labels are presentation aliases, not configuration modes.
 
@@ -33,6 +34,10 @@ python -m pytest -q
 An existing working CUDA PyTorch installation can instead be inherited with `uv venv --system-site-packages .venv`; do not replace it unnecessarily. The remote official Runpod image supplies GPU PyTorch separately. See [operations](docs/operations.md) for credentials, acceptance, recovery and spending controls.
 
 ## Configure, validate, then launch separately
+
+The new [five-epoch comparison](comparisons/shared_start_final_epoch5/README.md) retains epoch 5 in both arms; historical Week 2 executed five epochs but selected epoch 1. Its paired configuration runs continued then reset on one detached GPU owner. Use its dedicated commands and acceptance report; it does not reuse the historical S1/D2 or the old acceptance certificate.
+
+Its [handoff](docs/final-epoch5-handoff.md) records 131 passed offline tests, four real five-epoch GPU stages, private restores, recovery and verified shutdown/cleanup for $0.1544 observed account debit. Full compute remains unlaunched. The current conservative $25 ledger gate has $5.64 available versus a $10.39 forecast, so budget reconciliation is required before a later full launch; account credit alone does not override the ceiling.
 
 The setup task prepares the next condition and validates it with a small GPU test. **It does not start the full experiment.** A configuration file is the preferred interface; legacy `--mode fresh_base` and `--mode continued` retain their existing meaning. `--mode` and `--config` are mutually exclusive.
 
