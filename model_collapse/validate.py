@@ -99,6 +99,8 @@ def validate(root):
     checks["provider_readback_confirms_compute_stopped"] = True
     result["provider_pod_state"] = state
     result["source_code_sha256"] = tested_source
+    from .workflow.profiles import protocol_fingerprint
+    result["protocol_fingerprint"] = protocol_fingerprint(c)
     result["validated_run_id"] = root.name
     atomic_json(root / "validation_results.json", result)
     atomic_json(STATE / "validation.json", result)

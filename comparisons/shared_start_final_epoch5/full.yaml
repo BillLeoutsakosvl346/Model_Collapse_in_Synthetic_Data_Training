@@ -1,0 +1,104 @@
+schema_version: 1
+workflow: paired
+kind: full
+experiment_id: shared_start_final_epoch5
+required_gpu: NVIDIA RTX PRO 4000 Blackwell
+required_environment: &id001
+  torch: 2.8.0+cu128
+  transformers: 4.37.2
+  datasets: 3.4.1
+arms:
+  continued:
+    schema_version: 2
+    kind: full
+    experiment_id: continued_final_epoch5
+    initialization: continued
+    seed: 42
+    generations: 10
+    model: facebook/opt-125m
+    model_revision: 27dcfa74d334bc871f3234de431e71c6eeba5dd6
+    dataset: Salesforce/wikitext
+    dataset_config: wikitext-2-raw-v1
+    dataset_revision: b08601e04326c79dfdd32d625aee71d232d685c3
+    block_size: 64
+    new_tokens: 64
+    num_beams: 5
+    repetition_penalty: 1.0
+    epochs: 5
+    checkpoint_selection: final_epoch
+    learning_rate: 2.0e-05
+    min_learning_rate: 1.0e-06
+    weight_decay: 0.01
+    microbatch: 32
+    effective_batch: 128
+    generation_batch: 32
+    generation_shard: 256
+    eval_batch: 32
+    precision: bf16
+    probe_count: 256
+    train_blocks: null
+    validation_blocks: null
+    test_blocks: null
+    required_gpu: NVIDIA RTX PRO 4000 Blackwell
+    required_environment: *id001
+    start_checkpoint: &id002
+      repo: Bill11235813/iib-model-collapse-week1-models
+      revision: 1f9d4b4179536e58474e927b34d43820f2d70f22
+      path: 20261020T211121Z-full/seed_42/gen_00/checkpoint
+      weights_sha256: dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10
+      files:
+        config.json: 166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814
+        generation_config.json: 60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c
+        model.safetensors: b20c1bb996d49f227a1de2b0288d90eeb34d2f7bf458416485a3d427db012580
+    initial_dataset:
+      run_id: 20261026T192740Z-full-continued
+      repos: &id003
+        model: Bill11235813/iib-model-collapse-week1-models
+        dataset: Bill11235813/iib-model-collapse-week1-data
+      revisions:
+        model: fdb4344e95f391cdf5eb274c214a987f1bc0c269
+        dataset: ce57ed40c620bc98b92aa029bab788640d4640f2
+      artifact_index_sha256: 174a004dc2834696e9e4ffbbf436b00676c0ed702ba44c7c60a90b60875a5330
+      expected_blocks: 37946
+    required_image: runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404
+  reset:
+    schema_version: 2
+    kind: full
+    experiment_id: reset_s0_final_epoch5
+    initialization: reset_s0
+    seed: 42
+    generations: 10
+    model: facebook/opt-125m
+    model_revision: 27dcfa74d334bc871f3234de431e71c6eeba5dd6
+    dataset: Salesforce/wikitext
+    dataset_config: wikitext-2-raw-v1
+    dataset_revision: b08601e04326c79dfdd32d625aee71d232d685c3
+    block_size: 64
+    new_tokens: 64
+    num_beams: 5
+    repetition_penalty: 1.0
+    epochs: 5
+    checkpoint_selection: final_epoch
+    learning_rate: 2.0e-05
+    min_learning_rate: 1.0e-06
+    weight_decay: 0.01
+    microbatch: 32
+    effective_batch: 128
+    generation_batch: 32
+    generation_shard: 256
+    eval_batch: 32
+    precision: bf16
+    probe_count: 256
+    train_blocks: null
+    validation_blocks: null
+    test_blocks: null
+    required_gpu: NVIDIA RTX PRO 4000 Blackwell
+    required_environment: *id001
+    start_checkpoint: *id002
+    initial_dataset: null
+    branch_source:
+      run_id: __paired_source__
+      repos: *id003
+      first_new_cycle: 2
+    required_image: runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404
+required_image: runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404

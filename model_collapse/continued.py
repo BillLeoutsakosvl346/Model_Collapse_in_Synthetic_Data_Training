@@ -77,6 +77,9 @@ def audit_chain(root):
         verify_files(dest / "checkpoint", t["checkpoint_files"])
         assert t["initial_weights_sha256"] == previous_hash
         if g:
+            if c.get("checkpoint_selection") == "final_epoch":
+                from .workflow.selection import verify_selection
+                verify_selection(t, read_json(dest / "training_history.json"), c)
             data = np.load(root / f"synthetic_for_gen_{g:02d}/tokens.npy", allow_pickle=False)
             parent = read_json(root / f"synthetic_for_gen_{g:02d}/manifest.json")
             actual = hashlib.sha256(data.astype(np.int32).tobytes()).hexdigest()
@@ -108,7 +111,7 @@ def audit_chain(root):
     names = [json.loads(x)["event"] for x in (root / "events.jsonl").read_text().splitlines()]
     assert names.count("validation_worker_resumed") == 2
     assert "validation_generation_interruption" in names and "validation_training_interruption" in names
-    assert metrics[0]["generation_timing"]["reused_continuations"] > 0
+    assert metrics[1 if c.get("initial_dataset") else 0]["generation_timing"]["reused_continuations"] > 0
     return {"checks": {"pinned_previous_real_g0_start": True, "both_weights_and_data_handoffs": True,
                         "weights_changed_each_training_cycle": True, "fixed_real_prompts_and_evaluation": True,
                         "continuation_only_64_token_datasets": True, "finite_token_weighted_perplexity": True,
@@ -138,6 +141,9 @@ def audit_reset_chain(root):
         blocks, initializer, checkpoint, lineage = training_lineage(root, g, c, expected)
         gen = root / f"seed_{c['seed']}" / f"gen_{g:02d}"
         t = read_json(gen / "training.json")
+        if c.get("checkpoint_selection") == "final_epoch":
+            from .workflow.selection import verify_selection
+            verify_selection(t, read_json(gen / "training_history.json"), c)
         m = verify_completed_stage(root, g, c, t)
         assert initializer == t["initial_weights_sha256"] == expected
         assert t["lineage"] == lineage
@@ -255,6 +261,8 @@ def validate_local(root):
     result["checks"].update(independent_budget_guard_and_provider_stop_verified=True)
     mode = read_json(root / "config.json").get("initialization", "continued")
     result.update(provider_pod_state=pod["status"], validated_run_id=root.name, initialization=mode)
+    from .workflow.profiles import protocol_fingerprint
+    result["protocol_fingerprint"] = protocol_fingerprint(read_json(root / "config.json"))
     atomic_json(root / "validation_results.json", result)
     atomic_json(STATE / f"validation_{mode}.json", result)
     return result

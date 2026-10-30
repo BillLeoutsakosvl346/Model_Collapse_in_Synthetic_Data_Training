@@ -37,6 +37,9 @@ def update_ledger(resources, **updates):
         old = {k: resources[k] for k in ("launch_id", "run_id", "kind", "pod_id", "volume_id", "created_at", "guard_hourly_usd")}
         if resources.get("compute_hourly_usd") is not None:
             old.update(compute_started_at=resources["created_at"], compute_hourly_usd=resources["compute_hourly_usd"])
+        for key in ("workflow", "acceptance_campaign"):
+            if resources.get(key):
+                old[key] = resources[key]
         d["launches"].append(old)
     elif not same_owner(old, resources):
         raise RuntimeError("Cost update does not match the registered launch ownership tuple")
@@ -85,6 +88,13 @@ def update_ledger(resources, **updates):
 def accrued(d, kind=None):
     from .cloud.budget import accrued_cost
     return accrued_cost(d, now(), kind, default_volume_hourly=VOLUME_HOURLY)
+
+
+def campaign_accrued(d, campaign):
+    launches = [x for x in d["launches"] if x.get("acceptance_campaign") == campaign]
+    ids = {x["volume_id"] for x in launches}
+    selected = {**d, "launches": launches, "volumes": {k: v for k, v in d.get("volumes", {}).items() if k in ids}}
+    return accrued(selected)
 
 
 def preflight(probe=False):
@@ -236,6 +246,19 @@ def verify_start_checkpoint(c):
             raise RuntimeError("Starting checkpoint metadata checksum mismatch")
 
 
+def reject_completed_cloud_resume(run_id, repos):
+    from huggingface_hub import hf_hub_download
+    from huggingface_hub.errors import EntryNotFoundError
+    revision = HfApi().repo_info(repos["dataset"], repo_type="dataset").sha
+    try:
+        path = hf_hub_download(repos["dataset"], f"{run_id}/completion.json", repo_type="dataset", revision=revision)
+    except EntryNotFoundError:
+        return
+    if read_json(path, {}).get("complete"):
+        atomic_json(PROJECT / "runs" / run_id / "completed_resume_rejected.json", {"revision": revision, "sha256": sha256(path)})
+        raise RuntimeError("Completed cloud runs cannot resume; fetch their results instead")
+
+
 def launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", config_path=None):
     from filelock import FileLock
     STATE.mkdir(exist_ok=True)
@@ -262,12 +285,22 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     else:
         c = config(config_path if config_path is not None else PROJECT / "configs" / (("smoke" if smoke else "full") + suffix + ".yaml"))
         if generations is not None and c["kind"] != "smoke":
-            c["generations"] = generations
+            if c.get("workflow") == "paired":
+                for arm in c["arms"].values():
+                    arm["generations"] = generations
+            else:
+                c["generations"] = generations
         if c["kind"] != ("smoke" if smoke else "full"):
             raise ValueError("The command must match the configuration kind (smoke or full)")
     from .common import validate_config
     validate_config(c)
     load_secrets()
+    if previous:
+        reject_completed_cloud_resume(resume_id, previous["repos"])
+    paired = c.get("workflow") == "paired"
+    if paired:
+        from .workflow.paired import resolve_pair_inputs
+        c = resolve_pair_inputs(c)
     if c.get("initialization") == "reset_s0":
         from .workflow.branch import resolve_branch_source
         c = resolve_branch_source(c)
@@ -296,13 +329,15 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         allowance = min(allowance, c["max_session_usd"])
     if c["kind"] == "smoke":
         allowance = min(allowance, SETUP_BUDGET - accrued(ledger(), "smoke") - 0.15, 0.75)
+        if paired:
+            allowance = min(allowance, .75 - campaign_accrued(ledger(), "shared_start_final_epoch5"))
     if allowance <= 0.1:
         raise RuntimeError("Insufficient budget after shutdown/storage reserve")
     if c["kind"] == "full":
-        validation_file = {"continued": "validation_continued.json", "reset_s0": "validation_reset_s0.json"}.get(c.get("initialization"), "validation.json")
+        validation_file = "validation_paired.json" if paired else {"continued": "validation_continued.json", "reset_s0": "validation_reset_s0.json"}.get(c.get("initialization"), "validation.json")
         validation = read_json(STATE / validation_file)
-        if not validation or validation.get("source_code_sha256") != code_hash:
-            raise RuntimeError("Validate the complete smoke test for this source version before a full-data launch")
+        from .workflow.profiles import require_acceptance
+        require_acceptance(c, validation, code_hash)
         b = read_json(STATE / "benchmark.json")
         if not b:
             raise RuntimeError("Run the validated smoke test and fetch its benchmark before launching full data")
@@ -310,15 +345,21 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         if c.get("initialization") == "reset_s0":
             estimate_kwargs["initialization"] = "reset_s0"
             estimate_kwargs["first_new_cycle"] = 2
-        estimate = forecast(b, c["generations"], choice["hourly_usd"] + VOLUME_HOURLY + CONTAINER_HOURLY, **estimate_kwargs)
+        if paired:
+            from .analysis.forecasts import forecast_pair
+            estimate = forecast_pair(b, c["arms"]["continued"]["generations"], choice["hourly_usd"] + VOLUME_HOURLY + CONTAINER_HOURLY)
+        else:
+            estimate = forecast(b, c["generations"], choice["hourly_usd"] + VOLUME_HOURLY + CONTAINER_HOURLY, **estimate_kwargs)
         if estimate["estimated_compute_and_running_storage_usd"] > allowance:
             raise RuntimeError("Conservative full-run estimate exceeds remaining budget; select fewer generations")
     # Resolve the private source, including its weight-file checksum, before spending.
-    verify_start_checkpoint(c)
+    verify_start_checkpoint(c["arms"]["continued"] if paired else c)
     templates = api.request("GET", "/catalog/templates?source=official")["templates"]
     template = next(t for t in templates if t["id"] == "runpod-torch-v280")
+    if c.get("required_image") and template["image"] != c["required_image"]:
+        raise RuntimeError("Official template differs from the pinned matched image")
     key = register_key(api)
-    run_suffix = {"continued": "-continued", "reset_s0": "-reset-s0"}.get(c.get("initialization"), "")
+    run_suffix = "-paired-final5" if paired else {"continued": "-continued", "reset_s0": "-reset-s0"}.get(c.get("initialization"), "")
     run_id = resume_id or dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + c["kind"] + run_suffix
     launch_id = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     local = PROJECT / "runs" / run_id
@@ -357,6 +398,10 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     bundle = read_json(STATE / "source_bundle.json", {})
     resources.update(runtime_sha256=code_hash, git_commit=bundle.get("git_commit"))
     resources["configuration_sha256"] = digest(c)
+    if paired:
+        resources["workflow"] = "paired"
+        if c["kind"] == "smoke":
+            resources["acceptance_campaign"] = "shared_start_final_epoch5"
     register_resources(resources)
     client = None
     try:
@@ -448,6 +493,59 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             client.close()
 
 
+def _detached_observation(resources):
+    api = Runpod()
+    pod = api.pod(resources["pod_id"])
+    if pod["status"] != "RUNNING":
+        raise RuntimeError("Detached progress verification requires the active paired Pod")
+    client = ssh_connect(pod, STATE / "runpod_ed25519")
+    try:
+        script = ("import pathlib,json; p=pathlib.Path(" + repr(resources["remote_root"]) + "); "
+                  "read=lambda q: json.loads(q.read_text()) if q.exists() else {}; "
+                  "s=read(p/'status.json'); n=s.get('active_child'); "
+                  "assert n is None or n in [p.name+'-continued',p.name+'-reset-s0']; "
+                  "q=p.parent/n if n else p; "
+                  "events=q/'events.jsonl'; histories=list(q.glob('seed_*/gen_*/training_history.json')); "
+                  "print(json.dumps({'time':__import__('time').time(),'status':s,'child_status':read(q/'status.json'),"
+                  "'event_bytes':events.stat().st_size if events.exists() else 0,'epochs':sum(len(read(x)) for x in histories),"
+                  "'supervisor':read(p/'supervisor.json'),'watchdog':read(p/'watchdog.json')}))")
+        return json.loads(command(client, "python3 -c " + shlex.quote(script)))
+    finally:
+        client.close()
+
+
+def verify_detached(run_id):
+    """Observe real stage/epoch progress across fresh, closed SSH connections."""
+    r = local_resources(run_id)
+    if read_json(PROJECT / "runs" / run_id / "config.json", {}).get("workflow") != "paired":
+        raise ValueError("This evidence command applies to paired runs")
+    first = _detached_observation(r)
+    def progress(x):
+        s, cs = x["status"], x["child_status"]
+        return (s.get("phase"), s.get("active_child"), cs.get("generation"), cs.get("stage"), x["event_bytes"], x["epochs"])
+    for attempt in range(40):
+        time.sleep(3)
+        second = _detached_observation(r)
+        fresh = all(second[k].get("time", 0) > first[k].get("time", 0) for k in ("supervisor", "watchdog"))
+        if fresh and progress(second) != progress(first):
+            receipt = {"pod_id": r["pod_id"], "launch_id": r["launch_id"], "run_id": run_id,
+                       "progress_after_disconnect": True, "observations": [first, second],
+                       "observations_sha256": digest([first, second]),
+                       "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."}
+            local = PROJECT / "runs" / run_id
+            atomic_json(local / "detached_verification.json", receipt)
+            client = ssh_connect(Runpod().pod(r["pod_id"]), STATE / "runpod_ed25519")
+            try:
+                sftp = client.open_sftp()
+                temp = r["remote_root"] + "/.detached_verification.json.partial"
+                upload_json(sftp, temp, receipt)
+                command(client, "python3 -c " + shlex.quote("from pathlib import Path; Path(" + repr(temp) + ").replace(" + repr(r["remote_root"] + "/detached_verification.json") + ")"))
+            finally:
+                client.close()
+            return receipt
+    raise RuntimeError("No real stage/epoch progress observed across SSH disconnection within the health check")
+
+
 def status(run_id):
     r = local_resources(run_id)
     api = Runpod()
@@ -460,6 +558,15 @@ def status(run_id):
             text = command(client, "python3 -c " + shlex.quote("import pathlib,json; p=pathlib.Path(" + repr(r["remote_root"]) + "); print(json.dumps({x:json.loads((p/(x+'.json')).read_text()) if (p/(x+'.json')).exists() else None for x in ['status','watchdog','supervisor']}))"))
             result["remote"] = json.loads(text)
             result["log_tail"] = command(client, "tail -c 3000 " + shlex.quote(r["remote_root"] + "/pipeline.log"))
+            if read_json(PROJECT / "runs" / run_id / "config.json", {}).get("workflow") == "paired":
+                child = result["remote"].get("status", {}).get("active_child")
+                if child:
+                    if child not in (run_id + "-continued", run_id + "-reset-s0"):
+                        raise RuntimeError("Invalid paired child status association")
+                    child_root = str(Path(r["remote_root"]).parent).replace("\\", "/") + "/" + child
+                    result["active_child"] = json.loads(command(client, "python3 -c " + shlex.quote(
+                        "import json,pathlib; p=pathlib.Path(" + repr(child_root) + "); print(json.dumps(json.loads((p/'status.json').read_text())))")))
+                    result["log_tail"] = command(client, "tail -c 3000 " + shlex.quote(child_root + "/pipeline.log"))
         finally:
             client.close()
     else:
@@ -486,7 +593,15 @@ def cleanup(run_id):
     index = read_json(local / "artifact_index.json")
     if not index:
         raise RuntimeError("Artifact index missing; fetch the latest run state before cleanup")
-    if read_json(local / "recovery_verified.json").get("metadata_only"):
+    paired = read_json(local / "config.json", {}).get("workflow") == "paired"
+    if paired:
+        from .workflow.paired import verify_pair_recovery
+        verify_pair_recovery(local)
+        verify_recovered_files(local, index["files"])
+        if any(x.get("metadata_only") for x in read_json(local / "recovery_verified.json")["children"].values()):
+            if not read_json(local / "validation_results.json", {}).get("checks", {}).get("independent_budget_guard_and_provider_stop_verified"):
+                raise RuntimeError("Validate paired cloud restoration and shutdown before metadata-only cleanup")
+    elif read_json(local / "recovery_verified.json").get("metadata_only"):
         from .continued import verify_recovery
         verify_recovery(local)
         if not read_json(local / "validation_results.json", {}).get("checks", {}).get("independent_budget_guard_and_provider_stop_verified"):

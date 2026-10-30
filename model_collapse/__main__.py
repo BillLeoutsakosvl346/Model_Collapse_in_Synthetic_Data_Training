@@ -19,7 +19,7 @@ def main():
     smoke_selection = smoke.add_mutually_exclusive_group()
     smoke_selection.add_argument("--mode", choices=("fresh_base", "continued"), default=None)
     smoke_selection.add_argument("--config", help="Explicit smoke configuration")
-    for name in ("status", "resume", "fetch", "report", "cleanup", "validate"):
+    for name in ("status", "resume", "fetch", "report", "cleanup", "validate", "verify-detached"):
         s = sub.add_parser(name)
         s.add_argument("run_id")
         if name == "fetch":
@@ -47,7 +47,12 @@ def main():
         from .supervisor import supervise
         return supervise(a.root, a.validation)
     if a.command == "worker":
-        from .pipeline import run
+        from .common import read_json
+        from pathlib import Path
+        if read_json(Path(a.root) / "config.json").get("workflow") == "paired":
+            from .workflow.paired import run_pair as run
+        else:
+            from .pipeline import run
         from .engine import ValidationInterruption
         try:
             return run(a.root, a.validation)
@@ -68,6 +73,8 @@ def main():
         result = remote.launch(**options)
     elif a.command == "status":
         result = remote.status(a.run_id)
+    elif a.command == "verify-detached":
+        result = remote.verify_detached(a.run_id)
     elif a.command == "resume":
         result = remote.launch(resume_id=a.run_id)
     elif a.command == "cleanup":
@@ -76,7 +83,11 @@ def main():
         from .hub import fetch
         r = remote.local_resources(a.run_id)
         out = PROJECT / "runs" / a.run_id
-        result = fetch(a.run_id, r["repos"], out, metadata_only=a.metadata_only)
+        if read_json(out / "config.json", {}).get("workflow") == "paired":
+            from .workflow.paired import fetch_pair
+            result = fetch_pair(out, r, metadata_only=a.metadata_only)
+        else:
+            result = fetch(a.run_id, r["repos"], out, metadata_only=a.metadata_only)
         atomic_json(out / "recovery_verified.json", result)
         bench = read_json(out / "benchmark.json")
         if bench:
@@ -86,7 +97,10 @@ def main():
         result = report(PROJECT / "runs" / a.run_id, a.out)
     elif a.command == "validate":
         root = PROJECT / "runs" / a.run_id
-        if read_json(root / "config.json").get("initialization") in ("continued", "reset_s0"):
+        if read_json(root / "config.json").get("workflow") == "paired":
+            from .workflow.paired import validate_pair_local
+            result = validate_pair_local(root)
+        elif read_json(root / "config.json").get("initialization") in ("continued", "reset_s0"):
             from .continued import validate_local
             result = validate_local(root)
         else:

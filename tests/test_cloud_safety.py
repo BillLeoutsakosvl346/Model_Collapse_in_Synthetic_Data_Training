@@ -143,7 +143,11 @@ def test_full_launch_admits_validated_affordable_plan_without_spending(tmp_path,
     monkeypatch.setattr(remote, "source_archive", lambda: ("unused", "tested-code"))
     monkeypatch.setattr(remote, "verify_start_checkpoint", lambda _: None)
     monkeypatch.setattr(remote, "register_key", lambda _: (_ for _ in ()).throw(ReachedProvisioningBoundary()))
-    atomic_json(tmp_path / ("validation_continued.json" if mode == "continued" else "validation.json"), {"source_code_sha256": "tested-code"})
+    from model_collapse.common import config, PROJECT
+    from model_collapse.workflow.profiles import protocol_fingerprint
+    profile = config(PROJECT / ("configs/full-continued.yaml" if mode == "continued" else "configs/full.yaml"))
+    atomic_json(tmp_path / ("validation_continued.json" if mode == "continued" else "validation.json"),
+                {"source_code_sha256": "tested-code", "protocol_fingerprint": protocol_fingerprint(profile)})
     atomic_json(tmp_path / "benchmark.json", {"training_target_tokens_per_second": 29715, "generation_new_tokens_per_second": 1135,
                 "full_split_blocks": {"train": 37946, "validation": 3922, "test": 4494}})
     with pytest.raises(ReachedProvisioningBoundary):

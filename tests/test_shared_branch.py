@@ -18,7 +18,7 @@ from model_collapse.workflow.lineage import token_hash, training_lineage, verify
 
 
 @pytest.fixture
-def source(tmp_path, monkeypatch):
+def source(tmp_path, monkeypatch, request):
     torch.set_num_threads(2)
     monkeypatch.setattr(engine, "device", lambda: "cpu")
     monkeypatch.setattr(engine, "load_model", lambda c, checkpoint=None: OPTForCausalLM.from_pretrained(checkpoint))
@@ -28,6 +28,7 @@ def source(tmp_path, monkeypatch):
          "model": "tiny-opt", "model_revision": "a" * 40, "dataset": "tiny-real", "dataset_revision": "b" * 40,
          "dataset_config": "raw", "block_size": 64, "new_tokens": 64, "num_beams": 5,
          "repetition_penalty": 1.0, "probe_count": 4, "train_blocks": None, "validation_blocks": None, "test_blocks": None}
+    c.update(getattr(request, "param", {}))
     root = tmp_path / "source"
     real = np.random.default_rng(4).integers(4, 32, size=(8, 64), dtype=np.int32)
     for split, data in (("train", real), ("validation", real[:4]), ("test", real[4:])):
@@ -55,6 +56,10 @@ def source(tmp_path, monkeypatch):
                                           "test": {"perplexity": 123.0}, "validation": {"perplexity": 123.0}})
         for name in ("samples.json", "test_sequences.json", "reference_sequences.json"):
             atomic_json(gen / name, [])
+        stage_files = {p.relative_to(gen).as_posix(): sha256(p) for p in gen.rglob("*")
+                       if p.is_file() and "resume" not in p.parts and p.name != "stage_completion.json"}
+        atomic_json(gen / "stage_completion.json", {"files": stage_files,
+                                                   "selected_weights_sha256": training["selected_weights_sha256"]})
     repos = {"model": "test/models", "dataset": "test/data"}
     c["start_checkpoint"] = {"repo": repos["model"], "revision": "c" * 40, "path": "source/seed_42/gen_00/checkpoint",
                               "weights_sha256": initial, "files": t0["checkpoint_files"]}
@@ -230,3 +235,46 @@ def test_completed_metrics_alone_cannot_skip_stage_verification(tmp_path):
     atomic_json(tmp_path / "synthetic_for_gen_03/manifest.json", manifest)
     with pytest.raises(RuntimeError, match="checksum manifest"):
         verify_completed_stage(tmp_path, 2, c, training)
+
+
+@pytest.mark.parametrize("source", [{"epochs": 5, "checkpoint_selection": "final_epoch"}], indirect=True)
+def test_final_epoch_shared_fork(source, tmp_path):
+    original, c, real = source
+    reset = tmp_path / "reset-final"
+    continued = tmp_path / "continue-final"
+    for path in (reset, continued):
+        import_into(path, c, real)
+    starts = []
+    for path, config in ((reset, c), (continued, {**c, "initialization": "continued"})):
+        blocks, initial, checkpoint, lineage = training_lineage(path, 2, config, None)
+        t = engine.train(path, 2, blocks, real[:2], config, initial, initial_checkpoint=checkpoint, lineage=lineage)
+        assert t["selected_epoch"] == t["executed_epochs"] == 5
+        assert t["terminal_weights_sha256"] == t["selected_weights_sha256"]
+        starts.append((initial, t["input_tokens_sha256"]))
+    assert starts[0][0] != starts[1][0] and starts[0][1] == starts[1][1]
+    for g in (0, 1):
+        rel = f"seed_42/gen_{g:02d}/metrics.json"
+        assert sha256(reset / rel) == sha256(continued / rel) == sha256(original / rel)
+
+
+def test_epoch_one_prefix_cannot_authorise_final_epoch(source):
+    original, c, real = source
+    c.update(epochs=5, checkpoint_selection="final_epoch")
+    with pytest.raises(RuntimeError, match="missing required|selection policy"):
+        branch.resolve_branch_source(c)
+
+
+def test_smoke_source_rejected_for_full_branch(source):
+    original, c, real = source
+    config = read_json(original / "config.json")
+    config["kind"] = "smoke"
+    atomic_json(original / "config.json", config)
+    atomic_json(original / "manifest.json", {"config_hash": digest(config)})
+    index = read_json(original / "artifact_index.json")
+    for rel in ("config.json", "manifest.json"):
+        index["files"][rel].update(sha256=sha256(original / rel), bytes=(original / rel).stat().st_size)
+    atomic_json(original / "artifact_index.json", index)
+    c["kind"] = "full"
+    c["branch_source"].pop("artifact_index_sha256")
+    with pytest.raises(RuntimeError, match="smoke source"):
+        branch.resolve_branch_source(c)

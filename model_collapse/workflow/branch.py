@@ -13,6 +13,7 @@ from ..common import atomic_json, digest, read_json, sha256, verify_files
 from ..data import load_blocks, save_array
 from ..hub import download_snapshot_file, resolve_snapshot
 from .lineage import token_hash
+from .selection import FINAL, selection_policy, verify_selection
 
 
 def _relative(value):
@@ -52,6 +53,10 @@ def resolve_branch_source(c):
         required.update(p for p in files if p.startswith(prefix) and "/resume/" not in p)
         required.update(prefix + name for name in ("training.json", "metrics.json", "test_sequences.json",
                                                    "reference_sequences.json", "samples.json"))
+        if selection_policy(c) == FINAL:
+            required.add(prefix + "stage_completion.json")
+            if g == 1:
+                required.add(prefix + "training_history.json")
     if not required.issubset(files):
         raise RuntimeError("Shared source is missing required S0/S1/D2 evidence")
     chosen = {p: files[p] for p in sorted(required)}
@@ -77,6 +82,10 @@ def resolve_branch_source(c):
         raise RuntimeError("Shared source manifest does not match its recorded configuration")
     if original.get("initialization") != "continued":
         raise RuntimeError("Shared source must be the continued-weight experiment")
+    if c["kind"] == "full" and original["kind"] != "full":
+        raise RuntimeError("Full reset branch cannot import a smoke source")
+    if selection_policy(original) != selection_policy(c):
+        raise RuntimeError("Shared source checkpoint selection policy differs")
     for key in ("seed", "model", "model_revision", "dataset", "dataset_revision", "dataset_config", "block_size",
                 "new_tokens", "num_beams", "repetition_penalty", "precision", "learning_rate", "min_learning_rate",
                 "weight_decay", "microbatch", "effective_batch", "generation_batch", "eval_batch"):
@@ -87,6 +96,18 @@ def resolve_branch_source(c):
     s0 = metadata[f"{seed}/gen_00/training.json"]
     s1 = metadata[f"{seed}/gen_01/training.json"]
     d2 = metadata["synthetic_for_gen_02/manifest.json"]
+    if selection_policy(c) == FINAL:
+        if original["epochs"] != c["epochs"]:
+            raise RuntimeError("Final-epoch source must match the epoch schedule")
+        verify_selection(s1, metadata[f"{seed}/gen_01/training_history.json"], c)
+        for g in (0, 1):
+            prefix = f"{seed}/gen_{g:02d}/"
+            stage = metadata[prefix + "stage_completion.json"]
+            if stage["selected_weights_sha256"] != metadata[prefix + "training.json"]["selected_weights_sha256"]:
+                raise RuntimeError("Shared source completed stage checkpoint differs")
+            for rel, checksum in stage["files"].items():
+                if files.get(prefix + rel, {}).get("sha256") != checksum:
+                    raise RuntimeError("Shared source completed stage output differs")
     if s0["selected_weights_sha256"] != c["start_checkpoint"]["weights_sha256"]:
         raise RuntimeError("Shared source S0 differs from the configured fixed initializer")
     if s0["checkpoint_files"] != c["start_checkpoint"]["files"]:

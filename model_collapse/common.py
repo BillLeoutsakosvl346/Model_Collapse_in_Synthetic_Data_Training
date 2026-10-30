@@ -66,6 +66,11 @@ def validate_config(c):
     if limit is not None and (isinstance(limit, bool) or not isinstance(limit, (int, float))
                               or not math.isfinite(limit) or limit <= 0):
         raise ValueError("max_session_usd must be a positive finite amount")
+    if c.get("workflow") == "paired":
+        from .workflow.paired import validate_pair_config
+        return validate_pair_config(c)
+    from .workflow.selection import selection_policy
+    selection_policy(c)
     if c.get("initialization", "fresh_base") not in ("fresh_base", "continued", "reset_s0"):
         raise ValueError("Unknown model initialization mode")
     if c.get("initialization") in ("continued", "reset_s0"):

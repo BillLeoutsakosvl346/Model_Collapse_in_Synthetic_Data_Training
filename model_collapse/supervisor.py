@@ -70,27 +70,35 @@ def watchdog(root):
         time.sleep(3)
 
 
+def run_worker(root, validation=False, max_restarts=2, heartbeat_root=None):
+    """Restart only deliberate validation exits; never owns provider shutdown."""
+    root = Path(root)
+    attempts = 0
+    while True:
+        args = [sys.executable, "-m", "model_collapse", "worker", "--root", str(root)]
+        if validation:
+            args += ["--validation"]
+        with (root / "pipeline.log").open("a", encoding="utf-8") as log:
+            child = subprocess.Popen(args, stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT)
+            while child.poll() is None:
+                if heartbeat_root is not None:
+                    atomic_json(Path(heartbeat_root) / "supervisor.json", {"pid": os.getpid(), "child_pid": child.pid, "time": now()})
+                time.sleep(3)
+        if child.returncode == 75 and validation and attempts < max_restarts:
+            attempts += 1
+            event(root, "validation_worker_resumed", interruption=attempts)
+            continue
+        if child.returncode:
+            raise RuntimeError(f"Worker failed with exit code {child.returncode}; inspect {root.name}/pipeline.log")
+        return
+
+
 def supervise(root, validation=False):
     root = Path(root)
     atomic_json(root / "supervisor.json", {"pid": os.getpid(), "time": now()})
     try:
-        attempts = 0
-        while True:
-            args = [sys.executable, "-m", "model_collapse", "worker", "--root", str(root)]
-            if validation:
-                args += ["--validation"]
-            with (root / "pipeline.log").open("a", encoding="utf-8") as log:
-                child = subprocess.Popen(args, stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT)
-                while child.poll() is None:
-                    atomic_json(root / "supervisor.json", {"pid": os.getpid(), "child_pid": child.pid, "time": now()})
-                    time.sleep(3)
-            if child.returncode == 75 and validation and attempts < 2:
-                attempts += 1
-                event(root, "validation_worker_resumed", interruption=attempts)
-                continue
-            if child.returncode:
-                raise RuntimeError(f"Worker failed with exit code {child.returncode}; inspect pipeline.log")
-            break
+        paired = read_json(root / "config.json", {}).get("workflow") == "paired"
+        run_worker(root, validation=validation, max_restarts=1 if paired else 2, heartbeat_root=root)
         if validation:
             # A deliberately tiny additional cost allowance exercises the real budget-guard shutdown.
             r = read_json(root / "resources.json")

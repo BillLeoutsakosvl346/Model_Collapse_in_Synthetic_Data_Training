@@ -61,7 +61,7 @@ def artifact_files(root):
                 "watchdog.json", "supervisor.json", "pipeline.log", "stop_request.json", "watchdog_exit.json",
                 "recovery_snapshot.json", "backup_snapshot.json"}
     for p in sorted(root.rglob("*")):
-        if not p.is_file() or p.name in volatile or ".partial" in p.name or "resume" in p.parts or p.name.startswith(".") or "secret" in p.name.lower():
+        if not p.is_file() or p.name in volatile or p.name.endswith(".lock") or ".partial" in p.name or "resume" in p.parts or p.name.startswith(".") or "secret" in p.name.lower():
             continue
         rel = p.relative_to(root).as_posix()
         if any(part.startswith(".") for part in PurePosixPath(rel).parts) or rel.startswith("fetched_control/"):
@@ -88,6 +88,9 @@ def backup(root, repos=None):
     resolved = resolve_snapshot(repos)
     atomic_json(root / "backup_snapshot.json", {"run_id": root.name, "repos": repos,
                 "revisions": resolved, "artifact_index_sha256": sha256(root / "artifact_index.json")})
+    if read_json(root / "resources.json", {}).get("owner_pair_id"):
+        from .workflow.paired import record_child_snapshot
+        record_child_snapshot(root)
     return index
 
 

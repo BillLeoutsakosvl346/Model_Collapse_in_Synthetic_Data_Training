@@ -99,11 +99,14 @@ def evaluate(model, blocks, c, export=None):
 
 
 def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_checkpoint=None, lineage=None):
+    from .workflow.selection import FINAL, selection_policy, training_contract, verify_selection
+    policy, contract = selection_policy(c), training_contract(c)
     dest = Path(root) / f"seed_{c['seed']}" / f"gen_{generation:02d}"
     dest.mkdir(parents=True, exist_ok=True)
     done = read_json(dest / "training.json")
     input_hash = hashlib.sha256(np.asarray(blocks, dtype=np.int32).tobytes()).hexdigest()
     if done:
+        verify_selection(done, read_json(dest / "training_history.json", []), c)
         if done["input_tokens_sha256"] != input_hash or done["initial_weights_sha256"] != expected_base_hash:
             raise RuntimeError("Generation provenance changed")
         if lineage is not None and done.get("lineage") != lineage:
@@ -121,9 +124,11 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
                                  weight_decay=c["weight_decay"])
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=c["epochs"], eta_min=c["min_learning_rate"])
     resume = dest / "resume" / "epoch.pt"
-    best, selected_epoch, first_epoch, history = math.inf, None, 0, []
+    best, best_epoch, selected_epoch, first_epoch, history = math.inf, None, None, 0, []
     if resume.exists():
         state = torch.load(resume, map_location=device(), weights_only=False)
+        if state.get("training_contract_sha256") != contract:
+            raise RuntimeError("Interrupted training selection policy or settings changed; legacy state requires its original runtime")
         if state["input_hash"] != input_hash:
             raise RuntimeError("Interrupted training input changed")
         if state.get("initial_hash", initial) != initial:
@@ -132,6 +137,9 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
         optimizer.load_state_dict(state["optimizer"])
         scheduler.load_state_dict(state["scheduler"])
         first_epoch, best, selected_epoch, history = state["epoch"], state["best"], state["selected_epoch"], state["history"]
+        best_epoch = state.get("best_epoch")
+        if not 0 <= first_epoch <= c["epochs"] or len(history) != first_epoch:
+            raise RuntimeError("Invalid epoch resume history")
     seed_all(c["seed"])
     if device() == "cuda":
         torch.cuda.reset_peak_memory_stats()
@@ -168,32 +176,49 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
         history.append({"epoch": epoch + 1, "learning_rate": lr, "train_loss": total_loss / count,
                         "validation_loss": val_metrics["loss"], "train_seconds": train_seconds,
                         "training_target_tokens_per_second": count * 63 / train_seconds})
-        if val_metrics["loss"] < best:
-            best, selected_epoch = val_metrics["loss"], epoch + 1
+        if not math.isfinite(val_metrics["loss"]):
+            raise RuntimeError("Non-finite validation loss")
+        improved = val_metrics["loss"] < best
+        if improved:
+            best, best_epoch = val_metrics["loss"], epoch + 1
+        if (policy != FINAL and improved) or (policy == FINAL and epoch + 1 == c["epochs"]):
+            selected_epoch = epoch + 1
             model.save_pretrained(dest / "checkpoint", safe_serialization=True)
         scheduler.step()
         resume.parent.mkdir(parents=True, exist_ok=True)
         torch.save({"model": model.state_dict(), "optimizer": optimizer.state_dict(), "scheduler": scheduler.state_dict(),
                     "epoch": epoch + 1, "best": best, "selected_epoch": selected_epoch, "history": history,
-                    "input_hash": input_hash, "initial_hash": initial}, resume.with_suffix(".partial"))
+                    "input_hash": input_hash, "initial_hash": initial, "best_epoch": best_epoch,
+                    "training_contract_sha256": contract}, resume.with_suffix(".partial"))
         resume.with_suffix(".partial").replace(resume)
         atomic_json(dest / "training_history.json", history)
         event(root, "epoch_complete", generation=generation, **history[-1])
+    terminal_hash = weights_hash(model)
+    if policy == FINAL:
+        # Also repairs an interrupted final save using the verified terminal resume state.
+        selected_epoch = c["epochs"]
+        model.save_pretrained(dest / "checkpoint", safe_serialization=True)
+    atomic_json(dest / "training_history.json", history)
     del model, optimizer, scheduler
     gc.collect()
     if device() == "cuda":
         torch.cuda.empty_cache()
     selected = load_model(c, dest / "checkpoint")
     final_hash = weights_hash(selected)
+    if policy == FINAL and final_hash != terminal_hash:
+        raise RuntimeError("Reloaded final checkpoint differs from terminal weights")
     if initial == final_hash:
         raise RuntimeError("Training did not change any model weights")
     done = {"generation": generation, "initial_weights_sha256": initial, "selected_weights_sha256": final_hash,
             "input_tokens_sha256": input_hash, "training_blocks": len(blocks), "selected_epoch": selected_epoch,
-            "best_validation_loss": best, "seconds": time.perf_counter() - start,
+            "best_validation_loss": best, "best_validation_epoch": best_epoch,
+            "selected_validation_loss": history[selected_epoch - 1]["validation_loss"],
+            "executed_epochs": len(history), "terminal_weights_sha256": terminal_hash,
+            "training_contract_sha256": contract, "seconds": time.perf_counter() - start,
             "peak_allocated_gpu_bytes": torch.cuda.max_memory_allocated() if device() == "cuda" else 0,
             "checkpoint_files": checkpoint_manifest(dest / "checkpoint")}
     done.update(initialization=c.get("initialization", "fresh_base"), optimizer_initialization="fresh_each_cycle",
-                checkpoint_selection="lowest_fixed_real_validation_loss")
+                checkpoint_selection=policy)
     if lineage is not None:
         done["lineage"] = lineage
     atomic_json(dest / "training.json", done)

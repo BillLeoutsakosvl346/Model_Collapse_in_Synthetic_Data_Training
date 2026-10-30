@@ -5,6 +5,7 @@ import importlib.metadata
 import os
 import platform
 import subprocess
+import shutil
 import time
 from pathlib import Path
 
@@ -163,6 +164,8 @@ def _run(root, validation):
                 backup(root)
                 return
         atomic_json(root / "status.json", {"state": "running", "generation": g, "stage": "training", "pid": os.getpid(), "time": now()})
+        if resources.get("owner_pair_id") and shutil.disk_usage(root).free < 3_000_000_000:
+            raise RuntimeError("Insufficient recoverable checkpoint space; last committed stages remain preserved")
         if not (gen / "config.json").exists():
             atomic_json(gen / "config.json", {"training_config": c, "environment": session_environment,
                         "launch_id": resources["launch_id"], "code_sha256": resources["code_sha256"]})
@@ -174,13 +177,16 @@ def _run(root, validation):
             if continued and parent["provenance"]["parent_weights_sha256"] != expected:
                 raise RuntimeError("The model generating these data must also initialize their training")
         model = load_model(c, gen / "checkpoint")
+        if g == 0 and c.get("initial_dataset"):
+            from .workflow.initial_data import import_initial_dataset
+            import_initial_dataset(root, c)
         tokenizer.save_pretrained(gen / "tokenizer")
         metrics = {"generation": g, "training": training, "validation": evaluate(model, val, c),
                    "test": evaluate(model, test, c, gen / "test_sequences.json")}
         prompts = real if g < c["generations"] else real[:c["probe_count"]]
         atomic_json(root / "status.json", {"state": "running", "generation": g, "stage": "generation", "pid": os.getpid(), "time": now()})
         values, generation = generate(root, g, model, prompts, c, training["selected_weights_sha256"],
-                                      inject=validation and g == first_new)
+                                      inject=validation and g == (1 if c.get("initial_dataset") else first_new))
         probe = values[:c["probe_count"]]
         metrics["diversity"] = diversity(probe)
         metrics["generation_timing"] = generation

@@ -108,7 +108,9 @@ def test_full_reset_launch_reaches_provisioning_boundary_without_spending(tmp_pa
         assert estimate["new_full_generation_stages"] == 8
         return estimate
     monkeypatch.setattr(pipeline, "forecast", forecast)
-    atomic_json(tmp_path / "validation_reset_s0.json", {"source_code_sha256": "tested-runtime"})
+    from model_collapse.workflow.profiles import protocol_fingerprint
+    atomic_json(tmp_path / "validation_reset_s0.json", {"source_code_sha256": "tested-runtime",
+                "protocol_fingerprint": protocol_fingerprint(config(PROJECT / "experiments/opt125m_wikitext2/reset_to_real_s0/full.yaml"))})
     atomic_json(tmp_path / "benchmark.json", {"training_target_tokens_per_second": 30000,
                 "generation_new_tokens_per_second": 1300,
                 "full_split_blocks": {"train": 37946, "validation": 3922, "test": 4494}})
