@@ -1,0 +1,661 @@
+{
+  "created_utc": "2026-10-31T13:00:44.069004+00:00",
+  "analysis_script": "comparisons/shared_start_final_epoch5/analyse.py",
+  "analysis_script_sha256": "cc82c86f68b77775368f501afad7550c5403bf88b52733bf89d0ac9f4ce3f0cd",
+  "analysis_git_revision": "5814dd16f9ef8e8a8c50fc25d6e49b415e276f8e",
+  "environment": {
+    "python": "3.12.1",
+    "numpy": "2.1.2",
+    "matplotlib": "3.9.4"
+  },
+  "input_files": {
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_00/metrics.json": {
+      "sha256": "9016c443c16dc6e4be692a4fbbca0033f72026e71a8aa0a1375556dcabc56724",
+      "bytes": 21427
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_00/training.json": {
+      "sha256": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+      "bytes": 1272
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_00/test_sequences.json": {
+      "sha256": "3092e70292de9abba36ee4fdfe507a9085872257712bfa5144a806f86571d893",
+      "bytes": 105278
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_00/reference_sequences.json": {
+      "sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+      "bytes": 6159
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_00/samples.json": {
+      "sha256": "6e84823cf412b56ae8d28fc581c9cd7961e320e44c4357313e391c5408d4b1a6",
+      "bytes": 163542
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_00.npy": {
+      "sha256": "1a23d505b48f1a3cc04bd760a816b2972e5014db5e430f1a9e75decd5a409868",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_01/metrics.json": {
+      "sha256": "75f688b0615b753da51d0cfae25fd7a4159a06266a6a8f3fa4f7748d90d32c88",
+      "bytes": 18046
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_01/training.json": {
+      "sha256": "e3779068d45c463ac5c20201eb8bf1aeb3ed42b8f4734ccd9df25d48685301d2",
+      "bytes": 1821
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_01/test_sequences.json": {
+      "sha256": "c3adff31d7d48d46a9a8c87098e8edab1db9d4cba3da03f759bd46f4faef1210",
+      "bytes": 104541
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_01/reference_sequences.json": {
+      "sha256": "00a0dae670737a29fedf8eb5aa8295bfc9c634a0841151a863373211359f2b5b",
+      "bytes": 6123
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_01/samples.json": {
+      "sha256": "3cfe339b2250bf1b8902b1617376b7b5e649853d375566cfc7571fd608e1a560",
+      "bytes": 164234
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_01.npy": {
+      "sha256": "a1519d10ff3263b6ef886330b39212f0a97143244e82b0ff135acd2958fec4b9",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_01/training_history.json": {
+      "sha256": "08688a84e90c25a8f9c7b0159f9ae05f1a44cda6b1a5e842338fc375df045ec0",
+      "bytes": 1226
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_02/metrics.json": {
+      "sha256": "2f2fde7e7d12a9d076059779080c402d902a2b4c8fce1ba457929c0177297c60",
+      "bytes": 18047
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_02/training.json": {
+      "sha256": "d0a013fde7a6401e2de7891088db2b5b7a72bcfb41eb0456b8322f645c89a754",
+      "bytes": 1821
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_02/test_sequences.json": {
+      "sha256": "a0eb853115201640ff7c7b79d1f03bc33fb41468a9c901c86c831f666ac40e4f",
+      "bytes": 104774
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_02/reference_sequences.json": {
+      "sha256": "f31437ef6a5bcfdeacb3dbe08bbdba0b4225d5397a571d946aa264f521a6ccd9",
+      "bytes": 6114
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_02/samples.json": {
+      "sha256": "f1cb28114306a1d0175081cfb94330692a001e19e646c3f04171af98ed8e3bf0",
+      "bytes": 165905
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_02.npy": {
+      "sha256": "7da3b69e5c29f347402adb57d76786a5edcedea9f740b9c432adfd4f3fc1c913",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_02/training_history.json": {
+      "sha256": "a313ef43043f7ec3b905f6f8d4fa70bf8094ff3158e0251def3a70a366cea176",
+      "bytes": 1228
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_03/metrics.json": {
+      "sha256": "621bbb6be711a1c840f3134dc0fb861d2a6994eebc464836f214e3add506e664",
+      "bytes": 18054
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_03/training.json": {
+      "sha256": "ba0e66a0dc4a020880fe09418d2ad7cc2c22702696032ae79ff26da8326f8aab",
+      "bytes": 1823
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_03/test_sequences.json": {
+      "sha256": "44aafd2866ae00ffc1104e140f70110f152c262b30accdc9161c91e39404f1e8",
+      "bytes": 104699
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_03/reference_sequences.json": {
+      "sha256": "a11180a1e1ed5b096197f3ca5dfe89b31a0601789a6dd55fd6932de0257829b1",
+      "bytes": 6115
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_03/samples.json": {
+      "sha256": "0769c9701cca656f91ac18d3d3f49479309a3c6d963aa4eaf8f7c894575260bb",
+      "bytes": 166532
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_03.npy": {
+      "sha256": "f4a2c8f4e1997ecf915223bbeeacc307c64ffd467e5b2ffacb1530eceaaa02e7",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_03/training_history.json": {
+      "sha256": "1d43365141fce2a33cd5ea37c8a88a12ace259c4698c585b08b00da32edc99ee",
+      "bytes": 1230
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_04/metrics.json": {
+      "sha256": "d2f34576472d2e0acd37196cbe64204357c27c3df52a05a19ac910c95d16541f",
+      "bytes": 18026
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_04/training.json": {
+      "sha256": "e166d7b6d5add6b764ee8b13baba8b6c5c4c1750ee6dee7a0a07fa7b42e556c6",
+      "bytes": 1819
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_04/test_sequences.json": {
+      "sha256": "db267689734c8c4fd4e653931a2358aeb73ce4b664d2982362ace4efc09b81f3",
+      "bytes": 104565
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_04/reference_sequences.json": {
+      "sha256": "3d39403307c309d880844ac703e4fffafdc347b21951b8e8844d6f04ab9c1f69",
+      "bytes": 6122
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_04/samples.json": {
+      "sha256": "5fdd248478d210be27f17c3c65d523d6a04b1f732c715e310867835296e12838",
+      "bytes": 166465
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_04.npy": {
+      "sha256": "48d7970369179db336e8a5b3ac02ef4ab3cce4737fbb05b867b33993a8103b71",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_04/training_history.json": {
+      "sha256": "246f2d46867b1d9a637676612ae531cae8d384a639db1792d4bc91bdf9c81e33",
+      "bytes": 1225
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_05/metrics.json": {
+      "sha256": "70689ba61f417c1eee25bcc3cc18eeec244e61e32b1bce99567ed7c1e16f84dd",
+      "bytes": 18049
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_05/training.json": {
+      "sha256": "d8e1fb683e035e8c37ab2d38476deb5853671a26135dd2c6149f4150a6d408d1",
+      "bytes": 1820
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_05/test_sequences.json": {
+      "sha256": "8489b51174d193e2a0083b59badd9b1a741207d3fd178ab62e1f0f9858c77ac4",
+      "bytes": 104391
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_05/reference_sequences.json": {
+      "sha256": "8e2c934ca6e9c4474ad9f4451d02a5b2defe2b147867f8b3d14432384638c781",
+      "bytes": 6117
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_05/samples.json": {
+      "sha256": "e28ec9b513a65cc923d705e504e77476793eee0d024ca2a27efed9a4b2653b52",
+      "bytes": 165007
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_05.npy": {
+      "sha256": "7287d1d6c6f537d8c1ee7446e50826e04c23613fe6bc5969fbf195d981994c32",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_05/training_history.json": {
+      "sha256": "b2e29c42d2981bf8673d933983765aaf8b6dd768ebccb1dfbd95c93393f28600",
+      "bytes": 1227
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_06/metrics.json": {
+      "sha256": "e0f9d4c9d933a54972859ff03b662f13760df27e856677070fa06ea2b2f0e0b9",
+      "bytes": 18048
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_06/training.json": {
+      "sha256": "f3daae0ade134d8d0af4071501c8379e18c8407d7f7b3069ee48f17878bd0333",
+      "bytes": 1821
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_06/test_sequences.json": {
+      "sha256": "aa1aad46ef81138366c57799e9284588c361d4e9538339d5314ea163aa6124df",
+      "bytes": 104232
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_06/reference_sequences.json": {
+      "sha256": "bc3cc19da1d688e87626174dbe70410edf324ce0665a75d0161a3d8c035b6595",
+      "bytes": 6102
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_06/samples.json": {
+      "sha256": "5b65dfa04e9be7110ae0e268c41f8104a30e329650645ad8a5b49f75a8853646",
+      "bytes": 161842
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_06.npy": {
+      "sha256": "b44578ceb7b7c6ee4468966656c8f37b071464b4bf7998fe4b87200525ebf462",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_06/training_history.json": {
+      "sha256": "78bf7ffa6880a1a786d469d79895a9d6d2a6bbacf678e9441f8570da34e203b1",
+      "bytes": 1223
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_07/metrics.json": {
+      "sha256": "37e91ffe34aa881d25513b3740ac592d6a4463c0cc4018f79ef34f9164738d29",
+      "bytes": 18047
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_07/training.json": {
+      "sha256": "65fb292dd9d2545a0f7e56a24e4fd5d50577b93a772b837d7c5b57e76f04f40e",
+      "bytes": 1821
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_07/test_sequences.json": {
+      "sha256": "93e4dfe03baf59e5250031150ed8dd75f2a00a8a98675e224d3f1c763b0ce732",
+      "bytes": 104129
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_07/reference_sequences.json": {
+      "sha256": "8421c8182bc86d6b909509483531bb889a3cdae4e9ff77c02d9edf04b79df7ca",
+      "bytes": 6119
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_07/samples.json": {
+      "sha256": "c426495a030097b3cbdea9ee8d954da11fc2f50d0a6ff0e62df44b14407cf84a",
+      "bytes": 156891
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_07.npy": {
+      "sha256": "159c783a0783719119ff726008507b10d499200da621913a5068f8244faa6ca7",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_07/training_history.json": {
+      "sha256": "3ac23514cd3d88d5aa06378580e6478a5fc9a6055e1717b805e5968e3565988f",
+      "bytes": 1226
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_08/metrics.json": {
+      "sha256": "f38228842d6bcebcc55d2e24ce0bc732d5e2f3106af78c3805feb52018d75812",
+      "bytes": 18048
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_08/training.json": {
+      "sha256": "aa39dd00e380786d52124c07dc53c84906e8e35cf8b31f5f7aa505cb439ee837",
+      "bytes": 1821
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_08/test_sequences.json": {
+      "sha256": "3bf7e46e32e04d4d17e70b4ae9ff3c7c141e29d38bcce1ee7cb0f891bb095484",
+      "bytes": 104034
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_08/reference_sequences.json": {
+      "sha256": "0fcbd73eaafd7d6df6f69c3c03a310888128ffff76c1afcae3b12e73a29dbc9f",
+      "bytes": 6134
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_08/samples.json": {
+      "sha256": "6337bd9c51f299cd5698fdd1717dfa3a714eaee3668931b482c3581b955536ef",
+      "bytes": 152110
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_08.npy": {
+      "sha256": "1b6037b4ff0f3da94ebd54be3577606c699e5a868bb92fc8cd2ff4b403333e0c",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_08/training_history.json": {
+      "sha256": "f695095f9af56e4faf48cd2344088a0d4e60742fe525027c8330b86c011636ef",
+      "bytes": 1223
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_09/metrics.json": {
+      "sha256": "5b5dbd6e682991d1b5c14b59ae64474e62e109344e55173733e223f37b969f9a",
+      "bytes": 18053
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_09/training.json": {
+      "sha256": "86f62f16f2ac553ff756ff9549dc91e56b1575aa5d2fd2db81115a22d5c5275e",
+      "bytes": 1820
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_09/test_sequences.json": {
+      "sha256": "d13b193fe672948dd7481c22d0508d8a77a32e95bd98db9dbbef04f452aac247",
+      "bytes": 103934
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_09/reference_sequences.json": {
+      "sha256": "45276a4ed564266ea7399c058c207b2fa99134ce12fcffe39d1d7cbb66de820a",
+      "bytes": 6123
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_09/samples.json": {
+      "sha256": "695842aa84d7a324a9f79a40a0631eeabebdda91a8c10ba352a65b9ac96cc682",
+      "bytes": 150184
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_09.npy": {
+      "sha256": "fa264dc43e0d9b0c5e774ea250f7bdd04c8ec0f7872b42f53d643c83e7c1cebf",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_09/training_history.json": {
+      "sha256": "3712a4cff6ad10a4161df8d392926cc06248ba7cae5b99bc3c1819e3a080f884",
+      "bytes": 1229
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_10/metrics.json": {
+      "sha256": "413b2b8410fd541a2bd42f156e19821226c18fc81619d554ff13a0fd3fd872df",
+      "bytes": 3994
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_10/training.json": {
+      "sha256": "80b6370abd8eab27200c7fd46c42ac04d7673b57693413979ef25eed74d8da3f",
+      "bytes": 1821
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_10/test_sequences.json": {
+      "sha256": "2fadb7c9749b128a415d7f5c32c3486d4daa8bbf299411b9d7c212aeea4c41ef",
+      "bytes": 103902
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_10/reference_sequences.json": {
+      "sha256": "444c0a46fb566506d6be0d0734996ba42f08223952135df8cde374782de5e908",
+      "bytes": 6116
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_10/samples.json": {
+      "sha256": "7fd5b7bd38f6355cf720310b733efda7c4dbb4fb82b4778c0f6d7b5b44468147",
+      "bytes": 150392
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/continued/gen_10.npy": {
+      "sha256": "b27c306ef9019d1cc94bc3a3265c8a26197bc8ec7d7259b8cc788ed2aae2d8da",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/continued/seed_42/gen_10/training_history.json": {
+      "sha256": "c589d235e1f74a5976959b78d92e519197859e85578e3df95851409a3086fd17",
+      "bytes": 1226
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_00/metrics.json": {
+      "sha256": "9016c443c16dc6e4be692a4fbbca0033f72026e71a8aa0a1375556dcabc56724",
+      "bytes": 21427
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_00/training.json": {
+      "sha256": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+      "bytes": 1272
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_00/test_sequences.json": {
+      "sha256": "3092e70292de9abba36ee4fdfe507a9085872257712bfa5144a806f86571d893",
+      "bytes": 105278
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_00/reference_sequences.json": {
+      "sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+      "bytes": 6159
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_00/samples.json": {
+      "sha256": "6e84823cf412b56ae8d28fc581c9cd7961e320e44c4357313e391c5408d4b1a6",
+      "bytes": 163542
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_01/metrics.json": {
+      "sha256": "75f688b0615b753da51d0cfae25fd7a4159a06266a6a8f3fa4f7748d90d32c88",
+      "bytes": 18046
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_01/training.json": {
+      "sha256": "e3779068d45c463ac5c20201eb8bf1aeb3ed42b8f4734ccd9df25d48685301d2",
+      "bytes": 1821
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_01/test_sequences.json": {
+      "sha256": "c3adff31d7d48d46a9a8c87098e8edab1db9d4cba3da03f759bd46f4faef1210",
+      "bytes": 104541
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_01/reference_sequences.json": {
+      "sha256": "00a0dae670737a29fedf8eb5aa8295bfc9c634a0841151a863373211359f2b5b",
+      "bytes": 6123
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_01/samples.json": {
+      "sha256": "3cfe339b2250bf1b8902b1617376b7b5e649853d375566cfc7571fd608e1a560",
+      "bytes": 164234
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_02/metrics.json": {
+      "sha256": "eade4dccc55975143971261746e27b1efc4cab4e517b65baa7d67bf6810a10d5",
+      "bytes": 27564
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_02/training.json": {
+      "sha256": "5e4df970bcc94a036e49ba2c6cbd9bd6054f639e635a51281acc79e716ddef90",
+      "bytes": 10901
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_02/test_sequences.json": {
+      "sha256": "53118c022bb42247b9311be6081f388fa3e70b192b57dcdce71f9b3b9e1f6d48",
+      "bytes": 104817
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_02/reference_sequences.json": {
+      "sha256": "103bdbf9b80d1686e5cee3254ea357b6bbf6380a4517ec30f623e3735edd1b88",
+      "bytes": 6098
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_02/samples.json": {
+      "sha256": "11d0eb756b292d762afcd952aa12bdbf36e35d8dcc5da73cb1a7f0ebd1397379",
+      "bytes": 165553
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/reset/gen_02.npy": {
+      "sha256": "8bf602e09c44f0928c5a644a9526d9eccd68de733f8576873693144dd8f05234",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_02/training_history.json": {
+      "sha256": "158636081394ba4c1d220f55804aad2cfd0b4607b1714422ae211a39e68c7c99",
+      "bytes": 1227
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_03/metrics.json": {
+      "sha256": "8cdb9bc2bd7ff00229309387a6c9399f603f8d2e921df16d211c99b69a631757",
+      "bytes": 27563
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_03/training.json": {
+      "sha256": "a85844ca8e67341889f1b09346d5cf5aa4d81d3142645f8f8407055a52203f5f",
+      "bytes": 10903
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_03/test_sequences.json": {
+      "sha256": "6bb81772b0363b9d7d9ac85facc2f43d1e44862b774bf11a46aa0bad60069fef",
+      "bytes": 104816
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_03/reference_sequences.json": {
+      "sha256": "02c45f83afabd9a51edf8efe64f37855f2e6cc62615bce69a0215eea47efead0",
+      "bytes": 6084
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_03/samples.json": {
+      "sha256": "2ba172edaec6fb736dad75c8add6ea1870960e4eceb8d9899eabfcae73ac34e4",
+      "bytes": 167213
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/reset/gen_03.npy": {
+      "sha256": "be37a82d8c889664546765fc5d361f9a627489572bc9fdfd8091d898f2c9a0e9",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_03/training_history.json": {
+      "sha256": "e3e21fd30dd2b1a0440adeac17405575fa4c3235c35bc30995dc7e05586e0589",
+      "bytes": 1228
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_04/metrics.json": {
+      "sha256": "3b6a6eeb48cad50d2ee64b5a67b64e8693c058759a58e2a14bfb51e6c778f998",
+      "bytes": 27580
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_04/training.json": {
+      "sha256": "22cf274f9776ecf2fedca8cbc33065b54737a9030894d93ee4062a845c501289",
+      "bytes": 10904
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_04/test_sequences.json": {
+      "sha256": "53c7edbec8f49907c862cb048dabbe22f6a867c0f00015acd3308bbe498a331a",
+      "bytes": 104904
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_04/reference_sequences.json": {
+      "sha256": "48529226e4671289fffdb4d5ac9b884fa6cf4df80d36d1daff0cf0e0d5080d72",
+      "bytes": 6094
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_04/samples.json": {
+      "sha256": "5f679ed2204a22840c79edfed57e4b167cd81afea84ebf6e9f55628237dc7709",
+      "bytes": 166929
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/reset/gen_04.npy": {
+      "sha256": "eafc4cdc5e2df9423e321e89613ec7b8ca8939b45ab464c05f25cff2b6c6fbca",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_04/training_history.json": {
+      "sha256": "986fdef859b73ea61d92fdcee37670433c287c713ef75fbee386343bf5731d0e",
+      "bytes": 1227
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_05/metrics.json": {
+      "sha256": "26e0c1c5a6a9609991cd65b9ad4ee5f625793cbca93d89ebc2d5ad2b5ddf4535",
+      "bytes": 27565
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_05/training.json": {
+      "sha256": "4310c5c82abf7b726d81fbae009e6df1bbba8c44b6a106a73a59b22c04bc394b",
+      "bytes": 10903
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_05/test_sequences.json": {
+      "sha256": "904c207a505d5e902498e0547bd77500bda85bed8e9df96b8e2883ea2f6197ba",
+      "bytes": 104948
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_05/reference_sequences.json": {
+      "sha256": "3d115ea1572a11f736be5b68a401ea88b4cffb0a377be23e6e8b827ec753d8ba",
+      "bytes": 6084
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_05/samples.json": {
+      "sha256": "dfde2827a178ae7a39a02c5cc6d19cc1605f08383314972ac94461d6c836cdc6",
+      "bytes": 164652
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/reset/gen_05.npy": {
+      "sha256": "406d4eb268daa98fc52f5ed88fa8ab0f280e972bd725ed2740e918c03e0e9c8a",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_05/training_history.json": {
+      "sha256": "f821c82333cf90cb14dbf8053bffcc9799796f28799eaea1e2b2eb5cd14dd7d0",
+      "bytes": 1228
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_06/metrics.json": {
+      "sha256": "dd6fab3b3243e10112e5187be669362b6729bc1c9b1d896f212b300841d9d8c6",
+      "bytes": 27573
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_06/training.json": {
+      "sha256": "30e20b185bd196ca3637882450809690c69be86bc9169fecb6484342b4cc9a13",
+      "bytes": 10905
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_06/test_sequences.json": {
+      "sha256": "ff8a08c42630d923fdf36d1cfda1c445349d5e098af7c9bed42fb1f887d85fe3",
+      "bytes": 104893
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_06/reference_sequences.json": {
+      "sha256": "4004ea4415bd18a5d46c8547e47014da8b3607c98e2fd0480945ea6b6195b458",
+      "bytes": 6088
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_06/samples.json": {
+      "sha256": "b07e8257afc9e8ae217c1de8de0f907eefbffead3fd04f00382ba390c37d0cda",
+      "bytes": 164365
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/reset/gen_06.npy": {
+      "sha256": "2e795089bdb26a58ad1e9b92e319f67889d9ef2a741263cf4eb0067ea90efd49",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_06/training_history.json": {
+      "sha256": "b24630fcc940abf1fca829a1e9688a53b85412c105942b12499144298de577fd",
+      "bytes": 1229
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_07/metrics.json": {
+      "sha256": "cf004a7ff70c22b12877897580b42a5d481b5dffd6749deacecb22a20af117d3",
+      "bytes": 27562
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_07/training.json": {
+      "sha256": "b4697fc9790e83fa02e51f62f54e9e4e5de247e59ecf42b80a745f194fbdfbd6",
+      "bytes": 10904
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_07/test_sequences.json": {
+      "sha256": "dc4cef75349a4e1663d2eac9e3725c23971ee1f4b9fc79153ffef2e932cda1dd",
+      "bytes": 104897
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_07/reference_sequences.json": {
+      "sha256": "40803e333243290d5e98bbe88c935eb6a8f8a8604cad11faac40504f02ed1431",
+      "bytes": 6079
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_07/samples.json": {
+      "sha256": "abe88ea5ee4cf0535876a36ff7c545c6e1cd95eefe0de3e016bf8663b36e622e",
+      "bytes": 164785
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/reset/gen_07.npy": {
+      "sha256": "da38ca77b34d5cd31e75b1fab3c216871988e2c82a624dff2b966f41f11b8c6e",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_07/training_history.json": {
+      "sha256": "da1b785a89fa2264f1aedfda7c3f4795862683243d83277bbf6b43ea41af853a",
+      "bytes": 1227
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_08/metrics.json": {
+      "sha256": "677ba52d405a6c4bf8ba3ccda50ce693ab96428b01efb252e7a1bd2f9182e87d",
+      "bytes": 27569
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_08/training.json": {
+      "sha256": "fc5d621a79e9605c7251024eda26dc72758c7bbdad90eb3a5853a43e7457218b",
+      "bytes": 10905
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_08/test_sequences.json": {
+      "sha256": "3c648a3a45eb45ba098b323f3321f1eefec385daefac58297fe72541f672a823",
+      "bytes": 104892
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_08/reference_sequences.json": {
+      "sha256": "2f50b79a25e6422d038b872693351cccc6580a8de458c363a32b47c4fad3a22b",
+      "bytes": 6100
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_08/samples.json": {
+      "sha256": "0c620efb5ddba4fb393f8c5dfc92dbdc517e75c6dcd018296208a4644d7e79fe",
+      "bytes": 165018
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/reset/gen_08.npy": {
+      "sha256": "132085f563d5a58a8451960e89c2b46282cb7dd0e4830654d94aa373032f2c13",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_08/training_history.json": {
+      "sha256": "6731bd2aa4b5ad5f60464aaba2e58703ce32c53687021210cd5a46c2aa6f7bc2",
+      "bytes": 1231
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_09/metrics.json": {
+      "sha256": "aedb3886c6400bd4f7751be8048b58bd01668f69c2aacefca7a0bc92f8a71b2a",
+      "bytes": 27565
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_09/training.json": {
+      "sha256": "8a7a761b6b221721a4b24323684db197a02a3192881e626218ce3b6aff6cdc21",
+      "bytes": 10902
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_09/test_sequences.json": {
+      "sha256": "47148598379108ce6257ec520082ef7372dadd79931f68563d0229a35836d591",
+      "bytes": 104883
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_09/reference_sequences.json": {
+      "sha256": "22a4713bec1c3dc725f0cbddbae58f603f95dc9785f5b9067eeea5b5a179cd2f",
+      "bytes": 6104
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_09/samples.json": {
+      "sha256": "dc8f3477e0759b0d6fd34d995ba88c320cb2d059bc581fec943a3cab4535e541",
+      "bytes": 164989
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/reset/gen_09.npy": {
+      "sha256": "cb15051dc652490ff089911ffc9745d6c7bbb1ffe4e3946e44fe0929c9860cc0",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_09/training_history.json": {
+      "sha256": "c7146c3756687516db45c20d5e86c4e3cf0d0a0d42cf259951b311983238e2f8",
+      "bytes": 1230
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_10/metrics.json": {
+      "sha256": "af84975966f8a537902dd96794bee3d872cecdf2f3abfe930066a73db0683462",
+      "bytes": 13512
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_10/training.json": {
+      "sha256": "1f5efe51ee1434732d6c34f43fcece483ac8a493e23860736db99513babfff1d",
+      "bytes": 10905
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_10/test_sequences.json": {
+      "sha256": "ccf39180872ce4f16bc4ee3ab5503697e70efe5e8156f95133c5bb7b3fbae503",
+      "bytes": 104810
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_10/reference_sequences.json": {
+      "sha256": "d918bfdc12a545cffc53b6ae0e637eebdfab4621b3fad13a4c0c1fd86e43d48e",
+      "bytes": 6106
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_10/samples.json": {
+      "sha256": "e273eb80ad9e1ab56ea878d72d9dd9d6b7728db1990661a1422cb7dd8d138c4e",
+      "bytes": 164907
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/probes/reset/gen_10.npy": {
+      "sha256": "db7b715046be2c3c11b91fd691323439e9e99bcfdfebc4b4faa6d02e3ceac6b4",
+      "bytes": 65664
+    },
+    "reports/20261030T180755Z-full-paired-final5/records/reset/seed_42/gen_10/training_history.json": {
+      "sha256": "5d8de6fb6ee378a429036253a74955b67ac38745ae17ae2a0afe8865c1424941",
+      "bytes": 1228
+    },
+    "reports/20261027T211852Z-full-reset-s0/analysis/metrics.csv": {
+      "sha256": "ac77134a1f5d69592f122b11a762065810fcfd8e2b7e40353372da750dbc7c08",
+      "bytes": 14781
+    }
+  },
+  "output_files": {
+    "cycle_comparison.csv": {
+      "sha256": "006f77074e1012b10d83980e00d2fa544394653a1c2454975fcddd6c5baa50f9",
+      "bytes": 1175
+    },
+    "examples.json": {
+      "sha256": "7deffb854de9603a175b3c0402a7cccc9252dcd15c62d2dfab4051fcfbe6a496",
+      "bytes": 3741391
+    },
+    "figures/formatting_diagnostics.pdf": {
+      "sha256": "9003f902b2bc0d4ccf988b0e7124ca84b3c2733bb74d880172466c8fe6f303eb",
+      "bytes": 26146
+    },
+    "figures/formatting_diagnostics.png": {
+      "sha256": "099bd2215c617cd0c0fba6ce09010733a4a5b514c0198da43278683c4cc7010c",
+      "bytes": 218172
+    },
+    "figures/generalization_and_selection.pdf": {
+      "sha256": "10f51442be55a662f3500622293669bc9a73997679ccf0f213f90257e105965f",
+      "bytes": 35789
+    },
+    "figures/generalization_and_selection.png": {
+      "sha256": "b46b09e44ad07c89ec68af91043b4a5fdcb667156fc18733d904d66af35408f4",
+      "bytes": 221635
+    },
+    "figures/recursive_metrics.pdf": {
+      "sha256": "59cb804e7b62c2f9d82a08b9f13612075f4941e84bcd4d13d28d07ae14ad451d",
+      "bytes": 30497
+    },
+    "figures/recursive_metrics.png": {
+      "sha256": "3ac071b4842e172f928fe7039d4786b90165c5d5fce23a3cc8be8ee68d240ea9",
+      "bytes": 334506
+    },
+    "metrics.csv": {
+      "sha256": "3ba38e1a921c35050b01e430cd2364efe7a7304768aa5d9318ae9b0f205e8db9",
+      "bytes": 16820
+    },
+    "summary.json": {
+      "sha256": "5e546842ef17c8bbaa2e5cee56c298d480e42fcdf7597f90e9863bfe5ce8a93e",
+      "bytes": 18304
+    },
+    "training_history.csv": {
+      "sha256": "0c1138f60509bbfb32612dcb09a02c3e66d4a014400a93999f23da2c96bb1133",
+      "bytes": 9991
+    }
+  },
+  "hash_scope": "Excludes this self-referential manifest.",
+  "verification_scope": "Recomputed saved scores, probe statistics and selection histories. Evidence audit independently checks source-index hashes and lineage. No new model inference."
+}

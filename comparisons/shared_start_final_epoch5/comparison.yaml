@@ -4,6 +4,11 @@ state: full_completed
 full_pair_run_id: 20261030T180755Z-full-paired-final5
 launch_record: ../../docs/validation/2026-10-30_final-epoch5-full-launch.json
 completion_record: ../../docs/validation/2026-10-31_final-epoch5-full-completion.json
+analysis_state: completed
+report: ../../reports/20261030T180755Z-full-paired-final5/report.md
+analysis_manifest: ../../reports/20261030T180755Z-full-paired-final5/analysis/results/analysis_manifest.json
+consistency_audit: ../../reports/20261030T180755Z-full-paired-final5/analysis/audit/audit.json
+recovery_scope: selective_scientific_metadata_and_20_probes
 acceptance_run_id: 20261030T172428Z-smoke-paired-final5
 accepted_runtime_sha256: 962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca
 acceptance_report: ../../reports/20261030T172428Z-smoke-paired-final5/report.md

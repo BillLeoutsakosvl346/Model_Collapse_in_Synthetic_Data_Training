@@ -4,6 +4,21 @@
 
 This is a new matched comparison. Historical Week 2 trained five epochs but selected epoch 1. This condition **retains epoch 5**, even if real validation loss worsens. It does not retrain or change the existing real-trained S0.
 
+## Week 3 findings and reproduction
+
+The [Week 3 report](../../reports/20261030T180755Z-full-paired-final5/report.md) contains three figure families, full endpoint statistics, saved text and limitations. Final real-test PPL is **107.37 continued / 44.50 reset**; reset has lower loss on 4,475/4,494 fixed test blocks. The continued probe contains 38.62% newline tokens and ten entirely newline outputs, versus reset's 2.80% and zero. Newline exclusion reverses pooled entropy/repetition rankings; these post-hoc diagnostics use unequal retained samples and do not replace the raw metrics or establish output quality.
+
+The [evidence audit](../../reports/20261030T180755Z-full-paired-final5/analysis/audit/audit.json) verifies 259 selectively recovered files / 13.09 MB, including twenty unique probes. All 19 new stages executed and retained epoch 5, although every stage's best real validation loss was epoch 1. Historical/new cycle-1 loss trajectories agree exactly. No bulk weights/full datasets were downloaded or re-evaluated for this analysis.
+
+From the published records, reproduce without cloud access or paid compute:
+
+```powershell
+python comparisons/shared_start_final_epoch5/analyse_evidence.py --out .state/week3-audit-review
+python comparisons/shared_start_final_epoch5/analyse.py --out .state/week3-analysis-review
+```
+
+Choose new empty output directories; published analysis is protected from overwrite. `--recover` on the audit script optionally reads pinned private backups using saved run provenance; it creates no compute. [Recovery scope](../../reports/20261030T180755Z-full-paired-final5/records/recovery_manifest.json) and [analysis input/output hashes](../../reports/20261030T180755Z-full-paired-final5/analysis/results/analysis_manifest.json) are explicit. The authored report can be rebuilt with `python scripts/analysis/build_week3_report.py`.
+
 The exact historical continued-run D1 is imported from immutable private backups. S0 trains on D1 once to create the new shared S1, which generates one new D2. Continued weights then train S1 on D2; reset trains fixed S0 on that exact D2. Each arm subsequently uses its own previous output dataset. AdamW and the cosine scheduler restart each cycle.
 
 The full pair completes continued cycles 1–10 and reset cycles 2–10: 19 unique training stages / 95 executed epochs. Continued S10 inherits 50 synthetic epochs; reset A10 inherits its own five synthetic epochs from S0. Data lineage is recursive in both arms. Existing fixed real splits, 64→64 generation, five deterministic beams, token counts, seed, batches and metrics remain unchanged.

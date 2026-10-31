@@ -9,7 +9,7 @@ Cambridge Engineering IIB: reproducible OPT-125M / WikiText-2 experiments on rec
 | [Pretrained reset](experiments/opt125m_wikitext2/pretrained_reset/README.md) | Original pretrained OPT at every synthetic cycle | [Completed Week 1](reports/20261020T211121Z-full/report.md) |
 | [Continued from real S0](experiments/opt125m_wikitext2/continued_from_real_s0/README.md) | Previous selected checkpoint | [Completed Week 2](reports/20261026T192740Z-full-continued/report.md) |
 | [Reset to real S0](experiments/opt125m_wikitext2/reset_to_real_s0/README.md) | Fixed real-data-trained S0, after an imported shared first cycle | [Completed and analysed](reports/20261027T211852Z-full-reset-s0/report.md) |
-| [Matched final epoch 5](comparisons/shared_start_final_epoch5/README.md) | New shared S1, then continued weights versus fixed S0 | [Both arms completed](docs/validation/2026-10-31_final-epoch5-full-completion.json) |
+| [Matched final epoch 5](comparisons/shared_start_final_epoch5/README.md) | New shared S1, then continued weights versus fixed S0 | [Completed and analysed: Week 3](reports/20261030T180755Z-full-paired-final5/report.md) |
 
 The [experiment catalogue](experiments/catalog.yaml) records run IDs and recovery scope. The [shared-start comparison](comparisons/shared_s0_s1_reset_vs_continue/README.md) uses the **same saved S0, S1 and D2** from Week 2, then compares resetting to S0 with continuing from the previous checkpoint. It preserves both earlier experiments. Week labels are presentation aliases, not configuration modes.
 
@@ -18,6 +18,8 @@ The completed runs use one seed and different GPU architectures. Their results a
 The [implementation handoff](docs/implementation-handoff.md) records **86 offline tests and 14 GPU acceptance checks**, recovery and automatic shutdown. Both test Pods and volumes were deleted. The separately authorized full reset run completed cycles 2-10 at **02:56 UTC/London on 28 October**, after **5.62 hours**. [Completion evidence](docs/validation/2026-10-28_reset-full-completion.json).
 
 The [shared-start analysis](reports/20261027T211852Z-full-reset-s0/report.md) compares the exact same S0/S1 beginning. Reset ends at test PPL **42.10**, versus **55.56** for continued weights, but has more repeated 4-grams (**57.66% versus 52.36%**) and lower token entropy. It preserves real-text prediction better in this seeded comparison while several output-diversity metrics are worse. Metadata and small probes were verified; bulk checkpoint recovery/re-evaluation remains separate.
+
+[Week 3](reports/20261030T180755Z-full-paired-final5/report.md) retains epoch 5 rather than the validation-selected first epoch. Final test PPL is **107.37 continued versus 44.50 reset**. The continued probe also develops a blank-line failure mode: **38.62% newline tokens**, with ten entirely newline outputs. Supplementary newline exclusion reverses the pooled diversity ordering, so raw entropy/repetition must not be read as a uniform loss of substantive vocabulary. The report includes matched curves, checkpoint diagnostics, formatting sensitivity, native-Doc delivery evidence and a reproducible audit of 259 records / 20 unique probes. One seed; no independent-run significance claim.
 
 ## Install locally
 

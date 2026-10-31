@@ -1,0 +1,34 @@
+{
+  "generation": 4,
+  "initial_weights_sha256": "f6b3cd0a48d4ee125855ae040f32e3f7d526516d86a675a75941d13a69e9d4f1",
+  "selected_weights_sha256": "d00e4ef96f5f8b328a50ed29fd6fecf8bff6cfb7c65ece7b938c78e25dd10de4",
+  "input_tokens_sha256": "f7e6182d7bfe0e69470774b868afbf971a5023f1a0c2e3874845f5dee0185b56",
+  "training_blocks": 37946,
+  "selected_epoch": 5,
+  "best_validation_loss": 3.924758941471884,
+  "best_validation_epoch": 1,
+  "selected_validation_loss": 4.026144324847032,
+  "executed_epochs": 5,
+  "terminal_weights_sha256": "d00e4ef96f5f8b328a50ed29fd6fecf8bff6cfb7c65ece7b938c78e25dd10de4",
+  "training_contract_sha256": "031691cf92818565b52f7248b11f6e7e2fc0c5794d59a06cffc68b351e77bed4",
+  "seconds": 362.980161352898,
+  "peak_allocated_gpu_bytes": 4216317952,
+  "checkpoint_files": {
+    "config.json": "fab5e364eef01dc5b085fed6c33f5e617217e76ff35849f0ddc9a5a258cd79db",
+    "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "model.safetensors": "18c00b49c73bdc5218e15422c6050dd8c6eb31d113ea9c26e8da0cf91d69c886"
+  },
+  "initialization": "continued",
+  "optimizer_initialization": "fresh_each_cycle",
+  "checkpoint_selection": "final_epoch",
+  "lineage": {
+    "initializer_weights_sha256": "f6b3cd0a48d4ee125855ae040f32e3f7d526516d86a675a75941d13a69e9d4f1",
+    "initializer_checkpoint": "seed_42/gen_03/checkpoint",
+    "training_dataset": "synthetic_for_gen_04",
+    "training_dataset_file_sha256": "d7dd776d37f156f50130521adbc74c8995dc1aa88f99e3046825aa6c5885fe86",
+    "training_tokens_sha256": "f7e6182d7bfe0e69470774b868afbf971a5023f1a0c2e3874845f5dee0185b56",
+    "generator_checkpoint": "seed_42/gen_03/checkpoint",
+    "generator_weights_sha256": "f6b3cd0a48d4ee125855ae040f32e3f7d526516d86a675a75941d13a69e9d4f1",
+    "branch_origin": null
+  }
+}

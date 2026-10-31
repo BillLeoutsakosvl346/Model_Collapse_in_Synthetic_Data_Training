@@ -21,3 +21,8 @@
 /docs/metrics.md text eol=lf
 /docs/methodology.md text eol=lf
 /docs/audits/2026-10-28_graph* -text
+# Week 3 scientific evidence and exported analysis retain their indexed bytes.
+/reports/20261030T180755Z-full-paired-final5/** -text whitespace=cr-at-eol
+/comparisons/shared_start_final_epoch5/analyse.py text eol=lf
+/comparisons/shared_start_final_epoch5/analyse_evidence.py text eol=lf
+/scripts/analysis/build_week3_report.py text eol=lf

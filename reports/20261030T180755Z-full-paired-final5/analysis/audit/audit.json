@@ -1,0 +1,108 @@
+{
+  "pair_id": "20261030T180755Z-full-paired-final5",
+  "verification_scope": "Selective scientific metadata plus twenty 256x64 probes; no weights, logits or full token arrays",
+  "checks_passed": true,
+  "unique_stages": 19,
+  "new_executed_epochs": 95,
+  "shared_prefix_identical": true,
+  "fixed_evaluation_hashes": {
+    "train": "546f467e177406cd4da4571e490de15ad691b7a63ea317dfea99b219433d8c31",
+    "validation": "f7cab8d76a7700b1db3c4f3bfc2be399249c068c7ac1cdff94acaceb7c25f22a",
+    "test": "baa63f2fa9961e122c02ef8cc239baa6e5abcfd58c84f629392750f597d4f72d"
+  },
+  "probe_size": 256,
+  "tokens_per_continuation": 64,
+  "training_tokens_per_stage": 2428544,
+  "shifted_training_targets_per_epoch": 2390598,
+  "validation_scored_tokens": 247086,
+  "test_scored_tokens": 283122,
+  "test_blocks_with_lower_nll_reset": 4475,
+  "test_blocks": 4494,
+  "mean_test_nll_continued_minus_reset": 0.8808250753539214,
+  "best_validation_epoch_counts": {
+    "1": 19
+  },
+  "week2_vs_week3_cycle1": {
+    "same_s0_hash": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+    "same_d1_tokens_hash": "daf84582d4081b899a7f146faf2a0b6f15213a09ca6c25e355c9fd66a5ea0fc6",
+    "epoch_trajectory_exact_fields": [
+      "epoch",
+      "learning_rate",
+      "train_loss",
+      "validation_loss"
+    ],
+    "five_epoch_training_validation_trajectory_exact": true,
+    "old_selected_epoch": 1,
+    "new_selected_epoch": 5,
+    "old_selected_weights_sha256": "5cbccf4740806deeb6d972426309982ae9713651fa1b41602d81cb0ff421f91f",
+    "new_selected_weights_sha256": "2501f2e790c72dfecccf60ac23a0b1406d438eecfdc5e1a3c2c30e6a298e0e8c",
+    "scope": "Saved scalar losses and LR match exactly; no claim of comparing unsaved intermediate tensors."
+  },
+  "newline_sensitivity_posthoc": {
+    "continued": {
+      "newline_token_id": 50118,
+      "newline_tokens": 6327,
+      "total_tokens": 16384,
+      "newline_share": 0.38616943359375,
+      "outputs_with_at_least_32_newlines": 111,
+      "all_newline_outputs": 10,
+      "pooled_entropy_excluding_newline_nats": 6.132102033332387,
+      "original_4gram_positions_without_newline": 9286,
+      "pooled_repeated_4gram_rate_without_newline": 0.3598966185655826,
+      "frozen_s0_score_subgroups_posthoc": {
+        "all_outputs": {
+          "outputs": 256,
+          "mean_nll": 2.2377504583307637
+        },
+        "all_newline": {
+          "outputs": 10,
+          "mean_nll": 0.4647287705927969
+        },
+        "at_least_32_newlines": {
+          "outputs": 111,
+          "mean_nll": 2.1222268673359705
+        },
+        "fewer_than_32_newlines": {
+          "outputs": 145,
+          "mean_nll": 2.326185759023329
+        }
+      }
+    },
+    "reset": {
+      "newline_token_id": 50118,
+      "newline_tokens": 459,
+      "total_tokens": 16384,
+      "newline_share": 0.02801513671875,
+      "outputs_with_at_least_32_newlines": 0,
+      "all_newline_outputs": 0,
+      "pooled_entropy_excluding_newline_nats": 5.993746847335561,
+      "original_4gram_positions_without_newline": 14573,
+      "pooled_repeated_4gram_rate_without_newline": 0.5027104920057641,
+      "frozen_s0_score_subgroups_posthoc": {
+        "all_outputs": {
+          "outputs": 256,
+          "mean_nll": 2.23306877621878
+        },
+        "all_newline": {
+          "outputs": 0,
+          "mean_nll": null
+        },
+        "at_least_32_newlines": {
+          "outputs": 0,
+          "mean_nll": null
+        },
+        "fewer_than_32_newlines": {
+          "outputs": 256,
+          "mean_nll": 2.23306877621878
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Bulk model tensors and full token datasets are checked by indexed/recorded hashes only, not downloaded or re-evaluated here.",
+    "NLL and perplexity arithmetic verified from saved sequence scores and aggregate NLL, without a fresh forward pass.",
+    "Diversity exactly recomputed on the fixed first 256 training prompts; probes are not independent random samples.",
+    "One seed, deterministic beam decoding and one dataset/model; block comparisons are descriptive, not independent-run significance.",
+    "Corpus token entropy measures pooled token frequencies, not model predictive entropy or sequence order; within-output metrics are reported separately."
+  ]
+}
