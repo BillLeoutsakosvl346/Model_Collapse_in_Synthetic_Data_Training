@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-31T16:39:10.353290+00:00",
+  "run_id": "20261031T163428Z-full-continued",
+  "experiment_id": "continued_mixed_50_final5",
+  "state_observed": "running",
+  "completed": false,
+  "resources": {
+    "launch_id": "20261031T163428939326Z",
+    "pod_id": "aa1rxwnq8uwyss",
+    "volume_id": "xo027a9d51",
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1793464470.0089157,
+    "quoted_gpu_hourly_usd": 0.57,
+    "actual_pod_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6619589041095889,
+    "session_allowance_usd": 7.205816890922893,
+    "runtime_sha256": "266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5",
+    "configuration_sha256": "0f59b7195d47a2678cdce0ad67b0af6377d3b559e18045e120925a349ba500cc",
+    "remote_root": "/workspace/runs/20261031T163428Z-full-continued",
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    }
+  },
+  "source": {
+    "accepted_runtime_sha256": "266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5",
+    "implementation_commit": "ff309fe7911ed2a964d3c4a025d5bdc93047921a",
+    "cached_bundle_original_base_commit": "97e11bf20eafbf3fe37e5f044135fa3693282e02",
+    "note": "The cached accepted source bundle preserves its original base commit. Exact deployed runtime file hashes identify the tested implementation."
+  },
+  "protocol": {
+    "cycles": 10,
+    "epochs_per_cycle": 5,
+    "checkpoint_selection": "final_epoch",
+    "initialization": "continued",
+    "synthetic_fraction": 0.5,
+    "training_blocks": 37946,
+    "real_blocks": 18973,
+    "synthetic_blocks": 18973,
+    "tokens_per_block": 64,
+    "training_tokens_per_dataset": 2428544,
+    "cycle1_training_tokens_sha256": "fbbfb7921f6a3c1b58030fe3d88f560eddb62cd7106f577db6c9304369d64528",
+    "initial_generator_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+    "historical_D1_reused": true,
+    "all_synthetic_trained_S1_reused": false
+  },
+  "budget": {
+    "cumulative_ceiling_usd": 30.0,
+    "reserve_usd": 2.0,
+    "session_allowance_usd": 7.205816890922893,
+    "authorization_receipt": "docs/validation/2026-10-31_mixed-50-budget-authorization.json",
+    "historical_cost_intervals_unchanged": true,
+    "credits_purchased": false,
+    "automatic_payments_enabled": false,
+    "deadline_utc": "2026-11-01T03:27:38.152842+00:00"
+  },
+  "forecast_from_full_run_warm_benchmark": {
+    "synthetic_generations": 10,
+    "initialization": "continued",
+    "estimated_hours": 9.372290702882086,
+    "estimated_compute_and_running_storage_usd": 5.394844593631578,
+    "new_training_stages": 10,
+    "new_full_generation_stages": 9,
+    "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+  },
+  "conservative_finish_utc": "2026-11-01T01:56:50.255446+00:00",
+  "checks": {
+    "current_runtime_and_protocol_acceptance": true,
+    "pinned_historical_S0_D1_verified_before_provisioning": true,
+    "private_upload_download_checksum_probe": true,
+    "matched_GPU_and_image": true,
+    "cuda_bf16": {
+      "torch": "2.8.0+cu128",
+      "cuda": true,
+      "bf16": true,
+      "gpu": "NVIDIA RTX PRO 4000 Blackwell"
+    },
+    "matched_packages": true,
+    "single_active_task_GPU": true,
+    "supervisor_and_independent_watchdog_verified": true,
+    "first_full_mixture_exact_50_50": true,
+    "first_epoch_finite": true,
+    "epoch_progress_after_closed_SSH_connections": true,
+    "unchanged_runtime_after_documentation_updates": true
+  },
+  "observed_training": {
+    "status": {
+      "state": "running",
+      "generation": 1,
+      "stage": "training",
+      "pid": 268,
+      "time": 1793464611.2350285
+    },
+    "histories": {
+      "seed_42/gen_01/training_history.json": [
+        {
+          "epoch": 1,
+          "learning_rate": 2e-05,
+          "train_loss": 2.2189104394556343,
+          "validation_loss": 3.587221737283744,
+          "train_seconds": 66.81592378090136,
+          "training_target_tokens_per_second": 35778.866245105
+        }
+      ]
+    },
+    "watchdog": {
+      "pid": 139,
+      "time": 1793464750.6568115,
+      "deadline": 1793503658.1528416
+    },
+    "supervisor": {
+      "pid": 265,
+      "child_pid": 268,
+      "time": 1793464750.82591
+    }
+  },
+  "detached_observations": {
+    "pod_id": "aa1rxwnq8uwyss",
+    "launch_id": "20261031T163428939326Z",
+    "run_id": "20261031T163428Z-full-continued",
+    "progress_after_disconnect": true,
+    "observations": [
+      {
+        "time": 1793464656.1643722,
+        "status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "pid": 268,
+          "time": 1793464611.2350285
+        },
+        "child_status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "pid": 268,
+          "time": 1793464611.2350285
+        },
+        "event_bytes": 918,
+        "epochs": 0,
+        "supervisor": {
+          "pid": 265,
+          "child_pid": 268,
+          "time": 1793464653.6212382
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1793464655.6427712,
+          "deadline": 1793503658.1528416
+        }
+      },
+      {
+        "time": 1793464687.4406328,
+        "status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "pid": 268,
+          "time": 1793464611.2350285
+        },
+        "child_status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "pid": 268,
+          "time": 1793464611.2350285
+        },
+        "event_bytes": 1188,
+        "epochs": 1,
+        "supervisor": {
+          "pid": 265,
+          "child_pid": 268,
+          "time": 1793464687.0596716
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1793464686.3490224,
+          "deadline": 1793503658.1528416
+        }
+      }
+    ],
+    "observations_sha256": "9355eb396e5dfe0d8de25ab2214b2a5b4f17288526f37fcccda4a6725103862e",
+    "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+  },
+  "local_evidence": {
+    "config.json": "1afe9a89f64616c101cc6caf946c05f5d7d99efdfdd97fc0419530c32e3fe176",
+    "resources.json": "f3785aa629c52eced37fe8a7caf5886e9dbbc8cd7a77f9c4a90bdd7033ad0496",
+    "gpu_check.json": "f4538361433e33cb15921564a252c5ee183c6b82e512ff0eb3a8c35c04382efa",
+    "environment_match.json": "825052cfdcbd487b8171b4573bc73d7ce6b39cf045d835d64c1b1d62d3af765d",
+    "launch_verified.json": "a29d5ee2d21bbfff1b6b94a79deea18496a55309b9556af38fe2ebb648b8bb46",
+    "detached_verification.json": "92104821b8508410b8d32b44e80a2355940f762170e8aa7619aa585fae76bb67",
+    "launch_dataset_and_benchmark_evidence.json": "345fc12caac79af7ef4c17b9292a640fc5be89ea25400857b01f6c888a251c30",
+    "first_epoch_verified.json": "50bf62325b0e26ce72934765f981abebb5829ea5f3fa537a1f202cd90d469437",
+    "full_benchmark_forecast.json": "3bd18943a9ca4994e1377bea6eec68eef44c8ddaadf2bf7659ff03645b0d48e5"
+  },
+  "operational_invocation": "from model_collapse import remote; remote.TOTAL_BUDGET=30.0; remote.launch(generations=10, config_path='experiments/opt125m_wikitext2/continued_mixed_50_final5/full.yaml')",
+  "safety": "Detached remote execution persists independently of this checkout, SSH, browser or agent session. Watchdog shuts down on completion, worker failure, supervisor death or budget deadline; automatic API stop is not a completion guarantee. Network volume retained for recovery; stage backups use private Hugging Face repositories. Do not duplicate an active run."
+}

@@ -1,6 +1,6 @@
 # Continued 50/50 mixture: implementation and validation handoff
 
-**Technically validated; full experiment unlaunched. Full-run admission is currently budget-blocked.**
+**Full experiment `20261031T163428Z-full-continued` launched on 31 October at 16:34 UTC/London.** The user explicitly lifted the previous cost constraint; the launcher applied the proposed USD 30 cumulative ceiling and retained the USD 2 reserve. Pod `aa1rxwnq8uwyss` uses the matching RTX PRO 4000 Blackwell in EU-RO-1 with network volume `xo027a9d51`. Supervisor and independent watchdog startup were verified. See the [launch receipt](validation/2026-10-31_mixed-50-full-launch.json) for the final detached-progress checks and forecast. Do not launch a duplicate.
 
 Acceptance `20261031T153536Z-smoke-continued` completed two actual OPT-125M training cycles on 31 October 2026. Each cycle used 128 real + 128 synthetic 64-token blocks, trained five epochs and retained epoch 5. The full configuration has ten cycles, continued weights and 37,946 blocks per mixture (18,973 from each source). It imports exact historical S0/D1 and creates a new mixed-data S1; previous all-synthetic S1 is never reused. AdamW and the scheduler restart each cycle.
 
@@ -35,17 +35,17 @@ The smoke completed in **8.23 minutes**, with provider-confirmed shutdown after 
 
 Warmed production-batch throughput measured **34,047 training target tokens/s** and **1,306 generated tokens/s** using five beams. Ten cycles require fifty training epochs, nine new full synthetic pools and the final probe; D1 is imported. Historical actual throughput suggests **6-8 hours**. The conservative admission forecast, with 1.5x compute margin and checkpoint/upload allowances, is **9.33 hours / $5.37** at the quoted matching GPU price of $0.57/hour plus running storage. These are forecasts, not a completed mixed-data full run.
 
-The cumulative conservative ledger currently estimates **$20.7854**, leaving about **$2.21 after the $2 reserve** under the unchanged **$25 ceiling**. Account credit does not enlarge that authorization. The full launcher must reject the current unaffordable forecast. Do not change the ceiling, shorten the scientific protocol, choose different hardware or delete historical recovery resources to bypass admission. Recheck verified billing, storage accrual, hardware availability and budget on any later launch instruction.
+At setup handoff, the cumulative conservative ledger estimated **$20.7854**, leaving about **$2.21 after the $2 reserve** under the then-authorized **$25 ceiling**; full admission correctly failed. The user's subsequent [explicit authorization](validation/2026-10-31_mixed-50-budget-authorization.json) permits the applied **$30 cumulative ceiling**. The admitted session allowance is **$7.2058**, with a padded watchdog deadline of **1 November, 03:27 UTC/London**. No credits or payment settings were changed. Historical receipts and cost intervals remain unchanged. The accepted runtime source retains its historical default; this launch supplied the authorized USD 30 operational ceiling to the local launcher process and recorded it in the private ledger.
 
 ## Future launch and operations
 
-The full command below is prepared and its acceptance/profile/admission paths are tested. **It has not been executed and will currently be refused by the budget guard.** A later user instruction must authorize an affordable launch within the applicable ceiling.
+The full configuration below was used for the explicitly authorized launch. **Run `20261031T163428Z-full-continued` is active; do not execute another launch or resume an active/completed run.** The authorized local invocation set `model_collapse.remote.TOTAL_BUDGET = 30.0` before calling the unchanged launcher, preserving the GPU-accepted runtime hash. Its exact invocation and budget identity are recorded in the launch receipt.
 
 ```powershell
 .\.venv\Scripts\python.exe -m model_collapse launch --config experiments/opt125m_wikitext2/continued_mixed_50_final5/full.yaml --generations 10
 ```
 
-For the returned future full run ID:
+For the active run, use `20261031T163428Z-full-continued` as `RUN_ID` below:
 
 ```powershell
 python -m model_collapse verify-detached RUN_ID

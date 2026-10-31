@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-31",
+  "experiment_id": "continued_mixed_50_final5",
+  "authorization": "Launch ten full continued-training cycles with a 50/50 real/synthetic mixture and final-epoch-5 checkpoints.",
+  "question": "May I raise the cumulative Runpod spending limit from $25 to $30 and launch the ten-cycle 50/50 run? This uses existing account credit; it does not purchase credits or enable automatic payments. The previous $25 limit is the only launch blocker.",
+  "user_response": "i dont care about the cost dude do whatever you want",
+  "previous_cumulative_ceiling_usd": 25.0,
+  "applied_cumulative_ceiling_usd": 30.0,
+  "reserve_usd": 2.0,
+  "purchase_credits": false,
+  "enable_automatic_payments": false,
+  "runtime_sha256": "266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5",
+  "configuration": "experiments/opt125m_wikitext2/continued_mixed_50_final5/full.yaml",
+  "scope": "Operational budget authorization only. Scientific settings and accepted runtime source are unchanged; this receipt does not itself claim provisioning or training."
+}

@@ -10,7 +10,9 @@ conditions:
     checkpoint_selection: final_epoch
     epochs: 5
     synthetic_fraction: 0.50
-    state: validated_full_unlaunched_budget_blocked
+    state: running
+    full_run_id: 20261031T163428Z-full-continued
+    launch_record: ../docs/validation/2026-10-31_mixed-50-full-launch.json
     acceptance_run_id: 20261031T153536Z-smoke-continued
     acceptance_report: ../reports/20261031T153536Z-smoke-continued/report.md
     accepted_runtime_sha256: 266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5
@@ -18,7 +20,7 @@ conditions:
     definition: opt125m_wikitext2/continued_mixed_50_final5/README.md
     config: opt125m_wikitext2/continued_mixed_50_final5/full.yaml
     smoke_config: opt125m_wikitext2/continued_mixed_50_final5/smoke.yaml
-    full_run_launched: false
+    full_run_launched: true
   continued_final_epoch5:
     name: "OPT-125M / WikiText-2: continued weights, always retain epoch 5"
     initialization: continued
