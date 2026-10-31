@@ -1,0 +1,215 @@
+{
+  "run_id": "20261030T180755Z-full-paired-final5",
+  "checked_utc": "2026-10-31T12:44:23.295851+00:00",
+  "state": "complete",
+  "completion": {
+    "complete": true,
+    "workflow": "paired",
+    "time": 1793426757.7363248,
+    "children": {
+      "continued": "20261030T180755Z-full-paired-final5-continued",
+      "reset": "20261030T180755Z-full-paired-final5-reset-s0"
+    },
+    "source_seal_sha256": "3ee6ce14ac349372c9dfe6891d5b19a4edbd24b185a045ba65724f0e008d57c0",
+    "unique_training_stages": 19,
+    "executed_epochs": 95
+  },
+  "completed_utc": "2026-10-31T06:05:57.736325+00:00",
+  "elapsed_hours_to_completion": 11.966739192141427,
+  "pod_id": "0quyi2z2jv8vd6",
+  "provider_status": "EXITED",
+  "provider_shutdown": {
+    "id": "0quyi2z2jv8vd6",
+    "desiredStatus": "EXITED",
+    "lastStatusChange": "Exited by user: Sat Oct 31 2026 06:06:47 GMT+0000 (Coordinated Universal Time)"
+  },
+  "watchdog_exit": {
+    "reason": "complete",
+    "time": 1793426801.1562486,
+    "pod_id": "0quyi2z2jv8vd6"
+  },
+  "no_compute_running": true,
+  "network_volume_retained": "axxpvi80iq",
+  "runtime_sha256": "962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca",
+  "backup_revisions": {
+    "model": "019161fc32fc60cc6ee3d474321f455367765557",
+    "dataset": "9c179624f0288243f87483d4be30cf512cb5fbbe"
+  },
+  "parent_artifact_index_sha256": "3ea81874080176f8233849df2df8043149980c24635c1aadee9b381fff2f97bc",
+  "children": {
+    "continued": {
+      "run_id": "20261030T180755Z-full-paired-final5-continued",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "c2e9d4ea8a60744adb5b41618cb2694a4b70b7bc",
+        "dataset": "102aa424df2ef75d97cf069f378954c03c54a903"
+      },
+      "artifact_index_sha256": "164d05160f17c2ba6dc6228ff056332a809998debd834a1ccecf33bf54a1ad23"
+    },
+    "reset": {
+      "run_id": "20261030T180755Z-full-paired-final5-reset-s0",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "019161fc32fc60cc6ee3d474321f455367765557",
+        "dataset": "8c7d691419be445072083ec0c37ad63bdb564d1d"
+      },
+      "artifact_index_sha256": "8f99624690a788335bf80f3b33fcace7c377a43201f45e760c7d301e258dd069"
+    }
+  },
+  "verified_scientific_checks": {
+    "all_19_final_epoch_stages": [
+      {
+        "arm": "continued",
+        "cycle": 1,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "continued",
+        "cycle": 2,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "continued",
+        "cycle": 3,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "continued",
+        "cycle": 4,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "continued",
+        "cycle": 5,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "continued",
+        "cycle": 6,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "continued",
+        "cycle": 7,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "continued",
+        "cycle": 8,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "continued",
+        "cycle": 9,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "continued",
+        "cycle": 10,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "reset",
+        "cycle": 2,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "reset",
+        "cycle": 3,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "reset",
+        "cycle": 4,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "reset",
+        "cycle": 5,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "reset",
+        "cycle": 6,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "reset",
+        "cycle": 7,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "reset",
+        "cycle": 8,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "reset",
+        "cycle": 9,
+        "selected_epoch": 5,
+        "epochs": 5
+      },
+      {
+        "arm": "reset",
+        "cycle": 10,
+        "selected_epoch": 5,
+        "epochs": 5
+      }
+    ],
+    "exact_shared_s0_s1_d2": true,
+    "initializers_and_generators_verified": true,
+    "summaries": {
+      "continued": {
+        "metric_rows": 11,
+        "checkpoints_indexed": 11,
+        "indexed_files": 2906,
+        "indexed_bytes": 5748976225,
+        "test_ppl_start": 33.88507148759166,
+        "test_ppl_shared_cycle1": 54.46409848235618,
+        "test_ppl_final": 107.37159015722628
+      },
+      "reset": {
+        "metric_rows": 11,
+        "checkpoints_indexed": 11,
+        "indexed_files": 2611,
+        "indexed_bytes": 5729661281,
+        "test_ppl_start": 33.88507148759166,
+        "test_ppl_shared_cycle1": 54.46409848235618,
+        "test_ppl_final": 44.49917047790749
+      }
+    }
+  },
+  "small_records_checksum_verified": 121,
+  "small_records_verified_bytes": 1506757,
+  "observed_account_debit_usd": 7.072226882299999,
+  "observed_account_debit_scope": "Account balance change since provisioning, including concurrent retained storage and billing timing; not an itemized compute invoice.",
+  "account_balance_usd": 11.8022413356,
+  "current_account_storage_spend_per_hour": 0.012,
+  "conservative_task_accrued_usd": 20.65243800136909,
+  "bulk_checkpoints_or_token_arrays_downloaded": false,
+  "restored_checkpoint_re_evaluation_performed": false,
+  "recovery_scope": "Pinned completion/config/index records, 22 metric rows, 19 new five-epoch histories, checkpoint selection/terminal hashes, shared S0/S1/D2 and recorded initializer/generator/data handoffs. Bulk files remain in private backups and recovery volume."
+}

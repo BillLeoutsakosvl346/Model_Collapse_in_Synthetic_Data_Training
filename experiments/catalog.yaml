@@ -1,5 +1,5 @@
 schema_version: 1
-updated: "2026-10-30"
+updated: "2026-10-31"
 description: "Scientific conditions and their recorded runs; week labels are presentation aliases."
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
@@ -9,9 +9,10 @@ conditions:
     initialization: continued
     checkpoint_selection: final_epoch
     epochs: 5
-    state: full_running
+    state: completed
     full_pair_run_id: 20261030T180755Z-full-paired-final5
     full_run_id: 20261030T180755Z-full-paired-final5-continued
+    completion_record: ../docs/validation/2026-10-31_final-epoch5-full-completion.json
     launch_record: ../docs/validation/2026-10-30_final-epoch5-full-launch.json
     acceptance_run_id: 20261030T172428Z-smoke-paired-final5
     accepted_runtime_sha256: 962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca
@@ -26,9 +27,10 @@ conditions:
     initialization: reset_s0
     checkpoint_selection: final_epoch
     epochs: 5
-    state: full_queued_in_running_pair
+    state: completed
     full_pair_run_id: 20261030T180755Z-full-paired-final5
     full_run_id: 20261030T180755Z-full-paired-final5-reset-s0
+    completion_record: ../docs/validation/2026-10-31_final-epoch5-full-completion.json
     launch_record: ../docs/validation/2026-10-30_final-epoch5-full-launch.json
     acceptance_run_id: 20261030T172428Z-smoke-paired-final5
     accepted_runtime_sha256: 962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca

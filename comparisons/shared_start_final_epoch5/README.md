@@ -1,6 +1,6 @@
 # Shared start, final epoch 5
 
-**Full pair launched on 30 October at 18:07 UTC/London:** `20261030T180755Z-full-paired-final5`. Continued training runs first; reset follows automatically. See the [launch receipt](../../docs/validation/2026-10-30_final-epoch5-full-launch.json), [acceptance report](../../reports/20261030T172428Z-smoke-paired-final5/report.md) and [handoff](../../docs/final-epoch5-handoff.md). Runtime and scientific settings match GPU acceptance. Historical cost reconciliation passed the unchanged $25 budget gate. Do not launch a duplicate.
+**Full pair completed on 31 October at 06:05 UTC/London:** `20261030T180755Z-full-paired-final5`. Both arms reached cycle 10; all 19 unique synthetic stages executed and retained epoch 5 (95 epochs). Runtime was 11.97 hours. Runpod confirms automatic GPU shutdown at 06:06:47, reason `complete`. See the [completion receipt](../../docs/validation/2026-10-31_final-epoch5-full-completion.json), [launch receipt](../../docs/validation/2026-10-30_final-epoch5-full-launch.json), [acceptance report](../../reports/20261030T172428Z-smoke-paired-final5/report.md) and [handoff](../../docs/final-epoch5-handoff.md). Do not launch or resume completed compute.
 
 This is a new matched comparison. Historical Week 2 trained five epochs but selected epoch 1. This condition **retains epoch 5**, even if real validation loss worsens. It does not retrain or change the existing real-trained S0.
 
@@ -22,7 +22,7 @@ python -m model_collapse report PAIR_ID
 python -m model_collapse cleanup PAIR_ID
 ```
 
-The separately authorised full launch used this command; it is already running:
+The separately authorised full launch used this command; it is now complete:
 
 ```powershell
 python -m model_collapse launch --config comparisons/shared_start_final_epoch5/full.yaml --generations 10
