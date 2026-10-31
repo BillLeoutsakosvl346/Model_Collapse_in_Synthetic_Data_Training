@@ -1,6 +1,6 @@
 # Continued weights with 50% real / 50% synthetic targets
 
-**GPU validation completed on 31 October:** [acceptance report](../../../reports/20261031T153536Z-smoke-continued/report.md), [handoff](../../../docs/mixed-50-handoff.md). Two mixed-data cycles / ten actual epochs passed all sixteen GPU/provider checks after 162 offline tests and independent review. The full experiment remains unlaunched and budget-blocked under the existing $25 ceiling; it requires a separate launch instruction and an affordable admission forecast.
+**Full run launched on 31 October at 16:34 UTC/London:** `20261031T163428Z-full-continued`; [launch receipt](../../../docs/validation/2026-10-31_mixed-50-full-launch.json). Startup/first-epoch progress were verified, not full completion. Use [current state](../../../docs/current-state.md) before further cloud work; do not launch a duplicate. The earlier [acceptance](../../../reports/20261031T153536Z-smoke-continued/report.md) passed sixteen GPU/provider checks after 162 offline tests and independent review, with a later test-only admission regression. Historical acceptance-date budget/status statements are preserved in that report.
 
 The experiment imports the exact historical real-trained S0 and its pinned D1. At cycle 1, S0 trains on a new mixture; historical synthetic-trained S1 checkpoints are never reused. Each following selected model generates a full synthetic pool and initializes the next training cycle. AdamW and the cosine scheduler restart each cycle. All five epochs execute; epoch 5 is retained regardless of validation loss.
 
@@ -12,7 +12,7 @@ Synthetic pools stay in `synthetic_for_gen_XX/`; actual training mixtures are se
 
 ## Commands
 
-Run the small validation profile (256 mixed training blocks, 64 validation/test blocks, two cycles, ten epochs):
+The small validation profile (256 mixed training blocks, 64 validation/test blocks, two cycles, ten epochs) is documented below. Repeating it is paid and requires separate authorization; it is not needed for documentation changes:
 
 ```powershell
 python -m model_collapse smoke --config experiments/opt125m_wikitext2/continued_mixed_50_final5/smoke.yaml
@@ -26,7 +26,7 @@ python -m model_collapse cleanup RUN_ID
 
 Run `verify-detached` while the validation worker is active. Validation intentionally exits after a generation shard and after completed cycle 1; the supervisor restarts it. Private backup restoration and checkpoint re-evaluation occur on the GPU before the independent watchdog exercises actual shutdown. Cleanup requires verified recovery. Metadata-only fetching keeps bulk checkpoints and token arrays in the cloud.
 
-Future full launch; **do not execute during setup**:
+Full configuration interface, already used by the authorized launch; **do not repeat for the active run**:
 
 ```powershell
 python -m model_collapse launch --config experiments/opt125m_wikitext2/continued_mixed_50_final5/full.yaml --generations 10
@@ -36,4 +36,4 @@ This performs ten new training stages / fifty epochs, imports D1, generates nine
 
 Report metrics preserve previous definitions and add the actual real/synthetic block/token counts. Frozen-S0 scores are continuation-only predictability measurements, not output quality or model-distance measures. Smoke results validate the pipeline; they do not establish collapse or mitigation effectiveness.
 
-All acceptance attempts share a $0.75 campaign ceiling, within the $3 setup allowance, $25 cumulative task ceiling and $2 reserve. The smoke session additionally caps at $0.65. No credits or payment settings may be changed. Technical acceptance does not establish full-run affordability.
+Acceptance attempts shared a $0.75 campaign ceiling within the original $3 setup allowance, then-current $25 task ceiling and $2 reserve; the smoke session capped at $0.65. The later explicitly authorized full launch applied a $30 cumulative ceiling, retaining the $2 reserve and existing credit only. The accepted local launcher's historical default and explicit operational override are documented in [operations](../../../docs/operations.md). No payment settings were changed. Technical acceptance alone does not establish affordability or authorize a rerun.

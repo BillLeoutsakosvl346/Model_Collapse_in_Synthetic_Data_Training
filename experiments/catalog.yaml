@@ -131,7 +131,7 @@ conditions:
     shared_cycles: [0, 1]
     first_new_cycle: 2
     target_last_cycle: 10
-    acceptance: current_runtime_gpu_passed
+    acceptance: recorded_runtime_gpu_passed
     acceptance_run_id: 20261027T203952Z-smoke-reset-s0
     acceptance_report: ../reports/20261027T203952Z-smoke-reset-s0/report.md
     accepted_runtime_sha256: 5d56bf37476583b20fd9d74c40941b322af6bcb2720a48a7a463f9aca6dde49e

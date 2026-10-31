@@ -3,24 +3,31 @@
 Requires the frozen selective audit and paired analysis; no network or training.
 """
 from pathlib import Path
+import argparse
 import csv
 import hashlib
 import json
 import re
+import os
+
+try:
+    from .publication import new_destination, write_provenance
+except ImportError:  # Direct script invocation.
+    from publication import new_destination, write_provenance
 
 PROJECT = Path(__file__).resolve().parents[2]
 PAIR = "20261030T180755Z-full-paired-final5"
 ROOT = PROJECT / "reports" / PAIR
 RESULTS = ROOT / "analysis/results"
 AUDIT = ROOT / "analysis/audit"
-PRIVATE = PROJECT / ".state/week3_doc"
 
 
 def read(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def build():
+def build(out):
+    out = new_destination(ROOT, out)
     summary = read(RESULTS / "summary.json")
     audit = read(AUDIT / "audit.json")
     rows = list(csv.DictReader((AUDIT / "metrics.csv").open(encoding="utf-8")))
@@ -135,8 +142,8 @@ def build():
     assert all(Path(path).exists() for path in images.values())
     source_url = f"https://github.com/BillLeoutsakosvl346/Model_Collapse_in_Synthetic_Data_Training/blob/main/reports/{PAIR}/report.md"
     draft = {"entries": entries, "tables": tables, "images": images, "source_url": source_url}
-    PRIVATE.mkdir(parents=True, exist_ok=True)
-    (PRIVATE / "draft.json").write_text(json.dumps(draft, ensure_ascii=False, indent=2), encoding="utf-8")
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "draft.json").write_text(json.dumps(draft, ensure_ascii=False, indent=2), encoding="utf-8")
     lines = []
     for e in entries:
         kind, identifier, text = e["kind"], e["id"], e["text"]
@@ -157,11 +164,29 @@ def build():
             prefix = {"heading1": "# ", "heading2": "## ", "heading3": "### "}.get(kind, "")
             lines += [prefix + text]
         lines += [""]
-    (ROOT / "report.md").write_text("\n".join(lines), encoding="utf-8")
+    text = "\n".join(lines)
+    # Keep every relative link meaningful from the new report destination.
+    def relocate(match):
+        label, target = match.groups()
+        if re.match(r"[a-zA-Z][a-zA-Z0-9+.-]*:", target) or target.startswith("#"):
+            return match.group(0)
+        path, marker, fragment = target.partition("#")
+        relative = Path(os.path.relpath((ROOT / path).resolve(), out)).as_posix()
+        return label + "(" + relative + (marker + fragment if marker else "") + ")"
+    text = re.sub(r"(!?\[[^\]]*\])\(([^)\s]+)\)", relocate, text)
+    (out / "report.md").write_text(text, encoding="utf-8")
+    inputs = [RESULTS / "summary.json", AUDIT / "audit.json", AUDIT / "metrics.csv"]
+    inputs += [ROOT / f"records/{arm}/seed_42/gen_{g:02d}/samples.json"
+               for arm, g in [("continued", 1), ("reset", 10), ("continued", 10)]]
+    inputs += list(map(Path, images.values()))
+    write_provenance(ROOT, out, __file__, inputs,
+                     scope="Authored report/native-Docs draft rebuilt from frozen Week 3 audit/analysis; no cloud writes or model re-evaluation.")
     print(json.dumps({"entries": len(entries), "tables": len(tables), "figures": len(images),
                       "prose_words": sum(len(e["text"].split()) for e in entries if e["kind"] not in ("image", "table")),
                       "audit_passed": audit["checks_passed"], "summary_pair": summary["pair_id"]}))
 
 
 if __name__ == "__main__":
-    build()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--out", type=Path, required=True, help="New empty output directory; published report is protected")
+    build(parser.parse_args().out)

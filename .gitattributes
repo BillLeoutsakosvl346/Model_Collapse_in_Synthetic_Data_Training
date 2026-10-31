@@ -29,3 +29,11 @@
 # Mixed-data acceptance preserves exact recovered evidence and exported hashes.
 /reports/20261031T153536Z-smoke-continued/** -text whitespace=cr-at-eol
 /docs/validation/2026-10-31_mixed-50-setup.json -text whitespace=cr-at-eol
+# Preserve the complete pre-cleanup agent chronology byte-for-byte.
+/docs/history/2026-10-31_agent-context.md -text whitespace=cr-at-eol
+# Standalone offline tools have stable source bytes across Windows/Linux.
+/scripts/analysis/build_mixed_acceptance.py text eol=lf
+/scripts/analysis/publication.py text eol=lf
+/scripts/maintenance/*.py text eol=lf
+/.github/workflows/offline.yml text eol=lf
+/docs/validation/2026-10-31_repository-cleanup.json -text whitespace=cr-at-eol

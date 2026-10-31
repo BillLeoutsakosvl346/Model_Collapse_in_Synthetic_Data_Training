@@ -4,7 +4,7 @@ All comparisons must use matching tokenisation, context, masks, output counts an
 
 | Metric | Definition and unit | Interpretation limit |
 | --- | --- | --- |
-| Real validation/test NLL | Sum of next-token negative log-probabilities divided by the count of scored shifted targets; nats/token | Validation selects checkpoints; test is reporting-only |
+| Real validation/test NLL | Sum of next-token negative log-probabilities divided by the count of scored shifted targets; nats/token | Validation selects only under the best-validation policy; diagnostic under final-epoch selection. Test is reporting-only |
 | Corpus perplexity | `exp(total NLL / total scored targets)` | Never average batch perplexities or substitute mean passage perplexity |
 | Median / P95 block NLL | Median / 95th percentile of mean NLL on individual real 64-token blocks | High-loss blocks are not automatically annotated rare words/topics |
 | Mean passage perplexity | Arithmetic mean of `exp(block mean NLL)` | Usually differs from corpus perplexity because exponentiation is nonlinear |
@@ -13,9 +13,9 @@ All comparisons must use matching tokenisation, context, masks, output counts an
 | Repeated 4-gram rate | `(total 4-grams - unique 4-grams) / total 4-grams` | Includes phrases shared between passages, not only loops inside a passage |
 | Duplicate continuation rate | `1 - unique complete continuations / continuation count` | Counts additional copies beyond first occurrences, not the number of distinct repeated passages |
 | Empirical token entropy | `-sum(p(token) * log(p(token)))`; nats | Entropy of observed token frequencies, not predictive/logit entropy |
-| Frozen-G0/S0 continuation NLL | Mean shifted-target NLL of a continuation alone under the fixed real-trained reference model | Distribution drift indicator, not KL divergence or an independent quality verdict |
+| Frozen-G0/S0 continuation NLL | Mean shifted-target NLL of a continuation alone under the fixed real-trained reference model | Predictability of different generated texts under S0; not a model-distance, KL-divergence or independent quality measure |
 | Training loss | Token NLL on the current stage's synthetic/real training dataset | Different cycles train on different datasets, so raw values are not directly comparable difficulty scores |
-| Selected epoch | Epoch minimising fixed real validation NLL among newly trained epochs | Distinguish executed epochs from epochs inherited through the selected checkpoints |
+| Selected epoch | Minimum-validation epoch under the default policy; terminal epoch under `final_epoch` | Record policy and executed epochs; final-epoch-5 conditions retain epoch 5 even if validation worsens |
 | Throughput / peak memory | Tokens or continuations per second; peak allocated GPU bytes | Record warmed-up workload, batch sizes, precision and hardware |
 | Runtime / cost | Measured stage durations; separate quoted/estimated USD and observed account debit | Account debit may include retained storage and is not an itemized compute invoice |
 
@@ -27,7 +27,11 @@ Generated-text metrics use the same **first 256 real training prompts** at each 
 
 Pooled token entropy ignores ordering and combines all outputs. It can remain stable while individual outputs become more repetitive, if different outputs repeat different tokens. Mean per-output entropy and within-output repetition are supplementary diagnostics with different definitions; they must not be substituted for historical pooled curves.
 
+Frozen-S0 scoring feeds each saved continuation to S0 alone, teacher-forcing its preceding continuation tokens and scoring targets 2-64. The original generation prompt is not supplied to this metric. The mean aggregates all 16,128 scored probe targets; the distribution/P95 summarize per-continuation mean NLL. Comparing two arms scores two different sets of text. Similar means therefore do not establish similar quality, similar distance from S0 or similar performance on real WikiText. Predictable repetition/blank lines can score well even when useful output and real-text prediction deteriorate.
+
 The [28 October audit](audits/2026-10-28_graph_and_protocol_audit.md) found that ` =` accounts for 22.82% of final reset-S0 probe tokens versus 11.00% for continued training. Excluding that token diagnostically shrinks the entropy gap from 0.620 to 0.122 nats. Exclusion renormalizes unequal retained sample sizes; it neither replaces the primary metric nor measures semantic quality. Raw-token distinctness and repetition also respond to formatting loops. A single quoted passage can reverse the aggregate model ranking.
+
+The [Week 3 final-epoch-5 report](../reports/20261030T180755Z-full-paired-final5/report.md) identifies a different concentration: continued B10 has 38.62% newline tokens versus reset A10 at 2.80%, including ten entirely newline outputs. Excluding newlines reverses the entropy ordering; those filtered samples have unequal retained token/window counts and are sensitivity checks only. Entirely newline outputs have frozen-S0 mean NLL 0.465, illustrating why a low reference score is not a quality verdict. Preserve the primary raw-token curves and state exactly which filtering, denominator and sample scope a supplementary graph uses.
 
 At generation Sk, probe metrics describe D(k+1)-style output. Real-text evaluation at Sk measures the model after its training on Dk. Do not attribute a model's own output dataset to the training stage that already produced it.
 

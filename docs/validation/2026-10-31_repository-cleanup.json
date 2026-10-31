@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-31T23:32:36.684578+00:00",
+  "task": "Repository documentation, literature and offline publication cleanup",
+  "source_revision_before": "6ebd2989e380cdbb6a405639d65785f9a43d669c",
+  "runtime_sha256_before_and_after": "266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5",
+  "runtime_changed": false,
+  "cloud_operations_performed": false,
+  "paid_validation_performed": false,
+  "preservation": {
+    "existing_report_files_verified_byte_identical": 924,
+    "existing_dated_validation_receipts_verified_byte_identical": 11,
+    "runtime_files_and_pyproject_verified_byte_identical": 34,
+    "scientific_configuration_files_byte_identical": 16,
+    "private_authoritative_files_unchanged": 16,
+    "published_paths_preserved": true,
+    "catalogue_only_change": "Historical reset acceptance label current_runtime_gpu_passed -> recorded_runtime_gpu_passed; all other catalogue data unchanged",
+    "agent_history_archive": "docs/history/2026-10-31_agent-context.md",
+    "agent_history_sha256": "a660199966d20ec4d0d7fa15ec77ba81980193e739aa22571fc1b29ea39b8335",
+    "agent_history_byte_identical": true,
+    "local_documents": [
+      {
+        "from": "Shumallov_2024.pdf",
+        "to": "literature/papers/shumailov_2024_model_collapse.pdf",
+        "bytes": 1157018,
+        "sha256_unchanged": true,
+        "ignored": true
+      },
+      {
+        "from": "Seddik_2024.pdf",
+        "to": "literature/papers/seddik_2024_synthetic_data.pdf",
+        "bytes": 5755613,
+        "sha256_unchanged": true,
+        "ignored": true
+      },
+      {
+        "from": "Project_Proposal.docx",
+        "to": "docs/project/Project_Proposal.docx",
+        "bytes": 20388,
+        "sha256_unchanged": true,
+        "ignored": true
+      }
+    ]
+  },
+  "documentation": {
+    "markdown_files_checked": 61,
+    "agent_words_before": 2784,
+    "agent_words_after": 597,
+    "root_readme_words_after": 443,
+    "retired_forwarding_notices": [
+      "WEEK1_CLOUD_TASK.md",
+      "CLOUD_SETUP.md"
+    ],
+    "original_briefs_retained": [
+      "docs/history/WEEK1_CLOUD_TASK.md",
+      "docs/history/CLOUD_SETUP.md"
+    ],
+    "preexisting_gitignore_intent_preserved": "Duplicate egg-info rule consolidated; original exclusions retained; moved local documents excluded at their new locations."
+  },
+  "verification": {
+    "offline_tests_passed": 170,
+    "offline_test_seconds": 167.67,
+    "offline_test_warnings": 17,
+    "offline_environment": {
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1",
+      "MPLBACKEND": "Agg"
+    },
+    "repository_check": {
+      "markdown_files": 61,
+      "configurations": 14,
+      "publication_manifests": 5,
+      "link_scope": "Relative file/directory targets outside fenced code; external URLs and fragment anchors are not fetched/validated.",
+      "paid_operations": false,
+      "errors": [],
+      "passed": true
+    },
+    "mixed_report_rebuilt_from_frozen_publication": {
+      "recorded_gpu_checks": 16,
+      "mixtures_checked": 2,
+      "provenance_inputs": 49,
+      "output_hashes_verified_by_regression_test": true,
+      "live_account_or_tokenizer_reads": false
+    },
+    "week3_report_rebuilt_separately": {
+      "tables": 3,
+      "figure_families": 3,
+      "relative_links_verified": true,
+      "published_report_unchanged": true,
+      "private_google_docs_draft_unchanged": true
+    },
+    "guard_tests": [
+      "Corrupted publication rejected before output",
+      "Rehashed inconsistent mixture counts rejected",
+      "Published/occupied output destinations rejected",
+      "Offline socket access denied during report rebuild",
+      "Missing documentation target detected",
+      "Manifest path escape and checksum tampering detected"
+    ]
+  },
+  "ci": {
+    "workflow": ".github/workflows/offline.yml",
+    "scope": "CPU-only offline tests, links/configs/manifests, existing-evidence change guard",
+    "provider_credentials_required": false,
+    "runpod_provisioning": false,
+    "checkout_action": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "setup_python_action": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+    "action_refs_and_required_inputs_verified": true,
+    "remote_execution_status": "Not observed at this pre-push receipt; GitHub Actions records subsequent execution against the pushed revision."
+  },
+  "limitations": [
+    "Latest cloud status remains the saved mixed-run launch observation; this cleanup did not inspect or modify cloud resources.",
+    "No new GPU acceptance was performed or required because runtime/scientific settings are unchanged.",
+    "External URLs and Markdown heading fragments are outside the repository link checker scope.",
+    "Historical checkpoint/bulk-data recovery remains separate; all recovery storage/control state was preserved."
+  ]
+}

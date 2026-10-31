@@ -1,56 +1,75 @@
 # Shared scientific methodology
 
-This is the research protocol and its named variants. It is a reconstruction inspired by [Shumailov et al. (2024)](https://doi.org/10.1038/s41586-024-07566-y), not a claim of exact numerical reproduction. Existing dated reports remain the source for what actually ran.
+This protocol reconstructs selected ideas from [Shumailov et al. (2024)](https://doi.org/10.1038/s41586-024-07566-y), rather than claiming exact numerical reproduction. Named configurations define scientific conditions; dated records establish what actually ran. See the [experiment catalogue](../experiments/catalog.yaml), [comparison index](../comparisons/README.md) and [literature](../literature/README.md).
 
-## Model, data and packing
+## Invariants: model, data and evaluation
 
-- Model/tokenizer: `facebook/opt-125m`, revision `27dcfa74d334bc871f3234de431e71c6eeba5dd6`.
-- Dataset: `Salesforce/wikitext`, `wikitext-2-raw-v1`, revision `b08601e04326c79dfdd32d625aee71d232d685c3`.
-- Preserve source row strings, blank rows and newlines; apply the OPT tokenizer's default special-token behaviour to each row. Concatenate once independently within each original split, divide into non-overlapping 64-token blocks, and discard only the final incomplete block.
-- Never concatenate across split boundaries. Real validation/test text is neither a generation prompt nor a training target. Frozen split arrays and their hashes are reused across a run and checked on import.
+| Setting | Value |
+| --- | --- |
+| Model/tokenizer | `facebook/opt-125m`, revision `27dcfa74d334bc871f3234de431e71c6eeba5dd6` |
+| Dataset | `Salesforce/wikitext`, `wikitext-2-raw-v1`, revision `b08601e04326c79dfdd32d625aee71d232d685c3` |
+| Block/context | 64 tokens; 63 shifted prediction targets per independent block |
+| Seed | 42 |
+| Full real training split | 37,946 blocks / 2,428,544 tokens / 2,390,598 scored targets |
+| Frozen validation split | 3,922 blocks / 251,008 tokens / 247,086 scored targets |
+| Frozen test split | 4,494 blocks / 287,616 tokens / 283,122 scored targets |
 
-The full prepared data contains 37,946 training blocks / 2,428,544 tokens, 3,922 validation blocks / 251,008 tokens and 4,494 test blocks / 287,616 tokens. Each independent 64-token block supplies 63 shifted next-token targets. Final split remainders are 58, 41 and 29 tokens respectively. Smoke configurations use documented subsets and are pipeline validation, not evidence of collapse.
+Preserve row strings, blank rows and newlines. Apply OPT's default special-token behaviour per row, concatenate independently within each original split, form non-overlapping blocks, and discard only the final incomplete block (58/41/29 tokens for train/validation/test). Never concatenate across splits. Validation/test blocks never supply training targets or generation prompts.
 
-## Generation and synthetic targets
+Evaluate untouched pretrained OPT separately from the real-data-fine-tuned baseline **S0/G0** (`gen_00`). Frozen real evaluation arrays and their hashes remain fixed. Use token-weighted corpus NLL/perplexity; test never selects checkpoints or tunes settings. Smoke subsets validate the pipeline and do not establish collapse or mitigation effectiveness.
 
-Every training block is a fixed 64-token prompt drawn from the original real training split. At each cycle, the selected model generates exactly 64 new tokens after each prompt using five deterministic beams, `do_sample=false`, repetition penalty `1.0`, no added no-repeat constraint and KV caching. Setting both `min_new_tokens` and `max_new_tokens` to 64 suppresses EOS throughout the continuation. This intentional fixed-length policy changes special-token frequencies relative to real packed data; its contribution to measured trajectories has not been isolated.
+## Generation and training inputs
 
-Save continuation token IDs directly. The prompt tokens are excluded from subsequent training, and no decoding/re-encoding step modifies the training targets. Each full synthetic dataset has 37,946 rows of 64 tokens, exactly the original training token budget. Ten complete synthetic datasets therefore contain 24,285,440 tokens. A final model's 256-output measurement probe is additional output and does not imply another training cycle.
+Each original real training block supplies the same fixed 64-token prompt at every cycle. The preceding selected model generates exactly 64 new tokens using five deterministic beams, `do_sample=false`, repetition penalty 1.0, no no-repeat constraint and KV caching. Equal minimum/maximum continuation length suppresses EOS before the required length. Preserve token IDs directly; prompts are excluded from synthetic targets and no decoding/re-encoding changes them.
 
-Decoded examples are inspection aids; their factual content is unverified. The source real prompts remain fixed across generations even though the next model's fine-tuning targets are synthetic.
+A full synthetic **pool** has 37,946 continuation blocks / 2,428,544 tokens. In all-synthetic conditions that pool is the next training dataset. In mixed conditions only the selected synthetic rows enter the training mixture; the full pool and actual targets have separate manifests/hashes. Decoded examples are inspection aids with unverified factual content.
 
-## Training and selection
+The first 256 fixed prompts also form the measurement probe. Probe output at Sk describes D(k+1)-style text; real-text evaluation at Sk describes the model after learning from Dk. Preserve this one-cycle offset. Whether a final unused full dataset is generated is condition-specific: the 50/50 run omits full D11 and retains the final probe.
 
-Full runs use full-parameter fine-tuning for five epochs per stage: AdamW with learning rate `2e-5`, betas `(0.9, 0.999)`, epsilon `1e-8`, weight decay `0.01`; cosine decay by epoch towards `1e-6`; effective batch size 128, initially microbatch 32 with accumulation 4; BF16 autocast with FP32 parameters; seed 42. Optimizer and scheduler are fresh for each stage, including continued-weight stages.
+## Training and checkpoint policy
 
-Evaluate after each epoch on the frozen real validation blocks. The newly trained epoch with the lowest validation loss supplies the checkpoint; the untrained parent is not a rollback candidate. Test metrics never select checkpoints or tune settings. Record both executed epochs and the selected epoch: running five epochs and selecting epoch 1 does not pass five epochs of weight updates to the next cycle.
+Full stages use five epochs of full-parameter fine-tuning: AdamW, LR `2e-5`, betas `(0.9, 0.999)`, epsilon `1e-8`, weight decay 0.01; cosine decay by epoch towards `1e-6`; effective batch 128, microbatch 32, accumulation 4; BF16 autocast with FP32 parameters. Restart optimizer and scheduler each cycle, including continued-weight training. Real validation is evaluated after every epoch; no validation-based early stopping is used.
 
-This paragraph describes the historical/default `lowest_fixed_real_validation_loss` policy. The separately named [final-epoch-5 comparison](../comparisons/shared_start_final_epoch5/README.md) uses `checkpoint_selection: final_epoch`: all five epochs run and epoch 5 always supplies the checkpoint. Real validation is diagnostic; it does not select or stop training. The exact historical real-trained S0 and continued-run D1 are retained, but a new shared S1/D2 is constructed. Continued S10 inherits 50 synthetic epochs; reset A10 inherits its own five from S0, with recursive data history in both arms.
+| Selection policy | Checkpoint passed to evaluation, generation and the next cycle |
+| --- | --- |
+| `lowest_fixed_real_validation_loss` (omitted setting/default) | Newly trained epoch with minimum frozen real validation NLL; the untrained parent is not a rollback candidate |
+| `final_epoch` | Terminal epoch, regardless of validation loss; final-epoch-5 conditions always retain epoch 5 |
 
-The untouched pretrained model is evaluated separately from the real-data-fine-tuned baseline G0/S0. Historical `gen_00` denotes the real-trained baseline, not untouched OPT.
+Record all epoch losses/LRs, executed and selected epochs, minimum/selected validation loss and checkpoint hashes. Historical Week 1/2 stages executed five epochs but selected epoch 1 throughout. Their carried checkpoints therefore do not inherit fifty synthetic epochs. Final-epoch-5 continued S10 inherits fifty synthetic epochs; fixed-S0 A10 inherits its own five from S0 while retaining recursive data history.
 
-## Three initialisation conditions
+## Initialization policy and shared beginnings
 
-| Condition | Initializer for synthetic cycle k | Source of training dataset Dk |
+| Policy | Initializer at synthetic cycle k | Synthetic source generator |
 | --- | --- | --- |
-| `pretrained_reset` / legacy `fresh_base` | Identical original pretrained OPT | Previous selected generation |
-| `continued_from_real_s0` / legacy `continued` | Previous selected checkpoint | That same previous selected model |
-| `reset_to_real_s0` / policy `reset_s0` | Fixed real-trained S0 | Previous selected model of the reset branch |
+| `fresh_base` / pretrained reset | Identical original pretrained OPT | Preceding selected model |
+| `continued` | Preceding selected checkpoint, starting from real-trained S0 | That same preceding checkpoint |
+| `reset_s0` | Fixed real-trained S0 | Preceding selected checkpoint in the reset branch |
 
-The new comparison imports the exact Week 2 shared S0, S1 and D2. New reset cycle 2 uses S0 weights with D2 generated by S1; subsequent cycles generate branch-specific datasets and return to the same S0 initializer. The existing continued arm uses S1 with that same D2 at cycle 2. They share saved initial evaluations by construction; no duplicated execution is implied.
+Two comparisons have different shared artifacts:
 
-See the [comparison definition](../comparisons/shared_s0_s1_reset_vs_continue/README.md) for exact artifacts and matching requirements. Retain the old pretrained-reset result as a distinct scientific condition rather than relabelling it as reset-to-S0.
+- [Week 2 shared start](../comparisons/shared_s0_s1_reset_vs_continue/README.md): import historical continued S0, selected-epoch-1 S1 and exact D2. Reset first performs new cycle 2 from S0 on D2; continued uses S1 on that same D2.
+- [Week 3 final epoch 5](../comparisons/shared_start_final_epoch5/README.md): import historical S0/D1, train a **new epoch-5 S1**, then generate **new D2**. Both arms share that beginning; reset cycles 2-10 initialize from S0 while continued carries epoch-5 weights.
 
-## Evaluation and reporting
+Imported stages retain their measurement identities, environment, timings and original costs. They are references to existing work, not new executions. Later datasets are branch-specific. Never reinterpret original-pretrained reset as fixed-S0 reset.
 
-Use token-weighted NLL and corpus perplexity on fixed real blocks. Keep passage-level statistics separate from corpus statistics. Generated-text metrics use the same first 256 real training prompts and only their continuations. A frozen real-data-trained G0/S0 scores continuations alone under an explicitly recorded 63-target context. Definitions and denominators are in [metrics](metrics.md).
+## Continued 50/50 real/synthetic training
 
-Generation probes at Sk describe Sk's output, which supplies D(k+1); Sk's real-text evaluation describes the model after training on Dk. Preserve this one-cycle offset when interpreting changes.
+The [mixed condition](../experiments/opt125m_wikitext2/continued_mixed_50_final5/README.md) imports exact historical S0 and its D1, then trains a new mixed-data S1. It never reuses an all-synthetic-trained S1. Continue selected epoch-5 weights for ten cycles.
 
-Record source/runtime identities, pinned model/data commits, environment, data and weight hashes, output checksums, selected epochs, retries, timings, resource IDs and cost provenance. A single seeded run gives a trajectory, not statistical uncertainty or a proof of a causal mechanism.
+| Source per full training mixture | Blocks | Tokens |
+| --- | ---: | ---: |
+| Real WikiText training split | 18,973 | 1,214,272 |
+| Preceding selected model's synthetic continuations | 18,973 | 1,214,272 |
+| Total | 37,946 | 2,428,544 |
 
-## Reconstruction choices and limitations
+Sample without replacement within each source per cycle; real blocks may recur in later cycles. Separate PCG64 sampling/shuffle streams derive from seed and cycle. Freeze the mixture across all five epochs and interruption/recovery. Save source indices, source labels, permutation, source hashes, generator identity, tokens and atomic completion manifest.
 
-The authors' code groups tokenizer map batches; this implementation packs each whole split. Their released generation call hardcodes repetition penalty `3.0`, whereas this protocol uses `1.0` for the main decoding condition described in the paper. Explicit initialisation policies, modern libraries, BF16, corrected token-weighted perplexity and one seed also limit direct numerical comparisons. The published orchestration does not unambiguously establish our exact continued-weight handoff; describe each condition explicitly.
+`synthetic_fraction` supports 0-1, rounding synthetic counts to the nearest block, half upwards; real rows fill the remainder. Record the effective fraction. Omitted/1.0 preserves all-synthetic behaviour. Generating the full synthetic pool before sampling is retained in this implementation. The validated condition is 0.50; support for other fractions is not GPU acceptance or launch authorization for them.
 
-Do not change packing, context, decoding or checkpoint selection to chase a published value. Loss can be non-monotonic. Different GPU/library implementations can change numerical evaluation and deterministic beam choices despite matching seeds and weights. A shared historical measurement and a newly measured identical checkpoint remain different measurement events.
+The fixed-total-block mixture is related to [Seddik et al. (2024)](https://arxiv.org/abs/2404.05090v1), but it is not their exact theoretical setup or a numerical reproduction claim. A separate 20% condition has not been accepted by the 50% certificate.
+
+## Evidence and limitations
+
+Keep configuration, runtime and environment identities separate. Record pinned commits, initializer/generator/data/output hashes, selected epochs, retries, timings, resource IDs and cost provenance. [Metrics](metrics.md) defines probe scope and denominators; reports distinguish primary raw-token measurements from post-hoc formatting sensitivity.
+
+Reconstruction differences include whole-split packing rather than the authors' tokenizer-map batches, repetition penalty 1.0 rather than the released call's 3.0, explicit initialization policies, modern libraries, BF16, token-weighted perplexity and one seed. Do not change these to chase a published curve. Different GPUs/libraries can affect evaluation and deterministic beams despite matching seeds. Historical cross-GPU comparisons and the later matched-environment comparisons must be described separately. Non-monotonic loss and mixed diversity do not establish a causal mechanism or significance.

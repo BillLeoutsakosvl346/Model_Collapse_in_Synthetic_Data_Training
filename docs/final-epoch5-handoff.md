@@ -1,5 +1,7 @@
 # Final-epoch-5 paired workflow handoff
 
+This handoff preserves observations from the paired setup/completion check. The later [Week 3 analysis](../reports/20261030T180755Z-full-paired-final5/report.md) is complete. Statements below about account spend or active compute are dated observations; use [current state](current-state.md) and a live status read for subsequent operations.
+
 **Full pair `20261030T180755Z-full-paired-final5` completed on 31 October at 06:05:57 UTC/London**, 11.97 hours after provisioning. Both arms reached cycle 10; 19 unique stages / 95 epochs were checked, retaining epoch 5 throughout. Exact shared S0/S1/D2 and recorded initializer/generator/data handoffs passed. Runpod confirms automatic shutdown at 06:06:47, reason `complete`; no compute remains active. [Completion receipt](validation/2026-10-31_final-epoch5-full-completion.json). Do not launch or resume completed compute.
 
 Pinned backup indexes contain 11 checkpoints per arm; 121 small records / 1,506,757 bytes were checksum-verified. Bulk weights and token arrays remain in private backups and retained volume `axxpvi80iq`; they were not downloaded or independently re-evaluated during this completion check. Observed account debit since launch was **$7.0722**, including concurrent retained storage and billing timing, not an itemized compute invoice. Current account spend is storage only, **$0.012/hour**. Detailed analysis remains separate from this completion verification.

@@ -17,7 +17,7 @@ python comparisons/shared_start_final_epoch5/analyse_evidence.py --out .state/we
 python comparisons/shared_start_final_epoch5/analyse.py --out .state/week3-analysis-review
 ```
 
-Choose new empty output directories; published analysis is protected from overwrite. `--recover` on the audit script optionally reads pinned private backups using saved run provenance; it creates no compute. [Recovery scope](../../reports/20261030T180755Z-full-paired-final5/records/recovery_manifest.json) and [analysis input/output hashes](../../reports/20261030T180755Z-full-paired-final5/analysis/results/analysis_manifest.json) are explicit. The authored report can be rebuilt with `python scripts/analysis/build_week3_report.py`.
+Choose new empty output directories; published analysis is protected from overwrite. `--recover` on the audit script optionally reads pinned private backups using saved run provenance; it creates no compute. [Recovery scope](../../reports/20261030T180755Z-full-paired-final5/records/recovery_manifest.json) and [analysis input/output hashes](../../reports/20261030T180755Z-full-paired-final5/analysis/results/analysis_manifest.json) are explicit. Rebuild the authored report into a separate destination with `python scripts/analysis/build_week3_report.py --out .state/week3-report-review`; this also writes a native-Docs draft and provenance manifest without editing the published report or Google Doc.
 
 The exact historical continued-run D1 is imported from immutable private backups. S0 trains on D1 once to create the new shared S1, which generates one new D2. Continued weights then train S1 on D2; reset trains fixed S0 on that exact D2. Each arm subsequently uses its own previous output dataset. AdamW and the cosine scheduler restart each cycle.
 

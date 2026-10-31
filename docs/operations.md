@@ -1,94 +1,76 @@
 # Operations
 
-Current authorization is in [AGENTS.md](../AGENTS.md). Archived prompts are historical and cannot authorize new compute. This setup implements and validates the shared-start reset branch; it **does not launch the full experiment**.
+Use [current state](current-state.md) for recorded run/authorization, [AGENTS.md](../AGENTS.md) for stable rules, and the [catalogue](../experiments/catalog.yaml) for exact configurations. This is a shared runbook; historical commands and receipts are not new execution authority.
 
-## Local and remote environments
+## Environments and credentials
 
-Python 3.12 is tested. Launch/status/reporting and offline tests can use local CPU PyTorch; no full model download is needed for those operations. An isolated Windows installation is:
+Python 3.12 is tested. Follow the [README installation](../README.md#install-and-check-offline) for local CPU PyTorch and pinned dependencies. Local inspection/reporting does not need full checkpoint downloads. Remote environments reuse the official image's GPU PyTorch; do not replace it with a CPU wheel.
 
-```powershell
-uv venv --python 3.12 .venv
-uv pip install --python .venv\Scripts\python.exe torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
-uv pip install --python .venv\Scripts\python.exe -e '.[test]'
-.venv\Scripts\Activate.ps1
-python -m pytest -q
-```
-
-To reuse an existing working PyTorch installation, create the environment with `--system-site-packages` instead. Do not install a CPU torch wheel inside the GPU container. Remote installation reuses the selected official image's CUDA-compatible PyTorch and installs the project's pinned remaining dependencies.
-
-Week 2 used RTX PRO 4000 Blackwell, PyTorch 2.8.0+cu128 and official image `runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404`. These are recorded historical facts, not a live availability/price quote. The new comparison requires the matching GPU class and software; do not silently substitute hardware for a supposedly matched full run. Record the actual environment and available image identity at launch.
-
-## Credentials and preflight
-
-Keep `RUNPOD_API_KEY` in ignored `.env`. Hub access uses `HF_TOKEN` when supplied or the saved Hugging Face token otherwise. Optional `HF_MODEL_REPO` and `HF_DATASET_REPO` select private `owner/name` repositories. Credentials require only the permissions actually needed for task resources and private artifact upload/recovery. Never put tokens in commands, logs, prompts, commits, source bundles or public evidence.
+Keep `RUNPOD_API_KEY` in ignored `.env`; Hugging Face uses `HF_TOKEN` or its saved token. Optional `HF_MODEL_REPO`/`HF_DATASET_REPO` select private repositories. Never expose credentials in commands, logs, source bundles or reports.
 
 ```powershell
 python -m model_collapse preflight --probe
 ```
 
-This reads account/resource state and live stock and exercises a small private upload/download/checksum probe. It is an external operation, not an offline test. Account identity alone does not prove upload permission. Do not proceed to paid work without a verified recovery route and independent shutdown path.
+Preflight is external: it reads live account/stock and exercises a private upload/download/checksum probe. It is not an offline test. Resolve pinned source commits, artifact-index hashes and per-file checksums before renting compute.
 
-For a branch import, resolve pinned model and dataset Hub commits, artifact-index hashes and per-file checksums before provisioning. Preserve the source run IDs and historical hashes.
+## Authorization, budget and ownership
 
-## Budget and ownership
+- The latest [authorization](validation/2026-10-31_mixed-50-budget-authorization.json) applies a USD 30 cumulative ceiling and USD 2 reserve to the authorized mixed run. Earlier USD 25 receipts remain historical; account balance alone never increases authorization.
+- Accepted source still has its historical USD 25 local default. The authorized launch supplied an explicit USD 30 override in the launcher process, recorded in the [launch receipt](validation/2026-10-31_mixed-50-full-launch.json) and private ledger. Do not bypass admission or silently modify accepted source.
+- Ledger costs are conservative estimates, distinct from account debits. Preserve historical receipts. Stop compute accrual at verified shutdown, close storage only at deletion and avoid duplicate intervals across resumes.
+- `.state/registry/<run_id>/resources.json` and `.state/ledger.json` bind run/launch/Pod/volume ownership. A fetched historical control file must not replace them. Act only on task-owned resources; at most one GPU Pod at a time.
+- Never buy credits, enable automatic/backup payments or purchase Hugging Face compute. Keep the independent watchdog and private recovery route operational.
 
-The cumulative ceiling is **USD 25 for this task**, including previous setup, failed attempts, compute, container disk and retained network storage. Hold back **USD 2** for storage/shutdown. New GPU acceptance is capped at **USD 0.75**, also within remaining setup/total allowances. Never purchase credits, enable automatic/backup payments or use paid Hugging Face services.
+## Validation and full launch
 
-Use at most one GPU Pod at a time and operate only on the registered task-owned run/launch/Pod/volume association. Reconcile a timed-out creation against provider state before retrying. Preserve existing account resources and account SSH keys.
-
-The persistent ledger distinguishes estimated compute, observed account debit and storage intervals. Compute stops accruing at verified shutdown; volume storage continues until actual deletion. A resumed launch must not charge the same interval twice. Observed account debit may include simultaneous retained storage; it is not an itemized invoice.
-
-The independent Pod-side watchdog enforces a price-derived allowance with a shutdown margin. It survives the launcher, SSH and browser closing. API/provider failures can delay shutdown despite retries; a successful request alone is not proof that compute stopped.
-
-## Small acceptance and full launch
-
-The [new paired final-epoch workflow](../comparisons/shared_start_final_epoch5/README.md) uses its own five-epoch smoke/full configs. After its smoke launcher returns, run `verify-detached PAIR_ID` while compute is active; it closes SSH between observations, verifies real stage/epoch/event progress and advancing remote heartbeats, and records the evidence. Then fetch metadata, validate the pair and clean up its resources. Parent cleanup requires matching pinned recovery for **both** children. The commands below document the earlier single-arm workflow.
-
-The offline suite never provisions infrastructure:
+Offline checks do not rent resources:
 
 ```powershell
 python -m pytest -q
+python scripts/maintenance/check_repository.py
 ```
 
-GPU acceptance is explicitly manual and paid:
+For a separately authorized new condition, choose its named profiles. These placeholders deliberately do not choose a completed experiment:
 
 ```powershell
-python -m model_collapse smoke --config experiments/opt125m_wikitext2/reset_to_real_s0/smoke.yaml
-python -m model_collapse status RUN_ID
+python -m model_collapse smoke --config PATH_TO_SMOKE_CONFIG
+python -m model_collapse verify-detached RUN_ID
 python -m model_collapse fetch RUN_ID --metadata-only
 python -m model_collapse validate RUN_ID
 ```
 
-The reset smoke imports verified shared artifacts, uses a small 256-training-block / 64-validation-block / 64-test-block configuration, then performs new cycles 2 and 3 with one epoch each. It must verify real updates, fixed-S0 initialisation, correct generated-data handoff, interrupted-work recovery, private restore/re-evaluation, detached execution and actual shutdown. Shared historical measurements remain labelled as imported and are not mixed into smoke scientific conclusions.
-
-A current source-bound acceptance certificate is required for a full launch. An old certificate cannot establish that changed runtime passed. Do not restamp a previous smoke with today's source hash.
-
-Current acceptance: [`20261027T203952Z-smoke-reset-s0`](../reports/20261027T203952Z-smoke-reset-s0/report.md), 14 passed checks, runtime SHA-256 `5d56bf37476583b20fd9d74c40941b322af6bcb2720a48a7a463f9aca6dde49e`. Both temporary test resources were removed. The separately authorized full run `20261027T211852Z-full-reset-s0` completed at 02:56 UTC/London on 28 October and its GPU is verified stopped. Do not start a duplicate. Its recovery volume remains; small-record checks do not authorize deleting it. See the [completion record](validation/2026-10-28_reset-full-completion.json), [historical launch record](validation/2026-10-27_reset-full-launch.json) and [setup handoff](implementation-handoff.md). Repeating acceptance rents a new GPU and is unnecessary while the accepted runtime is unchanged.
-
-The full command is separate and requires the user's launch instruction:
+Smoke is paid. Inspect its actual acceptance scope, recovery, provider shutdown and temporary-resource cleanup. Full launch is a separate action requiring authorization, current runtime/protocol acceptance, live budget admission and matching environment:
 
 ```powershell
-python -m model_collapse launch --config experiments/opt125m_wikitext2/reset_to_real_s0/full.yaml --generations 10
+python -m model_collapse launch --config PATH_TO_FULL_CONFIG --generations 10
 ```
 
-For this branch, `--generations 10` means the chain ends at cycle 10: cycles 0 and 1 are shared imports, and cycles 2-10 are nine new training stages. The launcher must confirm live budget, matching environment, imported artifact identity, independent supervision and backup. Leave a mismatched/unaffordable launch pending rather than silently changing the protocol.
+The catalogued 50/50 full run has already launched; do not repeat it. For the paired workflow, use the parent pair ID for cloud operations. One coordinator owns sequential arms, budget and shutdown; it does not provision separate GPUs between arms. Historical shared stages retain their original execution identity and costs.
 
-Legacy launch and smoke `--mode fresh_base`/`--mode continued` retain their old meanings. `--mode` cannot be combined with `--config`. A new named condition always receives a new run ID; it is not a resume of a completed result.
+Acceptance belongs to a particular runtime/protocol, not a calendar week or generic "current" certificate. The [reports index](../reports/README.md#gpu-validation) lists separate reset, paired-final-epoch and mixed acceptances. Adding documentation does not change runtime identity; changing runtime, fraction, selection policy or matched settings requires appropriate new acceptance.
 
-Keep the laptop awake until the launcher returns `detached_supervisor_and_watchdog_verified: true`. After that confirmation the remote job does not require the laptop, browser, local terminal or Codex to remain open.
+`--config` and legacy `--mode` are mutually exclusive. Legacy `fresh_base`/`continued` keep their original meaning; the [legacy configuration map](../configs/README.md) identifies defaults. A new scientific condition gets a new run ID, not a resume of completed compute.
 
-## Status and interrupted runs
+## Detached execution and status
+
+Keep the laptop awake until the launcher returns `detached_supervisor_and_watchdog_verified: true`. For supported mixed/paired runs, `verify-detached` additionally observes stage/epoch/event progress and advancing heartbeats across fresh, closed SSH connections. The remote worker, backups and independent watchdog then operate without the laptop, browser, terminal or Codex session.
 
 ```powershell
 python -m model_collapse status RUN_ID
+```
+
+A running Pod is not proof of healthy training. Completion requires the expected stages, terminal/selected checkpoints, data lineage, successful private backup and provider-confirmed stopped compute. The watchdog stops on completion, failure or budget exhaustion and retries transient API failures; provider outages can still delay shutdown.
+
+Resume only an unfinished, stopped run with compatible source/settings, verified completed stages and retained storage:
+
+```powershell
 python -m model_collapse resume RUN_ID
 ```
 
-Status is inspection, not a claim of completion. Check completion manifests, all expected stages, backup index and provider state before declaring success.
+Resume can provision paid compute. Never resume an active/completed run or use resume to change its scientific condition. Do not reset cost deadlines or replace completed-stage evidence.
 
-Resume is for an unfinished run with its retained storage, matching source/configuration and verified stage outputs. It can provision a replacement Pod and therefore has cost. Completed runs are rejected before provisioning; it does not extend a completed chain or turn it into a different scientific condition. Completed stages and generation shards must remain unchanged after recovery.
-
-## Fetch scope and reporting
+## Fetch and report
 
 ```powershell
 python -m model_collapse fetch RUN_ID --metadata-only
@@ -96,27 +78,9 @@ python -m model_collapse report RUN_ID
 python -m model_collapse report RUN_ID --out reports/RUN_ID/generated/local-review
 ```
 
-The default analysis destination is a new `reports/<run_id>/generated/<analysis_id>/` directory. An explicit `--out` must be a safe new analysis destination; authored `report.md`, raw records and historical CSVs are protected. An analysis manifest records inputs/hashes, revision, environment and outputs/hashes.
+Metadata-only fetch leaves weights/training arrays in the cloud. Full `fetch RUN_ID` can download several GB. Recovery receipts distinguish metadata-only, probe-verified and bulk-verified scope; a valid index does not verify absent bulk objects.
 
-Metadata-only fetch downloads configurations, records, samples and other small artifacts but skips model/token tensors. It must not overwrite the authoritative current resource registry. A receipt records pinned repository commits and artifact-index/file verification.
-
-A complete fetch is intentionally different:
-
-```powershell
-python -m model_collapse fetch RUN_ID
-```
-
-This can download several GB. Recovery scope is explicit: `metadata_only`, `probe_verified`, or `bulk_verified`. An index matching its checksum does not verify absent bulk objects, and a populated local folder does not prove full recovery.
-
-The historical Week 2 six-panel figure can be rebuilt from committed small records without network or GPU:
-
-```powershell
-python reports/20261026T192740Z-full-continued/analyse_week2.py --figures-only
-```
-
-Its historical reproduction path remains valid; new reusable analysis belongs in the shared package and writes separate derived output.
-
-After a successful acceptance has been fetched, validated and cleaned up, publish its small evidence offline using `python scripts/analysis/export_acceptance.py RUN_ID --offline-tests COUNT`. This exports records, analysis and a byte-level publication manifest; it refuses to overwrite published acceptance. See [export notes](../scripts/analysis/README.md). It makes no cloud requests and does not download bulk artifacts.
+Reporting is offline: it uses saved measurements and writes a new output directory with input/output hashes, analysis revision and environment. Authored reports, historical CSVs and raw records are protected. Independent comparison audits remain separate from presentation generation. See [analysis tools](../scripts/analysis/README.md) for figure/report reproduction and acceptance export.
 
 ## Retention and cleanup
 
@@ -124,12 +88,8 @@ After a successful acceptance has been fetched, validated and cleaned up, publis
 python -m model_collapse cleanup RUN_ID
 ```
 
-Cleanup is an external deletion operation, not a routine offline check. It requires verified ownership and recovery appropriate to the run. A metadata-only full-run fetch does not authorize deleting its recovery volume. Smoke cleanup can rely on an explicit remote bulk restore audit when supported and verified.
+Cleanup deletes external resources and requires matching ownership plus adequate recovery. Paired cleanup requires verified recovery of both arms. Metadata/probe-only full-run recovery does not authorize deleting its volume. Temporary smoke cleanup can use its explicit verified remote bulk-restore audit when supported.
 
-As last verified on 27 October, both completed full runs had stopped GPU compute and retained 30 GB network volumes for recovery: Week 1 `wortjkxvr7`, Week 2 `z6ziujxxus`. These are historical observations; read live state before any operation. Do not delete them as part of repository organisation. Standard storage was approximately USD 0.07/GB/month, about USD 2.10 per 30 GB/month; obtain live rates for spending decisions.
+Historical volumes and the active run's volume are listed in [current state](current-state.md#completed-work-and-recovery). Preserve them during repository cleanup. Storage continues billing after compute stops; read live prices before financial decisions. Verify provider read-back and close the storage ledger interval after actual deletion.
 
-A successful cleanup verifies provider read-back and closes storage ledger intervals. Preserve the receipts and recovery proof. Do not claim zero ongoing cost while retaining paid volumes.
-
-## Explicitly manual operational probes
-
-The legacy [shutdown timeout probe](../scripts/check_shutdown_timeout.py) provisions a real paid GPU and exercises a watchdog. It is not included in `pytest` and must never run implicitly during installation, tests or report generation. See [operational tool notes](../scripts/operations/README.md). Normal smoke acceptance is the preferred integrated check for changed execution paths.
+The [manual shutdown-timeout probe](../scripts/operations/README.md) also rents a GPU. It must never run implicitly during installation, tests or reporting. Source archives, private control records and recovery workspaces are not disposable caches.

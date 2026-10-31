@@ -1,19 +1,52 @@
-# Acceptance evidence export
+# Offline analysis and report tools
 
-`export_acceptance.py` publishes a verified reset-branch smoke test after metadata fetch, local acceptance and temporary-resource cleanup have succeeded:
+These tools read saved evidence. They do not train, provision resources or edit Google Docs. Use new output directories; original reports/raw records remain preserved. Each rebuilt report records input/output hashes, script identity, Git revision and environment.
+
+## Mixed-data acceptance report
+
+Rebuild the 50/50 smoke report and figures from its committed publication:
+
+```powershell
+python scripts/analysis/build_mixed_acceptance.py --out reports/20261031T153536Z-smoke-continued/generated/review
+```
+
+`--source` can name another copy of that preserved publication. The builder verifies its publication manifest, mixture/selection alignment, final-epoch policy and finite NLL/perplexity arithmetic. It reads historical costs/provider facts from `validation_summary.json`; it does not query today's ledger, cloud or tokenizers. Saved examples are reused without decoding/downloading a model. It explicitly distinguishes recorded historical bulk recovery from checks repeated during this offline rebuild.
+
+This replaces reliance on the original private `.state/build_mixed_acceptance.py` for report construction. That original operational helper is preserved locally as history; its live provider checks and financial reconciliation are dated acceptance evidence, not part of offline publication. The new builder produces a self-contained report/figures/preview and `publication_reproduction.json` in a new destination.
+
+## Week 3 authored report and native-Docs draft
+
+```powershell
+python scripts/analysis/build_week3_report.py --out reports/20261030T180755Z-full-paired-final5/generated/report-review
+```
+
+Reads the frozen paired audit, analysis, examples and figures; writes a new `report.md`, `draft.json` and provenance manifest. Relative links point to the preserved source evidence. It requires `--out`, refuses existing/non-empty or published destinations, and no longer overwrites either the authored publication or the private Google Docs editing draft. Producing `draft.json` does not write to Google Docs.
+
+Independent calculation remains separate:
+
+```powershell
+python comparisons/shared_start_final_epoch5/analyse_evidence.py --out .state/week3-audit-review
+python comparisons/shared_start_final_epoch5/analyse.py --out .state/week3-analysis-review
+```
+
+## Other report/figure entrypoints
+
+| Tool | Role |
+| --- | --- |
+| `python -m model_collapse report RUN_ID [--out NEW_DIRECTORY]` | Shared policy-aware analysis from fetched records, with a new default generated destination |
+| [Week 1 reproduction](../../reports/20261020T211121Z-full/reproduce_overview.py) | Historical figure entrypoint; preserve its published path |
+| [Week 2 analysis](../../reports/20261026T192740Z-full-continued/analyse_week2.py) | Historical consistency audit/figures; `--figures-only` avoids cloud reads |
+| `week1_report_figure.py` / `continued_only_figure.py` | Presentation-specific figures with explicit destinations |
+| `build_metric_guide.py` / `formatting_diagnostics_figure.py` | Metric explanation cards and supplementary formatting diagnostics |
+
+The [28 October correction revision](../../reports/presentation_revisions/2026-10-28_audit-corrections/README.md) records commands, input statistics and document-delivery evidence. Formatting exclusions are sensitivity checks with unequal retained samples, not replacement quality metrics.
+
+## Historical reset acceptance export
 
 ```powershell
 python scripts/analysis/export_acceptance.py RUN_ID --offline-tests COUNT
 ```
 
-It reads local records, verifies their checksums, exports small evidence and regenerates figures. It does not make cloud requests or copy model/token tensors. `--offline-tests` records an already completed suite; it does not run tests. `--superseded` labels successful acceptance of an earlier runtime which must not authorize changed code.
+This legacy exporter is specifically for the reset-S0 one-epoch smoke profile. Run only after metadata fetch, validation and temporary-resource cleanup. It exports checksummed small records/figures and refuses an existing publication; it never copies bulk weights/arrays. `--offline-tests` records a previously completed count; it does not run tests. `--superseded` scopes an earlier source certificate. Paired/mixed conditions use their own preserved evidence and builders above; do not apply this reset-specific authored methodology to them.
 
-Published evidence is immutable: the exporter refuses to overwrite an existing acceptance. Every exported role has a checksum in `publication_manifest.json`; Git attributes preserve those bytes on Windows. General analysis uses `python -m model_collapse report RUN_ID [--out OUTPUT_DIRECTORY]` and writes a new destination.
-
-See [operations](../../docs/operations.md) and the [validated setup handoff](../../docs/implementation-handoff.md).
-
-## Report figures and interpretation
-
-`week1_report_figure.py` rebuilds the six-panel Week 1 presentation with explicit common histogram bins. `continued_only_figure.py` renders the standalone continued experiment. `build_metric_guide.py` renders the metric cards; `formatting_diagnostics_figure.py` renders the supplementary audit diagnostic. All take explicit new output destinations and preserve prior publications.
-
-The [28 October correction revision](../../reports/presentation_revisions/2026-10-28_audit-corrections/README.md) contains complete commands, verified input statistics, the current authored guide and document-delivery receipts. Supplementary formatting exclusions are sensitivity checks with unequal retained sample sizes, not replacements for the historical raw-token metrics.
+See [operations](../../docs/operations.md), [reports](../../reports/README.md) and [repository checks](../maintenance/README.md).
