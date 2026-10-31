@@ -1,0 +1,28 @@
+{
+  "training_target_tokens_per_second": 34047.03514697568,
+  "generation_new_tokens_per_second": 1305.887656108261,
+  "training_step_seconds": [
+    0.6475482070818543,
+    0.21126957598607987,
+    0.23556410893797874,
+    0.23702010593842715,
+    0.23684881709050387
+  ],
+  "generation_batch_seconds": [
+    1.7914288620231673,
+    1.5693449530517682,
+    1.5672188859898597
+  ],
+  "effective_batch": 128,
+  "microbatch": 32,
+  "generation_batch": 32,
+  "num_beams": 5,
+  "repetition_penalty": 1.0,
+  "precision": "bf16",
+  "full_split_blocks": {
+    "train": 37946,
+    "validation": 3922,
+    "test": 4494
+  },
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell"
+}

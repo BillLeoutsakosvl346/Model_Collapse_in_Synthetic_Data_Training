@@ -1,0 +1,25 @@
+{
+  "benchmark_gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "hourly_usd": 0.5756164383561643,
+  "forecasts": [
+    {
+      "synthetic_generations": 5,
+      "initialization": "continued",
+      "estimated_hours": 4.3706980375753055,
+      "estimated_compute_and_running_storage_usd": 2.515845637519374,
+      "new_training_stages": 5,
+      "new_full_generation_stages": 4,
+      "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+    },
+    {
+      "synthetic_generations": 10,
+      "initialization": "continued",
+      "estimated_hours": 9.334489604745015,
+      "estimated_compute_and_running_storage_usd": 5.373085660155965,
+      "new_training_stages": 10,
+      "new_full_generation_stages": 9,
+      "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+    }
+  ],
+  "storage_assumption": "30 GB network + 20 GB container, historical rates; estimates, not billing"
+}

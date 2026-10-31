@@ -26,3 +26,6 @@
 /comparisons/shared_start_final_epoch5/analyse.py text eol=lf
 /comparisons/shared_start_final_epoch5/analyse_evidence.py text eol=lf
 /scripts/analysis/build_week3_report.py text eol=lf
+# Mixed-data acceptance preserves exact recovered evidence and exported hashes.
+/reports/20261031T153536Z-smoke-continued/** -text whitespace=cr-at-eol
+/docs/validation/2026-10-31_mixed-50-setup.json -text whitespace=cr-at-eol

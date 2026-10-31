@@ -10,6 +10,7 @@ Cambridge Engineering IIB: reproducible OPT-125M / WikiText-2 experiments on rec
 | [Continued from real S0](experiments/opt125m_wikitext2/continued_from_real_s0/README.md) | Previous selected checkpoint | [Completed Week 2](reports/20261026T192740Z-full-continued/report.md) |
 | [Reset to real S0](experiments/opt125m_wikitext2/reset_to_real_s0/README.md) | Fixed real-data-trained S0, after an imported shared first cycle | [Completed and analysed](reports/20261027T211852Z-full-reset-s0/report.md) |
 | [Matched final epoch 5](comparisons/shared_start_final_epoch5/README.md) | New shared S1, then continued weights versus fixed S0 | [Completed and analysed: Week 3](reports/20261030T180755Z-full-paired-final5/report.md) |
+| [Continued 50/50 mixture](experiments/opt125m_wikitext2/continued_mixed_50_final5/README.md) | Previous epoch-5 weights; equal real/synthetic target blocks | [GPU validated; full run unlaunched and budget-blocked](docs/mixed-50-handoff.md) |
 
 The [experiment catalogue](experiments/catalog.yaml) records run IDs and recovery scope. The [shared-start comparison](comparisons/shared_s0_s1_reset_vs_continue/README.md) uses the **same saved S0, S1 and D2** from Week 2, then compares resetting to S0 with continuing from the previous checkpoint. It preserves both earlier experiments. Week labels are presentation aliases, not configuration modes.
 

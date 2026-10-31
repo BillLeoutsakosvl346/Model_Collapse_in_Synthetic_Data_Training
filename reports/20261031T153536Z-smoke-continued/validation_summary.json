@@ -1,0 +1,165 @@
+{
+  "run_id": "20261031T153536Z-smoke-continued",
+  "checked_utc": "2026-10-31T15:48:47.918146+00:00",
+  "runtime_sha256": "266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5",
+  "protocol_fingerprint": "539b6d8bb4c1afddecf0ebeb1e8b0694a9417cb1c997b0d607ebe6fb065e0c8c",
+  "offline_tests_passed": 162,
+  "independent_review": "2026-10-31_mixed-50-independent-review.json",
+  "gpu_provider_acceptance_checks_passed": 16,
+  "checks": {
+    "pinned_previous_real_g0_start": true,
+    "both_weights_and_data_handoffs": true,
+    "weights_changed_each_training_cycle": true,
+    "fixed_real_prompts_and_evaluation": true,
+    "finite_token_weighted_perplexity": true,
+    "two_real_worker_exits_and_resume": true,
+    "partial_generation_shard_reused": true,
+    "completed_cycle_1_unchanged_after_resume": true,
+    "continuation_only_synthetic_source_blocks": true,
+    "exact_mixture_reconstruction": true,
+    "epoch_five_checkpoints": true,
+    "private_hub_download_hashes_verified": true,
+    "restored_checkpoint_tensor_hash_and_evaluation": true,
+    "direct_shifted_nll_calculation": true,
+    "independent_budget_guard_and_provider_stop_verified": true,
+    "detached_progress_verified": true
+  },
+  "new_training_stages": 2,
+  "executed_epochs": 10,
+  "selected_epoch_each_stage": 5,
+  "mixture_reconstruction": [
+    {
+      "cycle": 1,
+      "training_tokens_sha256": "bd387b306f603b27fb7e246bfaa58764102b84c4c658892066dfcee1e5d265f8",
+      "real_blocks": 128,
+      "synthetic_blocks": 128,
+      "independently_reconstructed_locally": true
+    },
+    {
+      "cycle": 2,
+      "training_tokens_sha256": "a8195c1cceeb7c500857a81945255ac28c654a6ed9aff7710cfa3155d4ef1ea5",
+      "real_blocks": 128,
+      "synthetic_blocks": 128,
+      "independently_reconstructed_locally": true
+    }
+  ],
+  "full_config_acceptance_matches": true,
+  "provider_shutdown": {
+    "pod_id": "583jaukf1l3fsn",
+    "rest_state": "EXITED",
+    "graphql": {
+      "id": "583jaukf1l3fsn",
+      "desiredStatus": "EXITED",
+      "lastStatusChange": "Exited by user: Sat Oct 31 2026 15:44:29 GMT+0000 (Coordinated Universal Time)"
+    },
+    "provider_shutdown_epoch": 1793461469.0,
+    "compute_interval_closed_at_verified_shutdown": true
+  },
+  "validation_resources_removed": {
+    "pod": "583jaukf1l3fsn",
+    "volume": "1dpuewdeox"
+  },
+  "historical_volumes_preserved": [
+    "08ypgkuw40",
+    "axxpvi80iq",
+    "wortjkxvr7",
+    "z6ziujxxus"
+  ],
+  "no_compute_running": true,
+  "observed_account_balance_delta_usd": 0.051329921299998915,
+  "observed_debit_scope": "Balance change through cleanup, including concurrent retained storage and provider billing timing; not an itemized compute invoice.",
+  "conservative_acceptance_campaign_estimate_usd": 0.09762155331552572,
+  "cumulative_task_estimate_usd": 20.78542465629389,
+  "remaining_after_2_usd_reserve": 2.214575343706109,
+  "budget_ceiling_usd": 25,
+  "acceptance_ceiling_usd": 0.75,
+  "metadata_recovery": {
+    "run_id": "20261031T153536Z-smoke-continued",
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "revisions": {
+      "model": "bc7ee76d4aff34cdf0dbfc28429aca45c2cae940",
+      "dataset": "eed0942891cbc8acd06fb429b50230f3c150eb1c"
+    },
+    "artifact_index_sha256": "5c7e6720941883b95df6e1a64d6a09c41558154643ea381d9a7b83326e3f0636",
+    "indexed_files": 120,
+    "verified_files": 93,
+    "verified_bytes": 11165147,
+    "metadata_only": true,
+    "scope": "metadata_only",
+    "preserved_control_files": {
+      "resources.json": {
+        "recovered_path": "fetched_control/b27a221d385255dd5fc83344557f1f33ad411449103a87d1142b502f5c340a1a/resources.json",
+        "sha256": "b27a221d385255dd5fc83344557f1f33ad411449103a87d1142b502f5c340a1a",
+        "authoritative_local_sha256": "3fee5a79632d9782ab0ebcbe5f2e24ce4096fc1c2a93ad9edf514a7c805b4f8e"
+      }
+    },
+    "operational_files_outside_immutable_index": [
+      "events.jsonl",
+      "status.json",
+      "watchdog_exit.json"
+    ],
+    "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261031T153536Z-smoke-continued"
+  },
+  "small_array_recovery": {
+    "files": 24,
+    "bytes": 560128,
+    "scope": "All small smoke token arrays; no checkpoint weights downloaded.",
+    "revisions": {
+      "model": "bc7ee76d4aff34cdf0dbfc28429aca45c2cae940",
+      "dataset": "eed0942891cbc8acd06fb429b50230f3c150eb1c"
+    }
+  },
+  "remote_bulk_recovery": {
+    "run_id": "20261031T153536Z-smoke-continued",
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "revisions": {
+      "model": "bc7ee76d4aff34cdf0dbfc28429aca45c2cae940",
+      "dataset": "c7b1bdf94894b28046dc3e68aae212e13e54e766"
+    },
+    "artifact_index_sha256": "55a8fedbaf868f3df2a18bcec5db11f19880008b0ec6c79f73c75020da4caaf1",
+    "indexed_files": 118,
+    "verified_files": 118,
+    "verified_bytes": 1514647725,
+    "metadata_only": false,
+    "scope": "full",
+    "preserved_control_files": {},
+    "operational_files_outside_immutable_index": [
+      "events.jsonl",
+      "status.json"
+    ],
+    "path": "/workspace/runs/iib-hub-restore-kz4d08j7"
+  },
+  "restored_checkpoint_test_loss_difference": 0.0,
+  "max_direct_shifted_nll_error": 0.0,
+  "benchmark": {
+    "training_target_tokens_per_second": 34047.03514697568,
+    "generation_new_tokens_per_second": 1305.887656108261,
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell"
+  },
+  "full_forecast": {
+    "synthetic_generations": 10,
+    "initialization": "continued",
+    "estimated_hours": 9.334489604745015,
+    "estimated_compute_and_running_storage_usd": 5.373085660155965,
+    "new_training_stages": 10,
+    "new_full_generation_stages": 9,
+    "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+  },
+  "technically_validated": true,
+  "full_run_affordable_under_current_ceiling": false,
+  "full_run_launched": false,
+  "elapsed_minutes_to_completion": 8.228950349489848,
+  "elapsed_minutes_to_provider_shutdown": 8.848358464241027,
+  "local_model_weights_downloaded": false,
+  "additional_post_acceptance_budget_admission_regression_passed": true,
+  "offline_test_scope": "Full 162-test suite before GPU acceptance, plus one additional passing test-only budget-admission regression afterwards; runtime unchanged.",
+  "implementation_commit": "ff309fe7911ed2a964d3c4a025d5bdc93047921a",
+  "implementation_commit_runtime_verified": true,
+  "source_bundle_base_git_commit": "97e11bf20eafbf3fe37e5f044135fa3693282e02"
+}
