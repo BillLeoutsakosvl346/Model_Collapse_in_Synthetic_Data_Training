@@ -172,8 +172,8 @@ def _run(root, validation):
         training = training_stage()
         if g:
             parent = read_json(previous / "manifest.json")
-            if training["input_tokens_sha256"] != parent["continuation_tokens_sha256"]:
-                raise RuntimeError("Previous generation's continuations were not used exactly")
+            if training["input_tokens_sha256"] != lineage["training_tokens_sha256"]:
+                raise RuntimeError("Verified training dataset was not used exactly")
             if continued and parent["provenance"]["parent_weights_sha256"] != expected:
                 raise RuntimeError("The model generating these data must also initialize their training")
         model = load_model(c, gen / "checkpoint")
@@ -189,6 +189,10 @@ def _run(root, validation):
                                       inject=validation and g == (1 if c.get("initial_dataset") else first_new))
         probe = values[:c["probe_count"]]
         metrics["diversity"] = diversity(probe)
+        from .mixing import mixture_enabled
+        if mixture_enabled(c):
+            from .science.metrics import probe_diagnostics
+            metrics["probe_diagnostics"] = probe_diagnostics(probe)
         metrics["generation_timing"] = generation
         atomic_json(gen / "samples.json", [{"prompt_index": i, "prompt": tokenizer.decode(real[i]),
                                             "continuation": tokenizer.decode(probe[i])} for i in range(len(probe))])

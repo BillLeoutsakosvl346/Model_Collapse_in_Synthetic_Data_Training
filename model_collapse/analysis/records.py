@@ -15,6 +15,8 @@ METRIC_DEFINITIONS = {
     "test_sequence_perplexity_sd": "Population standard deviation across real passages, not uncertainty across independent seeds.",
     "probe_scope": "The same first 256 real training prompts (or the actual saved smaller probe); descriptive measurements, not a random corpus sample.",
     "runtime": "Original recorded train/generation seconds retained; new-work seconds are zero for imported shared stages, with their source identity preserved separately.",
+    "within_output_diagnostics": "Compute empirical token entropy and distinct/repeated n-grams within each 64-token output, then average outputs; pooled and within-output statistics answer different questions.",
+    "newline_diagnostics": "Count pinned OPT token 50118 (newline), outputs with at least 32 newlines, and entirely newline outputs. Formatting is included in the unfiltered diversity metrics.",
 }
 
 _INT_FIELDS = {"generation", "cycle", "selected_epoch", "training_blocks", "training_tokens_per_epoch",

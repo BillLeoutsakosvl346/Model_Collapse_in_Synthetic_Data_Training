@@ -17,7 +17,10 @@ def selection_policy(c):
 def training_contract(c):
     keys = ("epochs", "seed", "learning_rate", "min_learning_rate", "weight_decay",
             "microbatch", "effective_batch", "precision")
-    return digest({**{k: c[k] for k in keys}, "checkpoint_selection": selection_policy(c)})
+    settings = {**{k: c[k] for k in keys}, "checkpoint_selection": selection_policy(c)}
+    if c.get("synthetic_fraction", 1.0) != 1.0:
+        settings["synthetic_fraction"] = c["synthetic_fraction"]
+    return digest(settings)
 
 
 def verify_selection(record, history, c):

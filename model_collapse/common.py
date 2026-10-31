@@ -69,6 +69,10 @@ def validate_config(c):
     if c.get("workflow") == "paired":
         from .workflow.paired import validate_pair_config
         return validate_pair_config(c)
+    from .mixing import mixture_enabled, synthetic_fraction
+    synthetic_fraction(c)
+    if mixture_enabled(c) and c.get("initialization") != "continued":
+        raise ValueError("Mixed-data training currently requires continued initialization")
     from .workflow.selection import selection_policy
     selection_policy(c)
     if c.get("initialization", "fresh_base") not in ("fresh_base", "continued", "reset_s0"):

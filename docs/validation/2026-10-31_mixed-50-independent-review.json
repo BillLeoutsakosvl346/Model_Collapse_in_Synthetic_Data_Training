@@ -1,0 +1,22 @@
+{
+  "reviewer": "fresh independent sub-agent /root/mixed_pipeline_review",
+  "scope": "Read-only review of mixer, lineage, runtime integration, dataset import, continued initialization, final-epoch selection, resume, cloud safeguards, reports and tests.",
+  "material_findings": [],
+  "minor_findings": [
+    {
+      "finding": "Continuation-only acceptance label did not distinguish real mixture rows from synthetic source blocks.",
+      "resolution": "Mixed acceptance now records continuation_only_synthetic_source_blocks."
+    }
+  ],
+  "independent_offline_tests": {
+    "passed": 161,
+    "latest_diagnostic_test_passed_separately": true
+  },
+  "conclusion": "No material code-review blockers. Actual mixed GPU acceptance and verified shutdown/recovery still required.",
+  "full_run_launched": false,
+  "post_acceptance_spot_check": {
+    "material_findings": [],
+    "checks": "Runtime/protocol identity, 16 GPU/provider checks, lineage, checkpoint policy, local/remote recovery sizes, actual shutdown/cleanup and explicit full-budget blocker agree across saved evidence.",
+    "new_cloud_actions": false
+  }
+}

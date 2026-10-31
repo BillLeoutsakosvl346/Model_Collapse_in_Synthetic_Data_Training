@@ -55,6 +55,19 @@ def training_lineage(root, generation, c, base_hash):
                "generator_checkpoint": str((parent / "checkpoint").relative_to(root)),
                "generator_weights_sha256": generator_hash,
                "branch_origin": c.get("branch_source")}
+    from ..mixing import mixture_enabled, mixture_input
+    if mixture_enabled(c):
+        completed_training = root / f"seed_{c['seed']}/gen_{generation:02d}/training.json"
+        blocks, mixed = mixture_input(root, generation, c, blocks, manifest, generator_hash,
+                                      create=not completed_training.exists())
+        source = root / f"mixed_for_gen_{generation:02d}"
+        lineage.update(training_dataset=source.name, training_dataset_file_sha256=sha256(source / "tokens.npy"),
+                       training_tokens_sha256=mixed["training_tokens_sha256"],
+                       mixture_manifest_sha256=sha256(source / "manifest.json"),
+                       synthetic_source_dataset=f"synthetic_for_gen_{generation:02d}",
+                       synthetic_source_tokens_sha256=manifest["continuation_tokens_sha256"],
+                       mixture={k: mixed[k] for k in ("version", "synthetic_fraction", "effective_synthetic_fraction",
+                                                      "real_blocks", "synthetic_blocks", "real_tokens", "synthetic_tokens")})
     return blocks, expected, checkpoint, lineage
 
 
@@ -64,6 +77,12 @@ def verify_completed_stage(root, generation, c, training):
     if not metrics or metrics["training"] != training:
         raise RuntimeError("Completed stage metrics disagree with verified training provenance")
     verify_files(gen / "checkpoint", training["checkpoint_files"])
+    from ..mixing import mixture_enabled
+    if generation and mixture_enabled(c):
+        blocks, expected, _, lineage = training_lineage(root, generation, c, None)
+        if (lineage != training.get("lineage") or token_hash(blocks) != training["input_tokens_sha256"]
+                or expected != training["initial_weights_sha256"]):
+            raise RuntimeError("Completed stage mixed training provenance differs")
     output = Path(root) / f"synthetic_for_gen_{generation + 1:02d}"
     manifest = read_json(output / "manifest.json")
     if not manifest or manifest != metrics["generation_timing"]:

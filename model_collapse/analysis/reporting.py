@@ -83,7 +83,13 @@ def _rows(metrics, seed_root, evidence, c):
                "selected_weights_sha256": t.get("selected_weights_sha256"),
                "input_tokens_sha256": t.get("input_tokens_sha256"),
                "peak_allocated_gpu_bytes": t.get("peak_allocated_gpu_bytes", 0),
-               **m["diversity"]}
+               **m["diversity"], **m.get("probe_diagnostics", {})}
+        mixture = t.get("lineage", {}).get("mixture")
+        if mixture:
+            row.update({key: mixture[key] for key in ("synthetic_fraction", "effective_synthetic_fraction",
+                        "real_blocks", "synthetic_blocks", "real_tokens", "synthetic_tokens")})
+            evidence.read(source_path := evidence.root / f"mixed_for_gen_{g:02d}/manifest.json")
+            evidence.read(source_path.parent / "selection.json")
         sequences = evidence.read(stage / "test_sequences.json")
         if sequences and sequences.get("sequence_mean_nll"):
             values = sequences["sequence_mean_nll"]
@@ -92,6 +98,7 @@ def _rows(metrics, seed_root, evidence, c):
         values = evidence.read(stage / "reference_sequences.json")
         if values and values.get("sequence_mean_nll"):
             reference_sequences[g] = values["sequence_mean_nll"]
+            row["frozen_s0_nll_p95"] = float(np.percentile(values["sequence_mean_nll"], 95))
         rows.append(row)
     return rows, imports, reference_sequences
 
@@ -132,6 +139,20 @@ def _plots(rows, refs, out, label, policy):
     fig.suptitle(f"Fixed prompt probe; counts {counts}; continuation tokens only")
     fig.savefig(out / "diversity.png", dpi=180)
     plt.close(fig)
+    if all("mean_within_entropy_nats" in r for r in rows):
+        fig, axes = plt.subplots(1, 3, figsize=(13, 4), layout="constrained")
+        for key, name in (("token_entropy_nats", "pooled"), ("mean_within_entropy_nats", "mean within output")):
+            axes[0].plot(x, [r[key] for r in rows], "o-", label=name)
+        for key, name in (("repeated_4gram_rate", "pooled"), ("mean_within_repeated_4gram_rate", "mean within output")):
+            axes[1].plot(x, [r[key] for r in rows], "o-", label=name)
+        axes[2].plot(x, [r["newline_token_50118_share"] for r in rows], "o-", label="newline token share")
+        axes[2].plot(x, [r["all_newline_outputs"]/r["probe_count"] for r in rows], "o-", label="all-newline output share")
+        for ax, ylabel in zip(axes, ("Empirical token entropy (nats)", "Repeated 4-gram fraction", "Fraction")):
+            ax.set(xlabel="Synthetic-training cycle", ylabel=ylabel, xticks=x)
+            ax.legend(fontsize=8)
+            ax.grid(alpha=.2)
+        fig.savefig(out / "probe_diagnostics.png", dpi=180)
+        plt.close(fig)
     if refs:
         fig, ax = plt.subplots(figsize=(8, 4), layout="constrained")
         for g, values in refs.items():
@@ -188,6 +209,8 @@ def report(root, out=None, *, for_backup=False):
     labels = {"fresh_base": "original pretrained reset", "continued": "continued selected weights",
               "reset_s0": "reset to fixed real-data-trained S0 after shared S1"}
     label = labels.get(policy, policy)
+    if c.get("synthetic_fraction", 1.0) < 1.0:
+        label += f"; {c['synthetic_fraction']:.0%} synthetic / {1-c['synthetic_fraction']:.0%} real targets"
     out = _output_directory(source, out, run_id, for_backup=for_backup)
     out.mkdir(parents=True, exist_ok=True)
     fields = list(dict.fromkeys(key for row in rows for key in row))
@@ -208,7 +231,8 @@ def report(root, out=None, *, for_backup=False):
         rate = benchmark_resources.get("actual_pod_hourly_usd", benchmark_resources.get("quoted_gpu_hourly_usd"))
         if rate is not None:
             hourly = rate + 30 * .07 / 730 + 20 * .1 / 730
-            forecasts = [forecast(bench, g, hourly, initialization=policy) for g in (5, 10)]
+            forecasts = [forecast(bench, g, hourly, initialization=policy,
+                                 epochs=c.get("epochs", 5), imported_d1=bool(c.get("initial_dataset"))) for g in (5, 10)]
             atomic_json(out / "forecast.json", {"benchmark_gpu": bench["gpu"], "hourly_usd": hourly, "forecasts": forecasts,
                                                "storage_assumption": "30 GB network + 20 GB container, historical rates; estimates, not billing"})
     lines = [f"# Generated {c['kind']} analysis: {label}", "", f"Experiment: `{run_id}`. Seed: {c['seed']}.", "",
@@ -221,6 +245,11 @@ def report(root, out=None, *, for_backup=False):
     lines.extend(["| Cycle | Origin | Validation PPL | Test PPL | Distinct-2 | Repeated 4-grams |", "|---|---|---:|---:|---:|---:|"])
     for row in rows:
         lines.append(f"| {row['generation']} | {row['stage_origin']} | {row['validation_perplexity']:.4f} | {row['test_perplexity']:.4f} | {row['distinct_2']:.4f} | {row['repeated_4gram_rate']:.4f} |")
+    mixed_rows = [r for r in rows if "real_blocks" in r]
+    if mixed_rows:
+        lines.extend(["", "## Training mixtures", "", "| Cycle | Real blocks | Synthetic blocks | Real tokens | Synthetic tokens |",
+                      "|---|---:|---:|---:|---:|"])
+        lines.extend(f"| {r['generation']} | {r['real_blocks']} | {r['synthetic_blocks']} | {r['real_tokens']} | {r['synthetic_tokens']} |" for r in mixed_rows)
     descriptions = {
         "fresh_base": "Every training generation starts from the pinned original pretrained OPT weights; generation 0 trains on real WikiText-2.",
         "continued": "Cycle 0 loads the saved real-data-trained G0/S0. Each next cycle starts from the preceding selected weights. Optimizer and scheduler restart.",
@@ -228,8 +257,12 @@ def report(root, out=None, *, for_backup=False):
     selection = ("Epoch 5 is retained regardless of validation loss; validation is diagnostic and test data only reports results."
                  if c.get("checkpoint_selection") == "final_epoch" else
                  "Validation selects the best newly trained epoch; test data only reports results.")
+    inputs = ("Each cycle samples real training blocks and continuation-only synthetic targets without replacement, "
+              "then shuffles and freezes the mixture for all epochs. Original generation prompts are excluded from synthetic targets."
+              if c.get("synthetic_fraction", 1.0) < 1.0 else
+              "Fixed real prompts generate continuations; only continuation tokens train subsequent cycles.")
     lines.extend(["", descriptions.get(policy, "See resolved configuration for initialization policy."), "",
-                  "Fixed real prompts generate continuations; only continuation tokens train subsequent cycles. " + selection, "",
+                  inputs + " " + selection, "",
                   "## Metric definitions", ""])
     lines.extend(f"- **{key}:** {value}" for key, value in METRIC_DEFINITIONS.items())
     if forecasts:

@@ -17,9 +17,14 @@ def stage(name, root, generation=0, config_path=None):
         if name != "prepare" or not config_path:
             raise ValueError("Prepare a configured run first")
         c = config(config_path)
+        from .common import load_secrets
+        load_secrets()
         if c.get("initialization") == "reset_s0":
             from .workflow import resolve_branch_source
             c = resolve_branch_source(c)
+        elif c.get("initial_dataset"):
+            from .workflow.initial_data import resolve_initial_dataset
+            c = resolve_initial_dataset(c)
         atomic_json(root / "config.json", c)
     if name == "prepare":
         tok = AutoTokenizer.from_pretrained(c["model"], revision=c["model_revision"])
@@ -38,7 +43,11 @@ def stage(name, root, generation=0, config_path=None):
         if c.get("initialization") == "continued":
             if generation == 0:
                 from .continued import initialize
-                return initialize(root, c)
+                result = initialize(root, c)
+                if c.get("initial_dataset"):
+                    from .workflow.initial_data import import_initial_dataset
+                    import_initial_dataset(root, c)
+                return result
         if generation:
             blocks, expected, parent_checkpoint, lineage = training_lineage(root, generation, c, None)
             if c.get("initialization") in ("continued", "reset_s0"):

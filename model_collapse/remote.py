@@ -301,6 +301,9 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     if paired:
         from .workflow.paired import resolve_pair_inputs
         c = resolve_pair_inputs(c)
+    elif c.get("initial_dataset"):
+        from .workflow.initial_data import resolve_initial_dataset
+        c = resolve_initial_dataset(c)
     if c.get("initialization") == "reset_s0":
         from .workflow.branch import resolve_branch_source
         c = resolve_branch_source(c)
@@ -331,10 +334,15 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         allowance = min(allowance, SETUP_BUDGET - accrued(ledger(), "smoke") - 0.15, 0.75)
         if paired:
             allowance = min(allowance, .75 - campaign_accrued(ledger(), "shared_start_final_epoch5"))
+        else:
+            from .mixing import CAMPAIGN, mixture_enabled
+            if mixture_enabled(c):
+                allowance = min(allowance, .75 - campaign_accrued(ledger(), CAMPAIGN))
     if allowance <= 0.1:
         raise RuntimeError("Insufficient budget after shutdown/storage reserve")
     if c["kind"] == "full":
-        validation_file = "validation_paired.json" if paired else {"continued": "validation_continued.json", "reset_s0": "validation_reset_s0.json"}.get(c.get("initialization"), "validation.json")
+        from .mixing import certificate_name
+        validation_file = "validation_paired.json" if paired else certificate_name(c)
         validation = read_json(STATE / validation_file)
         from .workflow.profiles import require_acceptance
         require_acceptance(c, validation, code_hash)
@@ -342,6 +350,10 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         if not b:
             raise RuntimeError("Run the validated smoke test and fetch its benchmark before launching full data")
         estimate_kwargs = {"continued": c.get("initialization") in ("continued", "reset_s0")}
+        if c.get("initial_dataset"):
+            estimate_kwargs["imported_d1"] = True
+        if "epochs" in c:
+            estimate_kwargs["epochs"] = c["epochs"]
         if c.get("initialization") == "reset_s0":
             estimate_kwargs["initialization"] = "reset_s0"
             estimate_kwargs["first_new_cycle"] = 2
@@ -402,6 +414,10 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         resources["workflow"] = "paired"
         if c["kind"] == "smoke":
             resources["acceptance_campaign"] = "shared_start_final_epoch5"
+    elif c["kind"] == "smoke":
+        from .mixing import CAMPAIGN, mixture_enabled
+        if mixture_enabled(c):
+            resources["acceptance_campaign"] = CAMPAIGN
     register_resources(resources)
     client = None
     try:
@@ -517,8 +533,10 @@ def _detached_observation(resources):
 def verify_detached(run_id):
     """Observe real stage/epoch progress across fresh, closed SSH connections."""
     r = local_resources(run_id)
-    if read_json(PROJECT / "runs" / run_id / "config.json", {}).get("workflow") != "paired":
-        raise ValueError("This evidence command applies to paired runs")
+    c = read_json(PROJECT / "runs" / run_id / "config.json", {})
+    from .mixing import mixture_enabled
+    if c.get("workflow") != "paired" and not mixture_enabled(c):
+        raise ValueError("This evidence command applies to paired or mixed-data runs")
     first = _detached_observation(r)
     def progress(x):
         s, cs = x["status"], x["child_status"]

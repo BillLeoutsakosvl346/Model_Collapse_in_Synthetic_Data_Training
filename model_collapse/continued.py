@@ -59,6 +59,8 @@ def initialize(root, c):
 def audit_chain(root):
     """Verify the stored tensors, token arrays, both handoffs, and recovery evidence."""
     from .data import load_blocks
+    from .mixing import mixture_enabled, mixture_input
+    from .workflow.lineage import training_lineage, verify_completed_stage
     root = Path(root)
     c = read_json(root / "config.json")
     if c.get("initialization") != "continued" or c["kind"] != "smoke":
@@ -82,9 +84,17 @@ def audit_chain(root):
                 verify_selection(t, read_json(dest / "training_history.json"), c)
             data = np.load(root / f"synthetic_for_gen_{g:02d}/tokens.npy", allow_pickle=False)
             parent = read_json(root / f"synthetic_for_gen_{g:02d}/manifest.json")
-            actual = hashlib.sha256(data.astype(np.int32).tobytes()).hexdigest()
             assert data.shape == real.shape == (256, 64)
-            assert t["input_tokens_sha256"] == actual == parent["continuation_tokens_sha256"]
+            if mixture_enabled(c):
+                data, mixed = mixture_input(root, g, c, data, parent, previous_hash, create=False)
+                _, initializer, _, lineage = training_lineage(root, g, c, None)
+                assert initializer == previous_hash and t["lineage"] == lineage
+                assert mixed["real_blocks"] == mixed["synthetic_blocks"] == 128
+                verify_completed_stage(root, g, c, t)
+            actual = hashlib.sha256(data.astype(np.int32).tobytes()).hexdigest()
+            assert t["input_tokens_sha256"] == actual
+            if not mixture_enabled(c):
+                assert actual == parent["continuation_tokens_sha256"]
             assert parent["provenance"]["parent_weights_sha256"] == previous_hash
             assert t["selected_weights_sha256"] != previous_hash
             assert t["optimizer_initialization"] == "fresh_each_cycle"
@@ -112,12 +122,18 @@ def audit_chain(root):
     assert names.count("validation_worker_resumed") == 2
     assert "validation_generation_interruption" in names and "validation_training_interruption" in names
     assert metrics[1 if c.get("initial_dataset") else 0]["generation_timing"]["reused_continuations"] > 0
-    return {"checks": {"pinned_previous_real_g0_start": True, "both_weights_and_data_handoffs": True,
+    result = {"checks": {"pinned_previous_real_g0_start": True, "both_weights_and_data_handoffs": True,
                         "weights_changed_each_training_cycle": True, "fixed_real_prompts_and_evaluation": True,
                         "continuation_only_64_token_datasets": True, "finite_token_weighted_perplexity": True,
                         "two_real_worker_exits_and_resume": True, "partial_generation_shard_reused": True,
                         "completed_cycle_1_unchanged_after_resume": True}, "handoffs": handoffs,
             "recorded_test": metrics[-1]["test"]}
+    if mixture_enabled(c):
+        assert c["epochs"] == 5 and c["checkpoint_selection"] == "final_epoch"
+        result["checks"].pop("continuation_only_64_token_datasets")
+        result["checks"]["continuation_only_synthetic_source_blocks"] = True
+        result["checks"].update(exact_mixture_reconstruction=True, epoch_five_checkpoints=True)
+    return result
 
 
 def audit_reset_chain(root):
@@ -260,9 +276,20 @@ def validate_local(root):
         raise RuntimeError("Source changed after the GPU test")
     result["checks"].update(independent_budget_guard_and_provider_stop_verified=True)
     mode = read_json(root / "config.json").get("initialization", "continued")
+    c = read_json(root / "config.json")
+    from .mixing import certificate_name, mixture_enabled
+    if mixture_enabled(c):
+        detached = read_json(root / "detached_verification.json", {})
+        observations = detached.get("observations", [])
+        from .common import digest
+        if (detached.get("pod_id") != r["pod_id"] or detached.get("launch_id") != r["launch_id"]
+                or detached.get("run_id") != root.name or detached.get("progress_after_disconnect") is not True
+                or len(observations) != 2 or detached.get("observations_sha256") != digest(observations)):
+            raise RuntimeError("Mixed-data acceptance requires verified detached progress for this launch")
+        result["checks"]["detached_progress_verified"] = True
     result.update(provider_pod_state=pod["status"], validated_run_id=root.name, initialization=mode)
     from .workflow.profiles import protocol_fingerprint
     result["protocol_fingerprint"] = protocol_fingerprint(read_json(root / "config.json"))
     atomic_json(root / "validation_results.json", result)
-    atomic_json(STATE / f"validation_{mode}.json", result)
+    atomic_json(STATE / certificate_name(c), result)
     return result

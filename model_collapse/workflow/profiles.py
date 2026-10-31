@@ -33,6 +33,11 @@ PAIR_CHECKS = {"both_child_audits", "four_five_epoch_training_stages", "epoch_fi
                "single_owner_and_deadline", "both_private_restores", "detached_progress_verified",
                "independent_budget_guard_and_provider_stop_verified"}
 
+MIXED_CHECKS = {"exact_mixture_reconstruction", "both_weights_and_data_handoffs", "epoch_five_checkpoints",
+                "private_hub_download_hashes_verified", "restored_checkpoint_tensor_hash_and_evaluation",
+                "two_real_worker_exits_and_resume", "partial_generation_shard_reused",
+                "detached_progress_verified", "independent_budget_guard_and_provider_stop_verified"}
+
 
 def require_acceptance(c, certificate, runtime):
     if not certificate or certificate.get("source_code_sha256") != runtime:
@@ -43,3 +48,7 @@ def require_acceptance(c, certificate, runtime):
         checks = certificate.get("checks", {})
         if certificate.get("workflow") != "paired" or any(checks.get(k) is not True for k in PAIR_CHECKS):
             raise RuntimeError("GPU acceptance must verify the complete paired workflow")
+    else:
+        from ..mixing import mixture_enabled
+        if mixture_enabled(c) and any(certificate.get("checks", {}).get(k) is not True for k in MIXED_CHECKS):
+            raise RuntimeError("GPU acceptance must verify mixed-data training and recovery")
