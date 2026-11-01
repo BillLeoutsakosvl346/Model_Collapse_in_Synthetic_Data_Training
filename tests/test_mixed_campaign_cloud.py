@@ -1,5 +1,8 @@
 import copy
 import datetime as dt
+import json
+import subprocess
+import sys
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -308,3 +311,84 @@ def test_authentication_and_changed_host_key_reads_are_never_retried(monkeypatch
         raise error
     with pytest.raises(type(error)): remote._transport_read(fail, 2000.)
     assert len(calls) == 1
+
+
+@pytest.mark.parametrize("timestamp,stale,current", [(999., True, False), (1000., False, True),
+    (1001., False, True), (None, False, True), ("999", False, True), (True, False, True),
+    (float('nan'), False, True), (float('inf'), False, True)])
+def test_startup_failure_classification_requires_finite_numeric_prior_timestamp(timestamp, stale, current):
+    value = {"state": "budget_paused"}
+    if timestamp is not None: value["time"] = timestamp
+    assert remote._startup_bad_states({"status": value}, {"created_at": 1000.}) == (stale, current)
+    assert remote._startup_bad_states({"child_status": value}, {"created_at": 1000.}) == (stale, current)
+
+
+def test_status_snapshot_tolerates_child_files_not_yet_created(tmp_path):
+    child = tmp_path / "pending-child"
+    script = remote._active_child_snapshot_script(str(child))
+    snapshot = json.loads(subprocess.check_output([sys.executable, "-c", script], text=True))
+    assert snapshot == {"status": {"state": "starting", "status_pending": True}, "log_tail": ""}
+    child.mkdir()
+    atomic_json(child / "status.json", {"state": "running", "generation": 2})
+    payload = ('π' + 'x' * 3000 + '\n').encode()
+    (child / "pipeline.log").write_bytes(payload)
+    snapshot = json.loads(subprocess.check_output([sys.executable, "-c", script], text=True))
+    assert snapshot["status"] == {"state": "running", "generation": 2}
+    assert snapshot["log_tail"] == payload[-3000:].decode('utf-8', errors='replace')
+
+
+def test_status_snapshot_does_not_hide_corrupted_existing_status(tmp_path):
+    (tmp_path / "status.json").write_text('{')
+    with pytest.raises(subprocess.CalledProcessError):
+        subprocess.check_output([sys.executable, "-c", remote._active_child_snapshot_script(str(tmp_path))], stderr=subprocess.DEVNULL)
+
+
+def test_detached_resume_waits_past_stale_failure_until_current_finite_progress(tmp_path, monkeypatch):
+    clock, calls = [1000.], []
+    r = {"run_id": "campaign", "launch_id": "newlaunch", "pod_id": "pod", "volume_id": "volume",
+         "created_at": 1000., "session_allowance_usd": .65, "guard_hourly_usd": .66,
+         "remote_root": "/workspace/runs/campaign", "workflow": "mixed_campaign"}
+    atomic_json(tmp_path / "runs/campaign/config.json", {"workflow": "mixed_campaign"})
+    def observe(_):
+        calls.append(1)
+        fresh = len(calls) >= 3
+        state = {"state": "running" if fresh else "budget_paused", "time": clock[0] if fresh else 900.}
+        return {"status": {**state, "phase": "reset20", "active_child": "campaign-reset-mixed20"},
+                "child_status": {**state, "generation": 3, "stage": "training"},
+                "event_bytes": len(calls), "epochs": 11 if fresh else 10, "new_epochs": 6 if fresh else 5,
+                "finite_new_training": True, "supervisor": {"time": clock[0]}, "watchdog": {"time": clock[0]}}
+    class Client:
+        def open_sftp(self): return object()
+        def close(self): pass
+    monkeypatch.setattr(remote, "PROJECT", tmp_path)
+    monkeypatch.setattr(remote, "local_resources", lambda _: r)
+    monkeypatch.setattr(remote, "_detached_observation", observe)
+    monkeypatch.setattr(remote, "now", lambda: clock[0])
+    monkeypatch.setattr(remote.time, "sleep", lambda s: clock.__setitem__(0, clock[0] + s))
+    monkeypatch.setattr(remote, "Runpod", lambda: SimpleNamespace(pod=lambda _: {}))
+    monkeypatch.setattr(remote, "ssh_connect", lambda *a: Client())
+    monkeypatch.setattr(remote, "upload_json", lambda *a: None)
+    monkeypatch.setattr(remote, "command", lambda *a, **k: "")
+    receipt = remote.verify_detached("campaign", max_wait_seconds=12)
+    assert len(calls) == 3
+    assert receipt["new_training_after_import_verified"]
+    assert receipt["observations"][1]["child_status"]["state"] == "running"
+
+
+def test_status_rejects_foreign_active_child_before_constructing_its_path(tmp_path, monkeypatch):
+    r = {"run_id": "campaign", "pod_id": "pod", "remote_root": "/workspace/runs/campaign"}
+    atomic_json(tmp_path / "runs/campaign/config.json", {"workflow": "mixed_campaign"})
+    class Client:
+        def close(self): pass
+    calls = []
+    def command(client, text, **kwargs):
+        calls.append(text)
+        return '' if text.startswith('tail') else json.dumps({"status": {"active_child": "../foreign"}})
+    monkeypatch.setattr(remote, "PROJECT", tmp_path)
+    monkeypatch.setattr(remote, "Runpod", lambda: SimpleNamespace(pod=lambda _: {"status": "RUNNING", "cost": .57}))
+    monkeypatch.setattr(remote, "local_resources", lambda _: r)
+    monkeypatch.setattr(remote, "ssh_connect", lambda *a: Client())
+    monkeypatch.setattr(remote, "command", command)
+    with pytest.raises(RuntimeError, match="child status association"):
+        remote.status('campaign')
+    assert all('foreign' not in call for call in calls)

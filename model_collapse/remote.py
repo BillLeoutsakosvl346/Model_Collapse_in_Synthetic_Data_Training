@@ -266,6 +266,30 @@ def _transport_read(operation, cutoff):
         time.sleep(min(2 ** attempt, 4))
 
 
+def _startup_bad_states(observation, resources):
+    """A retained pre-launch pause is pending state, never a successful current handoff."""
+    stale, current = False, False
+    for key in ("status", "child_status"):
+        state = observation.get(key, {})
+        if state.get("state") not in ("failed", "budget_paused", "paused"):
+            continue
+        timestamp = state.get("time")
+        old = (not isinstance(timestamp, bool) and isinstance(timestamp, (int, float))
+               and math.isfinite(timestamp) and timestamp < resources["created_at"])
+        stale = stale or old
+        current = current or not old
+    return stale, current
+
+
+def _active_child_snapshot_script(child_root):
+    """Read a newly selected child safely before its worker creates status/log files."""
+    return ("import pathlib,json; p=pathlib.Path(" + repr(child_root) + "); "
+            "s=p/'status.json'; log=p/'pipeline.log'; "
+            "print(json.dumps({'status':json.loads(s.read_text()) if s.exists() else "
+            "{'state':'starting','status_pending':True}, "
+            "'log_tail':log.read_bytes()[-3000:].decode('utf-8',errors='replace') if log.exists() else ''}))")
+
+
 def upload_json(sftp, path, value):
     with sftp.open(path, "w") as f:
         f.write(json.dumps(value))
@@ -619,7 +643,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                     raise
                 time.sleep(3)
                 continue
-            if campaign and live.get("status", {}).get("state") in ("failed", "budget_paused", "paused"):
+            if campaign and _startup_bad_states(live, resources)[1]:
                 raise RuntimeError("Campaign failed or paused during startup; refusing a running handoff")
             if now() - live["watchdog"]["time"] < 20 and now() - live["supervisor"]["time"] < 20:
                 atomic_json(local / "launch_verified.json", live)
@@ -749,6 +773,8 @@ def verify_detached(run_id, *, max_wait_seconds=None):
         cutoff = min(cutoff, deadline(r) - 10)
     observe = (lambda: _transport_read(lambda: _detached_observation(r), cutoff)) if campaign else (lambda: _detached_observation(r))
     first = observe()
+    if campaign and _startup_bad_states(first, r)[1]:
+        raise RuntimeError("Campaign failed or paused before detached training progress was verified")
     def progress(x):
         s, cs = x["status"], x["child_status"]
         return (s.get("phase"), s.get("active_child"), cs.get("generation"), cs.get("stage"), x["event_bytes"], x["epochs"])
@@ -757,10 +783,11 @@ def verify_detached(run_id, *, max_wait_seconds=None):
         time.sleep(3)
         attempt += 1
         second = observe()
-        if campaign and any(second[k].get("state") in ("failed", "budget_paused", "paused") for k in ("status", "child_status")):
+        stale, failed = _startup_bad_states(second, r) if campaign else (False, False)
+        if failed:
             raise RuntimeError("Campaign failed or paused before detached training progress was verified")
         fresh = all(second[k].get("time", 0) > first[k].get("time", 0) for k in ("supervisor", "watchdog"))
-        trained = not campaign or (second.get("new_epochs", 0) >= 1 and second.get("finite_new_training") is True)
+        trained = not campaign or (not stale and second.get("new_epochs", 0) >= 1 and second.get("finite_new_training") is True)
         if fresh and trained and progress(second) != progress(first):
             receipt = {"pod_id": r["pod_id"], "launch_id": r["launch_id"], "run_id": run_id,
                        "progress_after_disconnect": True, "observations": [first, second],
@@ -807,9 +834,9 @@ def status(run_id):
                     if child not in allowed:
                         raise RuntimeError("Invalid paired child status association")
                     child_root = str(Path(r["remote_root"]).parent).replace("\\", "/") + "/" + child
-                    result["active_child"] = json.loads(command(client, "python3 -c " + shlex.quote(
-                        "import json,pathlib; p=pathlib.Path(" + repr(child_root) + "); print(json.dumps(json.loads((p/'status.json').read_text())))")))
-                    result["log_tail"] = command(client, "tail -c 3000 " + shlex.quote(child_root + "/pipeline.log"))
+                    snapshot = json.loads(command(client, "python3 -c " + shlex.quote(_active_child_snapshot_script(child_root)), timeout=30))
+                    result["active_child"] = snapshot["status"]
+                    result["log_tail"] = snapshot["log_tail"]
         finally:
             client.close()
     else:

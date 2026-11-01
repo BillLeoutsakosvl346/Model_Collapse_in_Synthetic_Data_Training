@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T02:19:30.800021+00:00",
+  "previous_review": "2026-11-01_mixed-campaign-transport-review.json",
+  "previous_runtime_sha256": "57c0e4609588077145eb944635e1ecdf6ed82d2f56f689cd97bfa339ffe1b186",
+  "runtime_sha256": "35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171",
+  "reviewer": "Independent read-only sub-agent final delta review",
+  "independently_passed_tests": 92,
+  "warnings": "Two dependency deprecation warnings",
+  "affected_cloud_tests_passed": 82,
+  "affected_acceptance_tests_passed": 38,
+  "material_findings_remaining": 0,
+  "runtime_files": 35,
+  "observed_validation_faults": [
+    "Child status read before its status file existed during an automatic handoff.",
+    "Hugging Face rejected a checkpoint backup commit with its missing-LFS-object HTTP 400 diagnostic.",
+    "Resume startup interpreted a retained failure status from the preceding launch as a current failure."
+  ],
+  "reviewed_fixes": [
+    "One read-only child status/log snapshot tolerates files pending during startup.",
+    "Finite pre-launch failure/pause timestamps are pending, cannot certify progress; current or invalid failure timestamps still fail closed.",
+    "Only the exact missing-LFS HTTP 400 backup diagnostic receives bounded whole-upload retries, with immutable inputs and index checked between attempts.",
+    "Explicit shutdown request reasons survive coincident supervisor exit.",
+    "Completed prior-session children require exact runtime, registered full ownership tuple, same volume and immutable completion seal.",
+    "Detached acceptance additionally requires actual finite new training after import."
+  ],
+  "scientific_protocol_changed": false,
+  "training_engine_changed": false,
+  "fresh_gpu_acceptance_pending": true,
+  "full_campaign_unlaunched": true,
+  "scope": "Offline review only. This receipt does not certify a GPU runtime before its own complete acceptance."
+}

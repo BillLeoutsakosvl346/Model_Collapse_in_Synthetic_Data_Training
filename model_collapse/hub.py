@@ -16,7 +16,7 @@ from .artifacts.paths import (atomic_copy as _atomic_copy, safe_destination as _
                               safe_relative as _safe_relative)
 
 
-def retry_transfer(call, *args, **kwargs):
+def retry_transfer(call, *args, retry_missing_lfs_commit=False, before_retry=None, **kwargs):
     """Retry transient transport/server failures; permission denials remain terminal."""
     for attempt in range(4):
         try:
@@ -26,8 +26,12 @@ def retry_transfer(call, *args, **kwargs):
         except RequestException as e:
             response = getattr(e, "response", None)
             status = response.status_code if response is not None else None
-            if attempt == 3 or (status is not None and status < 500 and status != 429):
+            missing_lfs = (retry_missing_lfs_commit and status == 400
+                           and "LFS pointer pointed to a file that does not exist" in str(e))
+            if attempt == 3 or (status is not None and status < 500 and status != 429 and not missing_lfs):
                 raise
+            if before_retry is not None:
+                before_retry()
             time.sleep(min(2 ** (attempt + 1), 10))
 
 
@@ -78,13 +82,19 @@ def backup(root, repos=None):
     files = artifact_files(root)
     index = {"run_id": root.name, "repos": repos, "files": files}
     atomic_json(root / "artifact_index.json", index)
+    index_sha256 = sha256(root / "artifact_index.json")
     for kind in ("model", "dataset"):
         paths = [p for p, meta in files.items() if meta["repo_type"] == kind]
         if kind == "dataset":
             paths += ["artifact_index.json", "events.jsonl", "status.json"]
+        def verify_retry_inputs():
+            verify_files(root, {path: files[path] for path in paths if path in files})
+            if sha256(root / "artifact_index.json") != index_sha256:
+                raise RuntimeError("Backup artifact index changed during a retry")
         # Exact allow list prevents accidental credential/cache uploads.
         retry_transfer(api.upload_folder, repo_id=repos[kind], repo_type=kind, folder_path=root, path_in_repo=root.name,
-                          allow_patterns=paths, commit_message=f"Save {root.name} verified pipeline state")
+                          allow_patterns=paths, commit_message=f"Save {root.name} verified pipeline state",
+                          retry_missing_lfs_commit=True, before_retry=verify_retry_inputs)
     resolved = resolve_snapshot(repos)
     atomic_json(root / "backup_snapshot.json", {"run_id": root.name, "repos": repos,
                 "revisions": resolved, "artifact_index_sha256": sha256(root / "artifact_index.json")})

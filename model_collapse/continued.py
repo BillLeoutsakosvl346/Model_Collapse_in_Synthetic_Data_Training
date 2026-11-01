@@ -365,7 +365,7 @@ def validate_campaign_local(root):
     from .mixing import certificate_name
     from .remote import local_resources, source_archive
     from .runpod_api import Runpod
-    from .workflow.mixed_campaign import JOB_ORDER, job_roots, verify_campaign_recovery
+    from .workflow.mixed_campaign import JOB_ORDER, _check_child_owner, job_roots, verify_campaign_recovery
     from .workflow.profiles import require_acceptance
 
     root = Path(root)
@@ -379,7 +379,7 @@ def validate_campaign_local(root):
         raise RuntimeError("Campaign remote acceptance evidence is missing")
     r = local_resources(root.name)
     recorded = read_json(root / "resources.json", {})
-    keys = ("run_id", "launch_id", "pod_id", "volume_id", "created_at", "code_sha256")
+    keys = ("run_id", "launch_id", "pod_id", "volume_id", "created_at", "code_sha256", "provider_sessions")
     if r.get("run_id") != root.name or any(recorded.get(k) != r.get(k) for k in keys):
         raise RuntimeError("Campaign recovery does not belong to the current resource owner")
     guard = read_json(root / "watchdog_exit.json", {})
@@ -393,12 +393,17 @@ def validate_campaign_local(root):
     detached = read_json(root / "detached_verification.json", {})
     observations = detached.get("observations", [])
     if (any(detached.get(k) != r[k] for k in ("pod_id", "launch_id", "run_id")) or
-            detached.get("progress_after_disconnect") is not True or len(observations) != 2 or
-            detached.get("observations_sha256") != digest(observations)):
+            detached.get("progress_after_disconnect") is not True or not isinstance(observations, list) or
+            len(observations) != 2 or not all(isinstance(item, dict) for item in observations) or
+            detached.get("observations_sha256") != digest(observations) or
+            detached.get("new_training_after_import_verified") is not True or
+            type(observations[-1].get("new_epochs")) is not int or observations[-1]["new_epochs"] < 1 or
+            observations[-1].get("finite_new_training") is not True):
         raise RuntimeError("Campaign detached progress was not verified for this launch")
     roots = job_roots(root)
     if set(result.get("child_certificates", {})) != set(JOB_ORDER) or set(result.get("child_audits", {})) != set(JOB_ORDER):
         raise RuntimeError("All three immutable child audits are required")
+    associations = {}
     for name in JOB_ORDER:
         path = roots[name] / "remote_validation.json"
         audit = read_json(path)
@@ -406,14 +411,22 @@ def validate_campaign_local(root):
                 result["child_certificates"][name] != audit):
             raise RuntimeError(f"Campaign child audit differs from its pinned evidence: {name}")
         resources = read_json(roots[name] / "resources.json", {})
-        if (resources.get("owner_campaign_id") != root.name or
-                resources.get("logical_run_id") != roots[name].name or
-                any(resources.get(k) != r.get(k) for k in keys)):
+        _check_child_owner(root, roots[name], resources, require_sealed=True)
+        identity = ("run_id", "launch_id", "pod_id", "volume_id")
+        current = all(resources.get(k) == r.get(k) for k in identity)
+        allowed = [r] if current else r.get("provider_sessions", [])
+        if (not isinstance(allowed, list) or resources.get("code_sha256") != runtime or
+                not any(isinstance(session, dict) and session.get("run_id") == root.name and
+                        session.get("volume_id") == r["volume_id"] and
+                        all(resources.get(k) == session.get(k) for k in identity) for session in allowed) or
+                (current and resources.get("created_at") != r.get("created_at"))):
             raise RuntimeError(f"Campaign child has a different provider owner: {name}")
+        associations[name] = {**{key: resources[key] for key in identity},
+                              "runtime_sha256": resources["code_sha256"], "current_session": current}
     result["checks"].update(detached_progress_verified=True,
                             independent_budget_guard_and_provider_stop_verified=True)
     require_acceptance(c, result, runtime)
-    result.update(validated_run_id=root.name, provider_pod_state=pod["status"])
+    result.update(validated_run_id=root.name, provider_pod_state=pod["status"], child_provider_sessions=associations)
     atomic_json(root / "validation_results.json", result)
     atomic_json(STATE / certificate_name(c, runtime), result)
     benchmark = read_json(roots["continued20"] / "benchmark.json")

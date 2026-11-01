@@ -88,7 +88,7 @@ def _seal_path(root, job):
     return Path(root) / "job_seals" / (job + ".json")
 
 
-def _check_child_owner(root, child, resources=None):
+def _check_child_owner(root, child, resources=None, *, require_sealed=False):
     resources = resources or read_json(Path(child) / "resources.json", {})
     if (resources.get("owner_campaign_id") != Path(root).name or resources.get("run_id") != Path(root).name
             or resources.get("logical_run_id") != Path(child).name
@@ -96,6 +96,9 @@ def _check_child_owner(root, child, resources=None):
         raise RuntimeError("Campaign child resource ownership differs")
     parent = read_json(Path(root) / "resources.json", {})
     fields = ("run_id", "launch_id", "pod_id", "volume_id")
+    name = next((key for key, path in job_roots(root).items() if path == Path(child)), None)
+    if name is None or not parent.get("code_sha256") or resources.get("code_sha256") != parent["code_sha256"]:
+        raise RuntimeError("Campaign child runtime or logical job differs from its provider owner")
     allowed = [parent]
     if read_json(Path(child) / "completion.json", {}).get("complete"):
         allowed += parent.get("provider_sessions", [])
@@ -103,6 +106,23 @@ def _check_child_owner(root, child, resources=None):
                and candidate.get("run_id") == Path(root).name
                and candidate.get("volume_id") == parent.get("volume_id") for candidate in allowed):
         raise RuntimeError("Campaign child provider association is not a registered session of this owner and volume")
+    current = all(resources.get(k) == parent.get(k) for k in fields)
+    if current and any(resources.get(k) != parent.get(k) for k in ("created_at", "session_allowance_usd", "guard_hourly_usd")):
+        raise RuntimeError("Campaign child uses a different current-session budget deadline")
+    if require_sealed and not current:
+        child = Path(child)
+        seal = read_json(_seal_path(root, name), {})
+        snapshot = read_json(Path(root) / "child_snapshots.json", {}).get(name)
+        index = read_json(child / "artifact_index.json", {})
+        if (not snapshot or seal.get("snapshot") != snapshot or snapshot.get("run_id") != child.name
+                or snapshot.get("repos") != parent.get("repos")
+                or snapshot.get("artifact_index_sha256") != sha256(child / "artifact_index.json")
+                or seal.get("configuration_sha256") != sha256(child / "config.json")
+                or seal.get("completion_sha256") != sha256(child / "completion.json")
+                or not read_json(child / "completion.json", {}).get("complete")
+                or seal.get("files") != index.get("files")
+                or index.get("files", {}).get("resources.json", {}).get("sha256") != sha256(child / "resources.json")):
+            raise RuntimeError("Prior-session campaign child has no matching immutable completion seal")
     return resources
 
 
@@ -296,10 +316,7 @@ def run_campaign(root, validation=False):
                 raise RuntimeError("Campaign smoke must retain six actual fifth-epoch checkpoints")
             events = [json.loads(line)["event"] for line in (root / "events.jsonl").read_text().splitlines()]
             for child in roots.values():
-                child_resources = _check_child_owner(root, child)
-                for key in ("run_id", "launch_id", "pod_id", "volume_id", "created_at", "session_allowance_usd", "guard_hourly_usd"):
-                    if child_resources[key] != resources[key]:
-                        raise RuntimeError("Campaign child owns a different provider session or budget deadline")
+                _check_child_owner(root, child, require_sealed=True)
             checks = {"three_child_audits": True, "six_five_epoch_training_stages": len(trained) == 6,
                       "epoch_five_checkpoints": True, "exact_shared_prefix_and_cycle2_mixture": True,
                       "two_handoff_restarts": (all((root / f".injection_handoff_{p}_consumed").exists() for p in (1, 2))
@@ -388,7 +405,7 @@ def verified_resume_jobs(root, resources, c):
         small = {rel: meta for rel, meta in child_index["files"].items()
                  if not rel.endswith((".npy", ".safetensors"))}
         verify_recovered_files(child, small)
-        _check_child_owner(root, child)
+        _check_child_owner(root, child, require_sealed=True)
         for g in range(1 if name == "continued20" else 2, job["generations"] + 1):
             prefix = f"seed_{job['seed']}/gen_{g:02d}/"
             training = read_json(child / prefix / "training.json")
@@ -431,7 +448,7 @@ def verify_campaign_recovery(root):
                 or sha256(child / "artifact_index.json") != snapshot["artifact_index_sha256"]
                 or seal.get("snapshot") != snapshot):
             raise RuntimeError("Campaign child recovery is stale or belongs to a different snapshot")
-        _check_child_owner(root, child)
+        _check_child_owner(root, child, require_sealed=True)
         verify_recovery(child)
 
 

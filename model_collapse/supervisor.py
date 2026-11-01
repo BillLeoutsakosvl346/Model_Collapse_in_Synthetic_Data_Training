@@ -50,7 +50,7 @@ def watchdog(root):
         test_cutoff = read_json(root / "validation_guard_deadline.json")
         tested = test_cutoff and now() >= test_cutoff["deadline"]
         if expired or request or dead or tested:
-            reason = "budget_exhausted" if expired else "validation_budget_guard" if tested else "supervisor_died" if dead else request["reason"]
+            reason = "budget_exhausted" if expired else "validation_budget_guard" if tested else request["reason"] if request else "supervisor_died"
             event(root, "watchdog_shutdown_requested", reason=reason)
             atomic_json(root / "watchdog_exit.json", {"reason": reason, "time": now(), "pod_id": resources["pod_id"]})
             # The Hub SDK can wait indefinitely. Its optional receipt must never delay stop beyond five seconds.

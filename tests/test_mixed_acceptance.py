@@ -170,14 +170,17 @@ def campaign_evidence(tmp_path, monkeypatch):
                    generations=2 if name == "continued20" else 3)
     root = tmp_path / "campaign"
     resources = {"run_id": root.name, "launch_id": "launch", "pod_id": "pod", "volume_id": "volume",
-                 "created_at": 123, "code_sha256": RUNTIME}
+                 "created_at": 123, "code_sha256": RUNTIME, "session_allowance_usd": .75,
+                 "guard_hourly_usd": .66, "repos": {"model": "test/models", "dataset": "test/data"}}
     atomic_json(root / "config.json", c)
     atomic_json(root / "resources.json", resources)
     atomic_json(root / "artifact_index.json", {"files": {}})
     atomic_json(root / "watchdog_exit.json", {"pod_id": "pod", "reason": "validation_budget_guard"})
-    observations = [{"epochs": 1}, {"epochs": 2}]
+    observations = [{"epochs": 1, "new_epochs": 1, "finite_new_training": True},
+                    {"epochs": 2, "new_epochs": 2, "finite_new_training": True}]
     atomic_json(root / "detached_verification.json", {"run_id": root.name, "launch_id": "launch", "pod_id": "pod",
-                "progress_after_disconnect": True, "observations": observations, "observations_sha256": digest(observations)})
+                "progress_after_disconnect": True, "new_training_after_import_verified": True,
+                "observations": observations, "observations_sha256": digest(observations)})
     cert = campaign_certificate(c)
     cert["checks"].pop("detached_progress_verified")
     cert["checks"].pop("independent_budget_guard_and_provider_stop_verified")
@@ -209,7 +212,80 @@ def test_campaign_local_certificate_is_written_only_after_all_checks(campaign_ev
     assert len(list((tmp_path / "acceptance").glob("validation*.json"))) == 1
 
 
-@pytest.mark.parametrize("fault", ["detached_launch", "provider_running", "registry_volume", "child_owner", "child_audit", "missing_restore"])
+def seal_prior_child(evidence, *, runtime=RUNTIME, volume="volume"):
+    """Keep the original execution immutable while registering its recoverable finished job."""
+    from model_collapse.workflow import mixed_campaign
+    root, c, current = evidence
+    child_root = mixed_campaign.job_roots(root)["reset50"]
+    original = {**read_json(child_root / "resources.json"), "launch_id": "prior-launch", "pod_id": "prior-pod",
+                "created_at": 100, "session_allowance_usd": .5, "code_sha256": runtime, "volume_id": volume}
+    atomic_json(child_root / "resources.json", original)
+    current["provider_sessions"] = [{key: original[key] for key in ("run_id", "launch_id", "pod_id", "volume_id")}]
+    atomic_json(root / "resources.json", current)
+    job = c["jobs"]["reset50"]
+    atomic_json(child_root / "config.json", job)
+    atomic_json(child_root / "manifest.json", {"config_hash": digest(job)})
+    atomic_json(child_root / "completion.json", {"complete": True, "generations": job["generations"]})
+    audit_path = child_root / "remote_validation.json"
+    audit = read_json(audit_path)
+    audit["source_code_sha256"] = runtime
+    atomic_json(audit_path, audit)
+    parent_audit = read_json(root / "remote_validation.json")
+    parent_audit["child_certificates"]["reset50"] = audit
+    parent_audit["child_audits"]["reset50"] = sha256(audit_path)
+    atomic_json(root / "remote_validation.json", parent_audit)
+    files = {name: {"sha256": sha256(child_root / name), "bytes": (child_root / name).stat().st_size,
+                    "repo_type": "dataset"}
+             for name in ("config.json", "manifest.json", "completion.json", "resources.json", "remote_validation.json")}
+    atomic_json(child_root / "artifact_index.json", {"files": files})
+    snapshot = {"run_id": child_root.name, "repos": current["repos"],
+                "revisions": {"model": "a" * 40, "dataset": "b" * 40},
+                "artifact_index_sha256": sha256(child_root / "artifact_index.json")}
+    atomic_json(child_root / "backup_snapshot.json", snapshot)
+    atomic_json(root / "child_snapshots.json", {"reset50": snapshot})
+    atomic_json(root / "job_seals/reset50.json", {"campaign_id": root.name, "job": "reset50", "run_id": child_root.name,
+                "configuration_sha256": sha256(child_root / "config.json"),
+                "completion_sha256": sha256(child_root / "completion.json"), "snapshot": snapshot, "files": files})
+    return child_root, original
+
+
+def test_campaign_local_certificate_accepts_sealed_registered_prior_launch(campaign_evidence):
+    from model_collapse.continued import validate_campaign_local
+    root, _, _ = campaign_evidence
+    child_root, original = seal_prior_child(campaign_evidence)
+    prior_bytes = (child_root / "resources.json").read_bytes()
+    result = validate_campaign_local(root)
+    assert result["child_provider_sessions"]["reset50"]["current_session"] is False
+    assert result["child_provider_sessions"]["reset50"]["pod_id"] == "prior-pod"
+    assert result["child_provider_sessions"]["continued20"]["current_session"] is True
+    assert read_json(child_root / "resources.json") == original
+    assert (child_root / "resources.json").read_bytes() == prior_bytes
+
+
+@pytest.mark.parametrize("fault", ["unregistered", "wrong_volume", "wrong_runtime", "unsealed", "unfinished", "altered_resource"])
+def test_campaign_local_validation_rejects_invalid_prior_provider_evidence(campaign_evidence, tmp_path, fault):
+    from model_collapse.continued import validate_campaign_local
+    root, _, current = campaign_evidence
+    child_root, _ = seal_prior_child(campaign_evidence, runtime="d" * 64 if fault == "wrong_runtime" else RUNTIME,
+                                     volume="another-volume" if fault == "wrong_volume" else "volume")
+    if fault == "unregistered":
+        current["provider_sessions"] = []
+        atomic_json(root / "resources.json", current)
+    elif fault == "unsealed":
+        (root / "job_seals/reset50.json").unlink()
+    elif fault == "unfinished":
+        atomic_json(child_root / "completion.json", {"complete": False})
+    elif fault == "altered_resource":
+        value = read_json(child_root / "resources.json")
+        value["created_at"] = 101
+        atomic_json(child_root / "resources.json", value)
+    with pytest.raises(RuntimeError):
+        validate_campaign_local(root)
+    assert not (tmp_path / "acceptance").exists()
+
+
+@pytest.mark.parametrize("fault", ["detached_launch", "provider_running", "registry_volume", "child_owner", "child_audit", "missing_restore",
+                                  "missing_new_training", "imported_only", "nonfinite_training", "boolean_epochs", "stale_observations"])
 def test_campaign_local_validation_rejects_unbound_evidence(campaign_evidence, tmp_path, monkeypatch, fault):
     from model_collapse import runpod_api
     from model_collapse.continued import validate_campaign_local
@@ -237,6 +313,15 @@ def test_campaign_local_validation_rejects_unbound_evidence(campaign_evidence, t
         def reject(root):
             raise RuntimeError("Missing child restore")
         monkeypatch.setattr(mixed_campaign, "verify_campaign_recovery", reject)
+    else:
+        evidence = read_json(root / "detached_verification.json")
+        if fault == "missing_new_training": evidence.pop("new_training_after_import_verified")
+        elif fault == "imported_only": evidence["observations"][-1]["new_epochs"] = 0
+        elif fault == "nonfinite_training": evidence["observations"][-1]["finite_new_training"] = False
+        elif fault == "boolean_epochs": evidence["observations"][-1]["new_epochs"] = True
+        elif fault == "stale_observations": evidence["observations_sha256"] = "d" * 64
+        if fault != "stale_observations": evidence["observations_sha256"] = digest(evidence["observations"])
+        atomic_json(root / "detached_verification.json", evidence)
     with pytest.raises(RuntimeError):
         validate_campaign_local(root)
     assert not (tmp_path / "acceptance").exists()
