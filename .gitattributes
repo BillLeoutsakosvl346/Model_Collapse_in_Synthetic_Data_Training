@@ -38,3 +38,7 @@
 /.github/workflows/offline.yml text eol=lf
 /docs/validation/2026-10-31_repository-cleanup.json -text whitespace=cr-at-eol
 /docs/validation/2026-11-01_mixed-50-full-completion.json -text whitespace=cr-at-eol
+# Mixed-data scientific publication preserves original record/probe/analysis bytes.
+/reports/20261031T163428Z-full-continued/** -text whitespace=cr-at-eol
+/comparisons/continued_mixed50_vs_synthetic_final5/*.py text eol=lf
+/scripts/analysis/build_mixed_comparison_report.py text eol=lf

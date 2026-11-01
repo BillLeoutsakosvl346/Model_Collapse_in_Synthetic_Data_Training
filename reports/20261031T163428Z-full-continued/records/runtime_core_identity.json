@@ -1,0 +1,17 @@
+{
+  "source_bundles": {
+    "962243987067fd6e4aaaa7ac77acee05ae0775779d3904d7cdc6f6712e6583ca": {
+      "model_collapse/engine.py": "4ab2b86cdcec51d1379b2d1ed60fe5ebc29c41f0e8162d5ab437cacc763172fb",
+      "model_collapse/data.py": "dfa994e77e940647da8579922ada8e20d7392f869df38bb6c6019fc5296e1fc0",
+      "model_collapse/workflow/selection.py": "0986df22529cf72cafa0c3b496b57f1e4a7dd9a85684e361a5bd3555dd6be523"
+    },
+    "266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5": {
+      "model_collapse/engine.py": "4ab2b86cdcec51d1379b2d1ed60fe5ebc29c41f0e8162d5ab437cacc763172fb",
+      "model_collapse/data.py": "dfa994e77e940647da8579922ada8e20d7392f869df38bb6c6019fc5296e1fc0",
+      "model_collapse/workflow/selection.py": "fced4d12323bbd16a1e3b77c0824abafed6f70fa799ae039ea263c13a65828b2"
+    }
+  },
+  "shared_training_data_core_identical": true,
+  "selection_policy_and_verifier_ast_identical": true,
+  "selection_module_difference": "training_contract adds synthetic_fraction to its resume-integrity fingerprint; checkpoint policy/verifier and training/data engine are unchanged."
+}

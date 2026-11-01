@@ -1,0 +1,31 @@
+{
+  "version": "block_mixture_v1",
+  "generation": 9,
+  "seed": 42,
+  "synthetic_fraction": 0.5,
+  "effective_synthetic_fraction": 0.5,
+  "training_blocks": 37946,
+  "block_size": 64,
+  "real_blocks": 18973,
+  "synthetic_blocks": 18973,
+  "real_tokens": 1214272,
+  "synthetic_tokens": 1214272,
+  "sources": {
+    "real_split": "train",
+    "real_file_sha256": "546f467e177406cd4da4571e490de15ad691b7a63ea317dfea99b219433d8c31",
+    "real_manifest_sha256": "f4989871f76309348e25ff58b787998099256369d8bcb17eb285d1948c8a9ab5",
+    "real_tokens_sha256": "f40d2891212b57f027105d0952c9725959ceb716a6a8af2064f0c359dd767a67",
+    "real_pool_blocks": 37946,
+    "synthetic_dataset": "synthetic_for_gen_09",
+    "synthetic_file_sha256": "aca28c2c22d8df820cb236f987219feb95c20e1c4ee8b1319751b3c9a6433d3b",
+    "synthetic_manifest_sha256": "ba64b80e1eaffaf39acf8a7b07169497255c5fdd7f23b26231b6706a11bcb104",
+    "synthetic_tokens_sha256": "c5b3d28e6c84a4f1f6527f6c3b1c8fd929526ae41dc4ceaf5370ba1023efa5b5",
+    "synthetic_pool_blocks": 37946,
+    "generator_weights_sha256": "997c594296b79cff52be8e313e70a4acb7b1f929ab8b81f6fe771f05df5f50fa"
+  },
+  "training_tokens_sha256": "0bfae72a0d6e83368dc0b3f950715c1243c03bbd8a729d03ff8b0301ffcefda0",
+  "files": {
+    "tokens.npy": "25efa494a3318a1ad18fd8dd32b220dbbd831528a3e406baae6dbce291bb135d",
+    "selection.json": "71a591ad2354c3cd6a8124ea83e3b29912e80209ffced121bed059f60e0098d6"
+  }
+}

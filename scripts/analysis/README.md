@@ -16,6 +16,8 @@ This replaces reliance on the original private `.state/build_mixed_acceptance.py
 
 ## Week 3 authored report and native-Docs draft
 
+For the later mixed-data comparison, `python scripts/analysis/build_mixed_comparison_report.py --out reports/20261031T163428Z-full-continued/generated/report-review` rebuilds a separate authored report and native-Docs draft from its frozen analysis. It requires a new destination and does not edit the Google Doc. The [comparison analysis](../../comparisons/continued_mixed50_vs_synthetic_final5/README.md) independently recalculates the statistics/probes.
+
 ```powershell
 python scripts/analysis/build_week3_report.py --out reports/20261030T180755Z-full-paired-final5/generated/report-review
 ```

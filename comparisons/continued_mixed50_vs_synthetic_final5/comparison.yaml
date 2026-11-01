@@ -1,0 +1,20 @@
+schema_version: 1
+comparison_id: continued_mixed50_vs_synthetic_final5
+continued_synthetic_run: 20261030T180755Z-full-paired-final5-continued
+continued_mixed_run: 20261031T163428Z-full-continued
+shared_checkpoint: historical_real_S0
+shared_initial_synthetic_pool: historical_D1
+shared_measurement_cycle: 0
+first_distinct_model_cycle: 1
+epochs_per_cycle: 5
+checkpoint_selection: final_epoch
+cycles: 10
+training_blocks_per_cycle: 37946
+synthetic_fractions: [1.0, 0.5]
+matched_environment: NVIDIA_RTX_PRO_4000_Blackwell
+limitations:
+  - One seed per condition; no across-run significance claim.
+  - Same finite real training split is resampled, not fresh external data.
+  - Output diversity covers the fixed first 256 real training prompts.
+  - Runtime bundles differ; shared training/data/selection engine identity is checked separately.
+  - No independent model re-evaluation or full mixed-token-array reconstruction in this analysis.

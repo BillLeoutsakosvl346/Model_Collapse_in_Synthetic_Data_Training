@@ -1,0 +1,46 @@
+{
+  "generation": 9,
+  "initial_weights_sha256": "997c594296b79cff52be8e313e70a4acb7b1f929ab8b81f6fe771f05df5f50fa",
+  "selected_weights_sha256": "5a6639d1f9f5f63c7e79179f09b27d4dc4b79d6e14aaa249a3ac2a815e1f38f8",
+  "input_tokens_sha256": "0bfae72a0d6e83368dc0b3f950715c1243c03bbd8a729d03ff8b0301ffcefda0",
+  "training_blocks": 37946,
+  "selected_epoch": 5,
+  "best_validation_loss": 3.9613723203267552,
+  "best_validation_epoch": 1,
+  "selected_validation_loss": 4.072116010028715,
+  "executed_epochs": 5,
+  "terminal_weights_sha256": "5a6639d1f9f5f63c7e79179f09b27d4dc4b79d6e14aaa249a3ac2a815e1f38f8",
+  "training_contract_sha256": "17a5a20d34798722a5db50ffdf30bd02f6c3d63124f7e96cd60876b516eb558e",
+  "seconds": 365.33169689704664,
+  "peak_allocated_gpu_bytes": 4216449024,
+  "checkpoint_files": {
+    "config.json": "12a0f315929756b75aa5d8da93640a87ecc8bfea16d71ce1dd9a147c607e9c97",
+    "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "model.safetensors": "b9564b6b609028f1337374b0816f4db9ce68012b968a0d244c1bd002a039e865"
+  },
+  "initialization": "continued",
+  "optimizer_initialization": "fresh_each_cycle",
+  "checkpoint_selection": "final_epoch",
+  "lineage": {
+    "initializer_weights_sha256": "997c594296b79cff52be8e313e70a4acb7b1f929ab8b81f6fe771f05df5f50fa",
+    "initializer_checkpoint": "seed_42/gen_08/checkpoint",
+    "training_dataset": "mixed_for_gen_09",
+    "training_dataset_file_sha256": "25efa494a3318a1ad18fd8dd32b220dbbd831528a3e406baae6dbce291bb135d",
+    "training_tokens_sha256": "0bfae72a0d6e83368dc0b3f950715c1243c03bbd8a729d03ff8b0301ffcefda0",
+    "generator_checkpoint": "seed_42/gen_08/checkpoint",
+    "generator_weights_sha256": "997c594296b79cff52be8e313e70a4acb7b1f929ab8b81f6fe771f05df5f50fa",
+    "branch_origin": null,
+    "mixture_manifest_sha256": "02305acf6dce918d79953c755fdc8830b1abf7c0fef650ac93485f4667a4a483",
+    "synthetic_source_dataset": "synthetic_for_gen_09",
+    "synthetic_source_tokens_sha256": "c5b3d28e6c84a4f1f6527f6c3b1c8fd929526ae41dc4ceaf5370ba1023efa5b5",
+    "mixture": {
+      "version": "block_mixture_v1",
+      "synthetic_fraction": 0.5,
+      "effective_synthetic_fraction": 0.5,
+      "real_blocks": 18973,
+      "synthetic_blocks": 18973,
+      "real_tokens": 1214272,
+      "synthetic_tokens": 1214272
+    }
+  }
+}
