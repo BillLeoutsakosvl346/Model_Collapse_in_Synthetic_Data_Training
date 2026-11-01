@@ -18,7 +18,7 @@ python -m model_collapse status 20261031T163428Z-full-continued
 
 ## Authorization and acceptance
 
-The user explicitly authorized the full mixed run and lifted the earlier cost constraint. The applied conservative limit is **USD 30 cumulative**, with a **USD 2 storage/shutdown reserve**, existing account credit only, no credit purchases and no automatic/backup payments. See the [authorization receipt](validation/2026-10-31_mixed-50-budget-authorization.json). New paid experiments require separate authorization.
+The user authorized setup and small GPU validation of a new sequential campaign: 50/50 reset, 20/80 continued, then 20/80 reset. The current limit is **USD 45 cumulative**, with a **USD 2 storage/shutdown reserve** and **USD 0.75 combined new acceptance cap** within the existing USD 3 setup allowance. Use existing credit only; no credit purchases or automatic/backup payment changes. See the [current authorization](validation/2026-11-01_mixed-campaign-budget-authorization.json). Full campaign training remains unlaunched and needs a later explicit instruction. Earlier USD 25/30 limits remain historical receipts.
 
 The accepted mixed-data runtime is `266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5`; [acceptance evidence](validation/2026-10-31_mixed-50-setup.json) covers the 50% mixture/five-epoch/final-checkpoint protocol. The [launch record](validation/2026-10-31_mixed-50-full-launch.json) documents the explicit local USD 30 operational override; the accepted runtime's historical default remains USD 25. Do not treat the default as a new authorization or alter accepted source just to change a budget parameter.
 

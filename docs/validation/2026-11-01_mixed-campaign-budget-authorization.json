@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T01:10:28.995030+00:00",
+  "authorization_source": "User selected $45 cumulative in planning, then explicitly requested implementation of the accepted mixed campaign plan.",
+  "previous_cumulative_ceiling_usd": 30.0,
+  "cumulative_ceiling_usd": 45.0,
+  "storage_shutdown_reserve_usd": 2.0,
+  "new_validation_all_attempts_ceiling_usd": 0.75,
+  "acceptance_campaign": "mixed_fraction_final5",
+  "total_setup_allowance_usd": 3.0,
+  "scope": "Implement and validate one sequential mixed-data campaign. Small GPU acceptance is authorized; full campaign remains unlaunched and requires a later explicit launch instruction.",
+  "existing_credit_only": true,
+  "credit_purchases_authorized": false,
+  "automatic_payment_changes_authorized": false,
+  "historical_ledger_bytes_preserved": {
+    "path": ".state/budget_authorizations/20261101T011028Z/ledger-before.json",
+    "sha256": "0b18e6f888a0493f89d5e667547d15b9e958d6eef8dae99ab09bdee92bc67b9c",
+    "bytes": 11928
+  },
+  "historical_receipts_unchanged": true,
+  "baseline": {
+    "tests_passed": 170,
+    "warnings": 17,
+    "seconds": 226.53,
+    "source_revision": "170bad6"
+  }
+}
