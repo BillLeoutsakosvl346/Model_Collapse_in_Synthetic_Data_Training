@@ -11,7 +11,7 @@ Cambridge Engineering IIB research on recursive synthetic-data training with OPT
 
 ## Current authorization
 
-The user explicitly authorized the ten-cycle 50/50 continued-training run `20261031T163428Z-full-continued`. Its startup was verified on 31 October 2026; inspect live state before asserting later progress or completion. Do not provision a duplicate, resume an active run or restart completed compute.
+The authorized ten-cycle 50/50 continued-training run `20261031T163428Z-full-continued` completed at 22:51:45 UTC/London on 31 October 2026. All fifty epochs retained epoch 5; provider shutdown was verified at 22:55:32, reason `complete`. The [completion receipt](docs/validation/2026-11-01_mixed-50-full-completion.json) checks 44 selected records and eleven indexed checkpoint objects; bulk recovery/re-evaluation and full analysis remain separate. Preserve its recovery volume. Do not provision a duplicate or resume completed compute.
 
 Apply the explicitly authorized **USD 30 cumulative Runpod ceiling**, including setup, failed attempts and storage, with **USD 2 reserved** for storage/shutdown and no fixed training time limit beyond the budget guard. Preserve the earlier USD 25 receipts as historical evidence. Use existing credit only: never purchase credits, enable automatic/backup payments or use paid Hugging Face compute. New paid experiments need explicit user authorization; smoke validation is also paid. See the [authorization receipt](docs/validation/2026-10-31_mixed-50-budget-authorization.json).
 

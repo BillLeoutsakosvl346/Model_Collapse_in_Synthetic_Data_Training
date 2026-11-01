@@ -1,5 +1,7 @@
 # Continued weights with 50% real / 50% synthetic targets
 
+**Completed:** `20261031T163428Z-full-continued` finished ten cycles / fifty epochs at 22:51 UTC/London on 31 October; provider shutdown verified at 22:55:32. [Completion receipt](../../../docs/validation/2026-11-01_mixed-50-full-completion.json). Full analysis is pending; selected records/checkpoint-object metadata were checked, not bulk restoration. Do not repeat the historical launch below or resume completed compute.
+
 **Full run launched on 31 October at 16:34 UTC/London:** `20261031T163428Z-full-continued`; [launch receipt](../../../docs/validation/2026-10-31_mixed-50-full-launch.json). Startup/first-epoch progress were verified, not full completion. Use [current state](../../../docs/current-state.md) before further cloud work; do not launch a duplicate. The earlier [acceptance](../../../reports/20261031T153536Z-smoke-continued/report.md) passed sixteen GPU/provider checks after 162 offline tests and independent review, with a later test-only admission regression. Historical acceptance-date budget/status statements are preserved in that report.
 
 The experiment imports the exact historical real-trained S0 and its pinned D1. At cycle 1, S0 trains on a new mixture; historical synthetic-trained S1 checkpoints are never reused. Each following selected model generates a full synthetic pool and initializes the next training cycle. AdamW and the cosine scheduler restart each cycle. All five epochs execute; epoch 5 is retained regardless of validation loss.

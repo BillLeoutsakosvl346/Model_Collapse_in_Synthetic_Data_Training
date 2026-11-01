@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "run_id": "20261031T163428Z-full-continued",
+  "condition_id": "continued_mixed_50_final5",
+  "observed_utc": "2026-11-01T00:04:39.789814+00:00",
+  "state": "complete",
+  "provider_status": "EXITED",
+  "provider_shutdown": {
+    "id": "aa1rxwnq8uwyss",
+    "desiredStatus": "EXITED",
+    "lastStatusChange": "Exited by user: Sat Oct 31 2026 22:55:32 GMT+0000 (Coordinated Universal Time)"
+  },
+  "provider_shutdown_epoch": 1793487332.0,
+  "watchdog_exit": {
+    "reason": "complete",
+    "time": 1793487329.6460292,
+    "pod_id": "aa1rxwnq8uwyss"
+  },
+  "pipeline_completed_utc": "2026-10-31T22:51:45.488145+00:00",
+  "pipeline_hours": 6.287633119159275,
+  "provisioning_to_provider_shutdown_hours": 6.350553078982565,
+  "protocol": {
+    "training_cycles": 10,
+    "epochs_per_cycle": 5,
+    "new_executed_epochs": 50,
+    "selected_epoch_each_cycle": 5,
+    "initialization": "continued",
+    "synthetic_fraction": 0.5,
+    "training_blocks_each_cycle": 37946,
+    "real_blocks": 18973,
+    "synthetic_blocks": 18973,
+    "tokens_per_block": 64
+  },
+  "checks": {
+    "complete_ten_cycles": true,
+    "fifty_epochs_finite": true,
+    "epoch5_terminal_checkpoint_each_cycle": true,
+    "continued_weight_handoffs": true,
+    "synthetic_generator_and_mixture_lineage": true,
+    "exact_50_50_training_counts": true,
+    "stage_output_hashes_match_pinned_index": true,
+    "pinned_model_repository_contains_11_checkpoints_with_matching_lfs_checksums": true,
+    "resolved_config_matches_launch": true,
+    "NLL_perplexity_arithmetic": true,
+    "provider_verified_stopped": true,
+    "watchdog_reason_complete": true,
+    "no_listed_pods_running": true
+  },
+  "test_perplexity": {
+    "S0": 33.88507148759166,
+    "S10": 62.708513215062624
+  },
+  "final_validation_perplexity": 62.16340145036116,
+  "stages": [
+    {
+      "cycle": 1,
+      "selected_epoch": 5,
+      "epochs": 5,
+      "test_perplexity": 37.26820847486589,
+      "training_tokens_sha256": "fbbfb7921f6a3c1b58030fe3d88f560eddb62cd7106f577db6c9304369d64528"
+    },
+    {
+      "cycle": 2,
+      "selected_epoch": 5,
+      "epochs": 5,
+      "test_perplexity": 39.02966524695143,
+      "training_tokens_sha256": "b2ad0f69f4b31578e2cb1498b736e3a804ebc5618a2abc5e8f2c0f645f60e530"
+    },
+    {
+      "cycle": 3,
+      "selected_epoch": 5,
+      "epochs": 5,
+      "test_perplexity": 40.90359853364293,
+      "training_tokens_sha256": "e051d0de61546d369390500bdc6a5482581a8fff2a3f16d75161f513d197ea08"
+    },
+    {
+      "cycle": 4,
+      "selected_epoch": 5,
+      "epochs": 5,
+      "test_perplexity": 43.536298212255936,
+      "training_tokens_sha256": "5bea2fb070e2cea03156e18bf7c3f71f838500455c43384bdc41e0f58a442491"
+    },
+    {
+      "cycle": 5,
+      "selected_epoch": 5,
+      "epochs": 5,
+      "test_perplexity": 46.25690803223791,
+      "training_tokens_sha256": "a0969a79c8f303905392a2ac26b7eabcf2cd6c01909303751defbf7d6df22974"
+    },
+    {
+      "cycle": 6,
+      "selected_epoch": 5,
+      "epochs": 5,
+      "test_perplexity": 48.892140640410005,
+      "training_tokens_sha256": "c1e96166d8bda076e788863d3a81189a0dcd395937507afec7937eab7489fa5b"
+    },
+    {
+      "cycle": 7,
+      "selected_epoch": 5,
+      "epochs": 5,
+      "test_perplexity": 52.30547651729876,
+      "training_tokens_sha256": "739faa29cb3e03e1f20afcdcb722c4ff4981438b549b4b3dededcc44af70bd21"
+    },
+    {
+      "cycle": 8,
+      "selected_epoch": 5,
+      "epochs": 5,
+      "test_perplexity": 55.40450636946859,
+      "training_tokens_sha256": "9c2936c559f082a8b7a87ea08f4a1c4844e912e72e3a1f81a70b326a119f57c2"
+    },
+    {
+      "cycle": 9,
+      "selected_epoch": 5,
+      "epochs": 5,
+      "test_perplexity": 59.208557010648384,
+      "training_tokens_sha256": "0bfae72a0d6e83368dc0b3f950715c1243c03bbd8a729d03ff8b0301ffcefda0"
+    },
+    {
+      "cycle": 10,
+      "selected_epoch": 5,
+      "epochs": 5,
+      "test_perplexity": 62.708513215062624,
+      "training_tokens_sha256": "116b72323e2934d8f7049712683796b9d4912ec4b37a9e38c15aad010f3cd328"
+    }
+  ],
+  "backup": {
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "revisions": {
+      "model": "5a6b793aa6fef4f68dab71a21e6e46dc9e9e120a",
+      "dataset": "18114af3178f2227babd8659db80847ace9580ac"
+    },
+    "artifact_index_sha256": "bc406d2ba1d641aefba20aca022b1b113354bab10fbf58bb08cdf420a6216120",
+    "indexed_files": 2940,
+    "indexed_bytes": 5857080018,
+    "checkpoint_files": 11,
+    "checkpoint_lfs_hashes_and_sizes_verified": true
+  },
+  "recovery_scope": {
+    "selected_metadata_files_downloaded_and_checksum_verified": 44,
+    "selected_metadata_bytes": 246706,
+    "bulk_weights_or_training_arrays_downloaded": false,
+    "independent_model_reevaluation": false,
+    "all_metadata_recovered": false
+  },
+  "resources": {
+    "pod_id": "aa1rxwnq8uwyss",
+    "volume_id": "xo027a9d51",
+    "volume_retained": true,
+    "historical_resources_preserved": true
+  },
+  "cost": {
+    "observed_account_balance_delta_usd": 3.753868191299997,
+    "observed_debit_scope": "Account balance change since launch through status observation, including concurrent retained storage and provider billing timing; not an itemized compute invoice.",
+    "current_account_spend_per_hour_usd": 0.015,
+    "running_gpu_compute": false,
+    "retained_storage_continues_billing": true,
+    "cumulative_authorized_ceiling_usd": 30.0,
+    "reserve_usd": 2.0,
+    "conservative_task_estimate_usd": 25.084902307310674,
+    "compute_ledger_closed_at_provider_shutdown": true,
+    "unrelated_launch_intervals_unchanged": true,
+    "automatic_payments_enabled": false
+  },
+  "runtime_sha256": "266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5",
+  "limitations": [
+    "Completion check verifies selected records and pinned checkpoint-object metadata, not independent bulk recovery or model re-evaluation.",
+    "Full analysis, diversity recomputation, plots and report publication remain separate work.",
+    "One seed; completion alone establishes neither collapse nor mitigation effectiveness."
+  ]
+}

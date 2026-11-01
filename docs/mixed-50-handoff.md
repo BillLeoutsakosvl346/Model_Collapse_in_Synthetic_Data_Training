@@ -1,5 +1,7 @@
 # Continued 50/50 mixture: implementation and validation handoff
 
+**Completion verified on 1 November:** `20261031T163428Z-full-continued` finished ten cycles / fifty epochs at 22:51:45 UTC/London on 31 October (6.29 hours). Provider shutdown was verified at 22:55:32, reason `complete`. Final test PPL is 62.71. The [completion receipt](validation/2026-11-01_mixed-50-full-completion.json) checks selected records and checkpoint-object metadata; full analysis and bulk recovery remain separate. The launch/setup observations below are historical. Do not relaunch or resume completed compute.
+
 **Full experiment `20261031T163428Z-full-continued` launched on 31 October at 16:34 UTC/London.** The user explicitly lifted the previous cost constraint; the launcher applied the proposed USD 30 cumulative ceiling and retained the USD 2 reserve. Pod `aa1rxwnq8uwyss` uses the matching RTX PRO 4000 Blackwell in EU-RO-1 with network volume `xo027a9d51`. Supervisor and independent watchdog startup were verified. See the [launch receipt](validation/2026-10-31_mixed-50-full-launch.json) for the final detached-progress checks and forecast. Do not launch a duplicate.
 
 Acceptance `20261031T153536Z-smoke-continued` completed two actual OPT-125M training cycles on 31 October 2026. Each cycle used 128 real + 128 synthetic 64-token blocks, trained five epochs and retained epoch 5. The full configuration has ten cycles, continued weights and 37,946 blocks per mixture (18,973 from each source). It imports exact historical S0/D1 and creates a new mixed-data S1; previous all-synthetic S1 is never reused. AdamW and the scheduler restart each cycle.
@@ -39,13 +41,13 @@ At setup handoff, the cumulative conservative ledger estimated **$20.7854**, lea
 
 ## Future launch and operations
 
-The full configuration below was used for the explicitly authorized launch. **Run `20261031T163428Z-full-continued` is active; do not execute another launch or resume an active/completed run.** The authorized local invocation set `model_collapse.remote.TOTAL_BUDGET = 30.0` before calling the unchanged launcher, preserving the GPU-accepted runtime hash. Its exact invocation and budget identity are recorded in the launch receipt.
+The full configuration below was used for the explicitly authorized launch. **Run `20261031T163428Z-full-continued` is complete; do not execute another launch or resume completed compute.** The authorized local invocation set `model_collapse.remote.TOTAL_BUDGET = 30.0` before calling the unchanged launcher, preserving the GPU-accepted runtime hash. Its exact invocation and budget identity are recorded in the launch receipt.
 
 ```powershell
 .\.venv\Scripts\python.exe -m model_collapse launch --config experiments/opt125m_wikitext2/continued_mixed_50_final5/full.yaml --generations 10
 ```
 
-For the active run, use `20261031T163428Z-full-continued` as `RUN_ID` below:
+For the completed run, use `20261031T163428Z-full-continued` as `RUN_ID` below; `verify-detached` is a historical startup check and cannot run after shutdown:
 
 ```powershell
 python -m model_collapse verify-detached RUN_ID

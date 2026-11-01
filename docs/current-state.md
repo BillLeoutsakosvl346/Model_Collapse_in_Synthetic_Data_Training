@@ -1,14 +1,16 @@
 # Current recorded state
 
-Last execution evidence: **31 October 2026, 16:39 UTC/London**, [50/50 launch receipt](validation/2026-10-31_mixed-50-full-launch.json). This is a saved observation, not a live status feed. Check provider state and completion/backup manifests before claiming subsequent progress, success or shutdown.
+Last execution evidence: **1 November 2026**, [50/50 completion receipt](validation/2026-11-01_mixed-50-full-completion.json). All ten cycles completed and actual GPU shutdown was verified. This is a saved observation, not a live status feed; retained storage remains chargeable.
 
-## Active recorded experiment
+## Latest completed experiment
 
 - Run: `20261031T163428Z-full-continued`; [50/50 continued-training protocol](../experiments/opt125m_wikitext2/continued_mixed_50_final5/README.md).
 - Ten cycles, five epochs each, retain epoch 5; 18,973 real + 18,973 synthetic 64-token blocks per training mixture. Historical S0/D1 are imported; subsequent weights continue from the preceding selected model.
-- Pod `aa1rxwnq8uwyss`, 30 GB volume `xo027a9d51`, RTX PRO 4000 Blackwell in EU-RO-1. First-epoch finite losses and epoch progress across closed SSH sessions were verified; this does not establish full completion.
-- Detached worker, supervisor, private backup route and independent watchdog were checked. Forecast: 9.37 hours / USD 5.39 conservatively; watchdog deadline 1 November 03:27 UTC/London. Forecasts are not measurements of a completed run.
-- Do not provision a duplicate or resume an active/completed run.
+- Finished at **31 October 22:51:45 UTC/London**, after **6.29 hours**. All fifty epochs were finite and each new stage retained terminal epoch 5. Final real-test PPL is **62.71**, versus S0 **33.89**; full interpretation/plots remain to do.
+- Pod `aa1rxwnq8uwyss` is **EXITED**; provider records shutdown at **22:55:32**, with watchdog reason `complete`. Preserve 30 GB volume `xo027a9d51` for recovery. All listed historical Pods were also exited at this check.
+- Pinned private backups index 2,940 files / 5,857,080,018 bytes and eleven checkpoints. Checked 44 selected records / 246,706 bytes, all stage handoffs, mixture counts and epoch histories, plus pinned checkpoint-object LFS hashes/sizes. This is not a full metadata fetch, bulk restore or independent model re-evaluation.
+- Observed account debit since launch: **USD 3.7539**, including concurrent retained storage/billing timing, not an itemized invoice. Account spend is **USD 0.015/hour** for retained storage. The compute ledger ends at provider-verified shutdown; other launch intervals are unchanged.
+- Do not provision a duplicate or resume completed compute.
 
 ```powershell
 python -m model_collapse status 20261031T163428Z-full-continued
@@ -24,8 +26,8 @@ The accepted mixed-data runtime is `266afa984a2a51b63f850390232a12b3ec98a93975ad
 
 Week 1 pretrained reset, Week 2 continued weights, the matched shared-start reset branch and both Week 3 final-epoch-5 arms are completed and analysed. Use the [reports index](../reports/README.md) for their exact identities, conclusions and verification scope. All are one-seed trajectories; their conditions are not interchangeable.
 
-Historical recovery volumes remain: Week 1 `wortjkxvr7`, continued `z6ziujxxus`, reset `08ypgkuw40`, final-epoch pair `axxpvi80iq`. The new mixed run has its own volume above. Do not delete recovery storage as repository housekeeping. Published metadata/probe audits do not establish full bulk checkpoint/dataset recovery. Storage continues to accrue until provider-verified deletion.
+Recovery volumes remain: Week 1 `wortjkxvr7`, continued `z6ziujxxus`, reset `08ypgkuw40`, final-epoch pair `axxpvi80iq` and mixed `xo027a9d51`. Do not delete recovery storage as repository housekeeping. Published metadata/probe audits do not establish full bulk checkpoint/dataset recovery. Storage continues to accrue until provider-verified deletion.
 
 ## Where to update next
 
-On a later status check, record the observation time and evidence scope here and in the [catalogue](../experiments/catalog.yaml), with a dated receipt. Add results only after verifying expected stages, checkpoints/data lineage, backups and actual provider shutdown. Preserve earlier receipts, forecasts and authored reports. The original long agent chronology is archived in [history](history/2026-10-31_agent-context.md).
+Next: fetch the remaining metadata/small probes, audit diversity and matched-condition statistics, then publish the mixed-data analysis without retraining. Bulk recovery remains a separate prerequisite to deleting recovery storage. Preserve earlier receipts, forecasts and authored reports. The original long agent chronology is archived in [history](history/2026-10-31_agent-context.md).
