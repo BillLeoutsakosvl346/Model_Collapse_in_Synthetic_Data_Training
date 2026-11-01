@@ -10,7 +10,7 @@ Cambridge Engineering IIB research with OPT-125M and WikiText-2: recursively gen
 | [Continued weights](experiments/opt125m_wikitext2/continued_from_real_s0/README.md) | Continue from the preceding selected checkpoint | [Week 2 report](reports/20261026T192740Z-full-continued/report.md) |
 | [Shared-start reset versus continue](comparisons/shared_s0_s1_reset_vs_continue/README.md) | Same S0/S1/D2; fixed-S0 reset versus continued weights | [Matched Week 2 report](reports/20261027T211852Z-full-reset-s0/report.md) |
 | [Final epoch 5 comparison](comparisons/shared_start_final_epoch5/README.md) | Retain epoch 5 in both shared-start arms | [Week 3 report](reports/20261030T180755Z-full-paired-final5/report.md) |
-| [Continued 50/50 mixture](experiments/opt125m_wikitext2/continued_mixed_50_final5/README.md) | Equal real/synthetic targets; continued epoch-5 weights | [Completed 31 October, 22:51 UTC; analysis pending](docs/validation/2026-11-01_mixed-50-full-completion.json) |
+| [Continued 50/50 mixture](experiments/opt125m_wikitext2/continued_mixed_50_final5/README.md) | Equal real/synthetic targets; continued epoch-5 weights | [Matched synthetic-only comparison](reports/20261031T163428Z-full-continued/report.md) |
 
 Use the [current-state record](docs/current-state.md) for the latest recorded authorization and status, the [catalogue](experiments/catalog.yaml) for exact run IDs/configurations, and the [reports index](reports/README.md) for results, validation and recovery scope. Week labels identify reports, not runtime modes. Existing runs use one seed; comparisons must account for their recorded hardware, checkpoint policy and shared artifacts.
 

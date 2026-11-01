@@ -6,9 +6,9 @@ Last execution evidence: **1 November 2026**, [50/50 completion receipt](validat
 
 - Run: `20261031T163428Z-full-continued`; [50/50 continued-training protocol](../experiments/opt125m_wikitext2/continued_mixed_50_final5/README.md).
 - Ten cycles, five epochs each, retain epoch 5; 18,973 real + 18,973 synthetic 64-token blocks per training mixture. Historical S0/D1 are imported; subsequent weights continue from the preceding selected model.
-- Finished at **31 October 22:51:45 UTC/London**, after **6.29 hours**. All fifty epochs were finite and each new stage retained terminal epoch 5. Final real-test PPL is **62.71**, versus S0 **33.89**; full interpretation/plots remain to do.
+- Finished at **31 October 22:51:45 UTC/London**, after **6.29 hours**. All fifty epochs were finite and each new stage retained terminal epoch 5. The [audited comparison](../reports/20261031T163428Z-full-continued/report.md) and main Google Doc now include the methods, trajectories, endpoint statistics, training diagnostics and examples.
 - Pod `aa1rxwnq8uwyss` is **EXITED**; provider records shutdown at **22:55:32**, with watchdog reason `complete`. Preserve 30 GB volume `xo027a9d51` for recovery. All listed historical Pods were also exited at this check.
-- Pinned private backups index 2,940 files / 5,857,080,018 bytes and eleven checkpoints. Checked 44 selected records / 246,706 bytes, all stage handoffs, mixture counts and epoch histories, plus pinned checkpoint-object LFS hashes/sizes. This is not a full metadata fetch, bulk restore or independent model re-evaluation.
+- Pinned private backups index 2,940 files / 5,857,080,018 bytes and eleven checkpoints. Subsequent analysis recovered all 1,563 metadata files / 52,418,722 bytes and ten new small probes / 656,640 bytes; the shared S0 probe and historical comparator evidence were reused. Twenty-one unique probes, all 100 epoch histories, handoffs, selection hashes and NLL/PPL arithmetic were checked. Bulk checkpoint/full training array recovery and independent model re-evaluation remain separate.
 - Observed account debit since launch: **USD 3.7539**, including concurrent retained storage/billing timing, not an itemized invoice. Account spend is **USD 0.015/hour** for retained storage. The compute ledger ends at provider-verified shutdown; other launch intervals are unchanged.
 - Do not provision a duplicate or resume completed compute.
 
@@ -30,4 +30,6 @@ Recovery volumes remain: Week 1 `wortjkxvr7`, continued `z6ziujxxus`, reset `08y
 
 ## Where to update next
 
-Next: fetch the remaining metadata/small probes, audit diversity and matched-condition statistics, then publish the mixed-data analysis without retraining. Bulk recovery remains a separate prerequisite to deleting recovery storage. Preserve earlier receipts, forecasts and authored reports. The original long agent chronology is archived in [history](history/2026-10-31_agent-context.md).
+The [50/50 analysis and document delivery](validation/2026-11-01_mixed-50-analysis-and-doc.json) is complete. Final real-test PPL is **62.71 versus 107.37** for five-epoch synthetic-only continued training (41.60% lower), but still above S0 **33.89**. Mixing reduces blank-line concentration and average within-output repetition; pooled distinct-2/3 remain slightly lower, and space-heavy output persists. Neither condition preserves S0 performance. All conclusions describe one seed and the fixed probe.
+
+Bulk recovery remains a separate prerequisite to deleting recovery storage. Preserve earlier receipts, forecasts and authored reports. The original long agent chronology is archived in [history](history/2026-10-31_agent-context.md).
