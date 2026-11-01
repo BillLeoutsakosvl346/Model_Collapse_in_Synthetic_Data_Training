@@ -16,4 +16,4 @@ Keep shared definitions here, scientific settings beside their named experiment/
 
 [October 31 cleanup verification](validation/2026-10-31_repository-cleanup.json) records the unchanged evidence/runtime/control hashes, private document moves, offline report rebuilding and 170 passed tests.
 
-The [mixed-campaign handoff](mixed-campaign-handoff.md) and [1 November setup receipt](validation/2026-11-01_mixed-campaign-setup.json) record the newer 345-test baseline, three-job GPU validation, recovery and full-launch readiness. Full campaign training remains unlaunched.
+The [mixed-campaign handoff](mixed-campaign-handoff.md) and [1 November setup receipt](validation/2026-11-01_mixed-campaign-setup.json) record the newer 345-test baseline, three-job GPU validation, recovery and full-launch readiness. The full campaign was subsequently authorized and [launched](validation/2026-11-01_mixed-campaign-full-launch.json); its current state is recorded separately from setup acceptance.

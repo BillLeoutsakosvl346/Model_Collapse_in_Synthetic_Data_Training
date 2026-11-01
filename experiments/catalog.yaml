@@ -10,7 +10,7 @@ conditions:
     checkpoint_selection: final_epoch
     epochs: 5
     synthetic_fraction: 0.50
-    state: prepared_campaign_validated
+    state: campaign_active
     implementation_commit: 92481b7671f73881f3f6ddadbe81378815b57bc8
     accepted_runtime_sha256: 35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171
     acceptance_run_id: 20261101T022210Z-smoke-mixed-campaign
@@ -19,7 +19,7 @@ conditions:
     acceptance_report: ../reports/20261101T022210Z-smoke-mixed-campaign/report.md
     validation_record: ../docs/validation/2026-11-01_mixed-campaign-setup.json
     recovery_scope: campaign_bulk_verified_remotely_and_smoke_arrays_locally
-    campaign_launch_readiness: ready_at_setup_receipt_prices_and_balance
+    campaign_launch_readiness: admitted_and_startup_verified_budget_guard_active
     offline_suite_tests_passed: 345
     review_record: ../docs/validation/2026-11-01_mixed-campaign-recovery-review.json
     source_run_id: 20261031T163428Z-full-continued
@@ -30,14 +30,19 @@ conditions:
     smoke_config: opt125m_wikitext2/reset_mixed_50_final5/smoke.yaml
     campaign: ../comparisons/mixed_fraction_final5/full.yaml
     handoff: ../docs/mixed-campaign-handoff.md
-    full_run_launched: false
+    full_run_launched: true
+    full_campaign_run_id: 20261101T030306Z-full-mixed-campaign
+    full_logical_run_id: 20261101T030306Z-full-mixed-campaign-reset-mixed50
+    job_state_at_launch: running
+    full_launch_record: ../docs/validation/2026-11-01_mixed-campaign-full-launch.json
+
   continued_mixed_20_final5:
     name: "OPT-125M / WikiText-2: continued weights, 20% synthetic targets, final epoch 5"
     initialization: continued
     checkpoint_selection: final_epoch
     epochs: 5
     synthetic_fraction: 0.20
-    state: prepared_campaign_validated
+    state: campaign_active
     implementation_commit: 92481b7671f73881f3f6ddadbe81378815b57bc8
     accepted_runtime_sha256: 35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171
     acceptance_run_id: 20261101T022210Z-smoke-mixed-campaign
@@ -46,7 +51,7 @@ conditions:
     acceptance_report: ../reports/20261101T022210Z-smoke-mixed-campaign/report.md
     validation_record: ../docs/validation/2026-11-01_mixed-campaign-setup.json
     recovery_scope: campaign_bulk_verified_remotely_and_smoke_arrays_locally
-    campaign_launch_readiness: ready_at_setup_receipt_prices_and_balance
+    campaign_launch_readiness: admitted_and_startup_verified_budget_guard_active
     offline_suite_tests_passed: 345
     review_record: ../docs/validation/2026-11-01_mixed-campaign-recovery-review.json
     first_new_cycle: 1
@@ -55,14 +60,19 @@ conditions:
     smoke_config: opt125m_wikitext2/continued_mixed_20_final5/smoke.yaml
     campaign: ../comparisons/mixed_fraction_final5/full.yaml
     handoff: ../docs/mixed-campaign-handoff.md
-    full_run_launched: false
+    full_run_launched: true
+    full_campaign_run_id: 20261101T030306Z-full-mixed-campaign
+    full_logical_run_id: 20261101T030306Z-full-mixed-campaign-continued-mixed20
+    job_state_at_launch: queued
+    full_launch_record: ../docs/validation/2026-11-01_mixed-campaign-full-launch.json
+
   reset_mixed_20_final5:
     name: "OPT-125M / WikiText-2: fixed-S0 reset, 20% synthetic targets, final epoch 5"
     initialization: reset_s0
     checkpoint_selection: final_epoch
     epochs: 5
     synthetic_fraction: 0.20
-    state: prepared_campaign_validated
+    state: campaign_active
     implementation_commit: 92481b7671f73881f3f6ddadbe81378815b57bc8
     accepted_runtime_sha256: 35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171
     acceptance_run_id: 20261101T022210Z-smoke-mixed-campaign
@@ -71,7 +81,7 @@ conditions:
     acceptance_report: ../reports/20261101T022210Z-smoke-mixed-campaign/report.md
     validation_record: ../docs/validation/2026-11-01_mixed-campaign-setup.json
     recovery_scope: campaign_bulk_verified_remotely_and_smoke_arrays_locally
-    campaign_launch_readiness: ready_at_setup_receipt_prices_and_balance
+    campaign_launch_readiness: admitted_and_startup_verified_budget_guard_active
     offline_suite_tests_passed: 345
     review_record: ../docs/validation/2026-11-01_mixed-campaign-recovery-review.json
     shared_with_condition: continued_mixed_20_final5
@@ -82,7 +92,11 @@ conditions:
     smoke_config: opt125m_wikitext2/reset_mixed_20_final5/smoke.yaml
     campaign: ../comparisons/mixed_fraction_final5/full.yaml
     handoff: ../docs/mixed-campaign-handoff.md
-    full_run_launched: false
+    full_run_launched: true
+    full_campaign_run_id: 20261101T030306Z-full-mixed-campaign
+    full_logical_run_id: 20261101T030306Z-full-mixed-campaign-reset-mixed20
+    job_state_at_launch: queued
+    full_launch_record: ../docs/validation/2026-11-01_mixed-campaign-full-launch.json
   continued_mixed_50_final5:
     name: "OPT-125M / WikiText-2: continued weights, 50% synthetic / 50% real targets"
     initialization: continued

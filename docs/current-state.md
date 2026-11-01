@@ -1,6 +1,18 @@
 # Current recorded state
 
-Last execution evidence: **1 November 2026**, [mixed-campaign setup receipt](validation/2026-11-01_mixed-campaign-setup.json). Validation completed, compute stopped and temporary resources were removed. The full campaign is unlaunched. This is a saved observation, not a live status feed; historical retained storage remains chargeable.
+Last execution evidence: **1 November 2026**, [full mixed-campaign launch](validation/2026-11-01_mixed-campaign-full-launch.json). The campaign is running with verified detached startup. This is a saved observation, not a live status feed; check status before acting.
+
+## Current running campaign
+
+- Parent `20261101T030306Z-full-mixed-campaign`; Pod `faocwszff0eaq6`, 60 GB Standard volume `11hvbmunz5`, EU-RO-1. Matching RTX PRO 4000 Blackwell costs USD 0.57/hour; pinned image/software/CUDA/BF16 checks and private backup probes passed.
+- Started at **03:03 UTC/London**. First job is 50/50 reset, cycle 2; its first full training stage subsequently completed all five epochs, retained epoch 5 and moved to next-pool generation. The initial startup check had independently observed two finite new epochs. Exact full M2 has 18,973 real + 18,973 synthetic blocks and its original token/selection identity. The supervisor and independent watchdog advanced across closed SSH sessions. The laptop is no longer required.
+- One coordinator runs reset50 cycles 2–10, continued20 cycles 1–10, then reset20 cycles 2–10: 28 new stages / 140 epochs, retaining epoch 5. Later jobs were queued at this check. Do not provision a duplicate or resume active compute.
+- The admission forecast was 24.09h / USD 13.93. The rented GPU's live benchmark is slower: **26.40h / USD 15.27** conservatively, versus **25.64h** funded watchdog coverage, ending **2 November 04:41 UTC/London**. Historical runs suggest 17–21h may be feasible, but a slow campaign can pause before all jobs finish. The USD 45 cumulative ceiling and USD 2 reserve were not raised or relaxed.
+- Outputs go to the new volume and private per-job Hugging Face backups. Historical volumes remain untouched. Startup verification is not completion or a final backup audit.
+
+```powershell
+python -m model_collapse status 20261101T030306Z-full-mixed-campaign
+```
 
 ## Latest completed experiment
 
@@ -18,7 +30,7 @@ python -m model_collapse status 20261031T163428Z-full-continued
 
 ## Authorization and acceptance
 
-The user authorized setup and small GPU validation of a new sequential campaign: 50/50 reset, 20/80 continued, then 20/80 reset. The current limit is **USD 45 cumulative**, with a **USD 2 storage/shutdown reserve** and **USD 0.75 combined new acceptance cap** within the existing USD 3 setup allowance. Use existing credit only; no credit purchases or automatic/backup payment changes. See the [current authorization](validation/2026-11-01_mixed-campaign-budget-authorization.json). Full campaign training remains unlaunched and needs a later explicit instruction. Earlier USD 25/30 limits remain historical receipts.
+The user authorized setup and small GPU validation of a new sequential campaign: 50/50 reset, 20/80 continued, then 20/80 reset. The current limit is **USD 45 cumulative**, with a **USD 2 storage/shutdown reserve** and **USD 0.75 combined new acceptance cap** within the existing USD 3 setup allowance. Use existing credit only; no credit purchases or automatic/backup payment changes. See the [current authorization](validation/2026-11-01_mixed-campaign-budget-authorization.json). The user subsequently explicitly authorized the full campaign; its verified launch is recorded above. Earlier USD 25/30 limits remain historical receipts.
 
 The latest accepted campaign runtime is `35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171`, protocol `770a627c02821b1301f3194268e65fb9635eccdc6a43e639477d886f26dac377`. The campaign uses its authorized private-ledger ceiling. Historical [50/50 acceptance](validation/2026-10-31_mixed-50-setup.json) and its [USD 30 launch override](validation/2026-10-31_mixed-50-full-launch.json) retain their original runtime and scope; they do not certify the new campaign.
 
@@ -31,7 +43,7 @@ The latest accepted campaign runtime is `35c89c3b9fb78c7967c4f62f07972739eabbe57
 - All new validation/recovery attempts conservatively total **USD 0.46846**, within USD 0.75; observed whole-account debit was **USD 0.42162**, including concurrent historical storage/billing timing. The cumulative ledger estimated USD 25.59434 at reconciliation.
 - The full 28-stage / 140-epoch batch is **technically validated and affordable at the recorded prices/credit**: forecast **24.09 hours / USD 13.93** running cost, plus approximately USD 0.35 retained historical storage. Padded watchdog requirement **USD 16.0231** fits the **USD 17.0592** session allowance, covering **25.64 hours**, with USD 2 reserved. Matching GPU stock was available at USD 0.57/hour. These are estimates and saved availability, not a full-run completion claim.
 
-The command in the handoff remains unexecuted. Full launch requires a separate instruction and fresh admission. Final-runtime provider-session resume checks were exercised offline; actual GPU acceptance exercised worker/coordinator restarts within one provider session. Historical full-run bulk recovery remains separate.
+The command in the handoff was subsequently executed once after explicit authorization. The campaign is now active; do not run it again. Final-runtime provider-session resume checks were exercised offline; actual GPU acceptance exercised worker/coordinator restarts within one provider session. Historical full-run bulk recovery remains separate.
 
 ## Completed work and recovery
 

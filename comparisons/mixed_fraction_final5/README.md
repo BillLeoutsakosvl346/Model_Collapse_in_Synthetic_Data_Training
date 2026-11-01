@@ -1,6 +1,6 @@
 # Mixed-data reset/continued campaign
 
-**Setup validated on 1 November; full training is unlaunched.** Acceptance `20261101T022210Z-smoke-mixed-campaign` passed all ten parent checks and all child audits after 345 offline tests and fresh independent review. Technical readiness and affordability passed at the recorded prices/balance. [Validation report](../../reports/20261101T022210Z-smoke-mixed-campaign/report.md) · [Setup receipt](../../docs/validation/2026-11-01_mixed-campaign-setup.json) · [Handoff](../../docs/mixed-campaign-handoff.md). This campaign runs three logical experiments under one detached coordinator, one GPU Pod, one 60 GB Standard network volume, one cost interval and one independent watchdog deadline.
+**Full campaign `20261101T030306Z-full-mixed-campaign` launched on 1 November and passed detached startup.** [Launch record](../../docs/validation/2026-11-01_mixed-campaign-full-launch.json). Do not launch a duplicate; later jobs run automatically. The live conservative forecast is 26.40h versus a 25.64h funded guard, so a slow run may pause. Setup was validated before this launch. Acceptance `20261101T022210Z-smoke-mixed-campaign` passed all ten parent checks and all child audits after 345 offline tests and fresh independent review. Technical readiness and affordability passed at the recorded prices/balance. [Validation report](../../reports/20261101T022210Z-smoke-mixed-campaign/report.md) · [Setup receipt](../../docs/validation/2026-11-01_mixed-campaign-setup.json) · [Handoff](../../docs/mixed-campaign-handoff.md). This campaign runs three logical experiments under one detached coordinator, one GPU Pod, one 60 GB Standard network volume, one cost interval and one independent watchdog deadline.
 
 | Ordered job | Source and initializer | New full stages | Blocks per mixture: real / synthetic |
 | --- | --- | --- | --- |
@@ -30,7 +30,7 @@ python -m model_collapse smoke --config comparisons/mixed_fraction_final5/smoke.
 
 For a later full run, use its returned parent campaign ID for `status`, `fetch --metadata-only`, `report`, `resume` and `cleanup`. `verify-detached` applies while that Pod is active. Children have distinct logical IDs but no independent provider resources or shutdown deadlines. Resume only unfinished stopped campaigns. Cleanup requires verified recovery of all three jobs. Metadata-only fetching leaves weights/full arrays in private cloud storage.
 
-Future full launch, **not executed during setup**:
+Full command, executed once after setup and explicit authorization; **do not repeat while active**:
 
 ```powershell
 python -m model_collapse launch --config comparisons/mixed_fraction_final5/full.yaml --generations 10

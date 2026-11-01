@@ -1,6 +1,6 @@
 # Three-experiment mixed-data campaign: setup handoff
 
-**Setup completed on 1 November 2026: technically validated and affordable at the recorded prices/balance. The full campaign is unlaunched.** Acceptance `20261101T022210Z-smoke-mixed-campaign` passed all three jobs and the parent GPU/provider checks. [Setup receipt](validation/2026-11-01_mixed-campaign-setup.json) · [Validation report and figures](../reports/20261101T022210Z-smoke-mixed-campaign/report.md).
+**Full campaign `20261101T030306Z-full-mixed-campaign` launched on 1 November after explicit authorization; detached startup passed.** [Launch receipt](validation/2026-11-01_mixed-campaign-full-launch.json). Do not start a duplicate. The setup results below remain the recorded acceptance evidence. Acceptance `20261101T022210Z-smoke-mixed-campaign` passed all three jobs and the parent GPU/provider checks. [Setup receipt](validation/2026-11-01_mixed-campaign-setup.json) · [Validation report and figures](../reports/20261101T022210Z-smoke-mixed-campaign/report.md).
 
 The [campaign definition](../comparisons/mixed_fraction_final5/README.md) runs 50/50 reset, 20/80 continued and 20/80 reset sequentially on one matching RTX PRO 4000 Blackwell GPU and a new 60 GB Standard network volume. It has one authoritative resource owner, ledger interval, supervisor/watchdog and deadline. Historical recovery resources remain preserved.
 
@@ -46,7 +46,7 @@ All new validation attempts closed at a conservative **$0.468458**, below $0.75.
 | Complete final-runtime GPU/provider acceptance | Passed |
 | Temporary-resource cleanup and recovery verification | Passed |
 | Full-batch affordability | Passed at the setup receipt's recorded credit and prices |
-| Full training | Unlaunched; requires a separate instruction |
+| Full training | Running after explicit authorization; first job reset50 |
 
 ## Measured throughput and conditional full forecast
 
@@ -62,6 +62,14 @@ The final continued20 worker's warmed production-batch benchmark measured **38,0
 
 This conditional estimate uses the observed $0.57/hour GPU rate plus 60 GB Standard network storage and 20 GB container storage, giving $0.578493/hour. Admission requires **$16.0231 of watchdog allowance**; the recorded allowance after historical-storage reservation was **$17.0592**, providing **25.64 hours** at the 15%-padded guard rate against the **24.09-hour** forecast. Existing retained volumes add approximately **$0.35** during that forecast, separately from the new running volume. Seven days of the new 60 GB volume costs approximately **$0.97**, covered within the $2 reserve. Matching hardware was available with LOW stock in EU-RO-1 at the check. Historical execution suggests 17–21 hours may be feasible, but it is not the admission forecast or a guarantee. Live prices, credit and stock are rechecked at launch.
 
+## Full launch update
+
+Campaign `20261101T030306Z-full-mixed-campaign` is active on Pod `faocwszff0eaq6`, with 60 GB volume `11hvbmunz5`. Two actual new cycle-2 epochs were finite at startup, exact historical full M2 matched, and detached progress plus fresh supervisor/watchdog heartbeats passed. A later check verified completion of the first full five-epoch stage, retained epoch 5 and generation of its next synthetic pool. This supersedes the setup-only unlaunched state.
+
+The rented GPU benchmark gives a **26.40h / USD 15.27** conservative forecast, slower than the **24.09h / USD 13.93** admission estimate above. The unchanged USD 17.0574 session allowance funds **25.64h**, ending **2 November 04:41 UTC/London**. Historical runs suggest 17–21h, but the current conservative forecast exceeds that funded runtime window: a slow run can pause before all three jobs finish. No budget ceiling, reserve or watchdog relaxation was made.
+
+Use the parent ID for status, fetch, report and eventual recovery. Do not resume an active or completed campaign. Training, backups and shutdown no longer depend on the laptop or Codex session.
+
 ## Commands
 
 The validation commands below describe the **already completed** acceptance. Repeating GPU smoke is paid and is not required to launch the accepted full campaign:
@@ -72,12 +80,12 @@ python -m model_collapse smoke --config comparisons/mixed_fraction_final5/smoke.
 
 Do not resume or relaunch the completed smoke. Its temporary resources are already removed. Offline reports can be regenerated into a new destination without training; published evidence remains unchanged.
 
-Future full launch, left unexecuted during setup:
+Full command, executed once after setup and explicit authorization; **do not repeat while active**:
 
 ```powershell
 python -m model_collapse launch --config comparisons/mixed_fraction_final5/full.yaml --generations 10
 ```
 
-For a later full run, use its returned campaign ID for `status`, `fetch --metadata-only`, `report`, `resume` and `cleanup`, not a child logical ID. `verify-detached` applies while that Pod is active. Resume only unfinished stopped work. Failure or budget pause blocks subsequent jobs; completed stages remain unchanged across recovery. Cleanup requires verified recovery of all three jobs. Metadata-only fetching leaves bulk checkpoints/full arrays in the cloud.
+For the active full run, use its returned campaign ID for `status`, `fetch --metadata-only`, `report`, `resume` and `cleanup`, not a child logical ID. `verify-detached` applies while that Pod is active. Resume only unfinished stopped work. Failure or budget pause blocks subsequent jobs; completed stages remain unchanged across recovery. Cleanup requires verified recovery of all three jobs. Metadata-only fetching leaves bulk checkpoints/full arrays in the cloud.
 
 The eventual launcher returns after detached supervision, the independent watchdog and actual progress are verified. At that point closing the laptop does not stop the campaign. Completion/failure/budget exhaustion stops compute; the volume remains until recovery and explicit cleanup. Published historical evidence, private credentials and recovery resources remain preserved.

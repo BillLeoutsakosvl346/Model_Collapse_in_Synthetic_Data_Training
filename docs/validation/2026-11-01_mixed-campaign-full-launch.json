@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T03:03:08.483006+00:00",
+  "user_authorization": "User explicitly requested starting the validated full campaign and confirming detached healthy training.",
+  "run_id": "20261101T030306Z-full-mixed-campaign",
+  "status": "running_startup_verified_not_complete",
+  "first_active_job": "reset50",
+  "first_new_cycle": 2,
+  "pod_id": "faocwszff0eaq6",
+  "volume_id": "11hvbmunz5",
+  "network_volume_gb": 60,
+  "mount_path": "/workspace",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "data_center": "EU-RO-1",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "template_source": "Authenticated official runpod-torch-v280 catalog read; exact pinned image matched.",
+  "stock_at_preflight": "LOW",
+  "gpu_hourly_usd": 0.57,
+  "volume_hourly_usd": 0.005753424657534247,
+  "created_epoch": 1793502188.4830065,
+  "runtime_sha256": "35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171",
+  "deployment_git_commit": "bcb041f14f35482627f9582e08496cdb314d3173",
+  "resolved_config_sha256": "e4f84f282887322062c18236a0f7b854dc039e3ed17a76f3100244949b5eb567",
+  "accepted_smoke_run_id": "20261101T022210Z-smoke-mixed-campaign",
+  "checks": {
+    "accepted_runtime_unchanged": true,
+    "pinned_sources_verified_before_provisioning": true,
+    "private_hub_roundtrips_passed": true,
+    "matching_cuda_bf16_and_packages": true,
+    "detached_supervisor_watchdog_and_actual_training": true,
+    "new_finite_epoch_after_import": true,
+    "progress_across_closed_ssh_connections": true,
+    "full_historical_m2_tokens_and_selection_match": true,
+    "mixture_18973_real_plus_18973_synthetic": true,
+    "fresh_independent_ssh_read_verified": true
+  },
+  "detached_receipt_sha256": "5677a98331561b08bb797548a50e8b03eb7754495a631ca89389c48ab7bc93c3",
+  "startup_snapshot_sha256": "5ea031c58be41befe923d3f4f7cfd557fc79793847fb7d8f4ca734dc365d4324",
+  "observed_new_epochs": 2,
+  "epoch_observations": [
+    {
+      "epoch": 1,
+      "learning_rate": 2e-05,
+      "train_loss": 2.252819330510207,
+      "validation_loss": 3.582692033430407,
+      "train_seconds": 75.71140659693629,
+      "training_target_tokens_per_second": 31575.136527667382
+    },
+    {
+      "epoch": 2,
+      "learning_rate": 1.8185661446562e-05,
+      "train_loss": 2.1425976752229565,
+      "validation_loss": 3.5865295670521875,
+      "train_seconds": 75.12418486690149,
+      "training_target_tokens_per_second": 31821.94927286671
+    }
+  ],
+  "mixture_training_tokens_sha256": "b2ad0f69f4b31578e2cb1498b736e3a804ebc5618a2abc5e8f2c0f645f60e530",
+  "active_mixture_scope": "full_source",
+  "shared_mixture_proof": {
+    "schema_version": 1,
+    "source_run_id": "20261031T163428Z-full-continued",
+    "source_identity": "3c9dcab9d0961822ba75ecf571fce96a6d70282463017e8b5469eefd5184d83b",
+    "source_kind": "full",
+    "source_blocks": 37946,
+    "active_blocks": 37946,
+    "synthetic_fraction": 0.5,
+    "full_cycle1_reconstructed": true,
+    "full_cycle2_reconstructed": true,
+    "full_cycle1_training_tokens_sha256": "fbbfb7921f6a3c1b58030fe3d88f560eddb62cd7106f577db6c9304369d64528",
+    "full_cycle2_training_tokens_sha256": "b2ad0f69f4b31578e2cb1498b736e3a804ebc5618a2abc5e8f2c0f645f60e530",
+    "source_cycle2_training_tokens_sha256": "b2ad0f69f4b31578e2cb1498b736e3a804ebc5618a2abc5e8f2c0f645f60e530",
+    "source_cycle2_selection_sha256": "0a88105ac34aa7fb4cf4654591c48907208b46b89bb489322c75298bf2cc4c1b",
+    "active_cycle2_training_tokens_sha256": "b2ad0f69f4b31578e2cb1498b736e3a804ebc5618a2abc5e8f2c0f645f60e530",
+    "active_cycle2_selection_sha256": "0a88105ac34aa7fb4cf4654591c48907208b46b89bb489322c75298bf2cc4c1b",
+    "active_scope": "full_source",
+    "active_cycle2_matches_source": true,
+    "operational_manifest_differs": true
+  },
+  "workload": {
+    "ordered_jobs": [
+      "reset50",
+      "continued20",
+      "reset20"
+    ],
+    "new_training_stages": 28,
+    "epochs": 140,
+    "epochs_per_stage": 5,
+    "checkpoint_selection": "final_epoch",
+    "all_jobs_last_cycle": 10,
+    "jobs": {
+      "reset50": "20261101T030306Z-full-mixed-campaign-reset-mixed50",
+      "continued20": "20261101T030306Z-full-mixed-campaign-continued-mixed20",
+      "reset20": "20261101T030306Z-full-mixed-campaign-reset-mixed20"
+    }
+  },
+  "budget": {
+    "authorized_cumulative_ceiling_usd": 45,
+    "reserve_usd": 2,
+    "admitted_session_allowance_usd": 17.057434024421095,
+    "guard_hourly_usd": 0.6652671232876711,
+    "effective_hours_from_provisioning": 25.63997742758857,
+    "guard_deadline_utc": "2026-11-02T04:41:32.401746+00:00",
+    "credits_purchased": false,
+    "payment_settings_changed": false,
+    "automatic_and_backup_payments_disabled_at_preflight": true,
+    "admission_forecast": {
+      "jobs": {
+        "reset50": {
+          "synthetic_generations": 10,
+          "initialization": "reset_s0",
+          "estimated_hours": 7.53736315218272,
+          "estimated_compute_and_running_storage_usd": 4.360312957762688,
+          "new_training_stages": 9,
+          "new_full_generation_stages": 8,
+          "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+        },
+        "continued20": {
+          "synthetic_generations": 10,
+          "initialization": "continued",
+          "estimated_hours": 8.51041521663002,
+          "estimated_compute_and_running_storage_usd": 4.923216912305284,
+          "new_training_stages": 10,
+          "new_full_generation_stages": 9,
+          "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+        },
+        "reset20": {
+          "synthetic_generations": 10,
+          "initialization": "reset_s0",
+          "estimated_hours": 7.53736315218272,
+          "estimated_compute_and_running_storage_usd": 4.360312957762688,
+          "new_training_stages": 9,
+          "new_full_generation_stages": 8,
+          "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+        }
+      },
+      "estimated_hours": 24.08514152099546,
+      "estimated_compute_and_running_storage_usd": 13.933089403173126,
+      "new_training_stages": 28,
+      "new_full_generation_stages": 25,
+      "epochs_per_stage": 5,
+      "executed_epochs": 140,
+      "verified_completed_jobs": [],
+      "method": "Three sequential jobs; imported reset50 prefix and shared new continued20/reset20 prefix. Warmed production batches, 1.5x compute margin, setup/checkpoint/upload and two handoff allowances. Imported model/data work is excluded.",
+      "historical_storage_during_run_usd": 0.3464301177672837,
+      "padded_watchdog_required_usd": 16.023052813649095
+    },
+    "live_first_job_benchmark_forecast": {
+      "jobs": {
+        "reset50": {
+          "synthetic_generations": 10,
+          "initialization": "reset_s0",
+          "estimated_hours": 8.279104650534219,
+          "estimated_compute_and_running_storage_usd": 4.7894053341378084,
+          "new_training_stages": 9,
+          "new_full_generation_stages": 8,
+          "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+        },
+        "continued20": {
+          "synthetic_generations": 10,
+          "initialization": "continued",
+          "estimated_hours": 9.344570032992783,
+          "estimated_compute_and_running_storage_usd": 5.405769760181989,
+          "new_training_stages": 10,
+          "new_full_generation_stages": 9,
+          "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+        },
+        "reset20": {
+          "synthetic_generations": 10,
+          "initialization": "reset_s0",
+          "estimated_hours": 8.279104650534219,
+          "estimated_compute_and_running_storage_usd": 4.7894053341378084,
+          "new_training_stages": 9,
+          "new_full_generation_stages": 8,
+          "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+        }
+      },
+      "estimated_hours": 26.402779334061222,
+      "estimated_compute_and_running_storage_usd": 15.273827003800072,
+      "new_training_stages": 28,
+      "new_full_generation_stages": 25,
+      "epochs_per_stage": 5,
+      "executed_epochs": 140,
+      "verified_completed_jobs": [],
+      "method": "Three sequential jobs; imported reset50 prefix and shared new continued20/reset20 prefix. Warmed production batches, 1.5x compute margin, setup/checkpoint/upload and two handoff allowances. Imported model/data work is excluded."
+    },
+    "live_benchmark_padded_requirement_usd": 17.564901054370083,
+    "live_benchmark_conservative_hours_exceed_funded_guard": true,
+    "live_estimate_note": "The rented GPU benchmark is slower than validation: 26.40h/$15.27 conservative forecast versus the 24.09h/$13.93 admission estimate. The unchanged funded guard covers 25.64h. Historical execution suggests 17\u201321h, but a slow run can pause before all jobs finish. No budget increase or guard relaxation was made."
+  },
+  "recovery": {
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "checkpoint_and_metrics_location": "One 60 GB network volume plus per-stage private Hugging Face backups.",
+    "shutdown": "Independent remote API watchdog stops on completion/failure/budget exhaustion; volume retained for recovery.",
+    "laptop_required_after_verified_startup": false
+  },
+  "completion_claim": false,
+  "do_not_launch_duplicate_or_resume_active_campaign": true,
+  "receipt_recorded_utc": "2026-11-01T03:12:13.975475+00:00",
+  "verified_observation_utc": "2026-11-01T03:09:17.420601+00:00",
+  "later_verified_milestone": {
+    "observed_epoch": 1793502893.035232,
+    "first_job": "reset50",
+    "cycle": 2,
+    "actual_epochs": 5,
+    "selected_epoch": 5,
+    "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+    "selected_weights_sha256": "dc18b0dd04a96ec13f93d641442c67f239d006b99cb73c204569b75b31f77c73",
+    "current_status": {
+      "state": "running",
+      "generation": 2,
+      "stage": "generation",
+      "pid": 305,
+      "time": 1793502774.2888858
+    },
+    "scope": "First full training stage completed; its next synthetic pool is being generated. This is not campaign completion."
+  }
+}
