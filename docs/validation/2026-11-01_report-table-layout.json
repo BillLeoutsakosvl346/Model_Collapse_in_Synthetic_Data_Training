@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T00:46:36.697758+00:00",
+  "change": "Formatting-only repair of split bullet lists around native tables in the research Google Doc.",
+  "document_id": "1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk",
+  "tab_id": "t.0",
+  "previous_delivery_receipt": "2026-11-01_mixed-50-analysis-and-doc.json",
+  "edits": [
+    "Move the final-epoch comparison equal-data bullet before its recursive-protocol block so its methodology bullets precede Table 12.",
+    "Move the 50/50 sampling and token-accounting bullets into the existing methodology list before Table 15.",
+    "Add Interpretation and Interpretation and limitations subheadings after Tables 16 and 17.",
+    "Match existing bullet indentation and remove a trailing table-spacer page overflow."
+  ],
+  "content_preservation": {
+    "all_original_paragraphs_preserved": true,
+    "all_17_native_tables_text_unchanged": true,
+    "all_existing_image_ids_preserved": true,
+    "remaining_sections_with_bullets_both_sides_of_tables": [],
+    "new_headings": [
+      "Interpretation and limitations",
+      "Interpretation"
+    ],
+    "before_revision": "AHj4eMRYoxfRc5K37iiybWZd1PswqzsHYI7546sHQibfNiqkrZpuV2vYC3la-feeOdF0L0ZPYx_su_EpTBlauUzhcQSL3XupycJy2MGVlSY",
+    "after_revision": "AHj4eMQnIphee19QnDmbauRqx0MB9XR47R7MnTDPapdpG38u6JNqCB1TLFHQVbIpfjrXGAflM4yS75iEeho2fTpzPci--KrQffOgL0GTZ7E",
+    "document_url": "https://docs.google.com/document/d/1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk"
+  },
+  "rendered_pdf": {
+    "total_pages": 27,
+    "rendered_pages": [
+      16,
+      22,
+      24,
+      27
+    ],
+    "blank_pages": [],
+    "pdf_sha256": "01a03da881ac05d38ce6db73070a753e2fe4ddf7c381816310f6b73daeb29f85"
+  },
+  "visual_qa": "Pages 16, 22, 24 and 27 inspected; lists are grouped, table/caption blocks are separate, no clipping or extra blank pages.",
+  "private_verification_files": [
+    {
+      "path": ".state/doc_layout_20261101/before.json",
+      "bytes": 757030,
+      "sha256": "751955da39cdcfb0d3b5d5398f681bcc36bb0410c6846c5496367e1fd590967e"
+    },
+    {
+      "path": ".state/doc_layout_20261101/final.json",
+      "bytes": 758128,
+      "sha256": "5df3b7bddb695ab02876fe2732349690304a9c8e52cb7a6f6f739021dc5faf0a"
+    },
+    {
+      "path": ".state/doc_layout_20261101/after_v2.pdf",
+      "bytes": 3062572,
+      "sha256": "01a03da881ac05d38ce6db73070a753e2fe4ddf7c381816310f6b73daeb29f85"
+    },
+    {
+      "path": ".state/doc_layout_20261101/page_v2_16.png",
+      "bytes": 139990,
+      "sha256": "fcfbc5a9c3297ea9c9f61be09d3601f99c47811cfca9b02138cb74cdeb77efaa"
+    },
+    {
+      "path": ".state/doc_layout_20261101/page_v2_22.png",
+      "bytes": 152162,
+      "sha256": "2d686243ff712c329afea2393cb5a90d7a7af8c09262432054c82a8e8db35e2a"
+    },
+    {
+      "path": ".state/doc_layout_20261101/page_v2_24.png",
+      "bytes": 131102,
+      "sha256": "4c76a8a77065af28a8a26d7b2a9ed830dac512e59749c5b957dde851623032d9"
+    },
+    {
+      "path": ".state/doc_layout_20261101/page_v2_27.png",
+      "bytes": 162346,
+      "sha256": "9907700ea730a5a65a8032534bd49199d28ec5aa225ce64580d0a35e8639e279"
+    }
+  ],
+  "scientific_changes": false,
+  "historical_published_artifacts_modified": false,
+  "cloud_compute_or_storage_changes": false
+}
