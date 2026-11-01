@@ -16,6 +16,16 @@ This replaces reliance on the original private `.state/build_mixed_acceptance.py
 
 ## Week 3 authored report and native-Docs draft
 
+The three-fraction continued comparison and the larger square 50/50 presentation revision reproduce offline:
+
+```powershell
+python comparisons/mixed_fraction_final5/analyse_continued_fractions.py --out reports/20261101T030306Z-full-mixed-campaign-continued-mixed20/generated/audit-review
+python scripts/analysis/build_continued_fraction_report.py --out reports/20261101T030306Z-full-mixed-campaign-continued-mixed20/generated/report-review
+python scripts/analysis/build_square_reset50_report.py --out reports/20261101T030306Z-full-mixed-campaign-reset-mixed50/generated/square-review
+```
+
+These require new destinations and make no Runpod calls. The first rechecks the preserved synthetic-only/50% audit, then adds all ten 20% stages and source-selection hashes; the report builders create drafts without editing Google Docs. The square revision preserves the original report/figure hashes. `square_panel_figures.py` supplies explicitly square plotting boxes; figure families are split across more pages for legibility.
+
 The matched 50/50 reset/continued publication can be independently recalculated and drafted without cloud access:
 
 ```powershell

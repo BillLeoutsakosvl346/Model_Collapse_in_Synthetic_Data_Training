@@ -12,6 +12,7 @@ Full experiments measure scientific trajectories; smoke experiments validate the
 | `20261030T180755Z-full-paired-final5` / Week 3 | New shared epoch-5 S1/D2; continued and reset arms retain epoch 5 | [Report](20261030T180755Z-full-paired-final5/report.md), [independent audit](20261030T180755Z-full-paired-final5/analysis/audit/audit.json), [derived analysis](20261030T180755Z-full-paired-final5/analysis/results/) | Selected metadata and twenty unique probes; full-run bulk restoration separate |
 | `20261031T163428Z-full-continued` / 50/50 mixture | Continued weights; half real/half synthetic targets; retain epoch 5 | [Matched synthetic-only report](20261031T163428Z-full-continued/report.md), [analysis](20261031T163428Z-full-continued/analysis/), [delivery receipt](../docs/validation/2026-11-01_mixed-50-analysis-and-doc.json) | All metadata and ten new probes verified; shared S0/comparator evidence reused; bulk recovery separate |
 | `20261101T030306Z-full-mixed-campaign-reset-mixed50` / matched 50/50 reset | Exact mixed S0/S1/D2/M2; reset cycles 2–10 to S0; retain epoch 5 | [Matched continued/reset report](20261101T030306Z-full-mixed-campaign-reset-mixed50/report.md), [analysis](20261101T030306Z-full-mixed-campaign-reset-mixed50/analysis/), [delivery receipt](../docs/validation/2026-11-01_mixed50-reset-analysis-and-doc.json) | 1,421 metadata files and nine new probes verified; shared S0/S1 reused; bulk recovery separate. This child is complete; no parent-campaign completion claim. |
+| `20261101T030306Z-full-mixed-campaign-continued-mixed20` / 20% synthetic continued | Exact S0/D1; 80% real / 20% synthetic; fifty epochs, retain epoch 5 | [Three-fraction report](20261101T030306Z-full-mixed-campaign-continued-mixed20/report.md), [analysis](20261101T030306Z-full-mixed-campaign-continued-mixed20/analysis/), [delivery receipt](../docs/validation/2026-11-01_continued20-analysis-and-square-doc.json) | 1,560 metadata files and ten new probes verified; source checkpoints/full arrays not restored. Child completion does not establish parent completion. |
 
 The Week 3 pair's logical arms are `<pair-id>-continued` and `<pair-id>-reset-s0`; use the parent ID for cloud operations. Shared measurements are reused evidence, not independent replicate runs. Historical cross-GPU comparisons differ from the later explicitly matched-environment comparisons.
 
@@ -34,6 +35,8 @@ The [preliminary mixed-campaign recovery](../docs/validation/2026-11-01_mixed-ca
 ## Editorial revisions and navigation
 
 [Presentation revisions](presentation_revisions/) preserve report/Google Doc corrections and delivery evidence; they are not new training experiments. The [28 October correction index](presentation_revisions/2026-10-28_audit-corrections/README.md) explains metric-interpretation and presentation updates. [Original validation JSON](validation.json) and [shutdown probe receipt](shutdown_receipt_fault.json) remain historical supporting evidence.
+
+The [1 November square-panel revision](presentation_revisions/2026-11-01_square-reset50/report.md) enlarges the 50/50 reset figures and reorganizes their pages without replacing the original report, measurements or figures. The newer 20/80 comparison uses the same square-panel layout.
 
 Existing dated paths, CSV schemas, token probes, figures and hashes are preserved. Future publications should use:
 

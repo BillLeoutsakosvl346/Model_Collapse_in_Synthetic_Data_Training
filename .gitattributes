@@ -57,3 +57,11 @@
 /comparisons/mixed_fraction_final5/analyse_reset50.py text eol=lf
 /scripts/analysis/build_reset50_comparison_report.py text eol=lf
 /docs/validation/2026-11-01_mixed50-reset-analysis-and-doc.json -text whitespace=cr-at-eol
+# Continued-fraction comparison and square-panel presentation preserve exact bytes.
+/reports/20261101T030306Z-full-mixed-campaign-continued-mixed20/** -text whitespace=cr-at-eol
+/reports/presentation_revisions/2026-11-01_square-reset50/** -text whitespace=cr-at-eol
+/comparisons/mixed_fraction_final5/analyse_continued_fractions.py text eol=lf
+/scripts/analysis/square_panel_figures.py text eol=lf
+/scripts/analysis/build_square_reset50_report.py text eol=lf
+/scripts/analysis/build_continued_fraction_report.py text eol=lf
+/docs/validation/2026-11-01_continued20-analysis-and-square-doc.json -text whitespace=cr-at-eol
