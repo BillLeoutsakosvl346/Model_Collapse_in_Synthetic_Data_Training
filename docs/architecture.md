@@ -30,7 +30,9 @@ The root-level `model_collapse` package and `python -m model_collapse` interface
 
 The existing `data.py`, `engine.py`, `pipeline.py`, `remote.py` and other flat modules remain public compatibility points while responsibilities are extracted. Experiments must reuse these primitives rather than copy engines into condition folders. No database, distributed training framework, separate training engine per experiment or `src/` conversion is required.
 
-Actual extracted packages are `science/` (token metrics), `workflow/` (selection, lineage, import, branching and paired coordination), `cloud/` (cost calculations), `artifacts/` (safe paths) and `analysis/` (schema readers/reporting/forecasts). Training remains in `engine.py`; cloud lifecycle/SSH in `remote.py`; backup in `hub.py`; supervision in `supervisor.py`; acceptance is still in `continued.py`/`validate.py`. There is no separate `validation/` package yet. Standalone reporting/maintenance tools live under `scripts/` and are outside the accepted deployment bundle.
+Actual extracted packages are `science/` (token metrics), `workflow/` (selection, lineage, import, branching, paired and mixed-campaign coordination), `cloud/` (cost calculations), `artifacts/` (safe paths) and `analysis/` (schema readers/reporting/forecasts). Training remains in `engine.py`; cloud lifecycle/SSH in `remote.py`; backup in `hub.py`; supervision in `supervisor.py`; acceptance is still in `continued.py`/`validate.py`. There is no separate `validation/` package yet. Standalone reporting/maintenance tools live under `scripts/` and are outside the accepted deployment bundle.
+
+`workflow/mixed_campaign.py` coordinates three flat sibling jobs under one parent provider owner. Each child has its own scientific configuration and artifacts; the parent owns the Pod, volume, ledger session and watchdog. Completion seals pin backup commits and indexes before handoff. A resumed campaign preserves sealed prior-session children and binds active work to its current registered session; failure or pause prevents later jobs from starting.
 
 ## Scientific lineage
 

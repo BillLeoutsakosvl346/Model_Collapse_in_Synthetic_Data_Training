@@ -1,6 +1,6 @@
 # Current recorded state
 
-Last execution evidence: **1 November 2026**, [50/50 completion receipt](validation/2026-11-01_mixed-50-full-completion.json). All ten cycles completed and actual GPU shutdown was verified. This is a saved observation, not a live status feed; retained storage remains chargeable.
+Last execution evidence: **1 November 2026**, [mixed-campaign setup receipt](validation/2026-11-01_mixed-campaign-setup.json). Validation completed, compute stopped and temporary resources were removed. The full campaign is unlaunched. This is a saved observation, not a live status feed; historical retained storage remains chargeable.
 
 ## Latest completed experiment
 
@@ -20,7 +20,18 @@ python -m model_collapse status 20261031T163428Z-full-continued
 
 The user authorized setup and small GPU validation of a new sequential campaign: 50/50 reset, 20/80 continued, then 20/80 reset. The current limit is **USD 45 cumulative**, with a **USD 2 storage/shutdown reserve** and **USD 0.75 combined new acceptance cap** within the existing USD 3 setup allowance. Use existing credit only; no credit purchases or automatic/backup payment changes. See the [current authorization](validation/2026-11-01_mixed-campaign-budget-authorization.json). Full campaign training remains unlaunched and needs a later explicit instruction. Earlier USD 25/30 limits remain historical receipts.
 
-The accepted mixed-data runtime is `266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5`; [acceptance evidence](validation/2026-10-31_mixed-50-setup.json) covers the 50% mixture/five-epoch/final-checkpoint protocol. The [launch record](validation/2026-10-31_mixed-50-full-launch.json) documents the explicit local USD 30 operational override; the accepted runtime's historical default remains USD 25. Do not treat the default as a new authorization or alter accepted source just to change a budget parameter.
+The latest accepted campaign runtime is `35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171`, protocol `770a627c02821b1301f3194268e65fb9635eccdc6a43e639477d886f26dac377`. The campaign uses its authorized private-ledger ceiling. Historical [50/50 acceptance](validation/2026-10-31_mixed-50-setup.json) and its [USD 30 launch override](validation/2026-10-31_mixed-50-full-launch.json) retain their original runtime and scope; they do not certify the new campaign.
+
+## Prepared three-job campaign
+
+- Acceptance: `20261101T022210Z-smoke-mixed-campaign`; [report](../reports/20261101T022210Z-smoke-mixed-campaign/report.md), [preview](../reports/20261101T022210Z-smoke-mixed-campaign/dataset_preview.json) and [handoff](mixed-campaign-handoff.md).
+- 345 offline tests, independent review and all ten parent GPU/provider checks passed. Six actual training stages / thirty epochs retained epoch 5, with six worker exits and two coordinator exits recovered. All three backups were restored and terminal checkpoints re-evaluated on the GPU: 423 files / 5,606,740,325 bytes. Local recovery verified 380 metadata files / 45,099,674 bytes plus 21 small arrays / 1,084,032 bytes; all six mixtures reconstructed exactly and evaluation arrays matched.
+- Full historical 50/50 M1/M2 reconstructed separately on the GPU. The reset50 smoke's reduced mixture is explicitly different; the two 20/80 smoke arms shared exact S0/S1/D2/M2, including selections/shuffle, with the required different cycle-2 initializers.
+- Pod `6osztj3lxeen6h` stopped at **02:46:00 UTC/London**, watchdog reason `validation_budget_guard`; it and volume `gc7nd5v1on` were removed. An [interrupted preliminary attempt](validation/2026-11-01_mixed-campaign-preliminary-recovery.json) exposed backup/status recovery faults, which were fixed and reviewed before final acceptance. Its five temporary Pods and volume were also removed after recovery. No account compute was running at the final check; all five historical volumes remain.
+- All new validation/recovery attempts conservatively total **USD 0.46846**, within USD 0.75; observed whole-account debit was **USD 0.42162**, including concurrent historical storage/billing timing. The cumulative ledger estimated USD 25.59434 at reconciliation.
+- The full 28-stage / 140-epoch batch is **technically validated and affordable at the recorded prices/credit**: forecast **24.09 hours / USD 13.93** running cost, plus approximately USD 0.35 retained historical storage. Padded watchdog requirement **USD 16.0231** fits the **USD 17.0592** session allowance, covering **25.64 hours**, with USD 2 reserved. Matching GPU stock was available at USD 0.57/hour. These are estimates and saved availability, not a full-run completion claim.
+
+The command in the handoff remains unexecuted. Full launch requires a separate instruction and fresh admission. Final-runtime provider-session resume checks were exercised offline; actual GPU acceptance exercised worker/coordinator restarts within one provider session. Historical full-run bulk recovery remains separate.
 
 ## Completed work and recovery
 

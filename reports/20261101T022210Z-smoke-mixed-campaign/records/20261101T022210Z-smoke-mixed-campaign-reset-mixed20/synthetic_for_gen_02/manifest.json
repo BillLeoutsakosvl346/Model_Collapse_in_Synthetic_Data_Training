@@ -1,0 +1,28 @@
+{
+  "provenance": {
+    "parent_weights_sha256": "60703dfcf112e3790f1cf24dd6769026c29a190b1af53132d40198deeccfa9aa",
+    "prompt_tokens_sha256": "c08bdd419e10f17781318fa8a0573b52dc1ee9b6514f88f0071b31a84298edb8",
+    "prompt_count": 256,
+    "new_tokens": 64,
+    "num_beams": 5,
+    "repetition_penalty": 1.0
+  },
+  "continuation_tokens_sha256": "c898633ed67afbbd90a6537339fc08ab8caf7b84db16423b859de354abd85257",
+  "files": {
+    "tokens.npy": "34261b619a91f3832a6d267b37a49e5c2725e3d847d250f6ad0222f9fd07c037"
+  },
+  "seconds": 11.104180322960019,
+  "reused_continuations": 32,
+  "new_tokens_per_second": 1291.0453165424174,
+  "imported_source": {
+    "run_id": "20261101T022210Z-smoke-mixed-campaign-continued-mixed20",
+    "revisions": {
+      "model": "e5937ceba147831e91992f4a68bf33d2773516e1",
+      "dataset": "a0cc338258e5ffec8f263c0fb67e1724ed81aed6"
+    },
+    "full_tokens_sha256": "c898633ed67afbbd90a6537339fc08ab8caf7b84db16423b859de354abd85257",
+    "full_blocks": 256,
+    "used_blocks": 256,
+    "subset": null
+  }
+}

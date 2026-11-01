@@ -15,3 +15,5 @@
 Keep shared definitions here, scientific settings beside their named experiment/comparison, and measurements/interpretation in dated reports. Dated JSON receipts under `validation/` and published report records retain their original bytes. Plans/audits describe decisions at their recorded date; they are not current launch authorization.
 
 [October 31 cleanup verification](validation/2026-10-31_repository-cleanup.json) records the unchanged evidence/runtime/control hashes, private document moves, offline report rebuilding and 170 passed tests.
+
+The [mixed-campaign handoff](mixed-campaign-handoff.md) and [1 November setup receipt](validation/2026-11-01_mixed-campaign-setup.json) record the newer 345-test baseline, three-job GPU validation, recovery and full-launch readiness. Full campaign training remains unlaunched.

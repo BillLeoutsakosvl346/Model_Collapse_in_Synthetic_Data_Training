@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T02:33:24.255899+00:00",
+  "run_id": "20261101T014727Z-smoke-mixed-campaign",
+  "runtime_sha256": "57c0e4609588077145eb944635e1ecdf6ed82d2f56f689cd97bfa339ffe1b186",
+  "outcome": "Interrupted preliminary GPU smoke; no campaign acceptance certificate issued",
+  "observed_failure": "Hugging Face missing-LFS-object HTTP400 during the continued20 cycle-2 checkpoint backup",
+  "shutdown": "Original watchdog reported supervisor_died; retained logs identify the failed backup commit. A subsequent resume was stopped safely after stale prior-launch failure status was read as current.",
+  "recorded_training_stages": [
+    {
+      "job": "reset50",
+      "cycle": 2,
+      "training_record_sha256": "cd8103c40b7b991e9b66ca30175061605a74571a939a641843b39a472141d963",
+      "history_sha256": "266804f8a08bebf567bdb23d4028020fd8f877b58b13a409f4adb436e0bcd77c",
+      "executed_epochs": 5,
+      "selected_epoch": 5,
+      "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "selected_weights_sha256": "a63221f4c00f153f9059d0387b1743a76fbaad267fa6553b02aaa3d8a80fc781"
+    },
+    {
+      "job": "reset50",
+      "cycle": 3,
+      "training_record_sha256": "1e5d97b644585ffb48105962626d6f53c32a0e858e46b5242af93afe89704cbc",
+      "history_sha256": "13b327d4206c6eb9a4e21b43c97465ad083efae6d629cc9f3035b1941720bdf0",
+      "executed_epochs": 5,
+      "selected_epoch": 5,
+      "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "selected_weights_sha256": "427659976ec98938c606a79b0c62e0961df78c4819fbeaab78fa3e3d3c23ab55"
+    },
+    {
+      "job": "continued20",
+      "cycle": 1,
+      "training_record_sha256": "828aa41f4c667a745726596b5b71e71b46f9385d60713d34cf5a9da39f192971",
+      "history_sha256": "997290bf1b1d1a4f06f6e56480353c027f4f51af430f678d0a8debf78be977cb",
+      "executed_epochs": 5,
+      "selected_epoch": 5,
+      "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "selected_weights_sha256": "60703dfcf112e3790f1cf24dd6769026c29a190b1af53132d40198deeccfa9aa"
+    },
+    {
+      "job": "continued20",
+      "cycle": 2,
+      "training_record_sha256": "173cf793aba8addc075d49ca872e64475e110a921487f130fc167c07e78bb70b",
+      "history_sha256": "1993bc09ccd9e03265af75a1ddde2ee44c6d83248e557fca7cebf06009f67e78",
+      "executed_epochs": 5,
+      "selected_epoch": 5,
+      "initial_weights_sha256": "60703dfcf112e3790f1cf24dd6769026c29a190b1af53132d40198deeccfa9aa",
+      "selected_weights_sha256": "aa75e4d1e2144b3bfbae1ff81393676d5c3a157f09097330a9d9b1142163c30c"
+    }
+  ],
+  "recorded_new_epochs": 20,
+  "third_job_started": false,
+  "recovery": {
+    "reset50_original_remote_restore": {
+      "run_id": "20261101T014727Z-smoke-mixed-campaign-reset-mixed50",
+      "revisions": {
+        "model": "45625d5125292642a98eed6f59abd529005a4825",
+        "dataset": "f86246b546db00b54d3ed341b807c43aaba7bdf5"
+      },
+      "artifact_index_sha256": "fc35bfa32522c9a4a1647b950d6aa68f4316e59a17e159042a64970e4c768173",
+      "verified_files": 153,
+      "verified_bytes": 2072434212
+    },
+    "continued20_later_full_checksum_restore": {
+      "run_id": "20261101T014727Z-smoke-mixed-campaign-continued-mixed20",
+      "revisions": {
+        "model": "254d0df7b7ce4b81ca4789d58f5f04f37d22a4d3",
+        "dataset": "c0f7353d60302dc8c62e821bc2a88905a2ea843a"
+      },
+      "artifact_index_sha256": "97ff227068280d6bf5f065689f7e728f1d12374dc5515f6097b45fdaaac2b4b7",
+      "verified_files": 107,
+      "verified_bytes": 1514234763
+    },
+    "continued_restore_note": "The corrected validation GPU restored all 107 files from the immutable backup into temporary storage. No weights were downloaded to the laptop. This was checksum recovery, not a new model evaluation or acceptance.",
+    "reset50_note": "Original GPU validation restored and re-evaluated the reset checkpoint; subsequent final metadata was also recovered locally."
+  },
+  "recovery_only_attempts": "Short task-owned recovery sessions performed no training; their failed and successful actions and charges remain in the private registry/ledger. One refused start had a provider-confirmed zero compute interval.",
+  "cleanup": {
+    "pod_ids": [
+      "1qke5cs2awvok6",
+      "mvwytcl14utuq9",
+      "okbufoh2x42qph",
+      "r7243his50ys3o",
+      "uidh8f9tihcev9"
+    ],
+    "volume_id": "i2gjk1gwgf",
+    "recovery_verified_before_deletion": true,
+    "pods_removed": true,
+    "volume_removed": true,
+    "deleted_at": 1793499987.3152487,
+    "historical_volumes_preserved": true
+  },
+  "conservative_closed_compute_and_storage_estimate_usd": 0.20417025676510875,
+  "cost_scope": "Includes every preliminary/recovery launch and the temporary volume through verified deletion; estimates are not provider-itemized charges. Final-runtime acceptance is accounted separately within the shared USD0.75 cap.",
+  "replacement_review": "2026-11-01_mixed-campaign-recovery-review.json",
+  "full_campaign_unlaunched": true
+}

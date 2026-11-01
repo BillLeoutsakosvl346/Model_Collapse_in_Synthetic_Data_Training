@@ -24,8 +24,11 @@ The Week 3 pair's logical arms are `<pair-id>-continued` and `<pair-id>-reset-s0
 | `20261027T203952Z-smoke-reset-s0` | Reset-S0 stages 2/3; one epoch in the smoke profile | [Report](20261027T203952Z-smoke-reset-s0/report.md); remote bulk restore/re-evaluation |
 | `20261030T172428Z-smoke-paired-final5` | Four unique stages / twenty actual epochs, paired handoff | [Report](20261030T172428Z-smoke-paired-final5/report.md); both private child restores/re-evaluations |
 | `20261031T153536Z-smoke-continued` | Two mixed stages / ten actual epochs | [Report](20261031T153536Z-smoke-continued/report.md), [dataset preview](20261031T153536Z-smoke-continued/dataset_preview.json); both mixtures reconstructed and remote bulk restoration checked |
+| `20261101T022210Z-smoke-mixed-campaign` | Three sequential jobs, six stages / thirty actual epochs, matched cycle-2 mixtures | [Report](20261101T022210Z-smoke-mixed-campaign/report.md), [preview](20261101T022210Z-smoke-mixed-campaign/dataset_preview.json), [local reconstruction](20261101T022210Z-smoke-mixed-campaign/local_mixture_reconstruction.json), [setup receipt](../docs/validation/2026-11-01_mixed-campaign-setup.json); three private restores/re-evaluations, detached handoffs and actual watchdog shutdown |
 
 Each acceptance covers its recorded runtime/protocol. It must not certify later code or a different mixture/selection policy. These temporary resources were removed after recorded verification; that does not authorize deleting historical full-run recovery volumes.
+
+The [preliminary mixed-campaign recovery](../docs/validation/2026-11-01_mixed-campaign-preliminary-recovery.json) records an interrupted earlier-runtime smoke and the faults fixed before final acceptance. Its saved stages/backups were recovered and temporary resources removed; it received no campaign acceptance certificate. Smoke measurements validate the pipeline and do not establish a mixed-data scientific result.
 
 ## Editorial revisions and navigation
 

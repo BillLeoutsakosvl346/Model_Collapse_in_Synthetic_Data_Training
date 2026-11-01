@@ -1,0 +1,126 @@
+{
+  "created_utc": "2026-11-01T02:53:33.990189+00:00",
+  "run_id": "20261101T022210Z-smoke-mixed-campaign",
+  "scope": "Additional local verification of 21 small smoke arrays; no weights or full historical token arrays downloaded. This extends the original offline export without changing its recorded files.",
+  "reconstruction_algorithm": "model_collapse.mixing.reconstruct and sample_mixture, compared byte-for-byte with each downloaded mixed array and its recorded token-content hash",
+  "mixing_source_sha256": "ba077ba68a0b2f9405507bd61a0d8b9cc65d2e976d769025eb7d2edae0b0679b",
+  "operational_helper_sha256": "b841b397d36fcb555fcfbc25dea3fb620e66ad9cf1491497ef3a8325361a97db",
+  "environment": {
+    "python": "3.12.1",
+    "numpy": "2.1.2",
+    "tokenizers": "0.15.2"
+  },
+  "array_input_hashes": {
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed50/data/train.npy": {
+      "sha256": "672cb2d0b73f2eeb4339ded72b555e292ba78d897883fddf0cf13b41edb1f740",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed50/data/validation.npy": {
+      "sha256": "2cfeaee772904930fa3801c19ea7e7cefba79df73679ba66725e803ffda5e702",
+      "bytes": 16512,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed50/data/test.npy": {
+      "sha256": "1314c0bd85110ec473ad6368e2839e054d517d3bfb9add50c80bd5b2b8c92285",
+      "bytes": 16512,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed50/synthetic_for_gen_02/tokens.npy": {
+      "sha256": "ad9547ac01de7274c4e133ccfb03a3bbed729747625647b4cf8200055d0be1ba",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed50/mixed_for_gen_02/tokens.npy": {
+      "sha256": "126e3bb974df868234d933d2bd53819ce39f7debf318d684cbab1ef21ed17903",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed50/synthetic_for_gen_03/tokens.npy": {
+      "sha256": "3e9036afe71ffed32b119c89296d38800853eb3673ed7f41b9f35cac6a5c3ca9",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed50/mixed_for_gen_03/tokens.npy": {
+      "sha256": "bb4d5b2f58e2b81688f43b4e8bcc063886631f61ce14e721410503a7a84f853f",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-continued-mixed20/data/train.npy": {
+      "sha256": "672cb2d0b73f2eeb4339ded72b555e292ba78d897883fddf0cf13b41edb1f740",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-continued-mixed20/data/validation.npy": {
+      "sha256": "2cfeaee772904930fa3801c19ea7e7cefba79df73679ba66725e803ffda5e702",
+      "bytes": 16512,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-continued-mixed20/data/test.npy": {
+      "sha256": "1314c0bd85110ec473ad6368e2839e054d517d3bfb9add50c80bd5b2b8c92285",
+      "bytes": 16512,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-continued-mixed20/synthetic_for_gen_01/tokens.npy": {
+      "sha256": "1a23d505b48f1a3cc04bd760a816b2972e5014db5e430f1a9e75decd5a409868",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-continued-mixed20/mixed_for_gen_01/tokens.npy": {
+      "sha256": "be02cf1f21124d4bf5a5e00959998d573355e4902bf9e04507457bdc8f11628d",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-continued-mixed20/synthetic_for_gen_02/tokens.npy": {
+      "sha256": "34261b619a91f3832a6d267b37a49e5c2725e3d847d250f6ad0222f9fd07c037",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-continued-mixed20/mixed_for_gen_02/tokens.npy": {
+      "sha256": "905a46834847875225e401277fdadf316ca1767bbf2beaf276b2b16e41b7f008",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed20/data/train.npy": {
+      "sha256": "672cb2d0b73f2eeb4339ded72b555e292ba78d897883fddf0cf13b41edb1f740",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed20/data/validation.npy": {
+      "sha256": "2cfeaee772904930fa3801c19ea7e7cefba79df73679ba66725e803ffda5e702",
+      "bytes": 16512,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed20/data/test.npy": {
+      "sha256": "1314c0bd85110ec473ad6368e2839e054d517d3bfb9add50c80bd5b2b8c92285",
+      "bytes": 16512,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed20/synthetic_for_gen_02/tokens.npy": {
+      "sha256": "34261b619a91f3832a6d267b37a49e5c2725e3d847d250f6ad0222f9fd07c037",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed20/mixed_for_gen_02/tokens.npy": {
+      "sha256": "905a46834847875225e401277fdadf316ca1767bbf2beaf276b2b16e41b7f008",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed20/synthetic_for_gen_03/tokens.npy": {
+      "sha256": "65d0707323e8ac8a56a9b6c701e1de6af3cb98ac55f0768f244b34e34f48c1f4",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "20261101T022210Z-smoke-mixed-campaign-reset-mixed20/mixed_for_gen_03/tokens.npy": {
+      "sha256": "232f6a9bcc7af30cfdaf8438e151c9c9c9ca9cee4093100d09e07b0924345175",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    }
+  },
+  "tokenizer_sha256": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+  "examples": "First real and first synthetic row in each saved shuffled mixture, decoded with special tokens preserved; 12 examples of 64 tokens each.",
+  "outputs": {
+    "local_mixture_reconstruction.json": "8f22797f02ff46321b38005633268bbfedebe3b91b0a484ee54c632beca0ab96",
+    "dataset_preview.json": "d935779ac313ea2e23ab76f8329b116e65013cae110e060d7bbd2f29bf02bd4c"
+  }
+}

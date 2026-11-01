@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T02:51:56.298428+00:00",
+  "run_id": "20261101T022210Z-smoke-mixed-campaign-reset-mixed20",
+  "initialization": "reset_s0",
+  "scientific_config_sha256": "9e6dfc85aea4bb4536f9e1cc34868266d86ed17441ded2d9020af0bf9699417c",
+  "source_runtime_identity": "35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171",
+  "source_root": "C:\\Users\\vleou\\Downloads\\IIB_project\\.state\\campaign-acceptance-final\\records\\20261101T022210Z-smoke-mixed-campaign-reset-mixed20",
+  "inputs": {
+    "config.json": {
+      "sha256": "a00d14d766ed278d3b34ded49f01f735d41275994b6cc5419f7432a9a97305e9",
+      "bytes": 12753
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "40c2500fef053edb24a0da89852410af416ad27ccd33da2065ed3a4272c8ce08",
+      "bytes": 21971
+    },
+    "seed_42/gen_01/metrics.json": {
+      "sha256": "ef97459abcdd0f3c5aec76e3fdf7fe0729e5f88700185cd42ac2adc950d4ab90",
+      "bytes": 5733
+    },
+    "seed_42/gen_02/metrics.json": {
+      "sha256": "6ac13a7a7820421ca5ed09161cbde79bd2a4f42155d3f5a51b0ff5fe08607110",
+      "bytes": 17825
+    },
+    "seed_42/gen_03/metrics.json": {
+      "sha256": "a07feb297b164542e8276496d62b54b0c0c5f7039561a4f9468f1a4397050e42",
+      "bytes": 17830
+    },
+    "seed_42/gen_00/import.json": {
+      "sha256": "665f7bd3c64543f147fff28fd6e82537264f4522fd821c54134e706312013a86",
+      "bytes": 401
+    },
+    "seed_42/gen_00/test_sequences.json": {
+      "sha256": "e28fa97c53c7239a02c1730f076e110d771dc641076a421429762c2970301aa4",
+      "bytes": 1565
+    },
+    "seed_42/gen_00/reference_sequences.json": {
+      "sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+      "bytes": 6159
+    },
+    "seed_42/gen_01/import.json": {
+      "sha256": "fcb066702ab735414f85c1ef0ae5f1033082ffc66aa18f98ba13a5d48a2b405d",
+      "bytes": 401
+    },
+    "seed_42/gen_01/test_sequences.json": {
+      "sha256": "7ad07bb18b79730f4ae14d90a7fadb31ef0016da4b73cdb689d42ca1c0ce6fc5",
+      "bytes": 1565
+    },
+    "seed_42/gen_01/reference_sequences.json": {
+      "sha256": "8ca8af9986416c0e923bbca773a8313e0704342732c68685383a559b3874c30b",
+      "bytes": 6130
+    },
+    "mixed_for_gen_02/manifest.json": {
+      "sha256": "7168a6fd252af76552c2fd17fc9c9435605fc9a4819da35c73d8f5cdc839f8f4",
+      "bytes": 1416
+    },
+    "mixed_for_gen_02/selection.json": {
+      "sha256": "eb2c2ba411e93f4676f692a2677406f39b0b254413eb17452c9befc5cb5827ed",
+      "bytes": 6290
+    },
+    "seed_42/gen_02/test_sequences.json": {
+      "sha256": "7b30ed6734a5e496d7508e792219da6ba9bf97ab496c9c7f9e6e720cb09a6c72",
+      "bytes": 1566
+    },
+    "seed_42/gen_02/reference_sequences.json": {
+      "sha256": "849a4632f06fda3572b198abf8fe3ff0c1d338bec8191becf13f15ce7a00014e",
+      "bytes": 6112
+    },
+    "mixed_for_gen_03/manifest.json": {
+      "sha256": "8e6be73addfbb3df3e46c1174b1d185e9f79c68cca7b3e5bd0092e299241f7fd",
+      "bytes": 1416
+    },
+    "mixed_for_gen_03/selection.json": {
+      "sha256": "874b7bbc30253f20126c645750d007e30b527a28348db30cea074e59d384dc1f",
+      "bytes": 6288
+    },
+    "seed_42/gen_03/test_sequences.json": {
+      "sha256": "479818d1a5c51cbd51534d739efd69e0708b6a885f0941e2e70205c09c5bb327",
+      "bytes": 1566
+    },
+    "seed_42/gen_03/reference_sequences.json": {
+      "sha256": "8e378e3ed1cbf4643a6c5e4a6eb5cbaa34ad5cd977d34cd8d90c27026c8411d3",
+      "bytes": 6123
+    },
+    "manifest.json": {
+      "sha256": "04fb88be085975a68930d6c0e4570b2c8960a8ac7f30d3959ba7cfb39d4d1bec",
+      "bytes": 286
+    },
+    "environment.json": {
+      "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+      "bytes": 433
+    },
+    "shared_prefix.json": {
+      "sha256": "1dafd14d5e50618f7b9dae8b6db3947d88d6fcbbeb50cf241ec694da9ea0eaee",
+      "bytes": 7177
+    },
+    "benchmark.json": {
+      "sha256": "41672180c028fe29c0921f7674c6851c0df3b270c4520d011d08aa90f1d6a143",
+      "bytes": 656
+    }
+  },
+  "analysis": {
+    "git_revision": "92481b7671f73881f3f6ddadbe81378815b57bc8",
+    "source_files": {
+      "model_collapse/analysis/__init__.py": "8e3555a627a9852f3fc0eb0983d750f6d3e0368bc1972169e38f696209a82777",
+      "model_collapse/analysis/forecasts.py": "b57bfc3f373d04da340473680c466519b669ddd77f416627c7cc2157eab207f0",
+      "model_collapse/analysis/records.py": "3b1570c3483282453123600a0cbc8a15eef783fd748fe9ba16a64251580dc17d",
+      "model_collapse/analysis/reporting.py": "038ea1126f39b45355c9ed96a8f1ba160ac57da64f4c1b5b72d6dbb99397750d",
+      "model_collapse/report.py": "a5e09ffa5bb5944aeaaf33d779cc8f33ab307c46f24dc3123d0bc743e5fe7225"
+    },
+    "source_sha256": "f43d33dd2b4a73d35cc23fe2fef14f2e1e0ed6fa2ba737ecf00e7927cef5c631",
+    "environment": {
+      "python": "3.12.1",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "packages": {
+        "numpy": "2.1.2",
+        "matplotlib": "3.9.4"
+      }
+    }
+  },
+  "outputs": {
+    "diversity.png": {
+      "sha256": "ce34460a59c3dfc86051242b063a02f1942491db3699ea7a213f557164cc20eb",
+      "bytes": 76626
+    },
+    "metric_definitions.json": {
+      "sha256": "99f2eb2681090937b283e4e2cbf9e5c46602dfb95c9bb12088279e826e1e7622",
+      "bytes": 1886
+    },
+    "metrics.csv": {
+      "sha256": "704a1180c75e386225349da3ec106ac989876e53148d271c4bd8740e6358b85c",
+      "bytes": 4142
+    },
+    "perplexity.png": {
+      "sha256": "8a3917d272a2ad204dd17d53f4b8a87da4db82e682e8fcdd067a1009a654d35f",
+      "bytes": 94032
+    },
+    "probe_diagnostics.png": {
+      "sha256": "98ff5ad68aa17da185789892b8fe3688a5dd5c3f4ab215d03df33365cde6d9c1",
+      "bytes": 112222
+    },
+    "reference_scores.png": {
+      "sha256": "30ec10e96f6b55ab137b73e79428bb992d1dc3c525718fcb7a7a8dddcc5db874",
+      "bytes": 38815
+    },
+    "report.md": {
+      "sha256": "f795c6f47f98247707d96825364023d1605d1cd3ef45bd20512c5182acaa9d4d",
+      "bytes": 4075
+    },
+    "runtime.png": {
+      "sha256": "84c847eebe349dd2f8fed8c8015f744854919f22f6db778db76de9c28af3f0c8",
+      "bytes": 42469
+    }
+  },
+  "imported_stage_receipts": {
+    "0": {
+      "source_run_id": "20261101T022210Z-smoke-mixed-campaign-continued-mixed20",
+      "source_stage_index": 0,
+      "source_revisions": {
+        "model": "e5937ceba147831e91992f4a68bf33d2773516e1",
+        "dataset": "a0cc338258e5ffec8f263c0fb67e1724ed81aed6"
+      },
+      "measurement_scope": "original_source_splits",
+      "execution": "imported_shared_stage",
+      "new_training_seconds": 0,
+      "new_generation_seconds": 0
+    },
+    "1": {
+      "source_run_id": "20261101T022210Z-smoke-mixed-campaign-continued-mixed20",
+      "source_stage_index": 1,
+      "source_revisions": {
+        "model": "e5937ceba147831e91992f4a68bf33d2773516e1",
+        "dataset": "a0cc338258e5ffec8f263c0fb67e1724ed81aed6"
+      },
+      "measurement_scope": "original_source_splits",
+      "execution": "imported_shared_stage",
+      "new_training_seconds": 0,
+      "new_generation_seconds": 0
+    }
+  },
+  "scope": "Offline saved measurements; no independent model re-evaluation; original evidence untouched.",
+  "manifest_hash_scope": "Output hashes exclude this self-referential manifest."
+}

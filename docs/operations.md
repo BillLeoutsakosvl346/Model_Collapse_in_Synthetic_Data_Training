@@ -16,8 +16,8 @@ Preflight is external: it reads live account/stock and exercises a private uploa
 
 ## Authorization, budget and ownership
 
-- The latest [authorization](validation/2026-10-31_mixed-50-budget-authorization.json) applies a USD 30 cumulative ceiling and USD 2 reserve to the authorized mixed run. Earlier USD 25 receipts remain historical; account balance alone never increases authorization.
-- Accepted source still has its historical USD 25 local default. The authorized launch supplied an explicit USD 30 override in the launcher process, recorded in the [launch receipt](validation/2026-10-31_mixed-50-full-launch.json) and private ledger. Do not bypass admission or silently modify accepted source.
+- The latest [authorization](validation/2026-11-01_mixed-campaign-budget-authorization.json) applies a USD 45 cumulative ceiling, USD 2 reserve and USD 0.75 cap across the new campaign's validation attempts, within the existing USD 3 setup allowance. Full campaign training requires a separate instruction. Earlier USD 25/30 receipts remain historical; account balance alone never increases authorization.
+- The mixed campaign reads its explicitly authorized ceiling from the private ledger. Legacy source defaults and the [historical USD 30 launch override](validation/2026-10-31_mixed-50-full-launch.json) retain their recorded meaning. Do not bypass admission or modify accepted source just to change a budget parameter.
 - Ledger costs are conservative estimates, distinct from account debits. Preserve historical receipts. Stop compute accrual at verified shutdown, close storage only at deletion and avoid duplicate intervals across resumes.
 - `.state/registry/<run_id>/resources.json` and `.state/ledger.json` bind run/launch/Pod/volume ownership. A fetched historical control file must not replace them. Act only on task-owned resources; at most one GPU Pod at a time.
 - Never buy credits, enable automatic/backup payments or purchase Hugging Face compute. Keep the independent watchdog and private recovery route operational.
@@ -46,7 +46,9 @@ Smoke is paid. Inspect its actual acceptance scope, recovery, provider shutdown 
 python -m model_collapse launch --config PATH_TO_FULL_CONFIG --generations 10
 ```
 
-The catalogued 50/50 full run has already launched; do not repeat it. For the paired workflow, use the parent pair ID for cloud operations. One coordinator owns sequential arms, budget and shutdown; it does not provision separate GPUs between arms. Historical shared stages retain their original execution identity and costs.
+The catalogued 50/50 continued full run has completed; do not repeat it. For paired or mixed-campaign workflows, use the parent ID for cloud operations. One coordinator owns sequential jobs, budget and shutdown; it does not provision separate GPUs between jobs. Historical shared stages retain their original execution identity and costs.
+
+The [mixed campaign](../comparisons/mixed_fraction_final5/README.md) has three flat logical jobs and one 60 GB network volume (legacy single/paired defaults remain 30 GB). It requires 40 GB free initially and 3 GB before training stages. Full admission covers the measured conservative forecast, padded watchdog runtime, other retained storage and reserve. The [handoff](mixed-campaign-handoff.md) records its acceptance and current affordability separately.
 
 Acceptance belongs to a particular runtime/protocol, not a calendar week or generic "current" certificate. The [reports index](../reports/README.md#gpu-validation) lists separate reset, paired-final-epoch and mixed acceptances. Adding documentation does not change runtime identity; changing runtime, fraction, selection policy or matched settings requires appropriate new acceptance.
 
@@ -68,7 +70,7 @@ Resume only an unfinished, stopped run with compatible source/settings, verified
 python -m model_collapse resume RUN_ID
 ```
 
-Resume can provision paid compute. Never resume an active/completed run or use resume to change its scientific condition. Do not reset cost deadlines or replace completed-stage evidence.
+Resume can provision paid compute. Never resume an active/completed run or use resume to change its scientific condition. A new provider session has a separately accounted deadline; restarting a process within a session does not reset it. Sealed completed jobs retain their original registered execution identities and are skipped. Unsealed partial jobs are conservatively forecast as whole jobs, even when their completed stages can be reused.
 
 ## Fetch and report
 
@@ -88,7 +90,7 @@ Reporting is offline: it uses saved measurements and writes a new output directo
 python -m model_collapse cleanup RUN_ID
 ```
 
-Cleanup deletes external resources and requires matching ownership plus adequate recovery. Paired cleanup requires verified recovery of both arms. Metadata/probe-only full-run recovery does not authorize deleting its volume. Temporary smoke cleanup can use its explicit verified remote bulk-restore audit when supported.
+Cleanup deletes external resources and requires matching ownership plus adequate recovery. Paired cleanup requires both arms; campaign cleanup requires all three jobs. Metadata/probe-only full-run recovery does not authorize deleting its volume. Temporary smoke cleanup can use its explicit verified remote bulk-restore audit when supported. An interrupted campaign with jobs never created needs separately recorded recovery of every existing artifact and ownership-checked operator cleanup; it cannot claim successful three-job acceptance.
 
 Historical volumes and the active run's volume are listed in [current state](current-state.md#completed-work-and-recovery). Preserve them during repository cleanup. Storage continues billing after compute stops; read live prices before financial decisions. Verify provider read-back and close the storage ledger interval after actual deletion.
 

@@ -1,0 +1,25 @@
+{
+  "provenance": {
+    "parent_weights_sha256": "60703dfcf112e3790f1cf24dd6769026c29a190b1af53132d40198deeccfa9aa",
+    "prompt_tokens_sha256": "c08bdd419e10f17781318fa8a0573b52dc1ee9b6514f88f0071b31a84298edb8",
+    "prompt_count": 256,
+    "new_tokens": 64,
+    "num_beams": 5,
+    "repetition_penalty": 1.0
+  },
+  "continuation_tokens_sha256": "c898633ed67afbbd90a6537339fc08ab8caf7b84db16423b859de354abd85257",
+  "files": {
+    "tokens.npy": "34261b619a91f3832a6d267b37a49e5c2725e3d847d250f6ad0222f9fd07c037",
+    "shard_0000000.npy": "f6da8f25946e960e5b026221a9ba474b612c85fb89970ac55eea1739f00e64c1",
+    "shard_0000032.npy": "750fd121a9bcbfc8c7dd15d8d6c45ddfbef118d3e453ed1c758966a5c9268b93",
+    "shard_0000064.npy": "cf237ca4588f7eb70027dd72f17c902522e2876118123ac926e0259f41103361",
+    "shard_0000096.npy": "98bcaa8241c003e7a9276b436604e47897f9c38946488e2e91c82e11daafd566",
+    "shard_0000128.npy": "6165c9fe0f91014ea5de1a570873bd3c0c875dacd1a0285f5158c27e7960209a",
+    "shard_0000160.npy": "463cf96eed00e43a6acb46f734ad13782b9903cb5f03e5b8597a6fbe9187cbab",
+    "shard_0000192.npy": "99817fad51eb537b7356ad70f06e832e47bd5cd052ff216af0d1d25fefdd8a52",
+    "shard_0000224.npy": "8357fc9e2e0d9e3baca08622aba59ec3b8c4a9ecd567f4e322f4a0470942d48c"
+  },
+  "seconds": 11.104180322960019,
+  "reused_continuations": 32,
+  "new_tokens_per_second": 1291.0453165424174
+}

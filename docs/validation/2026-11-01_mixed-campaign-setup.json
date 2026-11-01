@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T02:55:35.822559+00:00",
+  "run_id": "20261101T022210Z-smoke-mixed-campaign",
+  "outcome": "Complete final-runtime GPU/provider acceptance; full campaign unlaunched",
+  "runtime_sha256": "35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171",
+  "implementation_commit": "92481b7671f73881f3f6ddadbe81378815b57bc8",
+  "protocol_fingerprint": "770a627c02821b1301f3194268e65fb9635eccdc6a43e639477d886f26dac377",
+  "resolved_config_file_sha256": "34b09f0a5a29d6777c7719ef20b4019bc828db6d73e49dc2fd7d51828c3970c4",
+  "full_config_file_sha256": "b7e3968d11080a5b3bc59e9ebb5def4912dc7c0ef7d4282d2ee7e26245e81466",
+  "full_protocol_certificate_check_passed": true,
+  "offline_tests": {
+    "baseline_passed": 170,
+    "final_passed": 345,
+    "warnings": 17,
+    "seconds": 246.61,
+    "independent_focused_passed": 92,
+    "github_ci_run": 41264878237,
+    "github_ci_result": "success"
+  },
+  "review_receipt": "2026-11-01_mixed-campaign-recovery-review.json",
+  "preliminary_recovery_receipt": "2026-11-01_mixed-campaign-preliminary-recovery.json",
+  "new_training_stages": 6,
+  "actual_epochs": 30,
+  "checkpoint_selection": "final_epoch",
+  "parent_checks": {
+    "three_child_audits": true,
+    "six_five_epoch_training_stages": true,
+    "epoch_five_checkpoints": true,
+    "exact_shared_prefix_and_cycle2_mixture": true,
+    "two_handoff_restarts": true,
+    "completed_evidence_unchanged": true,
+    "single_owner_and_deadline": true,
+    "three_private_restores": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "jobs": {
+    "reset50": {
+      "logical_run_id": "20261101T022210Z-smoke-mixed-campaign-reset-mixed50",
+      "initialization": "reset_s0",
+      "synthetic_fraction": 0.5,
+      "protocol_fingerprint": "cfa1739b9db47b85b723740ce4ca7139e21f77471032f3f5d52f7da642198d43",
+      "remote_checks_passed": 16,
+      "remote_checks": {
+        "exact_pinned_shared_prefix_import": true,
+        "shared_evidence_scope_preserved": true,
+        "fixed_s0_weights_and_separate_generator_handoffs": true,
+        "weights_changed_each_training_cycle": true,
+        "fixed_real_prompts_and_evaluation": true,
+        "finite_token_weighted_perplexity": true,
+        "two_real_worker_exits_and_resume": true,
+        "partial_generation_shard_reused": true,
+        "completed_first_new_cycle_unchanged_after_resume": true,
+        "continuation_only_synthetic_source_blocks": true,
+        "exact_mixture_reconstruction": true,
+        "epoch_five_checkpoints": true,
+        "full_shared_mixture_reconstruction": true,
+        "private_hub_download_hashes_verified": true,
+        "restored_checkpoint_tensor_hash_and_evaluation": true,
+        "direct_shifted_nll_calculation": true
+      },
+      "private_snapshot": {
+        "run_id": "20261101T022210Z-smoke-mixed-campaign-reset-mixed50",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "0cd5dd013eef30c4a24423d69ffad44bbee9a387",
+          "dataset": "2ed36124f0f2614052b7c3ede8c87ccae7b83e01"
+        },
+        "artifact_index_sha256": "6063795ed1d39ed17e6e232821e749cce14c8c5ec24cf424f959ff88ae99d115"
+      },
+      "remote_restored_files": 153,
+      "remote_restored_bytes": 2072437997,
+      "final_indexed_files": 155,
+      "final_indexed_bytes": 2072493302,
+      "checkpoint_files_indexed": 4,
+      "local_metadata_files": 120,
+      "local_metadata_bytes": 17288502,
+      "public_evidence": "../../reports/20261101T022210Z-smoke-mixed-campaign/records/20261101T022210Z-smoke-mixed-campaign-reset-mixed50/"
+    },
+    "continued20": {
+      "logical_run_id": "20261101T022210Z-smoke-mixed-campaign-continued-mixed20",
+      "initialization": "continued",
+      "synthetic_fraction": 0.2,
+      "protocol_fingerprint": "f7821c7d2133f4ad3c2c8c46cd92459e00f3782a7dcd4b2682537e7fc31c2160",
+      "remote_checks_passed": 14,
+      "remote_checks": {
+        "pinned_previous_real_g0_start": true,
+        "both_weights_and_data_handoffs": true,
+        "weights_changed_each_training_cycle": true,
+        "fixed_real_prompts_and_evaluation": true,
+        "finite_token_weighted_perplexity": true,
+        "two_real_worker_exits_and_resume": true,
+        "partial_generation_shard_reused": true,
+        "completed_cycle_1_unchanged_after_resume": true,
+        "continuation_only_synthetic_source_blocks": true,
+        "exact_mixture_reconstruction": true,
+        "epoch_five_checkpoints": true,
+        "private_hub_download_hashes_verified": true,
+        "restored_checkpoint_tensor_hash_and_evaluation": true,
+        "direct_shifted_nll_calculation": true
+      },
+      "private_snapshot": {
+        "run_id": "20261101T022210Z-smoke-mixed-campaign-continued-mixed20",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "e5937ceba147831e91992f4a68bf33d2773516e1",
+          "dataset": "a0cc338258e5ffec8f263c0fb67e1724ed81aed6"
+        },
+        "artifact_index_sha256": "e21c03998cdfb1a4203aff269f1d3f3604fbc7c770180a4d64b20ab63c45c11e"
+      },
+      "remote_restored_files": 117,
+      "remote_restored_bytes": 1514634713,
+      "final_indexed_files": 119,
+      "final_indexed_bytes": 1514651113,
+      "checkpoint_files_indexed": 3,
+      "local_metadata_files": 92,
+      "local_metadata_bytes": 11152185,
+      "public_evidence": "../../reports/20261101T022210Z-smoke-mixed-campaign/records/20261101T022210Z-smoke-mixed-campaign-continued-mixed20/"
+    },
+    "reset20": {
+      "logical_run_id": "20261101T022210Z-smoke-mixed-campaign-reset-mixed20",
+      "initialization": "reset_s0",
+      "synthetic_fraction": 0.2,
+      "protocol_fingerprint": "dfd7050987f74cfb44be4a86bf4b8367c82d6f5963d495ba5f9776a805a31101",
+      "remote_checks_passed": 16,
+      "remote_checks": {
+        "exact_pinned_shared_prefix_import": true,
+        "shared_evidence_scope_preserved": true,
+        "fixed_s0_weights_and_separate_generator_handoffs": true,
+        "weights_changed_each_training_cycle": true,
+        "fixed_real_prompts_and_evaluation": true,
+        "finite_token_weighted_perplexity": true,
+        "two_real_worker_exits_and_resume": true,
+        "partial_generation_shard_reused": true,
+        "completed_first_new_cycle_unchanged_after_resume": true,
+        "continuation_only_synthetic_source_blocks": true,
+        "exact_mixture_reconstruction": true,
+        "epoch_five_checkpoints": true,
+        "full_shared_mixture_reconstruction": true,
+        "private_hub_download_hashes_verified": true,
+        "restored_checkpoint_tensor_hash_and_evaluation": true,
+        "direct_shifted_nll_calculation": true
+      },
+      "private_snapshot": {
+        "run_id": "20261101T022210Z-smoke-mixed-campaign-reset-mixed20",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "c057e141d7ce779492e4fce93f1b0816fe778a12",
+          "dataset": "e3ec4df74c619cbecf018ea41254a2020ca17e64"
+        },
+        "artifact_index_sha256": "01facda82e3d1a900316478ad027041c1fa4550c03e5fdc9b2c2e3570dd40701"
+      },
+      "remote_restored_files": 153,
+      "remote_restored_bytes": 2019667615,
+      "final_indexed_files": 155,
+      "final_indexed_bytes": 2019722962,
+      "checkpoint_files_indexed": 4,
+      "local_metadata_files": 120,
+      "local_metadata_bytes": 14883090,
+      "public_evidence": "../../reports/20261101T022210Z-smoke-mixed-campaign/records/20261101T022210Z-smoke-mixed-campaign-reset-mixed20/"
+    }
+  },
+  "operational_tests": {
+    "actual_worker_exits_and_recoveries": 6,
+    "actual_coordinator_exits_and_recoveries": 2,
+    "closed_ssh_progress": true,
+    "direct_m2_array_comparison": {
+      "continued": {
+        "tokens_sha256": "ad18045ed00e2b51124ccc5443641ac107b6511eb1701a42f661fa10f769d9b0",
+        "selection_sha256": "eb2c2ba411e93f4676f692a2677406f39b0b254413eb17452c9befc5cb5827ed",
+        "real_blocks": 205,
+        "synthetic_blocks": 51,
+        "initial_weights_sha256": "60703dfcf112e3790f1cf24dd6769026c29a190b1af53132d40198deeccfa9aa",
+        "selected_epoch": 5,
+        "training_input_sha256": "ad18045ed00e2b51124ccc5443641ac107b6511eb1701a42f661fa10f769d9b0"
+      },
+      "reset": {
+        "tokens_sha256": "ad18045ed00e2b51124ccc5443641ac107b6511eb1701a42f661fa10f769d9b0",
+        "selection_sha256": "eb2c2ba411e93f4676f692a2677406f39b0b254413eb17452c9befc5cb5827ed",
+        "real_blocks": 205,
+        "synthetic_blocks": 51,
+        "initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+        "selected_epoch": 5,
+        "training_input_sha256": "ad18045ed00e2b51124ccc5443641ac107b6511eb1701a42f661fa10f769d9b0"
+      },
+      "actual_arrays_byte_equal": true
+    },
+    "final_runtime_new_pod_resume_tested_on_gpu": false,
+    "provider_resume_note": "Final-runtime prior-session ownership, stale-state handling and resume admission are covered offline. GPU acceptance exercised worker/coordinator restarts on one session; the preliminary provider resume exposed the fixed stale-state fault."
+  },
+  "recovery": {
+    "remote_full_restore_files": 423,
+    "remote_full_restore_bytes": 5606740325,
+    "scope": "Each child restored its indexed backup on the GPU and re-evaluated its terminal checkpoint. Later final audit/completion JSON files and parent metadata were checked locally. No model weights were downloaded to the laptop.",
+    "local_metadata_files": 380,
+    "local_metadata_bytes": 45099674,
+    "additional_smoke_arrays": 21,
+    "additional_smoke_array_bytes": 1084032,
+    "all_six_local_mixtures_reconstructed": true,
+    "evaluation_arrays_identical": true,
+    "full_historical_m1_m2_reconstructed_on_gpu": true,
+    "historical_source_note": "The reduced reset50 smoke mixture is not historical full M2. Full-source reconstruction and reduced active-mixture checks are recorded separately."
+  },
+  "shutdown": {
+    "pod_id": "6osztj3lxeen6h",
+    "volume_id": "gc7nd5v1on",
+    "watchdog": {
+      "reason": "validation_budget_guard",
+      "time": 1793501157.9358966,
+      "pod_id": "6osztj3lxeen6h"
+    },
+    "provider_stop": {
+      "provider_pod_id": "6osztj3lxeen6h",
+      "provider_status": "EXITED",
+      "field": "lastStatusChange",
+      "value": "Exited by user: Sun Nov 01 2026 02:46:00 GMT+0000 (Coordinated Universal Time)",
+      "provider_shutdown_epoch": 1793501160.0,
+      "observed_at": 1793501219.279546
+    },
+    "pod_removed": true,
+    "volume_removed": true,
+    "no_account_compute_running": true,
+    "all_five_historical_volumes_preserved": true
+  },
+  "cost": {
+    "currency": "USD",
+    "cumulative_ceiling": 45,
+    "reserve": 2,
+    "combined_new_validation_cap": 0.75,
+    "all_new_validation_attempts_closed_estimate": 0.4684579911071564,
+    "observed_whole_account_delta_since_first_preflight": 0.4216232433999991,
+    "account_delta_scope": "Includes concurrent historical storage and billing timing; not an itemized validation-compute invoice.",
+    "cumulative_task_estimate_as_of_check": 25.59433751204959,
+    "setup_smoke_estimate_as_of_check": 1.1842020648768905,
+    "automatic_payments_disabled": true,
+    "backup_payments_disabled": true,
+    "credits_purchased": false
+  },
+  "full_forecast": {
+    "jobs": {
+      "reset50": {
+        "synthetic_generations": 10,
+        "initialization": "reset_s0",
+        "estimated_hours": 7.53736315218272,
+        "estimated_compute_and_running_storage_usd": 4.360312957762688,
+        "new_training_stages": 9,
+        "new_full_generation_stages": 8,
+        "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+      },
+      "continued20": {
+        "synthetic_generations": 10,
+        "initialization": "continued",
+        "estimated_hours": 8.51041521663002,
+        "estimated_compute_and_running_storage_usd": 4.923216912305284,
+        "new_training_stages": 10,
+        "new_full_generation_stages": 9,
+        "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+      },
+      "reset20": {
+        "synthetic_generations": 10,
+        "initialization": "reset_s0",
+        "estimated_hours": 7.53736315218272,
+        "estimated_compute_and_running_storage_usd": 4.360312957762688,
+        "new_training_stages": 9,
+        "new_full_generation_stages": 8,
+        "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+      }
+    },
+    "estimated_hours": 24.08514152099546,
+    "estimated_compute_and_running_storage_usd": 13.933089403173126,
+    "new_training_stages": 28,
+    "new_full_generation_stages": 25,
+    "epochs_per_stage": 5,
+    "executed_epochs": 140,
+    "verified_completed_jobs": [],
+    "method": "Three sequential jobs; imported reset50 prefix and shared new continued20/reset20 prefix. Warmed production batches, 1.5x compute margin, setup/checkpoint/upload and two handoff allowances. Imported model/data work is excluded.",
+    "quoted_gpu_hourly_usd": 0.57,
+    "network_volume_gb": 60,
+    "network_volume_hourly_usd": 0.005753424657534247,
+    "container_disk_hourly_usd": 0.0027397260273972603,
+    "historical_storage_from_ledger_during_forecast_usd": 0.3464301177672837,
+    "live_retained_storage_hourly_usd": 0.015,
+    "conservative_historical_storage_allowance_usd": 0.3612771228149319,
+    "padded_watchdog_required_usd": 16.023052813649095,
+    "session_allowance_after_historical_storage_usd": 17.059232370183125,
+    "effective_watchdog_hours_at_allowance": 25.64268062109912,
+    "new_volume_seven_day_retention_usd": 0.9665753424657535,
+    "benchmark": {
+      "training_target_tokens_per_second": 38095.08658862076,
+      "generation_new_tokens_per_second": 1437.9771269431437,
+      "training_step_seconds": [
+        0.5813516408670694,
+        0.2078633070923388,
+        0.2114982360508293,
+        0.211680841865018,
+        0.21301742200739682
+      ],
+      "generation_batch_seconds": [
+        1.5977812150958925,
+        1.4302110611461103,
+        1.4182348030153662
+      ],
+      "effective_batch": 128,
+      "microbatch": 32,
+      "generation_batch": 32,
+      "num_beams": 5,
+      "repetition_penalty": 1.0,
+      "precision": "bf16",
+      "full_split_blocks": {
+        "train": 37946,
+        "validation": 3922,
+        "test": 4494
+      },
+      "gpu": "NVIDIA RTX PRO 4000 Blackwell"
+    },
+    "live_matching_gpu_candidate": {
+      "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+      "vram_gb": 24,
+      "hourly_usd": 0.57,
+      "data_center": "EU-RO-1",
+      "availability": "LOW"
+    },
+    "historical_actual_range_hours": [
+      17,
+      21
+    ],
+    "forecast_note": "Estimate from warmed production batch sizes and actual full split counts, with 1.5x compute margin, evaluation/checkpoint/setup and handoff allowances; not a measured full campaign."
+  },
+  "readiness": {
+    "technically_validated": true,
+    "affordable_at_recorded_prices_and_balance": true,
+    "matching_gpu_currently_available": true,
+    "full_launch_performed": false,
+    "requires_separate_full_launch_instruction": true,
+    "later_launcher_rechecks": "Immutable source pins, source-bound certificate, matching stock/software, current ledger/credit and both padded cost/runtime coverage."
+  },
+  "artifacts": {
+    "report": "../../reports/20261101T022210Z-smoke-mixed-campaign/report.md",
+    "dataset_preview": "../../reports/20261101T022210Z-smoke-mixed-campaign/dataset_preview.json",
+    "local_reconstruction": "../../reports/20261101T022210Z-smoke-mixed-campaign/local_mixture_reconstruction.json",
+    "publication_manifest": "../../reports/20261101T022210Z-smoke-mixed-campaign/publication_manifest.json"
+  },
+  "limitations": [
+    "Smoke uses reduced data and one seed; it validates execution, not collapse or mitigation.",
+    "Full historical M2 verification is distinct from the reduced reset50 smoke mixture.",
+    "Unsealed partial jobs keep a conservative whole-job resume forecast.",
+    "The accepted workflow is the sequential campaign; standalone protocols keep separate acceptance requirements."
+  ]
+}

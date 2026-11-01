@@ -1,0 +1,101 @@
+{
+  "run_id": "20261101T022210Z-smoke-mixed-campaign",
+  "repos": {
+    "model": "Bill11235813/iib-model-collapse-week1-models",
+    "dataset": "Bill11235813/iib-model-collapse-week1-data"
+  },
+  "revisions": {
+    "model": "c057e141d7ce779492e4fce93f1b0816fe778a12",
+    "dataset": "4295acc3d11970941476c901494abd3820452d62"
+  },
+  "artifact_index_sha256": "ea2a862c93cc58f1cdec602906c7b4085989c9c6feedb173ddec82de89d58e08",
+  "indexed_files": 48,
+  "verified_files": 48,
+  "verified_bytes": 1775897,
+  "metadata_only": true,
+  "scope": "metadata_only",
+  "preserved_control_files": {
+    "resources.json": {
+      "recovered_path": "fetched_control/3d9d4399eb8120397b0962fd2d337cdf88df9607a972e33fbed81eb0d69f241f/resources.json",
+      "sha256": "3d9d4399eb8120397b0962fd2d337cdf88df9607a972e33fbed81eb0d69f241f",
+      "authoritative_local_sha256": "3ec2e402b77bf53f0c86158354e18140f095d8760826c8b413ef9cb798e5ba86"
+    }
+  },
+  "operational_files_outside_immutable_index": [
+    "events.jsonl",
+    "status.json",
+    "watchdog_exit.json"
+  ],
+  "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261101T022210Z-smoke-mixed-campaign",
+  "children": {
+    "reset50": {
+      "run_id": "20261101T022210Z-smoke-mixed-campaign-reset-mixed50",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "0cd5dd013eef30c4a24423d69ffad44bbee9a387",
+        "dataset": "2ed36124f0f2614052b7c3ede8c87ccae7b83e01"
+      },
+      "artifact_index_sha256": "6063795ed1d39ed17e6e232821e749cce14c8c5ec24cf424f959ff88ae99d115",
+      "indexed_files": 155,
+      "verified_files": 120,
+      "verified_bytes": 17288502,
+      "metadata_only": true,
+      "scope": "metadata_only",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261101T022210Z-smoke-mixed-campaign-reset-mixed50"
+    },
+    "continued20": {
+      "run_id": "20261101T022210Z-smoke-mixed-campaign-continued-mixed20",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "e5937ceba147831e91992f4a68bf33d2773516e1",
+        "dataset": "a0cc338258e5ffec8f263c0fb67e1724ed81aed6"
+      },
+      "artifact_index_sha256": "e21c03998cdfb1a4203aff269f1d3f3604fbc7c770180a4d64b20ab63c45c11e",
+      "indexed_files": 119,
+      "verified_files": 92,
+      "verified_bytes": 11152185,
+      "metadata_only": true,
+      "scope": "metadata_only",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261101T022210Z-smoke-mixed-campaign-continued-mixed20"
+    },
+    "reset20": {
+      "run_id": "20261101T022210Z-smoke-mixed-campaign-reset-mixed20",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "c057e141d7ce779492e4fce93f1b0816fe778a12",
+        "dataset": "e3ec4df74c619cbecf018ea41254a2020ca17e64"
+      },
+      "artifact_index_sha256": "01facda82e3d1a900316478ad027041c1fa4550c03e5fdc9b2c2e3570dd40701",
+      "indexed_files": 155,
+      "verified_files": 120,
+      "verified_bytes": 14883090,
+      "metadata_only": true,
+      "scope": "metadata_only",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261101T022210Z-smoke-mixed-campaign-reset-mixed20"
+    }
+  }
+}
