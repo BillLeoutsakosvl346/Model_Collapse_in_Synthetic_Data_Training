@@ -8,6 +8,9 @@ def report(root, out=None, *, for_backup=False):
     if read_json(Path(root) / "config.json", {}).get("workflow") == "paired":
         from .workflow.paired import report_pair
         return report_pair(root, out=out, for_backup=for_backup)
+    if read_json(Path(root) / "config.json", {}).get("workflow") == "mixed_campaign":
+        from .workflow.mixed_campaign import report_campaign
+        return report_campaign(root, out=out, for_backup=for_backup)
     return _report(root, out=out, for_backup=for_backup)
 
 __all__ = ["report"]

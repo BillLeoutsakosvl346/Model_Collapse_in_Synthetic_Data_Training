@@ -68,6 +68,9 @@ def training_lineage(root, generation, c, base_hash):
                        synthetic_source_tokens_sha256=manifest["continuation_tokens_sha256"],
                        mixture={k: mixed[k] for k in ("version", "synthetic_fraction", "effective_synthetic_fraction",
                                                       "real_blocks", "synthetic_blocks", "real_tokens", "synthetic_tokens")})
+        if generation == 2 and c.get("branch_source") and (root / "shared_prefix.json").exists():
+            from .branch import verify_shared_cycle2_mixture
+            verify_shared_cycle2_mixture(root, c, blocks, mixed)
     return blocks, expected, checkpoint, lineage
 
 

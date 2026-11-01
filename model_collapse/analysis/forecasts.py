@@ -42,3 +42,31 @@ def forecast_pair(bench, generations, hourly_usd):
             "new_training_stages": 2 * generations - 1, "epochs_per_stage": 5,
             "executed_epochs": 5 * (2 * generations - 1),
             "method": "Sequential matched arms, shared S1/D2 and imported D1; margins include both arms and handoff."}
+
+
+def forecast_campaign(bench, generations, hourly_usd, *, completed_jobs=()):
+    """Count only the 28 new stages and 25 new full source pools in this fixed campaign."""
+    jobs = {
+        "reset50": forecast(bench, generations, hourly_usd, initialization="reset_s0"),
+        "continued20": forecast(bench, generations, hourly_usd, initialization="continued", imported_d1=True),
+        "reset20": forecast(bench, generations, hourly_usd, initialization="reset_s0"),
+    }
+    completed_jobs = set(completed_jobs)
+    if not completed_jobs.issubset(jobs):
+        raise ValueError("Unknown completed campaign job")
+    for name in completed_jobs:
+        jobs[name] = {**jobs[name], "estimated_hours": 0.0,
+                      "estimated_compute_and_running_storage_usd": 0.0,
+                      "new_training_stages": 0, "new_full_generation_stages": 0,
+                      "execution": "verified_sealed_completed_job"}
+    # Two independent immutable-source handoffs; each has the paired workflow's quarter-hour margin.
+    hours = sum(job["estimated_hours"] for job in jobs.values()) + .5
+    return {"jobs": jobs, "estimated_hours": hours,
+            "estimated_compute_and_running_storage_usd": hours * hourly_usd,
+            "new_training_stages": sum(job["new_training_stages"] for job in jobs.values()),
+            "new_full_generation_stages": sum(job["new_full_generation_stages"] for job in jobs.values()),
+            "epochs_per_stage": 5, "executed_epochs": 5 * sum(job["new_training_stages"] for job in jobs.values()),
+            "verified_completed_jobs": sorted(completed_jobs),
+            "method": "Three sequential jobs; imported reset50 prefix and shared new continued20/reset20 prefix. "
+                      "Warmed production batches, 1.5x compute margin, setup/checkpoint/upload and two handoff allowances. "
+                      "Imported model/data work is excluded."}

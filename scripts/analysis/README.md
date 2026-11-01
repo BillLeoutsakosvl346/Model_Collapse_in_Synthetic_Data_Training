@@ -52,3 +52,13 @@ python scripts/analysis/export_acceptance.py RUN_ID --offline-tests COUNT
 This legacy exporter is specifically for the reset-S0 one-epoch smoke profile. Run only after metadata fetch, validation and temporary-resource cleanup. It exports checksummed small records/figures and refuses an existing publication; it never copies bulk weights/arrays. `--offline-tests` records a previously completed count; it does not run tests. `--superseded` scopes an earlier source certificate. Paired/mixed conditions use their own preserved evidence and builders above; do not apply this reset-specific authored methodology to them.
 
 See [operations](../../docs/operations.md), [reports](../../reports/README.md) and [repository checks](../maintenance/README.md).
+
+## Mixed campaign acceptance export
+
+```powershell
+python scripts/analysis/export_campaign_acceptance.py runs/CAMPAIGN_ID --out .state/campaign-acceptance-export
+```
+
+Run after campaign metadata recovery and local GPU/provider validation. This offline exporter requires a completed six-stage / thirty-epoch smoke campaign and binds its acceptance receipt to the exact run, manifest runtime/configuration, required campaign protocol and all three child audits. It checks saved epoch-5 selection, NLL/PPL arithmetic, mixture counts/selections and shared cycle-2 identities, then copies allowlisted scientific JSON into a new destination. It preserves three sibling job directories and reuses the campaign/per-job reporters for tables and figure families. It does not copy checkpoints, token arrays, tokenizer contents, credentials or resource registries, and performs no cloud access or model evaluation.
+
+The export contains a report, per-stage and mixture CSVs, selected records, analysis provenance and a checksummed publication manifest. Source indexes also reference uncopied bulk objects; the export is explicitly selected metadata rather than a new full restoration. Spending and current resource state remain separate dated operational evidence. Never overwrite a historical publication with regenerated output.

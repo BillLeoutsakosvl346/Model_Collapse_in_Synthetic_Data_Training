@@ -4,8 +4,10 @@ import datetime as dt
 import hashlib
 import io
 import json
+import math
 import os
 import posixpath
+import re
 import shlex
 import subprocess
 import tarfile
@@ -95,6 +97,61 @@ def campaign_accrued(d, campaign):
     ids = {x["volume_id"] for x in launches}
     selected = {**d, "launches": launches, "volumes": {k: v for k, v in d.get("volumes", {}).items() if k in ids}}
     return accrued(selected)
+
+
+def campaign_budget(d):
+    """An explicit private operational authorization, separate from scientific defaults."""
+    amount = d.get("total_budget_usd")
+    if isinstance(amount, bool) or not isinstance(amount, (int, float)) or not math.isfinite(amount) or amount <= RESERVE:
+        raise RuntimeError("Mixed campaign requires an explicit authorized cumulative budget in the task ledger")
+    return float(amount)
+
+
+def historical_running_storage(d, hours, *, exclude_volume=None):
+    """Conservatively reserve other retained resources during the proposed session."""
+    from .cloud.budget import accrued_cost
+    timestamp = now()
+    amount = accrued_cost(d, timestamp + hours * 3600) - accrued_cost(d, timestamp)
+    volume = d.get("volumes", {}).get(exclude_volume, {})
+    if volume.get("charge_started_at") is not None and not volume.get("deleted_at"):
+        amount -= hours * volume["hourly_usd"]
+    return max(0.0, amount)
+
+
+def _provider_shutdown(api, pod, resources):
+    """Obtain the provider's stop time rather than the later observation time."""
+    observed = now()
+    candidates = [pod]
+    if not any(pod.get(k) for k in ("lastStatusChange", "stoppedAt", "lastStoppedAt")):
+        query = "query { pod(input: { podId: " + json.dumps(resources["pod_id"]) + " }) { id desiredStatus lastStatusChange } }"
+        value = api.request("POST", "", {"query": query}, graphql=True)
+        candidate = (value or {}).get("data", {}).get("pod")
+        if candidate:
+            candidates.append(candidate)
+    for candidate in candidates:
+        if candidate.get("id", resources["pod_id"]) != resources["pod_id"]:
+            continue
+        state = candidate.get("status", candidate.get("desiredStatus", pod.get("status")))
+        if state not in ("EXITED", "TERMINATED"):
+            continue
+        for key in ("stoppedAt", "lastStoppedAt", "lastStatusChange"):
+            raw = candidate.get(key)
+            if not isinstance(raw, str):
+                continue
+            parsed = None
+            try:
+                value = dt.datetime.fromisoformat(raw.replace("Z", "+00:00"))
+                if value.tzinfo is not None:
+                    parsed = value.timestamp()
+            except ValueError:
+                match = re.search(r"(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun) [A-Za-z]{3} \d{1,2} \d{4} \d{2}:\d{2}:\d{2} GMT[+-]\d{4}", raw)
+                if match:
+                    parsed = dt.datetime.strptime(match.group(0), "%a %b %d %Y %H:%M:%S GMT%z").timestamp()
+            if parsed is not None and resources["created_at"] <= parsed <= observed + 300:
+                return parsed, {"provider_pod_id": resources["pod_id"], "provider_status": state,
+                                "field": key, "value": raw, "provider_shutdown_epoch": parsed,
+                                "observed_at": observed}
+    raise RuntimeError("Provider stopped compute but no verified shutdown timestamp is available; ledger interval remains unsettled")
 
 
 def preflight(probe=False):
@@ -193,6 +250,22 @@ def command(client, text, timeout=600):
     return out.strip()
 
 
+def _transport_read(operation, cutoff):
+    """Retry only transient reads, never create requests, auth failures or host-key changes."""
+    for attempt in range(4):
+        try:
+            return operation()
+        except (paramiko.AuthenticationException, paramiko.BadHostKeyException, paramiko.PasswordRequiredException):
+            raise
+        except (OSError, EOFError, paramiko.SSHException):
+            if attempt == 3 or now() + min(2 ** attempt, 4) >= cutoff:
+                raise
+        except RuntimeError as error:
+            if not re.search(r"HTTP (?:429|5\d\d)\b", str(error)) or attempt == 3 or now() + min(2 ** attempt, 4) >= cutoff:
+                raise
+        time.sleep(min(2 ** attempt, 4))
+
+
 def upload_json(sftp, path, value):
     with sftp.open(path, "w") as f:
         f.write(json.dumps(value))
@@ -288,6 +361,9 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             if c.get("workflow") == "paired":
                 for arm in c["arms"].values():
                     arm["generations"] = generations
+            elif c.get("workflow") == "mixed_campaign":
+                for job in c["jobs"].values():
+                    job["generations"] = generations
             else:
                 c["generations"] = generations
         if c["kind"] != ("smoke" if smoke else "full"):
@@ -298,15 +374,23 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     if previous:
         reject_completed_cloud_resume(resume_id, previous["repos"])
     paired = c.get("workflow") == "paired"
+    campaign = c.get("workflow") == "mixed_campaign"
     if paired:
         from .workflow.paired import resolve_pair_inputs
         c = resolve_pair_inputs(c)
+    elif campaign:
+        from .workflow.mixed_campaign import resolve_campaign_inputs
+        c = resolve_campaign_inputs(c)
     elif c.get("initial_dataset"):
         from .workflow.initial_data import resolve_initial_dataset
         c = resolve_initial_dataset(c)
     if c.get("initialization") == "reset_s0":
         from .workflow.branch import resolve_branch_source
         c = resolve_branch_source(c)
+    resume_work = None
+    if campaign and previous:
+        from .workflow.mixed_campaign import verified_resume_jobs
+        resume_work = verified_resume_jobs(PROJECT / "runs" / resume_id, previous, c)
     api = Runpod()
     p = preflight(probe=True)
     if any(x["status"] not in ("EXITED", "TERMINATED") for x in api.request("GET", "/pods")["pods"]):
@@ -326,14 +410,21 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         if not choices:
             raise RuntimeError("No compatible GPU is available beside this run's retained volume")
     choice = choices[0]
-    spent = accrued(ledger())
-    allowance = min(TOTAL_BUDGET - spent - RESERVE, p["account"]["clientBalance"] - RESERVE)
+    volume_gb = c["network_volume_gb"] if campaign else 30
+    volume_hourly = volume_gb * .07 / 730
+    ledger_state = ledger()
+    total_budget = campaign_budget(ledger_state) if campaign else TOTAL_BUDGET
+    spent = accrued(ledger_state)
+    allowance = min(total_budget - spent - RESERVE, p["account"]["clientBalance"] - RESERVE)
     if c.get("max_session_usd") is not None:
         allowance = min(allowance, c["max_session_usd"])
     if c["kind"] == "smoke":
         allowance = min(allowance, SETUP_BUDGET - accrued(ledger(), "smoke") - 0.15, 0.75)
         if paired:
             allowance = min(allowance, .75 - campaign_accrued(ledger(), "shared_start_final_epoch5"))
+        elif campaign:
+            from .workflow.mixed_campaign import CAMPAIGN
+            allowance = min(allowance, .75 - campaign_accrued(ledger(), CAMPAIGN))
         else:
             from .mixing import CAMPAIGN, mixture_enabled
             if mixture_enabled(c):
@@ -341,9 +432,9 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     if allowance <= 0.1:
         raise RuntimeError("Insufficient budget after shutdown/storage reserve")
     if c["kind"] == "full":
-        from .mixing import certificate_name
-        validation_file = "validation_paired.json" if paired else certificate_name(c)
-        validation = read_json(STATE / validation_file)
+        from .mixing import certificate_candidates
+        validation = next((record for name in certificate_candidates(c, code_hash)
+                           if (record := read_json(STATE / name)) is not None), None)
         from .workflow.profiles import require_acceptance
         require_acceptance(c, validation, code_hash)
         b = read_json(STATE / "benchmark.json")
@@ -359,32 +450,45 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             estimate_kwargs["first_new_cycle"] = 2
         if paired:
             from .analysis.forecasts import forecast_pair
-            estimate = forecast_pair(b, c["arms"]["continued"]["generations"], choice["hourly_usd"] + VOLUME_HOURLY + CONTAINER_HOURLY)
+            estimate = forecast_pair(b, c["arms"]["continued"]["generations"], choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY)
+        elif campaign:
+            from .analysis.forecasts import forecast_campaign
+            forecast_options = {"completed_jobs": resume_work["sealed_completed_jobs"]} if resume_work else {}
+            estimate = forecast_campaign(b, c["jobs"]["continued20"]["generations"], choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY,
+                                         **forecast_options)
+            if resume_work:
+                estimate["resume_work_verification"] = resume_work
+            estimate["historical_storage_during_run_usd"] = historical_running_storage(
+                ledger_state, estimate["estimated_hours"], exclude_volume=previous.get("volume_id") if previous else None)
+            allowance -= estimate["historical_storage_during_run_usd"]
+            estimate["padded_watchdog_required_usd"] = estimate["estimated_compute_and_running_storage_usd"] * 1.15
+            if estimate["padded_watchdog_required_usd"] > allowance:
+                raise RuntimeError("Conservative campaign runtime cannot fit the padded watchdog deadline after historical storage and reserve")
         else:
-            estimate = forecast(b, c["generations"], choice["hourly_usd"] + VOLUME_HOURLY + CONTAINER_HOURLY, **estimate_kwargs)
+            estimate = forecast(b, c["generations"], choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY, **estimate_kwargs)
         if estimate["estimated_compute_and_running_storage_usd"] > allowance:
             raise RuntimeError("Conservative full-run estimate exceeds remaining budget; select fewer generations")
     # Resolve the private source, including its weight-file checksum, before spending.
-    verify_start_checkpoint(c["arms"]["continued"] if paired else c)
+    verify_start_checkpoint(c["arms"]["continued"] if paired else c["jobs"]["continued20"] if campaign else c)
     templates = api.request("GET", "/catalog/templates?source=official")["templates"]
     template = next(t for t in templates if t["id"] == "runpod-torch-v280")
     if c.get("required_image") and template["image"] != c["required_image"]:
         raise RuntimeError("Official template differs from the pinned matched image")
     key = register_key(api)
-    run_suffix = "-paired-final5" if paired else {"continued": "-continued", "reset_s0": "-reset-s0"}.get(c.get("initialization"), "")
+    run_suffix = "-mixed-campaign" if campaign else "-paired-final5" if paired else {"continued": "-continued", "reset_s0": "-reset-s0"}.get(c.get("initialization"), "")
     run_id = resume_id or dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + c["kind"] + run_suffix
     launch_id = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     local = PROJECT / "runs" / run_id
     local.mkdir(parents=True, exist_ok=True)
     atomic_json(local / "config.json", c)
     print(json.dumps({"provisioning": choice, "image": template["image"], "session_allowance_usd": allowance,
-                      "network_volume_gb": 30, "network_volume_usd_per_hour": VOLUME_HOURLY}), flush=True)
+                      "network_volume_gb": volume_gb, "network_volume_usd_per_hour": volume_hourly}), flush=True)
     volume_created_at = previous.get("volume_created_at", previous["created_at"]) if previous else now()
     volume = api.request("GET", "/network-volumes/" + previous["volume_id"]) if previous else api.request("POST", "/network-volumes", {
-        "name": "iib-" + run_id, "size": 30, "dataCenter": choice["data_center"], "type": "STANDARD"})
+        "name": "iib-" + run_id, "size": volume_gb, "dataCenter": choice["data_center"], "type": "STANDARD"})
     atomic_json(local / "pending_volume.json", {"volume_id": volume["id"], "created_by_task": not bool(previous)})
     check_volume = api.request("GET", "/network-volumes/" + volume["id"])
-    if check_volume["size"] != 30 or check_volume["dataCenter"] != choice["data_center"]:
+    if check_volume["size"] != volume_gb or check_volume["dataCenter"] != choice["data_center"]:
         raise RuntimeError("Volume read-back mismatch")
     created = now()
     try:
@@ -402,15 +506,26 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         pod = matches[0]
     resources = {"run_id": run_id, "launch_id": launch_id, "kind": c["kind"], "pod_id": pod["id"], "volume_id": volume["id"],
                  "data_center": choice["data_center"], "gpu": choice["gpu"], "image": template["image"], "created_at": created,
-                 "quoted_gpu_hourly_usd": choice["hourly_usd"], "guard_hourly_usd": (choice["hourly_usd"] + VOLUME_HOURLY + CONTAINER_HOURLY) * 1.15,
+                 "quoted_gpu_hourly_usd": choice["hourly_usd"], "guard_hourly_usd": (choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY) * 1.15,
                  "compute_hourly_usd": (choice["hourly_usd"] + CONTAINER_HOURLY) * 1.15,
-                 "volume_hourly_usd": VOLUME_HOURLY, "volume_created_at": volume_created_at,
+                 "volume_hourly_usd": volume_hourly, "network_volume_gb": volume_gb, "volume_created_at": volume_created_at,
                  "session_allowance_usd": allowance, "repos": p["hugging_face"]["repos"], "code_sha256": code_hash,
                  "starting_balance_usd": p["account"]["clientBalance"], "remote_root": "/workspace/runs/" + run_id}
     bundle = read_json(STATE / "source_bundle.json", {})
     resources.update(runtime_sha256=code_hash, git_commit=bundle.get("git_commit"))
     resources["configuration_sha256"] = digest(c)
-    if paired:
+    if campaign:
+        resources.update(workflow="mixed_campaign", authorized_cumulative_budget_usd=total_budget)
+        fields = ("run_id", "launch_id", "pod_id", "volume_id")
+        resources["provider_sessions"] = [{k: item[k] for k in fields} for item in ledger_state["launches"]
+                if item.get("run_id") == run_id and item.get("volume_id") == volume["id"] and all(k in item for k in fields)]
+        resources["provider_sessions"].append({k: resources[k] for k in fields})
+        if c["kind"] == "smoke":
+            from .workflow.mixed_campaign import CAMPAIGN
+            resources["acceptance_campaign"] = CAMPAIGN
+        else:
+            resources["admission_forecast"] = estimate
+    elif paired:
         resources["workflow"] = "paired"
         if c["kind"] == "smoke":
             resources["acceptance_campaign"] = "shared_start_final_epoch5"
@@ -424,12 +539,14 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         update_ledger(resources, state="provisioning")
         ready_by = now() + 600  # Technical provisioning timeout, not a training runtime limit.
         while now() < ready_by:
-            pod = api.pod(pod["id"])
+            pod = _transport_read(lambda: api.pod(resources["pod_id"]), ready_by) if campaign else api.pod(pod["id"])
             if pod.get("ssh", {}).get("direct") and pod["status"] == "RUNNING":
                 try:
                     client = ssh_connect(pod, key)
                     break
-                except (OSError, paramiko.SSHException):
+                except (OSError, paramiko.SSHException) as error:
+                    if campaign and isinstance(error, (paramiko.AuthenticationException, paramiko.BadHostKeyException, paramiko.PasswordRequiredException)):
+                        raise
                     pass
             time.sleep(8)
         if client is None:
@@ -437,9 +554,11 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         if pod["gpu"]["id"] != choice["gpu"] or pod["dataCenterId"] != choice["data_center"]:
             raise RuntimeError("Pod read-back configuration mismatch")
         resources["actual_pod_hourly_usd"] = pod["cost"]
-        resources["guard_hourly_usd"] = max(resources["guard_hourly_usd"], (pod["cost"] + VOLUME_HOURLY + CONTAINER_HOURLY) * 1.15)
+        resources["guard_hourly_usd"] = max(resources["guard_hourly_usd"], (pod["cost"] + volume_hourly + CONTAINER_HOURLY) * 1.15)
         resources["compute_hourly_usd"] = max(resources["compute_hourly_usd"], (pod["cost"] + CONTAINER_HOURLY) * 1.15)
         register_resources(resources)
+        if campaign and c["kind"] == "full" and resources["session_allowance_usd"] / resources["guard_hourly_usd"] < estimate["estimated_hours"]:
+            raise RuntimeError("Actual provider rate makes the campaign's padded watchdog deadline unaffordable")
         command(client, "mkdir -p /workspace/project " + shlex.quote(resources["remote_root"]))
         sftp = client.open_sftp()
         sftp.get_channel().settimeout(120)
@@ -482,26 +601,66 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             atomic_json(local / "environment_match.json", {"required": c["required_environment"],
                                                            "actual": json.loads(versions), "verified": True})
         command(client, prefix + "/opt/iib-venv/bin/pip freeze >" + shlex.quote(resources["remote_root"] + "/requirements-tested.txt"))
+        if campaign and c["kind"] == "full":
+            from .supervisor import deadline
+            remaining_required = max(0, estimate["estimated_hours"] * 3600 - 300)
+            if deadline(resources) - now() < remaining_required:
+                raise RuntimeError("Campaign dependency setup consumed the padded runtime budget; refusing to start training")
         supervisor_cmd = ("setsid /opt/iib-venv/bin/python -m model_collapse supervisor --root " + shlex.quote(resources["remote_root"]) +
             (" --validation" if c["kind"] == "smoke" else "") + " >" + shlex.quote(resources["remote_root"] + "/supervisor.log") + " 2>&1 </dev/null &")
         command(client, prefix + "sh -c " + shlex.quote(supervisor_cmd), timeout=30)
         for _ in range(30):
             try:
-                live = json.loads(command(client, ". /run/iib-week1-secrets; python3 -c " + shlex.quote(
-                    "import json,pathlib; p=pathlib.Path(" + repr(resources["remote_root"]) + "); print(json.dumps({k:json.loads((p/(k+'.json')).read_text()) for k in ['watchdog','supervisor','status']}))")))
-                if now() - live["watchdog"]["time"] < 20 and now() - live["supervisor"]["time"] < 20:
-                    atomic_json(local / "launch_verified.json", live)
-                    update_ledger(resources, state="running")
-                    print(json.dumps({"run_id": run_id, "pod_id": pod["id"], "state": "running", "detached_supervisor_and_watchdog_verified": True}), flush=True)
-                    return resources
-            except (RuntimeError, ValueError):
-                pass
+                read_live = lambda: json.loads(command(client, ". /run/iib-week1-secrets; python3 -c " + shlex.quote(
+                    "import json,pathlib; p=pathlib.Path(" + repr(resources["remote_root"]) + "); print(json.dumps({k:json.loads((p/(k+'.json')).read_text()) for k in ['watchdog','supervisor','status']}))"), timeout=30 if campaign else 600))
+                live = _transport_read(read_live, now() + 30) if campaign else read_live()
+            except (RuntimeError, ValueError) as error:
+                if campaign and re.search(r"HTTP (?:401|403)\b", str(error)):
+                    raise
+                time.sleep(3)
+                continue
+            if campaign and live.get("status", {}).get("state") in ("failed", "budget_paused", "paused"):
+                raise RuntimeError("Campaign failed or paused during startup; refusing a running handoff")
+            if now() - live["watchdog"]["time"] < 20 and now() - live["supervisor"]["time"] < 20:
+                atomic_json(local / "launch_verified.json", live)
+                update_ledger(resources, state="running")
+                if campaign:
+                    # The launcher itself proves new training and progress after closing its setup SSH connection.
+                    client.close()
+                    client = None
+                    backup_only = bool(resume_work and len(resume_work["sealed_completed_jobs"]) == 3)
+                    terminal = None
+                    if backup_only:
+                        terminal = verify_campaign_terminal(run_id, max_wait_seconds=600)
+                    else:
+                        try:
+                            progress = verify_detached(run_id, max_wait_seconds=600)
+                        except RuntimeError:
+                            # A compatible resume can finish only backup/seal repair before a new epoch exists.
+                            if not previous or api.pod(resources["pod_id"])["status"] not in ("EXITED", "TERMINATED"):
+                                raise
+                            terminal = verify_campaign_terminal(run_id, max_wait_seconds=10)
+                        else:
+                            atomic_json(local / "launch_verified.json", {**live, "detached_progress": progress})
+                    if terminal:
+                        atomic_json(local / "launch_verified.json", {**live, "terminal_repair": terminal})
+                        print(json.dumps({"run_id": run_id, "pod_id": pod["id"], "state": "complete",
+                                          "completed_backup_repair_and_provider_shutdown_verified": True}), flush=True)
+                        return {**resources, "state": "complete", "terminal_repair": terminal}
+                print(json.dumps({"run_id": run_id, "pod_id": pod["id"], "state": "running",
+                                  "detached_supervisor_and_watchdog_verified": True,
+                                  **({"actual_new_training_progress_verified": True} if campaign else {})}), flush=True)
+                return resources
             time.sleep(3)
         raise RuntimeError("Supervisor/worker/watchdog did not all become healthy")
     except BaseException:
         api.stop(resources["pod_id"])
-        update_ledger(resources, state="failed", stopped_at=now(),
-                      volume_retained_since=now(), volume_hourly_usd=VOLUME_HOURLY,
+        stopped = now()
+        if campaign:
+            stopped, proof = _provider_shutdown(api, api.pod(resources["pod_id"]), resources)
+            atomic_json(local / "provider_shutdown.json", proof)
+        update_ledger(resources, state="failed", stopped_at=stopped,
+                      volume_retained_since=stopped, volume_hourly_usd=volume_hourly,
                       estimated_usd=(now() - created) / 3600 * resources["guard_hourly_usd"])
         raise
     finally:
@@ -516,38 +675,96 @@ def _detached_observation(resources):
         raise RuntimeError("Detached progress verification requires the active paired Pod")
     client = ssh_connect(pod, STATE / "runpod_ed25519")
     try:
-        script = ("import pathlib,json; p=pathlib.Path(" + repr(resources["remote_root"]) + "); "
+        allowed = [resources["run_id"] + "-continued", resources["run_id"] + "-reset-s0"]
+        if resources.get("workflow") == "mixed_campaign":
+            from .workflow.mixed_campaign import job_roots
+            allowed = [p.name for p in job_roots(Path(resources["run_id"])).values()]
+        script = ("import pathlib,json,math; p=pathlib.Path(" + repr(resources["remote_root"]) + "); "
                   "read=lambda q: json.loads(q.read_text()) if q.exists() else {}; "
                   "s=read(p/'status.json'); n=s.get('active_child'); "
-                  "assert n is None or n in [p.name+'-continued',p.name+'-reset-s0']; "
+                  "assert n is None or n in " + repr(allowed) + "; "
                   "q=p.parent/n if n else p; "
                   "events=q/'events.jsonl'; histories=list(q.glob('seed_*/gen_*/training_history.json')); "
+                  "first=2 if read(q/'config.json').get('initialization')=='reset_s0' else 1; "
+                  "new=[x for x in histories if int(x.parent.name.removeprefix('gen_'))>=first and not (x.parent/'import.json').exists()]; "
+                  "rows=[row for x in new for row in read(x)]; "
                   "print(json.dumps({'time':__import__('time').time(),'status':s,'child_status':read(q/'status.json'),"
                   "'event_bytes':events.stat().st_size if events.exists() else 0,'epochs':sum(len(read(x)) for x in histories),"
+                  "'new_epochs':len(rows),'finite_new_training':bool(rows) and all(math.isfinite(row[k]) for row in rows for k in ['train_loss','validation_loss']),"
                   "'supervisor':read(p/'supervisor.json'),'watchdog':read(p/'watchdog.json')}))")
-        return json.loads(command(client, "python3 -c " + shlex.quote(script)))
+        return json.loads(command(client, "python3 -c " + shlex.quote(script),
+                                  timeout=30 if resources.get("workflow") == "mixed_campaign" else 600))
     finally:
         client.close()
 
 
-def verify_detached(run_id):
+def verify_campaign_terminal(run_id, *, max_wait_seconds=600):
+    """Accept backup-only resume completion, without demanding or fabricating new training."""
+    from .supervisor import deadline
+    from .workflow.mixed_campaign import JOB_ORDER, verified_resume_jobs
+    resources = local_resources(run_id)
+    root = PROJECT / "runs" / run_id
+    c = read_json(root / "config.json")
+    if c.get("workflow") != "mixed_campaign":
+        raise ValueError("Terminal repair verification requires a mixed campaign")
+    api = Runpod()
+    cutoff = min(now() + max_wait_seconds, deadline(resources) - 2)
+    while now() <= cutoff:
+        pod = _transport_read(lambda: api.pod(resources["pod_id"]), cutoff)
+        if pod["status"] in ("EXITED", "TERMINATED"):
+            recovered = verified_resume_jobs(root, resources, c)
+            index = read_json(root / "artifact_index.json")
+            completion = read_json(root / "completion.json", {})
+            if (set(recovered["sealed_completed_jobs"]) != set(JOB_ORDER)
+                    or "completion.json" not in index["files"] or not completion.get("complete")
+                    or completion.get("workflow") != "mixed_campaign"
+                    or completion.get("source20_seal_sha256") != sha256(root / "continued20_seal.json")):
+                raise RuntimeError("Stopped campaign has no verified completed private backup")
+            stopped, provider = _provider_shutdown(api, pod, resources)
+            update_ledger(resources, state="exited", stopped_at=stopped, volume_retained_since=stopped,
+                          volume_hourly_usd=resources["volume_hourly_usd"], provider_shutdown_verified=True,
+                          stop_observed_at=provider["observed_at"])
+            receipt = {"run_id": run_id, "pod_id": resources["pod_id"], "state": "complete",
+                       "provider_shutdown": provider, "recovered_completed_jobs": recovered,
+                       "completion_sha256": sha256(root / "completion.json"),
+                       "scope": "Completed backup/seal repair verified from pinned private metadata; no fresh training was required."}
+            atomic_json(root / "terminal_repair_verified.json", receipt)
+            return receipt
+        time.sleep(3)
+    raise RuntimeError("Campaign terminal repair did not complete with verified provider shutdown within its health deadline")
+
+
+def verify_detached(run_id, *, max_wait_seconds=None):
     """Observe real stage/epoch progress across fresh, closed SSH connections."""
     r = local_resources(run_id)
     c = read_json(PROJECT / "runs" / run_id / "config.json", {})
     from .mixing import mixture_enabled
-    if c.get("workflow") != "paired" and not mixture_enabled(c):
+    if c.get("workflow") not in ("paired", "mixed_campaign") and not mixture_enabled(c):
         raise ValueError("This evidence command applies to paired or mixed-data runs")
-    first = _detached_observation(r)
+    campaign = c.get("workflow") == "mixed_campaign"
+    wait_seconds = max_wait_seconds if max_wait_seconds is not None else (600 if campaign else 120)
+    cutoff = now() + wait_seconds
+    if campaign:
+        from .supervisor import deadline
+        cutoff = min(cutoff, deadline(r) - 10)
+    observe = (lambda: _transport_read(lambda: _detached_observation(r), cutoff)) if campaign else (lambda: _detached_observation(r))
+    first = observe()
     def progress(x):
         s, cs = x["status"], x["child_status"]
         return (s.get("phase"), s.get("active_child"), cs.get("generation"), cs.get("stage"), x["event_bytes"], x["epochs"])
-    for attempt in range(40):
+    attempt = 0
+    while now() < cutoff:
         time.sleep(3)
-        second = _detached_observation(r)
+        attempt += 1
+        second = observe()
+        if campaign and any(second[k].get("state") in ("failed", "budget_paused", "paused") for k in ("status", "child_status")):
+            raise RuntimeError("Campaign failed or paused before detached training progress was verified")
         fresh = all(second[k].get("time", 0) > first[k].get("time", 0) for k in ("supervisor", "watchdog"))
-        if fresh and progress(second) != progress(first):
+        trained = not campaign or (second.get("new_epochs", 0) >= 1 and second.get("finite_new_training") is True)
+        if fresh and trained and progress(second) != progress(first):
             receipt = {"pod_id": r["pod_id"], "launch_id": r["launch_id"], "run_id": run_id,
                        "progress_after_disconnect": True, "observations": [first, second],
+                       **({"new_training_after_import_verified": True} if campaign else {}),
                        "observations_sha256": digest([first, second]),
                        "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."}
             local = PROJECT / "runs" / run_id
@@ -561,6 +778,9 @@ def verify_detached(run_id):
             finally:
                 client.close()
             return receipt
+        if campaign and attempt % 10 == 0:
+            print(json.dumps({"run_id": run_id, "startup_health": "waiting_for_finite_new_training",
+                              "new_epochs": second.get("new_epochs", 0)}), flush=True)
     raise RuntimeError("No real stage/epoch progress observed across SSH disconnection within the health check")
 
 
@@ -576,10 +796,15 @@ def status(run_id):
             text = command(client, "python3 -c " + shlex.quote("import pathlib,json; p=pathlib.Path(" + repr(r["remote_root"]) + "); print(json.dumps({x:json.loads((p/(x+'.json')).read_text()) if (p/(x+'.json')).exists() else None for x in ['status','watchdog','supervisor']}))"))
             result["remote"] = json.loads(text)
             result["log_tail"] = command(client, "tail -c 3000 " + shlex.quote(r["remote_root"] + "/pipeline.log"))
-            if read_json(PROJECT / "runs" / run_id / "config.json", {}).get("workflow") == "paired":
+            workflow = read_json(PROJECT / "runs" / run_id / "config.json", {}).get("workflow")
+            if workflow in ("paired", "mixed_campaign"):
                 child = result["remote"].get("status", {}).get("active_child")
                 if child:
-                    if child not in (run_id + "-continued", run_id + "-reset-s0"):
+                    allowed = (run_id + "-continued", run_id + "-reset-s0")
+                    if workflow == "mixed_campaign":
+                        from .workflow.mixed_campaign import job_roots
+                        allowed = [p.name for p in job_roots(Path(run_id)).values()]
+                    if child not in allowed:
                         raise RuntimeError("Invalid paired child status association")
                     child_root = str(Path(r["remote_root"]).parent).replace("\\", "/") + "/" + child
                     result["active_child"] = json.loads(command(client, "python3 -c " + shlex.quote(
@@ -596,7 +821,13 @@ def status(run_id):
             except Exception:
                 pass
         # Observation of a stopped provider state closes compute once. Storage remains open.
-        update_ledger(r, state="exited", stopped_at=now(), volume_retained_since=now(),
+        stopped, updates = now(), {}
+        if r.get("workflow") == "mixed_campaign":
+            stopped, proof = _provider_shutdown(api, pod, r)
+            atomic_json(PROJECT / "runs" / run_id / "provider_shutdown.json", proof)
+            result["provider_shutdown"] = proof
+            updates = {"provider_shutdown_verified": True, "stop_observed_at": proof["observed_at"]}
+        update_ledger(r, state="exited", stopped_at=stopped, volume_retained_since=stopped, **updates,
                       volume_hourly_usd=r.get("volume_hourly_usd", VOLUME_HOURLY))
     atomic_json(PROJECT / "runs" / run_id / "last_status.json", result)
     return result
@@ -612,7 +843,15 @@ def cleanup(run_id):
     if not index:
         raise RuntimeError("Artifact index missing; fetch the latest run state before cleanup")
     paired = read_json(local / "config.json", {}).get("workflow") == "paired"
-    if paired:
+    campaign = read_json(local / "config.json", {}).get("workflow") == "mixed_campaign"
+    if campaign:
+        from .workflow.mixed_campaign import verify_campaign_recovery
+        verify_campaign_recovery(local)
+        verify_recovered_files(local, index["files"])
+        if any(x.get("metadata_only") for x in read_json(local / "recovery_verified.json")["children"].values()):
+            if not read_json(local / "validation_results.json", {}).get("checks", {}).get("independent_budget_guard_and_provider_stop_verified"):
+                raise RuntimeError("Validate all three campaign cloud restorations and shutdown before metadata-only cleanup")
+    elif paired:
         from .workflow.paired import verify_pair_recovery
         verify_pair_recovery(local)
         verify_recovered_files(local, index["files"])
@@ -642,7 +881,11 @@ def cleanup(run_id):
         entry = next(x for x in launches if x["pod_id"] == p["id"])
         if entry.get("launch_id"):
             session = {**r, **entry}
-            update_ledger(session, state="exited", stopped_at=now(), volume_retained_since=now(),
+            stopped = now()
+            if campaign:
+                stopped, proof = _provider_shutdown(api, api.pod(p["id"]), session)
+                atomic_json(local / ("provider_shutdown_" + entry["launch_id"] + ".json"), proof)
+            update_ledger(session, state="exited", stopped_at=stopped, volume_retained_since=stopped,
                           volume_hourly_usd=r.get("volume_hourly_usd", VOLUME_HOURLY))
         api.request("DELETE", "/pods/" + p["id"])
     if any(p["id"] in owned for p in api.request("GET", "/pods")["pods"]):

@@ -97,8 +97,8 @@ def supervise(root, validation=False):
     root = Path(root)
     atomic_json(root / "supervisor.json", {"pid": os.getpid(), "time": now()})
     try:
-        paired = read_json(root / "config.json", {}).get("workflow") == "paired"
-        run_worker(root, validation=validation, max_restarts=1 if paired else 2, heartbeat_root=root)
+        workflow = read_json(root / "config.json", {}).get("workflow")
+        run_worker(root, validation=validation, max_restarts=1 if workflow == "paired" else 2, heartbeat_root=root)
         if validation:
             # A deliberately tiny additional cost allowance exercises the real budget-guard shutdown.
             r = read_json(root / "resources.json")

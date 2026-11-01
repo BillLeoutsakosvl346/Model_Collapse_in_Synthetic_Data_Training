@@ -164,7 +164,7 @@ def _run(root, validation):
                 backup(root)
                 return
         atomic_json(root / "status.json", {"state": "running", "generation": g, "stage": "training", "pid": os.getpid(), "time": now()})
-        if resources.get("owner_pair_id") and shutil.disk_usage(root).free < 3_000_000_000:
+        if (resources.get("owner_pair_id") or resources.get("owner_campaign_id")) and shutil.disk_usage(root).free < 3_000_000_000:
             raise RuntimeError("Insufficient recoverable checkpoint space; last committed stages remain preserved")
         if not (gen / "config.json").exists():
             atomic_json(gen / "config.json", {"training_config": c, "environment": session_environment,

@@ -69,10 +69,13 @@ def validate_config(c):
     if c.get("workflow") == "paired":
         from .workflow.paired import validate_pair_config
         return validate_pair_config(c)
+    if c.get("workflow") == "mixed_campaign":
+        from .workflow.mixed_campaign import validate_campaign_config
+        return validate_campaign_config(c)
     from .mixing import mixture_enabled, synthetic_fraction
     synthetic_fraction(c)
-    if mixture_enabled(c) and c.get("initialization") != "continued":
-        raise ValueError("Mixed-data training currently requires continued initialization")
+    if mixture_enabled(c) and c.get("initialization") not in ("continued", "reset_s0"):
+        raise ValueError("Mixed-data training requires continued or reset_s0 initialization")
     from .workflow.selection import selection_policy
     selection_policy(c)
     if c.get("initialization", "fresh_base") not in ("fresh_base", "continued", "reset_s0"):

@@ -47,9 +47,17 @@ def source(tmp_path, monkeypatch, request):
           "seconds": 0, "checkpoint_files": checkpoint_manifest(gen0 / "checkpoint")}
     atomic_json(gen0 / "training.json", t0)
     d1, d1m = engine.generate(root, 0, model, real, c, initial)
-    t1 = engine.train(root, 1, d1, real[:4], c, initial, initial_checkpoint=gen0 / "checkpoint")
+    from model_collapse.mixing import mixture_enabled
+    if mixture_enabled(c):
+        blocks, initializer, checkpoint, lineage = training_lineage(root, 1, c, None)
+        t1 = engine.train(root, 1, blocks, real[:4], c, initializer, initial_checkpoint=checkpoint, lineage=lineage)
+    else:
+        t1 = engine.train(root, 1, d1, real[:4], c, initial, initial_checkpoint=gen0 / "checkpoint")
     model1 = engine.load_model(c, root / "seed_42/gen_01/checkpoint")
     d2, d2m = engine.generate(root, 1, model1, real, c, t1["selected_weights_sha256"])
+    if mixture_enabled(c):
+        blocks, initializer, checkpoint, lineage = training_lineage(root, 2, c, None)
+        engine.train(root, 2, blocks, real[:4], c, initializer, initial_checkpoint=checkpoint, lineage=lineage)
     for g, training, generation in ((0, t0, d1m), (1, t1, d2m)):
         gen = root / f"seed_42/gen_{g:02d}"
         atomic_json(gen / "metrics.json", {"generation": g, "training": training, "generation_timing": generation,
@@ -87,9 +95,13 @@ def source(tmp_path, monkeypatch, request):
     return root, resolved, real
 
 
-def import_into(path, c, real):
-    for split, data in (("train", real[:4]), ("validation", real[:2]), ("test", real[4:6])):
+def import_into(path, c, real, *, full=False):
+    for split, data in (("train", real if full else real[:4]),
+                        ("validation", real[:4] if full else real[:2]),
+                        ("test", real[4:] if full else real[4:6])):
         save_array(path / f"data/{split}.npy", data)
+    atomic_json(path / "data/manifest.json", {"files": {f"{s}.npy": sha256(path / f"data/{s}.npy")
+                                                        for s in ("train", "validation", "test")}})
     return branch.import_shared_prefix(path, c)
 
 
@@ -278,3 +290,160 @@ def test_smoke_source_rejected_for_full_branch(source):
     c["branch_source"].pop("artifact_index_sha256")
     with pytest.raises(RuntimeError, match="smoke source"):
         branch.resolve_branch_source(c)
+
+
+MIXED_FINAL = [{"epochs": 5, "checkpoint_selection": "final_epoch", "synthetic_fraction": f} for f in (.5, .2)]
+
+
+@pytest.mark.parametrize("source", MIXED_FINAL, indirect=True)
+def test_mixed_shared_prefix_reconstructs_full_source_and_records_reduced_scope(source, tmp_path):
+    original, c, real = source
+    target = tmp_path / "reduced-mixed"
+    receipt = import_into(target, c, real)
+    proof = read_json(target / "shared_mixture_verification.json")
+    source_m2 = read_json(original / "mixed_for_gen_02/manifest.json")
+    assert proof["full_cycle1_reconstructed"] and proof["full_cycle2_reconstructed"]
+    assert proof["full_cycle2_training_tokens_sha256"] == proof["source_cycle2_training_tokens_sha256"] == source_m2["training_tokens_sha256"]
+    assert proof["source_blocks"] == 8 and proof["active_blocks"] == 4
+    assert proof["active_scope"] == "reduced_split" and proof["active_cycle2_matches_source"] is False
+    assert proof["operational_manifest_differs"] is True
+    assert "shared_mixture_verification.json" in receipt["files"]
+    assert not (target / "seed_42/gen_02/training.json").exists()
+    assert (target / "shared_source/seed_42/gen_02/training.json").is_file()
+    assert branch.import_shared_prefix(target, c) == receipt
+    blocks, initial, _, lineage = training_lineage(target, 2, c, None)
+    assert token_hash(blocks) == proof["active_cycle2_training_tokens_sha256"]
+    assert initial != lineage["generator_weights_sha256"]
+
+
+@pytest.mark.parametrize("source", MIXED_FINAL, indirect=True)
+def test_mixed_fork_has_exact_common_m2_and_actual_terminal_updates(source, tmp_path):
+    original, c, real = source
+    c.update(kind="full", train_blocks=None, validation_blocks=None, test_blocks=None)
+    roots = {name: tmp_path / name for name in ("reset", "continued")}
+    for path in roots.values():
+        import_into(path, c, real, full=True)
+        proof = read_json(path / "shared_mixture_verification.json")
+        assert proof["active_scope"] == "full_source" and proof["active_cycle2_matches_source"]
+        assert proof["active_cycle2_training_tokens_sha256"] == c["branch_source"]["m2_tokens_sha256"]
+        assert proof["operational_manifest_differs"]
+        assert read_json(path / "mixed_for_gen_02/selection.json") == read_json(original / "mixed_for_gen_02/selection.json")
+    updates = {}
+    for name, path in roots.items():
+        active = {**c, "initialization": "reset_s0" if name == "reset" else "continued"}
+        blocks, initial, checkpoint, lineage = training_lineage(path, 2, active, None)
+        updates[name] = engine.train(path, 2, blocks, real[:4], active, initial,
+                                     initial_checkpoint=checkpoint, lineage=lineage)
+        assert updates[name]["selected_epoch"] == updates[name]["executed_epochs"] == 5
+        assert updates[name]["selected_weights_sha256"] == updates[name]["terminal_weights_sha256"] != initial
+        assert np.array_equal(np.load(path / "data/validation.npy"), real[:4])
+        assert np.array_equal(np.load(path / "data/test.npy"), real[4:])
+    assert updates["reset"]["input_tokens_sha256"] == updates["continued"]["input_tokens_sha256"]
+    assert updates["reset"]["initial_weights_sha256"] == c["start_checkpoint"]["weights_sha256"]
+    assert updates["continued"]["initial_weights_sha256"] == c["branch_source"]["s1_weights_sha256"]
+    assert updates["reset"]["selected_weights_sha256"] != updates["continued"]["selected_weights_sha256"]
+    for g in (0, 1):
+        rel = f"seed_42/gen_{g:02d}/metrics.json"
+        assert sha256(roots["reset"] / rel) == sha256(roots["continued"] / rel) == sha256(original / rel)
+
+
+@pytest.mark.parametrize("source", [MIXED_FINAL[0]], indirect=True)
+@pytest.mark.parametrize("change", ["fraction", "m2_hash", "selection_pin"])
+def test_mixed_branch_rejects_changed_pinned_protocol(source, change):
+    _, c, _ = source
+    if change == "fraction":
+        c["synthetic_fraction"] = .2
+    elif change == "m2_hash":
+        c["branch_source"]["m2_tokens_sha256"] = "0" * 64
+    else:
+        c["branch_source"]["m2_selection_sha256"] = "0" * 64
+    with pytest.raises(RuntimeError, match="fraction|scientific identity"):
+        branch.resolve_branch_source(c)
+
+
+@pytest.mark.parametrize("source", [MIXED_FINAL[0]], indirect=True)
+@pytest.mark.parametrize("artifact", ["shared_source/mixed_for_gen_01/tokens.npy", "shared_source/mixed_for_gen_02/selection.json",
+                                      "mixed_for_gen_02/tokens.npy", "shared_mixture_verification.json"])
+def test_mixed_import_and_completed_handoff_reject_corruption(source, tmp_path, artifact):
+    _, c, real = source
+    target = tmp_path / "corrupt-mixed"
+    import_into(target, c, real)
+    path = target / artifact
+    path.write_bytes(path.read_bytes() + b"corrupted")
+    with pytest.raises(RuntimeError, match="corrupt"):
+        branch.import_shared_prefix(target, c)
+    if artifact.startswith("mixed_for_gen_02"):
+        with pytest.raises(RuntimeError, match="corrupt"):
+            training_lineage(target, 2, c, None)
+
+
+@pytest.mark.parametrize("source", [MIXED_FINAL[0]], indirect=True)
+def test_mixed_prefix_recovers_before_atomic_completion_without_changing_source(source, tmp_path, monkeypatch):
+    original, c, real = source
+    target = tmp_path / "interrupted-mixed"
+    immutable = {p: p.read_bytes() for p in original.rglob("*") if p.is_file()}
+    write = branch.atomic_json
+    def interrupt(path, value):
+        if Path(path).name == "shared_prefix.json":
+            raise RuntimeError("interrupted prefix commit")
+        return write(path, value)
+    monkeypatch.setattr(branch, "atomic_json", interrupt)
+    with pytest.raises(RuntimeError, match="interrupted prefix"):
+        import_into(target, c, real)
+    assert not (target / "shared_prefix.json").exists()
+    before = {p: p.read_bytes() for p in (target / "mixed_for_gen_02").iterdir()}
+    monkeypatch.setattr(branch, "atomic_json", write)
+    receipt = branch.import_shared_prefix(target, c)
+    assert branch.import_shared_prefix(target, c) == receipt
+    assert all(p.read_bytes() == contents for p, contents in before.items())
+    assert all(p.read_bytes() == contents for p, contents in immutable.items())
+
+
+def repin_mixed_fixture(root, c, monkeypatch):
+    """Model a newly pinned but internally damaged source, rather than bypassing hash checks."""
+    index = {"run_id": "source", "repos": c["branch_source"]["repos"], "files": artifact_files(root)}
+    atomic_json(root / "artifact_index.json", index)
+    def head(url):
+        rel = url.split("/source/", 1)[1]
+        return SimpleNamespace(size=index["files"][rel]["bytes"], etag=index["files"][rel]["sha256"])
+    monkeypatch.setattr(branch, "get_hf_file_metadata", head)
+    result = copy.deepcopy(c)
+    result["branch_source"] = {"run_id": "source", "repos": index["repos"], "first_new_cycle": 2}
+    return result
+
+
+@pytest.mark.parametrize("source", [MIXED_FINAL[0]], indirect=True)
+def test_self_consistent_source_selection_still_requires_fixed_seed(source, monkeypatch):
+    original, c, _ = source
+    path = original / "mixed_for_gen_02/selection.json"
+    selection = read_json(path)
+    selection["permutation"][0], selection["permutation"][1] = selection["permutation"][1], selection["permutation"][0]
+    atomic_json(path, selection)
+    manifest = read_json(path.parent / "manifest.json")
+    manifest["files"]["selection.json"] = sha256(path)
+    atomic_json(path.parent / "manifest.json", manifest)
+    changed = repin_mixed_fixture(original, c, monkeypatch)
+    with pytest.raises(RuntimeError, match="source selection"):
+        branch.resolve_branch_source(changed)
+
+
+@pytest.mark.parametrize("source", [MIXED_FINAL[0]], indirect=True)
+def test_full_source_reconstruction_rejects_self_consistent_wrong_tokens(source, tmp_path, monkeypatch):
+    original, c, real = source
+    path = original / "mixed_for_gen_02/tokens.npy"
+    values = np.load(path, allow_pickle=False).copy()
+    values[-1, 0] = (int(values[-1, 0]) + 1) % 32
+    save_array(path, values)
+    manifest = read_json(path.parent / "manifest.json")
+    manifest["training_tokens_sha256"] = token_hash(values)
+    manifest["files"]["tokens.npy"] = sha256(path)
+    atomic_json(path.parent / "manifest.json", manifest)
+    training = read_json(original / "seed_42/gen_02/training.json")
+    training["input_tokens_sha256"] = token_hash(values)
+    training["lineage"].update(training_tokens_sha256=token_hash(values), training_dataset_file_sha256=sha256(path),
+                               mixture_manifest_sha256=sha256(path.parent / "manifest.json"))
+    atomic_json(original / "seed_42/gen_02/training.json", training)
+    changed = branch.resolve_branch_source(repin_mixed_fixture(original, c, monkeypatch))
+    # A real reduced smoke must check the complete source, including rows outside its active subset.
+    with pytest.raises(RuntimeError, match="full M2 reconstruction"):
+        import_into(tmp_path / "bad-source", changed, real)

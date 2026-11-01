@@ -1,0 +1,61 @@
+schema_version: 1
+id: mixed_fraction_final5
+state: implementation_pending
+workflow: mixed_campaign
+configs:
+  full: full.yaml
+  smoke: smoke.yaml
+handoff: ../../docs/mixed-campaign-handoff.md
+question: Compare continued and fixed-real-S0 training with 50% and 20% synthetic targets while retaining final epoch 5.
+order: [reset50, continued20, reset20]
+existing_50_continued_run: 20261031T163428Z-full-continued
+historical_d1_source: 20261026T192740Z-full-continued
+historical_s0_preserved: true
+epochs_per_stage: 5
+checkpoint_selection: final_epoch
+full_training_blocks: 37946
+tokens_per_block: 64
+unique_full_training_stages: 28
+full_executed_epochs: 140
+unique_smoke_training_stages: 6
+smoke_executed_epochs: 30
+conditions:
+  reset50:
+    definition: ../../experiments/opt125m_wikitext2/reset_mixed_50_final5/README.md
+    synthetic_fraction: 0.5
+    initialization: fixed_real_s0
+    shared_source: 20261031T163428Z-full-continued
+    new_full_cycles: [2, 10]
+    real_blocks: 18973
+    synthetic_blocks: 18973
+  continued20:
+    definition: ../../experiments/opt125m_wikitext2/continued_mixed_20_final5/README.md
+    synthetic_fraction: 0.2
+    initialization: previous_final_epoch_checkpoint
+    new_full_cycles: [1, 10]
+    real_blocks: 30357
+    synthetic_blocks: 7589
+  reset20:
+    definition: ../../experiments/opt125m_wikitext2/reset_mixed_20_final5/README.md
+    synthetic_fraction: 0.2
+    initialization: fixed_real_s0
+    shared_source_job: continued20
+    new_full_cycles: [2, 10]
+    real_blocks: 30357
+    synthetic_blocks: 7589
+shared_artifacts_within_ratio: [S0, S1, D2, M2_tokens, M2_selection]
+required_gpu: NVIDIA RTX PRO 4000 Blackwell
+network_volume_gb: 60
+hardware_fallback: leave_pending
+resources: one_parent_pod_volume_watchdog_and_cost_interval
+budget:
+  cumulative_ceiling_usd: 45
+  reserve_usd: 2
+  combined_acceptance_limit_usd: 0.75
+limitations:
+  seeds: [42]
+  independent_replicates: false
+  smoke_is_pipeline_validation_only: true
+  reduced_reset50_smoke_is_not_full_source_M2: true
+  real_data_is_resampled_existing_training_split: true
+full_experiment_launched: false

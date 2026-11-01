@@ -67,12 +67,12 @@ def _write_fixed(path, value):
         atomic_json(path, value)
 
 
-def _session(root, child, c):
+def _session(root, child, c, *, owner_key="owner_pair_id"):
     root, child = Path(root), Path(child)
     _write_fixed(child / "config.json", c)
     old = read_json(child / "resources.json")
     if not read_json(child / "completion.json", {}).get("complete"):
-        resources = {**read_json(root / "resources.json"), "owner_pair_id": root.name, "logical_run_id": child.name}
+        resources = {**read_json(root / "resources.json"), owner_key: root.name, "logical_run_id": child.name}
         atomic_json(child / "resources.json", resources)
     elif old is None:
         raise RuntimeError("Completed child has no original resource provenance")

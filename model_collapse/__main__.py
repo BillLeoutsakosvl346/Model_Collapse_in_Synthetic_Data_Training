@@ -51,6 +51,8 @@ def main():
         from pathlib import Path
         if read_json(Path(a.root) / "config.json").get("workflow") == "paired":
             from .workflow.paired import run_pair as run
+        elif read_json(Path(a.root) / "config.json").get("workflow") == "mixed_campaign":
+            from .workflow.mixed_campaign import run_campaign as run
         else:
             from .pipeline import run
         from .engine import ValidationInterruption
@@ -86,6 +88,9 @@ def main():
         if read_json(out / "config.json", {}).get("workflow") == "paired":
             from .workflow.paired import fetch_pair
             result = fetch_pair(out, r, metadata_only=a.metadata_only)
+        elif read_json(out / "config.json", {}).get("workflow") == "mixed_campaign":
+            from .workflow.mixed_campaign import fetch_campaign
+            result = fetch_campaign(out, r, metadata_only=a.metadata_only)
         else:
             result = fetch(a.run_id, r["repos"], out, metadata_only=a.metadata_only)
         atomic_json(out / "recovery_verified.json", result)
@@ -100,6 +105,9 @@ def main():
         if read_json(root / "config.json").get("workflow") == "paired":
             from .workflow.paired import validate_pair_local
             result = validate_pair_local(root)
+        elif read_json(root / "config.json").get("workflow") == "mixed_campaign":
+            from .continued import validate_campaign_local
+            result = validate_campaign_local(root)
         elif read_json(root / "config.json").get("initialization") in ("continued", "reset_s0"):
             from .continued import validate_local
             result = validate_local(root)

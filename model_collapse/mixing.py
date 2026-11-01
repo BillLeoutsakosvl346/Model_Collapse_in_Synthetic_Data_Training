@@ -115,7 +115,28 @@ def mixture_input(root, cycle, c, synthetic, source_manifest, generator_hash, *,
     return expected, manifest
 
 
-def certificate_name(c):
+def certificate_name(c, runtime=None):
+    """New acceptances coexist by runtime/protocol; omitted runtime keeps legacy callers."""
+    workflow = c.get("workflow")
+    if runtime is not None or workflow == "mixed_campaign":
+        from .common import digest
+        from .workflow.profiles import protocol_fingerprint
+        label = workflow if workflow in ("paired", "mixed_campaign") else c.get("initialization", "fresh_base")
+        if not workflow and mixture_enabled(c):
+            label += "_mixed"
+        profile = protocol_fingerprint(c)
+        # One complete digest binds both identities while keeping atomic temp paths short on Windows.
+        # Runtime identifiers remain data and are never interpolated as arbitrary paths.
+        key = digest({"protocol_fingerprint": profile, "runtime_sha256": runtime})
+        return f"validation_{label}_{key}.json"
+    if workflow == "paired":
+        return "validation_paired.json"
     return "validation_continued_mixed.json" if mixture_enabled(c) else {
         "continued": "validation_continued.json", "reset_s0": "validation_reset_s0.json"}.get(
             c.get("initialization"), "validation.json")
+
+
+def certificate_candidates(c, runtime):
+    """Legacy records are fallback locations only; every read still requires strict acceptance."""
+    exact = certificate_name(c, runtime)
+    return (exact,) if c.get("workflow") == "mixed_campaign" else (exact, certificate_name(c))

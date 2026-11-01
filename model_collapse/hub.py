@@ -91,6 +91,9 @@ def backup(root, repos=None):
     if read_json(root / "resources.json", {}).get("owner_pair_id"):
         from .workflow.paired import record_child_snapshot
         record_child_snapshot(root)
+    elif read_json(root / "resources.json", {}).get("owner_campaign_id"):
+        from .workflow.mixed_campaign import record_child_snapshot
+        record_child_snapshot(root)
     return index
 
 

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T01:34:15.841943+00:00",
+  "reviewer": "fresh independent sub-agent, read-only review",
+  "runtime_sha256": "75da511ec9bfd6e27bafb28484e3698fc30ab1c72288254a912f85c8a73ffbbc",
+  "runtime_files": 35,
+  "material_findings_remaining": 0,
+  "resolved_findings": [
+    "Campaign rendering now records its actual renderer hash and original execution runtime separately.",
+    "Resume admission discounts pinned, verified sealed jobs; unfinished jobs are conservatively forecast in full.",
+    "Launcher proves finite new training across closed SSH sessions, excludes imported epochs and rejects failed/paused states.",
+    "Backup-only resumes can finish with verified private completion and provider shutdown without fabricating new epochs.",
+    "Complete provider ownership association and bounded read-only transport retries preserve shutdown and budget safeguards.",
+    "Offline export binds exact campaign run ID, runtime, protocol and all three child audits.",
+    "Mixed-reset reporting names M2 training and its D2 synthetic component accurately."
+  ],
+  "scientific_checks": [
+    "Mixed source S0/S1/D1/M1/D2/M2 lineage and independent full-mixture reconstruction.",
+    "Full source versus reduced smoke scope is explicit.",
+    "Exact shared 20/80 S0/S1/D2/M2 and distinct reset/continued initializers.",
+    "Six smoke stages/thirty epochs and twenty-eight full stages/140 epochs."
+  ],
+  "diff_check_passed": true,
+  "scope": "Static review only. Final integrated tests and actual GPU acceptance remain required. No files or cloud resources were changed by the reviewer."
+}

@@ -16,6 +16,178 @@ from .lineage import token_hash
 from .selection import FINAL, selection_policy, verify_selection
 
 
+def _mixed_required(seed):
+    required = {f"synthetic_for_gen_01/{name}" for name in ("tokens.npy", "manifest.json")}
+    required.update(f"mixed_for_gen_{g:02d}/{name}" for g in (1, 2)
+                    for name in ("tokens.npy", "manifest.json", "selection.json"))
+    required.update(f"{seed}/gen_02/{name}" for name in ("training.json", "training_history.json"))
+    required.add(f"{seed}/gen_01/training_history.json")
+    return required
+
+
+def _check_mixed_metadata(metadata, files, c, s0, s1):
+    """Validate small source records before any bulk objects reach the worker."""
+    from ..mixing import VERSION, mixture_counts, sample_mixture, synthetic_fraction
+    original = metadata["config.json"]
+    fraction = synthetic_fraction(c)
+    if synthetic_fraction(original) != fraction:
+        raise RuntimeError("Shared-source synthetic fraction differs")
+    first = metadata["mixed_for_gen_01/manifest.json"]
+    count = first["training_blocks"]
+    if isinstance(count, bool) or not isinstance(count, int) or count <= 0:
+        raise RuntimeError("Shared mixture has an invalid source size")
+    real_count, synthetic_count = mixture_counts(count, fraction)
+    # Use the production sampler for the selection only; no private token arrays are downloaded here.
+    dummy = np.zeros((count, 64), dtype=np.int32)
+    for cycle, generator in ((1, s0), (2, s1)):
+        prefix = f"mixed_for_gen_{cycle:02d}"
+        pool = f"synthetic_for_gen_{cycle:02d}"
+        mixed, selection = metadata[prefix + "/manifest.json"], metadata[prefix + "/selection.json"]
+        generated = metadata[pool + "/manifest.json"]
+        fields = {"version": VERSION, "generation": cycle, "seed": c["seed"],
+                  "synthetic_fraction": fraction, "effective_synthetic_fraction": synthetic_count / count,
+                  "training_blocks": count, "block_size": 64, "real_blocks": real_count,
+                  "synthetic_blocks": synthetic_count, "real_tokens": real_count * 64,
+                  "synthetic_tokens": synthetic_count * 64}
+        if any(mixed.get(key) != value for key, value in fields.items()):
+            raise RuntimeError(f"Shared M{cycle} counts or scientific settings differ")
+        if set(mixed.get("files", {})) != {"tokens.npy", "selection.json"}:
+            raise RuntimeError(f"Shared M{cycle} file manifest differs")
+        for name, checksum in mixed["files"].items():
+            if files[prefix + "/" + name]["sha256"] != checksum:
+                raise RuntimeError(f"Shared M{cycle} indexed files differ")
+        sources = {"real_split": "train", "real_file_sha256": files["data/train.npy"]["sha256"],
+                   "real_manifest_sha256": files["data/manifest.json"]["sha256"],
+                   "real_tokens_sha256": generated["provenance"]["prompt_tokens_sha256"],
+                   "real_pool_blocks": count, "synthetic_dataset": pool,
+                   "synthetic_file_sha256": files[pool + "/tokens.npy"]["sha256"],
+                   "synthetic_manifest_sha256": files[pool + "/manifest.json"]["sha256"],
+                   "synthetic_tokens_sha256": generated["continuation_tokens_sha256"],
+                   "synthetic_pool_blocks": count, "generator_weights_sha256": generator["selected_weights_sha256"]}
+        if mixed.get("sources") != sources:
+            raise RuntimeError(f"Shared M{cycle} source identities differ")
+        provenance = generated["provenance"]
+        if (generated.get("files", {}).get("tokens.npy") != sources["synthetic_file_sha256"] or
+                provenance.get("parent_weights_sha256") != sources["generator_weights_sha256"] or
+                provenance.get("prompt_tokens_sha256") !=
+                metadata["synthetic_for_gen_01/manifest.json"]["provenance"]["prompt_tokens_sha256"] or
+                provenance.get("prompt_count") != count or provenance.get("new_tokens") != 64 or
+                provenance.get("num_beams") != c["num_beams"] or
+                provenance.get("repetition_penalty", 1.0) != c.get("repetition_penalty", 1.0)):
+            raise RuntimeError(f"Shared D{cycle} generator, prompts or decoding differ")
+        if any(not isinstance(values, list) or any(type(value) is not int for value in values)
+               for values in selection.values()):
+            raise RuntimeError(f"Shared M{cycle} selection has invalid index types")
+        _, expected_selection = sample_mixture(dummy, dummy, fraction, c["seed"], cycle)
+        if selection != expected_selection:
+            raise RuntimeError(f"Shared M{cycle} source selection differs from its fixed seed")
+        training = metadata[f"seed_{c['seed']}/gen_{cycle:02d}/training.json"]
+        expected_lineage = {"initializer_weights_sha256": sources["generator_weights_sha256"],
+                            "initializer_checkpoint": f"seed_{c['seed']}/gen_{cycle - 1:02d}/checkpoint",
+                            "training_dataset": prefix, "training_dataset_file_sha256": mixed["files"]["tokens.npy"],
+                            "training_tokens_sha256": mixed["training_tokens_sha256"],
+                            "generator_checkpoint": f"seed_{c['seed']}/gen_{cycle - 1:02d}/checkpoint",
+                            "generator_weights_sha256": sources["generator_weights_sha256"],
+                            "branch_origin": original.get("branch_source"),
+                            "mixture_manifest_sha256": files[prefix + "/manifest.json"]["sha256"],
+                            "synthetic_source_dataset": pool,
+                            "synthetic_source_tokens_sha256": generated["continuation_tokens_sha256"],
+                            "mixture": {key: mixed[key] for key in ("version", "synthetic_fraction", "effective_synthetic_fraction",
+                                                                   "real_blocks", "synthetic_blocks", "real_tokens", "synthetic_tokens")}}
+        recorded_lineage = copy.deepcopy(training.get("lineage", {}))
+        for key in ("initializer_checkpoint", "generator_checkpoint"):
+            if isinstance(recorded_lineage.get(key), str):
+                recorded_lineage[key] = recorded_lineage[key].replace("\\", "/")
+        if (training.get("initial_weights_sha256") != sources["generator_weights_sha256"] or
+                training.get("input_tokens_sha256") != mixed["training_tokens_sha256"] or
+                training.get("training_blocks") != count or recorded_lineage != expected_lineage):
+            raise RuntimeError(f"Shared S{cycle} did not train on its exact mixed dataset")
+        verify_selection(training, metadata[f"seed_{c['seed']}/gen_{cycle:02d}/training_history.json"], c)
+    return {"m1_tokens_sha256": first["training_tokens_sha256"],
+            "m2_tokens_sha256": metadata["mixed_for_gen_02/manifest.json"]["training_tokens_sha256"],
+            "m2_selection_sha256": files["mixed_for_gen_02/selection.json"]["sha256"],
+            "m2_manifest_sha256": files["mixed_for_gen_02/manifest.json"]["sha256"],
+            "source_train_blocks": count, "source_synthetic_fraction": fraction}
+
+
+def _copy_source(src, dest, checksum):
+    dest = Path(dest)
+    if dest.exists():
+        if sha256(dest) != checksum:
+            raise RuntimeError(f"Existing shared-prefix artifact differs: {dest.name}")
+        return
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    partial = dest.with_name(dest.name + ".partial")
+    shutil.copyfile(src, partial)
+    if sha256(partial) != checksum:
+        raise RuntimeError("Shared source download checksum differs")
+    partial.replace(dest)
+
+
+def _reconstruct_source_mixtures(root, c):
+    """Reconstruct the complete historical M1/M2, including during reduced-split smoke tests."""
+    from ..mixing import sample_mixture
+    root, source = Path(root), c["branch_source"]
+    historical = root / "shared_source"
+    verify_files(historical, {rel: meta for rel, meta in source["required_files"].items()
+                              if not rel.startswith((f"seed_{c['seed']}/gen_00/", f"seed_{c['seed']}/gen_01/"))})
+    real = np.load(historical / "data/train.npy", mmap_mode="r", allow_pickle=False)
+    if real.dtype != np.int32 or real.shape != (source["source_train_blocks"], 64):
+        raise RuntimeError("Shared full real source shape or dtype differs")
+    proofs = {}
+    for cycle, generator in ((1, source["s0_weights_sha256"]), (2, source["s1_weights_sha256"])):
+        dataset = historical / f"mixed_for_gen_{cycle:02d}"
+        pool = historical / f"synthetic_for_gen_{cycle:02d}"
+        synthetic = np.load(pool / "tokens.npy", mmap_mode="r", allow_pickle=False)
+        generation = read_json(pool / "manifest.json")
+        if (synthetic.dtype != np.int32 or synthetic.shape != real.shape or
+                token_hash(synthetic) != generation["continuation_tokens_sha256"] or
+                generation["provenance"]["prompt_tokens_sha256"] != token_hash(real) or
+                generation["provenance"]["parent_weights_sha256"] != generator):
+            raise RuntimeError(f"Shared full D{cycle} token or generator identity differs")
+        reconstructed, selection = sample_mixture(real, synthetic, c["synthetic_fraction"], c["seed"], cycle)
+        actual = np.load(dataset / "tokens.npy", mmap_mode="r", allow_pickle=False)
+        manifest = read_json(dataset / "manifest.json")
+        if (actual.dtype != np.int32 or read_json(dataset / "selection.json") != selection or
+                not np.array_equal(actual, reconstructed) or
+                token_hash(reconstructed) != source[f"m{cycle}_tokens_sha256"] or
+                token_hash(actual) != manifest["training_tokens_sha256"]):
+            raise RuntimeError(f"Shared full M{cycle} reconstruction differs")
+        proofs[cycle] = {"tokens_sha256": token_hash(actual), "selection_sha256": sha256(dataset / "selection.json")}
+    return proofs
+
+
+def verify_shared_cycle2_mixture(root, c, blocks, mixed):
+    """The branch must retain its exact committed active M2; full imports also match source M2."""
+    from ..mixing import synthetic_fraction
+    root, source = Path(root), c["branch_source"]
+    shared = read_json(root / "shared_prefix.json", {})
+    proof = read_json(root / "shared_mixture_verification.json", {})
+    if (shared.get("source_identity") != digest(source) or proof.get("source_identity") != digest(source) or
+            proof.get("synthetic_fraction") != synthetic_fraction(c) or
+            proof.get("source_blocks") != source["source_train_blocks"] or
+            proof.get("source_cycle2_training_tokens_sha256") != source["m2_tokens_sha256"] or
+            proof.get("source_cycle2_selection_sha256") != source["m2_selection_sha256"] or
+            proof.get("full_cycle1_reconstructed") is not True or proof.get("full_cycle2_reconstructed") is not True or
+            proof.get("full_cycle2_training_tokens_sha256") != source["m2_tokens_sha256"] or
+            proof.get("active_blocks") != len(blocks) or
+            proof.get("active_cycle2_training_tokens_sha256") != token_hash(blocks) or
+            mixed["training_tokens_sha256"] != token_hash(blocks) or
+            proof.get("active_cycle2_selection_sha256") != sha256(root / "mixed_for_gen_02/selection.json")):
+        raise RuntimeError("Shared cycle-2 mixture verification differs")
+    verify_files(root, {rel: checksum for rel, checksum in shared["files"].items()
+                        if rel.startswith("mixed_for_gen_02/") or rel == "shared_mixture_verification.json"})
+    if len(blocks) == source["source_train_blocks"]:
+        if (proof.get("active_scope") != "full_source" or proof.get("active_cycle2_matches_source") is not True or
+                token_hash(blocks) != source["m2_tokens_sha256"] or
+                read_json(root / "mixed_for_gen_02/selection.json") !=
+                read_json(root / "shared_source/mixed_for_gen_02/selection.json")):
+            raise RuntimeError("Full branch cycle-2 mixture differs from its shared source")
+    elif proof.get("active_scope") != "reduced_split" or proof.get("active_cycle2_matches_source") is not False:
+        raise RuntimeError("Reduced-split shared mixture scope is incorrect")
+    return proof
+
+
 def _relative(value):
     p = PurePosixPath(value)
     if p.is_absolute() or ".." in p.parts or "\\" in value:
@@ -46,8 +218,12 @@ def resolve_branch_source(c):
         raise RuntimeError("Shared source artifact index changed")
     files = index["files"]
     seed = f"seed_{c['seed']}"
+    from ..mixing import mixture_enabled, synthetic_fraction
+    mixed = mixture_enabled(c)
     required = {"config.json", "manifest.json", "completion.json", "data/manifest.json", "data/train.npy", "data/validation.npy", "data/test.npy",
                 "synthetic_for_gen_02/tokens.npy", "synthetic_for_gen_02/manifest.json"}
+    if mixed:
+        required.update(_mixed_required(seed))
     for g in (0, 1):
         prefix = f"{seed}/gen_{g:02d}/"
         required.update(p for p in files if p.startswith(prefix) and "/resume/" not in p)
@@ -86,6 +262,8 @@ def resolve_branch_source(c):
         raise RuntimeError("Full reset branch cannot import a smoke source")
     if selection_policy(original) != selection_policy(c):
         raise RuntimeError("Shared source checkpoint selection policy differs")
+    if synthetic_fraction(original) != synthetic_fraction(c):
+        raise RuntimeError("Shared-source synthetic fraction differs")
     for key in ("seed", "model", "model_revision", "dataset", "dataset_revision", "dataset_config", "block_size",
                 "new_tokens", "num_beams", "repetition_penalty", "precision", "learning_rate", "min_learning_rate",
                 "weight_decay", "microbatch", "effective_batch", "generation_batch", "eval_batch"):
@@ -119,22 +297,30 @@ def resolve_branch_source(c):
     m0, m1 = (metadata[f"{seed}/gen_{g:02d}/metrics.json"] for g in (0, 1))
     if m0["training"] != s0 or m1["training"] != s1 or m1["generation_timing"] != d2:
         raise RuntimeError("Shared source metrics disagree with their stage provenance")
-    if s1["input_tokens_sha256"] != m0["generation_timing"]["continuation_tokens_sha256"]:
+    mixture_identity = _check_mixed_metadata(metadata, files, c, s0, s1) if mixed else {}
+    if mixed and m0["generation_timing"] != metadata["synthetic_for_gen_01/manifest.json"]:
+        raise RuntimeError("Shared source S0 output differs from the mixed D1 pool")
+    if not mixed and s1["input_tokens_sha256"] != m0["generation_timing"]["continuation_tokens_sha256"]:
         raise RuntimeError("Shared source S1 did not consume S0's exact continuations")
     previous_files = source.get("required_files")
     if previous_files and previous_files != chosen:
         raise RuntimeError("Pinned shared source required files changed")
-    source.update(revisions=revisions, artifact_index_sha256=sha256(index_path), required_files=chosen,
-                  s0_weights_sha256=s0["selected_weights_sha256"], s1_weights_sha256=s1["selected_weights_sha256"],
-                  d2_tokens_sha256=d2["continuation_tokens_sha256"], source_config_sha256=files["config.json"]["sha256"])
+    identities = {"s0_weights_sha256": s0["selected_weights_sha256"], "s1_weights_sha256": s1["selected_weights_sha256"],
+                  "d2_tokens_sha256": d2["continuation_tokens_sha256"], "source_config_sha256": files["config.json"]["sha256"],
+                  **mixture_identity}
+    if any(key in source and source[key] != value for key, value in identities.items()):
+        raise RuntimeError("Pinned shared source scientific identity changed")
+    source.update(revisions=revisions, artifact_index_sha256=sha256(index_path), required_files=chosen, **identities)
     return c
 
 
 def import_shared_prefix(root, c):
     """Import immutable historical measurements; explicitly label their original split scope."""
     from ..engine import load_model, weights_hash
+    from ..mixing import mixture_enabled, mixture_input
     root = Path(root)
     source = c["branch_source"]
+    mixed = mixture_enabled(c)
     required = source.get("required_files")
     if not required or not source.get("artifact_index_sha256"):
         raise RuntimeError("Resolve and pin the shared source before launching a worker")
@@ -143,14 +329,25 @@ def import_shared_prefix(root, c):
         if existing["source_identity"] != digest(source):
             raise RuntimeError("Cannot resume with a different shared-prefix source")
         verify_files(root, existing["files"])
+        if mixed:
+            _reconstruct_source_mixtures(root, c)
+            manifest = read_json(root / "synthetic_for_gen_02/manifest.json")
+            synthetic = np.load(root / "synthetic_for_gen_02/tokens.npy", mmap_mode="r", allow_pickle=False)
+            blocks, mixture = mixture_input(root, 2, c, synthetic, manifest, source["s1_weights_sha256"], create=False)
+            verify_shared_cycle2_mixture(root, c, blocks, mixture)
         return existing
     stage_files, source_arrays = {}, {}
     for rel, meta in required.items():
         src = download_snapshot_file(source["run_id"], source["repos"], rel, meta, source["revisions"])
+        shared_stage = rel.startswith((f"seed_{c['seed']}/gen_00/", f"seed_{c['seed']}/gen_01/"))
+        if mixed and not shared_stage:
+            dest = root / "shared_source" / rel
+            _copy_source(src, dest, meta["sha256"])
+            stage_files[dest.relative_to(root).as_posix()] = meta["sha256"]
         if rel.startswith("data/") and rel.endswith(".npy"):
             source_arrays[Path(rel).stem] = np.load(src, mmap_mode="r", allow_pickle=False)
             continue
-        if rel.startswith(f"seed_{c['seed']}/"):
+        if shared_stage:
             dest = root / rel
             if dest.exists() and sha256(dest) != meta["sha256"]:
                 raise RuntimeError(f"Existing shared-prefix artifact differs: {rel}")
@@ -161,7 +358,7 @@ def import_shared_prefix(root, c):
             stage_files[rel] = meta["sha256"]
         elif rel == "synthetic_for_gen_02/tokens.npy":
             source_arrays["d2"] = np.load(src, mmap_mode="r", allow_pickle=False)
-        else:
+        elif not mixed:
             dest = root / "shared_source" / rel
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(src, dest)
@@ -188,6 +385,33 @@ def import_shared_prefix(root, c):
     atomic_json(dataset / "manifest.json", imported_manifest)
     for name in ("tokens.npy", "manifest.json"):
         stage_files[f"synthetic_for_gen_02/{name}"] = sha256(dataset / name)
+    if mixed:
+        source_proofs = _reconstruct_source_mixtures(root, c)
+        blocks, mixture = mixture_input(root, 2, c, active, imported_manifest, source["s1_weights_sha256"])
+        same_scope = len(blocks) == source["source_train_blocks"]
+        selection = read_json(root / "mixed_for_gen_02/selection.json")
+        source_selection = read_json(root / "shared_source/mixed_for_gen_02/selection.json")
+        matches = same_scope and token_hash(blocks) == source["m2_tokens_sha256"] and selection == source_selection
+        if same_scope and not matches:
+            raise RuntimeError("Imported full cycle-2 mixture does not match its source")
+        proof = {"schema_version": 1, "source_run_id": source["run_id"], "source_identity": digest(source),
+                 "source_kind": read_json(root / "shared_source/config.json")["kind"],
+                 "source_blocks": source["source_train_blocks"], "active_blocks": len(blocks),
+                 "synthetic_fraction": source["source_synthetic_fraction"],
+                 "full_cycle1_reconstructed": True, "full_cycle2_reconstructed": True,
+                 "full_cycle1_training_tokens_sha256": source_proofs[1]["tokens_sha256"],
+                 "full_cycle2_training_tokens_sha256": source_proofs[2]["tokens_sha256"],
+                 "source_cycle2_training_tokens_sha256": source["m2_tokens_sha256"],
+                 "source_cycle2_selection_sha256": source["m2_selection_sha256"],
+                 "active_cycle2_training_tokens_sha256": token_hash(blocks),
+                 "active_cycle2_selection_sha256": sha256(root / "mixed_for_gen_02/selection.json"),
+                 "active_scope": "full_source" if same_scope else "reduced_split",
+                 "active_cycle2_matches_source": matches,
+                 "operational_manifest_differs": sha256(root / "mixed_for_gen_02/manifest.json") != source["m2_manifest_sha256"]}
+        atomic_json(root / "shared_mixture_verification.json", proof)
+        for name in ("tokens.npy", "manifest.json", "selection.json"):
+            stage_files[f"mixed_for_gen_02/{name}"] = sha256(root / "mixed_for_gen_02" / name)
+        stage_files["shared_mixture_verification.json"] = sha256(root / "shared_mixture_verification.json")
     for g in (0, 1):
         gen = root / f"seed_{c['seed']}" / f"gen_{g:02d}"
         model = load_model(c, gen / "checkpoint")
@@ -207,4 +431,6 @@ def import_shared_prefix(root, c):
               "shared_metrics_scope": "original_source_splits_not_recomputed_for_smoke",
               "newly_executed_shared_stages": 0}
     atomic_json(root / "shared_prefix.json", result)
+    if mixed:
+        verify_shared_cycle2_mixture(root, c, blocks, mixture)
     return result

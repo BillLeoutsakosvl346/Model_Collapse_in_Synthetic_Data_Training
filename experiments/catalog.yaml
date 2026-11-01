@@ -4,6 +4,52 @@ description: "Scientific conditions and their recorded runs; week labels are pre
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
 conditions:
+  reset_mixed_50_final5:
+    name: "OPT-125M / WikiText-2: fixed-S0 reset, 50% synthetic targets, final epoch 5"
+    initialization: reset_s0
+    checkpoint_selection: final_epoch
+    epochs: 5
+    synthetic_fraction: 0.50
+    state: implemented_validation_pending
+    source_run_id: 20261031T163428Z-full-continued
+    shared_cycles: [0, 1]
+    first_new_cycle: 2
+    definition: opt125m_wikitext2/reset_mixed_50_final5/README.md
+    config: opt125m_wikitext2/reset_mixed_50_final5/full.yaml
+    smoke_config: opt125m_wikitext2/reset_mixed_50_final5/smoke.yaml
+    campaign: ../comparisons/mixed_fraction_final5/full.yaml
+    handoff: ../docs/mixed-campaign-handoff.md
+    full_run_launched: false
+  continued_mixed_20_final5:
+    name: "OPT-125M / WikiText-2: continued weights, 20% synthetic targets, final epoch 5"
+    initialization: continued
+    checkpoint_selection: final_epoch
+    epochs: 5
+    synthetic_fraction: 0.20
+    state: implemented_validation_pending
+    first_new_cycle: 1
+    definition: opt125m_wikitext2/continued_mixed_20_final5/README.md
+    config: opt125m_wikitext2/continued_mixed_20_final5/full.yaml
+    smoke_config: opt125m_wikitext2/continued_mixed_20_final5/smoke.yaml
+    campaign: ../comparisons/mixed_fraction_final5/full.yaml
+    handoff: ../docs/mixed-campaign-handoff.md
+    full_run_launched: false
+  reset_mixed_20_final5:
+    name: "OPT-125M / WikiText-2: fixed-S0 reset, 20% synthetic targets, final epoch 5"
+    initialization: reset_s0
+    checkpoint_selection: final_epoch
+    epochs: 5
+    synthetic_fraction: 0.20
+    state: implemented_validation_pending
+    shared_with_condition: continued_mixed_20_final5
+    shared_cycles: [0, 1]
+    first_new_cycle: 2
+    definition: opt125m_wikitext2/reset_mixed_20_final5/README.md
+    config: opt125m_wikitext2/reset_mixed_20_final5/full.yaml
+    smoke_config: opt125m_wikitext2/reset_mixed_20_final5/smoke.yaml
+    campaign: ../comparisons/mixed_fraction_final5/full.yaml
+    handoff: ../docs/mixed-campaign-handoff.md
+    full_run_launched: false
   continued_mixed_50_final5:
     name: "OPT-125M / WikiText-2: continued weights, 50% synthetic / 50% real targets"
     initialization: continued
