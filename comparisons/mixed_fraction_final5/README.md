@@ -43,3 +43,9 @@ The authorized cumulative ceiling is $45 with a $2 reserve and no credit purchas
 Acceptance certifies this sequential campaign, not standalone child launches. GPU validation exercised six worker exits and two coordinator exits in one provider session; separate provider stop/reprovision/resume behavior is covered offline rather than by a final-runtime GPU cycle.
 
 Metrics and probe limitations follow [shared definitions](../../docs/metrics.md). This is one seed per full condition; no independent-run significance or universal safe synthetic fraction is implied.
+
+## First full result: matched 50/50 reset and continued
+
+The campaign's first child `20261101T030306Z-full-mixed-campaign-reset-mixed50` completed cycles 2–10 and sealed its backup. The [report](../../reports/20261101T030306Z-full-mixed-campaign-reset-mixed50/report.md) compares it with the historical 50/50 continued arm using exact shared S0/S1/D2/M2. Final test PPL is 37.15 reset versus 62.71 continued, with worse reset pooled diversity and average within-output repetition. The [analysis/delivery receipt](../../docs/validation/2026-11-01_mixed50-reset-analysis-and-doc.json) records verification scope and the six-page Google Doc addition.
+
+`analyse_reset50.py --out NEW_DIRECTORY` audits saved evidence and reproduces the three figure families offline. It checks 22 metric rows, twenty unique output probes, 100 saved epoch entries (95 unique), all recorded handoffs and deterministic mixture-selection hashes. No Runpod connection, model forward pass or bulk download is part of normal analysis. This child result does not establish parent completion; the remaining campaign jobs were left untouched.

@@ -52,3 +52,8 @@
 /docs/validation/2026-11-01_mixed-campaign-preliminary-recovery.json -text whitespace=cr-at-eol
 /docs/validation/2026-11-01_mixed-campaign-setup.json -text whitespace=cr-at-eol
 /docs/validation/2026-11-01_mixed-campaign-full-launch.json -text whitespace=cr-at-eol
+# Matched 50/50 reset publication preserves recovered evidence and analysis bytes.
+/reports/20261101T030306Z-full-mixed-campaign-reset-mixed50/** -text whitespace=cr-at-eol
+/comparisons/mixed_fraction_final5/analyse_reset50.py text eol=lf
+/scripts/analysis/build_reset50_comparison_report.py text eol=lf
+/docs/validation/2026-11-01_mixed50-reset-analysis-and-doc.json -text whitespace=cr-at-eol

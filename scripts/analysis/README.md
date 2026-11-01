@@ -16,6 +16,15 @@ This replaces reliance on the original private `.state/build_mixed_acceptance.py
 
 ## Week 3 authored report and native-Docs draft
 
+The matched 50/50 reset/continued publication can be independently recalculated and drafted without cloud access:
+
+```powershell
+python comparisons/mixed_fraction_final5/analyse_reset50.py --out reports/20261101T030306Z-full-mixed-campaign-reset-mixed50/generated/audit-review
+python scripts/analysis/build_reset50_comparison_report.py --out reports/20261101T030306Z-full-mixed-campaign-reset-mixed50/generated/report-review
+```
+
+The first command verifies pinned source records, exact shared S0/S1/D2/M2, deterministic selection hashes, all epoch histories, output probes and metric arithmetic. The second builds prose/tables and a native-Docs draft from the frozen analysis; it does not edit Google Docs. Each requires a new output directory. Full checkpoint restoration/model re-evaluation are outside these checks. The analysis script's explicit `--recover` option reads the sealed Hugging Face snapshot only and requires the private saved source proof; normal reproduction is entirely offline.
+
 For the later mixed-data comparison, `python scripts/analysis/build_mixed_comparison_report.py --out reports/20261031T163428Z-full-continued/generated/report-review` rebuilds a separate authored report and native-Docs draft from its frozen analysis. It requires a new destination and does not edit the Google Doc. The [comparison analysis](../../comparisons/continued_mixed50_vs_synthetic_final5/README.md) independently recalculates the statistics/probes.
 
 ```powershell

@@ -2,6 +2,10 @@
 
 Last execution evidence: **1 November 2026**, [full mixed-campaign launch](validation/2026-11-01_mixed-campaign-full-launch.json). The campaign is running with verified detached startup. This is a saved observation, not a live status feed; check status before acting.
 
+**Later scientific evidence, 1 November:** the 50/50 reset child completed at **08:46:17 UTC/London**, verified from its immutable sealed Hugging Face backup. Its [matched report](../reports/20261101T030306Z-full-mixed-campaign-reset-mixed50/report.md) and the main Google Doc now contain the full analysis. Final test PPL is **37.15 reset versus 62.71 continued**, but reset has lower distinct-2/3 and higher average within-output repetition. All nine new five-epoch stages and twenty unique paired probes were audited. Recovery verified 1,421 metadata files / 53,699,537 bytes plus nine new probe arrays / 590,976 bytes; bulk restore remains separate. See the [analysis receipt](validation/2026-11-01_mixed50-reset-analysis-and-doc.json).
+
+This analysis used Hugging Face and offline records only: **no Runpod API, SSH, resource, ledger or worker changes**. It does not claim parent-campaign completion or refresh the live state of either 20/80 job. The launch-time observations below are preserved as dated evidence; the first job's scientific completion supersedes its earlier running state.
+
 ## Current running campaign
 
 - Parent `20261101T030306Z-full-mixed-campaign`; Pod `faocwszff0eaq6`, 60 GB Standard volume `11hvbmunz5`, EU-RO-1. Matching RTX PRO 4000 Blackwell costs USD 0.57/hour; pinned image/software/CUDA/BF16 checks and private backup probes passed.

@@ -1,0 +1,34 @@
+{
+  "source_bundles": {
+    "266afa984a2a51b63f850390232a12b3ec98a93975ad27f9401983d1afc060c5": {
+      "files": {
+        "engine.py": "4ab2b86cdcec51d1379b2d1ed60fe5ebc29c41f0e8162d5ab437cacc763172fb",
+        "data.py": "dfa994e77e940647da8579922ada8e20d7392f869df38bb6c6019fc5296e1fc0",
+        "workflow/selection.py": "fced4d12323bbd16a1e3b77c0824abafed6f70fa799ae039ea263c13a65828b2"
+      },
+      "mixing_functions": {
+        "synthetic_fraction": "f29ae587206c1ad5afde311521cd8ed062fb027b7c8d9c3843ee285dff14d3bf",
+        "mixture_counts": "be4e24347f3b5a6ba3a1d32c1d3f1d368fd84187b5d439f2332a030ebfc0f7f7",
+        "reconstruct": "541751336cb39297c2bab49361758e5d536c5bdded937a8971f210d17b253b7f",
+        "sample_mixture": "b5a5433a767330db9b981de26c2d23405beaebd6e5a83ee7650bf8d0081ab516",
+        "mixture_input": "4bba022197be7143ba320bb60d16751b671daaf45bb47499a327fc1fe5c37c51"
+      }
+    },
+    "35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171": {
+      "files": {
+        "engine.py": "4ab2b86cdcec51d1379b2d1ed60fe5ebc29c41f0e8162d5ab437cacc763172fb",
+        "data.py": "dfa994e77e940647da8579922ada8e20d7392f869df38bb6c6019fc5296e1fc0",
+        "workflow/selection.py": "fced4d12323bbd16a1e3b77c0824abafed6f70fa799ae039ea263c13a65828b2"
+      },
+      "mixing_functions": {
+        "synthetic_fraction": "f29ae587206c1ad5afde311521cd8ed062fb027b7c8d9c3843ee285dff14d3bf",
+        "mixture_counts": "be4e24347f3b5a6ba3a1d32c1d3f1d368fd84187b5d439f2332a030ebfc0f7f7",
+        "reconstruct": "541751336cb39297c2bab49361758e5d536c5bdded937a8971f210d17b253b7f",
+        "sample_mixture": "b5a5433a767330db9b981de26c2d23405beaebd6e5a83ee7650bf8d0081ab516",
+        "mixture_input": "4bba022197be7143ba320bb60d16751b671daaf45bb47499a327fc1fe5c37c51"
+      }
+    }
+  },
+  "scientific_core_identical": true,
+  "note": "Complete runtime hashes differ for workflow/cloud support; training, data, selection and mixer functions are identical."
+}

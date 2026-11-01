@@ -1,0 +1,50 @@
+[
+  {
+    "prompt_index": 0,
+    "selection_rule": "Fixed historical anchor, retained before inspecting this comparison",
+    "prompt": "</s></s> = Valkyria Chronicles III = \n</s></s> Senj\u014d no Valkyria 3 : Unrecorded Chronicles ( Japanese : \u6226\u5834\u306e\u30f4\u30a1\u30eb\u30ad\u30e5\u30ea\u30a23, lit. Valkyria of the Battlefield 3 ), commonly referred to as Valkyria Chronicles III outside",
+    "shared_s1": " Japan as Valkyria Chronicles II, was the first game in the Valkyria Chronicles series to be released in Japan. It was the first game in the series to be released in the United States, and the first game in the series to be released in Japan. The game was the first game in the series to",
+    "outputs": {
+      "continued": {
+        "text": " Japan as Valkyria Chronicles 3 : Valkyria Chronicles 3 : Valkyria Chronicles 3 : Valkyria Chronicles 3 : Valkyria Chronicles 3 : Valkyria Chronicles 3 : Valkyria Chronicles 3 : Valkyria Chronicles 3 : Valkyria Chronicles 3 : Valkyria Chronicles 3 : Valky",
+        "within_repeated4": 0.8688524590163934
+      },
+      "reset": {
+        "text": " Japan as Valkyria Chronicles II, is a video game developed by Capcom and published by Capcom for the Nintendo DS in the United States in the United Kingdom in the United States in the United States in the United States in the United States in the United States in the United States in the United States in the United States in",
+        "within_repeated4": 0.4918032786885246
+      }
+    }
+  },
+  {
+    "prompt_index": 68,
+    "selection_rule": "First output nearest the median paired within-repetition difference",
+    "prompt": "\ufffd\u306e\u30f4\u30a1\u30eb\u30ad\u30e5\u30ea\u30a23 \u540d\u3082\u306a\u304d\u8a93\u3044\u306e\u82b1, lit. Valkyria of the Battlefield 3 : The Flower of the Nameless Oath ), illustrated by Naoyuki Fujisawa and eventually released in two volumes after being serialized in Dengeki Ma",
+    "shared_s1": "eda's Weekly Sh\u014dnen Jump. The first volume of the series was released in Japan on November 25, 2008. The second volume was released in the United States on November 26, 2008. The third volume was released in the United Kingdom on November 27, 2008. The fourth volume was released in the United States",
+    "outputs": {
+      "continued": {
+        "text": "eda's Weekly Sh\u014dnen Jump. The story was written by Naoyuki Fujisawa and illustrated by Naoyuki Fujisawa @-@ Naoyuki Fujisawa @-@ Naoyuki Fujisawa @-@ Naoyuki Fujisawa @-@ Naoyuki Fujis",
+        "within_repeated4": 0.540983606557377
+      },
+      "reset": {
+        "text": "eda's Weekly Sh\u014dnen Jump magazine. The game's soundtrack was composed by Yoshinori Ono and composed by Yoshinori Ono. The game's soundtrack was composed by Yoshinori Ono and composed by Yoshinori Ono. The game's soundtrack was composed by Yoshin",
+        "within_repeated4": 0.5573770491803278
+      }
+    }
+  },
+  {
+    "prompt_index": 109,
+    "selection_rule": "First whitespace-only final output in reset",
+    "prompt": " garrison 500 strong could hold out against Fitch and that I would lead the remainder - about 1500 - to Gen 'l Rust as soon as shotguns and rifles could be obtained from Little Rock instead of pikes and lances, with which most of them were armed. Two days elapsed before the change could be effected. \"",
+    "shared_s1": " The New York Times wrote, \" It was not until the end of the month, however, that the General's men were able to hold their ground. \" The New York Times wrote, \" It was not until the end of the month that the General's men were able to hold their ground. \" The",
+    "outputs": {
+      "continued": {
+        "text": " \nReferences : \n                                                          ",
+        "within_repeated4": 0.8852459016393442
+      },
+      "reset": {
+        "text": " \n                                                              ",
+        "within_repeated4": 0.9508196721311475
+      }
+    }
+  }
+]
