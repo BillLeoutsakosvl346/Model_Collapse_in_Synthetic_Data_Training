@@ -2,7 +2,10 @@
 from __future__ import annotations
 
 import json
+import http.client
 import os
+import re
+import ssl
 import time
 import urllib.error
 import urllib.request
@@ -21,16 +24,36 @@ class Runpod:
         url = "https://api.runpod.io" + ("/graphql" if graphql else "/v2" + path)
         req = urllib.request.Request(url, method=method, data=None if body is None else json.dumps(body).encode(),
                                      headers={"Authorization": "Bearer " + self.key, "Content-Type": "application/json"})
-        try:
-            with urllib.request.urlopen(req, timeout=30) as response:
-                raw = response.read()
-                return json.loads(raw) if raw else None
-        except urllib.error.HTTPError as e:
-            raw = e.read(2000).decode(errors="replace")
-            for secret in (self.key, os.environ.get("HF_TOKEN")):
-                if secret:
-                    raw = raw.replace(secret, "[REDACTED]")
-            raise RuntimeError(f"Runpod {method} {path}: HTTP {e.code}: {raw[:1000]}") from None
+        query = body.get("query") if isinstance(body, dict) else None
+        read_query = (graphql and method.upper() == "POST" and isinstance(query, str)
+                      and re.match(r"\s*query\b", query, re.IGNORECASE)
+                      and not re.search(r"\b(?:mutation|subscription)\b", query, re.IGNORECASE))
+        read_only = method.upper() == "GET" or bool(read_query)
+        attempts = 4 if read_only else 1
+        for attempt in range(attempts):
+            try:
+                with urllib.request.urlopen(req, timeout=30) as response:
+                    raw = response.read()
+                    return json.loads(raw) if raw else None
+            except urllib.error.HTTPError as e:
+                if read_only and (e.code == 429 or 500 <= e.code < 600) and attempt + 1 < attempts:
+                    e.close()
+                    time.sleep(min(2 ** attempt, 4))
+                    continue
+                try:
+                    raw = e.read(2000).decode(errors="replace")
+                finally:
+                    e.close()
+                for secret in (self.key, os.environ.get("HF_TOKEN")):
+                    if secret:
+                        raw = raw.replace(secret, "[REDACTED]")
+                raise RuntimeError(f"Runpod {method} {path}: HTTP {e.code}: {raw[:1000]}") from None
+            except (OSError, EOFError, http.client.IncompleteRead) as e:
+                certificate_error = isinstance(e, ssl.SSLCertVerificationError) or isinstance(
+                    getattr(e, "reason", None), ssl.SSLCertVerificationError)
+                if certificate_error or attempt + 1 == attempts:
+                    raise
+                time.sleep(min(2 ** attempt, 4))
 
     def account(self):
         d = self.request("POST", "", {"query": "query { myself { clientBalance currentSpendPerHr isAutoPayEnabled enableBackupPayments } }"}, graphql=True)

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-01T01:41:07.410887+00:00",
+  "previous_static_review": "2026-11-01_mixed-campaign-independent-review.json",
+  "reason": "Two observed read-only Runpod preflight TLS EOF failures before any new run directory, Pod or volume was created. No validation GPU spend occurred.",
+  "previous_runtime_sha256": "75da511ec9bfd6e27bafb28484e3698fc30ab1c72288254a912f85c8a73ffbbc",
+  "runtime_sha256": "57c0e4609588077145eb944635e1ecdf6ed82d2f56f689cd97bfa339ffe1b186",
+  "runtime_files": 35,
+  "changes": "Bounded read-only API retries: GET and conservative explicit GraphQL queries only; four attempts, 1/2/4s backoff. Mutations, ambiguous GraphQL documents, client/authentication errors and TLS verification failures are not retried. Error response credentials remain redacted.",
+  "reviewer": "Fresh independent read-only sub-agent delta review",
+  "independently_passed_client_tests": 22,
+  "affected_tests_passed": 74,
+  "material_findings_remaining": 0,
+  "stdlib_watchdog_compatibility_preserved": true,
+  "full_campaign_unlaunched": true,
+  "paid_gpu_acceptance_pending": true
+}
