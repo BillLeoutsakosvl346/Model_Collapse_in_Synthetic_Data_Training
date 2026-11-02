@@ -1,6 +1,6 @@
 # Real-only continued-training control, final epoch 5
 
-Status: actual two-cycle GPU acceptance passed on RTX PRO 4500 Blackwell Server Edition. See the [acceptance receipt](../../../docs/validation/2026-11-02_real-only-gpu-acceptance.json) and [current state](../../../docs/current-state.md) before any launch; avoid duplicate compute.
+Status: the full control `20261102T154833Z-full-continued` completed and is [analysed against the three continued mixtures](../../../reports/20261102T154833Z-full-continued/report.md), with [Google Doc delivery](../../../docs/validation/2026-11-02_real-only-analysis-and-doc.json). Do not duplicate or resume completed training. Preserve its stopped Pod/disk for bulk recovery. The [GPU acceptance](../../../docs/validation/2026-11-02_real-only-gpu-acceptance.json) and [timing audit](../../../reports/20261102T154833Z-full-continued/timing_audit.md) retain their separate verification scopes.
 
 This control tests whether repeated continued fine-tuning on the finite real WikiText-2 training pool can itself worsen held-out prediction. It does not assume that repetition explains the existing 20%/50% reversal. See the [methodology](../../../docs/methodology.md) and [audit](../../../docs/audits/2026-11-01_20-vs50-perplexity.md).
 

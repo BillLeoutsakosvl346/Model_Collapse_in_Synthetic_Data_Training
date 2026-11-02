@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "run_id": "20261102T154833Z-full-continued",
+  "files": {
+    "analysis/examples.json": {
+      "sha256": "1de103bf2cd18756d4a4a866104dd2ff5b36f1d64f49203a8b4588ac22143775",
+      "bytes": 3375
+    },
+    "analysis/figures/endpoints_vs_synthetic_fraction.png": {
+      "sha256": "2defa2a809a6e2a446e32a3d762d87bb8cee70927cf9719cbf61b6b35861febb",
+      "bytes": 228997
+    },
+    "analysis/figures/entropy_and_repetition.png": {
+      "sha256": "89c652856a293e0120c4fce252c4c17ce40cfed83fd5cdfd005a58843592b3db",
+      "bytes": 177457
+    },
+    "analysis/figures/exposure_and_overfitting.png": {
+      "sha256": "e189aa526386a3504b1d231f2b917b3e81fa54647aaac3e6aaff1dd2d107c9c7",
+      "bytes": 138262
+    },
+    "analysis/figures/frozen_s0_scores.png": {
+      "sha256": "892862b5bb2b31b7f9bb8f1193b41f2408dd03d7df4d281d8bb22deb706f18e0",
+      "bytes": 177469
+    },
+    "analysis/figures/prediction_and_phrases.png": {
+      "sha256": "4e4aa654ca794e9cb901e3c58b7ebc3463d59d3b3b4dbbd01e9bd17ab75bfb32",
+      "bytes": 299890
+    },
+    "analysis/figures/real_text_and_training.png": {
+      "sha256": "ca952b4a09aa72d9d96e5036de002eebf171acda5c1def5d9ae3b4e1c71e8b34",
+      "bytes": 262941
+    },
+    "analysis/figures/repetition_and_formatting.png": {
+      "sha256": "06cd8a242757a5f9910ce4e59c06607b958c3e9da83b4e8e7cc711f0e33d15e9",
+      "bytes": 277967
+    },
+    "analysis/metrics.csv": {
+      "sha256": "84e7d02287168f305472eb4d63eee0982c345203ff8a3c1028ac2cc8af06adcd",
+      "bytes": 27835
+    },
+    "analysis/paired_test_blocks.csv": {
+      "sha256": "3eddfa3307dfa14000bfaa72916cc9b35721844f21a16c0354305fd98daae6f2",
+      "bytes": 435196
+    },
+    "analysis/publication_reproduction.json": {
+      "sha256": "3d716e3b0e50473dc8300f8e3d284c0ef25dcfdf8bbff8580e6639d5930e6d57",
+      "bytes": 77674
+    },
+    "analysis/summary.json": {
+      "sha256": "0ddc0d67628cf88862447cd6e399bf7a057064af0defdfd057752c8b25f734e4",
+      "bytes": 25140
+    },
+    "analysis/timing_audit.json": {
+      "sha256": "d38fb9eb33703a93c17af25b1c1fb12e77aa766048dee75cd0824ab5c780e746",
+      "bytes": 22187
+    },
+    "analysis/timing_audit_manifest.json": {
+      "sha256": "da7ad6b57a00baaef693a67567771abcae1c201b9c357b807b2abcaaa0cf127d",
+      "bytes": 940
+    },
+    "analysis/timing_by_cycle.csv": {
+      "sha256": "abd7329c9992981b123cd48a0052a4ca938f8d4ec2c7f0ccc5562de4a277ceb0",
+      "bytes": 2755
+    },
+    "analysis/training_exposures.csv": {
+      "sha256": "4a35ad4aa8f0b8838661ede31ae271e4a2a60d2a9b145cb2d0aaa64a471fa7c5",
+      "bytes": 470
+    },
+    "analysis/training_history.csv": {
+      "sha256": "72019de74e2a9c3373010a324d9d45ba6751bf3b20d5c328109a3bccdd1b0acc",
+      "bytes": 21462
+    },
+    "publication_reproduction.json": {
+      "sha256": "15d8782a4a2ccd6b1f60c45e5441e5ff6064006b6a1cc59dfa4fb5655aaaf3ed",
+      "bytes": 25382
+    },
+    "records/artifact_index.json": {
+      "sha256": "7cda0e6414c61824c94b5c2d05dc061c63a810763881d53dda177b1e8d8e096e",
+      "bytes": 51349
+    },
+    "records/benchmark.json": {
+      "sha256": "c8572f295486da9a5d71277ae1b4a6713cd3453f7a2a13f730b6209b6b087a4f",
+      "bytes": 673
+    },
+    "records/completion.json": {
+      "sha256": "f63e0f4dbfd22697114fa18b929b4cdcff0bceafae27b2751be9c3f44db4f17a",
+      "bytes": 182
+    },
+    "records/config.json": {
+      "sha256": "315486e10dcf005d3363d2b96328f0b6e311c8bc3afbd4abee62155cb602aa23",
+      "bytes": 3562
+    },
+    "records/data/manifest.json": {
+      "sha256": "f4989871f76309348e25ff58b787998099256369d8bcb17eb285d1948c8a9ab5",
+      "bytes": 1087
+    },
+    "records/environment.json": {
+      "sha256": "c12bd7b67125190f3a18ad68d55e30537716c381afefba1f6483095ec12d6aac",
+      "bytes": 448
+    },
+    "records/initial_dataset_import.json": {
+      "sha256": "c9742705ff7bbeba3efaa9171e1bb45ff2d94b57e14a3c42f45b5a682e37f4ab",
+      "bytes": 543
+    },
+    "records/manifest.json": {
+      "sha256": "274947390ec004226550f2f078d96183a0f46cbfc3d1999098f68883e8216157",
+      "bytes": 285
+    },
+    "records/mixed_for_gen_01/manifest.json": {
+      "sha256": "96ba2f85a2ab40825fa6011193db2ebaa7dec80af31080a57fb0003816ded7c3",
+      "bytes": 1415
+    },
+    "records/mixed_for_gen_02/manifest.json": {
+      "sha256": "09908f0b03a6fb606e18b64f8d551ebbe7a06645f5c71ef8c98aac5ac51f9d20",
+      "bytes": 1413
+    },
+    "records/mixed_for_gen_03/manifest.json": {
+      "sha256": "43b024d22bc4fa5cdf1e0ba6bd7208c04211dc0cc78f9148642560f2a91af51d",
+      "bytes": 1413
+    },
+    "records/mixed_for_gen_04/manifest.json": {
+      "sha256": "7f7eb9e87461067876f97bdf9de8272a7f441edb3e41eb9131c627734a664eb7",
+      "bytes": 1413
+    },
+    "records/mixed_for_gen_05/manifest.json": {
+      "sha256": "6ef339b6a72a1f0e5759faaf44f03356e94944ba254934e59d4445e7bc915ef7",
+      "bytes": 1413
+    },
+    "records/mixed_for_gen_06/manifest.json": {
+      "sha256": "62c84da003d46d6fc1d43bc8cb06a41bf584a09fa7daca7e3e8911934395bb55",
+      "bytes": 1413
+    },
+    "records/mixed_for_gen_07/manifest.json": {
+      "sha256": "7b47a263aa939ff46b59bd5f42e53cacd96298c7c3b038f37ea4272cc0bbe62f",
+      "bytes": 1413
+    },
+    "records/mixed_for_gen_08/manifest.json": {
+      "sha256": "1e05a50bdb65fb2a772126dc80204c5b9d7ee606a6873f779c544da647de2f98",
+      "bytes": 1413
+    },
+    "records/mixed_for_gen_09/manifest.json": {
+      "sha256": "4d7cfe64dc41f9005567797121b15a310150a0fc8d3a63f1db754f513c464ffe",
+      "bytes": 1413
+    },
+    "records/mixed_for_gen_10/manifest.json": {
+      "sha256": "275a1116d3c3946c20c90a0358f1cacc59e67e43342ba5860ab9e8118fa4a152",
+      "bytes": 1414
+    },
+    "records/probes/gen_00.npy": {
+      "sha256": "1a23d505b48f1a3cc04bd760a816b2972e5014db5e430f1a9e75decd5a409868",
+      "bytes": 65664
+    },
+    "records/probes/gen_01.npy": {
+      "sha256": "e0f9ee35d21ec06f65474f551ecbedfa6681c25eaab52e469b7409f4bfce9b52",
+      "bytes": 65664
+    },
+    "records/probes/gen_02.npy": {
+      "sha256": "ae25d88353990f79c342b5fe66bd9cd3a737300c44f4c514df07a2ab1903e6e7",
+      "bytes": 65664
+    },
+    "records/probes/gen_03.npy": {
+      "sha256": "fab54772338b7bccdef9f889d8ce024e99c8a44c379ae1a788679c9fd767e3b5",
+      "bytes": 65664
+    },
+    "records/probes/gen_04.npy": {
+      "sha256": "82ff1d744e5d3a2a890dce4eade5ae7d1056cbcd6900da5950c3f6646a59fa27",
+      "bytes": 65664
+    },
+    "records/probes/gen_05.npy": {
+      "sha256": "f23ac7dcfee4c1038424e204f1090bcc45d2e95bd4e5217dc02b29aecd1ccf52",
+      "bytes": 65664
+    },
+    "records/probes/gen_06.npy": {
+      "sha256": "1840bfa1b5c77be480314a62d21916e00ec5ead0741e81cd1c60f1b5b57d3c8a",
+      "bytes": 65664
+    },
+    "records/probes/gen_07.npy": {
+      "sha256": "adecb28ad6f14b9fce465a0fa6ff873ed73a32fd44ffe059d01e1e0d054b6569",
+      "bytes": 65664
+    },
+    "records/probes/gen_08.npy": {
+      "sha256": "3e7b3570fafcc97b5a174b25f4c5d0360cb990c9149671008573007053e95721",
+      "bytes": 65664
+    },
+    "records/probes/gen_09.npy": {
+      "sha256": "f81b4f4f976667fe7ed3d5a3a44cc2f683ec175467cc2fe7d3ca60628f89f5af",
+      "bytes": 65664
+    },
+    "records/probes/gen_10.npy": {
+      "sha256": "07a491879a89921c50e777cf664127d9d4d97340759c6ae3494b92e71c8c6eb1",
+      "bytes": 65664
+    },
+    "records/recovery_manifest.json": {
+      "sha256": "baf8383ba77ce365d885e03d877b025793d811579d5b90d7e60cb96527c7bf32",
+      "bytes": 23905
+    },
+    "records/runtime_core_identity.json": {
+      "sha256": "2d85fc5ad6f97d63a8120d4c872e14d601b26a5c52f990715fd96a3869b217d9",
+      "bytes": 1410
+    },
+    "records/seed_42/gen_00/metrics.json": {
+      "sha256": "a2824dfc8f640350b266c877c1a9b37a64b53f9d4c73d70724d93178d13a040c",
+      "bytes": 21974
+    },
+    "records/seed_42/gen_00/reference_sequences.json": {
+      "sha256": "037404e9dd1aa6acce64f156b37aff02d0285419236af0ece667ea9df25b9aee",
+      "bytes": 6159
+    },
+    "records/seed_42/gen_00/samples.json": {
+      "sha256": "6e84823cf412b56ae8d28fc581c9cd7961e320e44c4357313e391c5408d4b1a6",
+      "bytes": 163542
+    },
+    "records/seed_42/gen_00/stage_completion.json": {
+      "sha256": "f03d9137a4c5f3a80a033c54dc511853a5383d63233372a35426b0a1c6fa3e1e",
+      "bytes": 1502
+    },
+    "records/seed_42/gen_00/test_sequences.json": {
+      "sha256": "3092e70292de9abba36ee4fdfe507a9085872257712bfa5144a806f86571d893",
+      "bytes": 105278
+    },
+    "records/seed_42/gen_00/training.json": {
+      "sha256": "e78fa86b6ac25b755751a9ab607b246b369b669045efa0ee7ce7caef45640025",
+      "bytes": 1272
+    },
+    "records/seed_42/gen_01/metrics.json": {
+      "sha256": "c283f7105927631544a4c6c0f60ed7d5be04d60fba8e53f7a3e1d14497dcbc38",
+      "bytes": 5070
+    },
+    "records/seed_42/gen_01/reference_sequences.json": {
+      "sha256": "8eecd02f981cda9be3f832e689c69a634e9fbd7130c570a57c7e4e012d2aca84",
+      "bytes": 6151
+    },
+    "records/seed_42/gen_01/samples.json": {
+      "sha256": "032548f12d58008c4b8971eef71bd313a7c4ed8e4bc82165e281a725563eac9d",
+      "bytes": 164186
+    },
+    "records/seed_42/gen_01/stage_completion.json": {
+      "sha256": "341cb222ab05c7ba2e6231999b79ac81dc2d57faabcb8404ac1865f0601fd29e",
+      "bytes": 1599
+    },
+    "records/seed_42/gen_01/test_sequences.json": {
+      "sha256": "85a67719729ee8021075b1ed670ef6617dfeff4bc91941d8fe65586b8c5506cd",
+      "bytes": 105211
+    },
+    "records/seed_42/gen_01/training.json": {
+      "sha256": "14dc825801bcb70fbac149ce25cec255fbfac76c39562e36852775684db41b90",
+      "bytes": 2331
+    },
+    "records/seed_42/gen_01/training_history.json": {
+      "sha256": "efcb5f7a8018d478d18dabf814a879681af360e34f546a22df99a3c2565453ca",
+      "bytes": 1230
+    },
+    "records/seed_42/gen_02/metrics.json": {
+      "sha256": "b578142e9e283a8ec49a56bea21de723557b78bb54dbdd53de89b076f079bb74",
+      "bytes": 5064
+    },
+    "records/seed_42/gen_02/reference_sequences.json": {
+      "sha256": "72f5ad015ec7885d9f7dbc02777a24c2b99b26acb19013fcbc7ede7bb096c0c1",
+      "bytes": 6131
+    },
+    "records/seed_42/gen_02/samples.json": {
+      "sha256": "c00dcb74830b18c3961e97d8545896d022a9a06b6b1d69bdde9ca3927463d8b3",
+      "bytes": 163358
+    },
+    "records/seed_42/gen_02/stage_completion.json": {
+      "sha256": "9f695ab4f2f91d4af1d00ff829c5a6be6a5e4bcec9f81ca2a56523579197c31b",
+      "bytes": 1599
+    },
+    "records/seed_42/gen_02/test_sequences.json": {
+      "sha256": "5cfab12681bee192ab278ade447a311a7810b00e80ca3ec5e04b320bcaa77be7",
+      "bytes": 105144
+    },
+    "records/seed_42/gen_02/training.json": {
+      "sha256": "4dd279e0d1873ca36aba10a4b8623b5f4da03641da00d473e58338ffb59803fd",
+      "bytes": 2332
+    },
+    "records/seed_42/gen_02/training_history.json": {
+      "sha256": "f894d7135f80565c2c00019f67e5d7c4122cefca0821e695ede0830e20e147a0",
+      "bytes": 1232
+    },
+    "records/seed_42/gen_03/metrics.json": {
+      "sha256": "8e2591930770282772a30a3013db11396ca3be6d7e7734f1214b9c2c03820155",
+      "bytes": 5056
+    },
+    "records/seed_42/gen_03/reference_sequences.json": {
+      "sha256": "cd31457742d98f7704f571e63a017aeca2e2bd394e815399ed7674e49059140f",
+      "bytes": 6140
+    },
+    "records/seed_42/gen_03/samples.json": {
+      "sha256": "b80685b3564ce967e4aa9acf42f1801bcc466d121d471672db147aec2021dffd",
+      "bytes": 163769
+    },
+    "records/seed_42/gen_03/stage_completion.json": {
+      "sha256": "7f7f10400727bc5b948227d6d7e774d3cf799165ec4f03bc65d868497c4d3d64",
+      "bytes": 1599
+    },
+    "records/seed_42/gen_03/test_sequences.json": {
+      "sha256": "3717298c4e4a9590dfdaeb798d26c0bd75684db9ecb5592c749cf649fc8b0f63",
+      "bytes": 104924
+    },
+    "records/seed_42/gen_03/training.json": {
+      "sha256": "3a27a1eae68a0d7c3db68f4b1d87529959024983b4d67621cf1272d92197a06a",
+      "bytes": 2328
+    },
+    "records/seed_42/gen_03/training_history.json": {
+      "sha256": "accf735a10d435382245e36887150ef40d16bceab4bd66d0743b795cc13e0965",
+      "bytes": 1226
+    },
+    "records/seed_42/gen_04/metrics.json": {
+      "sha256": "dee6cc6f814db9d110a656bbbbe62df6cb31f55ec06b5ee8d3d1702f34a3358d",
+      "bytes": 5068
+    },
+    "records/seed_42/gen_04/reference_sequences.json": {
+      "sha256": "919ae987d407e2a7c9c11fb2a3463782a086576655f10dc2718d5ef2e66e7e1f",
+      "bytes": 6143
+    },
+    "records/seed_42/gen_04/samples.json": {
+      "sha256": "b6281bd92b12c14b4ad731e630177cd2cfc7668703e2bd7029170ed01e777a4d",
+      "bytes": 164704
+    },
+    "records/seed_42/gen_04/stage_completion.json": {
+      "sha256": "c655fb96a2f0a8230ef8ec89e3efabd1a2fced2f098f9f1b4b51eda004bc11d9",
+      "bytes": 1599
+    },
+    "records/seed_42/gen_04/test_sequences.json": {
+      "sha256": "b9a510133236d2df2c2bcc7d6d86d8b917fa031d0198e15e485fc054e128e39b",
+      "bytes": 104792
+    },
+    "records/seed_42/gen_04/training.json": {
+      "sha256": "5e8ec2ed696adf778e351a129f29e36a0f8dda5949c4cc6a7816322b453909a0",
+      "bytes": 2331
+    },
+    "records/seed_42/gen_04/training_history.json": {
+      "sha256": "f4673dc20bbcfdf1bb6fef5eb733719e649ce25d36f01c6af0e1f2eee94c6e20",
+      "bytes": 1233
+    },
+    "records/seed_42/gen_05/metrics.json": {
+      "sha256": "8e39a6b9cdf5d9e962eeeaa81d63f436bd819b57c5c4257084c8947e74065338",
+      "bytes": 5063
+    },
+    "records/seed_42/gen_05/reference_sequences.json": {
+      "sha256": "f3cadace559f8051689f52b98e098e8a1d9bee2c347638c17edd12cc0edabe4b",
+      "bytes": 6134
+    },
+    "records/seed_42/gen_05/samples.json": {
+      "sha256": "1a51d3d64b2b1eac350b224e284cbe88d6ad0b5874bf1b37000db620f2d7af41",
+      "bytes": 164728
+    },
+    "records/seed_42/gen_05/stage_completion.json": {
+      "sha256": "4606018382c420ea14ba99eff6fb10db8ac9a78b817e319ead1f27159155a6e1",
+      "bytes": 1599
+    },
+    "records/seed_42/gen_05/test_sequences.json": {
+      "sha256": "69c46eef80a284cd447055ae7f3400da3558fa5bb6db50662f4efc1bb425f19b",
+      "bytes": 104671
+    },
+    "records/seed_42/gen_05/training.json": {
+      "sha256": "e09da3d91e2ee2855b85a7f03b480919fc82f472ea78d889771e41111e622146",
+      "bytes": 2330
+    },
+    "records/seed_42/gen_05/training_history.json": {
+      "sha256": "accbbbf79a30d757856fcc8ddc6c3e0fae54d994deb1d94e86bb9e1f9d3409bf",
+      "bytes": 1231
+    },
+    "records/seed_42/gen_06/metrics.json": {
+      "sha256": "1f3eb7cb13e0adab0337c4f5c39d531db482f53713629a5b34c1747744e9ca34",
+      "bytes": 5055
+    },
+    "records/seed_42/gen_06/reference_sequences.json": {
+      "sha256": "518ba2c8cf61a8249069949fc3a8ae095aa8493fcdc5e29cca10321d8a4767f5",
+      "bytes": 6131
+    },
+    "records/seed_42/gen_06/samples.json": {
+      "sha256": "4af0859162e75845ba82949444bea84dda08c0adc9de67e2a7a62147f4370892",
+      "bytes": 164281
+    },
+    "records/seed_42/gen_06/stage_completion.json": {
+      "sha256": "7255e7ea45b1643f4dcf6f57237b510cffcb8bc2c2a46f5b4b55cceb6b0352c0",
+      "bytes": 1599
+    },
+    "records/seed_42/gen_06/test_sequences.json": {
+      "sha256": "febf7b38e6cfeb47dc886db3657fe76108c7c458059a9e7c844b57fd847e3a58",
+      "bytes": 104508
+    },
+    "records/seed_42/gen_06/training.json": {
+      "sha256": "19eec5224cedc4db097469965551afa4073ef870e62c49ace7bab3a025d2efe5",
+      "bytes": 2329
+    },
+    "records/seed_42/gen_06/training_history.json": {
+      "sha256": "1282c538d91f85dfcbabf685c5ea30cc4e74e48d74b479347d7b52c7fe358cd2",
+      "bytes": 1223
+    },
+    "records/seed_42/gen_07/metrics.json": {
+      "sha256": "1a8893f86dd784705cf7dd955c3ec6d902c61c8246b5075a8304843d81bfcb15",
+      "bytes": 5059
+    },
+    "records/seed_42/gen_07/reference_sequences.json": {
+      "sha256": "d18bc32fcd644b05555ebcb770e45c17fedd8bd2663b7d8e1e3ebf6e38820313",
+      "bytes": 6127
+    },
+    "records/seed_42/gen_07/samples.json": {
+      "sha256": "850425db98cbcc23d4abdc823d0bb9d2b9498202b7a53c1958a7d4e86f02036c",
+      "bytes": 164949
+    },
+    "records/seed_42/gen_07/stage_completion.json": {
+      "sha256": "6219958f24d657c5dec7fb080b9a0970e8c25e6d3ff3e7a276c8b13083d4f465",
+      "bytes": 1599
+    },
+    "records/seed_42/gen_07/test_sequences.json": {
+      "sha256": "d09bf7611ca958d118e392f297645845af460c65ece4c3624e5906fe9f1e0b11",
+      "bytes": 104430
+    },
+    "records/seed_42/gen_07/training.json": {
+      "sha256": "8a08b3866521884b3932b6b29795d9718925deea033062500f0353514075dc81",
+      "bytes": 2328
+    },
+    "records/seed_42/gen_07/training_history.json": {
+      "sha256": "93aad8b240997caa7932881badd0602697b95839cbdfeecd26b49ecbcf46744c",
+      "bytes": 1227
+    },
+    "records/seed_42/gen_08/metrics.json": {
+      "sha256": "9d5976566ac7f345888be69acae29e3a26dfd3df23274b729d2cde6ae6963ae4",
+      "bytes": 5059
+    },
+    "records/seed_42/gen_08/reference_sequences.json": {
+      "sha256": "be89b8f037c8531d3ee9a9d8ccfba37c1a4a9f123518843bad11fc47d16f55c2",
+      "bytes": 6120
+    },
+    "records/seed_42/gen_08/samples.json": {
+      "sha256": "4afd20f5c06079ff0c7af71c37a9fb81de142f870c3c58f92255335a4b6c828b",
+      "bytes": 165297
+    },
+    "records/seed_42/gen_08/stage_completion.json": {
+      "sha256": "40398306165c4bd6d8bd3640efe4828c64a28801551208886614ce028d088559",
+      "bytes": 1599
+    },
+    "records/seed_42/gen_08/test_sequences.json": {
+      "sha256": "caa488c32418bbb387668862a7ac436543c336acf7ec17c0ed270df948445025",
+      "bytes": 104326
+    },
+    "records/seed_42/gen_08/training.json": {
+      "sha256": "beb2917e779cc004f6bfa05d19576191c9d24b080ddade455e7910c74c5bfa3b",
+      "bytes": 2329
+    },
+    "records/seed_42/gen_08/training_history.json": {
+      "sha256": "34b60a239d3db23021f21d5ace63748df12d49e1d935a049fa75de0b82ff2780",
+      "bytes": 1229
+    },
+    "records/seed_42/gen_09/metrics.json": {
+      "sha256": "c23fd45188d810eed3fc1f6c523b00825ce26714345e939ec39833a7e4b6dba0",
+      "bytes": 5061
+    },
+    "records/seed_42/gen_09/reference_sequences.json": {
+      "sha256": "1f02850edd1c97bc51f73961d06324ff7f34be2895a29031c96f33271f7011b1",
+      "bytes": 6119
+    },
+    "records/seed_42/gen_09/samples.json": {
+      "sha256": "95fc4fec54ef5212736130b239221937500ead289defab8c6b0e10aaf2b66d3f",
+      "bytes": 165436
+    },
+    "records/seed_42/gen_09/stage_completion.json": {
+      "sha256": "e06b1cf17263bc74ed367c926333cea059a6be23bb8932500659756d7b7f235c",
+      "bytes": 1599
+    },
+    "records/seed_42/gen_09/test_sequences.json": {
+      "sha256": "cb77807a6d6722dfbea75b64a956f30c152a92e7c7317f70af58380148e257b2",
+      "bytes": 104236
+    },
+    "records/seed_42/gen_09/training.json": {
+      "sha256": "7e683d54dd7024a0eb56f773935c48d48d0f137c4d97789d8580f8238616bc91",
+      "bytes": 2330
+    },
+    "records/seed_42/gen_09/training_history.json": {
+      "sha256": "70aeacae0f3df42d45169af16bcfe7ea857a5d80e82d6709023edb706e076ae3",
+      "bytes": 1229
+    },
+    "records/seed_42/gen_10/metrics.json": {
+      "sha256": "93d1ca762b4818323bef0023dcdb417b29bf000a2c66038663143f3e7c389e71",
+      "bytes": 5062
+    },
+    "records/seed_42/gen_10/reference_sequences.json": {
+      "sha256": "43efd9c91693850dd9f9dc1daeb3740ee9610d5cff9b2b6634ae2b7817441b0a",
+      "bytes": 6110
+    },
+    "records/seed_42/gen_10/samples.json": {
+      "sha256": "4787bf2e55b737d581eaac48832174a09a19fd93496d63ad4c3984d5e7c6d9c8",
+      "bytes": 165034
+    },
+    "records/seed_42/gen_10/stage_completion.json": {
+      "sha256": "147e4d39302c7f2864e3a762ddb92ccb9c5e52357b647a38732142d585bb573a",
+      "bytes": 1600
+    },
+    "records/seed_42/gen_10/test_sequences.json": {
+      "sha256": "04915069cd5aa205bc2ab9e1dccd45bfa0e507849df03882dba04e58a9ceec31",
+      "bytes": 104149
+    },
+    "records/seed_42/gen_10/training.json": {
+      "sha256": "e3c10e1c5f43eba06bd4a058c07a5ec55119fb497adaa6315ff24e8dad882a2e",
+      "bytes": 2331
+    },
+    "records/seed_42/gen_10/training_history.json": {
+      "sha256": "884c93547a51b62331bc34b3577e44ae7f3fc6e9cdbdc7de8e47127770723ee3",
+      "bytes": 1225
+    },
+    "records/synthetic_for_gen_01/manifest.json": {
+      "sha256": "71d013b5094c54a1215bb4d13c46f9dcbf35328a0d7947e2706ec2541fdedea2",
+      "bytes": 18271
+    },
+    "records/synthetic_for_gen_02/manifest.json": {
+      "sha256": "8508b1e70fcb6f63dd43760b91ddf5b9a56b71ada879f7f2c234968ae929c8d1",
+      "bytes": 720
+    },
+    "records/synthetic_for_gen_03/manifest.json": {
+      "sha256": "9729e252dbfcfd5f443bf422982ee2d62f99006e8806910b4099a31feb462a11",
+      "bytes": 719
+    },
+    "records/synthetic_for_gen_04/manifest.json": {
+      "sha256": "4ce006d04b8f7ca02f005b84930f7f8d3a79958f14b38db0cdb132920705d9de",
+      "bytes": 719
+    },
+    "records/synthetic_for_gen_05/manifest.json": {
+      "sha256": "f3ed5aeddaca48b454d022c5ed708ac38dbaa3934cf1a479b89b2b76729d96d7",
+      "bytes": 721
+    },
+    "records/synthetic_for_gen_06/manifest.json": {
+      "sha256": "5d8252e10acec73f5f0e82545573e0c539ca1114a35b2b10bd16152df32fdbd2",
+      "bytes": 719
+    },
+    "records/synthetic_for_gen_07/manifest.json": {
+      "sha256": "bdd8415720b7bd20db28d69331a6daef57fda88b5d3b954a1fb360ca65acf69c",
+      "bytes": 719
+    },
+    "records/synthetic_for_gen_08/manifest.json": {
+      "sha256": "36b9bef75d2e125c45ba715dd08036dbe153470a43c1baea665e518c6388482a",
+      "bytes": 719
+    },
+    "records/synthetic_for_gen_09/manifest.json": {
+      "sha256": "f833217c9e9bf55debbe85de77697ad77ef9512da882b92908f991805f4833b2",
+      "bytes": 720
+    },
+    "records/synthetic_for_gen_10/manifest.json": {
+      "sha256": "bd852ed57c278a26728a9351c0f64aea1616e12c0d393c0854282553e8b50fe3",
+      "bytes": 719
+    },
+    "records/synthetic_for_gen_11/manifest.json": {
+      "sha256": "5535e21943d9b89ce68934939621e5fd1dbf63190690ec96cf0f6ca7e6a13909",
+      "bytes": 718
+    },
+    "report.md": {
+      "sha256": "405009ae276484712bf723de129f51f0fc225759c0da4c21a51eb6cf2490fb2c",
+      "bytes": 16035
+    },
+    "timing_audit.md": {
+      "sha256": "27883610244884f329afe31e57bc6879e0af960d12086904a8992c5b05aadaa0",
+      "bytes": 5440
+    }
+  },
+  "scope": "Selected scientific metadata, fixed probes, existing timing audit, offline four-fraction analysis and authored report. No bulk weights/full arrays, credentials or private state.",
+  "hash_scope": "All published files except this manifest. Historical publications remain unchanged."
+}

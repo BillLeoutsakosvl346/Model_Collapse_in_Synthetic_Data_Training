@@ -1,0 +1,28 @@
+{
+  "training_target_tokens_per_second": 55668.3922917387,
+  "generation_new_tokens_per_second": 2934.508855815697,
+  "training_step_seconds": [
+    0.30462372000329196,
+    0.14532169001176953,
+    0.14456076710484922,
+    0.14485778496600688,
+    0.14505091099999845
+  ],
+  "generation_batch_seconds": [
+    0.7775178640149534,
+    0.6989067299291492,
+    0.6968975430354476
+  ],
+  "effective_batch": 128,
+  "microbatch": 32,
+  "generation_batch": 32,
+  "num_beams": 5,
+  "repetition_penalty": 1.0,
+  "precision": "bf16",
+  "full_split_blocks": {
+    "train": 37946,
+    "validation": 3922,
+    "test": 4494
+  },
+  "gpu": "NVIDIA RTX PRO 4500 Blackwell Server Edition"
+}

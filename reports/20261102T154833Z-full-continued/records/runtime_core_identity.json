@@ -1,0 +1,28 @@
+{
+  "runtime_current": "08586783f0ff72e5b52e76e3bcd2022832637721a85d6a891456664f392da56d",
+  "historical_mixed_runtime": "35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171",
+  "core": {
+    "model_collapse/engine.py": {
+      "ast_equal": true,
+      "new_file_sha256": "ce6ae1b38c02c3d0615690ae6bd736e4d0545ce5c84c83e9c0aace59eca38a29",
+      "old_file_sha256": "ce6ae1b38c02c3d0615690ae6bd736e4d0545ce5c84c83e9c0aace59eca38a29"
+    },
+    "model_collapse/data.py": {
+      "ast_equal": true,
+      "new_file_sha256": "54dd3d396184fb4372b78a902c59f7fbb81605c6dda7260052549f65107f91b9",
+      "old_file_sha256": "54dd3d396184fb4372b78a902c59f7fbb81605c6dda7260052549f65107f91b9"
+    },
+    "model_collapse/science/metrics.py": {
+      "ast_equal": true,
+      "new_file_sha256": "212350dcce1640d43a3bfc38fc58668e9b3d63273a9e06b1c6146e1f2e6c0102",
+      "old_file_sha256": "212350dcce1640d43a3bfc38fc58668e9b3d63273a9e06b1c6146e1f2e6c0102"
+    },
+    "model_collapse/workflow/selection.py": {
+      "ast_equal": true,
+      "new_file_sha256": "fced4d12323bbd16a1e3b77c0824abafed6f70fa799ae039ea263c13a65828b2",
+      "old_file_sha256": "fced4d12323bbd16a1e3b77c0824abafed6f70fa799ae039ea263c13a65828b2"
+    }
+  },
+  "all_core_ast_equal": true,
+  "generation_difference": "At zero synthetic share, only fixed probes are generated; training engine/metrics unchanged."
+}

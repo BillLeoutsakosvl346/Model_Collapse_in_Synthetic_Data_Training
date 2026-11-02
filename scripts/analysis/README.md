@@ -16,6 +16,15 @@ This replaces reliance on the original private `.state/build_mixed_acceptance.py
 
 ## Week 3 authored report and native-Docs draft
 
+The completed real-only control and its four-fraction continued comparison reproduce offline:
+
+```powershell
+python comparisons/continued_real_only_vs_mixtures/analyse.py --out reports/20261102T154833Z-full-continued/generated/audit-review
+python scripts/analysis/build_real_only_comparison_report.py --out reports/20261102T154833Z-full-continued/generated/report-review
+```
+
+The [comparison definition](../../comparisons/continued_real_only_vs_mixtures/README.md) records the shared start, fixed arrays, full real selection, hardware difference and recovery scope. Analysis checks 44 metric rows, 200 epoch entries and 41 unique probes; the builder produces a separate Markdown/native-Docs draft. Seven square-panel figure families include the requested endpoint-versus-synthetic-fraction summary. Normal reproduction has no cloud/model execution; `--recover` is an explicit pinned private-backup read. Published paths remain protected.
+
 Reproduce the completed 20/80 reset comparison and its three-reset-fraction context offline:
 
 ```powershell
