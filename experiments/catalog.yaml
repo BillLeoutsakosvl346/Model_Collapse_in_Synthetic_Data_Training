@@ -1,9 +1,32 @@
 schema_version: 1
-updated: "2026-11-01"
+updated: "2026-11-02"
 description: "Scientific conditions and their recorded runs; week labels are presentation aliases."
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
 conditions:
+  continued_real_only_final5:
+    name: "OPT-125M / WikiText-2: continued weights, real-only targets, final epoch 5"
+    initialization: continued
+    checkpoint_selection: final_epoch
+    epochs: 5
+    synthetic_fraction: 0.0
+    state: offline_validated_pending_gpu_acceptance
+    definition: opt125m_wikitext2/continued_real_only_final5/README.md
+    configs:
+      full: opt125m_wikitext2/continued_real_only_final5/full.yaml
+      smoke: opt125m_wikitext2/continued_real_only_final5/smoke.yaml
+    target_last_cycle: 10
+    full_training_blocks_per_cycle: 37946
+    real_training_blocks_per_cycle: 37946
+    synthetic_training_blocks_per_cycle: 0
+    acceptance: not_performed
+    preparation_record: ../docs/validation/2026-11-02_real-only-control-preparation.json
+    launch_preflight_record: ../docs/validation/2026-11-02_real-only-launch-preflight.json
+    budget_authorization_record: ../docs/validation/2026-11-02_real-only-budget-authorization.json
+    runtime_preparation_record: ../docs/validation/2026-11-02_real-only-runtime-admission.json
+    full_launch_requested: true
+    full_run_launched: false
+
   reset_mixed_50_final5:
     name: "OPT-125M / WikiText-2: fixed-S0 reset, 50% synthetic targets, final epoch 5"
     initialization: reset_s0

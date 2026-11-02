@@ -107,6 +107,11 @@ def campaign_budget(d):
     return float(amount)
 
 
+def task_budget(d):
+    """Use recorded authorization; retain the original default for legacy ledgers."""
+    return campaign_budget(d) if "total_budget_usd" in d else TOTAL_BUDGET
+
+
 def historical_running_storage(d, hours, *, exclude_volume=None):
     """Conservatively reserve other retained resources during the proposed session."""
     from .cloud.budget import accrued_cost
@@ -163,7 +168,7 @@ def preflight(probe=False):
     hub = destinations(probe=probe)
     candidates = r.candidates()
     result = {"account": account, "hugging_face": hub, "gpu_candidates": candidates[:5],
-              "total_task_budget_usd": TOTAL_BUDGET, "estimated_accrued_task_usd": accrued(ledger())}
+              "total_task_budget_usd": task_budget(ledger()), "estimated_accrued_task_usd": accrued(ledger())}
     atomic_json(STATE / "preflight.json", result)
     return result
 
@@ -437,7 +442,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     volume_gb = c["network_volume_gb"] if campaign else 30
     volume_hourly = volume_gb * .07 / 730
     ledger_state = ledger()
-    total_budget = campaign_budget(ledger_state) if campaign else TOTAL_BUDGET
+    total_budget = campaign_budget(ledger_state) if campaign else task_budget(ledger_state)
     spent = accrued(ledger_state)
     allowance = min(total_budget - spent - RESERVE, p["account"]["clientBalance"] - RESERVE)
     if c.get("max_session_usd") is not None:

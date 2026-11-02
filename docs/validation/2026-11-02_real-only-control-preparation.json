@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "prepared_utc": "2026-11-02T12:27:20Z",
+  "condition": "continued_real_only_final5",
+  "status": "offline_validated_pending_gpu_acceptance",
+  "base_git_commit": "84a4420439fb8d479763fab2ab77294f5f552980",
+  "runtime_sha256": "35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171",
+  "protocol_fingerprint": "a3ae3f9f9df1784948ba79704699a689c123876e0d8bcc6a5ea3a89eeb727f6a",
+  "runtime_changed": false,
+  "configuration_differences_from_mixed50": [
+    "experiment_id",
+    "synthetic_fraction"
+  ],
+  "authorized_selection": "all 37946 real training blocks, without replacement, shuffled each cycle",
+  "training": {
+    "cycles": 10,
+    "epochs_per_cycle": 5,
+    "new_epochs": 50,
+    "retained_epoch": 5,
+    "initialization": "continued",
+    "real_blocks_per_cycle": 37946,
+    "synthetic_blocks_per_cycle": 0,
+    "input_tokens_per_cycle": 2428544,
+    "start_checkpoint_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10"
+  },
+  "tests": {
+    "full_suite": {
+      "command": "python -m pytest -q",
+      "passed": 350,
+      "failed": 1,
+      "seconds": 318.61,
+      "failure": "New test fixture omitted synthetic source manifest; fixed by writing the fixture manifest. Production source unchanged."
+    },
+    "after_fixture_fix": {
+      "command": "python -m pytest tests/test_real_only_control.py tests/test_mixing.py -q",
+      "passed": 37,
+      "failed": 0,
+      "seconds": 13.8
+    },
+    "existing_baseline_passed": 345,
+    "new_control_tests_passed": 6,
+    "full_suite_repeated_after_test_fixture_only_fix": false,
+    "coverage": [
+      "exact historical RNG streams for ten full-size index selections",
+      "all real blocks exactly once per stored cycle mixture",
+      "zero synthetic token contribution independent of synthetic contents",
+      "immutable mixture on resume and changed-fraction rejection",
+      "held-out sentinel rows excluded; held-out arrays unchanged",
+      "full/smoke protocol identity and rejection of other fraction certificates"
+    ]
+  },
+  "checks_are_offline": true,
+  "test_arrays_scope": "Locally constructed sentinel arrays; no production model execution or exhaustive original-corpus cross-split deduplication.",
+  "generated_pool_policy": "Existing initial D1 import and full-pool generation retained, but no synthetic rows are selected for training.",
+  "gpu_acceptance_performed": false,
+  "full_run_launched": false,
+  "cloud_calls_performed": false,
+  "resource_changes": false,
+  "new_spend_usd": 0.0,
+  "budget_authorization_changed": false,
+  "source_files": {
+    "experiments/opt125m_wikitext2/continued_real_only_final5/full.yaml": "7a9df78ec919cf0a26da7e4bda072438d76bcc05ab54f85a64fe64f78fce124a",
+    "experiments/opt125m_wikitext2/continued_real_only_final5/smoke.yaml": "7dd00daf871e9abf41df7d976bef461ac5c8ae08219e20f8fd8424646bea492f",
+    "experiments/opt125m_wikitext2/continued_real_only_final5/README.md": "9fc29fd5bb9bd2acf9f831b5c406cf66a08d13ff9231ab730bb9052d60a10187",
+    "tests/test_real_only_control.py": "6836e596d6aa866911f722c499f8cefb75a1d9fa506442a5023449128b99350f"
+  },
+  "remaining_checks": [
+    "New real-only protocol GPU acceptance",
+    "Live credit, retained storage, cumulative budget and hardware admission before paid work"
+  ],
+  "interpretation": "Tests repeated real-data fitting under matched total training workload; does not prove the cause of the historical 20/80 versus 50/50 reversal."
+}

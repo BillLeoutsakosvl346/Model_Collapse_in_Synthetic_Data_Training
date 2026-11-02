@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "observed_utc": "2026-11-02T12:52:15.825839+00:00",
+  "condition": "continued_real_only_final5",
+  "user_requested_full_launch": true,
+  "state": "not_launched_pending_budget_authorization_and_gpu_acceptance",
+  "full_run_id": null,
+  "full_run_launched": false,
+  "gpu_validation_launched": false,
+  "new_pods_created": 0,
+  "new_volumes_created": 0,
+  "new_compute_spend_usd": 0,
+  "cumulative_ceiling_usd": 45.0,
+  "estimated_accrued_usd": 39.64785891526179,
+  "reserve_usd": 2,
+  "allowance_after_reserve_usd": 3.352141084738207,
+  "requested_ceiling_usd": 50,
+  "ceiling_change_approved": false,
+  "ledger_ceiling_changed": false,
+  "account_read": {
+    "clientBalance": 15.1653357012,
+    "currentSpendPerHr": 0.02,
+    "isAutoPayEnabled": false,
+    "enableBackupPayments": false,
+    "scope": "Earlier live account read in this launch attempt; retained storage continues to accrue."
+  },
+  "private_upload_download_checksum_probe_passed": true,
+  "pinned_S0_file_metadata_verified": true,
+  "initial_D1_index_and_source_metadata_verified": true,
+  "resolved_source_identity": "c12d0f6d209b3ca135c1b1fe3aac5e01c7407c7587ca5508c148d8350359220f",
+  "unresolved_configuration_protocol": "a3ae3f9f9df1784948ba79704699a689c123876e0d8bcc6a5ea3a89eeb727f6a",
+  "resolved_configuration_protocol": "7bb225e918d9703be21abdb7c0795bb018632008b875ded144aa235955736134",
+  "runtime_sha256": "35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171",
+  "small_validation_session_cap_usd": 0.25,
+  "validation_launch_attempts": [
+    {
+      "outcome": "rejected_before_provisioning",
+      "error": "No compatible Secure Cloud GPU with Standard network storage is available"
+    },
+    {
+      "outcome": "rejected_before_provisioning",
+      "error": "No compatible Secure Cloud GPU with Standard network storage is available"
+    }
+  ],
+  "gpu_stock_scope": "Matching RTX PRO 4000 Blackwell was intermittently NONE/LOW in catalogue reads at USD 0.57/hr. Both actual launcher final checks found no eligible matching candidate. No GPU substitution or blind create retry.",
+  "last_provider_pod_inventory": {
+    "active_pods": 0,
+    "historical_pods": 6,
+    "all_historical_states": "EXITED"
+  },
+  "forecast": {
+    "synthetic_generations": 10,
+    "initialization": "continued",
+    "estimated_hours": 8.51041521663002,
+    "estimated_compute_and_running_storage_usd": 4.898734895928676,
+    "new_training_stages": 10,
+    "new_full_generation_stages": 9,
+    "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded.",
+    "historical_storage_during_run_usd": 0.17137411463600216,
+    "padded_watchdog_required_usd": 5.6335451303179775
+  },
+  "forecast_source": "Previously measured matching-GPU production-batch warm benchmark, not a new real-only benchmark or completed run.",
+  "retained_generation_overhead": "Existing full-pool generation path preserved although zero synthetic tokens enter training.",
+  "paid_full_launch_still_requires": [
+    "Explicit funding beyond the recorded USD45 ceiling, or a fitting revised authorization",
+    "New real-only GPU acceptance",
+    "Available matching GPU and live financial recheck"
+  ],
+  "credits_purchased": false,
+  "payment_settings_changed": false,
+  "authoritative_resource_registry_changed": false,
+  "historical_resources_changed": false
+}

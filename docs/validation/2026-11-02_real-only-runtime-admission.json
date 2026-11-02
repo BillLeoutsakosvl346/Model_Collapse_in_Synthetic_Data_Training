@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-02T13:34:55.464270+00:00",
+  "condition": "continued_real_only_final5",
+  "status_at_freeze": "offline_passed_waiting_for_matching_gpu_acceptance",
+  "runtime_sha256": "a2e8209414036cb4a0149ceedf908c7fecb50325b0beedf0a820564a1eba691f",
+  "resolved_protocol_fingerprint": "7bb225e918d9703be21abdb7c0795bb018632008b875ded144aa235955736134",
+  "historical_runtime_sha256": "35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171",
+  "runtime_change": "Standalone/paired admission and preflight use an explicit authorized ledger ceiling; legacy ledgers retain their original default. Strict campaign requirement retained.",
+  "scientific_engine_changed": false,
+  "new_acceptance_required": true,
+  "historical_certificates_reused": false,
+  "offline_tests": {
+    "focused_passed": 60,
+    "full_suite_passed": 361,
+    "full_suite_failed": 0,
+    "warnings": 17,
+    "seconds": 324.8
+  },
+  "full_suite_command": "python -m pytest -q",
+  "budget": {
+    "cumulative_ceiling_usd": 50,
+    "reserve_usd": 2,
+    "validation_session_cap_usd": 0.25,
+    "estimated_accrued_at_recording_usd": 39.662176544175324,
+    "private_control_backup": {
+      "commit": "f3c97bae0c669ebaa29e7434445d2f1d4faf692d",
+      "sha256": "9377f63309e318231f61355002362224b7b59530ee91df7171d51c025ce18f11",
+      "cumulative_ceiling_usd": 50.0,
+      "local_transport": "IPv4 only; TLS verification preserved"
+    }
+  },
+  "authorization_record": "docs/validation/2026-11-02_real-only-budget-authorization.json",
+  "source_files": {
+    "model_collapse/remote.py": "e0db11d992769d6dbde22bcdb4f09262f0b5fc12e1945ff5ffdd3e7dfcc3e953",
+    "tests/test_authorized_task_budget.py": "e327f8dbeea0d7ceb4c21ef7518b281b0dc91df57fc3a8ccc51b289bf8c5d8bb",
+    "tests/test_real_only_control.py": "6836e596d6aa866911f722c499f8cefb75a1d9fa506442a5023449128b99350f"
+  },
+  "local_hf_transport_note": "IPv4-only local Requests transport resolved intermittent local TLS timeouts; official hostname and TLS verification preserved. Remote runtime files unchanged by this transport setting.",
+  "readiness_scope": "Offline admission/data tests only; GPU acceptance and full launch remain unrecorded at this timestamp."
+}

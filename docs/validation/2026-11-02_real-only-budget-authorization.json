@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-02T13:24:29.882097+00:00",
+  "previous_ceiling_usd": 45.0,
+  "cumulative_ceiling_usd": 50.0,
+  "authorization_source": "User explicitly selected Raise cumulative ceiling to $50 in the pending question for the real-only control.",
+  "scope": "Real-only continued control: required validation and ten-cycle full launch, five epochs per cycle, final epoch 5.",
+  "reserve_usd": 2.0,
+  "validation_session_cap_usd": 0.25,
+  "credit_purchase_authorized": false,
+  "payment_changes_authorized": false,
+  "historical_ledger_preserved": {
+    "path": ".state/budget_authorizations/20261102T132429Z/ledger-before.json",
+    "sha256": "7fbfd0c1be8a0d4515b465d93a4b5b13c1aa291f99b8ab40b476d961b0a7a7bf",
+    "bytes": 19791
+  },
+  "updated_private_ledger_sha256": "9377f63309e318231f61355002362224b7b59530ee91df7171d51c025ce18f11",
+  "historical_launch_and_volume_records_unchanged": true,
+  "existing_credit_only": true
+}
