@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-02T15:53:47.981911+00:00",
+  "state": "running",
+  "completion_claimed": false,
+  "user_authorization": "Explicit real-only full launch request, USD 50 ceiling approval, then request to start it somehow.",
+  "run_id": "20261102T154833Z-full-continued",
+  "launch_id": "20261102T154833656858Z",
+  "pod_id": "0kj0h4jzxtkrbi",
+  "volume_id": "0kj0h4jzxtkrbi",
+  "remote_root": "/workspace/runs/20261102T154833Z-full-continued",
+  "provider_status": "RUNNING",
+  "gpu": "NVIDIA RTX PRO 4500 Blackwell Server Edition",
+  "data_center": "US-KS-2",
+  "stock_evidence": {
+    "availability": "LOW",
+    "data_center": "US-KS-2",
+    "gpu": "NVIDIA RTX PRO 4500 Blackwell Server Edition",
+    "read_context": "Final authenticated launcher preflight before successful create.",
+    "quoted_gpu_hourly_usd": 0.72
+  },
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "host_cuda": "13.2",
+  "minimum_requested_cuda": "12.8",
+  "runtime_sha256": "08586783f0ff72e5b52e76e3bcd2022832637721a85d6a891456664f392da56d",
+  "configuration_sha256": "122c6540e0245bd05de8e295fe4143afa816fa04f7bc532b59eb9c0181ca4061",
+  "acceptance_record": "docs/validation/2026-11-02_real-only-gpu-acceptance.json",
+  "accepted_protocol_fingerprint": "0ffc95fa20209096b3e52003d55b25f5c522989025b77aba1377d0c3ff5298da",
+  "runtime_implementation_commit": "28ad5f2",
+  "cached_bundle_git_base": "433ca4461fb5685737c63d741f0e500e19d62e89",
+  "cached_bundle_note": "Bundle was constructed from that base plus then-uncommitted implementation; its exact runtime/file manifest hashes identify executed source. The identical runtime was subsequently committed as 28ad5f2.",
+  "scientific_protocol": {
+    "initialization": "continued",
+    "start_checkpoint_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+    "cycles": 10,
+    "epochs_per_cycle": 5,
+    "checkpoint_selection": "final_epoch",
+    "training_blocks_per_cycle": 37946,
+    "input_tokens_per_cycle": 2428544,
+    "real_blocks_per_cycle": 37946,
+    "synthetic_training_blocks": 0,
+    "real_pool": "Entire processed training split, once per stored mixture; new deterministic order each cycle.",
+    "validation_blocks": 3922,
+    "test_blocks": 4494,
+    "new_generation": "Fixed 256-output evaluation probes only; original D1 imported/verified but unused for training."
+  },
+  "startup_checks": {
+    "provider_running": true,
+    "detached_supervisor_and_watchdog_confirmed": true,
+    "progress_after_closed_ssh_connections": true,
+    "finite_new_full_data_epochs": 2,
+    "exact_all_real_mixture_reconstruction": {
+      "all_real_once": true,
+      "zero_synthetic_selected": true,
+      "all_source_labels_real": true,
+      "direct_token_reconstruction_equal": true,
+      "shape": [
+        37946,
+        64
+      ]
+    },
+    "frozen_train_validation_test_file_hashes_match": true,
+    "detached_new_training_epoch_progress": [
+      3,
+      4
+    ],
+    "detached_finite_training_at_both_observations": true
+  },
+  "first_epochs": [
+    {
+      "epoch": 1,
+      "learning_rate": 2e-05,
+      "train_loss": 3.239449816323644,
+      "validation_loss": 3.542661538233133,
+      "train_seconds": 44.70108753582463,
+      "training_target_tokens_per_second": 53479.63845586781
+    },
+    {
+      "epoch": 2,
+      "learning_rate": 1.8185661446562e-05,
+      "train_loss": 3.139694964936605,
+      "validation_loss": 3.548887870163461,
+      "train_seconds": 44.97390834311955,
+      "training_target_tokens_per_second": 53155.22017258107
+    }
+  ],
+  "data_hashes": {
+    "train.npy": "546f467e177406cd4da4571e490de15ad691b7a63ea317dfea99b219433d8c31",
+    "validation.npy": "f7cab8d76a7700b1db3c4f3bfc2be399249c068c7ac1cdff94acaceb7c25f22a",
+    "test.npy": "baa63f2fa9961e122c02ef8cc239baa6e5abcfd58c84f629392750f597d4f72d"
+  },
+  "mixture_content_hash": "cd9fa949b5f935141b7d353d1edde3341b3dcb07fc6963d95e4183e7bb39840a",
+  "benchmark": {
+    "training_target_tokens_per_second": 55668.3922917387,
+    "generation_new_tokens_per_second": 2934.508855815697,
+    "training_step_seconds": [
+      0.30462372000329196,
+      0.14532169001176953,
+      0.14456076710484922,
+      0.14485778496600688,
+      0.14505091099999845
+    ],
+    "generation_batch_seconds": [
+      0.7775178640149534,
+      0.6989067299291492,
+      0.6968975430354476
+    ],
+    "effective_batch": 128,
+    "microbatch": 32,
+    "generation_batch": 32,
+    "num_beams": 5,
+    "repetition_penalty": 1.0,
+    "precision": "bf16",
+    "full_split_blocks": {
+      "train": 37946,
+      "validation": 3922,
+      "test": 4494
+    },
+    "gpu": "NVIDIA RTX PRO 4500 Blackwell Server Edition"
+  },
+  "forecast": {
+    "synthetic_generations": 10,
+    "initialization": "continued",
+    "estimated_hours": 1.7098392079136435,
+    "estimated_compute_and_running_storage_usd": 1.2498221936201646,
+    "new_training_stages": 10,
+    "new_full_generation_stages": 0,
+    "new_probe_generation_stages": 10,
+    "real_only_training": true,
+    "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+  },
+  "storage": {
+    "backend": "pod_persistent",
+    "gb": 30,
+    "mount": "/workspace",
+    "stop_retains_disk": true,
+    "delete_removes_disk": true,
+    "independent_private_checkpoint_backups_required": true,
+    "conservative_reserved_hourly_usd": 0.00821917808219178,
+    "seven_day_stopped_retention_usd": 1.3808219178082188,
+    "hardware_difference": "RTX PRO 4500 instead of historical RTX PRO 4000; record in later comparisons.",
+    "historical_volumes_preserved": true
+  },
+  "budget": {
+    "authorized_cumulative_ceiling_usd": 50,
+    "reserve_usd": 2,
+    "session_allowance_usd": 8.127101989001389,
+    "starting_account_credit_usd": 14.9604240011,
+    "gpu_rate_usd_per_hour": 0.72,
+    "independent_watchdog_guard_rate_usd_per_hour": 0.8406027397260273,
+    "watchdog_deadline_utc": "2026-11-03T01:28:39.125837+00:00",
+    "watchdog_coverage_hours": 9.668184036215147,
+    "task_accrued_estimate_usd_at_record": 39.94794873457954,
+    "other_retained_storage_during_forecast_usd": 1.4555650374992744,
+    "credits_purchased": false,
+    "payment_settings_changed": false
+  },
+  "recovery": {
+    "private_repositories": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "backup_policy": "Pinned private uploads/checksums during stage completion and final backup; full-run recovery is not claimed at startup.",
+    "laptop_downloads": "Control and small audit/benchmark JSON only during launch; no full checkpoints downloaded."
+  },
+  "earlier_full_placement_failures": [
+    {
+      "run_id": "20261102T154653Z-full-continued",
+      "provider_error": "Runpod POST /pods: HTTP 400: {\"detail\":\"There are no longer any instances available with the requested specifications. Please refresh and try again.\",\"status\":400,\"title\":\"Bad Request\"}\n",
+      "resources_registered": false,
+      "independent_network_volume_requested": false,
+      "scope": "Failed placement; no model execution claimed. Exact-name Pod absence was checked before retry."
+    }
+  ],
+  "launch_command": "python -m model_collapse launch --config experiments/opt125m_wikitext2/continued_real_only_final5/full-pod-storage.yaml --gpu \"NVIDIA RTX PRO 4500 Blackwell Server Edition\" --generations 10",
+  "status_command": "python -m model_collapse status 20261102T154833Z-full-continued",
+  "evidence_hashes": {
+    "full_startup_audit.json": "1de4c8561d1d270006512c381eec2df12d5357a68388d5d93fcd502bfeb28bda",
+    "detached_verification.json": "5d6c884fcba114c9e72e6aa7e165df5b15288cfabb13660be6e405e71d9c5f6b"
+  },
+  "source_still_matches_acceptance": true
+}

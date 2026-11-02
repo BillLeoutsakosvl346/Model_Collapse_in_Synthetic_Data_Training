@@ -10,7 +10,7 @@ conditions:
     checkpoint_selection: final_epoch
     epochs: 5
     synthetic_fraction: 0.0
-    state: gpu_accepted_awaiting_full_capacity
+    state: running
     definition: opt125m_wikitext2/continued_real_only_final5/README.md
     configs:
       full: opt125m_wikitext2/continued_real_only_final5/full.yaml
@@ -32,7 +32,9 @@ conditions:
     runtime_preparation_record: ../docs/validation/2026-11-02_real-only-runtime-admission.json
     capacity_record: ../docs/validation/2026-11-02_real-only-capacity-blocker.json
     full_launch_requested: true
-    full_run_launched: false
+    full_run_launched: true
+    full_run_id: 20261102T154833Z-full-continued
+    full_launch_record: ../docs/validation/2026-11-02_real-only-full-launch.json
 
   reset_mixed_50_final5:
     name: "OPT-125M / WikiText-2: fixed-S0 reset, 50% synthetic targets, final epoch 5"
