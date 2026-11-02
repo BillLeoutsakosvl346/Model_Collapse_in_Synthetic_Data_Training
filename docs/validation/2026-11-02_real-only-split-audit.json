@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-02T13:41:52.998208+00:00",
+  "full_train_blocks": 37946,
+  "validation_blocks": 3922,
+  "test_blocks": 4494,
+  "exact_64_token_train_validation_overlap": 0,
+  "exact_64_token_train_test_overlap": 0,
+  "training_duplicate_blocks": 0,
+  "full_train_file_matches_pinned_historical_source": true,
+  "files": {
+    "train.npy": "546f467e177406cd4da4571e490de15ad691b7a63ea317dfea99b219433d8c31",
+    "validation.npy": "f7cab8d76a7700b1db3c4f3bfc2be399249c068c7ac1cdff94acaceb7c25f22a",
+    "test.npy": "baa63f2fa9961e122c02ef8cc239baa6e5abcfd58c84f629392750f597d4f72d"
+  },
+  "scope": "Exact packed 64-token blocks only; does not establish absence of shorter overlapping passages or pretraining contamination.",
+  "paid_operations": false,
+  "downloaded_model_weights": false,
+  "all_three_split_files_match_frozen_historical_arrays": true,
+  "historical_manifest": "reports/20261101T030306Z-full-mixed-campaign-continued-mixed20/records/data/manifest.json",
+  "historical_manifest_sha256": "f4989871f76309348e25ff58b787998099256369d8bcb17eb285d1948c8a9ab5",
+  "model_revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+  "dataset_revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+  "new_smoke_session_cap_usd": 0.25,
+  "post_cap_configuration_and_cli_checks": {
+    "passed": 31,
+    "failed": 0,
+    "seconds": 10.2
+  },
+  "model_execution_performed": false,
+  "training_performed": false,
+  "source": "Rebuilt full arrays locally using pinned dataset/tokenizer and unchanged preparation code; compared file hashes with preserved production evidence. No model weights downloaded."
+}

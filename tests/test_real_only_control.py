@@ -21,7 +21,9 @@ def test_only_ratio_and_name_change_from_historical_mixed50(kind):
     historical = config(DEFINITIONS / "continued_mixed_50_final5" / f"{kind}.yaml")
     control = config(DEFINITIONS / "continued_real_only_final5" / f"{kind}.yaml")
     assert {key for key in historical.keys() | control.keys()
-            if historical.get(key) != control.get(key)} == {"experiment_id", "synthetic_fraction"}
+            if key != "max_session_usd" and historical.get(key) != control.get(key)} == {"experiment_id", "synthetic_fraction"}
+    if kind == "smoke":
+        assert control["max_session_usd"] == .25
     assert control["synthetic_fraction"] == 0.0
     assert control["initialization"] == "continued"
     assert control["epochs"] == 5 and control["checkpoint_selection"] == "final_epoch"
