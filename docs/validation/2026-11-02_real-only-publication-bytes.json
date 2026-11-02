@@ -1,0 +1,25 @@
+{
+  "recorded_utc": "2026-11-02T23:10:21.507329+00:00",
+  "run_id": "20261102T154833Z-full-continued",
+  "cause": "Git text conversion normalized Windows CRLF in derived files while the scientific publication manifest indexed the original working-file bytes.",
+  "affected_prior_commit": "0aaf68b",
+  "affected_files": [
+    "analysis/examples.json",
+    "analysis/metrics.csv",
+    "analysis/paired_test_blocks.csv",
+    "analysis/publication_reproduction.json",
+    "analysis/summary.json",
+    "analysis/timing_audit.json",
+    "analysis/timing_audit_manifest.json",
+    "analysis/timing_by_cycle.csv",
+    "analysis/training_exposures.csv",
+    "analysis/training_history.csv",
+    "publication_reproduction.json"
+  ],
+  "correction": "Add explicit -text/CR-at-EOL publication attributes and restage original indexed bytes; preserve earlier Git commits.",
+  "scientific_values_changed": false,
+  "raw_cloud_records_changed": false,
+  "google_doc_changed": false,
+  "expected_publication_manifest_sha256": "23153932a243cc1f29e413f7b54dee7da2fff57c1d4e939bb28b77dca3ab2f1a",
+  "scope": "Publication byte preservation only, with no runtime, model, cloud-resource or scientific measurement changes."
+}

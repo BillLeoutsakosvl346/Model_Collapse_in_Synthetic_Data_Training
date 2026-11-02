@@ -70,3 +70,9 @@
 /comparisons/mixed_fraction_final5/analyse_reset20.py text eol=lf
 /scripts/analysis/build_reset20_report.py text eol=lf
 /docs/validation/2026-11-02_reset20-analysis-and-doc.json -text whitespace=cr-at-eol
+# Real-only comparison preserves its indexed scientific/analysis bytes on all hosts.
+/reports/20261102T154833Z-full-continued/** -text whitespace=cr-at-eol
+/comparisons/continued_real_only_vs_mixtures/*.py text eol=lf
+/scripts/analysis/build_real_only_comparison_report.py text eol=lf
+/docs/validation/2026-11-02_real-only-analysis-and-doc.json -text whitespace=cr-at-eol
+/docs/validation/2026-11-02_real-only-publication-bytes.json -text whitespace=cr-at-eol
