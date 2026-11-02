@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-02T15:42:16.444133+00:00",
+  "condition": "continued_real_only_final5",
+  "scope": "Actual small GPU acceptance; no full-data launch is claimed in this receipt.",
+  "run_id": "20261102T152509Z-smoke-continued",
+  "runtime_sha256": "08586783f0ff72e5b52e76e3bcd2022832637721a85d6a891456664f392da56d",
+  "protocol_fingerprint": "0ffc95fa20209096b3e52003d55b25f5c522989025b77aba1377d0c3ff5298da",
+  "hardware": {
+    "gpu": "NVIDIA RTX PRO 4500 Blackwell Server Edition",
+    "data_center": "US-KS-2",
+    "gpu_hourly_usd": 0.72,
+    "difference_from_historical": "RTX PRO 4500 Blackwell Server Edition instead of RTX PRO 4000 Blackwell; pinned training software and scientific settings preserved."
+  },
+  "storage": {
+    "backend": "pod_persistent",
+    "persistent_gb": 30,
+    "mount": "/workspace",
+    "durability": "Retained across Pod stop/start; deletion removes the disk. Private Hub backups are independently verified.",
+    "conservative_reserved_hourly_usd": 0.00821917808219178,
+    "provider_docs": "https://docs.runpod.io/pods/storage/types"
+  },
+  "smoke": {
+    "training_blocks": 256,
+    "real_blocks": 256,
+    "synthetic_blocks": 0,
+    "validation_blocks": 64,
+    "test_blocks": 64,
+    "new_training_cycles": 2,
+    "executed_epochs": 10,
+    "selected_epoch_each_cycle": 5,
+    "checkpoint_selection": "final_epoch",
+    "session_allowance_usd": 0.15
+  },
+  "checks": {
+    "pinned_previous_real_g0_start": true,
+    "both_weights_and_data_handoffs": true,
+    "weights_changed_each_training_cycle": true,
+    "fixed_real_prompts_and_evaluation": true,
+    "finite_token_weighted_perplexity": true,
+    "two_real_worker_exits_and_resume": true,
+    "partial_generation_shard_reused": true,
+    "completed_cycle_1_unchanged_after_resume": true,
+    "continuation_only_synthetic_source_blocks": true,
+    "exact_mixture_reconstruction": true,
+    "epoch_five_checkpoints": true,
+    "private_hub_download_hashes_verified": true,
+    "restored_checkpoint_tensor_hash_and_evaluation": true,
+    "direct_shifted_nll_calculation": true,
+    "independent_budget_guard_and_provider_stop_verified": true,
+    "detached_progress_verified": true
+  },
+  "handoffs": [
+    {
+      "cycle": 1,
+      "generator_and_training_initial_weights_sha256": "dd12f1e10e953a352299108fc013fa8c5b6d2afcd99addfc41e8df5ddc586b10",
+      "training_data_sha256": "422535961542bc497512a56aa067e7b49451ed11e55f09822ea3d4831ba014dc",
+      "trained_weights_sha256": "82af48da87729c48bf6f20eb7aebe3b4ac33a5892600c111639f3a626c58a8cd"
+    },
+    {
+      "cycle": 2,
+      "generator_and_training_initial_weights_sha256": "82af48da87729c48bf6f20eb7aebe3b4ac33a5892600c111639f3a626c58a8cd",
+      "training_data_sha256": "8ed8120638e6d40a03eba8f499f1042601ca9f87077568cdf331590640a549df",
+      "trained_weights_sha256": "2dd676675b731a979087bbcf80178d10ab51af724bfea2386a4f49aa40d79da5"
+    }
+  ],
+  "restored_evaluation": {
+    "recorded": {
+      "nll_sum": 14995.150780627153,
+      "scored_tokens": 4032,
+      "loss": 3.719035411861893,
+      "perplexity": 41.224610154177405,
+      "seconds": 0.02014882187359035,
+      "mean_sequence_perplexity": 46.695122408465764,
+      "std_sequence_perplexity": 23.24097004209979,
+      "context_tokens": 64
+    },
+    "restored": {
+      "nll_sum": 14995.150780627153,
+      "scored_tokens": 4032,
+      "loss": 3.719035411861893,
+      "perplexity": 41.224610154177405,
+      "seconds": 0.022968092933297157,
+      "mean_sequence_perplexity": 46.695122408465764,
+      "std_sequence_perplexity": 23.24097004209979,
+      "context_tokens": 64
+    },
+    "maximum_direct_nll_calculation_error": 0.0
+  },
+  "recovery": {
+    "local": {
+      "run_id": "20261102T152509Z-smoke-continued",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "62e0193428b6ef04954e104057ea876011608467",
+        "dataset": "6e0761d0c86a925889b42969027a1dd365251e14"
+      },
+      "artifact_index_sha256": "14e34747b563addfaa1696e90258a2a397fa94b451c9a2b6571e4cb5d290b473",
+      "indexed_files": 120,
+      "verified_files": 93,
+      "verified_bytes": 11158271,
+      "metadata_only": true,
+      "scope": "metadata_only",
+      "preserved_control_files": {
+        "resources.json": {
+          "recovered_path": "fetched_control/2e7bfbd43ef27a83883ee3aecefac4553e262edd9e20af56013412b3ed1be2a7/resources.json",
+          "sha256": "2e7bfbd43ef27a83883ee3aecefac4553e262edd9e20af56013412b3ed1be2a7",
+          "authoritative_local_sha256": "5ad19f3719352c4ba07f8cba843fa2ef6e8f22cf3752ca2c016715d013f4ad3b"
+        }
+      },
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json",
+        "watchdog_exit.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261102T152509Z-smoke-continued"
+    },
+    "remote_full_restore": {
+      "run_id": "20261102T152509Z-smoke-continued",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "62e0193428b6ef04954e104057ea876011608467",
+        "dataset": "3b0c0dd162599c1e8644433d5cb43bceef327625"
+      },
+      "artifact_index_sha256": "d322160433a92ab8c195bf5a253666f91382ec83db679c6950ee1f012bbaef2b",
+      "indexed_files": 118,
+      "verified_files": 118,
+      "verified_bytes": 1514640718,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/runs/iib-hub-restore-orhq8poy"
+    },
+    "remote_verified_file_count": 118
+  },
+  "shutdown": {
+    "provider_pod_id": "e9d00065v6dotj",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Mon Nov 02 2026 15:31:43 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1793633503.0,
+    "observed_at": 1793633577.597249
+  },
+  "cleanup": {
+    "pod_removed": true,
+    "volume_removed": true,
+    "actual_account_balance_delta_usd": 0.08017125179999951
+  },
+  "cost": {
+    "new_control_validation_attempts_conservative_usd": 0.1658767827324721,
+    "control_combined_validation_cap_usd": 0.25,
+    "ceiling_usd": 50,
+    "reserve_usd": 2,
+    "total_task_accrued_estimate_usd": 39.87079395661786,
+    "validation_figure_includes": "Failed host compute/disk, capacity-only probe, both failed preallocated volumes and successful smoke including retained time. Whole-account debit differs and includes other storage.",
+    "credits_purchased": false,
+    "payment_settings_changed": false
+  },
+  "benchmark": {
+    "training_target_tokens_per_second": 55447.59026648561,
+    "generation_new_tokens_per_second": 2835.930172505493,
+    "training_step_seconds": [
+      0.3202026979997754,
+      0.14602904208004475,
+      0.14576097601093352,
+      0.14513600408099592,
+      0.14543463406153023
+    ],
+    "generation_batch_seconds": [
+      0.7995251910760999,
+      0.718975662952289,
+      0.7253476281184703
+    ],
+    "effective_batch": 128,
+    "microbatch": 32,
+    "generation_batch": 32,
+    "num_beams": 5,
+    "repetition_penalty": 1.0,
+    "precision": "bf16",
+    "full_split_blocks": {
+      "train": 37946,
+      "validation": 3922,
+      "test": 4494
+    },
+    "gpu": "NVIDIA RTX PRO 4500 Blackwell Server Edition"
+  },
+  "full_forecast": {
+    "synthetic_generations": 10,
+    "initialization": "continued",
+    "estimated_hours": 1.714842054380615,
+    "estimated_compute_and_running_storage_usd": 1.2534790687910906,
+    "new_training_stages": 10,
+    "new_full_generation_stages": 0,
+    "new_probe_generation_stages": 10,
+    "real_only_training": true,
+    "method": "Warmed real training/five-beam generation; 1.5x compute margin plus setup/checkpoint/upload allowance. Estimate, not a measured full experiment. Imported shared-stage work excluded."
+  },
+  "offline_checks": {
+    "full_suite_before_final_discovery_filters": {
+      "passed": 384,
+      "warnings": 17,
+      "seconds": 154.84
+    },
+    "affected_cloud_cli_storage_after_final_filters": {
+      "passed": 101,
+      "warnings": 2,
+      "seconds": 5.2
+    },
+    "test_output_note": "Counts from tool execution in this session; the older .state/final_pytest.log belongs to a historical 131-test run."
+  },
+  "scientific_changes": {
+    "training_engine": "Unchanged; all full real training blocks once in each stored mixture, same historical mixer streams, continued weights and five final epochs.",
+    "new_generation": "Only fixed 256-prompt evaluation probes when synthetic_fraction is zero; historical initial D1 remains verified and unused.",
+    "historical_conditions": "Unchanged. New standalone GPU/storage options are explicit and acceptance-bound."
+  },
+  "limitations": [
+    "Smoke validates execution and recovery, not the real-only full-data hypothesis.",
+    "Different physical GPU is recorded as a hardware confounder in later comparisons.",
+    "No sub-agent review was added during this launch task."
+  ],
+  "evidence_hashes": {
+    "validation_results.json": "aee6d7b091963cbb52481ebf0f28adcace06e23b9d36fe634afe00137225f43b",
+    "remote_validation.json": "40758a0231673d3e013aeb4ab162091936c266e70b36d44baaf2a00a4253fd3e",
+    "benchmark.json": "dba4f2dc9b541c87eb104369b545d57d24eb2c21dda024c29329110773a598db",
+    "recovery_verified.json": "1dd06d73bfb676180c2570b8a33a8568ba3990d43d7e84ad51f59b427334ca05",
+    "provider_shutdown.json": "a50e9cd9a50c534a2152d7c1c4bba8f23725e9a6e3b5d1bfa1c0f532e50cf1a6",
+    "detached_verification.json": "d0c5294b46c8b8cc0e0731e996e4f7ada3dfb2022768ad641505c7e24fdb75c7",
+    "artifact_index.json": "14e34747b563addfaa1696e90258a2a397fa94b451c9a2b6571e4cb5d290b473"
+  }
+}

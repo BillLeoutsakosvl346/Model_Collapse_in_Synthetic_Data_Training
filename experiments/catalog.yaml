@@ -10,16 +10,22 @@ conditions:
     checkpoint_selection: final_epoch
     epochs: 5
     synthetic_fraction: 0.0
-    state: offline_validated_pending_gpu_acceptance
+    state: gpu_accepted_awaiting_full_capacity
     definition: opt125m_wikitext2/continued_real_only_final5/README.md
     configs:
       full: opt125m_wikitext2/continued_real_only_final5/full.yaml
       smoke: opt125m_wikitext2/continued_real_only_final5/smoke.yaml
+      full_pod_storage: opt125m_wikitext2/continued_real_only_final5/full-pod-storage.yaml
+      smoke_pod_storage: opt125m_wikitext2/continued_real_only_final5/smoke-pod-storage.yaml
     target_last_cycle: 10
     full_training_blocks_per_cycle: 37946
     real_training_blocks_per_cycle: 37946
     synthetic_training_blocks_per_cycle: 0
-    acceptance: not_performed
+    acceptance: passed_actual_gpu
+    acceptance_run: 20261102T152509Z-smoke-continued
+    acceptance_record: ../docs/validation/2026-11-02_real-only-gpu-acceptance.json
+    accepted_gpu_override: NVIDIA RTX PRO 4500 Blackwell Server Edition
+    accepted_storage_backend: pod_persistent
     preparation_record: ../docs/validation/2026-11-02_real-only-control-preparation.json
     launch_preflight_record: ../docs/validation/2026-11-02_real-only-launch-preflight.json
     budget_authorization_record: ../docs/validation/2026-11-02_real-only-budget-authorization.json

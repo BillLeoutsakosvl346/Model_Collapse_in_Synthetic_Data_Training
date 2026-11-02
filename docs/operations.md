@@ -52,6 +52,10 @@ The [mixed campaign](../comparisons/mixed_fraction_final5/README.md) has three f
 
 Acceptance belongs to a particular runtime/protocol, not a calendar week or generic "current" certificate. The [reports index](../reports/README.md#gpu-validation) lists separate reset, paired-final-epoch and mixed acceptances. Adding documentation does not change runtime identity; changing runtime, fraction, selection policy or matched settings requires appropriate new acceptance.
 
+Standalone conditions may explicitly use `storage_backend: pod_persistent` when network-volume placement is unavailable. This uses a 30 GB durable `/workspace` disk belonging to the exact Pod; its registered volume ID equals its Pod ID. Stop preserves it; deleting the Pod deletes it. Cleanup still requires verified recovery, and resume reuses the same stopped Pod. The ledger conservatively reserves the stopped-disk rate throughout; legacy network storage remains the default. Paired/campaign workflows reject this option. See the [accepted real-only profiles](../experiments/opt125m_wikitext2/continued_real_only_final5/README.md).
+
+An explicit standalone `--gpu "GPU NAME"` resolves hardware before acceptance/admission. Smoke-only `--gpu auto` restricts discovery to modern physical NVIDIA GPUs up to USD 1.19/hour, excluding MIG; full launch must pin its accepted GPU. Resume keeps recorded hardware. GPU or storage changes require matching acceptance.
+
 `--config` and legacy `--mode` are mutually exclusive. Legacy `fresh_base`/`continued` keep their original meaning; the [legacy configuration map](../configs/README.md) identifies defaults. A new scientific condition gets a new run ID, not a resume of completed compute.
 
 ## Detached execution and status
