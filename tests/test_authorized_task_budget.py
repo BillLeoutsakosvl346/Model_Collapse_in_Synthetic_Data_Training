@@ -70,3 +70,102 @@ def test_preflight_reports_effective_authorization(tmp_path, monkeypatch):
     monkeypatch.setattr(remote, "ledger", lambda: {"total_budget_usd": 50, "launches": []})
     monkeypatch.setattr(remote, "accrued", lambda d: 39.6)
     assert remote.preflight()["total_task_budget_usd"] == 50
+
+
+@pytest.mark.parametrize("allowance,expected", [(.25, 420), (10, 600)])
+def test_provisioning_timeout_respects_budget_and_shutdown_margin(monkeypatch, allowance, expected):
+    monkeypatch.setattr(remote, "now", lambda: 0)
+    r = {"created_at": 0, "session_allowance_usd": allowance, "guard_hourly_usd": 2}
+    assert remote.provisioning_deadline(r) == expected
+
+
+def test_gpu_override_requires_new_standalone_run_before_external_reads(tmp_path, monkeypatch):
+    monkeypatch.setattr(remote, "STATE", tmp_path)
+    monkeypatch.setattr(remote, "load_secrets", lambda: pytest.fail("No external credential reads"))
+    with pytest.raises(ValueError, match="resume keeps"):
+        remote.launch(resume_id="previous", gpu="NVIDIA L4")
+    with pytest.raises(ValueError, match="nonempty GPU"):
+        remote.launch(gpu=" ")
+
+
+def test_gpu_override_is_bound_into_configuration_before_source_resolution(tmp_path, monkeypatch):
+    from model_collapse.workflow import initial_data
+
+    class ResolvedHardware(Exception):
+        pass
+
+    def inspect(c):
+        assert c["required_gpu"] == "NVIDIA L4"
+        assert c["synthetic_fraction"] == 0 and c["epochs"] == 5
+        raise ResolvedHardware
+
+    monkeypatch.setattr(remote, "STATE", tmp_path)
+    monkeypatch.setattr(remote, "load_secrets", lambda: None)
+    monkeypatch.setattr(initial_data, "resolve_initial_dataset", inspect)
+    with pytest.raises(ResolvedHardware):
+        remote.launch(smoke=True, gpu="NVIDIA L4",
+                      config_path=PROJECT / "experiments/opt125m_wikitext2/continued_real_only_final5/smoke.yaml")
+
+
+def test_launch_uses_complete_live_preflight_stock_snapshot(tmp_path, monkeypatch):
+    from model_collapse.workflow import initial_data
+    class AdmissionReached(Exception):
+        pass
+    class API:
+        def request(self, method, path, body=None):
+            assert method == "GET" and path == "/pods"
+            return {"pods": []}
+        def candidates(self):
+            pytest.fail("Do not issue a redundant stock read after fresh preflight")
+    wanted = {"gpu": "NVIDIA L4", "data_center": "EU-RO-1", "hourly_usd": .59}
+    choices = [{"gpu": f"other-{n}"} for n in range(6)] + [wanted]
+    monkeypatch.setattr(remote, "STATE", tmp_path)
+    monkeypatch.setattr(remote, "load_secrets", lambda: None)
+    monkeypatch.setattr(remote, "Runpod", API)
+    monkeypatch.setattr(remote, "preflight", lambda **kw: {"account": {"clientBalance": 20}, "gpu_candidates": choices})
+    monkeypatch.setattr(remote, "ledger", lambda: {"total_budget_usd": 50, "launches": []})
+    monkeypatch.setattr(remote, "accrued", lambda d, kind=None: 0)
+    monkeypatch.setattr(remote, "campaign_accrued", lambda d, campaign: 0)
+    monkeypatch.setattr(remote, "source_archive", lambda: (Path("unused"), "runtime"))
+    monkeypatch.setattr(initial_data, "resolve_initial_dataset", lambda c: c)
+    monkeypatch.setattr(remote, "verify_start_checkpoint", lambda c: (_ for _ in ()).throw(AdmissionReached()))
+    with pytest.raises(AdmissionReached):
+        remote.launch(smoke=True, gpu="NVIDIA L4",
+                      config_path=PROJECT / "experiments/opt125m_wikitext2/continued_real_only_final5/smoke.yaml")
+
+
+def test_full_auto_hardware_rejected_before_external_access(tmp_path, monkeypatch):
+    monkeypatch.setattr(remote, "STATE", tmp_path)
+    monkeypatch.setattr(remote, "load_secrets", lambda: pytest.fail("No external reads before rejection"))
+    with pytest.raises(ValueError, match="auto is smoke-only"):
+        remote.launch(gpu="auto")
+
+
+def test_smoke_auto_seals_actual_modern_gpu_before_pinned_checkpoint_check(tmp_path, monkeypatch):
+    from model_collapse.workflow import initial_data
+    class AdmissionReached(Exception):
+        pass
+    class API:
+        def request(self, method, path, body=None):
+            assert method == "GET" and path == "/pods"
+            return {"pods": []}
+    choices = [{"gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 1g.24gb", "data_center": "DC", "hourly_usd": .1},
+               {"gpu": "NVIDIA T4", "data_center": "EU-RO-1", "hourly_usd": .2},
+               {"gpu": "NVIDIA L4", "data_center": "EU-RO-1", "hourly_usd": .59},
+               {"gpu": "NVIDIA A100-SXM4-80GB", "data_center": "US-KS-2", "hourly_usd": 1.79}]
+    monkeypatch.setattr(remote, "STATE", tmp_path)
+    monkeypatch.setattr(remote, "load_secrets", lambda: None)
+    monkeypatch.setattr(remote, "Runpod", API)
+    monkeypatch.setattr(remote, "preflight", lambda **kw: {"account": {"clientBalance": 20}, "gpu_candidates": choices})
+    monkeypatch.setattr(remote, "ledger", lambda: {"total_budget_usd": 50, "launches": []})
+    monkeypatch.setattr(remote, "accrued", lambda d, kind=None: 0)
+    monkeypatch.setattr(remote, "campaign_accrued", lambda d, campaign: 0)
+    monkeypatch.setattr(remote, "source_archive", lambda: (Path("unused"), "runtime"))
+    monkeypatch.setattr(initial_data, "resolve_initial_dataset", lambda c: c)
+    def inspect(c):
+        assert c["required_gpu"] == "NVIDIA L4"
+        raise AdmissionReached
+    monkeypatch.setattr(remote, "verify_start_checkpoint", inspect)
+    with pytest.raises(AdmissionReached):
+        remote.launch(smoke=True, gpu="auto",
+                      config_path=PROJECT / "experiments/opt125m_wikitext2/continued_real_only_final5/smoke.yaml")

@@ -8,6 +8,7 @@ from .common import atomic_json, config, read_json
 from .data import load_blocks, prepare
 from .engine import evaluate, generate, load_model, train, weights_hash
 from .workflow.lineage import training_lineage
+from .mixing import generation_prompt_count
 
 
 def stage(name, root, generation=0, config_path=None):
@@ -70,5 +71,6 @@ def stage(name, root, generation=0, config_path=None):
     if c.get("initialization") == "reset_s0" and generation < 2:
         raise ValueError("Shared generation artifacts are immutable; new generation starts at cycle 2")
     prompts = load_blocks(root, "train")
+    prompts = prompts[:generation_prompt_count(c, generation, len(prompts))]
     _, manifest = generate(root, generation, model, prompts, c, read_json(selected / "training.json")["selected_weights_sha256"])
     return manifest

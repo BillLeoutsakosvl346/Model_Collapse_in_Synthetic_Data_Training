@@ -15,10 +15,12 @@ def main():
     launch_selection = launch.add_mutually_exclusive_group()
     launch_selection.add_argument("--mode", choices=("fresh_base", "continued"), default=None)
     launch_selection.add_argument("--config", help="Explicit experiment configuration")
+    launch.add_argument("--gpu", help="Pin a new standalone run to this GPU; requires its own matching acceptance")
     smoke = sub.add_parser("smoke")
     smoke_selection = smoke.add_mutually_exclusive_group()
     smoke_selection.add_argument("--mode", choices=("fresh_base", "continued"), default=None)
     smoke_selection.add_argument("--config", help="Explicit smoke configuration")
+    smoke.add_argument("--gpu", help="Pin a new standalone validation to this GPU")
     for name in ("status", "resume", "fetch", "report", "cleanup", "validate", "verify-detached"):
         s = sub.add_parser(name)
         s.add_argument("run_id")
@@ -72,6 +74,8 @@ def main():
         options = {"generations": generations, "smoke": a.command == "smoke", "mode": a.mode or "fresh_base"}
         if a.config:
             options["config_path"] = a.config
+        if a.gpu:
+            options["gpu"] = a.gpu
         result = remote.launch(**options)
     elif a.command == "status":
         result = remote.status(a.run_id)

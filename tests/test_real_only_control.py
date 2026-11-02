@@ -45,6 +45,44 @@ def test_scope_and_acceptance_are_specific_to_real_only():
                                      "protocol_fingerprint": protocol_fingerprint(historical)}, "runtime")
 
 
+def test_real_only_probes_preserve_imported_d1_and_historical_pool_sizes():
+    from model_collapse.mixing import generation_prompt_count
+    c = config(DEFINITIONS / "continued_real_only_final5/full.yaml")
+    assert generation_prompt_count(c, 0, 37946) == 37946  # Existing D1 is imported unchanged.
+    assert all(generation_prompt_count(c, g, 37946) == 256 for g in range(1, 11))
+    assert generation_prompt_count({k: v for k, v in c.items() if k != "initial_dataset"}, 0, 37946) == 256
+    for fraction in (.2, .5, 1):
+        mixed = {**c, "synthetic_fraction": fraction}
+        assert all(generation_prompt_count(mixed, g, 37946) == 37946 for g in range(10))
+        assert generation_prompt_count(mixed, 10, 37946) == 256
+
+
+def test_real_only_forecast_counts_ten_training_stages_and_only_new_probes():
+    from model_collapse.analysis.forecasts import forecast
+    bench = {"full_split_blocks": {"train": 37946, "validation": 3922, "test": 4494},
+             "training_target_tokens_per_second": 38095, "generation_new_tokens_per_second": 1438}
+    old = forecast(bench, 10, 1.79, continued=True, imported_d1=True)
+    optimized = forecast(bench, 10, 1.79, continued=True, imported_d1=True, real_only=True)
+    assert old["new_training_stages"] == optimized["new_training_stages"] == 10
+    assert optimized["new_full_generation_stages"] == 0
+    assert optimized["new_probe_generation_stages"] == 10
+    assert optimized["estimated_hours"] < old["estimated_hours"] / 2
+
+
+@pytest.mark.parametrize("kind", ["full", "smoke"])
+@pytest.mark.parametrize("gpu", ["NVIDIA A100-SXM4-80GB", "NVIDIA L4",
+                                 "NVIDIA RTX PRO 4500 Blackwell", "NVIDIA RTX PRO 6000 Blackwell Server Edition"])
+def test_hardware_override_has_separate_acceptance(kind, gpu):
+    original = config(DEFINITIONS / "continued_real_only_final5" / f"{kind}.yaml")
+    fallback = {**original, "required_gpu": gpu}
+    assert {k for k in original if original[k] != fallback[k]} == {"required_gpu"}
+    assert fallback["required_gpu"] == gpu
+    assert protocol_fingerprint(original) != protocol_fingerprint(fallback)
+    with pytest.raises(RuntimeError, match="scientific protocol"):
+        require_acceptance(fallback, {"source_code_sha256": "runtime",
+                                     "protocol_fingerprint": protocol_fingerprint(original)}, "runtime")
+
+
 def test_all_full_pool_blocks_once_each_cycle_with_historical_rng_streams():
     real = np.arange(37946 * 64, dtype=np.int32).reshape(-1, 64)
     synthetic = real + 10000000

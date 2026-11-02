@@ -80,7 +80,7 @@ class Runpod:
             time.sleep(min(2 ** attempt, 20))
         raise RuntimeError(f"Could not verify stopped compute for Pod {pod_id}")
 
-    def candidates(self):
+    def candidates(self, *, network_storage=True):
         data = self.request("GET", "/catalog/gpus?include=AVAILABILITY&product=POD&cloud=SECURE&count=1&minCudaVersion=12.8")
         dcs = {d["id"]: d for d in self.request("GET", "/catalog/datacenters")["dataCenters"]}
         choices = []
@@ -88,7 +88,7 @@ class Runpod:
             if g["manufacturer"] != "NVIDIA" or g["memory"] < 16 or not g["secure"] or g.get("availability") == "NONE":
                 continue
             for dc in g.get("dataCenters", []):
-                if dc["availability"] != "NONE" and "STANDARD" in dcs[dc["id"]]["networkVolumeTypes"]:
+                if dc["availability"] != "NONE" and (not network_storage or "STANDARD" in dcs[dc["id"]]["networkVolumeTypes"]):
                     choices.append({"gpu": g["id"], "vram_gb": g["memory"], "hourly_usd": g["price"]["secure"],
                                     "data_center": dc["id"], "availability": dc["availability"]})
         return sorted(choices, key=lambda x: (x["hourly_usd"], x["data_center"]))

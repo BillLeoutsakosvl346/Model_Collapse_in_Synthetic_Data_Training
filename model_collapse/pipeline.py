@@ -21,6 +21,7 @@ from .engine import (ValidationInterruption, autocast, decoding_settings, device
 from .hub import backup
 from .workflow.lineage import training_lineage, verify_completed_stage
 from .analysis.forecasts import forecast
+from .mixing import generation_prompt_count
 
 
 def environment():
@@ -152,7 +153,7 @@ def _run(root, validation):
         if c["kind"] == "full":
             from .supervisor import deadline
             remaining = deadline(resources) - now()
-            next_prompt_count = len(real) if g < c["generations"] else min(len(real), c["probe_count"])
+            next_prompt_count = generation_prompt_count(c, g, len(real))
             next_seconds = (c["epochs"] * len(real) * (c["block_size"] - 1) / bench["training_target_tokens_per_second"] +
                             next_prompt_count * c["new_tokens"] / bench["generation_new_tokens_per_second"]) * 1.5 + 240
             if next_seconds > remaining:
@@ -183,7 +184,7 @@ def _run(root, validation):
         tokenizer.save_pretrained(gen / "tokenizer")
         metrics = {"generation": g, "training": training, "validation": evaluate(model, val, c),
                    "test": evaluate(model, test, c, gen / "test_sequences.json")}
-        prompts = real if g < c["generations"] else real[:c["probe_count"]]
+        prompts = real[:generation_prompt_count(c, g, len(real))]
         atomic_json(root / "status.json", {"state": "running", "generation": g, "stage": "generation", "pid": os.getpid(), "time": now()})
         values, generation = generate(root, g, model, prompts, c, training["selected_weights_sha256"],
                                       inject=validation and g == (1 if c.get("initial_dataset") else first_new))

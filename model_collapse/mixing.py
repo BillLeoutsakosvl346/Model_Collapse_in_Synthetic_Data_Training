@@ -27,6 +27,13 @@ def mixture_enabled(c):
     return synthetic_fraction(c) < 1.0
 
 
+def generation_prompt_count(c, generation, real_blocks):
+    """Real-only cycles need the fixed probe; an imported D1 stays intact."""
+    if synthetic_fraction(c) == 0 and not (generation == 0 and c.get("initial_dataset")):
+        return min(real_blocks, c["probe_count"])
+    return real_blocks if generation < c["generations"] else min(real_blocks, c["probe_count"])
+
+
 def mixture_counts(total, fraction):
     fraction = synthetic_fraction({"synthetic_fraction": fraction})
     if isinstance(total, bool) or not isinstance(total, int) or total <= 0:

@@ -62,6 +62,11 @@ def config(path):
 
 
 def validate_config(c):
+    storage = c.get("storage_backend", "network")
+    if storage not in ("network", "pod_persistent"):
+        raise ValueError("Unknown storage backend")
+    if storage == "pod_persistent" and c.get("workflow") in ("paired", "mixed_campaign"):
+        raise ValueError("Pod-persistent storage currently supports standalone workflows only")
     limit = c.get("max_session_usd")
     if limit is not None and (isinstance(limit, bool) or not isinstance(limit, (int, float))
                               or not math.isfinite(limit) or limit <= 0):

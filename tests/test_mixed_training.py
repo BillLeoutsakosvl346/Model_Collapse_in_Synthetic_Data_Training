@@ -10,7 +10,8 @@ from model_collapse.data import save_array
 from model_collapse.workflow.lineage import token_hash, training_lineage
 
 
-def test_two_mixed_cycles_keep_terminal_weights_and_resume_exactly(tmp_path, monkeypatch):
+@pytest.mark.parametrize("fraction", [.5, 0.0])
+def test_two_mixed_cycles_keep_terminal_weights_and_resume_exactly(tmp_path, monkeypatch, fraction):
     monkeypatch.setattr(engine, "device", lambda: "cpu")
     torch.set_num_threads(2)
     engine.seed_all(5)
@@ -22,10 +23,11 @@ def test_two_mixed_cycles_keep_terminal_weights_and_resume_exactly(tmp_path, mon
     atomic_json(parent / "training.json", {"selected_weights_sha256": parent_hash,
                                            "checkpoint_files": checkpoint_manifest(parent / "checkpoint")})
     monkeypatch.setattr(engine, "load_model", lambda c, checkpoint=None: OPTForCausalLM.from_pretrained(checkpoint))
-    c = {"seed": 42, "epochs": 5, "checkpoint_selection": "final_epoch", "synthetic_fraction": .5,
+    c = {"seed": 42, "epochs": 5, "checkpoint_selection": "final_epoch", "synthetic_fraction": fraction,
          "learning_rate": 2e-5, "min_learning_rate": 1e-6, "weight_decay": .01,
          "microbatch": 2, "effective_batch": 4, "eval_batch": 2, "precision": "fp32",
-         "initialization": "continued", "generation_batch": 2, "generation_shard": 4}
+         "initialization": "continued", "generation_batch": 2, "generation_shard": 4,
+         "generations": 2, "probe_count": 4}
     real = np.random.default_rng(5).integers(4, 32, (8, 64), dtype=np.int32)
     val = np.random.default_rng(6).integers(4, 32, (4, 64), dtype=np.int32)
     save_array(tmp_path / "data/train.npy", real)
@@ -35,11 +37,20 @@ def test_two_mixed_cycles_keep_terminal_weights_and_resume_exactly(tmp_path, mon
     baseline_val = val.copy()
     first_snapshot = None
     for cycle in (1, 2):
-        generated, generation = engine.generate(tmp_path, cycle - 1, parent_model, real, c, parent_hash)
+        from model_collapse.mixing import generation_prompt_count, mixture_counts
+        count = generation_prompt_count(c, cycle - 1, len(real))
+        generated, generation = engine.generate(tmp_path, cycle - 1, parent_model, real[:count], c, parent_hash)
+        if fraction == 0:
+            full, _ = engine.generate(tmp_path / f"unused_full_{cycle}", cycle - 1, parent_model, real, c, parent_hash)
+            assert np.array_equal(generated, full[:count]), "Probe outputs must equal the old full-generation prefix"
         blocks, expected, checkpoint, lineage = training_lineage(tmp_path, cycle, c, None)
         assert expected == parent_hash == generation["provenance"]["parent_weights_sha256"]
         assert token_hash(blocks) != token_hash(generated)
-        assert lineage["mixture"]["real_blocks"] == lineage["mixture"]["synthetic_blocks"] == 4
+        n_real, n_synthetic = mixture_counts(len(real), fraction)
+        assert (lineage["mixture"]["real_blocks"], lineage["mixture"]["synthetic_blocks"]) == (n_real, n_synthetic)
+        if fraction == 0:
+            assert len(generated) == 4 < len(blocks) == 8
+            assert np.array_equal(np.sort(blocks[:, 0]), np.sort(real[:, 0]))
         mixed_files = {p: p.read_bytes() for p in (tmp_path / f"mixed_for_gen_{cycle:02d}").iterdir()}
         if cycle == 2:
             control = engine.train(tmp_path / "control", cycle, blocks, val, c, expected,

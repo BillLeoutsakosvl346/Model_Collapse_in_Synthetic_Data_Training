@@ -123,6 +123,12 @@ def historical_running_storage(d, hours, *, exclude_volume=None):
     return max(0.0, amount)
 
 
+def provisioning_deadline(resources):
+    """Leave shutdown time even if a short validation budget expires during boot."""
+    from .supervisor import deadline
+    return min(now() + 600, deadline(resources) - 30)
+
+
 def _provider_shutdown(api, pod, resources):
     """Obtain the provider's stop time rather than the later observation time."""
     observed = now()
@@ -159,15 +165,15 @@ def _provider_shutdown(api, pod, resources):
     raise RuntimeError("Provider stopped compute but no verified shutdown timestamp is available; ledger interval remains unsettled")
 
 
-def preflight(probe=False):
+def preflight(probe=False, *, network_storage=True):
     load_secrets()
     r = Runpod()
     account = r.account()
     if account["isAutoPayEnabled"] or account["enableBackupPayments"]:
         raise RuntimeError("Automatic payments must be disabled before launching")
     hub = destinations(probe=probe)
-    candidates = r.candidates()
-    result = {"account": account, "hugging_face": hub, "gpu_candidates": candidates[:5],
+    candidates = r.candidates() if network_storage else r.candidates(network_storage=False)
+    result = {"account": account, "hugging_face": hub, "gpu_candidates": candidates,
               "total_task_budget_usd": task_budget(ledger()), "estimated_accrued_task_usd": accrued(ledger())}
     atomic_json(STATE / "preflight.json", result)
     return result
@@ -361,15 +367,19 @@ def reject_completed_cloud_resume(run_id, repos):
         raise RuntimeError("Completed cloud runs cannot resume; fetch their results instead")
 
 
-def launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", config_path=None):
+def launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", config_path=None, gpu=None):
     from filelock import FileLock
     STATE.mkdir(exist_ok=True)
     with FileLock(str(STATE / "launch.lock"), timeout=0):
-        return _launch(generations, smoke, resume_id, mode, config_path)
+        return _launch(generations, smoke, resume_id, mode, config_path, gpu)
 
 
-def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", config_path=None):
+def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", config_path=None, gpu=None):
     from .pipeline import forecast
+    if gpu is not None and (resume_id or not isinstance(gpu, str) or not gpu.strip()):
+        raise ValueError("--gpu requires a nonempty GPU name on a new standalone run; resume keeps its recorded hardware")
+    if gpu == "auto" and not smoke:
+        raise ValueError("Full training must pin the GPU that actually passed acceptance; auto is smoke-only")
     if resume_id:
         local = PROJECT / "runs" / resume_id
         if read_json(local / "completion.json", {}).get("complete") or read_json(local / "status.json", {}).get("state") == "complete":
@@ -397,6 +407,13 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                 c["generations"] = generations
         if c["kind"] != ("smoke" if smoke else "full"):
             raise ValueError("The command must match the configuration kind (smoke or full)")
+    if gpu is not None:
+        if c.get("workflow") in ("paired", "mixed_campaign"):
+            raise ValueError("--gpu override currently applies only to standalone conditions")
+        if gpu == "auto":
+            c.pop("required_gpu", None)
+        else:
+            c["required_gpu"] = gpu.strip()
     from .common import validate_config
     validate_config(c)
     load_secrets()
@@ -404,6 +421,9 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         reject_completed_cloud_resume(resume_id, previous["repos"])
     paired = c.get("workflow") == "paired"
     campaign = c.get("workflow") == "mixed_campaign"
+    pod_storage = c.get("storage_backend") == "pod_persistent"
+    if previous and previous.get("storage_backend", "network") != c.get("storage_backend", "network"):
+        raise RuntimeError("Resume storage backend differs from its registered owner")
     if paired:
         from .workflow.paired import resolve_pair_inputs
         c = resolve_pair_inputs(c)
@@ -421,16 +441,26 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         from .workflow.mixed_campaign import verified_resume_jobs
         resume_work = verified_resume_jobs(PROJECT / "runs" / resume_id, previous, c)
     api = Runpod()
-    p = preflight(probe=True)
+    p = preflight(probe=True, network_storage=False) if pod_storage else preflight(probe=True)
     if any(x["status"] not in ("EXITED", "TERMINATED") for x in api.request("GET", "/pods")["pods"]):
         raise RuntimeError("An existing Pod is active; refusing another GPU")
-    choices = api.candidates()
+    # Preflight's final read is the live catalogue snapshot. Re-reading it here
+    # adds a race and can discard a just-observed slot before placement begins.
+    choices = p.get("gpu_candidates")
+    if choices is None:  # Compatibility with older preflight adapters.
+        choices = api.candidates()
+    if gpu == "auto":
+        modern = ("ada", "blackwell", "a100", "a40", "a4000", "a4500", "a5000", "a6000",
+                  "l4", "h100", "h200", "b200", "b300", "geforce rtx 30", "geforce rtx 40", "geforce rtx 50")
+        choices = [x for x in choices if x["hourly_usd"] <= 1.19 and " mig " not in x["gpu"].casefold()
+                   and any(name in x["gpu"].casefold() for name in modern)]
     if c.get("required_gpu"):
         required = c["required_gpu"].casefold().removeprefix("nvidia ")
         choices = [x for x in choices if any(str(x.get(key, "")).casefold().removeprefix("nvidia ") == required
                     for key in ("gpu", "name", "display_name", "gpu_name"))]
     if not choices:
-        raise RuntimeError("No compatible Secure Cloud GPU with Standard network storage is available")
+        raise RuntimeError("No compatible Secure Cloud GPU is currently available" if pod_storage else
+                           "No compatible Secure Cloud GPU with Standard network storage is available")
     archive, code_hash = source_archive()
     if previous and previous["code_sha256"] != code_hash and c["kind"] != "smoke":
         raise RuntimeError("Resume requires the original code; restore its recorded commit")
@@ -439,8 +469,11 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         if not choices:
             raise RuntimeError("No compatible GPU is available beside this run's retained volume")
     choice = choices[0]
+    if gpu == "auto":
+        c["required_gpu"] = choice["gpu"]  # Seal actual hardware into the protocol before certification.
     volume_gb = c["network_volume_gb"] if campaign else 30
-    volume_hourly = volume_gb * .07 / 730
+    # Pod volume stopped storage is more expensive; reserve that rate throughout.
+    volume_hourly = volume_gb * (.20 if pod_storage else .07) / 730
     ledger_state = ledger()
     total_budget = campaign_budget(ledger_state) if campaign else task_budget(ledger_state)
     spent = accrued(ledger_state)
@@ -472,6 +505,8 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         estimate_kwargs = {"continued": c.get("initialization") in ("continued", "reset_s0")}
         if c.get("initial_dataset"):
             estimate_kwargs["imported_d1"] = True
+        if c.get("synthetic_fraction", 1.0) == 0:
+            estimate_kwargs["real_only"] = True
         if "epochs" in c:
             estimate_kwargs["epochs"] = c["epochs"]
         if c.get("initialization") == "reset_s0":
@@ -511,38 +546,60 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     local.mkdir(parents=True, exist_ok=True)
     atomic_json(local / "config.json", c)
     print(json.dumps({"provisioning": choice, "image": template["image"], "session_allowance_usd": allowance,
-                      "network_volume_gb": volume_gb, "network_volume_usd_per_hour": volume_hourly}), flush=True)
+                      "storage_backend": "pod_persistent" if pod_storage else "network",
+                      "persistent_storage_gb": volume_gb, "conservative_storage_usd_per_hour": volume_hourly}), flush=True)
     volume_created_at = previous.get("volume_created_at", previous["created_at"]) if previous else now()
-    volume = api.request("GET", "/network-volumes/" + previous["volume_id"]) if previous else api.request("POST", "/network-volumes", {
-        "name": "iib-" + run_id, "size": volume_gb, "dataCenter": choice["data_center"], "type": "STANDARD"})
-    atomic_json(local / "pending_volume.json", {"volume_id": volume["id"], "created_by_task": not bool(previous)})
-    check_volume = api.request("GET", "/network-volumes/" + volume["id"])
-    if check_volume["size"] != volume_gb or check_volume["dataCenter"] != choice["data_center"]:
-        raise RuntimeError("Volume read-back mismatch")
+    volume = None
+    if not pod_storage:
+        volume = api.request("GET", "/network-volumes/" + previous["volume_id"]) if previous else api.request("POST", "/network-volumes", {
+            "name": "iib-" + run_id, "size": volume_gb, "dataCenter": choice["data_center"], "type": "STANDARD"})
+        atomic_json(local / "pending_volume.json", {"volume_id": volume["id"], "created_by_task": not bool(previous)})
+        check_volume = api.request("GET", "/network-volumes/" + volume["id"])
+        if check_volume["size"] != volume_gb or check_volume["dataCenter"] != choice["data_center"]:
+            raise RuntimeError("Volume read-back mismatch")
     created = now()
     try:
-        pod = api.request("POST", "/pods", {"name": "iib-" + run_id, "cloud": "SECURE", "image": template["image"],
+        payload = {"name": "iib-" + run_id, "cloud": "SECURE", "image": template["image"],
             "disk": 20, "gpu": {"id": choice["gpu"], "count": 1, "minCudaVersion": "12.8"},
-            "dataCenterIds": [choice["data_center"]], "mounts": {"network": [{"volumeId": volume["id"], "path": "/workspace"}]},
-            "startSsh": True, "startJupyter": False, "ports": ["22/tcp"]})
-    except Exception:
+            "dataCenterIds": [choice["data_center"]],
+            "mounts": {"persistent": {"size": volume_gb, "path": "/workspace"}} if pod_storage else {"network": [{"volumeId": volume["id"], "path": "/workspace"}]},
+            "startSsh": True, "startJupyter": False, "ports": ["22/tcp"]}
+        atomic_json(local / "pending_pod_request.json", payload)
+        if pod_storage and previous:
+            old = api.pod(previous["pod_id"])
+            if old["status"] != "EXITED" or previous["volume_id"] != previous["pod_id"]:
+                raise RuntimeError("Pod-persistent resume requires its exact stopped owner")
+            api.request("POST", "/pods/" + previous["pod_id"] + "/action", {"action": "start"})
+            pod = api.pod(previous["pod_id"])
+        else:
+            pod = api.request("POST", "/pods", payload)
+    except Exception as error:
+        detail = str(error)
+        for secret in (api.key if hasattr(api, "key") else None, os.environ.get("HF_TOKEN")):
+            if secret:
+                detail = detail.replace(secret, "[REDACTED]")
+        atomic_json(local / "pod_create_error.json", {"error_type": type(error).__name__, "error": detail[:2000]})
         # Do not retry a timed-out create: reconcile by exact unique name first.
         matches = [x for x in api.request("GET", "/pods")["pods"] if x["name"] == "iib-" + run_id and x["status"] not in ("EXITED", "TERMINATED")]
         if len(matches) != 1:
-            if not matches and not previous:
+            if not matches and not previous and not pod_storage:
                 api.request("DELETE", "/network-volumes/" + volume["id"])
-            raise RuntimeError("Pod create failed/uncertain; pending_volume.json records the allocated storage. No blind retry.") from None
+            raise RuntimeError("Pod create failed/uncertain; inspect pod_create_error.json and pending resource records. No blind retry.") from None
         pod = matches[0]
+    if pod_storage:
+        volume = {"id": pod["id"]}  # The persistent disk is a component owned by this exact Pod.
     resources = {"run_id": run_id, "launch_id": launch_id, "kind": c["kind"], "pod_id": pod["id"], "volume_id": volume["id"],
                  "data_center": choice["data_center"], "gpu": choice["gpu"], "image": template["image"], "created_at": created,
                  "quoted_gpu_hourly_usd": choice["hourly_usd"], "guard_hourly_usd": (choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY) * 1.15,
                  "compute_hourly_usd": (choice["hourly_usd"] + CONTAINER_HOURLY) * 1.15,
-                 "volume_hourly_usd": volume_hourly, "network_volume_gb": volume_gb, "volume_created_at": volume_created_at,
+                 "volume_hourly_usd": volume_hourly, "network_volume_gb": 0 if pod_storage else volume_gb, "volume_created_at": volume_created_at,
                  "session_allowance_usd": allowance, "repos": p["hugging_face"]["repos"], "code_sha256": code_hash,
                  "starting_balance_usd": p["account"]["clientBalance"], "remote_root": "/workspace/runs/" + run_id}
     bundle = read_json(STATE / "source_bundle.json", {})
     resources.update(runtime_sha256=code_hash, git_commit=bundle.get("git_commit"))
     resources["configuration_sha256"] = digest(c)
+    if pod_storage:
+        resources.update(storage_backend="pod_persistent", persistent_volume_gb=volume_gb)
     if campaign:
         resources.update(workflow="mixed_campaign", authorized_cumulative_budget_usd=total_budget)
         fields = ("run_id", "launch_id", "pod_id", "volume_id")
@@ -566,7 +623,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     client = None
     try:
         update_ledger(resources, state="provisioning")
-        ready_by = now() + 600  # Technical provisioning timeout, not a training runtime limit.
+        ready_by = provisioning_deadline(resources)
         while now() < ready_by:
             pod = _transport_read(lambda: api.pod(resources["pod_id"]), ready_by) if campaign else api.pod(pod["id"])
             if pod.get("ssh", {}).get("direct") and pod["status"] == "RUNNING":
@@ -582,6 +639,10 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             raise RuntimeError("Pod did not become SSH-ready within provisioning health timeout")
         if pod["gpu"]["id"] != choice["gpu"] or pod["dataCenterId"] != choice["data_center"]:
             raise RuntimeError("Pod read-back configuration mismatch")
+        if pod_storage:
+            mounted = pod.get("mounts", {}).get("persistent", {})
+            if mounted.get("path") != "/workspace" or mounted.get("size") != volume_gb:
+                raise RuntimeError("Pod persistent-disk read-back mismatch")
         resources["actual_pod_hourly_usd"] = pod["cost"]
         resources["guard_hourly_usd"] = max(resources["guard_hourly_usd"], (pod["cost"] + volume_hourly + CONTAINER_HOURLY) * 1.15)
         resources["compute_hourly_usd"] = max(resources["compute_hourly_usd"], (pod["cost"] + CONTAINER_HOURLY) * 1.15)
@@ -854,7 +915,7 @@ def status(run_id):
                 pass
         # Observation of a stopped provider state closes compute once. Storage remains open.
         stopped, updates = now(), {}
-        if r.get("workflow") == "mixed_campaign":
+        if r.get("workflow") == "mixed_campaign" or r.get("storage_backend") == "pod_persistent":
             stopped, proof = _provider_shutdown(api, pod, r)
             atomic_json(PROJECT / "runs" / run_id / "provider_shutdown.json", proof)
             result["provider_shutdown"] = proof
@@ -876,6 +937,9 @@ def cleanup(run_id):
         raise RuntimeError("Artifact index missing; fetch the latest run state before cleanup")
     paired = read_json(local / "config.json", {}).get("workflow") == "paired"
     campaign = read_json(local / "config.json", {}).get("workflow") == "mixed_campaign"
+    pod_storage = r.get("storage_backend") == "pod_persistent"
+    if pod_storage and r["volume_id"] != r["pod_id"]:
+        raise RuntimeError("Pod persistent-disk owner differs from the registered Pod")
     if campaign:
         from .workflow.mixed_campaign import verify_campaign_recovery
         verify_campaign_recovery(local)
@@ -914,7 +978,7 @@ def cleanup(run_id):
         if entry.get("launch_id"):
             session = {**r, **entry}
             stopped = now()
-            if campaign:
+            if campaign or pod_storage:
                 stopped, proof = _provider_shutdown(api, api.pod(p["id"]), session)
                 atomic_json(local / ("provider_shutdown_" + entry["launch_id"] + ".json"), proof)
             update_ledger(session, state="exited", stopped_at=stopped, volume_retained_since=stopped,
@@ -922,9 +986,10 @@ def cleanup(run_id):
         api.request("DELETE", "/pods/" + p["id"])
     if any(p["id"] in owned for p in api.request("GET", "/pods")["pods"]):
         raise RuntimeError("Pod deletion not verified")
-    api.request("DELETE", "/network-volumes/" + r["volume_id"])
-    if any(v["id"] == r["volume_id"] for v in api.request("GET", "/network-volumes")["networkVolumes"]):
-        raise RuntimeError("Volume deletion not verified")
+    if not pod_storage:
+        api.request("DELETE", "/network-volumes/" + r["volume_id"])
+        if any(v["id"] == r["volume_id"] for v in api.request("GET", "/network-volumes")["networkVolumes"]):
+            raise RuntimeError("Volume deletion not verified")
     actual = max(0, r["starting_balance_usd"] - api.account()["clientBalance"])
     try:
         atomic_json(local / "billing_read.json", api.billing())
