@@ -1,0 +1,28 @@
+{
+  "provenance": {
+    "parent_weights_sha256": "4b609a6078144bf4560b93220340f508b2d8d1e7a2639d06880bb20be013f299",
+    "prompt_tokens_sha256": "f40d2891212b57f027105d0952c9725959ceb716a6a8af2064f0c359dd767a67",
+    "prompt_count": 37946,
+    "new_tokens": 64,
+    "num_beams": 5,
+    "repetition_penalty": 1.0
+  },
+  "continuation_tokens_sha256": "52b29bade519de40c3b0257b78abfe70c653e5617cb5be2f08e08ae768fa84d7",
+  "files": {
+    "tokens.npy": "af88df990e8e2fe9b74f2daa32551b6c311bbb8dca8a41967795535ace61e068"
+  },
+  "seconds": 1882.2136925628874,
+  "reused_continuations": 0,
+  "new_tokens_per_second": 1290.259448008377,
+  "imported_source": {
+    "run_id": "20261101T030306Z-full-mixed-campaign-continued-mixed20",
+    "revisions": {
+      "model": "1c814e19a887ea36b0f25f7695e0a8dca142d510",
+      "dataset": "24a61796a579c201960ef222379b57e4ef82de57"
+    },
+    "full_tokens_sha256": "52b29bade519de40c3b0257b78abfe70c653e5617cb5be2f08e08ae768fa84d7",
+    "full_blocks": 37946,
+    "used_blocks": 37946,
+    "subset": null
+  }
+}

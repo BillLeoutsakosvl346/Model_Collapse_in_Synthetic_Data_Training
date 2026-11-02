@@ -65,3 +65,8 @@
 /scripts/analysis/build_square_reset50_report.py text eol=lf
 /scripts/analysis/build_continued_fraction_report.py text eol=lf
 /docs/validation/2026-11-01_continued20-analysis-and-square-doc.json -text whitespace=cr-at-eol
+# Completed matched 20/80 reset study: preserve scientific and analysis bytes.
+/reports/20261101T030306Z-full-mixed-campaign-reset-mixed20/** -text whitespace=cr-at-eol
+/comparisons/mixed_fraction_final5/analyse_reset20.py text eol=lf
+/scripts/analysis/build_reset20_report.py text eol=lf
+/docs/validation/2026-11-02_reset20-analysis-and-doc.json -text whitespace=cr-at-eol

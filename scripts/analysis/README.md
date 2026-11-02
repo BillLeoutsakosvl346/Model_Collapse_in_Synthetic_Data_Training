@@ -16,6 +16,15 @@ This replaces reliance on the original private `.state/build_mixed_acceptance.py
 
 ## Week 3 authored report and native-Docs draft
 
+Reproduce the completed 20/80 reset comparison and its three-reset-fraction context offline:
+
+```powershell
+python comparisons/mixed_fraction_final5/analyse_reset20.py --out reports/20261101T030306Z-full-mixed-campaign-reset-mixed20/generated/audit-review
+python scripts/analysis/build_reset20_report.py --out reports/20261101T030306Z-full-mixed-campaign-reset-mixed20/generated/report-review
+```
+
+The audit verifies exact shared S0/S1/D2/M2, both initializer policies, mixtures/selection hashes, final-epoch histories, saved output probes and NLL/PPL arithmetic. It checks old reset publications separately for the descriptive fraction comparison. All six figure families use square panels. The report builder makes a separate Markdown/native-Docs draft without editing Google Docs. Output directories must be new; the published evidence stays unchanged. The explicit `--recover` option uses the privately saved pinned Hub source proof; normal reproduction needs no cloud access.
+
 The three-fraction continued comparison and the larger square 50/50 presentation revision reproduce offline:
 
 ```powershell

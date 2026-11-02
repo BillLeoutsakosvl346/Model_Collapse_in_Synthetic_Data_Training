@@ -115,7 +115,10 @@ conditions:
     full_job_completed_utc: "2026-11-01T22:55:24Z"
     full_completion_record: ../docs/validation/2026-11-02_mixed-campaign-full-completion.json
     parent_campaign_state: completed_provider_shutdown_verified
-    full_recovery_scope: small_completion_records_verified_no_bulk_restore
+    full_recovery_scope: metadata_and_fixed_probes_verified_no_bulk_restore
+    full_report: ../reports/20261101T030306Z-full-mixed-campaign-reset-mixed20/report.md
+    full_analysis: ../reports/20261101T030306Z-full-mixed-campaign-reset-mixed20/analysis/summary.json
+    full_analysis_record: ../docs/validation/2026-11-02_reset20-analysis-and-doc.json
   continued_mixed_50_final5:
     name: "OPT-125M / WikiText-2: continued weights, 50% synthetic / 50% real targets"
     initialization: continued
