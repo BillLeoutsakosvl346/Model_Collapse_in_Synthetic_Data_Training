@@ -1,5 +1,9 @@
 # Current recorded state
 
+**Campaign completed — verified 2 November:** all three jobs of `20261101T030306Z-full-mixed-campaign` finished through cycle 10. Parent completion is **1 November 23:20:44 UTC/London**; Runpod independently verifies Pod `faocwszff0eaq6` **EXITED at 23:21:09**, with watchdog reason `complete`. All 28 new stages / 140 epochs retained terminal epoch 5; all 33 metric rows, finite epoch histories, recorded initializer/generator/completion hashes, sealed backup indexes and shared 20/80 M2 identities were checked. Final test PPL: **37.15 reset50, 72.06 continued20, 35.89 reset20**. See the [completion receipt](validation/2026-11-02_mixed-campaign-full-completion.json).
+
+Do not duplicate or resume completed compute. The ledger compute interval is closed at provider-verified shutdown. Preserve the 60 GB volume `11hvbmunz5` and all historical recovery storage: this completion check recovered small evidence, not full weights/training arrays or independent model evaluations. Detailed 20/80 reset analysis remains to do. Earlier running-state observations below are historical and superseded by this verified completion.
+
 **Latest scientific update, 1 November:** the 20/80 continued child completed at **16:00:29 UTC/London**, verified from its sealed backup. Its [three-fraction report](../reports/20261101T030306Z-full-mixed-campaign-continued-mixed20/report.md) and main Google Doc compare final PPL **72.06 (20%) / 62.71 (50%) / 107.37 (100% synthetic)**. The 20% run has better endpoint phrase-diversity/repetition measures, so the ranking differs by metric. Recovery verified 1,560 metadata files / 52,452,006 bytes plus ten new probes / 656,640 bytes. The same document update uses a separate [square-panel presentation revision](../reports/presentation_revisions/2026-11-01_square-reset50/report.md) for the 50/50 reset section, preserving its original evidence. See the [delivery receipt](validation/2026-11-01_continued20-analysis-and-square-doc.json).
 
 This update used Hugging Face reads and offline analysis only. It does **not** refresh live Runpod state, claim completion of reset20/the parent, or authorize cleanup. The earlier launch/status observations below remain dated evidence.
@@ -10,7 +14,7 @@ Last execution evidence: **1 November 2026**, [full mixed-campaign launch](valid
 
 This analysis used Hugging Face and offline records only: **no Runpod API, SSH, resource, ledger or worker changes**. It does not claim parent-campaign completion or refresh the live state of either 20/80 job. The launch-time observations below are preserved as dated evidence; the first job's scientific completion supersedes its earlier running state.
 
-## Current running campaign
+## Historical campaign launch observations (completed above)
 
 - Parent `20261101T030306Z-full-mixed-campaign`; Pod `faocwszff0eaq6`, 60 GB Standard volume `11hvbmunz5`, EU-RO-1. Matching RTX PRO 4000 Blackwell costs USD 0.57/hour; pinned image/software/CUDA/BF16 checks and private backup probes passed.
 - Started at **03:03 UTC/London**. First job is 50/50 reset, cycle 2; its first full training stage subsequently completed all five epochs, retained epoch 5 and moved to next-pool generation. The initial startup check had independently observed two finite new epochs. Exact full M2 has 18,973 real + 18,973 synthetic blocks and its original token/selection identity. The supervisor and independent watchdog advanced across closed SSH sessions. The laptop is no longer required.

@@ -1,0 +1,157 @@
+{
+  "observed_utc": "2026-11-02T10:49:05.982397+00:00",
+  "run_id": "20261101T030306Z-full-mixed-campaign",
+  "complete": true,
+  "pod_id": "faocwszff0eaq6",
+  "pod_state": "EXITED",
+  "volume_id": "11hvbmunz5",
+  "volume_retained": true,
+  "provider_shutdown": {
+    "provider_pod_id": "faocwszff0eaq6",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Sun Nov 01 2026 23:21:09 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1793575269.0,
+    "observed_at": 1793616582.3105388
+  },
+  "parent_completed_utc": "2026-11-01T23:20:44.502791+00:00",
+  "parent_dataset_commit": "6197b4f2a28b4ab4c9264312da4e5e61751520b9",
+  "parent_index_sha256": "b24d20bd6f2bfc88df5cb45f86e46b2b5f32557d316913778b9619b536e5696f",
+  "watchdog_exit": {
+    "reason": "complete",
+    "time": 1793575266.6521807,
+    "pod_id": "faocwszff0eaq6"
+  },
+  "unique_new_training_stages": 28,
+  "executed_epochs": 140,
+  "checkpoint_policy": "final_epoch",
+  "selected_epoch": 5,
+  "jobs": {
+    "reset50": {
+      "run_id": "20261101T030306Z-full-mixed-campaign-reset-mixed50",
+      "complete": true,
+      "completed_utc": "2026-11-01T08:46:17.643233+00:00",
+      "new_stages": 9,
+      "new_epochs": 45,
+      "cycle_test_perplexities": [
+        33.88507148759166,
+        37.26820847486589,
+        37.31751253518386,
+        37.07487556074419,
+        37.217319020654095,
+        37.12817557650644,
+        37.15428366858259,
+        37.24346189516736,
+        37.172916736691654,
+        37.2812046786809,
+        37.15094336406809
+      ],
+      "snapshot": {
+        "run_id": "20261101T030306Z-full-mixed-campaign-reset-mixed50",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "ba2769d76e03a85c27fd4ca72ec79dd1f4d6012b",
+          "dataset": "ff852f6e65ff335fd6fb610cb53d01f2e83281e1"
+        },
+        "artifact_index_sha256": "eed7d7f70e4aed2d5a79bcc676c5df681202505a2075aa24a57a26171d0ae3b0"
+      },
+      "indexed_files": 2654,
+      "indexed_bytes": 5879925249,
+      "indexed_checkpoints": 11
+    },
+    "continued20": {
+      "run_id": "20261101T030306Z-full-mixed-campaign-continued-mixed20",
+      "complete": true,
+      "completed_utc": "2026-11-01T16:00:29.925795+00:00",
+      "new_stages": 10,
+      "new_epochs": 50,
+      "cycle_test_perplexities": [
+        33.88507148759166,
+        35.94897634682953,
+        38.11572124553272,
+        40.894130146460064,
+        44.16546490609889,
+        47.45070531647772,
+        51.51672496203071,
+        56.01904638747028,
+        60.82611512276833,
+        66.21656237965672,
+        72.06302060278313
+      ],
+      "snapshot": {
+        "run_id": "20261101T030306Z-full-mixed-campaign-continued-mixed20",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "1c814e19a887ea36b0f25f7695e0a8dca142d510",
+          "dataset": "24a61796a579c201960ef222379b57e4ef82de57"
+        },
+        "artifact_index_sha256": "21bc4188274ccbfe61551ae0950c0f14423a9638bd03e82cd43debf0be15777d"
+      },
+      "indexed_files": 2937,
+      "indexed_bytes": 5857113302,
+      "indexed_checkpoints": 11
+    },
+    "reset20": {
+      "run_id": "20261101T030306Z-full-mixed-campaign-reset-mixed20",
+      "complete": true,
+      "completed_utc": "2026-11-01T22:55:24.659519+00:00",
+      "new_stages": 9,
+      "new_epochs": 45,
+      "cycle_test_perplexities": [
+        33.88507148759166,
+        35.94897634682953,
+        35.90745551548701,
+        35.96140683675775,
+        36.02774480186426,
+        35.88937600992634,
+        35.94911173114552,
+        35.99225447139022,
+        35.93405866785899,
+        35.99946282073057,
+        35.89466737638191
+      ],
+      "snapshot": {
+        "run_id": "20261101T030306Z-full-mixed-campaign-reset-mixed20",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "6e184dfdd4639848f803f2b6ea858da3ee59206d",
+          "dataset": "64661c44da9846c6bc7a12b1552cc9aa7e8fa786"
+        },
+        "artifact_index_sha256": "dbd32ef1cc8854ef4c84b6bd6bf852154b27460113950825cbed7c64420123b0"
+      },
+      "indexed_files": 2654,
+      "indexed_bytes": 5879935981,
+      "indexed_checkpoints": 11
+    }
+  },
+  "shared20_mixture": {
+    "continued_tokens_sha256": "47dc163fc03b98107ec48e925fa63663e759bf1f33f200c33ed9d8227772fd2d",
+    "continued_selection_sha256": "a85ae0256f7d5b35183470ed2b77e86608812d8c08acefe01fa9b8191f7c9bd6",
+    "reset_tokens_sha256": "47dc163fc03b98107ec48e925fa63663e759bf1f33f200c33ed9d8227772fd2d",
+    "reset_selection_sha256": "a85ae0256f7d5b35183470ed2b77e86608812d8c08acefe01fa9b8191f7c9bd6"
+  },
+  "checks": {
+    "all_three_completion_and_backup_seals_verified": true,
+    "all_33_finite_test_metric_rows": true,
+    "all_140_new_epoch_records_checked": true,
+    "terminal_and_selected_hashes_match": true,
+    "recorded_initializer_generator_and_completed_output_hashes_checked": true,
+    "shared20_cycle2_token_and_selection_hashes_match": true,
+    "provider_stopped_compute_verified": true,
+    "compute_ledger_closed_at_provider_shutdown": true
+  },
+  "small_records_verified": 128,
+  "small_record_bytes": 1208197,
+  "private_completion_evidence_sha256": "9bcda5feca7975b6cbdc47b1578d5a7c118bd3508ce605530bb88692554970c5",
+  "scope": "Pinned small config/completion/metrics/training/history/stage/index records and live provider read. No weights/full training-array download, model reevaluation, cloud mutation or resource cleanup.",
+  "cost_scope": "No itemized invoice/account-debit claim. Compute interval closes at provider-verified shutdown; storage remains open."
+}

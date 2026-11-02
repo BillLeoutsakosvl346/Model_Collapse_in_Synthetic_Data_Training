@@ -86,7 +86,7 @@ conditions:
     checkpoint_selection: final_epoch
     epochs: 5
     synthetic_fraction: 0.20
-    state: campaign_active
+    state: completed
     implementation_commit: 92481b7671f73881f3f6ddadbe81378815b57bc8
     accepted_runtime_sha256: 35c89c3b9fb78c7967c4f62f07972739eabbe57b353a0360749eba71d1af2171
     acceptance_run_id: 20261101T022210Z-smoke-mixed-campaign
@@ -111,6 +111,11 @@ conditions:
     full_logical_run_id: 20261101T030306Z-full-mixed-campaign-reset-mixed20
     job_state_at_launch: queued
     full_launch_record: ../docs/validation/2026-11-01_mixed-campaign-full-launch.json
+    full_job_state: completed_from_pinned_backup
+    full_job_completed_utc: "2026-11-01T22:55:24Z"
+    full_completion_record: ../docs/validation/2026-11-02_mixed-campaign-full-completion.json
+    parent_campaign_state: completed_provider_shutdown_verified
+    full_recovery_scope: small_completion_records_verified_no_bulk_restore
   continued_mixed_50_final5:
     name: "OPT-125M / WikiText-2: continued weights, 50% synthetic / 50% real targets"
     initialization: continued
