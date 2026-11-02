@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-02T22:10:22.578349+00:00",
+  "run_id": "20261102T154833Z-full-continued",
+  "state": "complete",
+  "completion_utc": "2026-11-02T16:36:32.579381+00:00",
+  "provider_shutdown": {
+    "provider_pod_id": "0kj0h4jzxtkrbi",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Mon Nov 02 2026 16:37:06 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1793637426.0,
+    "observed_at": 1793657317.9437857
+  },
+  "watchdog_exit": {
+    "reason": "complete",
+    "time": 1793637423.6562924,
+    "pod_id": "0kj0h4jzxtkrbi"
+  },
+  "elapsed_provision_to_shutdown_minutes": 48.53894489606221,
+  "checks": {
+    "complete_ten_cycles": true,
+    "fifty_executed_epochs": true,
+    "all_final_epoch_five": true,
+    "pinned_s0_initializer": true,
+    "continued_weight_handoffs": true,
+    "all_training_real_full_pool": true,
+    "eleven_checkpoint_files_in_pinned_backup_index": true,
+    "provider_exited": true,
+    "watchdog_complete": true
+  },
+  "metrics": {
+    "initial_test_perplexity": 33.88507148759166,
+    "final_test_perplexity": 84.56366865820553,
+    "initial_validation_perplexity": 34.21139409590249,
+    "final_validation_perplexity": 83.22886859665975,
+    "test_perplexity_increase_percent": 149.56024864569582
+  },
+  "pinned_backup": {
+    "revisions": {
+      "model": "6cc2b233c0b3e492a04c9aa76a5b49bcac560878",
+      "dataset": "46c6de24ede01907e8048bce94f5a3b70baa3b8b"
+    },
+    "artifact_index_sha256": "7cda0e6414c61824c94b5c2d05dc061c63a810763881d53dda177b1e8d8e096e",
+    "indexed_files": 274,
+    "checkpoint_weight_file_entries": 11
+  },
+  "evidence_scope": "Checksum-verified completion, ten training records and S0/S10 metric records from pinned backup commits. Whole-run bulk checkpoint/dataset restoration and independent re-evaluation remain pending.",
+  "evidence_sha256": "bd4c940c242c2b5da611cc6987bb74755b42f79e997ef4637213c1d3bccdf836",
+  "resources": "Compute stopped; production Pod and its persistent disk retained for recovery. No resources restarted, provisioned or deleted.",
+  "interpretation": "Held-out prediction deteriorated during this all-real continued-training schedule. One seed; this alone does not establish the exact cause of the 20%/50% reversal."
+}

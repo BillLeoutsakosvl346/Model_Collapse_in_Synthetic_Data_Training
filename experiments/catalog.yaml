@@ -10,7 +10,7 @@ conditions:
     checkpoint_selection: final_epoch
     epochs: 5
     synthetic_fraction: 0.0
-    state: running
+    state: completed_pending_analysis
     definition: opt125m_wikitext2/continued_real_only_final5/README.md
     configs:
       full: opt125m_wikitext2/continued_real_only_final5/full.yaml
@@ -34,6 +34,7 @@ conditions:
     full_launch_requested: true
     full_run_launched: true
     full_run_id: 20261102T154833Z-full-continued
+    completion_record: ../docs/validation/2026-11-02_real-only-completion-status.json
     full_launch_record: ../docs/validation/2026-11-02_real-only-full-launch.json
 
   reset_mixed_50_final5:
