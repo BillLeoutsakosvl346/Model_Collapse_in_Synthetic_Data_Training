@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "run_id": "20261102T154833Z-full-continued",
+  "analysis_revision": "13a04131789f8aea4a83522714b074749dfedf3f",
+  "source_runtime_sha256": "08586783f0ff72e5b52e76e3bcd2022832637721a85d6a891456664f392da56d",
+  "input_artifact_index_sha256": "7cda0e6414c61824c94b5c2d05dc061c63a810763881d53dda177b1e8d8e096e",
+  "recovery_revisions": {
+    "model": "6cc2b233c0b3e492a04c9aa76a5b49bcac560878",
+    "dataset": "46c6de24ede01907e8048bce94f5a3b70baa3b8b"
+  },
+  "outputs": {
+    "timing_audit.md": "27883610244884f329afe31e57bc6879e0af960d12086904a8992c5b05aadaa0",
+    "analysis/timing_audit.json": "d38fb9eb33703a93c17af25b1c1fb12e77aa766048dee75cd0824ab5c780e746",
+    "analysis/timing_by_cycle.csv": "abd7329c9992981b123cd48a0052a4ca938f8d4ec2c7f0ccc5562de4a277ceb0"
+  },
+  "scope": "Offline execution/timing audit over pinned recovered evidence; no new training or bulk checkpoint restoration."
+}
