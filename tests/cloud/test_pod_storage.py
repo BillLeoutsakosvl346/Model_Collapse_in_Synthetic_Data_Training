@@ -147,3 +147,49 @@ def test_recovery_missing_blocks_pod_deletion(deployment):
     with pytest.raises(RuntimeError, match="Fetch and checksum"):
         remote.cleanup(updates[0][0]["run_id"])
     assert not any(method == "DELETE" for method, _, _ in calls)
+
+
+def test_failed_registry_write_stops_acquired_pod(deployment, monkeypatch):
+    _, _, _, pod, _ = deployment
+    monkeypatch.setattr(remote, "register_resources", lambda _: (_ for _ in ()).throw(OSError("disk full")))
+    with pytest.raises(OSError, match="disk full"):
+        remote.launch(smoke=True, gpu="NVIDIA L4",
+                      config_path=PROJECT / "experiments/opt125m_wikitext2/continued_real_only_final5/smoke-pod-storage.yaml")
+    assert pod["status"] == "EXITED"
+
+
+@pytest.mark.parametrize("failure", ["volume_readback", "registry", "uncertain_create_and_broken_log"])
+def test_network_acquisition_errors_keep_shutdown_and_ownership_safe(deployment, monkeypatch, failure):
+    _, calls, _, pod, API = deployment
+    class NetworkAPI(API):
+        def request(self, method, path, body=None):
+            if path.startswith("/network-volumes"):
+                calls.append((method, path, body))
+                return {"id": "new-volume", "size": 99 if failure == "volume_readback" else 30, "dataCenter": "DC"}
+            if method == "POST" and path == "/pods" and failure == "uncertain_create_and_broken_log":
+                super().request(method, path, body)  # Provider created it; response was lost.
+                raise OSError("create response unavailable")
+            return super().request(method, path, body)
+    monkeypatch.setattr(remote, "Runpod", NetworkAPI)
+    if failure == "registry":
+        monkeypatch.setattr(remote, "register_resources", lambda _: (_ for _ in ()).throw(OSError("registry full")))
+    if failure == "uncertain_create_and_broken_log":
+        write = remote.atomic_json
+        def interrupted_log(path, value):
+            if path.name == "pod_create_error.json":
+                raise OSError("log full")
+            return write(path, value)
+        monkeypatch.setattr(remote, "atomic_json", interrupted_log)
+    with pytest.raises((OSError, RuntimeError, Deployed)):
+        remote.launch(smoke=True, gpu="NVIDIA L4",
+                      config_path=PROJECT / "experiments/opt125m_wikitext2/continued_real_only_final5/smoke.yaml")
+    deletions = [path for method, path, _ in calls if method == "DELETE"]
+    if failure == "volume_readback":
+        assert deletions == ["/network-volumes/new-volume"]
+        assert not pod
+    elif failure == "registry":
+        assert pod["status"] == "EXITED"
+        assert not deletions  # Recoverable working disk retained.
+    else:
+        assert pod["status"] == "EXITED"  # Name reconciliation survived the failed log.
+        assert not deletions  # Recoverable mounted disk survives reconciled creation.

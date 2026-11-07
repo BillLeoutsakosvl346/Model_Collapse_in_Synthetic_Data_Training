@@ -93,6 +93,8 @@ def arm_config(c, name):
 
 
 def validate_config(c):
+    from .configuration import validate_training_numbers
+    validate_training_numbers(c)
     specs = arm_specs(c)
     if c.get("backup_store"):
         from ..cloud.s3_artifacts import validate_store

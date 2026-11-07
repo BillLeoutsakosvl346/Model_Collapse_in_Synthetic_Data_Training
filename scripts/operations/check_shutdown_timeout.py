@@ -54,11 +54,11 @@ def probe():
     r = {"run_id": run_id, "launch_id": stamp, "kind": "smoke", "pod_id": pod["id"], "volume_id": None,
          "created_at": created, "guard_hourly_usd": (choice["hourly_usd"] + 10 * .1 / 730) * 1.15,
          "gpu": choice["gpu"], "source_code_sha256": source}
-    atomic_json(local / "resources.json", r)
-    update_ledger(r, state="provisioning")
     client = None
     proof = None
     try:
+        atomic_json(local / "resources.json", r)
+        update_ledger(r, state="provisioning")
         ready_by = created + min(180, .10 / r["guard_hourly_usd"] * 3600 - 20)
         while now() < ready_by:
             pod = api.pod(r["pod_id"])

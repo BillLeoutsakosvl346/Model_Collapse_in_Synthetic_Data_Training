@@ -52,18 +52,8 @@ def main():
     if a.command == "worker":
         from .common import read_json
         from pathlib import Path
-        if read_json(Path(a.root) / "config.json").get("workflow") == "paired":
-            from .workflow.paired import run_pair as run
-        elif read_json(Path(a.root) / "config.json").get("workflow") == "mixed_campaign":
-            from .workflow.mixed_campaign import run_campaign as run
-        elif read_json(Path(a.root) / "config.json").get("workflow") == "fresh_real":
-            from .workflow.fresh_real import run
-        elif read_json(Path(a.root) / "config.json").get("workflow") == "completion_comparison":
-            from .workflow.completion import run
-        elif read_json(Path(a.root) / "config.json").get("workflow") == "completion_arm":
-            from .workflow.completion import run_arm as run
-        else:
-            from .pipeline import run
+        from .workflow.registry import handler
+        run = handler(read_json(Path(a.root) / "config.json"), "worker")
         from .engine import ValidationInterruption
         try:
             return run(a.root, a.validation)
@@ -71,6 +61,18 @@ def main():
             print(str(e), flush=True)
             raise SystemExit(75)
     from .common import PROJECT, STATE, atomic_json, read_json
+    if a.command == "report":
+        from .report import report
+        options = {"reference_comparison": PROJECT / "runs" / a.reference_comparison} if a.reference_comparison else {}
+        result = report(PROJECT / "runs" / a.run_id, a.out, **options)
+        print(json.dumps(result, indent=2), flush=True)
+        return
+    if a.command == "validate":
+        from .workflow.registry import handler
+        root = PROJECT / "runs" / a.run_id
+        result = handler(read_json(root / "config.json"), "validate")(root)
+        print(json.dumps(result, indent=2), flush=True)
+        return
     from . import remote
     if a.command == "preflight":
         result = remote.preflight(probe=a.probe)
@@ -117,30 +119,6 @@ def main():
             else:
                 benchmark_file = "benchmark_fresh_real.json" if workflow == "fresh_real" else "benchmark.json"
             atomic_json(STATE / benchmark_file, bench)
-    elif a.command == "report":
-        from .report import report
-        options = {"reference_comparison": PROJECT / "runs" / a.reference_comparison} if a.reference_comparison else {}
-        result = report(PROJECT / "runs" / a.run_id, a.out, **options)
-    elif a.command == "validate":
-        root = PROJECT / "runs" / a.run_id
-        if read_json(root / "config.json").get("workflow") == "paired":
-            from .workflow.paired import validate_pair_local
-            result = validate_pair_local(root)
-        elif read_json(root / "config.json").get("workflow") == "mixed_campaign":
-            from .continued import validate_campaign_local
-            result = validate_campaign_local(root)
-        elif read_json(root / "config.json").get("workflow") == "fresh_real":
-            from .workflow.fresh_validation import validate_local
-            result = validate_local(root)
-        elif read_json(root / "config.json").get("workflow") == "completion_comparison":
-            from .workflow.completion_validation import validate_local
-            result = validate_local(root)
-        elif read_json(root / "config.json").get("initialization") in ("continued", "reset_s0"):
-            from .continued import validate_local
-            result = validate_local(root)
-        else:
-            from .validate import validate
-            result = validate(root)
     print(json.dumps(result, indent=2), flush=True)
 
 

@@ -2,7 +2,17 @@
 
 This protocol reconstructs selected ideas from [Shumailov et al. (2024)](https://doi.org/10.1038/s41586-024-07566-y), rather than claiming exact numerical reproduction. Named configurations define scientific conditions; dated records establish what actually ran. See the [experiment catalogue](../experiments/catalog.yaml), [comparison index](../comparisons/README.md) and [literature](../literature/README.md).
 
-## Invariants: model, data and evaluation
+## Shared rules and protocol families
+
+All protocols use pinned source revisions, seed 42, token-weighted held-out metrics, explicit checkpoint policy and verifiable lineage. The datasets and optimization policies differ:
+
+| Family | Training examples | Per-cycle optimization | Evaluation |
+| --- | --- | --- | --- |
+| Historical WikiText | Independent 64-token blocks; real or generated targets | Five epochs; optimizer/scheduler restart; best-validation or final-epoch selection | Fixed original real splits, 63 shifted targets/block |
+| FineWeb fresh-real pilot | Fresh documents, padded sequences up to 512 | One terminal epoch; persistent AdamW/global schedule/RNG | Fixed real documents, padding excluded |
+| Matched FineWeb completions | BOS + 64-token prompt + 64-token continuation | One terminal epoch; persistent optimization; loss only on continuation | Fixed real pairs, 64 targets/pair; separate full-text secondary scores |
+
+## WikiText: model, data and evaluation
 
 | Setting | Value |
 | --- | --- |
@@ -18,7 +28,7 @@ Preserve row strings, blank rows and newlines. Apply OPT's default special-token
 
 Evaluate untouched pretrained OPT separately from the real-data-fine-tuned baseline **S0/G0** (`gen_00`). Frozen real evaluation arrays and their hashes remain fixed. Use token-weighted corpus NLL/perplexity; test never selects checkpoints or tunes settings. Smoke subsets validate the pipeline and do not establish collapse or mitigation effectiveness.
 
-## Generation and training inputs
+## WikiText: generation and training inputs
 
 Each original real training block supplies the same fixed 64-token prompt at every cycle. The preceding selected model generates exactly 64 new tokens using five deterministic beams, `do_sample=false`, repetition penalty 1.0, no no-repeat constraint and KV caching. Equal minimum/maximum continuation length suppresses EOS before the required length. Preserve token IDs directly; prompts are excluded from synthetic targets and no decoding/re-encoding changes them.
 
@@ -26,7 +36,7 @@ A full synthetic **pool** has 37,946 continuation blocks / 2,428,544 tokens. In 
 
 The first 256 fixed prompts also form the measurement probe. Probe output at Sk describes D(k+1)-style text; real-text evaluation at Sk describes the model after learning from Dk. Preserve this one-cycle offset. Whether a final unused full dataset is generated is condition-specific: the 50/50 run omits full D11 and retains the final probe.
 
-## Training and checkpoint policy
+## WikiText: training and checkpoint policy
 
 Full stages use five epochs of full-parameter fine-tuning: AdamW, LR `2e-5`, betas `(0.9, 0.999)`, epsilon `1e-8`, weight decay 0.01; cosine decay by epoch towards `1e-6`; effective batch 128, microbatch 32, accumulation 4; BF16 autocast with FP32 parameters. Restart optimizer and scheduler each cycle, including continued-weight training. Real validation is evaluated after every epoch; no validation-based early stopping is used.
 
@@ -37,7 +47,7 @@ Full stages use five epochs of full-parameter fine-tuning: AdamW, LR `2e-5`, bet
 
 Record all epoch losses/LRs, executed and selected epochs, minimum/selected validation loss and checkpoint hashes. Historical Week 1/2 stages executed five epochs but selected epoch 1 throughout. Their carried checkpoints therefore do not inherit fifty synthetic epochs. Final-epoch-5 continued S10 inherits fifty synthetic epochs; fixed-S0 A10 inherits its own five from S0 while retaining recursive data history.
 
-## Initialization policy and shared beginnings
+## WikiText: initialization policy and shared beginnings
 
 | Policy | Initializer at synthetic cycle k | Synthetic source generator |
 | --- | --- | --- |
@@ -52,7 +62,7 @@ Two comparisons have different shared artifacts:
 
 Imported stages retain their measurement identities, environment, timings and original costs. They are references to existing work, not new executions. Later datasets are branch-specific. Never reinterpret original-pretrained reset as fixed-S0 reset.
 
-## Continued 50/50 real/synthetic training
+## WikiText: continued 50/50 real/synthetic training
 
 The [mixed condition](../experiments/opt125m_wikitext2/continued_mixed_50_final5/README.md) imports exact historical S0 and its D1, then trains a new mixed-data S1. It never reuses an all-synthetic-trained S1. Continue selected epoch-5 weights for ten cycles.
 
@@ -64,9 +74,9 @@ The [mixed condition](../experiments/opt125m_wikitext2/continued_mixed_50_final5
 
 Sample without replacement within each source per cycle; real blocks may recur in later cycles. Separate PCG64 sampling/shuffle streams derive from seed and cycle. Freeze the mixture across all five epochs and interruption/recovery. Save source indices, source labels, permutation, source hashes, generator identity, tokens and atomic completion manifest.
 
-`synthetic_fraction` supports 0-1, rounding synthetic counts to the nearest block, half upwards; real rows fill the remainder. Record the effective fraction. Omitted/1.0 preserves all-synthetic behaviour. Generating the full synthetic pool before sampling is retained in this implementation. The validated condition is 0.50; support for other fractions is not GPU acceptance or launch authorization for them.
+`synthetic_fraction` supports 0-1, rounding synthetic counts to the nearest block, half upwards; real rows fill the remainder. Record the effective fraction. Omitted/1.0 preserves all-synthetic behaviour. Generating the full synthetic pool before sampling is retained in this implementation. Acceptance is specific to each condition/runtime and is linked from the catalogue; fraction support alone grants no launch authority.
 
-The fixed-total-block mixture is related to [Seddik et al. (2024)](https://arxiv.org/abs/2404.05090v1), but it is not their exact theoretical setup or a numerical reproduction claim. A separate 20% condition has not been accepted by the 50% certificate.
+The fixed-total-block mixture is related to [Seddik et al. (2024)](https://arxiv.org/abs/2404.05090v1), but it is not their exact theoretical setup or a numerical reproduction claim. The 20% condition has separate acceptance evidence; the 50% certificate cannot certify it.
 
 ## Fresh FineWeb-Edu real-only control
 

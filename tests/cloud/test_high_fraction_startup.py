@@ -10,12 +10,12 @@ def test_startup_gate_protects_deployment_and_releases_for_independent_training(
     monkeypatch.setattr(common, 'STATE', tmp_path)
     monkeypatch.setattr(common, 'config', lambda _: c)
     def observe(run, **kwargs):
-        with FileLock(str(tmp_path / 'high-fraction-provision.lock'), timeout=0):
+        with FileLock(str(tmp_path / 'launch.lock'), timeout=0):
             return 'verified'
     monkeypatch.setattr(remote, 'verify_detached', observe)
     def core(**kwargs):
         with pytest.raises(Timeout):
-            FileLock(str(tmp_path / 'high-fraction-provision.lock'), timeout=0).acquire()
+            FileLock(str(tmp_path / 'launch.lock'), timeout=0).acquire()
         if fail:
             raise RuntimeError('deployment failed')
         return remote.verify_detached('run')
@@ -26,5 +26,5 @@ def test_startup_gate_protects_deployment_and_releases_for_independent_training(
     else:
         assert staged_launch(90, config_path='fixture', generations=10) == 'verified'
     assert remote.verify_detached is observe
-    with FileLock(str(tmp_path / 'high-fraction-provision.lock'), timeout=0):
+    with FileLock(str(tmp_path / 'launch.lock'), timeout=0):
         pass

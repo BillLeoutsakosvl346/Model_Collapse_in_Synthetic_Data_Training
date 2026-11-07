@@ -6,7 +6,7 @@ The project has one scientific implementation and several named experimental con
 
 | Identity | Meaning | Home |
 | --- | --- | --- |
-| Condition | Scientific rules independent of a particular execution | `experiments/opt125m_wikitext2/<condition>/` |
+| Condition | Scientific rules independent of a particular execution | `experiments/<model_dataset>/<condition>/` |
 | Comparison | Arms, shared stages, matching requirements and known confounders | `comparisons/<comparison>/` |
 | Run | One seeded realization with fixed resolved configuration | `runs/<run_id>/`, plus published `reports/<run_id>/` |
 | Launch | One provisioning/resume event, with a returned `launch_id` | Private resource registry and cost ledger |
@@ -17,20 +17,31 @@ An experiment definition is not a run; a directory is not proof of completion; a
 
 ## Package boundaries
 
-The root-level `model_collapse` package and `python -m model_collapse` interface remain stable. Internal extraction is gradual, with compatibility imports for established module paths. The following table is a responsibility map and target boundary, not a claim that every named subpackage already exists:
+The root-level package and `python -m model_collapse` CLI remain stable. These are the actual implementation homes:
 
-| Area | Responsibilities |
+| Package | Implementation and responsibility |
 | --- | --- |
-| `science` | Data/tokenisation, model IO, shared training, generation, evaluation and token metrics |
-| `workflow` | Recursion, initialisation policies, stage lineage, integrity and resume |
-| `cloud` | Runpod/SSH, resource ownership, launch lifecycle, compute/storage ledger and independent supervision |
-| `artifacts` | Atomic manifests, private Hub backup, pinned import and recovery |
-| `analysis` | Historical schema readers, tables, figures and provenance manifests |
-| `validation` | Offline invariants and explicitly invoked GPU acceptance |
+| `science/` | `engine.py`: shared model IO, training, generation and evaluation; `wikitext.py`: split packing/arrays; `metrics.py`: output statistics; `sampling.py`: pure mixture counts; `identity.py`: legacy int32 token hashes |
+| `workflow/` | `wikitext.py`, `fresh_real.py`, `completion.py`: scientific loops; `paired.py` and `mixed_campaign.py`: coordinators; selection/optimization/configuration: policies; lineage/branch/initial_data: verified inputs; registry: lazy CLI worker/report/validation routing |
+| `cloud/` | `execution.py`: guarded launch, SSH, resource registry and operations; `runpod.py`: API client; `supervisor.py`: detached processes and stdlib-only watchdog; `ownership.py`: states/session association; `ledger.py`/`budget.py`: transitions/costs; parallel/S3/private-capacity adapters |
+| `artifacts/` | `hub.py`: private backups, pinned fetch and restoration; `deployment.py`: immutable source bundles; `paths.py`: safe artifact destinations |
+| `analysis/` | Historical schema readers, forecasts, single-run/FineWeb reports and the paired/campaign renderers; input/source/environment/output provenance |
 
-The existing `data.py`, `engine.py`, `pipeline.py`, `remote.py` and other flat modules remain public compatibility points while responsibilities are extracted. Experiments must reuse these primitives rather than copy engines into condition folders. No database, distributed training framework, separate training engine per experiment or `src/` conversion is required.
+### Compatibility and frozen data builders
 
-Actual extracted packages are `science/` (token metrics), `workflow/` (selection, lineage, import, branching, paired and mixed-campaign coordination), `cloud/` (cost calculations), `artifacts/` (safe paths) and `analysis/` (schema readers/reporting/forecasts). Training remains in `engine.py`; cloud lifecycle/SSH in `remote.py`; backup in `hub.py`; supervision in `supervisor.py`; acceptance is still in `continued.py`/`validate.py`. There is no separate `validation/` package yet. Standalone reporting/maintenance tools live under `scripts/` and are outside the accepted deployment bundle.
+`engine.py`, `data.py`, `pipeline.py`, `remote.py`, `runpod_api.py`, `supervisor.py` and `hub.py` at package root are compatibility aliases. Each shares its canonical implementation's module object, preserving established imports and patched globals. Add implementation to its subpackage rather than a second engine or launcher at the old path.
+
+`completion_data.py` and `fresh_data.py` remain at root with their original bytes. The completion-bank identity includes its builder source hash; relocating that implementation without a versioned legacy reader would invalidate a pinned bank. `completion_mixing.py` and `mixing.py` remain distinct scientific algorithms: FineWeb replaces targets at fixed prompt rows; WikiText samples independent block pools. They share only pure count and token-hash utilities.
+
+The existing `continued.py`/`validate.py` and `workflow/*validation.py` retain acceptance logic. There is no separate validation package yet. `stages.py` exposes local stages; `common.py` and `paths.py` provide shared small IO/workspace primitives. Training-dependency imports stay out of report and watchdog CLI startup.
+
+The supported installation is an **editable repository checkout**. Configurations, scripts and comparison definitions are repository resources; a bare wheel is not a standalone deployment. Deployment archives enumerate package files and `pyproject.toml`; resolved configurations travel separately. Tests exercise nested bundle contents and legacy imports.
+
+### Coordinators and manual adapters
+
+Named coordinators preserve different scientific lineage/seal requirements. Shared helpers cover mechanics without merging the protocols. Root compatibility exports remain for existing callers; do not copy training engines into condition folders.
+
+`scripts/operations/` contains explicitly manual and often date-specific adapters for historical authorizations and accepted bundles. Some still patch legacy globals; retain their recovery compatibility and restrictions. They are not templates for new workflows. Ordinary and staged high-fraction launches share the same admission lock; staged parallel startup releases admission after deployment before independent progress observation.
 
 `workflow/mixed_campaign.py` coordinates three flat sibling jobs under one parent provider owner. Each child has its own scientific configuration and artifacts; the parent owns the Pod, volume, ledger session and watchdog. Completion seals pin backup commits and indexes before handoff. A resumed campaign preserves sealed prior-session children and binds active work to its current registered session; failure or pause prevents later jobs from starting.
 
@@ -54,8 +65,8 @@ experiments/                         scientific definitions and configurations
 comparisons/                         explicit comparison definitions and analyses
 docs/                                methodology, operations, audits and history
 model_collapse/                      shared runtime and CLI
-tests/                               offline checks, no implicit paid resource creation
-scripts/operations/                  documentation for explicitly manual operational tools
+tests/<responsibility>/             science, workflow, cloud, artifacts, analysis and repository checks
+scripts/operations/                  explicitly manual and historical operational adapters
 reports/<historical_run_id>/         published paths preserved verbatim
 reports/<new_run_id>/records/        immutable evidence snapshots
 reports/<new_run_id>/analysis/       frozen published derived analysis
@@ -78,5 +89,13 @@ Recovery records distinguish **metadata-only**, **probe-verified** and **bulk-ve
 Scientific configuration, source bundle identity and execution environment are recorded separately. A changed runtime requires fresh acceptance; adding unrelated documentation or a new condition must not falsely certify changed runtime or silently rewrite historical hashes. Deployment uses explicit project paths and an enumerated source bundle; credentials and bulk research artifacts are excluded.
 
 The independent budget watchdog must bootstrap without the training dependencies. Supervisor, worker and watchdog do not depend on the launcher remaining open. Compute and storage have separate billing intervals, and completed runs are rejected before any resume provisioning.
+
+## Maintaining these boundaries
+
+- Add named scientific settings beside their condition and register references in the catalogue. Keep complete resolved YAML snapshots; do not silently introduce inherited defaults into historical files.
+- Keep reports offline. Renderers live in `analysis/`, which is included in analysis provenance; workflow wrappers are compatibility entry points.
+- Tests use one network/credential/state isolation fixture. See the [test map](../tests/README.md) and [repository checker](../scripts/maintenance/README.md). Windows CI checks publication bytes with line-ending conversion enabled.
+- Keep one current-state snapshot; append execution history to dated receipts. Stable documentation describes protocols instead of duplicating mutable run statuses.
+- Existing runtime archives and acceptance remain immutable. Current runtime-changing cleanup needs a fresh separately authorized acceptance before new paid training. Do not deploy it into a running or historically pinned run.
 
 See the [audit](audits/2026-10-27_repository_audit.md) for the baseline findings, [methodology](methodology.md) for scientific rules, and [operations](operations.md) for the actual lifecycle.

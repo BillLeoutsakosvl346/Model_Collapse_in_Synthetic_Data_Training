@@ -10,6 +10,12 @@ Prefer the integrated `python -m model_collapse smoke --config ...` acceptance w
 
 Current procedures and recovery requirements are in [operations](../../docs/operations.md). No manual operational probe is run merely by reading this directory.
 
+## Scope and compatibility
+
+These adapters encode particular dated authorizations or recovery actions. They retain established paths and, where needed, legacy global patches. A source move in the local candidate does not update a deployed job or transfer an old GPU certificate. Consult the named receipt/current state before invoking any adapter; ordinary future workflows should use explicit configurations and shared cloud helpers.
+
+The ordinary and high-fraction staged launchers now share `launch.lock`. Their admission/deployment phase is serialized; independent training observation may overlap only within the recorded parallel scope.
+
 ## Private backup capacity
 
 `python -m scripts.operations.hf_storage_admission --help` describes a read-only historical large-object capacity check for a dedicated private namespace. Include all repositories using its quota and the full remaining checkpoint/optimizer requirement.

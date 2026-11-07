@@ -198,8 +198,8 @@ def execute(bank):
                  "volume_hourly_usd": storage, "network_volume_gb": 10, "volume_created_at": volume_time,
                  "session_allowance_usd": allowance, "repos": check["hugging_face"]["repos"], "code_sha256": code,
                  "remote_root": "/workspace/runs/" + run_id, "starting_balance_usd": check["account"]["clientBalance"]}
-    remote.register_resources(resources)
     try:
+        remote.register_resources(resources)
         remote.update_ledger(resources, state="provisioning")
         print(json.dumps({"run_id": run_id, "pod_id": pod["id"], "evaluation_only": True}), flush=True)
         deploy(api, resources, local, archive, key)

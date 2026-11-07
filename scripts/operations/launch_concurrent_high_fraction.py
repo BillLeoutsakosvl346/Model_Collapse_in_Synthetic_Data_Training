@@ -17,7 +17,7 @@ def staged_launch(percent, **kwargs):
     # The ordinary global launch lock includes the entire first-epoch health
     # observation. Keep admission/deployment serialized under a campaign lock,
     # then allow the next independent GPU to deploy while this one trains.
-    gate = FileLock(str(STATE / 'high-fraction-provision.lock'), timeout=600)
+    gate = FileLock(str(STATE / 'launch.lock'), timeout=600)
     gate.acquire()
     observer = remote.verify_detached
     def observe(run_id, **options):

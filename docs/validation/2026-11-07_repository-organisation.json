@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-07T16:30:13.536933+00:00",
+  "base_commit": "f4822644fb98fc2019dbd2674be1a2ed01cc0d75",
+  "scope": "Local repository organisation, compatibility preservation and offline verification. No cloud deployment, resource change or paid acceptance.",
+  "module_moves": {
+    "engine": "science.engine",
+    "data": "science.wikitext",
+    "pipeline": "workflow.wikitext",
+    "remote": "cloud.execution",
+    "supervisor": "cloud.supervisor",
+    "runpod_api": "cloud.runpod",
+    "hub": "artifacts.hub"
+  },
+  "shared_helpers": [
+    "science.identity",
+    "science.sampling",
+    "workflow.optimization",
+    "workflow.configuration",
+    "workflow.registry",
+    "cloud.ownership",
+    "cloud.ledger",
+    "artifacts.deployment"
+  ],
+  "offline_renderers": [
+    "analysis.paired",
+    "analysis.campaign"
+  ],
+  "test_layout": [
+    "science",
+    "workflow",
+    "cloud",
+    "artifacts",
+    "analysis",
+    "repository"
+  ],
+  "checks": {
+    "full_offline_suite": {
+      "passed": 576,
+      "failed": 0,
+      "seconds": 256.89,
+      "command": "python -m pytest -q"
+    },
+    "repository_integrity": {
+      "markdown_files": 112,
+      "configurations": 40,
+      "publication_manifests": 20,
+      "link_scope": "Relative targets and current-document Markdown heading anchors; external URLs are not fetched. Historical report/history anchors are preserved.",
+      "paid_operations": false,
+      "errors": [],
+      "passed": true
+    },
+    "compileall": true,
+    "configurations_without_training_or_cloud_imports": 40,
+    "git_diff_check": true,
+    "independent_reviews": [
+      "review_architecture",
+      "review_cloud_recovery"
+    ],
+    "review_findings_resolved": [
+      "watchdog duplicate unguarded control reread",
+      "failed-create diagnostics blocking Pod reconciliation"
+    ],
+    "final_credential_isolation_regressions": {
+      "passed": 64,
+      "failed": 0,
+      "seconds": 5.75,
+      "scope": "S3, organisation and manual acquisition checks after clearing actual Runpod S3/AWS environment names"
+    },
+    "publication_formatting": "Preserved snapshot CRLF attributes; removed three trailing empty EOF lines before commit. No executable statements changed."
+  },
+  "preservation": {
+    "existing_scientific_yaml_changed": false,
+    "existing_published_evidence_or_receipts_changed": false,
+    "historical_raw_schemas_changed": false,
+    "private_state_or_recovery_resources_changed": false,
+    "frozen_builder_sha256": {
+      "completion_data.py": "0d0594d48957ffca5db9e1d941761daba04bba2fd1ee46fc01809f0f27fee61d",
+      "fresh_data.py": "990e84dac5291762d214e58d685fbdf1a7be563642dff39405d6215642fff890"
+    },
+    "archived_instruction_records": "docs/history/2026-11-07_cleanup-snapshots.json"
+  },
+  "runtime": {
+    "candidate_runtime_sha256": "bb120deafe9a9427b88d27e4aca866f7aa0f7573a9c737a24e188b30e4eb7639",
+    "files": {
+      "model_collapse/__init__.py": "2f4058859a3bf690e1fd3ea0353f09ba0681ae131f8fa94bdce401a5632b3b3c",
+      "model_collapse/__main__.py": "a09ac07483e2fe0c6ae4fd0e4dfee102ad8927d3e2ff2726f6e6868df859d740",
+      "model_collapse/analysis/__init__.py": "8e3555a627a9852f3fc0eb0983d750f6d3e0368bc1972169e38f696209a82777",
+      "model_collapse/analysis/campaign.py": "44ec3eaa09074ecc1e062405480f93e521afd28c6a0906568bc700efb44b4bb3",
+      "model_collapse/analysis/completion.py": "1ac3e136cc7de0929948e2f0b03c450f75f03d9d2e67bf9a9ad98db7dcef0eec",
+      "model_collapse/analysis/forecasts.py": "bce10676c1a21712aff4da92567105cd21db6a12d395c3fb7718da74d0605ce5",
+      "model_collapse/analysis/fresh_real.py": "e473a6bd791a20bcf64f759854a8c03f2b007489bcb6b325b11f2362d7a86cff",
+      "model_collapse/analysis/paired.py": "efc39bd6cc69ae0cb22a0f228db8d95f762de4179e433a53b96ad898bbc5c5e7",
+      "model_collapse/analysis/records.py": "3b1570c3483282453123600a0cbc8a15eef783fd748fe9ba16a64251580dc17d",
+      "model_collapse/analysis/reporting.py": "038ea1126f39b45355c9ed96a8f1ba160ac57da64f4c1b5b72d6dbb99397750d",
+      "model_collapse/artifacts/__init__.py": "83c0ca46e6a5667058708285aad461e547f424d2087d146509626fd41cf40ba7",
+      "model_collapse/artifacts/deployment.py": "e6d702a93bb89466bbda7212cf6a60ca4f50fb78bc33c4b70ae1b202faff4659",
+      "model_collapse/artifacts/hub.py": "9d3ab3269b4ea64a193ded94df190fcc5d9f02e40b7e72725bbb23e9d78c618e",
+      "model_collapse/artifacts/paths.py": "eb51bd15977e699b779c0ae3a5a4b3f929152faddfa07776b93caaa212fa1fb7",
+      "model_collapse/cloud/__init__.py": "c3da7698463a3cc92b141c3ddc21d07cba25fc60179fd6da10f1f754153a5c5d",
+      "model_collapse/cloud/budget.py": "38dbe65ee7d878f8a6e12bd45c6649998f1f9b4009547092ca6ce7816cbe2cb2",
+      "model_collapse/cloud/execution.py": "ed257cd3d89d3ddbe0e316d5cdcd52052cceaf734f9033d93794cda3e21a31a7",
+      "model_collapse/cloud/hf_storage.py": "1a1383ff2bf09699a28e2055c92289c45ccf3457230c4dacf98a4faf1ea6daef",
+      "model_collapse/cloud/ledger.py": "ff21e3c9838c545a55adc81a5bf55595ca7181f50cc676e146fb95e7e7dd8947",
+      "model_collapse/cloud/ownership.py": "e887d43aeab6f750efa818b79df0e31770ae0f6dc698238e90eefe6679daeb0c",
+      "model_collapse/cloud/parallel.py": "35eea9f659dae92361f93a64698313dd56ae6abda1bc9905257b2e6c86977d7e",
+      "model_collapse/cloud/runpod.py": "2a6c2af98de35694c060fe506898900e29ea00ccd6e00b19db8d0a961ff5ecbb",
+      "model_collapse/cloud/s3_artifacts.py": "34ed5b947ebd273f0d106186ecd94e4b969ed157d8710e1f18e7953b8e3cdfcb",
+      "model_collapse/cloud/supervisor.py": "2f6c976ae0e8e9eb229b94bc47c46360f28be38a757fec5502fb3b76ac426c9c",
+      "model_collapse/common.py": "802187c526bbc923c94998412adbac437157724439862f835d32648ca4cf53f0",
+      "model_collapse/completion_data.py": "0d0594d48957ffca5db9e1d941761daba04bba2fd1ee46fc01809f0f27fee61d",
+      "model_collapse/completion_mixing.py": "ab9f5ff852751b285a4c335fce150ac543f5caef2e19b4fcfa962614babf6551",
+      "model_collapse/continued.py": "6583e8ea071712599080fd1fd9dda7e9feb5d83414821dfff2b34d80a7b026d2",
+      "model_collapse/data.py": "1b02e1bed118991fc36b715ecbf52137ee113e56aef50f83cb5fedeb3782ef56",
+      "model_collapse/engine.py": "5573921144bc0fd949d1161e413c65ee75ae8f7f707c032f5d616f00b1c98ca4",
+      "model_collapse/fresh_data.py": "990e84dac5291762d214e58d685fbdf1a7be563642dff39405d6215642fff890",
+      "model_collapse/hub.py": "7cdcba5be3fef682cd2ef89e86332a7f26ea272f65b60a5b41a075dc83b9b537",
+      "model_collapse/mixing.py": "15f793a1b9471a05f181b73ca28d05dc36f34998f979eada434852a061f22813",
+      "model_collapse/paths.py": "b55ebb94539320c60db790f2b2aadfd2ef271a0ab1a1638509b3e8edf59aa732",
+      "model_collapse/pipeline.py": "1360e68ae0667e0b30b81151554a780718c0880b92681d558d1ae62907585af4",
+      "model_collapse/remote.py": "ee24ef37be641f8ae5ef065a60d3220d11d7c93a7a1a51649cc3d021db200877",
+      "model_collapse/report.py": "e23505a621054b440c7bdf384027f537aa2c2e9a64300a5842f4b40f1bce22ad",
+      "model_collapse/runpod_api.py": "8a949f3f111eb02989e5c75340b2825362770eb4413f49eede2f0a085b2b047d",
+      "model_collapse/science/__init__.py": "984738ac11e15ee1a66dc1a7b92aef91537ce3a8173a062aac542a4fedfd9341",
+      "model_collapse/science/engine.py": "673f345a2cfeb318827143426a05b592aafc152e348bf7de4412496e8bbde46c",
+      "model_collapse/science/identity.py": "dddeb9b869b80aa2199558d695138eed026e892b341a46ee0af11469435e5a6a",
+      "model_collapse/science/metrics.py": "9d178411290bb3eff6aba8576c6b8490e985841a6389522132a737aa41515ba6",
+      "model_collapse/science/sampling.py": "721671177cbecd7ef58a1d6425aa0d090aaa43036d59c595d1d0b007b37061e8",
+      "model_collapse/science/wikitext.py": "42ddf36a07c8f3740e70454d76d207440f2b2480e651384bf3a348e4a92461df",
+      "model_collapse/stages.py": "bc099dff58af8f4b3490132a800d7137a6b4d55d211ddff89ec46f33b263aec0",
+      "model_collapse/supervisor.py": "a13ea35f259ae486ef2f474055e25bb84c70ed633f59b53be58b63bc896fdcdb",
+      "model_collapse/validate.py": "98676703a247831f053b4fee304ffcbbcc06abfcbf13649128648017069226f8",
+      "model_collapse/workflow/__init__.py": "edaec8106ce89e6773a05ca30e2d80677c5f1a70ad8da8c358fe731c54e5e0bc",
+      "model_collapse/workflow/branch.py": "6e9ef400079dd131790bc1ef37edc6299ef26f15b8187596d3f410e7d2ad9087",
+      "model_collapse/workflow/completion.py": "0055e3d9430228a00abe74e69a837f7b39546fc9610569068041654b22da4c06",
+      "model_collapse/workflow/completion_validation.py": "73e06460c935585cf87118c2fef3508c78ad5fc6489267ff8bd1f752cdb10283",
+      "model_collapse/workflow/configuration.py": "47ffbb63976e54220bb20d77e6d05ca0250734df05e5efa6e47631fba3f5165b",
+      "model_collapse/workflow/fresh_real.py": "d5465b57250e1996015e4a1a4e3a0513f21b879a28eb42d2be8ccb2ba06ce547",
+      "model_collapse/workflow/fresh_validation.py": "9a5818a772ca056c2a2e741a7d7e4ee342d653014971459bd6491e474a7876be",
+      "model_collapse/workflow/initial_data.py": "7ef4dd031e7b8f5deeb52f91f11f0467d5ab7e87e1218df69182e201854deda9",
+      "model_collapse/workflow/lineage.py": "2478bd1bf162f06df62d03ac9248578173f609f2586134087084cac1e0a9f5b3",
+      "model_collapse/workflow/mixed_campaign.py": "b4e44ede04e6db47644a56784d0d6f62d9264101b2f23ca9f761b8e47d7fd79f",
+      "model_collapse/workflow/optimization.py": "3cf6b4714d7bcea57217e654337458d2516514e4ed28d86c2276ed4247c09790",
+      "model_collapse/workflow/paired.py": "172e51c487a80ebb87c844e323b58a8c4faceea9efb4775f40e990662eb8ab74",
+      "model_collapse/workflow/profiles.py": "cf7dc2dc2745c2d8cf0ad2ff34de132bf9b81dc508e63ab5dac15377d5341d0e",
+      "model_collapse/workflow/registry.py": "0f172f13d0c3f532ea03e1b746d5ab23e9f93a54989e790c3680b91ff39ce361",
+      "model_collapse/workflow/selection.py": "57d7d54bcb8e436baf50686ae13b6d52c39645ef7a61cd65daf4351b48a11de0",
+      "model_collapse/workflow/wikitext.py": "c20505a81d8a0ab30e78225a66bf631fe0c3e9bb73cc3cf55557c7a3a6d50fa4",
+      "pyproject.toml": "d3e5f6b3c4483e8e38bcd4425de3cf926646fb11d14d0ca5f7677ee713e5d687"
+    },
+    "gpu_accepted": false,
+    "requires_fresh_gpu_acceptance_before_new_paid_training": true,
+    "deployed_archives_and_certificates_unchanged": true
+  },
+  "environment": {
+    "python": "3.12.1",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.5.1+cu118",
+    "device_for_training_tests": "Tiny local fixtures; core training fixtures explicitly select CPU",
+    "local_cuda_available": true
+  },
+  "cloud_operations": 0,
+  "new_spending_usd": 0,
+  "remaining_boundaries": [
+    "Historical operation adapters retain constrained compatibility patches; future adapters should use explicit options.",
+    "FineWeb source-hashed builders remain at root pending versioned data-contract migration.",
+    "Hosted CI was updated but not executed during this local task; Windows local suite and integrity checks passed.",
+    "Transitive dependency lock refresh remains separate from this source-preserving cleanup."
+  ]
+}

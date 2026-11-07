@@ -4,6 +4,7 @@ These documents preserve earlier instructions and decisions. Their forecasts, st
 
 | Record | Purpose |
 | --- | --- |
+| [Pre-cleanup instructions](2026-11-07_pre-cleanup-agent-instructions.txt) / [state chronology](2026-11-07_pre-cleanup-current-state.txt) | Byte-exact 7 November snapshots; [checksums](2026-11-07_cleanup-snapshots.json) preserve superseded operational history |
 | [Original Week 1 brief](WEEK1_CLOUD_TASK.md) | Initial scientific/cloud task, preserved from the first setup |
 | [Original optional cloud setup](CLOUD_SETUP.md) | Earlier Codex Cloud environment instructions |
 | [README before the October 27 organisation](README_before_organisation.md) | Earlier combined methods/results/operations landing page |

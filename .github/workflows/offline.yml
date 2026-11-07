@@ -40,3 +40,26 @@ jobs:
           else
             python scripts/maintenance/check_repository.py
           fi
+
+  windows-integrity:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    env:
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      PYTHON_DOTENV_DISABLED: "1"
+    steps:
+      - name: Exercise Windows line-ending conversion
+        run: git config --global core.autocrlf true
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.12"
+      - name: Install integrity-only dependencies
+        run: python -m pip install numpy==2.1.2 PyYAML==6.0.3 filelock==3.20.0 pytest==8.4.1
+      - name: Check configurations and exact publication bytes without training dependencies
+        run: python -m scripts.maintenance.check_repository
+      - name: Verify private-path policy and archived bytes
+        run: python -m pytest -q tests/repository/test_organisation.py -k "private_path or scientific_publications or archived_operational or markdown_anchor or empty_publication or historical_artifacts"

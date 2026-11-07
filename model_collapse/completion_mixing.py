@@ -1,20 +1,17 @@
 """Frozen continuation replacement with nested, reproducible prompt selections."""
 from __future__ import annotations
 
-import hashlib
 from pathlib import Path
 
 import numpy as np
 
+from .science.identity import token_hash
+
 from .common import atomic_json, read_json, sha256, verify_files
 from .data import save_array
-from .mixing import mixture_counts
+from .science.sampling import mixture_counts
 
 POLICY = "nested_seedsequence_6401_v1"
-
-
-def token_hash(values):
-    return hashlib.sha256(np.asarray(values, dtype=np.int32).tobytes()).hexdigest()
 
 
 def select_rows(total, fraction, seed, cycle):

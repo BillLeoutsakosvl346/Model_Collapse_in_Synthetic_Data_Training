@@ -10,8 +10,14 @@ The [catalogue](catalog.yaml) maps named conditions to configurations, runs, acc
 | [Reset to real S0](opt125m_wikitext2/reset_to_real_s0/README.md) | Fixed real-trained S0 after imported shared first cycle | Best real validation; selected epoch 1 historically | 100% |
 | [Final-epoch-5 paired conditions](../comparisons/shared_start_final_epoch5/README.md) | Continued and fixed-S0 reset arms | Always epoch 5 | 100% |
 | [Continued mixed 50/50](opt125m_wikitext2/continued_mixed_50_final5/README.md) | Previous epoch-5 weights | Always epoch 5 | 50%, fixed total training blocks |
-| [Real-only continued control](opt125m_wikitext2/continued_real_only_final5/README.md) | Previous epoch-5 weights | Always epoch 5 | 0%; configured, GPU acceptance pending |
+| [Real-only continued control](opt125m_wikitext2/continued_real_only_final5/README.md) | Previous epoch-5 weights | Always epoch 5 | 0%; full training split, reshuffled each cycle |
 
 Shared scientific definitions are in [methodology](../docs/methodology.md). Arm matching and exact shared artifacts belong in [comparisons](../comparisons/README.md). Measurements belong in dated [reports](../reports/README.md); launch authorization/current observations belong in [current state](../docs/current-state.md).
 
 For new conditions, add a named definition and full/smoke configurations, register it in the catalogue, and record deviations explicitly. Reuse the shared engine. Configuration support alone is not GPU acceptance, spending permission or a completed experiment. Preserve [legacy configurations](../configs/README.md) for existing invocations.
+
+## Catalogue compatibility
+
+Existing catalogue entries retain their historical field names and evidence scope. Some older `selection_policy` fields describe mixture sampling; executable `checkpoint_selection` governs model retention. Read these separately, using the linked resolved configuration as the scientific definition. Parent comparison IDs, logical arm IDs, GPU acceptance, completion and recovery are separate records.
+
+For future entries, use explicit `checkpoint_selection` and `mixture_selection_policy` names, distinguish acceptance recovery from full-run recovery, and link one dated completion receipt. Preserve old catalogue/evidence bytes when introducing versioned readers. Current observations belong in the current-state snapshot rather than duplicated running/pending prose in definition indexes.

@@ -1,26 +1,17 @@
 """Reconstructible block-level mixtures of real training text and synthetic targets."""
 from __future__ import annotations
 
-import math
-from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
 import numpy as np
 
 from .common import atomic_json, read_json, sha256, verify_files
 from .data import load_blocks, save_array
-from .workflow.lineage import token_hash
+from .science.identity import token_hash
+from .science.sampling import mixture_counts, synthetic_fraction
 
 VERSION = "block_mixture_v1"
 CAMPAIGN = "continued_mixed_50_final5"
-
-
-def synthetic_fraction(c):
-    value = c.get("synthetic_fraction", 1.0)
-    if (isinstance(value, bool) or not isinstance(value, (int, float))
-            or not math.isfinite(value) or not 0 <= value <= 1):
-        raise ValueError("synthetic_fraction must be a finite number between zero and one")
-    return float(value)
 
 
 def mixture_enabled(c):
@@ -32,14 +23,6 @@ def generation_prompt_count(c, generation, real_blocks):
     if synthetic_fraction(c) == 0 and not (generation == 0 and c.get("initial_dataset")):
         return min(real_blocks, c["probe_count"])
     return real_blocks if generation < c["generations"] else min(real_blocks, c["probe_count"])
-
-
-def mixture_counts(total, fraction):
-    fraction = synthetic_fraction({"synthetic_fraction": fraction})
-    if isinstance(total, bool) or not isinstance(total, int) or total <= 0:
-        raise ValueError("Mixture total must be a positive integer")
-    n_synthetic = int((Decimal(str(fraction)) * total).quantize(Decimal("1"), rounding=ROUND_HALF_UP))
-    return total - n_synthetic, n_synthetic
 
 
 def reconstruct(real, synthetic, selection):

@@ -80,7 +80,7 @@ def test_source_resolution_loads_environment_before_authentication(monkeypatch):
 def test_full_reset_launch_reaches_provisioning_boundary_without_spending(tmp_path, monkeypatch):
     from model_collapse.common import atomic_json
     from model_collapse.workflow import branch
-    from model_collapse import pipeline
+    from model_collapse.analysis import forecasts
     calls = []
     class Boundary(Exception):
         pass
@@ -100,14 +100,14 @@ def test_full_reset_launch_reaches_provisioning_boundary_without_spending(tmp_pa
     monkeypatch.setattr(branch, "resolve_branch_source", lambda c: c)
     monkeypatch.setattr(remote, "verify_start_checkpoint", lambda c: None)
     monkeypatch.setattr(remote, "register_key", lambda api: (_ for _ in ()).throw(Boundary()))
-    original_forecast = pipeline.forecast
+    original_forecast = forecasts.forecast
     def forecast(*args, **kwargs):
         estimate = original_forecast(*args, **kwargs)
         assert estimate["initialization"] == "reset_s0"
         assert estimate["new_training_stages"] == 9
         assert estimate["new_full_generation_stages"] == 8
         return estimate
-    monkeypatch.setattr(pipeline, "forecast", forecast)
+    monkeypatch.setattr(forecasts, "forecast", forecast)
     from model_collapse.workflow.profiles import protocol_fingerprint
     atomic_json(tmp_path / "validation_reset_s0.json", {"source_code_sha256": "tested-runtime",
                 "protocol_fingerprint": protocol_fingerprint(config(PROJECT / "experiments/opt125m_wikitext2/reset_to_real_s0/full.yaml"))})

@@ -81,3 +81,6 @@
 /scripts/analysis/build_real_only_comparison_report.py text eol=lf
 /docs/validation/2026-11-02_real-only-analysis-and-doc.json -text whitespace=cr-at-eol
 /docs/validation/2026-11-02_real-only-publication-bytes.json -text whitespace=cr-at-eol
+
+# Byte-exact operational chronology preserved during the November cleanup.
+/docs/history/2026-11-07_pre-cleanup-*.txt -text whitespace=cr-at-eol

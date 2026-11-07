@@ -8,11 +8,12 @@
 | Metric formulas, denominators and interpretation limits | [Metric definitions](metrics.md) |
 | Installation, paid launch, monitoring and recovery | [Operations](operations.md) |
 | Actual package responsibilities and intended boundaries | [Architecture](architecture.md) |
+| November module organisation, compatibility and offline verification | [Cleanup record](validation/2026-11-07_repository-organisation.json) / [test map](../tests/README.md) |
 | Conditions, configurations and run identities | [Experiment catalogue](../experiments/catalog.yaml) |
 | Results and verification coverage | [Reports index](../reports/README.md) |
 | Papers and project proposal | [Literature](../literature/README.md) / [project documents](project/README.md) |
 | Earlier instructions and execution chronology | [History](history/README.md) |
-| FineWeb-Edu real-only setup and future launch | [Pilot handoff](fineweb-real-only-handoff.md) |
+| FineWeb-Edu real-only protocol and historical handoff | [Pilot handoff](fineweb-real-only-handoff.md) |
 | Matched FineWeb 50/50 and 20/80 continuation mixtures | [Setup handoff](fineweb-completion-mixtures-handoff.md) / [methodology](../comparisons/fineweb_completion64_mixtures/README.md) |
 | Matched real and synthetic continuation experiment | [Validated handoff](fineweb-completion64-handoff.md) / [methodology](../comparisons/fineweb_real_vs_synthetic_completion64/README.md) |
 | Five-source train/validation/test bank and one-epoch evaluation | [Corpus bank](../corpora/README.md) / [cross-corpus report](../reports/20261106T171304Z-cross-corpus-evaluation/report.md) |

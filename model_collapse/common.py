@@ -62,6 +62,9 @@ def config(path):
 
 
 def validate_config(c):
+    from .workflow.registry import known_workflow
+    if not known_workflow(c.get("workflow")):
+        raise ValueError("Unknown workflow")
     storage = c.get("storage_backend", "network")
     if storage not in ("network", "pod_persistent"):
         raise ValueError("Unknown storage backend")
@@ -71,6 +74,9 @@ def validate_config(c):
     if limit is not None and (isinstance(limit, bool) or not isinstance(limit, (int, float))
                               or not math.isfinite(limit) or limit <= 0):
         raise ValueError("max_session_usd must be a positive finite amount")
+    if c.get("workflow") not in ("paired", "mixed_campaign"):
+        from .workflow.configuration import validate_training_numbers
+        validate_training_numbers(c)
     if c.get("workflow") == "paired":
         from .workflow.paired import validate_pair_config
         return validate_pair_config(c)

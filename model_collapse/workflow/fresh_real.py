@@ -22,6 +22,8 @@ CHECKS = {"three_real_cycles", "disjoint_documents_and_passages", "exact_source_
 
 
 def validate_config(c):
+    from .configuration import validate_training_numbers
+    validate_training_numbers(c)
     from ..workflow.selection import selection_policy
     if c.get("dataset") != "HuggingFaceFW/fineweb-edu" or c.get("dataset_config") != "sample-10BT":
         raise ValueError("Fresh-real requires the named FineWeb-Edu sample")

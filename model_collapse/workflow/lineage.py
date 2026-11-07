@@ -1,16 +1,13 @@
 """Verify the distinction between a data generator and a training initializer."""
 from __future__ import annotations
 
-import hashlib
 from pathlib import Path
 
 import numpy as np
 
+from ..science.identity import token_hash
+
 from ..common import read_json, sha256, verify_files
-
-
-def token_hash(values):
-    return hashlib.sha256(np.asarray(values, dtype=np.int32).tobytes()).hexdigest()
 
 
 def training_lineage(root, generation, c, base_hash):

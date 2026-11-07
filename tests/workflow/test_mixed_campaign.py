@@ -245,7 +245,8 @@ def test_campaign_report_records_renderer_and_original_runtime(session, tmp_path
     out = tmp_path / "rendered"
     campaign.report_campaign(root, out=out)
     manifest = read_json(out / "analysis_manifest.json")
-    assert manifest["renderer"]["sha256"] == sha256(campaign.__file__)
+    from model_collapse.analysis import campaign as renderer
+    assert manifest["renderer"]["sha256"] == sha256(renderer.__file__)
     assert manifest["source_runtime_sha256"] == "recorded-training-runtime"
     assert manifest["inputs"][root.name + "/manifest.json"]["sha256"] == sha256(root / "manifest.json")
 

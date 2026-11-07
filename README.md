@@ -1,25 +1,25 @@
 # Model collapse in synthetic-data training
 
-Cambridge Engineering IIB research with OPT-125M and WikiText-2: recursively generate training data, train successive checkpoints, and measure prediction loss, repetition and output diversity. The experiments reconstruct selected ideas from [Shumailov et al. (2024)](https://doi.org/10.1038/s41586-024-07566-y); each condition records its own methodological differences.
+Cambridge Engineering IIB research with OPT-125M, WikiText-2 and FineWeb-Edu: recursively generate training data, train successive checkpoints, and measure prediction loss, repetition and output diversity. The experiments reconstruct selected ideas from [Shumailov et al. (2024)](https://doi.org/10.1038/s41586-024-07566-y); each condition records its own methodological differences.
 
 ## Experiments and results
 
 | Condition | Scientific difference | Recorded result/status |
 | --- | --- | --- |
-| [Matched FineWeb completions](comparisons/fineweb_real_vs_synthetic_completion64/README.md) | Same fresh prompts, real versus self-generated continuation targets, one epoch per chunk | [Validated handoff](docs/fineweb-completion64-handoff.md); [running comparison](docs/validation/2026-11-06_completion64-full-launch.json) |
+| [Matched FineWeb completions](comparisons/fineweb_real_vs_synthetic_completion64/README.md) | Same fresh prompts, real versus self-generated continuation targets, one epoch per chunk | [Completed comparison and analysis](docs/validation/2026-11-07_fineweb-four-fraction-completion-analysis.json) |
 | [FineWeb-Edu real-only pilot](experiments/opt125m_fineweb_edu/fresh_real_one_epoch/README.md) | Fresh documents, one epoch per cycle, continuous AdamW and global cosine schedule | [Completed pilot and shutdown](docs/validation/2026-11-06_fineweb-full-completion-status.json); authored analysis pending |
 | [Pretrained reset](experiments/opt125m_wikitext2/pretrained_reset/README.md) | Reset to original pretrained OPT each cycle | [Week 1 report](reports/20261020T211121Z-full/report.md) |
 | [Continued weights](experiments/opt125m_wikitext2/continued_from_real_s0/README.md) | Continue from the preceding selected checkpoint | [Week 2 report](reports/20261026T192740Z-full-continued/report.md) |
 | [Shared-start reset versus continue](comparisons/shared_s0_s1_reset_vs_continue/README.md) | Same S0/S1/D2; fixed-S0 reset versus continued weights | [Matched Week 2 report](reports/20261027T211852Z-full-reset-s0/report.md) |
 | [Final epoch 5 comparison](comparisons/shared_start_final_epoch5/README.md) | Retain epoch 5 in both shared-start arms | [Week 3 report](reports/20261030T180755Z-full-paired-final5/report.md) |
 | [Continued 50/50 mixture](experiments/opt125m_wikitext2/continued_mixed_50_final5/README.md) | Equal real/synthetic targets; continued epoch-5 weights | [Matched synthetic-only comparison](reports/20261031T163428Z-full-continued/report.md) |
-| [Mixed-fraction campaign](comparisons/mixed_fraction_final5/README.md) | 50/50 reset, then matched 20/80 continued/reset; retain epoch 5 | [Running campaign](docs/current-state.md#current-running-campaign); [launch receipt](docs/validation/2026-11-01_mixed-campaign-full-launch.json) |
+| [Mixed-fraction campaign](comparisons/mixed_fraction_final5/README.md) | 50/50 reset, then matched 20/80 continued/reset; retain epoch 5 | [Completed analyses](reports/README.md); [execution record](docs/current-state.md) |
 
 Use the [current-state record](docs/current-state.md) for the latest recorded authorization and status, the [catalogue](experiments/catalog.yaml) for exact run IDs/configurations, and the [reports index](reports/README.md) for results, validation and recovery scope. Week labels identify reports, not runtime modes. Existing runs use one seed; comparisons must account for their recorded hardware, checkpoint policy and shared artifacts.
 
 ## Install and check offline
 
-Python 3.12 is tested. Local launch/analysis needs no local GPU or full checkpoint download. For a new Windows environment:
+Use an editable repository checkout; standalone wheel deployment is not supported. Python 3.12 is tested. Local launch/analysis needs no local GPU or full checkpoint download. For a new Windows environment:
 
 ```powershell
 uv venv --python 3.12 .venv
@@ -41,6 +41,16 @@ python -m model_collapse report RUN_ID
 ```
 
 Status/fetch access the cloud. Metadata-only fetch leaves bulk checkpoints and token arrays there; full fetch can download several GB. Reporting is offline and writes a new `reports/<run>/generated/<analysis>/` destination. Resume is only for unfinished stopped runs; cleanup requires verified ownership and adequate recovery.
+
+## Code structure
+
+- `model_collapse/science/`: shared training, evaluation, generation, WikiText preparation, metrics and pure sampling/hash helpers.
+- `model_collapse/workflow/`: named experiment loops, lineage, checkpoint/optimization policies and lazy CLI dispatch.
+- `model_collapse/cloud/`: provider client, launch/SSH lifecycle, ownership, budget, storage and detached supervision.
+- `model_collapse/artifacts/`: pinned backup, recovery and safe paths.
+- `model_collapse/analysis/`: offline readers, forecasts, tables, plots and provenance.
+
+Root-level compatibility modules preserve established imports. FineWeb data builders retain their original locations because their source is part of the frozen data contract. See [architecture](docs/architecture.md) before moving them.
 
 ## Find the right files
 
