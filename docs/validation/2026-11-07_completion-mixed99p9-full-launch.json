@@ -1,0 +1,234 @@
+{
+  "checked_at": 1794088655.2549484,
+  "run_id": "20261107T214406Z-full-completion64-mixed99p9",
+  "state": "running",
+  "resources": {
+    "run_id": "20261107T214406Z-full-completion64-mixed99p9",
+    "launch_id": "20261107T214406112134Z",
+    "kind": "full",
+    "pod_id": "sjosn7yibxv46y",
+    "volume_id": "fukkge8vrw",
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1794087847.7119334,
+    "quoted_gpu_hourly_usd": 0.72,
+    "guard_hourly_usd": 0.8377671232876711,
+    "compute_hourly_usd": 0.8311506849315068,
+    "volume_hourly_usd": 0.005753424657534247,
+    "network_volume_gb": 60,
+    "volume_created_at": 1794087846.117304,
+    "session_allowance_usd": 2.2512574852291296,
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "code_sha256": "20883eacf9076d69b061c0776188c73eccc71abcd77bb48e9a94830b7689f4f5",
+    "starting_balance_usd": 28.9810383692,
+    "remote_root": "/workspace/runs/20261107T214406Z-full-completion64-mixed99p9",
+    "runtime_sha256": "20883eacf9076d69b061c0776188c73eccc71abcd77bb48e9a94830b7689f4f5",
+    "git_commit": "921f357ae494b1599b40ac48d00b92c5ea672171",
+    "configuration_sha256": "761df308bc57930418267128901530f7325b898b2c7debd4b0d014a48bf37385",
+    "backup_store": {
+      "backend": "runpod_s3",
+      "bucket": "vx78hsoirz",
+      "region": "EU-RO-1",
+      "prefix": "fineweb-completion99p9-20261107"
+    },
+    "workflow": "completion_comparison",
+    "allocation": "fineweb_completion64_mixtures_mixed99p9",
+    "admission_forecast": {
+      "estimated_hours": 2.340032835179122,
+      "estimated_compute_and_running_storage_usd": 1.7046978928058316,
+      "unique_training_stages": 10,
+      "epochs": 10,
+      "full_generation_stages": 0,
+      "generation_stages": 10,
+      "probe_sets": 11,
+      "training_target_exposures": 6400000,
+      "forecast_margin": 1.5,
+      "generated_training_continuations": 99900,
+      "generated_training_tokens": 6393600,
+      "historical_storage_during_run_usd": 0.19874251477087057,
+      "seven_day_volume_storage_usd": 0.9665753424657535
+    },
+    "actual_pod_hourly_usd": 0.72,
+    "verified_ssh_direct": {
+      "command": "ssh root@213.173.107.36 -p 12853",
+      "host": "213.173.107.36",
+      "port": 12853,
+      "username": "root"
+    }
+  },
+  "first_stage_audit": {
+    "ready": true,
+    "run_id": "20261107T214406Z-full-completion64-mixed99p9",
+    "child_run_id": "20261107T214406Z-full-completion64-mixed99p9-mixed99p9",
+    "synthetic_fraction": 0.999,
+    "training_pairs": 10000,
+    "real_pairs": 10,
+    "synthetic_pairs": 9990,
+    "scored_training_tokens": 640000,
+    "global_step": 79,
+    "executed_epochs": 1,
+    "selected_epoch": 1,
+    "first_stage_sha256": "c0f780dfe1bfb4829065f6bb3888aa23ceba3df087318dd4e54dbe32686e65c9",
+    "baseline_weights_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+    "selected_weights_sha256": "df37fe6915a4a64ffec40807f6707107d1fec9e7d7ee4b4e24a77ee453c9106f",
+    "baseline_test_perplexity": 29.17631807160739,
+    "first_test_perplexity": 44.58488352283855,
+    "backup_snapshot": {
+      "run_id": "20261107T214406Z-full-completion64-mixed99p9-mixed99p9",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "56ecd519bfc6561ad348ca94d769b4596f2c1e81",
+        "dataset": "c407f2508dfc7fbe912644ca0fdfe4d16240c4a9"
+      },
+      "artifact_index_sha256": "5370d1840236cc4e3b11fb9b67eda2456a0a0aa7480c0115eca33c24ea75612d"
+    },
+    "full_benchmark_forecast": {
+      "estimated_hours": 2.326285759519201,
+      "estimated_compute_and_running_storage_usd": 1.6946832423456315,
+      "unique_training_stages": 10,
+      "epochs": 10,
+      "full_generation_stages": 0,
+      "generation_stages": 10,
+      "probe_sets": 11,
+      "training_target_exposures": 6400000,
+      "forecast_margin": 1.5,
+      "generated_training_continuations": 99900,
+      "generated_training_tokens": 6393600
+    },
+    "checks": {
+      "actual_weight_update": true,
+      "own_generator_and_initializer": true,
+      "correct_frozen_mixture": true,
+      "continuation_only_loss": true,
+      "fixed_evaluation_counts": true,
+      "selected_checkpoint_and_stage_hashes": true,
+      "first_stage_in_pinned_backup_index": true,
+      "pinned_backup_index_download_verified": true
+    },
+    "detached_proof": {
+      "pod_id": "sjosn7yibxv46y",
+      "launch_id": "20261107T214406112134Z",
+      "run_id": "20261107T214406Z-full-completion64-mixed99p9",
+      "progress_after_disconnect": true,
+      "observations": [
+        {
+          "time": 1794087932.2796571,
+          "status": {
+            "state": "running",
+            "phase": "preparation",
+            "time": 1794087927.2914982
+          },
+          "child_status": {
+            "state": "running",
+            "phase": "preparation",
+            "time": 1794087927.2914982
+          },
+          "event_bytes": 0,
+          "epochs": 0,
+          "new_epochs": 0,
+          "finite_new_training": false,
+          "completed_new_stages": 0,
+          "supervisor": {
+            "pid": 269,
+            "child_pid": 270,
+            "time": 1794087930.0885687
+          },
+          "watchdog": {
+            "pid": 139,
+            "time": 1794087930.7919607,
+            "deadline": 1794097521.6734931
+          }
+        },
+        {
+          "time": 1794088561.6784172,
+          "status": {
+            "state": "running",
+            "phase": "mixed99p9",
+            "active_child": "20261107T214406Z-full-completion64-mixed99p9-mixed99p9",
+            "time": 1794088075.5913842
+          },
+          "child_status": {
+            "state": "running",
+            "generation": 1,
+            "stage": "training",
+            "time": 1794088472.1334846
+          },
+          "event_bytes": 5875,
+          "epochs": 1,
+          "new_epochs": 1,
+          "finite_new_training": true,
+          "completed_new_stages": 1,
+          "supervisor": {
+            "pid": 269,
+            "child_pid": 270,
+            "time": 1794088558.9225843
+          },
+          "watchdog": {
+            "pid": 139,
+            "time": 1794088558.841844,
+            "deadline": 1794097521.6734931
+          }
+        }
+      ],
+      "observations_sha256": "2379983da3d787a3d747ae8c6febadbb9a03f49a43f3c0aaa572e1b3317e2dff",
+      "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+    },
+    "provider_state": "RUNNING",
+    "scope": "First full-stage file hashes and pinned private index verified; complete full-run cold restoration is separate future work."
+  },
+  "cycle_2_handoff": {
+    "ready": true,
+    "time": 1794088655.7673125,
+    "cycle_2_generator_equals_cycle_1_selected_checkpoint": true,
+    "cycle_2_uses_exact_frozen_chunk_2": true,
+    "generator_weights_sha256": "df37fe6915a4a64ffec40807f6707107d1fec9e7d7ee4b4e24a77ee453c9106f",
+    "source_chunk_manifest_sha256": "3310753c116c4d12cc6c464e5e8ad272241e0bbd4415a7d8b870fa0772570a53",
+    "synthetic_prompt_count": 9990,
+    "real_pairs": 10,
+    "new_tokens": 64,
+    "num_beams": 5,
+    "repetition_penalty": 1.0
+  },
+  "environment_match": {
+    "required": {
+      "torch": "2.8.0+cu128",
+      "transformers": "4.37.2",
+      "datasets": "3.4.1"
+    },
+    "actual": {
+      "torch": "2.8.0+cu128",
+      "transformers": "4.37.2",
+      "datasets": "3.4.1"
+    },
+    "verified": true
+  },
+  "acceptance_record": "docs/validation/2026-11-07_completion-mixed99p9-setup.json",
+  "validation_cost_usd_conservative": 0.2535039802500174,
+  "forecast": {
+    "estimated_hours": 2.326285759519201,
+    "estimated_compute_and_running_storage_usd": 1.6946832423456315,
+    "unique_training_stages": 10,
+    "epochs": 10,
+    "full_generation_stages": 0,
+    "generation_stages": 10,
+    "probe_sets": 11,
+    "training_target_exposures": 6400000,
+    "forecast_margin": 1.5,
+    "generated_training_continuations": 99900,
+    "generated_training_tokens": 6393600
+  },
+  "forecast_finish_utc": "2026-11-08T00:03:42.340668+00:00",
+  "funded_watchdog_deadline_utc": "2026-11-08T00:25:21.673493+00:00",
+  "seven_day_new_working_plus_backup_storage_usd": 1.4498630136986304,
+  "cloud_execution_independent_of_laptop": true,
+  "remaining_full_training_cycles": 9,
+  "recovery_scope": "First full-stage file hashes and pinned private index verified. Full-run cold restoration and final analysis remain separate; no full completion claim.",
+  "historical_resources_modified": false
+}
