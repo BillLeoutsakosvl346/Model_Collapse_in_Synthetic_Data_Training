@@ -1,0 +1,30 @@
+{
+  "recorded_at": 1794011996.6630175,
+  "authorized_at": 1794011996.6567998,
+  "protected_run_id": "20261106T193918Z-full-completion64",
+  "protected_owner": {
+    "run_id": "20261106T193918Z-full-completion64",
+    "launch_id": "20261106T230313709378Z",
+    "pod_id": "udbovqu03vp3h0",
+    "volume_id": "s9pmtnqkir"
+  },
+  "runtime_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+  "protocol_fingerprint": "c411a4e72d8215365c4f0acc84809bcacd3f20af8bdbe627d33d714af6660c13",
+  "full_config": "comparisons/fineweb_completion64_mixtures/full.yaml",
+  "host_launcher": "scripts/operations/launch_parallel_completion_mixtures.py",
+  "host_launcher_sha256": "f0fe27aad66bb69ac165fbbb494dcd42d3c5c0ed1fcab8a263dea0f0983f0ac4",
+  "authorization": "User explicitly requested the two mixtures on another GPU, parallel to the existing full real/synthetic comparison",
+  "new_gpu_count": 1,
+  "execution_order": [
+    "mixed50",
+    "mixed20"
+  ],
+  "cycles_per_arm": 10,
+  "epochs_per_cycle": 1,
+  "full_training_authorized": true,
+  "allocation_usd": 10,
+  "reserve_usd": 2,
+  "cumulative_ceiling_usd": 64.03635289829083,
+  "additional_credit_purchase_authorized": false,
+  "previous_ledger_sha256": "46e423c70df3b6e69d9c3dfcc58c8a66320bbd4b82bdf1a483c737066d02b52d"
+}

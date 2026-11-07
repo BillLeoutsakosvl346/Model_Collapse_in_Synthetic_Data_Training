@@ -1,0 +1,35 @@
+{
+  "runtime_sha256": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+  "archive_sha256": "4555d08052e7e2d4b6e733d46b8221902eea7c7de81e8000c6f57556504ca421",
+  "campaign": {
+    "max_active_pods": 3,
+    "backup_store": {
+      "backend": "runpod_s3",
+      "bucket": "mng23iliig",
+      "region": "EU-RO-1",
+      "prefix": "fineweb-high-fractions-20261107"
+    },
+    "runtime_sha256": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+    "backup_storage_reserve_usd": 1.3,
+    "validation_cap_usd": 0.5,
+    "campaign_cap_usd": 11.75,
+    "allocations": {
+      "fineweb_completion64_mixtures_mixed85": {
+        "protocol": "e8152de86ed54d8d420658350da58fb4e6616469b75fbd457f3d5cfb7dee8e69",
+        "budget_usd": 3.45
+      },
+      "fineweb_completion64_mixtures_mixed90": {
+        "protocol": "36add4af6575b47874b70c7e5d459ac2b96ccc2a36a3f075250e6dfe830a0f7c",
+        "budget_usd": 3.45
+      },
+      "fineweb_completion64_mixtures_mixed95": {
+        "protocol": "68cd00ab0c98da52879e529a7550c1b6bc2fd1717a1a21e7c0bf0a3b3f2d61af",
+        "budget_usd": 3.45
+      }
+    },
+    "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+    "gpu_fallback_authorized_at": 1794060346.3923273
+  },
+  "offline_new_tests": 22,
+  "bulk_restore_roundtrip_bytes": 16777216
+}

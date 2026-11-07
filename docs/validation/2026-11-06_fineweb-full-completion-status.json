@@ -1,0 +1,266 @@
+{
+  "recorded_utc": "2026-11-06T16:04:05.334969+00:00",
+  "run_id": "20261106T151257Z-full-fresh-real",
+  "complete": true,
+  "completed_cycles": 10,
+  "executed_epochs": 10,
+  "selected_epoch_each_cycle": 1,
+  "runtime_sha256": "13ddfea86bc9a87377bb08e81f1a43377c3e8767cf3965a3da34561dcf3cc0c7",
+  "revisions": {
+    "model": "f4ec275e8c3077da3480cc7071e83fd2244e55af",
+    "dataset": "001430f851f1b104fd4ec2a87b66c35c48a15682"
+  },
+  "artifact_index_sha256": "f1d392049ac64ce6b23bc1a2f90891bc7191ac9b017e760a6037dba3a5b7788b",
+  "verified_metadata_files": {
+    "completion.json": {
+      "sha256": "4af7e19b5db90c62ac84f0619bd8b1664db7eba0e459cac87105419351b6bf0e",
+      "bytes": 96,
+      "repo_type": "dataset"
+    },
+    "config.json": {
+      "sha256": "556ecec7689b88745165d8e3870e07c358bd079cef9770440d8045c57a88b24b",
+      "bytes": 1335,
+      "repo_type": "dataset"
+    },
+    "manifest.json": {
+      "sha256": "18673dd595fda75010a9e9b094921f0d86ffd082d80e1104fea0d7af07f460cf",
+      "bytes": 267,
+      "repo_type": "dataset"
+    },
+    "data/manifest.json": {
+      "sha256": "615d9f62a55c367150bc15b8846c02aea88589c227aca635b3981ace04717d72",
+      "bytes": 12530,
+      "repo_type": "dataset"
+    },
+    "benchmark.json": {
+      "sha256": "c6a735a07d03af3dfe27e74b4b1809684917335158d7396f881fd0bb77ac75f0",
+      "bytes": 7019,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "f1058d3b96ad77ff88d97bf436f807ac9a91950d151c98964d4d70b574ce9416",
+      "bytes": 1047,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/metrics.json": {
+      "sha256": "add2b5be36b9ddb416fa558bbf91cff909588c3539cb6f3a8bddfa5dc3d0a15e",
+      "bytes": 3244,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/stage_completion.json": {
+      "sha256": "fd30a7b1444d1d61158e432fd6a2cfb1233d28b3e80292c748332b3a7cdd7f2e",
+      "bytes": 1327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/metrics.json": {
+      "sha256": "76f755f48c8fcc8b8b86fc4333a1ab4ed744307dae90ed622d9014c133b739b7",
+      "bytes": 3368,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/stage_completion.json": {
+      "sha256": "8d0b374c352e11dfc26a838f08fa3c3f0739e50eb115069feb76e456127f0e21",
+      "bytes": 1327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/metrics.json": {
+      "sha256": "400cfb52716e7bcc84919e97308f6ca8dccd5be8757dbd72305b337f932d7cf8",
+      "bytes": 3370,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/stage_completion.json": {
+      "sha256": "bfd845ede281f169d4446314fd39fcf9f3a9046cd270374012980cc958925d17",
+      "bytes": 1327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/metrics.json": {
+      "sha256": "3556fc625dc9e3f04e5f69ba9a2969b2b9c9aa024dbcbcb4941c687a0fabbad4",
+      "bytes": 3368,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/stage_completion.json": {
+      "sha256": "6f93f60f49ea33daed9d44b24d6242cbdf480e178cd6ab22f216b4107c318d35",
+      "bytes": 1327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/metrics.json": {
+      "sha256": "66ef87f1b4f9f1d805fbce22b7bb1b57d17ff10573c18d9b7f34d68d960bb5cc",
+      "bytes": 3372,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/stage_completion.json": {
+      "sha256": "922914b7f2e4c37dcc6da5bddcb557f9785d087a847b6db6cc4bbb7acbd57fa5",
+      "bytes": 1327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/metrics.json": {
+      "sha256": "b99418a9dc0e2abefffb92eb86d39f154f0883d3616f5639958ddeeb44dcc03c",
+      "bytes": 3371,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/stage_completion.json": {
+      "sha256": "767ebcc55daa190b916ffa724cbde2a1b197cddcfc77e2db2622642c164308f0",
+      "bytes": 1327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/metrics.json": {
+      "sha256": "93ddb6dee95e1c173ff5773d896333eaa977645647bac7d84c3cd337ced00a26",
+      "bytes": 3372,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/stage_completion.json": {
+      "sha256": "69ec99268338c8ffd63aa7b478405e707bdfe28d015468555c0511c7e72e0a8e",
+      "bytes": 1327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/metrics.json": {
+      "sha256": "8a1191857fbb23fb4474f6ed173010edfe1c6bdb0d9b029dbf6066c21234e1c1",
+      "bytes": 3372,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/stage_completion.json": {
+      "sha256": "69f8237acfef1190f047a00e7e7886a59fee1133a6b4d212b52e60b31a21323d",
+      "bytes": 1327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/metrics.json": {
+      "sha256": "49ef9014bb85182a4a2d40f02b6416dba4ee590d9213db744510c2983c28010f",
+      "bytes": 3360,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/stage_completion.json": {
+      "sha256": "e22d8924e5e000996a30fd2ebf506f5dd00b44ac507a6ff65a8b70acdff6b177",
+      "bytes": 1327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/metrics.json": {
+      "sha256": "d7af0efee5776fded13e89ba1170e098ee7edac3ead7111b623788980e8598a4",
+      "bytes": 3370,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/stage_completion.json": {
+      "sha256": "728596e4f16fe6b9ee8c41b7e057f6d50dfcfa4c13a10c1c3a28dabd2ce08dc7",
+      "bytes": 1328,
+      "repo_type": "dataset"
+    }
+  },
+  "indexed_files": 217,
+  "checkpoint_files_indexed": 11,
+  "optimizer_states_indexed": 10,
+  "initial_validation_ppl": 27.96224343001504,
+  "initial_test_ppl": 28.34571991255706,
+  "cycle_metrics": [
+    {
+      "cycle": 1,
+      "validation_ppl": 27.038743497909834,
+      "test_ppl": 27.409071936415348,
+      "global_step": 97,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 2,
+      "validation_ppl": 26.94331308492453,
+      "test_ppl": 27.307631345964232,
+      "global_step": 194,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 3,
+      "validation_ppl": 26.88445469410455,
+      "test_ppl": 27.249909673329473,
+      "global_step": 288,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 4,
+      "validation_ppl": 26.856536638923444,
+      "test_ppl": 27.219563255205088,
+      "global_step": 384,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 5,
+      "validation_ppl": 26.796321598293126,
+      "test_ppl": 27.156761699117048,
+      "global_step": 482,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 6,
+      "validation_ppl": 26.753923994749467,
+      "test_ppl": 27.11745417584659,
+      "global_step": 580,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 7,
+      "validation_ppl": 26.744734754710144,
+      "test_ppl": 27.09314711052915,
+      "global_step": 678,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 8,
+      "validation_ppl": 26.71686484920079,
+      "test_ppl": 27.068312279562402,
+      "global_step": 775,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 9,
+      "validation_ppl": 26.702916536245517,
+      "test_ppl": 27.04963748487728,
+      "global_step": 874,
+      "selected_epoch": 1
+    },
+    {
+      "cycle": 10,
+      "validation_ppl": 26.688585523863168,
+      "test_ppl": 27.03483707215283,
+      "global_step": 972,
+      "selected_epoch": 1
+    }
+  ],
+  "validation_stability_threshold": 1.05,
+  "validation_stability_met": true,
+  "continued_checkpoint_and_optimizer_handoffs_verified_from_saved_records": true,
+  "frozen_evaluation_counts_verified": true,
+  "source_tokens_per_cycle": 640000,
+  "total_source_training_tokens": 6400000,
+  "provider_status": {
+    "run_id": "20261106T151257Z-full-fresh-real",
+    "pod_id": "xf5ml3no72cg0z",
+    "pod_state": "EXITED",
+    "reported_pod_rate_usd": 0.57,
+    "compute_running": false,
+    "status.json": {
+      "state": "complete",
+      "time": 1793979912.6329088
+    },
+    "watchdog_exit.json": {
+      "reason": "complete",
+      "time": 1793979967.6347797,
+      "pod_id": "xf5ml3no72cg0z"
+    },
+    "provider_shutdown": {
+      "provider_pod_id": "xf5ml3no72cg0z",
+      "provider_status": "EXITED",
+      "field": "lastStatusChange",
+      "value": "Exited by user: Fri Nov 06 2026 15:46:14 GMT+0000 (Coordinated Universal Time)",
+      "provider_shutdown_epoch": 1793979974.0,
+      "observed_at": 1793980956.878208
+    }
+  },
+  "provisioning_to_shutdown_minutes": 33.25577393770218,
+  "quoted_gpu_time_estimate_usd": 0.3159298524081707,
+  "conservative_settled_compute_estimate_usd": 0.36506563803324815,
+  "cost_scope": "Estimated task compute; retained storage is separate and continues to accrue.",
+  "recovery_scope": "Pinned small completion, metric, configuration and stage-seal records verified locally. Bulk selected weights, optimizer states and full datasets are indexed privately; full-run bulk restoration and independent evaluation remain pending.",
+  "preserve_pod_id": "xf5ml3no72cg0z",
+  "preserve_volume_id": "mq5uhckkxr",
+  "completion_manifest": {
+    "complete": true,
+    "workflow": "fresh_real",
+    "cycles": 10,
+    "time": 1793979860.356359
+  }
+}

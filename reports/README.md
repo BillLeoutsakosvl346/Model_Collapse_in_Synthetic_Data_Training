@@ -4,6 +4,10 @@ Full experiments measure scientific trajectories; smoke experiments validate the
 
 ## Full experiments
 
+The completed **0/20/50/80/100%** FineWeb comparison has [55 metric rows](20261107T113638Z-full-completion64-mixed80/analysis/five-fractions/metrics.csv), [square test/validation plots](20261107T113638Z-full-completion64-mixed80/analysis/five-fractions/README.md) and preserved analysis/source hashes. The newer 85/90/95% conditions have separate [launch records](../docs/validation/2026-11-07_completion-high-fractions-full-launch.json); this publication does not assert their completion.
+
+The matched FineWeb 0/20/50/100% synthetic conditions completed all forty one-epoch stages. The [four-line test graph](20261107T004033Z-full-completion64-mixtures/analysis/four-fractions/test_perplexity_four_conditions.png), [validation graph](20261107T004033Z-full-completion64-mixtures/analysis/four-fractions/validation_perplexity_four_conditions.png), [44-row metrics CSV](20261107T004033Z-full-completion64-mixtures/analysis/four-fractions/metrics.csv) and [analysis provenance](20261107T004033Z-full-completion64-mixtures/analysis/four-fractions/analysis_manifest.json) compare the same frozen real continuations. Both GPUs stopped automatically. The [completion receipt](../docs/validation/2026-11-07_fineweb-four-fraction-completion-analysis.json) records verified statistics and remaining bulk recovery scope.
+
 | Run / presentation | Condition and checkpoint policy | Evidence/interpretation | Recovery recorded |
 | --- | --- | --- | --- |
 | `20261020T211121Z-full` / Week 1 | Original pretrained reset; five executed epochs, epoch 1 selected | [Report](20261020T211121Z-full/report.md), [metrics](20261020T211121Z-full/metrics.csv) | Metadata audited; bulk backups private |
@@ -17,12 +21,27 @@ Full experiments measure scientific trajectories; smoke experiments validate the
 
 The real-only control `20261102T154833Z-full-continued` completed all fifty epochs and is [analysed against the 100/50/20% continued runs](20261102T154833Z-full-continued/report.md). Seven figure families include the cycle-10 endpoint-versus-fraction summary; [delivery](../docs/validation/2026-11-02_real-only-analysis-and-doc.json) verifies 44 metric rows, 200 epochs, 41 probes and Google Doc pages 56–66. Its [timing audit](20261102T154833Z-full-continued/timing_audit.md) remains preserved. Full checkpoint restoration/re-evaluation is still pending.
 
+The distinct FineWeb-Edu fresh-real pilot `20261106T151257Z-full-fresh-real` completed ten one-epoch cycles and passed its predeclared one-seed validation-stability criterion. The [completion receipt](../docs/validation/2026-11-06_fineweb-full-completion-status.json) verifies validation PPL 27.96224 → 26.68859, test PPL 28.34572 → 27.03484, recorded handoffs and provider shutdown. Small pinned metadata were recovered. Authored analysis and full-run bulk restoration/re-evaluation remain pending; preserve its recovery storage.
+
 The Week 3 pair's logical arms are `<pair-id>-continued` and `<pair-id>-reset-s0`; use the parent ID for cloud operations. Shared measurements are reused evidence, not independent replicate runs. Historical cross-GPU comparisons differ from the later explicitly matched-environment comparisons.
+
+## Cross-corpus evaluation
+
+| Evaluation | Question | Result and recovery |
+| --- | --- | --- |
+| `20261106T171304Z-cross-corpus-evaluation` | Original OPT versus its checkpoint after one 640,000-token FineWeb-Edu epoch, five fixed test corpora | [Report](20261106T171304Z-cross-corpus-evaluation/report.md), [table/figure](20261106T171304Z-cross-corpus-evaluation/analysis/), [corpus bank](../corpora/README.md). PPL decreased on all five sources. Zero new training updates. All evaluation inputs/results restored, temporary resources removed. |
 
 ## GPU validation
 
 | Acceptance | Scope | Report and recovery |
 | --- | --- | --- |
+| `20261107T140623Z-smoke-completion64-mixed85` | 85% own-checkpoint synthetic targets, three terminal epochs with persistent optimization | [Report and plots](20261107T140623Z-smoke-completion64-mixed85/validation/report.md), [Setup receipt](../docs/validation/2026-11-07_completion-mixed85-setup.json), [shared handoff](../docs/fineweb-high-fractions-handoff.md). All sixteen checks passed, with complete private stage/optimizer restoration and reproduced held-out evaluation. Temporary resources removed; full experiment separately launched. |
+| `20261107T141453Z-smoke-completion64-mixed90` | 90% own-checkpoint synthetic targets, three terminal epochs with persistent optimization | [Report and plots](20261107T141453Z-smoke-completion64-mixed90/validation/report.md), [Setup receipt](../docs/validation/2026-11-07_completion-mixed90-setup.json), [shared handoff](../docs/fineweb-high-fractions-handoff.md). All sixteen checks passed, with complete private stage/optimizer restoration and reproduced held-out evaluation. Temporary resources removed; full experiment separately launched. |
+| `20261107T141842Z-smoke-completion64-mixed95` | 95% own-checkpoint synthetic targets, three terminal epochs with persistent optimization | [Report and plots](20261107T141842Z-smoke-completion64-mixed95/validation/report.md), [Setup receipt](../docs/validation/2026-11-07_completion-mixed95-setup.json), [shared handoff](../docs/fineweb-high-fractions-handoff.md). All sixteen checks passed, with complete private stage/optimizer restoration and reproduced held-out evaluation. Temporary resources removed; full experiment separately launched. |
+| `20261107T111914Z-smoke-completion64-mixed80` | Single 80% synthetic continued completion condition, three cycles with 256 synthetic/64 real targets | [Validation report](20261107T111914Z-smoke-completion64-mixed80/report.md), [setup receipt](../docs/validation/2026-11-07_completion-mixed80-setup.json). All sixteen GPU/provider checks, 481 regression tests and three host launcher checks passed. Full private checkpoint/optimizer cold restoration and held-out evaluation were reproduced. Temporary resources were removed. Estimated validation spending USD 0.16467. |
+| `20261106T191336Z-smoke-completion64` | Matched FineWeb real/synthetic completions, three fresh chunks and one epoch per chunk in both arms | [Report and square plots](20261106T191336Z-smoke-completion64/report.md), [actual data examples](20261106T191336Z-smoke-completion64/dataset_examples.json), [setup receipt](../docs/validation/2026-11-06_completion64-setup.json). All 429 tests and thirteen GPU/provider checks passed. Both private trained-arm/optimizer backups were restored and re-evaluated. Detached handoff, worker/generation recovery and actual watchdog shutdown passed. All temporary validation resources were removed. |
+| `20261106T145728Z-smoke-fresh-real` | FineWeb capacity fallback to RTX PRO 4000 Blackwell, same runtime, new GPU protocol | [Acceptance receipt](../docs/validation/2026-11-06_fineweb-blackwell-acceptance.json). Three cycles, both exits, pinned bulk restore/re-evaluation, detached progress and actual watchdog shutdown passed; temporary resources removed. The subsequently authorized [full pilot launch](../docs/validation/2026-11-06_fineweb-full-launch.json) has separate startup evidence. |
+| `20261106T143315Z-smoke-fresh-real` | FineWeb-Edu, three fresh collections / three one-epoch cycles, continuous optimizer/scheduler | [Report and square figures](20261106T143315Z-smoke-fresh-real/report.md), [small records](20261106T143315Z-smoke-fresh-real/records/), [setup receipt](../docs/validation/2026-11-06_fineweb-setup.json). Private bulk restoration, optimizer reload, held-out re-evaluation, detached progress and actual watchdog shutdown passed; temporary resources removed. Full pilot awaits launch. |
 | `20261020T193206Z-smoke` | Original G0-G2 setup | [Week 1 validation](week1_validation.md); historical bulk restore/re-evaluation |
 | `20261026T182856Z-smoke-continued` | Two continued training cycles and recovery | [Report](20261026T182856Z-smoke-continued/report.md); remote bulk restore/re-evaluation |
 | `20261027T202525Z-smoke-reset-s0` | Earlier-source reset acceptance | [Report](20261027T202525Z-smoke-reset-s0/report.md); superseded source certificate |
@@ -54,3 +73,7 @@ reports/<run-id>/
 ```
 
 Small `.npy` files already committed here are fixed scientific probes, not bulk training datasets. Do not remove them by extension. New analysis must cite its input hashes and write a new destination. [Analysis tools](../scripts/analysis/README.md) document reproduction without training or cloud access.
+
+## FineWeb continuation-mixture validation
+
+[20261106T235904Z-smoke-completion64-mixtures](20261106T235904Z-smoke-completion64-mixtures/report.md) validates the 50/50 and 20/80 own-checkpoint conditions. Six terminal epochs, deterministic mixture reconstruction, recovery, both private full restores/re-evaluation and independent shutdown passed. Temporary resources were removed. Full-data mixture results await the later launch.

@@ -2,6 +2,14 @@
 
 These tools read saved evidence. They do not train, provision resources or edit Google Docs. Use new output directories; original reports/raw records remain preserved. Each rebuilt report records input/output hashes, script identity, Git revision and environment.
 
+## FineWeb real-only validation
+
+```powershell
+python scripts/analysis/build_fresh_real_validation.py --out .state/fineweb-report-review
+```
+
+Verifies the [published small-record manifest](../../reports/20261106T143315Z-smoke-fresh-real/publication_manifest.json) and regenerates CSV/JSON, five square figures and a short report into a new directory. It uses frozen records only. The [validation report](../../reports/20261106T143315Z-smoke-fresh-real/report.md) distinguishes smoke execution checks from the later full-data stability assessment. Model weights, optimization state, token arrays and original document text remain in private backups.
+
 ## Mixed-data acceptance report
 
 Rebuild the 50/50 smoke report and figures from its committed publication:

@@ -1,0 +1,158 @@
+{
+  "recorded_at": 1794010345.3808353,
+  "run_id": "20261106T235904Z-smoke-completion64-mixtures",
+  "resources": {
+    "run_id": "20261106T235904Z-smoke-completion64-mixtures",
+    "launch_id": "20261106T235904048662Z",
+    "kind": "smoke",
+    "pod_id": "qai2rkhzmtibuo",
+    "volume_id": "zhtnxtuu68",
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1794009545.3161426,
+    "quoted_gpu_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6652671232876711,
+    "compute_hourly_usd": 0.6586506849315067,
+    "volume_hourly_usd": 0.005753424657534247,
+    "network_volume_gb": 60,
+    "volume_created_at": 1794009544.050665,
+    "session_allowance_usd": 0.5,
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "code_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+    "starting_balance_usd": 39.8677529791,
+    "remote_root": "/workspace/runs/20261106T235904Z-smoke-completion64-mixtures",
+    "runtime_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+    "git_commit": "41959902652229d30cabbc19bc4b3a9ddd3d16bd",
+    "configuration_sha256": "2c39d734927c50aa4bbc86dc2702be8e49e91da85352e593b305b8e2c573feb2",
+    "workflow": "completion_comparison",
+    "allocation": "fineweb_completion64_mixtures",
+    "acceptance_campaign": "fineweb_completion64_mixtures_acceptance",
+    "actual_pod_hourly_usd": 0.57,
+    "verified_ssh_direct": {
+      "command": "ssh root@213.173.102.13 -p 35771",
+      "host": "213.173.102.13",
+      "port": 35771,
+      "username": "root"
+    }
+  },
+  "protocol_fingerprint": "c411a4e72d8215365c4f0acc84809bcacd3f20af8bdbe627d33d714af6660c13",
+  "launch_verification": {
+    "watchdog": {
+      "pid": 139,
+      "time": 1794009635.3476193,
+      "deadline": 1794012250.9962175
+    },
+    "supervisor": {
+      "pid": 253,
+      "child_pid": 255,
+      "time": 1794009635.2218912
+    },
+    "status": {
+      "state": "running",
+      "phase": "preparation",
+      "time": 1794009635.0412357
+    },
+    "detached_progress": {
+      "pod_id": "qai2rkhzmtibuo",
+      "launch_id": "20261106T235904048662Z",
+      "run_id": "20261106T235904Z-smoke-completion64-mixtures",
+      "progress_after_disconnect": true,
+      "observations": [
+        {
+          "time": 1794009643.3959944,
+          "status": {
+            "state": "running",
+            "phase": "preparation",
+            "time": 1794009635.0412357
+          },
+          "child_status": {
+            "state": "running",
+            "phase": "preparation",
+            "time": 1794009635.0412357
+          },
+          "event_bytes": 0,
+          "epochs": 0,
+          "new_epochs": 0,
+          "finite_new_training": false,
+          "completed_new_stages": 0,
+          "supervisor": {
+            "pid": 253,
+            "child_pid": 255,
+            "time": 1794009641.2525945
+          },
+          "watchdog": {
+            "pid": 139,
+            "time": 1794009641.446287,
+            "deadline": 1794012250.9962175
+          }
+        },
+        {
+          "time": 1794009777.3700745,
+          "status": {
+            "state": "running",
+            "phase": "mixed50",
+            "active_child": "20261106T235904Z-smoke-completion64-mixtures-mixed50",
+            "time": 1794009739.8148415
+          },
+          "child_status": {
+            "state": "running",
+            "generation": 1,
+            "stage": "training",
+            "time": 1794009753.2352278
+          },
+          "event_bytes": 1146,
+          "epochs": 1,
+          "new_epochs": 1,
+          "finite_new_training": true,
+          "completed_new_stages": 1,
+          "supervisor": {
+            "pid": 253,
+            "child_pid": 255,
+            "time": 1794009777.063279
+          },
+          "watchdog": {
+            "pid": 139,
+            "time": 1794009774.614016,
+            "deadline": 1794012250.9962175
+          }
+        }
+      ],
+      "observations_sha256": "53b82eed1d32cdc1fe526f76d39075d780b2d62034ed4b23cc2d6a3780286ba2",
+      "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+    }
+  },
+  "storage_admission": {
+    "quota_bytes": 100000000000,
+    "used_bytes": 18627598570,
+    "required_additional_bytes": 40000000000,
+    "reserve_bytes": 10000000000,
+    "available_after_reserve_bytes": 71372401430,
+    "admitted": true,
+    "namespace": "iib-model-collapse-bill",
+    "repositories": {
+      "model": {
+        "repo": "iib-model-collapse-bill/iib-model-collapse-models",
+        "revision": "7597837bdf2c2e04c4b582a00390f211a93019c0",
+        "lfs_bytes_including_history": 6512734800,
+        "current_native_bytes": 13877
+      },
+      "dataset": {
+        "repo": "iib-model-collapse-bill/iib-model-collapse-data",
+        "revision": "d3dcf2cac8f92a106f0f801119fac87c142032e2",
+        "lfs_bytes_including_history": 12108153796,
+        "current_native_bytes": 6696097
+      }
+    },
+    "checked_at": 1794009542.9455283,
+    "scope": "All repositories in the dedicated experiment namespace must be supplied. Native Git history and ordinary metadata growth are covered by the reserve."
+  },
+  "protected_run_id": "20261106T193918Z-full-completion64",
+  "protected_pod_id": "udbovqu03vp3h0",
+  "protected_volume_id": "s9pmtnqkir",
+  "full_training_launched": false,
+  "gpu_acceptance_complete": false
+}

@@ -19,7 +19,7 @@ All comparisons must use matching tokenisation, context, masks, output counts an
 | Throughput / peak memory | Tokens or continuations per second; peak allocated GPU bytes | Record warmed-up workload, batch sizes, precision and hardware |
 | Runtime / cost | Measured stage durations; separate quoted/estimated USD and observed account debit | Account debit may include retained storage and is not an itemized compute invoice |
 
-## Exact scopes
+## Historical WikiText scopes
 
 An independent 64-token real block has **63 scored targets**. Full real train, validation and test arrays contain 2,390,598, 247,086 and 283,122 such targets respectively.
 
@@ -34,6 +34,26 @@ The [28 October audit](audits/2026-10-28_graph_and_protocol_audit.md) found that
 The [Week 3 final-epoch-5 report](../reports/20261030T180755Z-full-paired-final5/report.md) identifies a different concentration: continued B10 has 38.62% newline tokens versus reset A10 at 2.80%, including ten entirely newline outputs. Excluding newlines reverses the entropy ordering; those filtered samples have unequal retained token/window counts and are sensitivity checks only. Entirely newline outputs have frozen-S0 mean NLL 0.465, illustrating why a low reference score is not a quality verdict. Preserve the primary raw-token curves and state exactly which filtering, denominator and sample scope a supplementary graph uses.
 
 At generation Sk, probe metrics describe D(k+1)-style output. Real-text evaluation at Sk measures the model after its training on Dk. Do not attribute a model's own output dataset to the training stage that already produced it.
+
+## FineWeb variable-length measurements
+
+The fresh-real workflow uses its own fixed document collections and sequences up to 512 positions. For attention mask `m` and token sequence `x`, score target positions `t = 1,...,L-1` only where `m[t] = 1`. Corpus NLL is `sum(-m[t] log p(x[t] | x[:t])) / sum(m[t])`, pooled over all sequences. Perplexity is its exponential. Every sequence begins with BOS, so its first source token is scored. EOS contributes a target only at a genuine document ending.
+
+- Source-text count measures tokenizer output before inserting specials or padding. This is the per-cycle training quota.
+- Non-padding count includes inserted BOS/EOS. Scored-target count excludes each sequence's initial BOS. Padding contributes to neither attention nor loss.
+- Optimization loss averages token losses collected while weights change during training. Post-epoch training NLL re-evaluates the completed model with dropout disabled on that cycle's data.
+- The generalization gap is fixed validation NLL minus post-epoch training NLL, in nats per scored token. Training collections change across cycles and can differ in difficulty.
+- The exploratory stability threshold is validation PPL at most 1.05 times its initial value throughout the full pilot. Test PPL remains a reporting measure. The small smoke trajectory establishes pipeline behaviour.
+
+## Matched FineWeb completion measurements
+
+The `completion_comparison` workflow supplies BOS, 64 prompt tokens and 64 continuation tokens. All 129 positions are visible through attention. Loss masks select positions 65–128, so the logit at position 64 predicts the first continuation token. Each example contributes exactly 64 targets. Corpus continuation NLL is the sum of their negative log-probabilities divided by the total target count. Perplexity is its exponential.
+
+- Real and synthetic arms train on the same prompt chunks and ordering. The real targets are the following source tokens. Synthetic targets are frozen outputs of the preceding synthetic checkpoint.
+- Primary validation/test scores always use the same real continuations. Their full scopes are 7,322 / 7,151 examples and 468,608 / 457,664 scored targets. Median/P95 example NLL summarize passage difficulty.
+- Generated-output statistics use a fixed 256-document validation probe. They score only generated continuations. Pooled diversity/entropy, within-output repetition and newline concentration retain separate denominators.
+- Secondary FineWeb, WikiText-103, C4, PG-19 and AG News scores reuse the frozen 512-token full-text arrays. Their context and scoring objective differ from the primary continuation metric.
+- The GPU smoke uses 256 pairs per training cycle, 64 held-out pairs per split and a 64-document probe. Its trajectory validates execution. The full scientific comparison remains a separate run.
 
 ## What the existing results support
 

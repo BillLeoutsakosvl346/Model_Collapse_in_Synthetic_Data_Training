@@ -1,0 +1,146 @@
+{
+  "run_id": "20261106T191336Z-smoke-completion64",
+  "setup_complete": true,
+  "technical_readiness": true,
+  "affordable_at_handoff": true,
+  "offline_tests_passed": 429,
+  "acceptance_checks": {
+    "six_terminal_epochs": true,
+    "direct_masked_nll": true,
+    "generation_shard_recovery": true,
+    "training_recovery": true,
+    "matched_initial_weights_and_prompts": true,
+    "coordinator_recovery": true,
+    "continuation_only_loss": true,
+    "restored_evaluation": true,
+    "all_handoffs_and_optimizer_states": true,
+    "both_private_restores": true,
+    "completed_stages_unchanged": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "runtime_sha256": "35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497",
+  "protocol_fingerprint": "b22e6d66d82ea7393ee265b757a0d11f9e1d16f5519059faf798e0e285ab45ac",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "gpu_validation": {
+    "training_stages": 6,
+    "epochs": 6,
+    "cycles_per_arm": 3,
+    "pairs_per_cycle": 256,
+    "heldout_pairs_per_split": 64,
+    "targets_per_pair": 64
+  },
+  "bank": {
+    "run_id": "completion64-bank-4a64334cc9e9224b",
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "revisions": {
+      "model": "44a68acbee36f23450eef4cba670f221a6d678b9",
+      "dataset": "e331d80522cc5dc64df04f2f21e57b26d8c873bd"
+    },
+    "artifact_index_sha256": "9c312b19903d1a875e78144d2cadcc4fb841d97dc2034923e13153724ef56bbf",
+    "manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+    "contract": "4a64334cc9e9224be880545aeaea525c4cad0a48179fc7abce0703e12021a0b6"
+  },
+  "restorations": {
+    "real": {
+      "run_id": "20261106T191336Z-smoke-completion64-real",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "787b974a91ddaf4fe08b51939b58efd46e3d41a2",
+        "dataset": "52e04fbc9e980aebca9372aec5d71d007d1eb139"
+      },
+      "artifact_index_sha256": "40f1421e666dfd90d750795bf92d97fa5a6318896c18380340a9e66839b268b5",
+      "indexed_files": 61,
+      "verified_files": 61,
+      "verified_bytes": 4510494350,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/completion_acceptance_restore/20261106T191336Z-smoke-completion64-real"
+    },
+    "synthetic": {
+      "run_id": "20261106T191336Z-smoke-completion64-synthetic",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "869ec25c4d1c58928c2342c9828011593e20274d",
+        "dataset": "67c7dcc7439ddee13745a8c83c49e0844640899d"
+      },
+      "artifact_index_sha256": "8f7d61e22cb946895254267cf28b2bec8ff6cd01968961de1a3d6aea74da992a",
+      "indexed_files": 79,
+      "verified_files": 79,
+      "verified_bytes": 4510895150,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/completion_acceptance_restore/20261106T191336Z-smoke-completion64-synthetic"
+    }
+  },
+  "provider_shutdown": {
+    "provider_pod_id": "dzkrowcgux0voy",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Fri Nov 06 2026 19:32:39 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1793993559.0,
+    "observed_at": 1793993584.561685
+  },
+  "temporary_resources_removed": {
+    "run_id": "20261106T191336Z-smoke-completion64",
+    "pod_removed": true,
+    "volume_removed": true,
+    "account_balance_delta_usd": 0.17018413439999946
+  },
+  "all_attempts_conservative_usd": 0.29613626663115733,
+  "account": {
+    "clientBalance": 10.6614911757,
+    "currentSpendPerHr": 0.031,
+    "isAutoPayEnabled": false,
+    "enableBackupPayments": false
+  },
+  "full_forecast": {
+    "estimated_hours": 3.7951840023813856,
+    "estimated_compute_and_running_storage_usd": 2.195487950966656,
+    "unique_training_stages": 20,
+    "epochs": 20,
+    "full_generation_stages": 10,
+    "probe_sets": 21,
+    "training_target_exposures": 12800000,
+    "forecast_margin": 1.5,
+    "historical_storage_during_run_usd": 0.11853451404714122,
+    "seven_day_volume_storage_usd": 0.9665753424657535,
+    "padded_running_requirement_usd": 2.5248111436116543
+  },
+  "remaining_admissible_running_allowance_usd": 7.667354128769475,
+  "report": "reports\\20261106T191336Z-smoke-completion64",
+  "generated_analysis": "reports\\20261106T191336Z-smoke-completion64\\generated\\20261106T193407Z-366d158c",
+  "dataset_examples": "reports\\20261106T191336Z-smoke-completion64\\dataset_examples.json",
+  "preliminary_recoveries": [
+    "docs/validation/2026-11-06_completion64-preliminary-recovery.json",
+    "docs/validation/2026-11-06_completion64-memory-recovery.json"
+  ],
+  "limitations": [
+    "One seed and a reduced acceptance scope establish pipeline validation; full scientific results await launch",
+    "Historical data pretraining exposure and human authorship are unaudited",
+    "Bulk trained checkpoints and optimizer states were restored/re-evaluated on the GPU; locally the shared 0.5 GB baseline and small metadata/examples were recovered",
+    "Cleanup currently requires the shared baseline coordinator artifacts in full, alongside verified child cloud restorations"
+  ],
+  "full_training_launched": false,
+  "recorded_at": 1793993660.4985323
+}

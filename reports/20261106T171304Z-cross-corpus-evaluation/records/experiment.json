@@ -1,0 +1,419 @@
+{
+  "source_run_id": "20261106T151257Z-full-fresh-real",
+  "source_repos": {
+    "model": "Bill11235813/iib-model-collapse-week1-models",
+    "dataset": "Bill11235813/iib-model-collapse-week1-data"
+  },
+  "source_revisions": {
+    "model": "f4ec275e8c3077da3480cc7071e83fd2244e55af",
+    "dataset": "001430f851f1b104fd4ec2a87b66c35c48a15682"
+  },
+  "checkpoint_index_sha256": "f1d392049ac64ce6b23bc1a2f90891bc7191ac9b017e760a6037dba3a5b7788b",
+  "bank_manifest_sha256": "5c30545587cdad7497314868cfa10117aedb59d0231f459135b6a97b9f04a275",
+  "bank_contract": "42627bee2ea70792783c736842840c1e69f5cc11f464e018f60ddb0e49b7eb4f",
+  "model_config": {
+    "workflow": "fresh_real",
+    "kind": "full",
+    "initialization": "continued",
+    "synthetic_fraction": 0.0,
+    "seed": 42,
+    "generations": 10,
+    "epochs": 1,
+    "checkpoint_selection": "final_epoch",
+    "model": "facebook/opt-125m",
+    "model_revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+    "dataset": "HuggingFaceFW/fineweb-edu",
+    "dataset_revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+    "dataset_config": "sample-10BT",
+    "dataset_files": [
+      "sample/10BT/000_00000.parquet",
+      "sample/10BT/001_00000.parquet",
+      "sample/10BT/002_00000.parquet",
+      "sample/10BT/003_00000.parquet",
+      "sample/10BT/004_00000.parquet",
+      "sample/10BT/005_00000.parquet",
+      "sample/10BT/006_00000.parquet",
+      "sample/10BT/007_00000.parquet",
+      "sample/10BT/008_00000.parquet",
+      "sample/10BT/009_00000.parquet",
+      "sample/10BT/010_00000.parquet",
+      "sample/10BT/011_00000.parquet",
+      "sample/10BT/012_00000.parquet",
+      "sample/10BT/013_00000.parquet"
+    ],
+    "shuffle_buffer": 10000,
+    "max_sequence_length": 512,
+    "source_tokens_per_cycle": 640000,
+    "validation_documents": 1000,
+    "test_documents": 1000,
+    "learning_rate": 5e-06,
+    "min_learning_rate": 1e-06,
+    "weight_decay": 0.01,
+    "microbatch": 4,
+    "effective_batch": 16,
+    "eval_batch": 8,
+    "precision": "bf16",
+    "storage_backend": "network",
+    "required_image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "required_gpu": "NVIDIA RTX PRO 4000 Blackwell"
+  },
+  "input_files": {
+    "inputs/fineweb_edu/tokens.npy": "2f61b814ff72db6e50715d5bb123fb0cb611317ec5d57e06a9e71b9b6d84a68f",
+    "inputs/fineweb_edu/masks.npy": "0ec455806aa68f22f65aeb5e4d69b9b66a55f36b0b4eb99e20c9565703a2b830",
+    "inputs/fineweb_edu/manifest.json": "5d7b80352338ad9fe5801fd9d5147a84306f41dd350eba12db4ba5214a4a901c",
+    "inputs/wikitext103/tokens.npy": "9ded2e1d3b419daba9e2c4d83c2ebac5bc180fa8bd153b79d92f65fb737a9887",
+    "inputs/wikitext103/masks.npy": "5171eaec2af71d76fa7ccf748b15c59dd636874c828b6992da5a7246d1a152ce",
+    "inputs/wikitext103/manifest.json": "8a313b1f91687150d7c8ffc6e28b471c8561492048ce06b8f633e441b5cd0208",
+    "inputs/c4_en/tokens.npy": "b309d5fd834b98e223969466ce2c07191f8aad113232d7fca9a13385b0b0a6dd",
+    "inputs/c4_en/masks.npy": "25c9b71a875899eae0771290a2948970f5ef8b369624624dce03bbd69d7ef27f",
+    "inputs/c4_en/manifest.json": "8e6f394111fd7cfaa8c69ec5978eb59c4e24b358d904f5e4422a720e899f461b",
+    "inputs/pg19/tokens.npy": "2f8db2dd1a456a35fe80c248485502f77a330a4e6d29d53b6796af099070cef8",
+    "inputs/pg19/masks.npy": "a3948ac9e893b10910806bfdaab8bc389e7ab7ff2ae7bbe3f34075fc1893e17b",
+    "inputs/pg19/manifest.json": "623f0f7d3f4713f67c07cee4c813f8474d347fe166b4e381506ce5e4542d0a1e",
+    "inputs/ag_news/tokens.npy": "ae9fe92657688be931f56b30db270c40033ae4d5b062c50c85d4b011b648870e",
+    "inputs/ag_news/masks.npy": "faef2d2e0ff793eb007e45446b6829ec85d2929a4d88c82c5798632c2b02aabf",
+    "inputs/ag_news/manifest.json": "63ba282d0daff27929282b2af851b2f3bcc236d3179332ba47ab704e9e6b90a6"
+  },
+  "collections": {
+    "fineweb_edu": {
+      "corpus": "fineweb_edu",
+      "role": "test",
+      "documents": 1000,
+      "sequences": 2422,
+      "source_text_tokens": 978319,
+      "special_tokens": 3422,
+      "non_padding_tokens": 981741,
+      "scored_tokens": 979319,
+      "source_coverage": {
+        "source": {
+          "repo": "HuggingFaceFW/fineweb-edu",
+          "revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+          "adapter": "existing_fineweb",
+          "split_policy": "exact_saved_validation_and_test__training_from_saved_training_documents"
+        },
+        "role": "test",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\fineweb_edu\\test",
+        "files": {
+          "data/test/documents.jsonl": {
+            "sha256": "7354601dd352f61bb8e133d2f0df365ccf500c26847a0c89f4480195717861a8"
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "2f61b814ff72db6e50715d5bb123fb0cb611317ec5d57e06a9e71b9b6d84a68f",
+        "masks.npy": "0ec455806aa68f22f65aeb5e4d69b9b66a55f36b0b4eb99e20c9565703a2b830",
+        "documents.jsonl": "9d924ff010f4eb76888d26847c90d3c3af9272765c4b8a668112331a95764c16"
+      }
+    },
+    "wikitext103": {
+      "corpus": "wikitext103",
+      "role": "test",
+      "documents": 34,
+      "sequences": 268,
+      "source_text_tokens": 128000,
+      "special_tokens": 301,
+      "non_padding_tokens": 128301,
+      "scored_tokens": 128033,
+      "source_coverage": {
+        "source": {
+          "repo": "Salesforce/wikitext",
+          "revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+          "adapter": "wikitext",
+          "split_policy": "official_train_validation_test__sampled_document_subsets"
+        },
+        "role": "test",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\wikitext103\\test",
+        "files": {
+          "wikitext-103-raw-v1/test-00000-of-00001.parquet": {
+            "rows_read": 4358
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "9ded2e1d3b419daba9e2c4d83c2ebac5bc180fa8bd153b79d92f65fb737a9887",
+        "masks.npy": "5171eaec2af71d76fa7ccf748b15c59dd636874c828b6992da5a7246d1a152ce",
+        "documents.jsonl": "705422090557ed0d8f33b02f746599455aaed14a7ac02131c32a3326d7126e8d"
+      }
+    },
+    "c4_en": {
+      "corpus": "c4_en",
+      "role": "test",
+      "documents": 274,
+      "sequences": 422,
+      "source_text_tokens": 128000,
+      "special_tokens": 695,
+      "non_padding_tokens": 128695,
+      "scored_tokens": 128273,
+      "source_coverage": {
+        "source": {
+          "repo": "allenai/c4",
+          "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+          "adapter": "c4",
+          "split_policy": "official_train__official_validation_partitioned_by_url_or_text_hash"
+        },
+        "role": "test",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\c4_en\\test",
+        "files": {
+          "en/c4-validation.00007-of-00008.json.gz": {
+            "rows_read": 2506
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "b309d5fd834b98e223969466ce2c07191f8aad113232d7fca9a13385b0b0a6dd",
+        "masks.npy": "25c9b71a875899eae0771290a2948970f5ef8b369624624dce03bbd69d7ef27f",
+        "documents.jsonl": "fc8fa5fc20b1dbebb1661ca7713229ff41d2465fd53292afeff9442d349d48c2"
+      }
+    },
+    "pg19": {
+      "corpus": "pg19",
+      "role": "test",
+      "documents": 8,
+      "sequences": 258,
+      "source_text_tokens": 128000,
+      "special_tokens": 258,
+      "non_padding_tokens": 128258,
+      "scored_tokens": 128000,
+      "source_coverage": {
+        "source": {
+          "repo": "deepmind/pg19",
+          "revision": "4d28bd77e66947ad3835cf78ed7aaeb4dd87ad8b",
+          "adapter": "pg19",
+          "split_policy": "official_train_validation_test__book_disjoint__sampled_windows"
+        },
+        "role": "test",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\pg19\\test",
+        "split_listing_sha256": "c84c08139695f3312df83239a1a41e7b9cde1baf7c08bfcf230ae09eaaf18d8c",
+        "files": {
+          "test/55339.txt": {
+            "generation": "1568646215205740",
+            "bytes": 663065,
+            "sha256": "016fc415740042c97a07ef87779facf1ac5f73adbd87f5f733a92767aa7c9e59"
+          },
+          "test/26183.txt": {
+            "generation": "1568646215051617",
+            "bytes": 475456,
+            "sha256": "b73ddfcfe10430b96635b021312cbe21eaa6227bf1614b39846d4234d9e12a66"
+          },
+          "test/29594.txt": {
+            "generation": "1568646213853071",
+            "bytes": 86075,
+            "sha256": "f4590fbca52dedf54ce45d1ef6ad6d01875d8cde22796213c40dd01dc971696a"
+          },
+          "test/40700.txt": {
+            "generation": "1568646214899570",
+            "bytes": 148045,
+            "sha256": "c8dbe3563ca688278bcfa09b673bd177e2500ecb243cfb34a00690823b113c9c"
+          },
+          "test/38106.txt": {
+            "generation": "1568646215169516",
+            "bytes": 391972,
+            "sha256": "c30406db957f15aecdbafc1d9a2a4c2186f1e9762ccb0042ea1011cbc66c814c"
+          },
+          "test/40579.txt": {
+            "generation": "1568646215120328",
+            "bytes": 355979,
+            "sha256": "6564c4b893231d7b39a195e10d734a53506350fb6c2af16105a67365eded11cc"
+          },
+          "test/53345.txt": {
+            "generation": "1568646215121737",
+            "bytes": 347642,
+            "sha256": "bfb2a98da02fbb42f1f8394ee09119cdffe75ab98fbfcd383a4b1fe86efc3382"
+          },
+          "test/28444.txt": {
+            "generation": "1568646215053698",
+            "bytes": 335975,
+            "sha256": "f7bd54971caf53bc3ca651cacbaaefae402812b56918f6c4b5dcaeb6a279864f"
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "2f8db2dd1a456a35fe80c248485502f77a330a4e6d29d53b6796af099070cef8",
+        "masks.npy": "a3948ac9e893b10910806bfdaab8bc389e7ab7ff2ae7bbe3f34075fc1893e17b",
+        "documents.jsonl": "cf6d28481c92189cbe79c3329e4f544499192c43110a4dd2c75f1fc39b1229a4"
+      }
+    },
+    "ag_news": {
+      "corpus": "ag_news",
+      "role": "test",
+      "documents": 2451,
+      "sequences": 2451,
+      "source_text_tokens": 128000,
+      "special_tokens": 4901,
+      "non_padding_tokens": 132901,
+      "scored_tokens": 130450,
+      "source_coverage": {
+        "source": {
+          "repo": "fancyzhx/ag_news",
+          "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+          "adapter": "ag_news",
+          "split_policy": "official_test__official_training_partitioned_by_normalized_text_hash"
+        },
+        "role": "test",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\ag_news\\test",
+        "files": {
+          "data/test-00000-of-00001.parquet": {
+            "rows_read": 3454
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 3,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "ae9fe92657688be931f56b30db270c40033ae4d5b062c50c85d4b011b648870e",
+        "masks.npy": "faef2d2e0ff793eb007e45446b6829ec85d2929a4d88c82c5798632c2b02aabf",
+        "documents.jsonl": "ee910a5cca906238fe26fc5bba768954e4295e2ae7a1dec14c88a361250574aa"
+      }
+    }
+  },
+  "expected_weights": {
+    "pretrained": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+    "fineweb_epoch1": "a7fd9207463f2130ee72db9cfc2481dd54f7d4a6cd7f8b22f45ef93e999057bd"
+  },
+  "original_fineweb_metrics": {
+    "pretrained": {
+      "generation": 0,
+      "weights_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+      "validation": {
+        "nll_sum": 3335648.251834465,
+        "scored_tokens": 1001439,
+        "loss": 3.330855151271785,
+        "perplexity": 27.96224343001504,
+        "seconds": 12.718893507029861,
+        "mean_sequence_perplexity": 41.63215880452721,
+        "std_sequence_perplexity": 138.99195014665187,
+        "context_tokens": 512
+      },
+      "test": {
+        "nll_sum": 3275308.9365735445,
+        "scored_tokens": 979319,
+        "loss": 3.3444760456741314,
+        "perplexity": 28.34571991255706,
+        "seconds": 12.715616623172536,
+        "mean_sequence_perplexity": 60.415143423132015,
+        "std_sequence_perplexity": 626.2215925185624,
+        "context_tokens": 512
+      },
+      "checkpoint_files": {
+        "config.json": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+        "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+        "model.safetensors": "b3a67b42504e0c101c739fe6ef0d57eb3a9ed90267e41aba8019149a472ceae1"
+      }
+    },
+    "fineweb_epoch1": {
+      "generation": 1,
+      "training": {
+        "generation": 1,
+        "initial_weights_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+        "selected_weights_sha256": "a7fd9207463f2130ee72db9cfc2481dd54f7d4a6cd7f8b22f45ef93e999057bd",
+        "input_tokens_sha256": "b518553c7e7fc7d131e066db5baf6db2ac5e5155c42604b57bfd6b8b0b36de4d",
+        "training_blocks": 1544,
+        "selected_epoch": 1,
+        "best_validation_loss": 3.2972707818225144,
+        "best_validation_epoch": 1,
+        "selected_validation_loss": 3.2972707818225144,
+        "executed_epochs": 1,
+        "terminal_weights_sha256": "a7fd9207463f2130ee72db9cfc2481dd54f7d4a6cd7f8b22f45ef93e999057bd",
+        "training_contract_sha256": "c7828daa396138a614961143d6182dcddc205259cd8820c2bc19716f4f4aeb26",
+        "seconds": 57.801191420992836,
+        "peak_allocated_gpu_bytes": 5539146752,
+        "checkpoint_files": {
+          "config.json": "55580efb6be812e0e5eb93a010ec38f6b915de95396c36e738c93524f4b3903c",
+          "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+          "model.safetensors": "eba25a6e10abed274dee37767dbc17656a2ebf65207195ffd891cf2bb574c058"
+        },
+        "initialization": "continued",
+        "optimizer_initialization": "fresh_pretrained_start",
+        "checkpoint_selection": "final_epoch",
+        "optimizer_parent_sha256": null,
+        "global_step": 97,
+        "total_optimizer_steps": 972,
+        "state_files": {
+          "optimizer_state/cycle.pt": "8c9ae627613aee14ee931d2e027f38dfdbf9dce54cbe9e1ae6d0b7baf69ff849"
+        },
+        "lineage": {
+          "initializer_weights_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+          "optimizer_parent_sha256": null,
+          "data_manifest_sha256": "5f98a20e5ab1b0ca857b3f3d86aec3aad7f2f9a5d803b8d6ba209916b9bb4222"
+        }
+      },
+      "data": {
+        "collection": "cycle_01",
+        "documents": 583,
+        "sequences": 1544,
+        "source_text_tokens": 640000,
+        "non_padding_tokens": 642126,
+        "special_tokens": 2126,
+        "scored_tokens": 640582,
+        "files": {
+          "tokens.npy": "4388f02bca9d2763d1e69dfb0841efeb86c5d9a14f3a0ded65cdbfba3167c0dc",
+          "masks.npy": "62d97e667202f5bcfbc2f344f51e00fa1bb84a2754b51dc5f7dbe5281b30b257",
+          "documents.jsonl": "cb2b642c9d9d342cc967fb17e94ac205b0ca3098a20e4dec2daae9f9255d269a"
+        }
+      },
+      "training_evaluation": {
+        "nll_sum": 2096338.820919498,
+        "scored_tokens": 640582,
+        "loss": 3.2725534294118446,
+        "perplexity": 26.37860933905286,
+        "seconds": 8.057643653126433,
+        "mean_sequence_perplexity": 32.756908042106524,
+        "std_sequence_perplexity": 34.98980190575577,
+        "context_tokens": 512
+      },
+      "validation": {
+        "nll_sum": 3302015.554477557,
+        "scored_tokens": 1001439,
+        "loss": 3.2972707818225144,
+        "perplexity": 27.038743497909834,
+        "seconds": 12.851265982957557,
+        "mean_sequence_perplexity": 34.03080265690957,
+        "std_sequence_perplexity": 36.85833088092697,
+        "context_tokens": 512
+      },
+      "test": {
+        "nll_sum": 3242401.864912737,
+        "scored_tokens": 979319,
+        "loss": 3.310874051164878,
+        "perplexity": 27.409071936415348,
+        "seconds": 12.313423743937165,
+        "mean_sequence_perplexity": 38.12756655533775,
+        "std_sequence_perplexity": 174.813494635103,
+        "context_tokens": 512
+      }
+    }
+  },
+  "evaluator_sha256": "063ab3952829b5777f209cd9a203f20d633861d5dfc1c55e7c29c4d6a4e3f3bf",
+  "training_updates_requested": 0,
+  "fineweb_reproduction_nll_tolerance": 0.0001,
+  "source_gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "evaluation_hardware_policy": "Both checkpoints on one compatible GPU. Exact checkpoint/array hashes required. Historical loss reproduction is checked at 1e-4 NLL on matching hardware. Cross-GPU drift is recorded separately."
+}

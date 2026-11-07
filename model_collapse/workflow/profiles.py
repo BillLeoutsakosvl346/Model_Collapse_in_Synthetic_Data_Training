@@ -17,9 +17,15 @@ def protocol_fingerprint(c):
             value["epochs"] = 5
         # These are explicit smoke scope / operational differences, not model settings.
         for key in ("kind", "generations", "train_blocks", "validation_blocks", "test_blocks",
-                    "generation_shard", "experiment_id", "max_session_usd"):
+                    "generation_shard", "experiment_id", "max_session_usd", "parallel_validation_with"):
             value.pop(key, None)
         value["checkpoint_selection"] = effective_policy
+        if value.get("workflow") == "fresh_real":
+            for key in ("source_tokens_per_cycle", "validation_documents", "test_documents"):
+                value.pop(key, None)
+        if value.get("workflow") in ("completion_comparison", "completion_arm"):
+            for key in ("train_pairs_per_cycle", "evaluation_pairs", "probe_count", "bos_token_id"):
+                value.pop(key, None)
         if "branch_source" in value:
             value["branch_source"] = {"first_new_cycle": value["branch_source"]["first_new_cycle"]}
         return value
@@ -102,6 +108,17 @@ def require_acceptance(c, certificate, runtime):
         raise RuntimeError("Validate the complete smoke test for this source version before a full-data launch")
     if certificate.get("protocol_fingerprint") != protocol_fingerprint(c):
         raise RuntimeError("GPU acceptance does not match the scientific protocol")
+    if c.get("workflow") == "completion_comparison":
+        from .completion import acceptance_checks
+        if (certificate.get("workflow") != "completion_comparison" or
+                any(certificate.get("checks", {}).get(key) is not True for key in acceptance_checks(c))):
+            raise RuntimeError("GPU acceptance must verify both completion arms")
+        return
+    if c.get("workflow") == "fresh_real":
+        from .fresh_real import CHECKS
+        if certificate.get("workflow") != "fresh_real" or any(certificate.get("checks", {}).get(key) is not True for key in CHECKS):
+            raise RuntimeError("GPU acceptance must verify the fresh-real workflow")
+        return
     if c.get("workflow") == "paired":
         checks = certificate.get("checks", {})
         if certificate.get("workflow") != "paired" or any(checks.get(k) is not True for k in PAIR_CHECKS):

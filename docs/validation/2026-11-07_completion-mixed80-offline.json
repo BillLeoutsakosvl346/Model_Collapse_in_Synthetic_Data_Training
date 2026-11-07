@@ -1,0 +1,50 @@
+{
+  "checked_at": 1794050238.1065302,
+  "focused_tests": 31,
+  "failures": 0,
+  "errors": 0,
+  "test_report_sha256": "70290702a97e249143abacd3474374aff97bb71ad81fb9eef9ddefeaf8b37ac0",
+  "single_arm_coordinator_recovery_test_passed": true,
+  "private_storage_evidence": {
+    "current_used_bytes": 70028189002,
+    "quota_bytes": 100000000000,
+    "reserved_bytes": 10000000000,
+    "acceptance_and_full_required_bytes": 19890000000,
+    "derivation": "Thirteen stages at 1.53 GB each. Verified completed full stages occupy about 1.524 GB and smoke stages about 1.504 GB, retaining the additional 10 GB namespace margin."
+  },
+  "frozen_runtime": {
+    "frozen_at": 1794050034.9796875,
+    "runtime_sha256": "0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170",
+    "protocol_fingerprint": "566ba603f84a65d601ead18dc0a1af98420a276a3b14bc0c5ec395c7ff970f59",
+    "source_archive": "C:\\Users\\vleou\\Downloads\\IIB_project\\.state\\code-0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170.tar.gz",
+    "source_archive_sha256": "80644832f0af0992fa6207ed526bdd4b9055bbfc6484f35c7b751049a160230a",
+    "full_config_sha256": "35f390a7e194139dbb58308bcfc5cec36063a594612d72cc59c9b83de43c4494",
+    "full_bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+    "smoke_backup_admission_bytes": 19890000000,
+    "full_backup_admission_bytes": 15300000000,
+    "same_metrics_as_completed_comparisons": true,
+    "forecast_from_previous_gpu_benchmark": {
+      "estimated_hours": 2.510175508556941,
+      "estimated_compute_and_running_storage_usd": 1.4521193387172548,
+      "unique_training_stages": 10,
+      "epochs": 10,
+      "full_generation_stages": 0,
+      "generation_stages": 10,
+      "probe_sets": 11,
+      "training_target_exposures": 6400000,
+      "forecast_margin": 1.5,
+      "generated_training_continuations": 80000,
+      "generated_training_tokens": 5120000
+    }
+  },
+  "full_suite_tests": 481,
+  "full_suite_failures": 0,
+  "full_suite_report_sha256": "4a1c1a4f70de4fb72305b8b613972472049fc9bfb1d0b585b4b7caa3400d491d",
+  "full_suite_checked_at": 1794050324.8500059,
+  "additional_host_launcher_tests": 3,
+  "host_launcher_sha256": "19c4bc0c0a5e7df4168cbb4a78809158b64d57287da7de6b4a138e8e92d132a6",
+  "host_launcher_test_report_sha256": "131846ee823cdf7bf84addbcb1e13ebfdfeef6e3bcd73f07b7002c1b16cd1d42",
+  "startup_observation_seconds": 900,
+  "startup_observation_scope": "Host-only wait for the first 8,000-continuation generation and completed stage. Independent worker watchdog retains the funded deadline.",
+  "duplicate_full_launch_rejected": true
+}

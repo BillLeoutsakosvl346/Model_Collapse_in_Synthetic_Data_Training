@@ -1,0 +1,72 @@
+{
+  "run_id": "20261106T190338Z-smoke-completion64",
+  "recovery": {
+    "all_present_roots_restored": true,
+    "reason": "Coordinator CUDA allocator cache prevented child post-epoch evaluation; training epoch 1 finished, no completed scientific stage",
+    "recoveries": {
+      "20261106T190338Z-smoke-completion64-real": {
+        "run_id": "20261106T190338Z-smoke-completion64-real",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "44bcc28bdf08052ef65c73b8a84c8842a8d4d817",
+          "dataset": "3c8b2e36b3b1476d2ed69ab0e4776f35d12e81a3"
+        },
+        "artifact_index_sha256": "b8e38dff40beeae31844b689e24f4e647c26ff6c4a20c5bad385c16f9549f83e",
+        "indexed_files": 17,
+        "verified_files": 17,
+        "verified_bytes": 1503460105,
+        "metadata_only": false,
+        "scope": "full",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "/workspace/preliminary_private_restore/20261106T190338Z-smoke-completion64-real"
+      },
+      "20261106T190338Z-smoke-completion64": {
+        "run_id": "20261106T190338Z-smoke-completion64",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "44bcc28bdf08052ef65c73b8a84c8842a8d4d817",
+          "dataset": "a114137ee87cda816969945dc81f68c1413afb16"
+        },
+        "artifact_index_sha256": "7666000a9040f57de3012e9ed87899c06f426eded53f9018db8a84938a9aec2d",
+        "indexed_files": 26,
+        "verified_files": 26,
+        "verified_bytes": 504398771,
+        "metadata_only": false,
+        "scope": "full",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json",
+          "watchdog_exit.json"
+        ],
+        "path": "/workspace/preliminary_private_restore/20261106T190338Z-smoke-completion64"
+      }
+    },
+    "full_training_launched": false
+  },
+  "provider_shutdown": {
+    "provider_pod_id": "3s0lif1yftbm1q",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Fri Nov 06 2026 19:12:33 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1793992353.0,
+    "observed_at": 1793992357.0856059
+  },
+  "temporary_pods_removed": [
+    "c74w41xn2lyobz",
+    "3s0lif1yftbm1q"
+  ],
+  "temporary_volume_removed": "biczw89p8f",
+  "acceptance_spend_so_far_usd": 0.08534380693637299,
+  "full_training_launched": false
+}

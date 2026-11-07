@@ -1,0 +1,58 @@
+{
+  "checked_at": 1794011211.4332874,
+  "run_id": "20261106T235904Z-smoke-completion64-mixtures",
+  "runtime_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+  "full_config_acceptance_admission_passed": true,
+  "cli_report_byte_equality": {
+    "metrics.json": true,
+    "metrics.csv": true,
+    "examples.json": true
+  },
+  "data_bank_and_training_engine_bytes_preserved": true,
+  "private_recovery_verified": true,
+  "cleanup_verified": {
+    "pod_removed": true,
+    "volume_removed": true
+  },
+  "protected_run_read_only_status": {
+    "checked_at": 1794011149.0412557,
+    "run_id": "20261106T193918Z-full-completion64",
+    "pod_id": "udbovqu03vp3h0",
+    "provider_status": "RUNNING",
+    "volume_id": "s9pmtnqkir",
+    "read_only": true,
+    "live": {
+      "parent": {
+        "state": "running",
+        "phase": "synthetic",
+        "active_child": "20261106T193918Z-full-completion64-synthetic",
+        "time": 1794007934.8126442
+      },
+      "active_child": {
+        "state": "running",
+        "generation": 5,
+        "stage": "training",
+        "time": 1794011135.935001
+      },
+      "watchdog_age_seconds": 0.9216289520263672,
+      "supervisor_age_seconds": 0.11903715133666992
+    }
+  },
+  "windows_cache": "C:\\hf",
+  "full_training_launched": false,
+  "offline_tests": {
+    "full_suite": 466,
+    "additional_matched_reference_regression": 1
+  },
+  "repository_check": {
+    "passed": true,
+    "markdown_files": 96,
+    "configurations": 32,
+    "publication_manifests": 15
+  },
+  "limitations": [
+    "One-seed smoke validates execution; full-data mixture trajectories await a later launch.",
+    "Cost estimates are conservative; provider itemized billing has not settled.",
+    "Full launch rechecks active resources and current capacity."
+  ]
+}

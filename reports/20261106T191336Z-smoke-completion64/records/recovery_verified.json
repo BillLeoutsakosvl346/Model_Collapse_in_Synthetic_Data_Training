@@ -1,0 +1,83 @@
+{
+  "run_id": "20261106T191336Z-smoke-completion64",
+  "repos": {
+    "model": "Bill11235813/iib-model-collapse-week1-models",
+    "dataset": "Bill11235813/iib-model-collapse-week1-data"
+  },
+  "revisions": {
+    "model": "869ec25c4d1c58928c2342c9828011593e20274d",
+    "dataset": "aceb61750b8872c2fcf8fe6266e431b1255eff26"
+  },
+  "artifact_index_sha256": "b05ee674ef67b02310d1323adac1211df852173302d4451732799ee36585668b",
+  "indexed_files": 46,
+  "verified_files": 43,
+  "verified_bytes": 4647314,
+  "metadata_only": true,
+  "scope": "metadata_only",
+  "preserved_control_files": {
+    "resources.json": {
+      "recovered_path": "fetched_control/896a7023e880d727deade9b620dbdc00c2602a6f71ea9409f0e1cef647f4fb9e/resources.json",
+      "sha256": "896a7023e880d727deade9b620dbdc00c2602a6f71ea9409f0e1cef647f4fb9e",
+      "authoritative_local_sha256": "36b0d763044f491826919589521ffcbe5d383e5b0a59823ef212b226ddf1c482"
+    },
+    "status.json": {
+      "recovered_path": "fetched_control/2233b892003507053d4c7e6315c02bbeaf42a1cb067e37fbaf61a6c95a26c3c6/status.json",
+      "sha256": "2233b892003507053d4c7e6315c02bbeaf42a1cb067e37fbaf61a6c95a26c3c6",
+      "authoritative_local_sha256": "5f9e440afb5eadce4c4730fb348e928154c3f5b88cadf1e6d09870e8e56c4a09"
+    }
+  },
+  "operational_files_outside_immutable_index": [
+    "events.jsonl",
+    "status.json",
+    "watchdog_exit.json"
+  ],
+  "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261106T191336Z-smoke-completion64",
+  "children": {
+    "real": {
+      "run_id": "20261106T191336Z-smoke-completion64-real",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "787b974a91ddaf4fe08b51939b58efd46e3d41a2",
+        "dataset": "52e04fbc9e980aebca9372aec5d71d007d1eb139"
+      },
+      "artifact_index_sha256": "40f1421e666dfd90d750795bf92d97fa5a6318896c18380340a9e66839b268b5",
+      "indexed_files": 61,
+      "verified_files": 40,
+      "verified_bytes": 65901,
+      "metadata_only": true,
+      "scope": "metadata_only",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261106T191336Z-smoke-completion64-real"
+    },
+    "synthetic": {
+      "run_id": "20261106T191336Z-smoke-completion64-synthetic",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "869ec25c4d1c58928c2342c9828011593e20274d",
+        "dataset": "67c7dcc7439ddee13745a8c83c49e0844640899d"
+      },
+      "artifact_index_sha256": "8f7d61e22cb946895254267cf28b2bec8ff6cd01968961de1a3d6aea74da992a",
+      "indexed_files": 79,
+      "verified_files": 49,
+      "verified_bytes": 72333,
+      "metadata_only": true,
+      "scope": "metadata_only",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261106T191336Z-smoke-completion64-synthetic"
+    }
+  }
+}

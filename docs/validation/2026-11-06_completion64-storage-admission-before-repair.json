@@ -1,0 +1,25 @@
+{
+  "quota_bytes": 100000000000,
+  "used_bytes": 4103,
+  "required_additional_bytes": 40000000000,
+  "reserve_bytes": 10000000000,
+  "available_after_reserve_bytes": 89999995897,
+  "admitted": true,
+  "namespace": "iib-model-collapse-bill",
+  "repositories": {
+    "model": {
+      "repo": "iib-model-collapse-bill/iib-model-collapse-models",
+      "revision": "3f34e0e367a87a31ed441a9bd1052e6cc32926fc",
+      "lfs_bytes_including_history": 0,
+      "current_native_bytes": 1559
+    },
+    "dataset": {
+      "repo": "iib-model-collapse-bill/iib-model-collapse-data",
+      "revision": "d5c4c14758cc85402de5b6d19fe405decc6da23c",
+      "lfs_bytes_including_history": 0,
+      "current_native_bytes": 2544
+    }
+  },
+  "checked_at": 1794005633.8838587,
+  "scope": "All repositories in the dedicated experiment namespace must be supplied. Native Git history and ordinary metadata growth are covered by the reserve."
+}

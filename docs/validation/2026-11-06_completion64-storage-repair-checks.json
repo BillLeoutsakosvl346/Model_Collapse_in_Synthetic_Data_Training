@@ -1,0 +1,491 @@
+{
+  "checked_at": 1794006604.7100399,
+  "run_id": "20261106T193918Z-full-completion64",
+  "offline_tests": {
+    "tests": 433,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "junit_xml_sha256": "54ccd9cf4d4e08c1a94100f46e523cc0ad89517b86cf66160c4e783cd686608d",
+  "worker_runtime_sha256": "35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497",
+  "host_files": {
+    "scripts/operations/hf_storage_admission.py": "0bcb9d07487366f8a3762c56b986c7a5f80c7972bac7bfb660e24ec507cefb55",
+    "scripts/operations/resume_completion64.py": "1c7a769d9555255d7e4b622811b3ab1e4787851471fb80703aaf16526ebca290",
+    "tests/test_hf_storage_admission.py": "6bffe4da80b77ddd2575eb118737deda206090e73997f9e0537ebe20952a2388"
+  },
+  "cleanup_inventory": {
+    "source_sha256": "58f258557feffc68fec9e9b8a9ba656e772b0e129caf8efe500446ea6b783dd6",
+    "unique_obsolete_smoke_objects": 35,
+    "candidate_bytes": 21041894941,
+    "objects": {
+      "f1f85e6079caf4c4cb944cadc078c2282b665271b5741a70d8f98461b92648d0": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261020T193206Z-smoke/seed_42/gen_00/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "57214d995acb2ebf70404c81919b0451cbf449d9ada9f8ddbc6541c2fd0ba904": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261020T193206Z-smoke/seed_42/gen_01/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "8f969418652ce3f9fa747aa01e762363ab4c0fdd3c791381ec153e7585ca0b23": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261020T193206Z-smoke/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "20f24c34641b536a76ede860e6bc3c63caca1820f7a3c0c99f092bd49c760a1e": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261026T182856Z-smoke-continued/seed_42/gen_01/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "7bcd1671b203ea1b94d96ae827943bee89bbb9a44a4603d88067d71b6df426e2": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261026T182856Z-smoke-continued/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "f4ed50516082a04fe7d41b6a60ff53c7d5e1bb5c3a51dba37768b9d7dc075280": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261027T202525Z-smoke-reset-s0/seed_42/gen_02/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261027T203952Z-smoke-reset-s0/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "138be27e657958c21ba48ee380c07eb55f88dec3fba41ed4290cf7e3fdac9589": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261027T202525Z-smoke-reset-s0/seed_42/gen_03/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261027T203952Z-smoke-reset-s0/seed_42/gen_03/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "a25308150dfd85a3ae00e3c64b4c2a50b3bfd641dfa1a44586402f840abec547": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261030T172428Z-smoke-paired-final5-continued/seed_42/gen_01/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261030T172428Z-smoke-paired-final5-reset-s0/seed_42/gen_01/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "4607d6c86a80dcccce99352a4c0c4ff256ddedeb114e65455b557960ada84c1f": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261030T172428Z-smoke-paired-final5-continued/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "60174082e24e6cdd2b868a59d24658e1026f0a822c1c42ec0a888f2fbba792ae": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261030T172428Z-smoke-paired-final5-reset-s0/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "806dec39f434eeedb52f7d1df8c350a362affed6635eca2e9e4053307858a14a": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261030T172428Z-smoke-paired-final5-reset-s0/seed_42/gen_03/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "af0e8ddfc85417a8ed14bc3c5b5c8a8f50136cf83c50eb36e4f1271dbec64b2f": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261031T153536Z-smoke-continued/seed_42/gen_01/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "b4e24c76c1da6c27cee7e2eb4c870d31c06b724270a35568e60d90f94c506bec": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261031T153536Z-smoke-continued/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "0a40ae0618d3aa8a25f17dccfbd246d9516b5beb996e06cd3d5f80c3880ed550": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T014727Z-smoke-mixed-campaign-continued-mixed20/seed_42/gen_01/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T022210Z-smoke-mixed-campaign-continued-mixed20/seed_42/gen_01/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T022210Z-smoke-mixed-campaign-reset-mixed20/seed_42/gen_01/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "ccffb0ab889c9862461e06127a82b8fbbf3761ad932bd062d215b01bbc0b820b": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T014727Z-smoke-mixed-campaign-continued-mixed20/seed_42/gen_02/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T022210Z-smoke-mixed-campaign-continued-mixed20/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "05e17dc14feca8b9b6bb68d903923fbc767edff8c6eaa86383aa08c1c4480301": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T014727Z-smoke-mixed-campaign-reset-mixed50/seed_42/gen_02/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T022210Z-smoke-mixed-campaign-reset-mixed50/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "4a8d5764468e09d820263a7645f174da7cdb7bbf8d0dc85fe68cd3f3a251be16": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T014727Z-smoke-mixed-campaign-reset-mixed50/seed_42/gen_03/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T022210Z-smoke-mixed-campaign-reset-mixed50/seed_42/gen_03/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "e36f3db26c43b728077975e57b31bceb49f4485aeec1ddc15c7ca3d3f9ae9dda": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T022210Z-smoke-mixed-campaign-reset-mixed20/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "9e1d9965cd464e9c564384748ffa1e5722cd94b0a6e70d261e0ac0bbaa13cfef": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261101T022210Z-smoke-mixed-campaign-reset-mixed20/seed_42/gen_03/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "3d7572dfd420b7765b71926031f774d2a518301042dce7fddc8ad2c3007d761e": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261102T152509Z-smoke-continued/seed_42/gen_01/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "756f84257e73177cb12a3931a6335d47f333ba4aad955663fda542dcdbf7707e": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261102T152509Z-smoke-continued/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "f34db95ae6549bb2f35f9e203a7c91db57e532e600aeeecbb8294f5c1afca85d": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261106T141204Z-smoke-fresh-real/seed_42/gen_01/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261106T143315Z-smoke-fresh-real/seed_42/gen_01/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "13057c445792b38b3c857727db0f9822a86dbdf6e5805b57edfd2c120ac292b3": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261106T141204Z-smoke-fresh-real/seed_42/gen_02/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261106T143315Z-smoke-fresh-real/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "ab8ca99565c0a62bf3a58a7057419009b0f96d8015d2a8de25bbe6a1ae7aac2a": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261106T141204Z-smoke-fresh-real/seed_42/gen_03/checkpoint/model.safetensors"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261106T143315Z-smoke-fresh-real/seed_42/gen_03/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "e4332083cdd7944190e24f913d4571210dbdf7d4af4ca706f8a906aef18d097c": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261106T145728Z-smoke-fresh-real/seed_42/gen_01/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "4fc4845d6154da3645bef82891cbc5c1744362ab418a83c0d137c557de636c76": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261106T145728Z-smoke-fresh-real/seed_42/gen_02/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "6fc555f0c1df4c1dde4568082b26ae388b58162031ed792444812d0c349857a9": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261106T145728Z-smoke-fresh-real/seed_42/gen_03/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "c273258f71734f6fdee30e849c894bd471ad6e5f308309286065c55f6ee7eaab": {
+        "bytes": 500979600,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-models",
+            "repo_type": "model",
+            "path": "20261106T190338Z-smoke-completion64-real/seed_42/gen_01/checkpoint/model.safetensors"
+          }
+        ]
+      },
+      "f6a215766a1946bc3270de29c4476e574b59dcf395f88b73f0696a4b90664b3d": {
+        "bytes": 1002065019,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-data",
+            "repo_type": "dataset",
+            "path": "20261106T141204Z-smoke-fresh-real/seed_42/gen_01/optimizer_state/cycle.pt"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-data",
+            "repo_type": "dataset",
+            "path": "20261106T143315Z-smoke-fresh-real/seed_42/gen_01/optimizer_state/cycle.pt"
+          }
+        ]
+      },
+      "d8ee041fdb57740dc4a2809522bf69731dba916e7773f62eeff843ed63a23df6": {
+        "bytes": 1002067771,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-data",
+            "repo_type": "dataset",
+            "path": "20261106T141204Z-smoke-fresh-real/seed_42/gen_02/optimizer_state/cycle.pt"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-data",
+            "repo_type": "dataset",
+            "path": "20261106T143315Z-smoke-fresh-real/seed_42/gen_02/optimizer_state/cycle.pt"
+          }
+        ]
+      },
+      "223dca7e7520ccd3e8562d90ec537b2346f67c5f7b435a6f43830dee5ceb4c8d": {
+        "bytes": 1002067771,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-data",
+            "repo_type": "dataset",
+            "path": "20261106T141204Z-smoke-fresh-real/seed_42/gen_03/optimizer_state/cycle.pt"
+          },
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-data",
+            "repo_type": "dataset",
+            "path": "20261106T143315Z-smoke-fresh-real/seed_42/gen_03/optimizer_state/cycle.pt"
+          }
+        ]
+      },
+      "cb320ade4f818dbe61a7231bf627ea86ac711015830013ce0f73f0e11b32bc4f": {
+        "bytes": 1002065019,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-data",
+            "repo_type": "dataset",
+            "path": "20261106T145728Z-smoke-fresh-real/seed_42/gen_01/optimizer_state/cycle.pt"
+          }
+        ]
+      },
+      "4d86db966680f64746bc6ac0c086ce2afceee1c2cda0bb65ca67139490d24177": {
+        "bytes": 1002067771,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-data",
+            "repo_type": "dataset",
+            "path": "20261106T145728Z-smoke-fresh-real/seed_42/gen_02/optimizer_state/cycle.pt"
+          }
+        ]
+      },
+      "6e84611ffc84869d4f5296681760683efefb6348807854dd303845ce2e308717": {
+        "bytes": 1002067771,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-data",
+            "repo_type": "dataset",
+            "path": "20261106T145728Z-smoke-fresh-real/seed_42/gen_03/optimizer_state/cycle.pt"
+          }
+        ]
+      },
+      "14162dbbd493c3c761fc684b93b004cddcd3413eff5b169b37eadcf54affb940": {
+        "bytes": 1002065019,
+        "references": [
+          {
+            "repo": "Bill11235813/iib-model-collapse-week1-data",
+            "repo_type": "dataset",
+            "path": "20261106T190338Z-smoke-completion64-real/seed_42/gen_01/optimizer_state/cycle.pt"
+          }
+        ]
+      }
+    },
+    "destructive_cleanup_executed": false,
+    "scope": "Inventory only. Full experiment and current acceptance blobs are protected. Historical evidence and private recovery resources are preserved."
+  },
+  "scope": "Host-side storage repair and resumed fresh-stage verification; training acceptance remains unchanged.",
+  "targeted_host_and_publication_tests": {
+    "passed": 12,
+    "failures": 0,
+    "junit_xml_sha256": "c8fd4e98d640e2020a4a762174df07d376bcac065e5d606a44e92a2392875464"
+  },
+  "publication_reader_compatibility": {
+    "file": "scripts/maintenance/check_repository.py",
+    "sha256": "30a432f11a012ee5b400c50a4086902babd4c46db81283343e19d5c4a34186d5",
+    "change": "Accept both SHA-only and size-plus-SHA historical manifests without rewriting evidence."
+  },
+  "repository_check": {
+    "passed": true,
+    "markdown_files": 93,
+    "configurations": 30,
+    "publication_manifests": 14,
+    "errors": [],
+    "command": "python -m scripts.maintenance.check_repository"
+  },
+  "last_live_check": {
+    "provider_status": "RUNNING",
+    "live": {
+      "checked_at": 1794006684.1462562,
+      "parent": {
+        "state": "running",
+        "phase": "real",
+        "active_child": "20261106T193918Z-full-completion64-real",
+        "time": 1794006292.5538719
+      },
+      "real": {
+        "state": "running",
+        "generation": 5,
+        "stage": "training",
+        "time": 1794006583.092423
+      },
+      "supervisor_age_seconds": 0.9169731140136719,
+      "watchdog_age_seconds": 2.9913065433502197,
+      "sealed_real_cycles": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  }
+}

@@ -54,7 +54,9 @@ def publication_errors(root, paths):
                 errors.append(f"{path.relative_to(root)}: absent evidence {rel}")
                 continue
             actual = hashlib.sha256(target.read_bytes()).hexdigest()
-            if actual != meta["sha256"] or target.stat().st_size != meta["bytes"]:
+            # Earlier publications record only a checksum, without a byte count.
+            meta = {"sha256": meta} if isinstance(meta, str) else meta
+            if actual != meta["sha256"] or target.stat().st_size != meta.get("bytes", target.stat().st_size):
                 errors.append(f"{path.relative_to(root)}: evidence checksum/size differs {rel}")
     return errors
 

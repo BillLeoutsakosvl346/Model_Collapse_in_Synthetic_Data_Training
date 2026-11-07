@@ -1,0 +1,44 @@
+{
+  "prepared_at_utc": "2026-11-07T15:42:56.317592+00:00",
+  "parent_revision": "41959902652229d30cabbc19bc4b3a9ddd3d16bd",
+  "branch": "main",
+  "scope": [
+    "FineWeb fresh-real and matched completion workflows",
+    "0/20/50/80/85/90/95/100% configurations and provenance",
+    "Cloud supervision, scoped parallel startup and private S3 recovery",
+    "Completed four/five-fraction metric tables and square plots",
+    "Small GPU validation reports, records and tests"
+  ],
+  "private_and_bulk_material_excluded": true,
+  "credential_scan_passed": true,
+  "repository_integrity_checks_passed": true,
+  "historical_indexed_evidence_unchanged": true,
+  "plot_reproduction_checks": [
+    {
+      "source": "reports/20261107T004033Z-full-completion64-mixtures/analysis/four-fractions",
+      "metric_rows": 44,
+      "reproduced_figures_match_published_bytes": {
+        "test_perplexity_four_conditions.png": true,
+        "validation_perplexity_four_conditions.png": true
+      }
+    },
+    {
+      "source": "reports/20261107T113638Z-full-completion64-mixed80/analysis/five-fractions",
+      "metric_rows": 55,
+      "reproduced_figures_match_published_bytes": {
+        "test_perplexity_five_conditions.png": true,
+        "validation_perplexity_five_conditions.png": true
+      }
+    }
+  ],
+  "running_experiments_modified": false,
+  "staged_index_publication_files_verified": 1382,
+  "staged_worker_runtime_sha256": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+  "matches_running_validated_worker_runtime": true,
+  "focused_offline_tests_passed": 54,
+  "manifest_referenced_ignored_evidence_files_explicitly_included": 20,
+  "preserved_benign_whitespace": [
+    "model_collapse/cloud/hf_storage.py: accepted runtime blank line at EOF",
+    "reports/20261106T235904Z-smoke-completion64-mixtures/report.md: original Markdown quote spacing"
+  ]
+}

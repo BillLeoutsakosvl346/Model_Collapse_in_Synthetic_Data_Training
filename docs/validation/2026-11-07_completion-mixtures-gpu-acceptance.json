@@ -1,0 +1,292 @@
+{
+  "checked_at": 1794010927.0645807,
+  "run_id": "20261106T235904Z-smoke-completion64-mixtures",
+  "resources": {
+    "run_id": "20261106T235904Z-smoke-completion64-mixtures",
+    "launch_id": "20261106T235904048662Z",
+    "kind": "smoke",
+    "pod_id": "qai2rkhzmtibuo",
+    "volume_id": "zhtnxtuu68",
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1794009545.3161426,
+    "quoted_gpu_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6652671232876711,
+    "compute_hourly_usd": 0.6586506849315067,
+    "volume_hourly_usd": 0.005753424657534247,
+    "network_volume_gb": 60,
+    "volume_created_at": 1794009544.050665,
+    "session_allowance_usd": 0.5,
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "code_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+    "starting_balance_usd": 39.8677529791,
+    "remote_root": "/workspace/runs/20261106T235904Z-smoke-completion64-mixtures",
+    "runtime_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+    "git_commit": "41959902652229d30cabbc19bc4b3a9ddd3d16bd",
+    "configuration_sha256": "2c39d734927c50aa4bbc86dc2702be8e49e91da85352e593b305b8e2c573feb2",
+    "workflow": "completion_comparison",
+    "allocation": "fineweb_completion64_mixtures",
+    "acceptance_campaign": "fineweb_completion64_mixtures_acceptance",
+    "actual_pod_hourly_usd": 0.57,
+    "verified_ssh_direct": {
+      "command": "ssh root@213.173.102.13 -p 35771",
+      "host": "213.173.102.13",
+      "port": 35771,
+      "username": "root"
+    }
+  },
+  "checks": {
+    "workflow": "completion_comparison",
+    "checks": {
+      "direct_masked_nll": true,
+      "generation_shard_recovery": true,
+      "all_handoffs_and_optimizer_states": true,
+      "sealed_private_stage_restores": true,
+      "nested_selections": true,
+      "both_private_restores": true,
+      "six_terminal_epochs": true,
+      "coordinator_recovery": true,
+      "completed_stages_unchanged": true,
+      "training_recovery": true,
+      "continuation_only_loss": true,
+      "matched_initial_weights_and_prompts": true,
+      "exact_mixture_reconstruction": true,
+      "restored_evaluation": true,
+      "detached_progress_verified": true,
+      "independent_budget_guard_and_provider_stop_verified": true
+    },
+    "source_code_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+    "protocol_fingerprint": "c411a4e72d8215365c4f0acc84809bcacd3f20af8bdbe627d33d714af6660c13",
+    "arm_audits": {
+      "mixed50": {
+        "stages": [
+          {
+            "cycle": 1,
+            "weights_sha256": "c0be449d6fcf971b1670c136fc7c2b8323b081429e355f35b2d2c9581f48c53e",
+            "initializer_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+            "optimizer_step": 3,
+            "scored_training_tokens": 20480,
+            "real_pairs": 160,
+            "synthetic_pairs": 160
+          },
+          {
+            "cycle": 2,
+            "weights_sha256": "4af4db2cd42094dc18607eeb092e36a168591ce4a6367a137adff00161cd33a9",
+            "initializer_sha256": "c0be449d6fcf971b1670c136fc7c2b8323b081429e355f35b2d2c9581f48c53e",
+            "optimizer_step": 6,
+            "scored_training_tokens": 20480,
+            "real_pairs": 160,
+            "synthetic_pairs": 160
+          },
+          {
+            "cycle": 3,
+            "weights_sha256": "90cbdcd0e7b707f977543ccddf10c9e464cb20c210daf7e812a6b42de9616139",
+            "initializer_sha256": "4af4db2cd42094dc18607eeb092e36a168591ce4a6367a137adff00161cd33a9",
+            "optimizer_step": 9,
+            "scored_training_tokens": 20480,
+            "real_pairs": 160,
+            "synthetic_pairs": 160
+          }
+        ],
+        "restored_loss_error": 0.0,
+        "direct_nll_error": 0.0,
+        "restored_optimizer_sha256": "5ed8ac2e770697a0e9332e0e3bf75fa84b7da8fd352fc85e21eac0db243fc6b6"
+      },
+      "mixed20": {
+        "stages": [
+          {
+            "cycle": 1,
+            "weights_sha256": "caff683e15a918612431e5cc07391a750240957cde6fe75fa0efbef668bc82df",
+            "initializer_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+            "optimizer_step": 3,
+            "scored_training_tokens": 20480,
+            "real_pairs": 256,
+            "synthetic_pairs": 64
+          },
+          {
+            "cycle": 2,
+            "weights_sha256": "2cc92e0ae1596a30f5af1d212b80b34a2b6fc2983f18a7ffd27fb83bce13718d",
+            "initializer_sha256": "caff683e15a918612431e5cc07391a750240957cde6fe75fa0efbef668bc82df",
+            "optimizer_step": 6,
+            "scored_training_tokens": 20480,
+            "real_pairs": 256,
+            "synthetic_pairs": 64
+          },
+          {
+            "cycle": 3,
+            "weights_sha256": "caec70ae506fccc8dec06176799e4977d2e2472531c76e4353eff588bd0fe2a2",
+            "initializer_sha256": "2cc92e0ae1596a30f5af1d212b80b34a2b6fc2983f18a7ffd27fb83bce13718d",
+            "optimizer_step": 9,
+            "scored_training_tokens": 20480,
+            "real_pairs": 256,
+            "synthetic_pairs": 64
+          }
+        ],
+        "restored_loss_error": 0.0,
+        "direct_nll_error": 0.0,
+        "restored_optimizer_sha256": "9859ebff8c50a696c3e09bd8a233b8acef904ec4b62cc92cb85db38335b1e3a3"
+      }
+    },
+    "restorations": {
+      "mixed50": {
+        "run_id": "20261106T235904Z-smoke-completion64-mixtures-mixed50",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "b7b2d8549f9c6d8ee4202c217b3f1d7ef2af5705",
+          "dataset": "7ecc8a98c4770774dc79b54aa0f4168f6c60581a"
+        },
+        "artifact_index_sha256": "837713dde317aabd460e7b998b73590ac772b69989dec364219bb9df16d2fcc8",
+        "indexed_files": 127,
+        "verified_files": 127,
+        "verified_bytes": 4511327643,
+        "metadata_only": false,
+        "scope": "full",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "/workspace/completion_acceptance_restore/20261106T235904Z-smoke-completion64-mixtures-mixed50"
+      },
+      "mixed20": {
+        "run_id": "20261106T235904Z-smoke-completion64-mixtures-mixed20",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "2c657fa59f17d291180fb0667c9236d53ccd929c",
+          "dataset": "ef9bf06120afb5e5eeaff67dad029ff835ccfe47"
+        },
+        "artifact_index_sha256": "e5c4cda7bf366fedffaf516f19df25d59ea613f3e077f833331ed94c90172514",
+        "indexed_files": 109,
+        "verified_files": 109,
+        "verified_bytes": 4511173060,
+        "metadata_only": false,
+        "scope": "full",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "/workspace/completion_acceptance_restore/20261106T235904Z-smoke-completion64-mixtures-mixed20"
+      }
+    },
+    "unique_training_stages": 6,
+    "executed_epochs": 6,
+    "validated_run_id": "20261106T235904Z-smoke-completion64-mixtures",
+    "provider_pod_state": "EXITED",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell"
+  },
+  "recovery": {
+    "run_id": "20261106T235904Z-smoke-completion64-mixtures",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "5b09b9e714c4fc67ce42c0c6818c8ab07871fa36",
+      "dataset": "601e3d1f58aa1c54840492b9ae7c404169867c1e"
+    },
+    "artifact_index_sha256": "649b6b9f06b1ae82ba87a0323694af6cf161e2e19f4535c2b45354c2975fb9ae",
+    "indexed_files": 50,
+    "verified_files": 50,
+    "verified_bytes": 505709003,
+    "metadata_only": false,
+    "scope": "full_parent_and_verified_private_child_restores",
+    "preserved_control_files": {
+      "resources.json": {
+        "recovered_path": "fetched_control/2f8d70833b9fc1ad1e618c2d36f9b537223a7f76d928546de1168a846321e485/resources.json",
+        "sha256": "2f8d70833b9fc1ad1e618c2d36f9b537223a7f76d928546de1168a846321e485",
+        "authoritative_local_sha256": "e2566f9b9d8edd4a6b82fd6bc51378fd001d1d1926d19ea2f57ea579c27d9205"
+      }
+    },
+    "operational_files_outside_immutable_index": [
+      "events.jsonl",
+      "status.json",
+      "watchdog_exit.json"
+    ],
+    "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261106T235904Z-smoke-completion64-mixtures",
+    "children": {
+      "mixed50": {
+        "run_id": "20261106T235904Z-smoke-completion64-mixtures-mixed50",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "b7b2d8549f9c6d8ee4202c217b3f1d7ef2af5705",
+          "dataset": "7ecc8a98c4770774dc79b54aa0f4168f6c60581a"
+        },
+        "artifact_index_sha256": "837713dde317aabd460e7b998b73590ac772b69989dec364219bb9df16d2fcc8",
+        "indexed_files": 127,
+        "verified_files": 70,
+        "verified_bytes": 92410,
+        "metadata_only": true,
+        "scope": "metadata_only",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261106T235904Z-smoke-completion64-mixtures-mixed50"
+      },
+      "mixed20": {
+        "run_id": "20261106T235904Z-smoke-completion64-mixtures-mixed20",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "2c657fa59f17d291180fb0667c9236d53ccd929c",
+          "dataset": "ef9bf06120afb5e5eeaff67dad029ff835ccfe47"
+        },
+        "artifact_index_sha256": "e5c4cda7bf366fedffaf516f19df25d59ea613f3e077f833331ed94c90172514",
+        "indexed_files": 109,
+        "verified_files": 61,
+        "verified_bytes": 87587,
+        "metadata_only": true,
+        "scope": "metadata_only",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261106T235904Z-smoke-completion64-mixtures-mixed20"
+      }
+    },
+    "parent_local_reused_files": [
+      "seed_42/gen_00/checkpoint/model.safetensors",
+      "seed_42/gen_00/probe/synthetic_for_gen_01/tokens.npy"
+    ],
+    "parent_additional_downloads": [
+      {
+        "path": "seed_42/gen_00/probe/synthetic_for_gen_01/shard_0000000.npy",
+        "bytes": 8320
+      },
+      {
+        "path": "seed_42/gen_00/probe/synthetic_for_gen_01/shard_0000032.npy",
+        "bytes": 8320
+      }
+    ]
+  },
+  "generated_analysis": {
+    "out": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261106T235904Z-smoke-completion64-mixtures\\generated\\gpu_validation",
+    "rows": 8
+  },
+  "gpu_stopped": true,
+  "full_training_launched": false,
+  "windows_cache": {
+    "path": "C:\\hf",
+    "configured_at": "2026-11-07T00:20:30.1589631+00:00",
+    "reason": "Windows Hugging Face artifact snapshot paths exceed the default cache path limit",
+    "previous_user_value": null
+  }
+}

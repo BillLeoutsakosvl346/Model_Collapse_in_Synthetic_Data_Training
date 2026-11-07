@@ -1,0 +1,41 @@
+{
+  "scope": "Independent document ID/normalized URL/normalized text identity check from all twelve checksum-verified pinned selection files. Exact token-passage checks remain the recorded preparation scope.",
+  "counts": {
+    "validation": 1000,
+    "test": 1000,
+    "cycle_01": 583,
+    "cycle_02": 575,
+    "cycle_03": 480,
+    "cycle_04": 559,
+    "cycle_05": 608,
+    "cycle_06": 600,
+    "cycle_07": 605,
+    "cycle_08": 599,
+    "cycle_09": 668,
+    "cycle_10": 624
+  },
+  "accepted_document_count": 7901,
+  "training_document_count": 5901,
+  "cross_collection_identity_conflicts": [],
+  "revisions": {
+    "model": "f4ec275e8c3077da3480cc7071e83fd2244e55af",
+    "dataset": "001430f851f1b104fd4ec2a87b66c35c48a15682"
+  },
+  "recorded_utc": "2026-11-06T16:15:27.734001+00:00",
+  "run_id": "20261106T151257Z-full-fresh-real",
+  "input_file_checksums": {
+    "data/validation/documents.jsonl": "32c51c303c83664cc8736f622bfd2e0041c54bba2d212b178031a22dbbf84d6c",
+    "data/test/documents.jsonl": "7354601dd352f61bb8e133d2f0df365ccf500c26847a0c89f4480195717861a8",
+    "data/cycle_01/documents.jsonl": "cb2b642c9d9d342cc967fb17e94ac205b0ca3098a20e4dec2daae9f9255d269a",
+    "data/cycle_02/documents.jsonl": "695647caa14c951a6088ebc8fd2362f6f76d00f5eea8c697edd232e7e1111463",
+    "data/cycle_03/documents.jsonl": "50b1ebe8ed01c0c3faf954542a4f526e5f056e81f06f7c8f0cc7c47b2c62749b",
+    "data/cycle_04/documents.jsonl": "afd8df8de246233887d281e7c6f1e5f75ac4cbea9c8cdfa288f1d42033d82d2b",
+    "data/cycle_05/documents.jsonl": "4927550e90ba150d375b898d7a3f08b51ff724b84f0878d84ea1335c28d6c89d",
+    "data/cycle_06/documents.jsonl": "5782c8f4bb6e27a9dea1d2368e62cab05251f9e9d3fb578bfce471c58971459a",
+    "data/cycle_07/documents.jsonl": "c2abdeb04341ee3ab49bccba58294100f598513ddb9a759a39f29455b06c42a9",
+    "data/cycle_08/documents.jsonl": "714ecd1395c5c40ef37bcdb12bc7a5162b599b2209085c30d08d2a715ca5970f",
+    "data/cycle_09/documents.jsonl": "327d16d918afe2bc4f177fe11fef04b5b3fa52623c90ca4d17fb95482a912ac6",
+    "data/cycle_10/documents.jsonl": "e23ddca79e3248b03dd0eaf55a0967656d34bdbe107d2ad6524e26a6c168c9de"
+  },
+  "scope_note": "Selection-document identity audit only. Bulk checkpoint/optimizer restoration and independent full-run evaluation remain separate."
+}

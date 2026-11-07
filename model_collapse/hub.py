@@ -28,7 +28,7 @@ def retry_transfer(call, *args, retry_missing_lfs_commit=False, before_retry=Non
             status = response.status_code if response is not None else None
             missing_lfs = (retry_missing_lfs_commit and status == 400
                            and "LFS pointer pointed to a file that does not exist" in str(e))
-            if attempt == 3 or (status is not None and status < 500 and status != 429 and not missing_lfs):
+            if attempt == 3 or (status is not None and status < 500 and status not in (409, 429) and not missing_lfs):
                 raise
             if before_retry is not None:
                 before_retry()
@@ -65,7 +65,7 @@ def artifact_files(root):
                 "watchdog.json", "supervisor.json", "pipeline.log", "stop_request.json", "watchdog_exit.json",
                 "recovery_snapshot.json", "backup_snapshot.json"}
     for p in sorted(root.rglob("*")):
-        if not p.is_file() or p.name in volatile or p.name.endswith(".lock") or ".partial" in p.name or "resume" in p.parts or p.name.startswith(".") or "secret" in p.name.lower():
+        if not p.is_file() or (p.parent == root and p.name in volatile) or p.name.endswith(".lock") or ".partial" in p.name or "resume" in p.parts or p.name.startswith(".") or "secret" in p.name.lower():
             continue
         rel = p.relative_to(root).as_posix()
         if any(part.startswith(".") for part in PurePosixPath(rel).parts) or rel.startswith("fetched_control/"):
@@ -80,13 +80,22 @@ def backup(root, repos=None):
     repos = repos or read_json(root / "resources.json")["repos"]
     api = HfApi(token=os.environ.get("HF_TOKEN") or get_token())
     files = artifact_files(root)
+    store = read_json(root / "config.json", {}).get("backup_store")
+    if store:
+        from .cloud.s3_artifacts import BULK_SUFFIXES, client, upload
+        connection = client(store)
+        for relative, meta in files.items():
+            if relative.endswith(BULK_SUFFIXES):
+                meta["storage"] = upload(root / relative, meta, store, connection=connection)
     index = {"run_id": root.name, "repos": repos, "files": files}
     atomic_json(root / "artifact_index.json", index)
     index_sha256 = sha256(root / "artifact_index.json")
     for kind in ("model", "dataset"):
-        paths = [p for p, meta in files.items() if meta["repo_type"] == kind]
+        paths = [p for p, meta in files.items() if meta["repo_type"] == kind and "storage" not in meta]
         if kind == "dataset":
             paths += ["artifact_index.json", "events.jsonl", "status.json"]
+        if not paths:
+            continue
         def verify_retry_inputs():
             verify_files(root, {path: files[path] for path in paths if path in files})
             if sha256(root / "artifact_index.json") != index_sha256:
@@ -104,6 +113,9 @@ def backup(root, repos=None):
     elif read_json(root / "resources.json", {}).get("owner_campaign_id"):
         from .workflow.mixed_campaign import record_child_snapshot
         record_child_snapshot(root)
+    elif read_json(root / "resources.json", {}).get("owner_completion_id"):
+        from .workflow.completion import record_child_snapshot
+        record_child_snapshot(root)
     return index
 
 
@@ -114,6 +126,9 @@ def _check_meta(meta):
         raise ValueError("Invalid artifact checksum")
     if not isinstance(meta.get("bytes"), int) or isinstance(meta["bytes"], bool) or meta["bytes"] < 0:
         raise ValueError("Invalid artifact size")
+    if "storage" in meta:
+        from .cloud.s3_artifacts import validate_reference
+        validate_reference(meta["storage"], meta["sha256"])
 
 
 def resolve_snapshot(repos, revisions=None):
@@ -145,6 +160,9 @@ def download_snapshot_file(run_id, repos, rel, meta, revisions):
     revision = revisions.get(kind)
     if not isinstance(revision, str) or not re.fullmatch(r"[0-9a-f]{40}", revision):
         raise ValueError("Snapshot download requires pinned revisions")
+    if "storage" in meta:
+        from .cloud.s3_artifacts import download
+        return download(meta)
     src = Path(retry_transfer(hf_hub_download, repos[kind], f"{run_id}/{rel}", repo_type=kind,
                              revision=revision, token=os.environ.get("HF_TOKEN") or get_token()))
     if src.stat().st_size != meta["bytes"] or sha256(src) != meta["sha256"]:
@@ -194,7 +212,7 @@ def fetch(run_id, repos, out, *, metadata_only=False, revisions=None):
         _safe_destination(out, rel)
         _check_meta(meta)
     selected = {p: m for p, m in index["files"].items()
-                if not (metadata_only and p.endswith((".npy", ".safetensors")))}
+                if not (metadata_only and p.endswith((".npy", ".safetensors", ".pt", "documents.jsonl")))}
     protected = {"resources.json", "events.jsonl", "status.json", "watchdog_exit.json",
                  "supervisor.json", "watchdog.json", "stop_request.json"}
     redirected = {}

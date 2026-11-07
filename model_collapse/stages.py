@@ -29,11 +29,34 @@ def stage(name, root, generation=0, config_path=None):
         atomic_json(root / "config.json", c)
     if name == "prepare":
         tok = AutoTokenizer.from_pretrained(c["model"], revision=c["model_revision"])
+        if c.get("workflow") == "completion_comparison":
+            from .completion_data import prepare_bank, audit_bank, publish_bank
+            from .hub import destinations
+            result = prepare_bank(root, c, tok)
+            audit = audit_bank(root, tok)
+            from .common import STATE, sha256
+            reference = read_json(STATE / "completion64_bank.json")
+            if not reference or reference["manifest_sha256"] != sha256(root / "manifest.json"):
+                reference = publish_bank(root, c, destinations(probe=True)["repos"])
+            return {"bank": reference, "audit": audit, "collections": result["collections"]}
+        if c.get("workflow") == "fresh_real":
+            from .fresh_data import prepare_fresh
+            return prepare_fresh(root, c, tok)
         result = prepare(root, c, tok)
         if c.get("initialization") == "reset_s0":
             from .workflow.branch import import_shared_prefix
             import_shared_prefix(root, c)
         return result
+    if c.get("workflow") in ("completion_comparison", "completion_arm"):
+        raise ValueError("Use the completion comparison worker for coordinated training and evaluation")
+    if c.get("workflow") == "fresh_real":
+        if name != "evaluate":
+            raise ValueError("Use the fresh-real worker/launch command for coordinated continued training")
+        from .fresh_data import load_collection
+        checkpoint = root / f"seed_{c['seed']}/gen_{generation:02d}/checkpoint" if generation >= 0 else None
+        model = load_model(c, checkpoint)
+        return {split: evaluate(model, tokens, c, masks=masks)
+                for split in ("validation", "test") for tokens, masks, _ in [load_collection(root, split)]}
     selected = root / f"seed_{c['seed']}" / f"gen_{generation:02d}"
     if name == "train":
         if generation < 0:

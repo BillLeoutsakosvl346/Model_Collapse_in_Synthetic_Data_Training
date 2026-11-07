@@ -68,6 +68,22 @@ Sample without replacement within each source per cycle; real blocks may recur i
 
 The fixed-total-block mixture is related to [Seddik et al. (2024)](https://arxiv.org/abs/2404.05090v1), but it is not their exact theoretical setup or a numerical reproduction claim. A separate 20% condition has not been accepted by the 50% certificate.
 
+## Fresh FineWeb-Edu real-only control
+
+The [FineWeb condition](../experiments/opt125m_fineweb_edu/fresh_real_one_epoch/README.md) starts from original pretrained OPT and uses ten disjoint collections of 640,000 source-text tokens, one epoch per collection. It carries model weights, AdamW moments and one global cosine schedule across cycles. Fixed validation/test documents are reserved first. Variable-length sequences use up to 512 tokens with padding masked from attention and loss. This condition has its own revisions, data contract and GPU acceptance.
+
+Source-text tokens exclude inserted specials and padding. Record source, special, non-padding and scored-target counts separately. Optimize the token-weighted mean over each accumulated batch. The evaluation loss is the sum of shifted non-padding target NLL divided by the number of those targets. Original document boundaries determine EOS placement.
+
+The pilot tests whether validation perplexity stays within 5% of the pretrained baseline throughout all ten cycles. Data freshness, a longer context, a lower learning rate and persistent optimization state distinguish it from historical WikiText conditions. Assess its own trajectory before designing a matched synthetic-data comparison.
+
+## Matched FineWeb real and synthetic continuations
+
+The [completion comparison](../comparisons/fineweb_real_vs_synthetic_completion64/README.md) gives both arms identical original pretrained weights, ten document-disjoint prompt chunks and frozen real held-out pairs. Each example contains a 64-token source prompt and a 64-token continuation. The real arm uses the source continuation. The synthetic arm generates its continuation with the preceding selected checkpoint, freezes the entire chunk, then trains that checkpoint for one epoch.
+
+Inputs contain BOS plus both segments. Attention covers every position. Loss selects only the 64 continuation targets, including the first target predicted from BOS plus the complete prompt. Each full epoch scores 640,000 training targets. Both arms carry independent AdamW moments, training RNG and one global cosine schedule through ten cycles. Each has 790 optimizer updates and 6.4 million scored training-token exposures.
+
+Primary held-out perplexity uses fixed real prompt/continuation pairs for both arms. Secondary 512-token full-text scores have a separate objective and retain their own labels. Fixed-probe measurements describe generated outputs. The same baseline is shared evidence. A controlled identical-target test verifies that arm routing alone leaves training unchanged.
+
 ## Evidence and limitations
 
 Keep configuration, runtime and environment identities separate. Record pinned commits, initializer/generator/data/output hashes, selected epochs, retries, timings, resource IDs and cost provenance. [Metrics](metrics.md) defines probe scope and denominators; reports distinguish primary raw-token measurements from post-hoc formatting sensitivity.

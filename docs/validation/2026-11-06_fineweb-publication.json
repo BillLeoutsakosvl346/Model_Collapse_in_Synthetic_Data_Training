@@ -1,0 +1,46 @@
+{
+  "created_utc": "2026-11-06T14:48:35.890454+00:00",
+  "run_id": "20261106T143315Z-smoke-fresh-real",
+  "runtime_sha256": "13ddfea86bc9a87377bb08e81f1a43377c3e8767cf3965a3da34561dcf3cc0c7",
+  "setup_receipt_sha256": "76b6044d84ad4dbb86eb86e9a1482e6b61a3ad2b7bffa20d857681fe4c0f133c",
+  "offline_suite": {
+    "passed": 402,
+    "xml_sha256": "2d44bc988d6062663573ebf932b482212d5b3d568ff5e0c697a321d4175b4a93"
+  },
+  "publication_manifest_sha256": "4de346a57be78372ec760f89f3dbc8d04b71f26c2c60f51ec3f95ed36cc3f8a6",
+  "published_file_count": 50,
+  "published_bytes": 376054,
+  "offline_reproduction": {
+    "builder": "scripts/analysis/build_fresh_real_validation.py",
+    "cli": "python -m model_collapse report RUN_ID --out NEW_DIRECTORY",
+    "all_analysis_bytes_equal": true,
+    "analysis_outputs": {
+      "analysis_manifest.json": "957025ecfeab2bdf2ef3d324f5b2cbb51f46981cbcedc11458e7d2207982305a",
+      "generalization_gap.png": "9cbf57f74f1e2db1501bcefabd2b13fc20657d6417bc55c7d5179093286a2dd8",
+      "learning_rate.png": "f77c0e2d6c400943534d8f846227105bf38f9eac8cbb6668ae85dcd5d346232a",
+      "loss.png": "9a17703b3739fbf24b78d5751a6bcac827ff9b1b29b896b3b8d72bb3a4e0f745",
+      "metrics.csv": "c169d129e998c58e674bd3f1c16ab1fc0db4258f7abd2a78207295664f7d04f5",
+      "metrics.json": "ab96b3c51b464a10a4a4f9e38441d29c23a48a2c7217356aab9f9339c936f847",
+      "perplexity.png": "6c36e4af9399423c34c4c7e9c1db72c3e80f170ed92b118c4da33b17fb7e5257",
+      "report.md": "5b13c1dac5dfc3bedbc6808042863feb51e60d83cdd3a41c034cd8a19e1dfba2",
+      "runtime.png": "06e5f8ab864cade7c49e0beae0156b94f7f076ec52b2a9468fa5eef863544f18",
+      "summary.json": "226a6afd943c45748df1d6167ec6260fca778d8aafeffb4e8c99db98bcfdb117"
+    }
+  },
+  "verified_runtime_bundle_files": [
+    "model_collapse/fresh_data.py",
+    "model_collapse/workflow/fresh_real.py",
+    "model_collapse/workflow/fresh_validation.py",
+    "model_collapse/analysis/fresh_real.py",
+    "model_collapse/supervisor.py"
+  ],
+  "visual_inspection": "All five square figures inspected.",
+  "repository_checks": {
+    "markdown_files": 87,
+    "configs": 28,
+    "publication_manifests": 13,
+    "errors": []
+  },
+  "historical_evidence": "All pre-existing publication manifests verified; historical report records remain unmodified.",
+  "full_pilot_launched": false
+}

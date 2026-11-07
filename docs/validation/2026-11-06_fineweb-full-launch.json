@@ -1,0 +1,319 @@
+{
+  "recorded_utc": "2026-11-06T15:19:28.178308+00:00",
+  "run_id": "20261106T151257Z-full-fresh-real",
+  "launch_id": "20261106T151257603093Z",
+  "pod_id": "xf5ml3no72cg0z",
+  "volume_id": "mq5uhckkxr",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "vram_gb": 24,
+  "gpu_hourly_usd": 0.57,
+  "data_center": "EU-RO-1",
+  "stock_read": "LOW in EU-RO-1 at the launchers final catalogue read",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "network_volume_gb": 30,
+  "volume_mount": "/workspace",
+  "runtime_sha256": "13ddfea86bc9a87377bb08e81f1a43377c3e8767cf3965a3da34561dcf3cc0c7",
+  "protocol_fingerprint": "ea54588894a9d0ccab721781c389848e7660aa57ac2595e5c005f95e9ee293f4",
+  "configuration_sha256": "a1287f82f858a7dfacd9dcf0c7a86be5dc0bf411b00086229dc3161a7ec8ec38",
+  "kind": "full",
+  "workflow": "fresh_real",
+  "generations": 10,
+  "epochs_per_cycle": 1,
+  "checkpoint_selection": "final_epoch",
+  "source_tokens_per_cycle": 640000,
+  "total_source_training_tokens": 6400000,
+  "starting_weights": "Pinned original pretrained facebook/opt-125m",
+  "optimization_state": "Model/AdamW/global cosine scheduler/RNG continue across cycles",
+  "dataset_revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+  "model_revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+  "max_sequence_length": 512,
+  "data_collections": {
+    "validation": {
+      "documents": 1000,
+      "sequences": 2460,
+      "source_text_tokens": 1000439,
+      "special_tokens": 3460,
+      "non_padding_tokens": 1003899,
+      "scored_tokens": 1001439
+    },
+    "test": {
+      "documents": 1000,
+      "sequences": 2422,
+      "source_text_tokens": 978319,
+      "special_tokens": 3422,
+      "non_padding_tokens": 981741,
+      "scored_tokens": 979319
+    },
+    "cycle_01": {
+      "documents": 583,
+      "sequences": 1544,
+      "source_text_tokens": 640000,
+      "special_tokens": 2126,
+      "non_padding_tokens": 642126,
+      "scored_tokens": 640582
+    },
+    "cycle_02": {
+      "documents": 575,
+      "sequences": 1541,
+      "source_text_tokens": 640000,
+      "special_tokens": 2115,
+      "non_padding_tokens": 642115,
+      "scored_tokens": 640574
+    },
+    "cycle_03": {
+      "documents": 480,
+      "sequences": 1502,
+      "source_text_tokens": 640000,
+      "special_tokens": 1981,
+      "non_padding_tokens": 641981,
+      "scored_tokens": 640479
+    },
+    "cycle_04": {
+      "documents": 559,
+      "sequences": 1531,
+      "source_text_tokens": 640000,
+      "special_tokens": 2089,
+      "non_padding_tokens": 642089,
+      "scored_tokens": 640558
+    },
+    "cycle_05": {
+      "documents": 608,
+      "sequences": 1557,
+      "source_text_tokens": 640000,
+      "special_tokens": 2164,
+      "non_padding_tokens": 642164,
+      "scored_tokens": 640607
+    },
+    "cycle_06": {
+      "documents": 600,
+      "sequences": 1561,
+      "source_text_tokens": 640000,
+      "special_tokens": 2160,
+      "non_padding_tokens": 642160,
+      "scored_tokens": 640599
+    },
+    "cycle_07": {
+      "documents": 605,
+      "sequences": 1558,
+      "source_text_tokens": 640000,
+      "special_tokens": 2162,
+      "non_padding_tokens": 642162,
+      "scored_tokens": 640604
+    },
+    "cycle_08": {
+      "documents": 599,
+      "sequences": 1549,
+      "source_text_tokens": 640000,
+      "special_tokens": 2147,
+      "non_padding_tokens": 642147,
+      "scored_tokens": 640598
+    },
+    "cycle_09": {
+      "documents": 668,
+      "sequences": 1582,
+      "source_text_tokens": 640000,
+      "special_tokens": 2249,
+      "non_padding_tokens": 642249,
+      "scored_tokens": 640667
+    },
+    "cycle_10": {
+      "documents": 624,
+      "sequences": 1563,
+      "source_text_tokens": 640000,
+      "special_tokens": 2186,
+      "non_padding_tokens": 642186,
+      "scored_tokens": 640623
+    }
+  },
+  "data_manifest_sha256": "615d9f62a55c367150bc15b8846c02aea88589c227aca635b3981ace04717d72",
+  "read_coverage": {
+    "sampling": "Seeded shard permutation and bounded document shuffle; reproducible shuffled-stream sample.",
+    "shard_order": [
+      "sample/10BT/008_00000.parquet",
+      "sample/10BT/012_00000.parquet",
+      "sample/10BT/007_00000.parquet",
+      "sample/10BT/006_00000.parquet",
+      "sample/10BT/013_00000.parquet",
+      "sample/10BT/011_00000.parquet",
+      "sample/10BT/005_00000.parquet",
+      "sample/10BT/002_00000.parquet",
+      "sample/10BT/009_00000.parquet",
+      "sample/10BT/003_00000.parquet",
+      "sample/10BT/004_00000.parquet",
+      "sample/10BT/000_00000.parquet",
+      "sample/10BT/001_00000.parquet",
+      "sample/10BT/010_00000.parquet"
+    ],
+    "read_rows_by_file": {
+      "sample/10BT/008_00000.parquet": 17942
+    }
+  },
+  "rejected_documents": {
+    "empty": 0,
+    "duplicate_identity": 0,
+    "shared_64_token_passage": 41
+  },
+  "startup_checks": {
+    "detached_supervisor_and_watchdog_verified": true,
+    "new_finite_full_epoch_after_disconnect": true,
+    "changed_terminal_weights": true,
+    "original_pretrained_initializer": true,
+    "all_ten_data_quotas_prepared": true,
+    "fixed_1000_document_evaluation_collections": true
+  },
+  "detached_verification": {
+    "pod_id": "xf5ml3no72cg0z",
+    "launch_id": "20261106T151257603093Z",
+    "run_id": "20261106T151257Z-full-fresh-real",
+    "progress_after_disconnect": true,
+    "observations": [
+      {
+        "time": 1793978109.2253997,
+        "status": {
+          "state": "running",
+          "stage": "preparation",
+          "time": 1793978073.178699,
+          "pid": 254
+        },
+        "child_status": {
+          "state": "running",
+          "stage": "preparation",
+          "time": 1793978073.178699,
+          "pid": 254
+        },
+        "event_bytes": 0,
+        "epochs": 0,
+        "new_epochs": 0,
+        "finite_new_training": false,
+        "supervisor": {
+          "pid": 252,
+          "child_pid": 254,
+          "time": 1793978106.4621344
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1793978107.2311165,
+          "deadline": 1794002405.9387121
+        }
+      },
+      {
+        "time": 1793978227.7247465,
+        "status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "time": 1793978173.546465
+        },
+        "child_status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "time": 1793978173.546465
+        },
+        "event_bytes": 372,
+        "epochs": 1,
+        "new_epochs": 1,
+        "finite_new_training": true,
+        "supervisor": {
+          "pid": 252,
+          "child_pid": 254,
+          "time": 1793978227.2401085
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1793978225.5464945,
+          "deadline": 1794002405.9387121
+        }
+      }
+    ],
+    "observations_sha256": "4153cc550120abde2dff661e21f0aff7658c13b2d1f57fc996e6edf09ec9a67a",
+    "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+  },
+  "first_epoch": {
+    "epoch": 1,
+    "learning_rate": 5e-06,
+    "train_loss": 3.3813267862868877,
+    "validation_loss": 3.2972707818225144,
+    "train_seconds": 32.16216751281172,
+    "training_target_tokens_per_second": 19917.252148656517,
+    "global_step": 97,
+    "learning_rate_end": 4.902512143601491e-06,
+    "scored_training_tokens": 640582
+  },
+  "untouched_baseline": {
+    "generation": 0,
+    "weights_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+    "validation": {
+      "nll_sum": 3335648.251834465,
+      "scored_tokens": 1001439,
+      "loss": 3.330855151271785,
+      "perplexity": 27.96224343001504,
+      "seconds": 12.718893507029861,
+      "mean_sequence_perplexity": 41.63215880452721,
+      "std_sequence_perplexity": 138.99195014665187,
+      "context_tokens": 512
+    },
+    "test": {
+      "nll_sum": 3275308.9365735445,
+      "scored_tokens": 979319,
+      "loss": 3.3444760456741314,
+      "perplexity": 28.34571991255706,
+      "seconds": 12.715616623172536,
+      "mean_sequence_perplexity": 60.415143423132015,
+      "std_sequence_perplexity": 626.2215925185624,
+      "context_tokens": 512
+    },
+    "checkpoint_files": {
+      "config.json": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+      "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "model.safetensors": "b3a67b42504e0c101c739fe6ef0d57eb3a9ed90267e41aba8019149a472ceae1"
+    }
+  },
+  "current_status": {
+    "run_id": "20261106T151257Z-full-fresh-real",
+    "pod_id": "xf5ml3no72cg0z",
+    "pod_state": "RUNNING",
+    "reported_pod_rate_usd": 0.57,
+    "compute_running": true,
+    "remote": {
+      "status": {
+        "state": "running",
+        "generation": 1,
+        "stage": "training",
+        "time": 1793978173.546465
+      },
+      "watchdog": {
+        "pid": 139,
+        "time": 1793978264.947931,
+        "deadline": 1794002405.9387121
+      },
+      "supervisor": {
+        "pid": 252,
+        "child_pid": 254,
+        "time": 1793978263.4732745
+      }
+    },
+    "log_tail": "/opt/iib-venv/lib/python3.12/site-packages/huggingface_hub/file_download.py:945: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.\n  warnings.warn(\n/opt/iib-venv/lib/python3.12/site-packages/huggingface_hub/file_download.py:945: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.\n  warnings.warn(\n/opt/iib-venv/lib/python3.12/site-packages/huggingface_hub/file_download.py:945: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.\n  warnings.warn("
+  },
+  "measured_full_forecast": {
+    "workflow": "fresh_real",
+    "estimated_hours": 0.7073205621814553,
+    "estimated_compute_and_running_storage_usd": 0.40714534277896913,
+    "training_cycles": 10,
+    "source_training_tokens": 6400000,
+    "training_seconds": 257.3238583281636,
+    "evaluation_seconds": 300.9413320183865,
+    "preparation_seconds": 59.30415888894269,
+    "method": "Measured masked training/evaluation, document/shuffle preparation scaling, 1.5x margin, 300s setup and 120s per checkpoint/backup."
+  },
+  "benchmark_sha256": "c6a735a07d03af3dfe27e74b4b1809684917335158d7396f881fd0bb77ac75f0",
+  "cumulative_ceiling_usd": 50,
+  "reserve_usd": 2,
+  "session_allowance_usd": 4.491627474200563,
+  "independent_watchdog_deadline_utc": "2026-11-06T22:00:05.938712+00:00",
+  "fallback_validation_run": "20261106T145728Z-smoke-fresh-real",
+  "combined_fineweb_validation_usd": 0.2379062256104407,
+  "capacity_fallback": "Original RTX 4000 Ada capacity unavailable after retries. RTX PRO 4000 Blackwell passed actual GPU acceptance before full launch. Scientific settings preserved.",
+  "recovery": "Selected models, optimizer/scheduler/RNG state, frozen datasets and metrics save to the task-owned network volume and private Hugging Face backups.",
+  "scope": "Verified startup and actual full-data training progress. Later completion and bulk recovery are separate checks."
+}

@@ -1,0 +1,46 @@
+{
+  "inputs": {
+    "config.json": "b914bee01b62fe6f7ad8d3acf47bd34f0218aafd79b03fbc4af0209f889e2157",
+    "data/manifest.json": "9fa86d0df10dc88f164bb28733b9db49535cf76677b96782d0012b990079e8cd",
+    "seed_42/gen_00/metrics.json": "6701f1066f70aac45420815df468df63acfb3f147b2ac6047609da3c9c5886eb",
+    "seed_42/gen_01/metrics.json": "8cfc950315589cffd395a312ed3bac9e3e9654eca342410c7d3b74e22f0e090a",
+    "seed_42/gen_01/training_history.json": "0a49c24871930e7e2d9e4894fd999664964adb785a47d364f0e12a475a6d4fda",
+    "seed_42/gen_02/metrics.json": "6ddb948d57031f0cfaf6a7068bccfcc53cd5be58aa40fa6e0aa730a5b1fdb42f",
+    "seed_42/gen_02/training_history.json": "e1c7f25ad7e9273659e4073720917ebb9b995916fcb798ada0b8695f00b13eb5",
+    "seed_42/gen_03/metrics.json": "6f2254250e3d1074a21f6ae3710ba2293d893e5798c5b770c75c5b50749cc2be",
+    "seed_42/gen_03/training_history.json": "48923223c01418aec97e7d7eb9e1d7669f79d8906bbb628c3cbd6f9f28cae5f3"
+  },
+  "outputs": {
+    "generalization_gap.png": "9cbf57f74f1e2db1501bcefabd2b13fc20657d6417bc55c7d5179093286a2dd8",
+    "learning_rate.png": "f77c0e2d6c400943534d8f846227105bf38f9eac8cbb6668ae85dcd5d346232a",
+    "loss.png": "9a17703b3739fbf24b78d5751a6bcac827ff9b1b29b896b3b8d72bb3a4e0f745",
+    "metrics.csv": "c169d129e998c58e674bd3f1c16ab1fc0db4258f7abd2a78207295664f7d04f5",
+    "metrics.json": "ab96b3c51b464a10a4a4f9e38441d29c23a48a2c7217356aab9f9339c936f847",
+    "perplexity.png": "6c36e4af9399423c34c4c7e9c1db72c3e80f170ed92b118c4da33b17fb7e5257",
+    "report.md": "5b13c1dac5dfc3bedbc6808042863feb51e60d83cdd3a41c034cd8a19e1dfba2",
+    "runtime.png": "06e5f8ab864cade7c49e0beae0156b94f7f076ec52b2a9468fa5eef863544f18",
+    "summary.json": "226a6afd943c45748df1d6167ec6260fca778d8aafeffb4e8c99db98bcfdb117"
+  },
+  "analysis_sha256": "e473a6bd791a20bcf64f759854a8c03f2b007489bcb6b325b11f2362d7a86cff",
+  "python": "3.12.1",
+  "runtime_sha256": "13ddfea86bc9a87377bb08e81f1a43377c3e8767cf3965a3da34561dcf3cc0c7",
+  "training_environment": {
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "cuda": "12.8",
+    "driver_version": "595.91.07",
+    "gpu": "NVIDIA RTX 4000 Ada Generation",
+    "packages": {
+      "transformers": "4.37.2",
+      "datasets": "3.4.1",
+      "numpy": "2.1.2",
+      "huggingface-hub": "0.34.4",
+      "matplotlib": "3.9.4"
+    },
+    "determinism": "Fixed seeds and epoch-local shuffle; TF32 disabled; no promise of bitwise equality across GPU/library versions."
+  },
+  "packages": {
+    "numpy": "2.1.2",
+    "matplotlib": "3.9.4"
+  }
+}

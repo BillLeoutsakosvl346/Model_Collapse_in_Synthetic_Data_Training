@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-06",
+  "run_id": "20261106T141204Z-smoke-fresh-real",
+  "launch_id": "20261106T141204161394Z",
+  "pod_id": "ngcfe9z1vb4vf8",
+  "volume_id": "apn00g82v6",
+  "gpu": "NVIDIA RTX 4000 Ada Generation",
+  "vram_gb": 20,
+  "data_center": "EU-RO-1",
+  "gpu_hourly_usd": 0.28,
+  "standard_network_volume_gb": 30,
+  "volume_hourly_usd": 0.0028767123287671234,
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "runtime_sha256": "6c0f8edbc6b91f7b4f919311ba4b624e48bba89b7882be87f79cf7a12f22368e",
+  "configuration_sha256": "fc181d5dd7cffb39dac8ba3b35449ba4f6ee2921d5fadcded213d1af95ad78c1",
+  "detached_supervisor_and_watchdog_verified": true,
+  "actual_new_training_progress_verified": true,
+  "offline_suite_passed": 401,
+  "combined_validation_cap_usd": 0.5,
+  "full_pilot_launched": false,
+  "scope": "Small actual GPU validation startup. Acceptance, recovery and final shutdown are separate checks."
+}

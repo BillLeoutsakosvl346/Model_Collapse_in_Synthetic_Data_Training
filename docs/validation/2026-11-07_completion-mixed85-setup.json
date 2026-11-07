@@ -1,0 +1,115 @@
+{
+  "condition": 85,
+  "run_id": "20261107T140623Z-smoke-completion64-mixed85",
+  "runtime_sha256": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+  "checks": {
+    "restored_evaluation": true,
+    "training_recovery": true,
+    "nested_selections": true,
+    "completed_stages_unchanged": true,
+    "matched_initial_weights_and_prompts": true,
+    "direct_masked_nll": true,
+    "sealed_private_stage_restores": true,
+    "exact_mixture_reconstruction": true,
+    "three_terminal_epochs": true,
+    "private_restore": true,
+    "continuation_only_loss": true,
+    "all_handoffs_and_optimizer_states": true,
+    "generation_shard_recovery": true,
+    "coordinator_recovery": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "remote_validation": {
+    "workflow": "completion_comparison",
+    "checks": {
+      "restored_evaluation": true,
+      "training_recovery": true,
+      "nested_selections": true,
+      "completed_stages_unchanged": true,
+      "matched_initial_weights_and_prompts": true,
+      "direct_masked_nll": true,
+      "sealed_private_stage_restores": true,
+      "exact_mixture_reconstruction": true,
+      "three_terminal_epochs": true,
+      "private_restore": true,
+      "continuation_only_loss": true,
+      "all_handoffs_and_optimizer_states": true,
+      "generation_shard_recovery": true,
+      "coordinator_recovery": true
+    },
+    "source_code_sha256": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+    "protocol_fingerprint": "e8152de86ed54d8d420658350da58fb4e6616469b75fbd457f3d5cfb7dee8e69",
+    "arm_audits": {
+      "mixed85": {
+        "stages": [
+          {
+            "cycle": 1,
+            "weights_sha256": "988c654a06aae2af61e8e4f0d564ea900b3804923ce953669e09db093b175e40",
+            "initializer_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+            "optimizer_step": 3,
+            "scored_training_tokens": 20480,
+            "real_pairs": 48,
+            "synthetic_pairs": 272
+          },
+          {
+            "cycle": 2,
+            "weights_sha256": "1c16957ac08b148924f09af54bf357dcdcc8f0b3aebf0584e31ff274308f60e4",
+            "initializer_sha256": "988c654a06aae2af61e8e4f0d564ea900b3804923ce953669e09db093b175e40",
+            "optimizer_step": 6,
+            "scored_training_tokens": 20480,
+            "real_pairs": 48,
+            "synthetic_pairs": 272
+          },
+          {
+            "cycle": 3,
+            "weights_sha256": "c438d78c23716f8a2370e981852b0f8e3d850cd7f16f87a299a0113a02abbc78",
+            "initializer_sha256": "1c16957ac08b148924f09af54bf357dcdcc8f0b3aebf0584e31ff274308f60e4",
+            "optimizer_step": 9,
+            "scored_training_tokens": 20480,
+            "real_pairs": 48,
+            "synthetic_pairs": 272
+          }
+        ],
+        "restored_loss_error": 0.0,
+        "direct_nll_error": 0.0,
+        "restored_optimizer_sha256": "ef9b550778bfd839c6ebc936ca93bfdf1f524c7d2d3ab6161fe92d38247ec80d"
+      }
+    },
+    "restorations": {
+      "mixed85": {
+        "run_id": "20261107T140623Z-smoke-completion64-mixed85-mixed85",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "d1826e597e38a6a62006ce532cb4a39d82ff645a",
+          "dataset": "367955812794ffd7911cb18d5a11e97beb81f776"
+        },
+        "artifact_index_sha256": "38b3e167126aa53b5bede59e598f318dda3fc65305dae283e2d9ba0e1a4e08b9",
+        "indexed_files": 151,
+        "verified_files": 151,
+        "verified_bytes": 4511508711,
+        "metadata_only": false,
+        "scope": "full",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "/workspace/completion_acceptance_restore/20261107T140623Z-smoke-completion64-mixed85-mixed85"
+      }
+    },
+    "unique_training_stages": 3,
+    "executed_epochs": 3
+  },
+  "cleanup": {
+    "run_id": "20261107T140623Z-smoke-completion64-mixed85",
+    "pod_removed": true,
+    "volume_removed": true,
+    "account_balance_delta_usd": 0.04306197030000192
+  },
+  "time": 1794062461.9119787,
+  "cost_usd_conservative": 0.25034469518367375
+}

@@ -108,13 +108,16 @@ def test_markdown_checker_detects_missing_target_but_ignores_code(tmp_path):
     assert len(errors) == 1 and "absent.md" in errors[0]
 
 
-def test_publication_checker_detects_tampering_and_path_escape(tmp_path):
+@pytest.mark.parametrize("hash_only", [False, True])
+def test_publication_checker_detects_tampering_and_path_escape(tmp_path, hash_only):
     root = tmp_path / "reports/run"
     root.mkdir(parents=True)
     payload = root / "record.json"
     payload.write_bytes(b'{}')
     manifest = root / "publication_manifest.json"
-    manifest.write_text(json.dumps({"files": {"record.json": {"bytes": 2, "sha256": hashlib.sha256(b'{}').hexdigest()}}}))
+    checksum = hashlib.sha256(b'{}').hexdigest()
+    metadata = checksum if hash_only else {"bytes": 2, "sha256": checksum}
+    manifest.write_text(json.dumps({"files": {"record.json": metadata}}))
     assert publication_errors(tmp_path, [manifest]) == []
     payload.write_bytes(b'{"changed":true}')
     assert "checksum/size differs" in publication_errors(tmp_path, [manifest])[0]

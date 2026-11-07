@@ -1,9 +1,303 @@
 schema_version: 1
-updated: "2026-11-02"
+updated: "2026-11-07"
 description: "Scientific conditions and their recorded runs; week labels are presentation aliases."
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
 conditions:
+  fineweb_completion_mixed85_one_epoch:
+    name: "OPT-125M / FineWeb-Edu: 85% self-generated continuation targets"
+    workflow: completion_comparison
+    logical_arm: mixed85
+    synthetic_fraction: 0.85
+    state: running
+    definition: ../comparisons/fineweb_completion64_mixed85/README.md
+    comparison_config: ../comparisons/fineweb_completion64_mixed85/full.yaml
+    smoke_config: ../comparisons/fineweb_completion64_mixed85/smoke.yaml
+    starting_weights: original_pretrained
+    synthetic_generator: own_preceding_selected_checkpoint
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    optimizer_policy: carry_across_cycles
+    selection_policy: nested_seedsequence_6401_v1
+    full_experiment_launched: true
+    full_comparison_run_id: 20261107T150834Z-full-completion64-mixed85
+    logical_run_id: 20261107T150834Z-full-completion64-mixed85-mixed85
+    acceptance_run_id: 20261107T140623Z-smoke-completion64-mixed85
+    acceptance_record: ../docs/validation/2026-11-07_completion-mixed85-setup.json
+    accepted_runtime_sha256: eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f
+    accepted_protocol_fingerprint: e8152de86ed54d8d420658350da58fb4e6616469b75fbd457f3d5cfb7dee8e69
+    required_gpu: NVIDIA RTX PRO 4500 Blackwell
+    hardware_note: "User-approved matching fallback; preceding fractions used RTX PRO 4000 Blackwell."
+    full_provisioning_record: ../docs/validation/2026-11-07_completion-high-fractions-full-provisioning.json
+    full_launch_record: ../docs/validation/2026-11-07_completion-high-fractions-full-launch.json
+
+  fineweb_completion_mixed90_one_epoch:
+    name: "OPT-125M / FineWeb-Edu: 90% self-generated continuation targets"
+    workflow: completion_comparison
+    logical_arm: mixed90
+    synthetic_fraction: 0.9
+    state: running
+    definition: ../comparisons/fineweb_completion64_mixed90/README.md
+    comparison_config: ../comparisons/fineweb_completion64_mixed90/full.yaml
+    smoke_config: ../comparisons/fineweb_completion64_mixed90/smoke.yaml
+    starting_weights: original_pretrained
+    synthetic_generator: own_preceding_selected_checkpoint
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    optimizer_policy: carry_across_cycles
+    selection_policy: nested_seedsequence_6401_v1
+    full_experiment_launched: true
+    full_comparison_run_id: 20261107T151427Z-full-completion64-mixed90
+    logical_run_id: 20261107T151427Z-full-completion64-mixed90-mixed90
+    acceptance_run_id: 20261107T141453Z-smoke-completion64-mixed90
+    acceptance_record: ../docs/validation/2026-11-07_completion-mixed90-setup.json
+    accepted_runtime_sha256: eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f
+    accepted_protocol_fingerprint: 36add4af6575b47874b70c7e5d459ac2b96ccc2a36a3f075250e6dfe830a0f7c
+    required_gpu: NVIDIA RTX PRO 4500 Blackwell
+    hardware_note: "User-approved matching fallback; preceding fractions used RTX PRO 4000 Blackwell."
+    full_provisioning_record: ../docs/validation/2026-11-07_completion-high-fractions-full-provisioning.json
+    full_launch_record: ../docs/validation/2026-11-07_completion-high-fractions-full-launch.json
+
+  fineweb_completion_mixed95_one_epoch:
+    name: "OPT-125M / FineWeb-Edu: 95% self-generated continuation targets"
+    workflow: completion_comparison
+    logical_arm: mixed95
+    synthetic_fraction: 0.95
+    state: running
+    definition: ../comparisons/fineweb_completion64_mixed95/README.md
+    comparison_config: ../comparisons/fineweb_completion64_mixed95/full.yaml
+    smoke_config: ../comparisons/fineweb_completion64_mixed95/smoke.yaml
+    starting_weights: original_pretrained
+    synthetic_generator: own_preceding_selected_checkpoint
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    optimizer_policy: carry_across_cycles
+    selection_policy: nested_seedsequence_6401_v1
+    full_experiment_launched: true
+    full_comparison_run_id: 20261107T151610Z-full-completion64-mixed95
+    logical_run_id: 20261107T151610Z-full-completion64-mixed95-mixed95
+    acceptance_run_id: 20261107T141842Z-smoke-completion64-mixed95
+    acceptance_record: ../docs/validation/2026-11-07_completion-mixed95-setup.json
+    accepted_runtime_sha256: eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f
+    accepted_protocol_fingerprint: 68cd00ab0c98da52879e529a7550c1b6bc2fd1717a1a21e7c0bf0a3b3f2d61af
+    required_gpu: NVIDIA RTX PRO 4500 Blackwell
+    hardware_note: "User-approved matching fallback; preceding fractions used RTX PRO 4000 Blackwell."
+    full_provisioning_record: ../docs/validation/2026-11-07_completion-high-fractions-full-provisioning.json
+    full_launch_record: ../docs/validation/2026-11-07_completion-high-fractions-full-launch.json
+
+  fineweb_completion_mixed80_one_epoch:
+    name: "OPT-125M / FineWeb-Edu: 80% self-generated continuation targets"
+    workflow: completion_comparison
+    logical_arm: mixed80
+    synthetic_fraction: 0.8
+    state: completed
+    definition: ../comparisons/fineweb_completion64_mixed80/README.md
+    comparison_config: ../comparisons/fineweb_completion64_mixed80/full.yaml
+    smoke_config: ../comparisons/fineweb_completion64_mixed80/smoke.yaml
+    starting_weights: original_pretrained
+    synthetic_generator: own_preceding_selected_checkpoint
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    optimizer_policy: carry_across_cycles
+    selection_policy: nested_seedsequence_6401_v1
+    authorization: ../docs/validation/2026-11-07_completion-mixed80-authorization.json
+    full_experiment_launched: true
+    full_comparison_run_id: 20261107T113638Z-full-completion64-mixed80
+    logical_run_id: 20261107T113638Z-full-completion64-mixed80-mixed80
+    acceptance_run_id: 20261107T111914Z-smoke-completion64-mixed80
+    acceptance_record: ../docs/validation/2026-11-07_completion-mixed80-setup.json
+    accepted_runtime_sha256: 0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170
+    accepted_protocol_fingerprint: 566ba603f84a65d601ead18dc0a1af98420a276a3b14bc0c5ec395c7ff970f59
+    full_provisioning_record: ../docs/validation/2026-11-07_completion-mixed80-provisioning.json
+    full_launch_record: ../docs/validation/2026-11-07_completion-mixed80-full-launch.json
+
+    completion_status_record: ../docs/validation/2026-11-07_completion-mixed80-completion-status.json
+
+  fineweb_completion_mixed50_one_epoch:
+    name: "OPT-125M / FineWeb-Edu: 50% self-generated continuation targets"
+    workflow: completion_comparison
+    logical_arm: mixed50
+    synthetic_fraction: 0.5
+    state: completed
+    definition: ../comparisons/fineweb_completion64_mixtures/README.md
+    comparison_config: ../comparisons/fineweb_completion64_mixtures/full.yaml
+    smoke_config: ../comparisons/fineweb_completion64_mixtures/smoke.yaml
+    starting_weights: original_pretrained
+    synthetic_generator: own_preceding_selected_checkpoint
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    optimizer_policy: carry_across_cycles
+    selection_policy: nested_seedsequence_6401_v1
+    authorization: ../docs/validation/2026-11-06_completion-mixtures-authorization.json
+    acceptance_run_id: 20261106T235904Z-smoke-completion64-mixtures
+    acceptance_record: ../docs/validation/2026-11-07_completion-mixtures-setup.json
+    accepted_runtime_sha256: 98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37
+    accepted_protocol_fingerprint: c411a4e72d8215365c4f0acc84809bcacd3f20af8bdbe627d33d714af6660c13
+    full_experiment_launched: true
+    full_comparison_run_id: 20261107T004033Z-full-completion64-mixtures
+    logical_run_id: 20261107T004033Z-full-completion64-mixtures-mixed50
+    full_launch_record: ../docs/validation/2026-11-07_completion-mixtures-full-launch.json
+    full_authorization_record: ../docs/validation/2026-11-07_completion-mixtures-parallel-full-authorization.json
+
+    completion_analysis_record: ../docs/validation/2026-11-07_fineweb-four-fraction-completion-analysis.json
+
+  fineweb_completion_mixed20_one_epoch:
+    name: "OPT-125M / FineWeb-Edu: 20% self-generated continuation targets"
+    workflow: completion_comparison
+    logical_arm: mixed20
+    synthetic_fraction: 0.2
+    state: completed
+    definition: ../comparisons/fineweb_completion64_mixtures/README.md
+    comparison_config: ../comparisons/fineweb_completion64_mixtures/full.yaml
+    smoke_config: ../comparisons/fineweb_completion64_mixtures/smoke.yaml
+    starting_weights: original_pretrained
+    synthetic_generator: own_preceding_selected_checkpoint
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    optimizer_policy: carry_across_cycles
+    selection_policy: nested_seedsequence_6401_v1
+    authorization: ../docs/validation/2026-11-06_completion-mixtures-authorization.json
+    acceptance_run_id: 20261106T235904Z-smoke-completion64-mixtures
+    acceptance_record: ../docs/validation/2026-11-07_completion-mixtures-setup.json
+    accepted_runtime_sha256: 98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37
+    accepted_protocol_fingerprint: c411a4e72d8215365c4f0acc84809bcacd3f20af8bdbe627d33d714af6660c13
+    full_experiment_launched: true
+    full_comparison_run_id: 20261107T004033Z-full-completion64-mixtures
+    logical_run_id: 20261107T004033Z-full-completion64-mixtures-mixed20
+    full_launch_record: ../docs/validation/2026-11-07_completion-mixtures-full-launch.json
+    full_authorization_record: ../docs/validation/2026-11-07_completion-mixtures-parallel-full-authorization.json
+
+    completion_analysis_record: ../docs/validation/2026-11-07_fineweb-four-fraction-completion-analysis.json
+
+  fineweb_completion_real_one_epoch:
+    name: "OPT-125M / FineWeb-Edu: matched real continuations, one epoch per fresh prompt chunk"
+    workflow: completion_comparison
+    logical_arm: real
+    state: completed
+    definition: ../comparisons/fineweb_real_vs_synthetic_completion64/README.md
+    comparison_config: ../comparisons/fineweb_real_vs_synthetic_completion64/full.yaml
+    smoke_config: ../comparisons/fineweb_real_vs_synthetic_completion64/smoke.yaml
+    starting_weights: original_pretrained
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    prompt_tokens: 64
+    scored_targets_per_pair: 64
+    optimizer_policy: carry_across_cycles
+    full_experiment_launched: true
+    data_record: ../docs/validation/2026-11-06_completion64-data.json
+    authorization: ../docs/validation/2026-11-06_completion64-authorization.json
+    acceptance: passed_actual_gpu
+    acceptance_run_id: 20261106T191336Z-smoke-completion64
+    acceptance_record: ../docs/validation/2026-11-06_completion64-setup.json
+    accepted_runtime_sha256: 35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497
+    accepted_protocol_fingerprint: b22e6d66d82ea7393ee265b757a0d11f9e1d16f5519059faf798e0e285ab45ac
+
+    full_comparison_run_id: 20261106T193918Z-full-completion64
+    logical_run_id: 20261106T193918Z-full-completion64-real
+    full_launch_record: ../docs/validation/2026-11-06_completion64-full-launch.json
+
+    failure_status_record: ../docs/validation/2026-11-06_completion64-failure-status.json
+    storage_repair_record: ../docs/validation/2026-11-06_completion64-backup-capacity-repair.json
+    resumed_status_record: ../docs/validation/2026-11-06_completion64-resumed-after-storage-repair.json
+
+    completion_analysis_record: ../docs/validation/2026-11-07_fineweb-four-fraction-completion-analysis.json
+
+  fineweb_completion_synthetic_one_epoch:
+    name: "OPT-125M / FineWeb-Edu: matched self-generated continuations, one epoch per fresh prompt chunk"
+    workflow: completion_comparison
+    logical_arm: synthetic
+    state: completed
+    definition: ../comparisons/fineweb_real_vs_synthetic_completion64/README.md
+    comparison_config: ../comparisons/fineweb_real_vs_synthetic_completion64/full.yaml
+    smoke_config: ../comparisons/fineweb_real_vs_synthetic_completion64/smoke.yaml
+    starting_weights: original_pretrained
+    synthetic_generator: preceding_selected_checkpoint
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    prompt_tokens: 64
+    scored_targets_per_pair: 64
+    optimizer_policy: carry_across_cycles
+    full_experiment_launched: true
+    data_record: ../docs/validation/2026-11-06_completion64-data.json
+    authorization: ../docs/validation/2026-11-06_completion64-authorization.json
+    acceptance: passed_actual_gpu
+    acceptance_run_id: 20261106T191336Z-smoke-completion64
+    acceptance_record: ../docs/validation/2026-11-06_completion64-setup.json
+    accepted_runtime_sha256: 35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497
+    accepted_protocol_fingerprint: b22e6d66d82ea7393ee265b757a0d11f9e1d16f5519059faf798e0e285ab45ac
+
+    full_comparison_run_id: 20261106T193918Z-full-completion64
+    logical_run_id: 20261106T193918Z-full-completion64-synthetic
+    full_launch_record: ../docs/validation/2026-11-06_completion64-full-launch.json
+
+    failure_status_record: ../docs/validation/2026-11-06_completion64-failure-status.json
+    storage_repair_record: ../docs/validation/2026-11-06_completion64-backup-capacity-repair.json
+    resumed_status_record: ../docs/validation/2026-11-06_completion64-resumed-after-storage-repair.json
+
+    completion_analysis_record: ../docs/validation/2026-11-07_fineweb-four-fraction-completion-analysis.json
+
+  fineweb_fresh_real_one_epoch:
+    name: "OPT-125M / FineWeb-Edu 10BT: fresh real documents, continuous optimizer, one epoch"
+    workflow: fresh_real
+    state: completed_analysis_pending
+    definition: opt125m_fineweb_edu/fresh_real_one_epoch/README.md
+    configs:
+      full: opt125m_fineweb_edu/fresh_real_one_epoch/full.yaml
+      smoke: opt125m_fineweb_edu/fresh_real_one_epoch/smoke.yaml
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    source_tokens_per_cycle: 640000
+    maximum_sequence_length: 512
+    optimizer_policy: carry_across_cycles
+    dataset_revision: 87f09149ef4734204d70ed1d046ddc9ca3f2b8f9
+    authorization: ../docs/validation/2026-11-06_fineweb-setup-authorization.json
+    full_run_launched: true
+    full_run_id: 20261106T151257Z-full-fresh-real
+    full_launch_record: ../docs/validation/2026-11-06_fineweb-full-launch.json
+    full_completion_record: ../docs/validation/2026-11-06_fineweb-full-completion-status.json
+    acceptance: passed_actual_gpu
+    acceptance_run: 20261106T145728Z-smoke-fresh-real
+    acceptance_record: ../docs/validation/2026-11-06_fineweb-blackwell-acceptance.json
+    initial_setup_report: ../reports/20261106T143315Z-smoke-fresh-real/report.md
+    accepted_runtime_sha256: 13ddfea86bc9a87377bb08e81f1a43377c3e8767cf3965a3da34561dcf3cc0c7
+    accepted_protocol_fingerprint: ea54588894a9d0ccab721781c389848e7660aa57ac2595e5c005f95e9ee293f4
+    runs:
+      - id: 20261106T151257Z-full-fresh-real
+        kind: full
+        seed: 42
+        state: completed
+        completed_cycles: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        launch_record: ../docs/validation/2026-11-06_fineweb-full-launch.json
+        completion_record: ../docs/validation/2026-11-06_fineweb-full-completion-status.json
+        recovery_scope: selected_metadata_verified
+      - id: 20261106T145728Z-smoke-fresh-real
+        kind: smoke
+        seed: 42
+        state: validated_resources_removed
+        completed_cycles: [1, 2, 3]
+        recovery_scope: bulk_verified_remotely
+        validation_record: ../docs/validation/2026-11-06_fineweb-blackwell-acceptance.json
+      - id: 20261106T143315Z-smoke-fresh-real
+        kind: smoke
+        seed: 42
+        state: validated_resources_removed
+        completed_cycles: [1, 2, 3]
+        recovery_scope: bulk_verified_remotely
+        report: ../reports/20261106T143315Z-smoke-fresh-real/report.md
+      - id: 20261106T141204Z-smoke-fresh-real
+        kind: smoke
+        seed: 42
+        state: historical_validation_superseded_resources_removed
+        recovery_record: ../docs/validation/2026-11-06_fineweb-preliminary-recovery.json
+
   continued_real_only_final5:
     name: "OPT-125M / WikiText-2: continued weights, real-only targets, final epoch 5"
     initialization: continued

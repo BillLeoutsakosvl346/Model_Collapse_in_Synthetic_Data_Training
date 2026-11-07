@@ -1,0 +1,85 @@
+{
+  "run_id": "20261106T193918Z-full-completion64",
+  "checked_at": 1794004145.4376173,
+  "state": "interrupted_private_backup_quota",
+  "full_training_completed": false,
+  "actual_real_training_cycles": [
+    1,
+    2,
+    3
+  ],
+  "actual_epochs": 3,
+  "real_cycles_backed_up_before_failure": [
+    1,
+    2
+  ],
+  "cycle_3_pending_private_backup": true,
+  "synthetic_training_cycles": [],
+  "failure": "Hugging Face private storage limit reached during cycle-3 backup",
+  "preflight_gap": "Upload/download access was tested; remaining account storage capacity was not admitted against full checkpoint and optimizer-state requirements",
+  "original_gpu_shutdown": {
+    "provider_pod_id": "n3rtwc4jty5266",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Fri Nov 06 2026 19:50:50 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1793994650.0,
+    "observed_at": 1794003725.7493553
+  },
+  "original_gpu_provider_state": "EXITED",
+  "watchdog_reason": "failure",
+  "preserved_network_volume_id": "s9pmtnqkir",
+  "all_three_real_stage_seals_and_files_verified_on_preserved_volume": true,
+  "full_checkpoint_bulk_downloaded_locally": false,
+  "full_checkpoint_private_restore_reevaluation_performed": false,
+  "diagnostic_cpu_shutdown_and_removal": {
+    "provider_shutdown": {
+      "provider_pod_id": "v69olbgfcwlkhu",
+      "provider_status": "EXITED",
+      "field": "lastStatusChange",
+      "value": "Exited by user: Fri Nov 06 2026 22:28:02 GMT+0000 (Coordinated Universal Time)",
+      "provider_shutdown_epoch": 1794004082.0,
+      "observed_at": 1794004081.2622344
+    },
+    "diagnostic_pod_removed": true,
+    "full_volume_preserved": "s9pmtnqkir"
+  },
+  "metrics": [
+    {
+      "cycle": 0,
+      "test_perplexity": 29.17631807160739,
+      "validation_perplexity": 28.91131926861199
+    },
+    {
+      "cycle": 1,
+      "test_perplexity": 28.394860500529408,
+      "validation_perplexity": 28.15496563836113,
+      "global_step": 79,
+      "checkpoint_weights_sha256": "b34441cea7739f822111a3348475cf865fc403c8b1514eead3e1989229de2521"
+    },
+    {
+      "cycle": 2,
+      "test_perplexity": 28.326857305281344,
+      "validation_perplexity": 28.07589746404158,
+      "global_step": 158,
+      "checkpoint_weights_sha256": "2f27258b23a6057e9af69ea429a5919fff9cc1aed53ae3b175fe1d5ede9fc9cc"
+    },
+    {
+      "cycle": 3,
+      "test_perplexity": 28.23693282860609,
+      "validation_perplexity": 28.001786598596247,
+      "global_step": 237,
+      "checkpoint_weights_sha256": "2f52d7ef790e12d13a11775756846b543f69f3631bbf7668f2d7a9576a06b6b1"
+    }
+  ],
+  "next_training_cycle_after_verified_backup_repair": 4,
+  "training_runtime_unchanged": "35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497",
+  "evidence_hashes": {
+    "failure_diagnostic.json": "fa845d07b044c945030e0f3cbcec6ab37a8bd75f321d81734b6737d5023e5c53",
+    "failure_stage_audit.json": "741909187a3694d3eb70fac952069ae1e919f61a515ba4a270f629bbf617a912",
+    "failure_baseline_metrics.json": "a5fcae87f5c42c3d7cac71ec9d18e1987b53c0ec8c8af0bc90b34c2fbb41975a",
+    "diagnostic_shutdown.json": "15ca3f287b5793e364608d50d17d63108296cb9aa5a5c5e422f73776333c9dd0",
+    "stopped_snapshot.json": "13b734b48f34092436e4dab8e6f8078effc06b9c16477ebcae999f7d681a1add"
+  },
+  "backup_constraint": "Preserve historical pinned artifacts and use private storage; paid Hugging Face services are outside current authorization",
+  "new_gpu_training_launched_during_status_check": false
+}

@@ -1,0 +1,24 @@
+{
+  "checked_at": 1794011149.0412557,
+  "run_id": "20261106T193918Z-full-completion64",
+  "pod_id": "udbovqu03vp3h0",
+  "provider_status": "RUNNING",
+  "volume_id": "s9pmtnqkir",
+  "read_only": true,
+  "live": {
+    "parent": {
+      "state": "running",
+      "phase": "synthetic",
+      "active_child": "20261106T193918Z-full-completion64-synthetic",
+      "time": 1794007934.8126442
+    },
+    "active_child": {
+      "state": "running",
+      "generation": 5,
+      "stage": "training",
+      "time": 1794011135.935001
+    },
+    "watchdog_age_seconds": 0.9216289520263672,
+    "supervisor_age_seconds": 0.11903715133666992
+  }
+}

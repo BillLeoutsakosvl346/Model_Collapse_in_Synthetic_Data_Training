@@ -1,0 +1,180 @@
+{
+  "recorded_at": 1794011029.9313045,
+  "setup_complete": true,
+  "technical_readiness": true,
+  "affordable_at_handoff": true,
+  "run_id": "20261106T235904Z-smoke-completion64-mixtures",
+  "runtime_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+  "protocol_fingerprint": "c411a4e72d8215365c4f0acc84809bcacd3f20af8bdbe627d33d714af6660c13",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "offline_suite_passed": 466,
+  "additional_matched_reference_reporting_test_passed": true,
+  "independent_review_passed": true,
+  "gpu_acceptance_checks": {
+    "direct_masked_nll": true,
+    "generation_shard_recovery": true,
+    "all_handoffs_and_optimizer_states": true,
+    "sealed_private_stage_restores": true,
+    "nested_selections": true,
+    "both_private_restores": true,
+    "six_terminal_epochs": true,
+    "coordinator_recovery": true,
+    "completed_stages_unchanged": true,
+    "training_recovery": true,
+    "continuation_only_loss": true,
+    "matched_initial_weights_and_prompts": true,
+    "exact_mixture_reconstruction": true,
+    "restored_evaluation": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "gpu_restorations": {
+    "mixed50": {
+      "run_id": "20261106T235904Z-smoke-completion64-mixtures-mixed50",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "b7b2d8549f9c6d8ee4202c217b3f1d7ef2af5705",
+        "dataset": "7ecc8a98c4770774dc79b54aa0f4168f6c60581a"
+      },
+      "artifact_index_sha256": "837713dde317aabd460e7b998b73590ac772b69989dec364219bb9df16d2fcc8",
+      "indexed_files": 127,
+      "verified_files": 127,
+      "verified_bytes": 4511327643,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/completion_acceptance_restore/20261106T235904Z-smoke-completion64-mixtures-mixed50"
+    },
+    "mixed20": {
+      "run_id": "20261106T235904Z-smoke-completion64-mixtures-mixed20",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "2c657fa59f17d291180fb0667c9236d53ccd929c",
+        "dataset": "ef9bf06120afb5e5eeaff67dad029ff835ccfe47"
+      },
+      "artifact_index_sha256": "e5c4cda7bf366fedffaf516f19df25d59ea613f3e077f833331ed94c90172514",
+      "indexed_files": 109,
+      "verified_files": 109,
+      "verified_bytes": 4511173060,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/completion_acceptance_restore/20261106T235904Z-smoke-completion64-mixtures-mixed20"
+    }
+  },
+  "total_privately_restored_bytes": 9022500703,
+  "selected_epoch": 1,
+  "epochs_completed": 6,
+  "optimizer_steps_per_arm": 9,
+  "provider_shutdown_utc": "2026-11-07T00:18:22+00:00",
+  "validation_compute_minutes": 19.278064290682476,
+  "validation_conservative_cost_usd": 0.2138581128253013,
+  "validation_cap_usd": 0.5,
+  "cost_scope": "Conservative per-allocation compute/storage estimate with provider shutdown reconciled. Itemized billing has not settled. Account-wide balance delta includes the protected active GPU and retained storage.",
+  "temporary_pod_removed": true,
+  "temporary_volume_removed": true,
+  "protected_comparison": {
+    "run_id": "20261106T193918Z-full-completion64",
+    "pod_id": "udbovqu03vp3h0",
+    "status": "RUNNING",
+    "mounts": {
+      "network": [
+        {
+          "path": "/workspace",
+          "volumeId": "s9pmtnqkir"
+        }
+      ]
+    },
+    "operations_performed": "read-only provider checks"
+  },
+  "full_forecast": {
+    "estimated_hours": 3.008033041403991,
+    "estimated_compute_and_running_storage_usd": 1.7401265114861717,
+    "unique_training_stages": 20,
+    "epochs": 20,
+    "full_generation_stages": 0,
+    "generation_stages": 20,
+    "probe_sets": 21,
+    "training_target_exposures": 12800000,
+    "forecast_margin": 1.5,
+    "generated_training_continuations": 70000,
+    "generated_training_tokens": 4480000,
+    "historical_storage_during_run_usd": 2.092499039631292,
+    "seven_day_volume_storage_usd": 0.9665753424657535
+  },
+  "per_arm_forecast": {
+    "mixed50": {
+      "hours": 1.8132426729473965,
+      "compute_and_running_storage_usd": 1.0489484668297062,
+      "generated_training_continuations": 50000,
+      "training_target_exposures": 6400000
+    },
+    "mixed20": {
+      "hours": 1.1947903684565946,
+      "compute_and_running_storage_usd": 0.6911780446564656,
+      "generated_training_continuations": 20000,
+      "training_target_exposures": 6400000
+    }
+  },
+  "remaining_admissible_running_allowance_usd": 5.693642847543407,
+  "padded_forecast_required_usd": 2.0011454882090973,
+  "account_snapshot": {
+    "clientBalance": 39.4062793402,
+    "currentSpendPerHr": 0.61,
+    "isAutoPayEnabled": false,
+    "enableBackupPayments": false
+  },
+  "private_storage_admission": {
+    "quota_bytes": 100000000000,
+    "used_bytes": 30680693356,
+    "required_additional_bytes": 40000000000,
+    "reserve_bytes": 10000000000,
+    "available_after_reserve_bytes": 59319306644,
+    "admitted": true,
+    "namespace": "iib-model-collapse-bill",
+    "repositories": {
+      "model": {
+        "repo": "iib-model-collapse-bill/iib-model-collapse-models",
+        "revision": "5b09b9e714c4fc67ce42c0c6818c8ab07871fa36",
+        "lfs_bytes_including_history": 10520571600,
+        "current_native_bytes": 22372
+      },
+      "dataset": {
+        "repo": "iib-model-collapse-bill/iib-model-collapse-data",
+        "revision": "dd265813eb364ad96017e68042205841e68d9977",
+        "lfs_bytes_including_history": 20149153766,
+        "current_native_bytes": 10945618
+      }
+    },
+    "checked_at": 1794011029.612346,
+    "scope": "All repositories in the dedicated experiment namespace must be supplied. Native Git history and ordinary metadata growth are covered by the reserve."
+  },
+  "windows_cache": {
+    "path": "C:\\hf",
+    "configured_at": "2026-11-07T00:20:30.1589631+00:00",
+    "reason": "Windows Hugging Face artifact snapshot paths exceed the default cache path limit",
+    "previous_user_value": null
+  },
+  "report": "reports/20261106T235904Z-smoke-completion64-mixtures/report.md",
+  "generated_analysis": "reports/20261106T235904Z-smoke-completion64-mixtures/generated/gpu_validation",
+  "dataset_examples": "reports/20261106T235904Z-smoke-completion64-mixtures/dataset_examples.json",
+  "local_recovery_scope": "full_parent_and_verified_private_child_restores",
+  "full_training_launched": false,
+  "launch_admission_note": "Full launch rechecks active Pods, matching stock, private capacity, credit and budget. Current protected comparison is active.",
+  "total_distinct_offline_tests_passed": 467
+}

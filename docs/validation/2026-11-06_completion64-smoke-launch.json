@@ -1,0 +1,86 @@
+{
+  "run_id": "20261106T191336Z-smoke-completion64",
+  "resources": {
+    "pod_id": "dzkrowcgux0voy",
+    "volume_id": "hf8keryckk",
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "code_sha256": "35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497",
+    "quoted_gpu_hourly_usd": 0.57,
+    "session_allowance_usd": 0.414656193063627
+  },
+  "detached": {
+    "pod_id": "dzkrowcgux0voy",
+    "launch_id": "20261106T191336394022Z",
+    "run_id": "20261106T191336Z-smoke-completion64",
+    "progress_after_disconnect": true,
+    "observations": [
+      {
+        "time": 1793992504.5321503,
+        "status": {
+          "state": "running",
+          "phase": "preparation",
+          "time": 1793992498.7206023
+        },
+        "child_status": {
+          "state": "running",
+          "phase": "preparation",
+          "time": 1793992498.7206023
+        },
+        "event_bytes": 0,
+        "epochs": 0,
+        "new_epochs": 0,
+        "finite_new_training": false,
+        "completed_new_stages": 0,
+        "supervisor": {
+          "pid": 266,
+          "child_pid": 268,
+          "time": 1793992504.4224691
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1793992504.0241432,
+          "deadline": 1793994661.435179
+        }
+      },
+      {
+        "time": 1793992651.2504041,
+        "status": {
+          "state": "running",
+          "phase": "real",
+          "active_child": "20261106T191336Z-smoke-completion64-real",
+          "time": 1793992618.5114748
+        },
+        "child_status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "time": 1793992622.2546964
+        },
+        "event_bytes": 485,
+        "epochs": 1,
+        "new_epochs": 1,
+        "finite_new_training": true,
+        "completed_new_stages": 1,
+        "supervisor": {
+          "pid": 266,
+          "child_pid": 268,
+          "time": 1793992649.632842
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1793992649.6863182,
+          "deadline": 1793994661.435179
+        }
+      }
+    ],
+    "observations_sha256": "126c3f7be1acaead17da01c0884d3c463991fe05aecd414d480e8c58450a2f17",
+    "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+  },
+  "preliminary_recovery_receipts": [
+    "2026-11-06_completion64-preliminary-recovery.json",
+    "2026-11-06_completion64-memory-recovery.json"
+  ],
+  "full_training_launched": false
+}

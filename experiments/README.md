@@ -4,6 +4,7 @@ The [catalogue](catalog.yaml) maps named conditions to configurations, runs, acc
 
 | Definition | Initialization | Checkpoint selection | Synthetic fraction |
 | --- | --- | --- | --- |
+| [FineWeb-Edu fresh real control](opt125m_fineweb_edu/fresh_real_one_epoch/README.md) | Original pretrained OPT, then continued weights and optimization state | Terminal epoch 1 | 0%, disjoint document collections |
 | [Pretrained reset](opt125m_wikitext2/pretrained_reset/README.md) | Original pretrained OPT each synthetic cycle | Best real validation; selected epoch 1 historically | 100% |
 | [Continued from real S0](opt125m_wikitext2/continued_from_real_s0/README.md) | Previous selected weights | Best real validation; selected epoch 1 historically | 100% |
 | [Reset to real S0](opt125m_wikitext2/reset_to_real_s0/README.md) | Fixed real-trained S0 after imported shared first cycle | Best real validation; selected epoch 1 historically | 100% |

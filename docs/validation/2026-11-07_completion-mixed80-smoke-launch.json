@@ -1,0 +1,128 @@
+{
+  "verified_at": 1794050870.4703355,
+  "resources": {
+    "run_id": "20261107T111914Z-smoke-completion64-mixed80",
+    "launch_id": "20261107T111914023788Z",
+    "kind": "smoke",
+    "pod_id": "ro7v3ifs5a1pou",
+    "volume_id": "v3eburab61",
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1794050355.5996752,
+    "quoted_gpu_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6652671232876711,
+    "compute_hourly_usd": 0.6586506849315067,
+    "volume_hourly_usd": 0.005753424657534247,
+    "network_volume_gb": 60,
+    "volume_created_at": 1794050354.028122,
+    "session_allowance_usd": 0.5,
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "code_sha256": "0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170",
+    "starting_balance_usd": 36.8514133369,
+    "remote_root": "/workspace/runs/20261107T111914Z-smoke-completion64-mixed80",
+    "runtime_sha256": "0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170",
+    "git_commit": "41959902652229d30cabbc19bc4b3a9ddd3d16bd",
+    "configuration_sha256": "0fe594e4613a427ae29a649a2b62622c7ede4279371750730815346fb11979c4",
+    "workflow": "completion_comparison",
+    "allocation": "fineweb_completion64_mixtures_mixed80",
+    "acceptance_campaign": "fineweb_completion64_mixtures_mixed80_acceptance",
+    "actual_pod_hourly_usd": 0.57,
+    "verified_ssh_direct": {
+      "command": "ssh root@213.173.104.20 -p 13475",
+      "host": "213.173.104.20",
+      "port": 13475,
+      "username": "root"
+    }
+  },
+  "launch_verified": {
+    "watchdog": {
+      "pid": 139,
+      "time": 1794050456.6176422,
+      "deadline": 1794053061.27975
+    },
+    "supervisor": {
+      "pid": 253,
+      "child_pid": 255,
+      "time": 1794050457.194752
+    },
+    "status": {
+      "state": "running",
+      "phase": "preparation",
+      "time": 1794050454.8519356
+    },
+    "detached_progress": {
+      "pod_id": "ro7v3ifs5a1pou",
+      "launch_id": "20261107T111914023788Z",
+      "run_id": "20261107T111914Z-smoke-completion64-mixed80",
+      "progress_after_disconnect": true,
+      "observations": [
+        {
+          "time": 1794050461.0899298,
+          "status": {
+            "state": "running",
+            "phase": "preparation",
+            "time": 1794050454.8519356
+          },
+          "child_status": {
+            "state": "running",
+            "phase": "preparation",
+            "time": 1794050454.8519356
+          },
+          "event_bytes": 0,
+          "epochs": 0,
+          "new_epochs": 0,
+          "finite_new_training": false,
+          "completed_new_stages": 0,
+          "supervisor": {
+            "pid": 253,
+            "child_pid": 255,
+            "time": 1794050460.225924
+          },
+          "watchdog": {
+            "pid": 139,
+            "time": 1794050459.6416757,
+            "deadline": 1794053061.27975
+          }
+        },
+        {
+          "time": 1794050626.1368144,
+          "status": {
+            "state": "running",
+            "phase": "mixed80",
+            "active_child": "20261107T111914Z-smoke-completion64-mixed80-mixed80",
+            "time": 1794050575.4793923
+          },
+          "child_status": {
+            "state": "running",
+            "generation": 1,
+            "stage": "training",
+            "time": 1794050595.5588
+          },
+          "event_bytes": 1547,
+          "epochs": 1,
+          "new_epochs": 1,
+          "finite_new_training": true,
+          "completed_new_stages": 1,
+          "supervisor": {
+            "pid": 253,
+            "child_pid": 255,
+            "time": 1794050623.6299112
+          },
+          "watchdog": {
+            "pid": 139,
+            "time": 1794050623.6895087,
+            "deadline": 1794053061.27975
+          }
+        }
+      ],
+      "observations_sha256": "edf11f679253e06f19308cbc862b927cfe9092fb584504e490449792d765097f",
+      "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+    }
+  },
+  "full_training_authorized_after_acceptance": true,
+  "full_training_launched": false
+}

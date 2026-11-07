@@ -1,0 +1,1535 @@
+{
+  "schema_version": 1,
+  "contract": "42627bee2ea70792783c736842840c1e69f5cc11f464e018f60ddb0e49b7eb4f",
+  "configuration": {
+    "schema_version": 1,
+    "seed": 42,
+    "model": "facebook/opt-125m",
+    "model_revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+    "max_sequence_length": 512,
+    "train_source_tokens": 2000000,
+    "validation_source_tokens": 128000,
+    "test_source_tokens": 128000,
+    "shuffle_buffer": 1000,
+    "maximum_document_tokens": 16384,
+    "fineweb_source": {
+      "run_id": "20261106T151257Z-full-fresh-real",
+      "receipt": "docs/validation/2026-11-06_fineweb-full-completion-status.json",
+      "registry_records": "runs/20261106T151257Z-full-fresh-real/explanation_sources/data",
+      "artifact_index": "runs/20261106T151257Z-full-fresh-real/completion_metadata/artifact_index.json"
+    },
+    "sources": {
+      "fineweb_edu": {
+        "repo": "HuggingFaceFW/fineweb-edu",
+        "revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+        "adapter": "existing_fineweb",
+        "split_policy": "exact_saved_validation_and_test__training_from_saved_training_documents"
+      },
+      "wikitext103": {
+        "repo": "Salesforce/wikitext",
+        "revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+        "adapter": "wikitext",
+        "split_policy": "official_train_validation_test__sampled_document_subsets"
+      },
+      "c4_en": {
+        "repo": "allenai/c4",
+        "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+        "adapter": "c4",
+        "split_policy": "official_train__official_validation_partitioned_by_url_or_text_hash"
+      },
+      "pg19": {
+        "repo": "deepmind/pg19",
+        "revision": "4d28bd77e66947ad3835cf78ed7aaeb4dd87ad8b",
+        "adapter": "pg19",
+        "split_policy": "official_train_validation_test__book_disjoint__sampled_windows"
+      },
+      "ag_news": {
+        "repo": "fancyzhx/ag_news",
+        "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+        "adapter": "ag_news",
+        "split_policy": "official_test__official_training_partitioned_by_normalized_text_hash"
+      }
+    }
+  },
+  "collections": {
+    "fineweb_edu/validation": {
+      "corpus": "fineweb_edu",
+      "role": "validation",
+      "documents": 1000,
+      "sequences": 2460,
+      "source_text_tokens": 1000439,
+      "special_tokens": 3460,
+      "non_padding_tokens": 1003899,
+      "scored_tokens": 1001439,
+      "source_coverage": {
+        "source": {
+          "repo": "HuggingFaceFW/fineweb-edu",
+          "revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+          "adapter": "existing_fineweb",
+          "split_policy": "exact_saved_validation_and_test__training_from_saved_training_documents"
+        },
+        "role": "validation",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\fineweb_edu\\validation",
+        "files": {
+          "data/validation/documents.jsonl": {
+            "sha256": "32c51c303c83664cc8736f622bfd2e0041c54bba2d212b178031a22dbbf84d6c"
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "42742ec9c3939068d6f568af43bbb333ff5274cdcc4f2ac45620aabe0284f5ab",
+        "masks.npy": "d32417061397120893ed8e78a5b6f2d2a991c8d4ad277f6bd4dfc99d322b8a74",
+        "documents.jsonl": "69e9652716e260f9bcdb7d2b8cfec21e2fa53bb1cfcf4838588a226129177ffc"
+      }
+    },
+    "wikitext103/validation": {
+      "corpus": "wikitext103",
+      "role": "validation",
+      "documents": 29,
+      "sequences": 264,
+      "source_text_tokens": 128000,
+      "special_tokens": 291,
+      "non_padding_tokens": 128291,
+      "scored_tokens": 128027,
+      "source_coverage": {
+        "source": {
+          "repo": "Salesforce/wikitext",
+          "revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+          "adapter": "wikitext",
+          "split_policy": "official_train_validation_test__sampled_document_subsets"
+        },
+        "role": "validation",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\wikitext103\\validation",
+        "files": {
+          "wikitext-103-raw-v1/validation-00000-of-00001.parquet": {
+            "rows_read": 3760
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "0688436830d9ac29f790e321109f4b7da10ed66f9b7cd9cdb871d3820b6fa027",
+        "masks.npy": "08fada51fb7adc8a9a114332ddb43d9d6de43a1830a2f275d18e7225f18a1aa3",
+        "documents.jsonl": "97fdb8383635585f7a676c73aad360967ac6c4c8ef645c3c88f20892e745e621"
+      }
+    },
+    "c4_en/validation": {
+      "corpus": "c4_en",
+      "role": "validation",
+      "documents": 276,
+      "sequences": 411,
+      "source_text_tokens": 128000,
+      "special_tokens": 686,
+      "non_padding_tokens": 128686,
+      "scored_tokens": 128275,
+      "source_coverage": {
+        "source": {
+          "repo": "allenai/c4",
+          "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+          "adapter": "c4",
+          "split_policy": "official_train__official_validation_partitioned_by_url_or_text_hash"
+        },
+        "role": "validation",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\c4_en\\validation",
+        "files": {
+          "en/c4-validation.00007-of-00008.json.gz": {
+            "rows_read": 2591
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "9467a5b07e7794045ebd773558341a025a2196721e168db527d8829a7ea68f9e",
+        "masks.npy": "06f9d84f3ad315d4876cf5df319308d545330dffcf76c90e8074d9626c4af1f7",
+        "documents.jsonl": "6aef624863b11cca61d0c18595e969e0363030705c788735fa555e812890cd72"
+      }
+    },
+    "pg19/validation": {
+      "corpus": "pg19",
+      "role": "validation",
+      "documents": 8,
+      "sequences": 258,
+      "source_text_tokens": 128000,
+      "special_tokens": 258,
+      "non_padding_tokens": 128258,
+      "scored_tokens": 128000,
+      "source_coverage": {
+        "source": {
+          "repo": "deepmind/pg19",
+          "revision": "4d28bd77e66947ad3835cf78ed7aaeb4dd87ad8b",
+          "adapter": "pg19",
+          "split_policy": "official_train_validation_test__book_disjoint__sampled_windows"
+        },
+        "role": "validation",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\pg19\\validation",
+        "split_listing_sha256": "e66d9f76a39a7a73a62270e98395c9532d306ecd2b7a10ae4098dcdd133d179b",
+        "files": {
+          "validation/35816.txt": {
+            "generation": "1568646527849736",
+            "bytes": 155932,
+            "sha256": "6e7c639346428b7ee3f8fc23ab954dbcf0ca5f4a0914dd9d394b3ff06667dbe5"
+          },
+          "validation/8545.txt": {
+            "generation": "1568646527845288",
+            "bytes": 905381,
+            "sha256": "5405bed8a7324feeb09c3b029567301b6efa00a281d2e528fc8efc501cfa3952"
+          },
+          "validation/44912.txt": {
+            "generation": "1568646527834133",
+            "bytes": 371246,
+            "sha256": "b1d9ff5bb400620699faab5782e5c6ea02ee3bc06ac0b3a0f8f254aec0d996b4"
+          },
+          "validation/57843.txt": {
+            "generation": "1568646527849849",
+            "bytes": 153039,
+            "sha256": "e64095db4123f118e1b59766902b209d9e9b7e576e9bf1a20a50aae0a930ec7f"
+          },
+          "validation/48677.txt": {
+            "generation": "1568646527824246",
+            "bytes": 327818,
+            "sha256": "13edb9f8a487f59b90b8e3640d9a63e85c2a5d0887a2f0699a1708de6272e080"
+          },
+          "validation/53682.txt": {
+            "generation": "1568646527892249",
+            "bytes": 260344,
+            "sha256": "4e78bf89eff3b5061d926fc06d1fdcd522864bd993595f97372e72215b69c2f0"
+          },
+          "validation/48089.txt": {
+            "generation": "1568646527817525",
+            "bytes": 415583,
+            "sha256": "4f89427e5fc1a6265fd76cd0877476c25f185980176a0529c8854ab5a867d742"
+          },
+          "validation/54098.txt": {
+            "generation": "1568646527829271",
+            "bytes": 153699,
+            "sha256": "f9704c7d8b774a835367ae94493ab4f8dba8c87e7ba9aa71d29ba44e20a1b8f5"
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "f3e8c75948443c491d2eb9d9fa8e1a6c3d3755cdf5e312fac654ded3ea4b68fa",
+        "masks.npy": "a3948ac9e893b10910806bfdaab8bc389e7ab7ff2ae7bbe3f34075fc1893e17b",
+        "documents.jsonl": "224139ace391dbed9d64db8bb9a978bb0f37fdbf61f660e8333e8050f1304a6d"
+      }
+    },
+    "ag_news/validation": {
+      "corpus": "ag_news",
+      "role": "validation",
+      "documents": 2473,
+      "sequences": 2473,
+      "source_text_tokens": 128000,
+      "special_tokens": 4945,
+      "non_padding_tokens": 132945,
+      "scored_tokens": 130472,
+      "source_coverage": {
+        "source": {
+          "repo": "fancyzhx/ag_news",
+          "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+          "adapter": "ag_news",
+          "split_policy": "official_test__official_training_partitioned_by_normalized_text_hash"
+        },
+        "role": "validation",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\ag_news\\validation",
+        "files": {
+          "data/train-00000-of-00001.parquet": {
+            "rows_read": 54395
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 2,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "ed4f3de3fcc91e707e13320c0bbb25bfa8b0089b63d2e8595f0f49b0819dcdc2",
+        "masks.npy": "00748255672d3c487dfbcc9f0432dff6ee001c9ed3386acbdcc607f678fa20d7",
+        "documents.jsonl": "d3df8ea2024f858ba2713b664173c127a72d6ed17d22a87ffe4f2c49f69565a7"
+      }
+    },
+    "fineweb_edu/test": {
+      "corpus": "fineweb_edu",
+      "role": "test",
+      "documents": 1000,
+      "sequences": 2422,
+      "source_text_tokens": 978319,
+      "special_tokens": 3422,
+      "non_padding_tokens": 981741,
+      "scored_tokens": 979319,
+      "source_coverage": {
+        "source": {
+          "repo": "HuggingFaceFW/fineweb-edu",
+          "revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+          "adapter": "existing_fineweb",
+          "split_policy": "exact_saved_validation_and_test__training_from_saved_training_documents"
+        },
+        "role": "test",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\fineweb_edu\\test",
+        "files": {
+          "data/test/documents.jsonl": {
+            "sha256": "7354601dd352f61bb8e133d2f0df365ccf500c26847a0c89f4480195717861a8"
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "2f61b814ff72db6e50715d5bb123fb0cb611317ec5d57e06a9e71b9b6d84a68f",
+        "masks.npy": "0ec455806aa68f22f65aeb5e4d69b9b66a55f36b0b4eb99e20c9565703a2b830",
+        "documents.jsonl": "9d924ff010f4eb76888d26847c90d3c3af9272765c4b8a668112331a95764c16"
+      }
+    },
+    "wikitext103/test": {
+      "corpus": "wikitext103",
+      "role": "test",
+      "documents": 34,
+      "sequences": 268,
+      "source_text_tokens": 128000,
+      "special_tokens": 301,
+      "non_padding_tokens": 128301,
+      "scored_tokens": 128033,
+      "source_coverage": {
+        "source": {
+          "repo": "Salesforce/wikitext",
+          "revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+          "adapter": "wikitext",
+          "split_policy": "official_train_validation_test__sampled_document_subsets"
+        },
+        "role": "test",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\wikitext103\\test",
+        "files": {
+          "wikitext-103-raw-v1/test-00000-of-00001.parquet": {
+            "rows_read": 4358
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "9ded2e1d3b419daba9e2c4d83c2ebac5bc180fa8bd153b79d92f65fb737a9887",
+        "masks.npy": "5171eaec2af71d76fa7ccf748b15c59dd636874c828b6992da5a7246d1a152ce",
+        "documents.jsonl": "705422090557ed0d8f33b02f746599455aaed14a7ac02131c32a3326d7126e8d"
+      }
+    },
+    "c4_en/test": {
+      "corpus": "c4_en",
+      "role": "test",
+      "documents": 274,
+      "sequences": 422,
+      "source_text_tokens": 128000,
+      "special_tokens": 695,
+      "non_padding_tokens": 128695,
+      "scored_tokens": 128273,
+      "source_coverage": {
+        "source": {
+          "repo": "allenai/c4",
+          "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+          "adapter": "c4",
+          "split_policy": "official_train__official_validation_partitioned_by_url_or_text_hash"
+        },
+        "role": "test",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\c4_en\\test",
+        "files": {
+          "en/c4-validation.00007-of-00008.json.gz": {
+            "rows_read": 2506
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "b309d5fd834b98e223969466ce2c07191f8aad113232d7fca9a13385b0b0a6dd",
+        "masks.npy": "25c9b71a875899eae0771290a2948970f5ef8b369624624dce03bbd69d7ef27f",
+        "documents.jsonl": "fc8fa5fc20b1dbebb1661ca7713229ff41d2465fd53292afeff9442d349d48c2"
+      }
+    },
+    "pg19/test": {
+      "corpus": "pg19",
+      "role": "test",
+      "documents": 8,
+      "sequences": 258,
+      "source_text_tokens": 128000,
+      "special_tokens": 258,
+      "non_padding_tokens": 128258,
+      "scored_tokens": 128000,
+      "source_coverage": {
+        "source": {
+          "repo": "deepmind/pg19",
+          "revision": "4d28bd77e66947ad3835cf78ed7aaeb4dd87ad8b",
+          "adapter": "pg19",
+          "split_policy": "official_train_validation_test__book_disjoint__sampled_windows"
+        },
+        "role": "test",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\pg19\\test",
+        "split_listing_sha256": "c84c08139695f3312df83239a1a41e7b9cde1baf7c08bfcf230ae09eaaf18d8c",
+        "files": {
+          "test/55339.txt": {
+            "generation": "1568646215205740",
+            "bytes": 663065,
+            "sha256": "016fc415740042c97a07ef87779facf1ac5f73adbd87f5f733a92767aa7c9e59"
+          },
+          "test/26183.txt": {
+            "generation": "1568646215051617",
+            "bytes": 475456,
+            "sha256": "b73ddfcfe10430b96635b021312cbe21eaa6227bf1614b39846d4234d9e12a66"
+          },
+          "test/29594.txt": {
+            "generation": "1568646213853071",
+            "bytes": 86075,
+            "sha256": "f4590fbca52dedf54ce45d1ef6ad6d01875d8cde22796213c40dd01dc971696a"
+          },
+          "test/40700.txt": {
+            "generation": "1568646214899570",
+            "bytes": 148045,
+            "sha256": "c8dbe3563ca688278bcfa09b673bd177e2500ecb243cfb34a00690823b113c9c"
+          },
+          "test/38106.txt": {
+            "generation": "1568646215169516",
+            "bytes": 391972,
+            "sha256": "c30406db957f15aecdbafc1d9a2a4c2186f1e9762ccb0042ea1011cbc66c814c"
+          },
+          "test/40579.txt": {
+            "generation": "1568646215120328",
+            "bytes": 355979,
+            "sha256": "6564c4b893231d7b39a195e10d734a53506350fb6c2af16105a67365eded11cc"
+          },
+          "test/53345.txt": {
+            "generation": "1568646215121737",
+            "bytes": 347642,
+            "sha256": "bfb2a98da02fbb42f1f8394ee09119cdffe75ab98fbfcd383a4b1fe86efc3382"
+          },
+          "test/28444.txt": {
+            "generation": "1568646215053698",
+            "bytes": 335975,
+            "sha256": "f7bd54971caf53bc3ca651cacbaaefae402812b56918f6c4b5dcaeb6a279864f"
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "2f8db2dd1a456a35fe80c248485502f77a330a4e6d29d53b6796af099070cef8",
+        "masks.npy": "a3948ac9e893b10910806bfdaab8bc389e7ab7ff2ae7bbe3f34075fc1893e17b",
+        "documents.jsonl": "cf6d28481c92189cbe79c3329e4f544499192c43110a4dd2c75f1fc39b1229a4"
+      }
+    },
+    "ag_news/test": {
+      "corpus": "ag_news",
+      "role": "test",
+      "documents": 2451,
+      "sequences": 2451,
+      "source_text_tokens": 128000,
+      "special_tokens": 4901,
+      "non_padding_tokens": 132901,
+      "scored_tokens": 130450,
+      "source_coverage": {
+        "source": {
+          "repo": "fancyzhx/ag_news",
+          "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+          "adapter": "ag_news",
+          "split_policy": "official_test__official_training_partitioned_by_normalized_text_hash"
+        },
+        "role": "test",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\ag_news\\test",
+        "files": {
+          "data/test-00000-of-00001.parquet": {
+            "rows_read": 3454
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 3,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "ae9fe92657688be931f56b30db270c40033ae4d5b062c50c85d4b011b648870e",
+        "masks.npy": "faef2d2e0ff793eb007e45446b6829ec85d2929a4d88c82c5798632c2b02aabf",
+        "documents.jsonl": "ee910a5cca906238fe26fc5bba768954e4295e2ae7a1dec14c88a361250574aa"
+      }
+    },
+    "fineweb_edu/train": {
+      "corpus": "fineweb_edu",
+      "role": "train",
+      "documents": 1738,
+      "sequences": 4789,
+      "source_text_tokens": 2000000,
+      "special_tokens": 6523,
+      "non_padding_tokens": 2006523,
+      "scored_tokens": 2001734,
+      "source_coverage": {
+        "source": {
+          "repo": "HuggingFaceFW/fineweb-edu",
+          "revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+          "adapter": "existing_fineweb",
+          "split_policy": "exact_saved_validation_and_test__training_from_saved_training_documents"
+        },
+        "role": "train",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\fineweb_edu\\train",
+        "files": {
+          "data/cycle_01/documents.jsonl": {
+            "sha256": "cb2b642c9d9d342cc967fb17e94ac205b0ca3098a20e4dec2daae9f9255d269a"
+          },
+          "data/cycle_02/documents.jsonl": {
+            "sha256": "695647caa14c951a6088ebc8fd2362f6f76d00f5eea8c697edd232e7e1111463"
+          },
+          "data/cycle_03/documents.jsonl": {
+            "sha256": "50b1ebe8ed01c0c3faf954542a4f526e5f056e81f06f7c8f0cc7c47b2c62749b"
+          },
+          "data/cycle_04/documents.jsonl": {
+            "sha256": "afd8df8de246233887d281e7c6f1e5f75ac4cbea9c8cdfa288f1d42033d82d2b"
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "6640a1afa02f6e3a0eb1c754b6d11e0100098daf3c396539bdea40576b865906",
+        "masks.npy": "e07afd9adc5e19255791c853021bf6bea2a9197fbb12abf826fe2aac59dc80c0",
+        "documents.jsonl": "894f6d8f846715ce4cb6b494c4fa1573da109362ae9045b8e2198f7984377da7"
+      }
+    },
+    "wikitext103/train": {
+      "corpus": "wikitext103",
+      "role": "train",
+      "documents": 543,
+      "sequences": 4196,
+      "source_text_tokens": 2000000,
+      "special_tokens": 4736,
+      "non_padding_tokens": 2004736,
+      "scored_tokens": 2000540,
+      "source_coverage": {
+        "source": {
+          "repo": "Salesforce/wikitext",
+          "revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+          "adapter": "wikitext",
+          "split_policy": "official_train_validation_test__sampled_document_subsets"
+        },
+        "role": "train",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\wikitext103\\train",
+        "files": {
+          "wikitext-103-raw-v1/train-00000-of-00002.parquet": {
+            "rows_read": 90753
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 5,
+        "cross_collection_passage": 1,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "2d9dcfe9f218aaf0849f349486b58eba3923c8f6fa1b144a5fcb50f2d3f3dce8",
+        "masks.npy": "34ce0eb4a4fba089dadbf10f24cc0ea7ba1858e3721ba1f52376180d3099598a",
+        "documents.jsonl": "eeefe12096e68ba91143cb83e0fed2c936b1122f26f0bd75d081795176ea6ca6"
+      }
+    },
+    "c4_en/train": {
+      "corpus": "c4_en",
+      "role": "train",
+      "documents": 4345,
+      "sequences": 6524,
+      "source_text_tokens": 2000000,
+      "special_tokens": 10868,
+      "non_padding_tokens": 2010868,
+      "scored_tokens": 2004344,
+      "source_coverage": {
+        "source": {
+          "repo": "allenai/c4",
+          "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+          "adapter": "c4",
+          "split_policy": "official_train__official_validation_partitioned_by_url_or_text_hash"
+        },
+        "role": "train",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\c4_en\\train",
+        "files": {
+          "en/c4-train.00499-of-01024.json.gz": {
+            "rows_read": 5346
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 1,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "6b57325e103ccc1dfc6372f60ac3621098ccb5b18d66d6c151b7d57a1f7dd34d",
+        "masks.npy": "fe555320fd8931958982979f8cf8a6ddd779c406e2798e343431041e488b402b",
+        "documents.jsonl": "f9d72760c987a847cd610b6984daaa5928fdc360ca03401b1b7d530ba7979ec7"
+      }
+    },
+    "pg19/train": {
+      "corpus": "pg19",
+      "role": "train",
+      "documents": 129,
+      "sequences": 4029,
+      "source_text_tokens": 2000000,
+      "special_tokens": 4040,
+      "non_padding_tokens": 2004040,
+      "scored_tokens": 2000011,
+      "source_coverage": {
+        "source": {
+          "repo": "deepmind/pg19",
+          "revision": "4d28bd77e66947ad3835cf78ed7aaeb4dd87ad8b",
+          "adapter": "pg19",
+          "split_policy": "official_train_validation_test__book_disjoint__sampled_windows"
+        },
+        "role": "train",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\pg19\\train",
+        "split_listing_sha256": "145b5f0896cc2fff3231222874a0f324ee04559144ecf25a873d294eb161719c",
+        "files": {
+          "train/26624.txt": {
+            "generation": "1568646252127946",
+            "bytes": 230924,
+            "sha256": "81af657812a538042f3156fb7e6e9f64e763e00fcb4d9dfb7ebda67666c079e1"
+          },
+          "train/30390.txt": {
+            "generation": "1568646270101095",
+            "bytes": 379397,
+            "sha256": "d1930c8159d9165239688b79af8a90dbff112c72edb356722f5aa43da83f5f7d"
+          },
+          "train/5988.txt": {
+            "generation": "1568646428405167",
+            "bytes": 203192,
+            "sha256": "cd06e0357edfb004ae4cc0bdbc35e21bf4af993761d92ce2124990ca8de1b63e"
+          },
+          "train/39080.txt": {
+            "generation": "1568646318238437",
+            "bytes": 22662,
+            "sha256": "673728e4cc06758bd25de4bcff12e1ae2f30feb1293161af40248c4e051cd26e"
+          },
+          "train/52755.txt": {
+            "generation": "1568646395449255",
+            "bytes": 274682,
+            "sha256": "406bdc1c2ad165d453c2b2a20606b2ecd9606ed066b0aa2db73c923a26c464a0"
+          },
+          "train/48912.txt": {
+            "generation": "1568646376599029",
+            "bytes": 595463,
+            "sha256": "f4dba666e98daffdaa47db82804b672dddce46f0405fe0cdb4f234621f5c49e4"
+          },
+          "train/33008.txt": {
+            "generation": "1568646282508962",
+            "bytes": 346192,
+            "sha256": "4f742a2e1447aa154bf71f4af04c22772274970f9cb81a60bef6c9e9609df62b"
+          },
+          "train/50001.txt": {
+            "generation": "1568646382693109",
+            "bytes": 438250,
+            "sha256": "28ed9eea1807ca5fba5b3beaed6483355f7389af5ecd0472a749517d7a8ae2d0"
+          },
+          "train/44624.txt": {
+            "generation": "1568646352810240",
+            "bytes": 841116,
+            "sha256": "fcaff8783a0b0ffbe3f171e914c3ce3a809f65249bc094b7c9082a48c3404995"
+          },
+          "train/42396.txt": {
+            "generation": "1568646339170649",
+            "bytes": 319794,
+            "sha256": "201d05fc614831cfe92538505cf31a1663e35e3d1fa4d5c7160e6249bb699759"
+          },
+          "train/3270.txt": {
+            "generation": "1568646280879256",
+            "bytes": 193330,
+            "sha256": "673e77d45730dcade91ef6147204755a052f86e9b1ffb4519758070ec1fdf830"
+          },
+          "train/34823.txt": {
+            "generation": "1568646293085415",
+            "bytes": 1277320,
+            "sha256": "113fac43477d9803a07061fe9bc15e62fb59503fd6c0662f9e9597a376199179"
+          },
+          "train/5949.txt": {
+            "generation": "1568646428125297",
+            "bytes": 95980,
+            "sha256": "cd6c88cf9af20c1e81c98503fe188953f214d24b2b50f1bdca3c75f18faab41f"
+          },
+          "train/58488.txt": {
+            "generation": "1568646425835985",
+            "bytes": 27757,
+            "sha256": "4c6af24ed270cc759fe02784923702e70da0ff50ba996ba46a70576e96175e38"
+          },
+          "train/54558.txt": {
+            "generation": "1568646405054680",
+            "bytes": 501705,
+            "sha256": "d8f142a50e3b152df31424e1062a719a5d8ee58f05bf4df0470b5c77f70a79cb"
+          },
+          "train/29005.txt": {
+            "generation": "1568646263638569",
+            "bytes": 109618,
+            "sha256": "b4c73673094b78aeb4368cd08ffeceeeeeddd070617c8f07ba2d03d4d5b165a0"
+          },
+          "train/57558.txt": {
+            "generation": "1568646421163269",
+            "bytes": 282133,
+            "sha256": "7bd56106dbf3f4101da43257b47f3c91236213d39c99932d7b2bd27cc63f964d"
+          },
+          "train/23304.txt": {
+            "generation": "1568646239546490",
+            "bytes": 503603,
+            "sha256": "2229ad8138fcb816a732b5c42e593473688cd3d4a229c0e9015a723ec9ffed79"
+          },
+          "train/33714.txt": {
+            "generation": "1568646286615285",
+            "bytes": 134276,
+            "sha256": "1579377171d3d9131a837d8993b66f3fa91bd0e45c1591477d63eca93a188fbc"
+          },
+          "train/45232.txt": {
+            "generation": "1568646356286656",
+            "bytes": 152635,
+            "sha256": "f5e4604030447c2fc62077a3655936e39580e8ec156b1f2ccdb719e1981dcf11"
+          },
+          "train/30248.txt": {
+            "generation": "1568646269469773",
+            "bytes": 125118,
+            "sha256": "4a83b4119c0593f251683dea0c6fd026e039a7d5222caf2a6bf365c3f6a30789"
+          },
+          "train/51966.txt": {
+            "generation": "1568646391486270",
+            "bytes": 361676,
+            "sha256": "74d18b41f4440959296cebf130d56a27cd0ae44bc0c909be6903f47190160afc"
+          },
+          "train/48304.txt": {
+            "generation": "1568646373591969",
+            "bytes": 306572,
+            "sha256": "5032e2da8d89ff24d6c733ec85d907b0bb21563013591d13737a4c1c37a8c031"
+          },
+          "train/42357.txt": {
+            "generation": "1568646339013844",
+            "bytes": 316566,
+            "sha256": "04ba70b2537ee434c7010f7e51a15906dcd1ffc5ae1986c0984d57d64f0a9fcb"
+          },
+          "train/37873.txt": {
+            "generation": "1568646311092425",
+            "bytes": 659241,
+            "sha256": "3f981190bf31d7a71c520eb82b007472a6d01e3f5966010d294b164a80bc4635"
+          },
+          "train/29157.txt": {
+            "generation": "1568646264397077",
+            "bytes": 97687,
+            "sha256": "ecd5d0511130a15d60c3e02bcadb44f1bc9887fd1ba3e92c25ae419aef6da2e7"
+          },
+          "train/47261.txt": {
+            "generation": "1568646367958161",
+            "bytes": 288971,
+            "sha256": "edc350d361f75a81f6b24309573ac7ed3bb57edb646622b7a7048c6a7313c4e2"
+          },
+          "train/52636.txt": {
+            "generation": "1568646394703246",
+            "bytes": 116684,
+            "sha256": "ec2e67f7d382ea20153b98155476c1e454cb9e263c3eb0a03457aa769e07112e"
+          },
+          "train/36431.txt": {
+            "generation": "1568646302428799",
+            "bytes": 226215,
+            "sha256": "161c5782e9fb6bf3966017686b12a4b373463259a9037d6dc48aad905ed5d1d1"
+          },
+          "train/45510.txt": {
+            "generation": "1568646358029129",
+            "bytes": 250279,
+            "sha256": "d6b1346cfb387f03935561142035a349fab39daecbdf9dfd563e2719f7a8bc69"
+          },
+          "train/32123.txt": {
+            "generation": "1568646278302602",
+            "bytes": 361546,
+            "sha256": "d80226248f26d6ae815d5f646792bb893e366e115533ab1571fe4de42e68a875"
+          },
+          "train/52422.txt": {
+            "generation": "1568646393703222",
+            "bytes": 30517,
+            "sha256": "4dcb705e6c9af9711a059ae2eb979775c0bcc4856432ad9edd9fbd65e16835b7"
+          },
+          "train/34057.txt": {
+            "generation": "1568646288667772",
+            "bytes": 572509,
+            "sha256": "d27b9670caffbce3181e0abf28d12a67e4bba27e5a1a69dc824f338c63ade99d"
+          },
+          "train/16199.txt": {
+            "generation": "1568646230838583",
+            "bytes": 147999,
+            "sha256": "fac1bca9f78bf348b5d9d9931cf906f705bc8e82b1a6a89c1c1485e06f6b421c"
+          },
+          "train/34438.txt": {
+            "generation": "1568646290892529",
+            "bytes": 7412,
+            "sha256": "74b9f618e1b74c381ab45b156cb88a88a34d620a4ae8abef793f18361083d02c"
+          },
+          "train/47695.txt": {
+            "generation": "1568646370239347",
+            "bytes": 145393,
+            "sha256": "53de8922e34f9ad39276034abc5ade5aa491b659726ab6dc521ae7e80c767142"
+          },
+          "train/8701.txt": {
+            "generation": "1568646439244411",
+            "bytes": 25628,
+            "sha256": "2a8570315534a38115730d2ba87badf90027c8251c7916c5152718bb59591189"
+          },
+          "train/24453.txt": {
+            "generation": "1568646241026218",
+            "bytes": 82498,
+            "sha256": "472f33c8d9bda5c05de0172f36da4c9bb671d49ecd2cf56e9a8db2de6d552473"
+          },
+          "train/28299.txt": {
+            "generation": "1568646260236536",
+            "bytes": 290334,
+            "sha256": "ef6172df8dedcef60057c1ea79b5a5ba73f8bc62d684f707c9dbcccd025cd592"
+          },
+          "train/45230.txt": {
+            "generation": "1568646356309040",
+            "bytes": 706012,
+            "sha256": "6e56df1a486389b7cd46f601fe07c9a431537c82399550e1becc26ba0b7dbdbb"
+          },
+          "train/34035.txt": {
+            "generation": "1568646288556376",
+            "bytes": 499676,
+            "sha256": "6c9689c08abd06a3615dc4a04b942b000d1c1f4b984344c9a162c143db454b8c"
+          },
+          "train/31860.txt": {
+            "generation": "1568646277055014",
+            "bytes": 516555,
+            "sha256": "d69c50517d5e2fc9517f2627fb3d906e1aabc85d0d3a1cc5816ce07f0a46b609"
+          },
+          "train/31957.txt": {
+            "generation": "1568646277549489",
+            "bytes": 62186,
+            "sha256": "899d635097b8f262cec3afb816dbc591bf6dd50ca00e9853256672f17d69943e"
+          },
+          "train/30128.txt": {
+            "generation": "1568646268860850",
+            "bytes": 234120,
+            "sha256": "79628c0fd7ae8e443e1009eb77221dc6d3edbf3c22ce126f724169eedbd2d84d"
+          },
+          "train/46757.txt": {
+            "generation": "1568646365175273",
+            "bytes": 261879,
+            "sha256": "041b7e75b76c12093325fe48375192659f53f553c4f84fae58f66b01f72690d8"
+          },
+          "train/22884.txt": {
+            "generation": "1568646238879145",
+            "bytes": 247317,
+            "sha256": "11fd0b76ca6ec3767c150c03b7afefd32182090325ac5d3c6f2bdc7247a6bf83"
+          },
+          "train/56486.txt": {
+            "generation": "1568646415539066",
+            "bytes": 955259,
+            "sha256": "0e6574cf6c543938ec43ebd6499e5698f93b5e7d2293d94e5c73a2f139903a65"
+          },
+          "train/58719.txt": {
+            "generation": "1568646427100137",
+            "bytes": 20335,
+            "sha256": "5687716ac31595b8c6ef7981b83547ed3c590d55b655890809d14f503daf5722"
+          },
+          "train/41826.txt": {
+            "generation": "1568646335865295",
+            "bytes": 387142,
+            "sha256": "72487ed903ec78ee7bc59c9cf074e0a2c9f80988b30233ed9a0f9b314216df2d"
+          },
+          "train/58196.txt": {
+            "generation": "1568646424207291",
+            "bytes": 73986,
+            "sha256": "a153baaec4f56ac76142001fe8d38e499bc5225c2c883c839c23ed9c83a044dd"
+          },
+          "train/47520.txt": {
+            "generation": "1568646369345272",
+            "bytes": 28791,
+            "sha256": "c4ae7efe3c27e3080e13b6ff55264e7cd9e777a79e72d6181d8b94523ad07667"
+          },
+          "train/13889.txt": {
+            "generation": "1568646228055347",
+            "bytes": 179362,
+            "sha256": "a5a5ce9bccb5c9a12ee630bd81dac0288bf7fa14d5bf6f67b6f8a58f0373f15b"
+          },
+          "train/7110.txt": {
+            "generation": "1568646432791354",
+            "bytes": 81830,
+            "sha256": "3b69d321b38fb4efcab6fb436f9746a57bf3416543cc0cc9fecbc918855f77c5"
+          },
+          "train/28304.txt": {
+            "generation": "1568646260319868",
+            "bytes": 95118,
+            "sha256": "9bcd1186865b56bd4fa08b0a6bee37ce52d0d2b07acbca08f3a1f93b64df9d18"
+          },
+          "train/3447.txt": {
+            "generation": "1568646291368388",
+            "bytes": 1277583,
+            "sha256": "9a7c83b9e1f656841bdab9809307b6fe8da7462333b51a6e825d73dd26b82d99"
+          },
+          "train/4141.txt": {
+            "generation": "1568646332959379",
+            "bytes": 174588,
+            "sha256": "b2b4a43572afc7e011ebbd5205809f27948aff70562645d98fdb80b8a468822d"
+          },
+          "train/4055.txt": {
+            "generation": "1568646327300188",
+            "bytes": 93343,
+            "sha256": "13fffb8628d394cc8ce6385d648c73935016b7fbf239259b4ad4918a8633fec8"
+          },
+          "train/51718.txt": {
+            "generation": "1568646390343789",
+            "bytes": 303186,
+            "sha256": "e2a686cfe4922e5f57eed6c6e14f4afa4eea7c08e339be2d2596f5bf9480875f"
+          },
+          "train/6799.txt": {
+            "generation": "1568646431381349",
+            "bytes": 132938,
+            "sha256": "94893e4750150c7cb818df7b3849048ccf8382c1d5ac9f7e9ccaead4f66d41fe"
+          },
+          "train/4114.txt": {
+            "generation": "1568646331255001",
+            "bytes": 155699,
+            "sha256": "2ba8d67996d7f8a69e4940e791f52f324a2c8605d4414fc0bd577d3207fef00e"
+          },
+          "train/51969.txt": {
+            "generation": "1568646391534430",
+            "bytes": 463379,
+            "sha256": "b5fd5299861a03b42beab0a2bc42882befc808de269f97dfe60bff095b9435e5"
+          },
+          "train/27781.txt": {
+            "generation": "1568646257440623",
+            "bytes": 162174,
+            "sha256": "2d00c0564294ef5de8fe47f927a46ea7fd5e6d7ba9dcbb1a5e140ca3676f917d"
+          },
+          "train/4976.txt": {
+            "generation": "1568646381260961",
+            "bytes": 1234972,
+            "sha256": "fba2a41ea0d51dfe0ff88e3283ba46e4cb0c911e74b1cfd870d9c0f04d2a25fa"
+          },
+          "train/10980.txt": {
+            "generation": "1568646221774201",
+            "bytes": 759678,
+            "sha256": "f61002d22e1431886e3188a51d7c38e213ebefeeda2b13ba1134ed4148cfa942"
+          },
+          "train/585.txt": {
+            "generation": "1568646425930230",
+            "bytes": 142997,
+            "sha256": "6182e9ded0663279fc2fb06d9b85f98978eafec9136f453dcb6abb957e650984"
+          },
+          "train/31335.txt": {
+            "generation": "1568646274753882",
+            "bytes": 264762,
+            "sha256": "70257b6570fc96cebd97670e9d8da72004f9e65e3344fd75c44d10f129f4e6bd"
+          },
+          "train/54767.txt": {
+            "generation": "1568646406294142",
+            "bytes": 372741,
+            "sha256": "6a0373e96da38a5a2e2efe31fbdac78d0bb89662f3c38769e04aeef14e85ec0d"
+          },
+          "train/9559.txt": {
+            "generation": "1568646442957647",
+            "bytes": 57684,
+            "sha256": "616bffccf73ed49c93451a973e63d24a314993810533dfb6495ac868c975f6ed"
+          },
+          "train/3281.txt": {
+            "generation": "1568646281397988",
+            "bytes": 506445,
+            "sha256": "0cbc7fa394360f90335c1f3be2589ff7922527bb18eaca92f914485487a146ee"
+          },
+          "train/46324.txt": {
+            "generation": "1568646363147499",
+            "bytes": 3165859,
+            "sha256": "d88629e50c98e3f72e886cc3685cf50654ee5b0674364b552bcd31b65f776b5b"
+          },
+          "train/48443.txt": {
+            "generation": "1568646374336541",
+            "bytes": 580484,
+            "sha256": "525b68851e587b843f1819c5c63d57daa4fbb193dd9737ff511c145a46c6abc3"
+          },
+          "train/10319.txt": {
+            "generation": "1568646217644799",
+            "bytes": 277324,
+            "sha256": "188b56b91abd6846df62d19e898994ccc41a4a79728e5b9f47f49d0a92f1b16a"
+          },
+          "train/39598.txt": {
+            "generation": "1568646321541202",
+            "bytes": 180258,
+            "sha256": "e63bbc499fafe706c26978030019e446db9da7c30b3b86aff0a6aa07f9bd7ec1"
+          },
+          "train/57599.txt": {
+            "generation": "1568646421285154",
+            "bytes": 331402,
+            "sha256": "a52ba99e07728f664e6b1bc2d728f288b3efa68b152a8092ecc25307790042d7"
+          },
+          "train/4059.txt": {
+            "generation": "1568646327617042",
+            "bytes": 361979,
+            "sha256": "53442c761a65c200287ff908ab4148b9571bf0131a1af5f1bee1208637099c77"
+          },
+          "train/27614.txt": {
+            "generation": "1568646256627714",
+            "bytes": 148162,
+            "sha256": "63c4ebb934df5be19aa8e1202428f0f2aed4dc4f50aec93275704b2e8fe650e2"
+          },
+          "train/32997.txt": {
+            "generation": "1568646282395022",
+            "bytes": 194148,
+            "sha256": "0c5ba87b3b6310b9faaa31bde1a36a71c92f8f5797a935c6038645a13a4dda95"
+          },
+          "train/51665.txt": {
+            "generation": "1568646390217692",
+            "bytes": 1194905,
+            "sha256": "33e9ceeccada633b5dc037704b93c3ae46543a6004d0aa5bf15c8ed836212d5c"
+          },
+          "train/11017.txt": {
+            "generation": "1568646222144464",
+            "bytes": 746479,
+            "sha256": "75517c7b852b5bd3d03aefcd76c0ae60a94e48f1bc5dcd195e74f5be39260815"
+          },
+          "train/56544.txt": {
+            "generation": "1568646415822276",
+            "bytes": 122192,
+            "sha256": "49911792a3afa73479ad606afb74adb2ee934d582d1fe572b9df082fccd7b5f4"
+          },
+          "train/44376.txt": {
+            "generation": "1568646351144662",
+            "bytes": 674797,
+            "sha256": "65643a5ea96b1de6281fd05c3e512aa62ef854c1a9aeee69a04158113ecfa441"
+          },
+          "train/32397.txt": {
+            "generation": "1568646279628845",
+            "bytes": 661660,
+            "sha256": "bf0b9d300a7fadbe24928e7885c8f90fc2a81199cd2bc63c766ba6ab1c9edeca"
+          },
+          "train/53894.txt": {
+            "generation": "1568646401323110",
+            "bytes": 186495,
+            "sha256": "9b5ae95966fb05e7622ee15ef350f39238c11befe1db079fd2c913087b7dd54f"
+          },
+          "train/4367.txt": {
+            "generation": "1568646347270879",
+            "bytes": 1649502,
+            "sha256": "d362c72a83ca9e6bef8c28cd8c1c4c9773795e5729bce96a6bbb2222edeea37a"
+          },
+          "train/35765.txt": {
+            "generation": "1568646298596690",
+            "bytes": 656692,
+            "sha256": "7291fbd8ba90f277886d181097cba71fffea5771ef09667dc949720b4ebaa2e7"
+          },
+          "train/41476.txt": {
+            "generation": "1568646333362238",
+            "bytes": 154822,
+            "sha256": "362cb566834d066bd8e932f437d4a47efffe5d35f077acb754fb36e0256feb6a"
+          },
+          "train/33717.txt": {
+            "generation": "1568646286659178",
+            "bytes": 58490,
+            "sha256": "1de3411bf0e3b2e3d29912d8a0e2bddf4a17ddb164a9c65ece4b71ae09d22d71"
+          },
+          "train/7523.txt": {
+            "generation": "1568646434917354",
+            "bytes": 183066,
+            "sha256": "7dcda4be7f65c98ffafd93a9d0d550f121d58670e186b2559b0b01a7a5e01055"
+          },
+          "train/45666.txt": {
+            "generation": "1568646358804190",
+            "bytes": 158931,
+            "sha256": "0532b3775ffddeaf4c2a1589af62a6bebb917fcd665f2580b6b665c91530b9b2"
+          },
+          "train/35931.txt": {
+            "generation": "1568646299674674",
+            "bytes": 202288,
+            "sha256": "54f258538acd15dc899be489927ae01c3b40c6f994fedb5c0bb7a6579efb71a3"
+          },
+          "train/56506.txt": {
+            "generation": "1568646415785884",
+            "bytes": 1280239,
+            "sha256": "07bbb9d70bb1040ae1f2842202f5f34130a93ebf21691532507185ad7dba1ccf"
+          },
+          "train/55297.txt": {
+            "generation": "1568646409571432",
+            "bytes": 401381,
+            "sha256": "a919e591395cf5f5c97bb1becfa1cb0f56f9ea45d5a600b80054ca46e4812e0f"
+          },
+          "train/7107.txt": {
+            "generation": "1568646432768035",
+            "bytes": 93915,
+            "sha256": "62b65519f01ae93a55ff63c5dcd101447fea7317f7276052611f019517749c6b"
+          },
+          "train/2457.txt": {
+            "generation": "1568646241670451",
+            "bytes": 214992,
+            "sha256": "041ecca417c324d92da4d14358affd25cc99dbab6e02cf9761ab3c78fa8277e9"
+          },
+          "train/32467.txt": {
+            "generation": "1568646279937733",
+            "bytes": 4638,
+            "sha256": "8d53eb1f390766846f6b835a1bf9e6c2c7bfab6f07e680923beee1fd2ee9f6d8"
+          },
+          "train/11033.txt": {
+            "generation": "1568646222134023",
+            "bytes": 19711,
+            "sha256": "42005bfca34646bf4f6762f25fbc4716f5bbe49bf2cd6443b3afb9bf7ca4bf81"
+          },
+          "train/53297.txt": {
+            "generation": "1568646398160552",
+            "bytes": 99323,
+            "sha256": "3bc1b567f186035b111e21a5d8e2760705dc26872e3dca7d1160536aa9a2dcd2"
+          },
+          "train/54137.txt": {
+            "generation": "1568646402987264",
+            "bytes": 827575,
+            "sha256": "214a229e1ac17f3ce2f5834a68bd7084ae2818395eeaa179e8dfefb897528be8"
+          },
+          "train/47213.txt": {
+            "generation": "1568646367519279",
+            "bytes": 145339,
+            "sha256": "64514caa4c638b8aaf9bc7786a8dfa6e39b1669ec4f6e800b6027facea55d3f1"
+          },
+          "train/3602.txt": {
+            "generation": "1568646300203049",
+            "bytes": 62071,
+            "sha256": "b3e6c46fc152ea312ab2a86c6de4b20debca48ceb768696cfe05c4694ff7d4bb"
+          },
+          "train/48136.txt": {
+            "generation": "1568646372696793",
+            "bytes": 836019,
+            "sha256": "6142f7f024284590b3785779e02b97f280633acb4ad7fe75313128c40ed47860"
+          },
+          "train/56758.txt": {
+            "generation": "1568646416992652",
+            "bytes": 301636,
+            "sha256": "4f611960b5e9e959478cacfb73fd952a21caf2f32845a0a5d399014e225433f9"
+          },
+          "train/1048.txt": {
+            "generation": "1568646218203212",
+            "bytes": 302815,
+            "sha256": "90800af7299e17e60cc1b147552f55803b54221c0c0f10994851a78b764973fb"
+          },
+          "train/2413.txt": {
+            "generation": "1568646240566679",
+            "bytes": 665519,
+            "sha256": "3b0f02bc637b9588b4361be07df3ca62be20e13be64468e50bcbf08883e5c901"
+          },
+          "train/2239.txt": {
+            "generation": "1568646238243626",
+            "bytes": 101228,
+            "sha256": "106b263a70f61f0f53c9b1e7178842c36a9cdc62c6dea798e888c4ce697f6330"
+          },
+          "train/58774.txt": {
+            "generation": "1568646427569331",
+            "bytes": 936181,
+            "sha256": "ecfe7e672b79540721269057dadd24d7f4e9c6a16ba0baec35bbf807fd374e61"
+          },
+          "train/35587.txt": {
+            "generation": "1568646297617776",
+            "bytes": 1226915,
+            "sha256": "67095b3eca2309a637b1071b31be236c1c991f4aaf5c6c35d6793e5d4927d285"
+          },
+          "train/3311.txt": {
+            "generation": "1568646283137364",
+            "bytes": 47398,
+            "sha256": "c965493b72fcc980c88c290c280b160021c708566d38cdd7ab523e6b5b5c931f"
+          },
+          "train/40027.txt": {
+            "generation": "1568646324120870",
+            "bytes": 269410,
+            "sha256": "ecdf698b76e115858cb178a9bc77c2b319a13559ae8b15648b7650b37107cf07"
+          },
+          "train/54424.txt": {
+            "generation": "1568646404391580",
+            "bytes": 436074,
+            "sha256": "0d0d982eaa484bea76187733ea56d0d669f0565900d68d641a3ebcf396f25d84"
+          },
+          "train/35650.txt": {
+            "generation": "1568646297895341",
+            "bytes": 1152175,
+            "sha256": "32eae820539ca37fb1aac3b671332019b2506f508aeb2fa0b28bbc0742e9b77d"
+          },
+          "train/46313.txt": {
+            "generation": "1568646362677959",
+            "bytes": 507896,
+            "sha256": "0a9df0da906478f8c139f1045baa7d9a8898643d1de53e7f233ff6174bb0fba6"
+          },
+          "train/8661.txt": {
+            "generation": "1568646439057249",
+            "bytes": 426843,
+            "sha256": "227aa98e9ec8954a7a1da9d0db187d7b8a3dd42e82538f301ce99f202bfd349c"
+          },
+          "train/49516.txt": {
+            "generation": "1568646379784895",
+            "bytes": 230795,
+            "sha256": "8bdbf632b65a882ed56c8722e0fdce158c7df22ea9e9b86b866960665420b774"
+          },
+          "train/6866.txt": {
+            "generation": "1568646431691942",
+            "bytes": 441770,
+            "sha256": "d1049a8c17d537516123d9316d38892fc44650a11e5ed60d7bcdbe7ee85bb391"
+          },
+          "train/40073.txt": {
+            "generation": "1568646324409330",
+            "bytes": 401775,
+            "sha256": "7d29b443f33e4d9ff6ac21cf7f0cb96d6e7b7e2176bfd3f3ade66763e849487c"
+          },
+          "train/7495.txt": {
+            "generation": "1568646434799353",
+            "bytes": 299996,
+            "sha256": "288d0cf63f97b84b9b70cffea1430f78bc1f2a0e639cf5be3f0c68ede53eab23"
+          },
+          "train/30879.txt": {
+            "generation": "1568646272313470",
+            "bytes": 101603,
+            "sha256": "627705816b05e03ca700396546a7b72151c045e03c6678fa28eeee5a4f0b907d"
+          },
+          "train/45229.txt": {
+            "generation": "1568646356367672",
+            "bytes": 791052,
+            "sha256": "cdad271f4d854c858ec01f2c48ed8450a694be80a32eabf1956ac0f1d930db2a"
+          },
+          "train/58074.txt": {
+            "generation": "1568646423644229",
+            "bytes": 495881,
+            "sha256": "73104798a3a739fa866b630c4395d94ce094cd0ed34eae5ce29134cbb2907c07"
+          },
+          "train/53263.txt": {
+            "generation": "1568646398113703",
+            "bytes": 862874,
+            "sha256": "83f7a9909997a950ee7731e741873564f3ea6e93b662fa96d465e343e0e996d5"
+          },
+          "train/5821.txt": {
+            "generation": "1568646424304010",
+            "bytes": 135847,
+            "sha256": "a3cff97660f134185a2a568a7ee42ed5538419112fdb972934e66fa417dc6044"
+          },
+          "train/45721.txt": {
+            "generation": "1568646359060950",
+            "bytes": 635155,
+            "sha256": "d5ce0bf638b07721a908492723176022193b15c20a3ab665b4ce1d319f242bb5"
+          },
+          "train/29107.txt": {
+            "generation": "1568646264244560",
+            "bytes": 300486,
+            "sha256": "e8e76f390d32a26d11f9cbe65c8a7d85acc94a9733e92b8c941e25a7bda7c7c3"
+          },
+          "train/4710.txt": {
+            "generation": "1568646366904309",
+            "bytes": 314060,
+            "sha256": "ef28193de533d1dd7ea2d7a4729c31cf959398b767e4c7b5142212358a62d8ba"
+          },
+          "train/2196.txt": {
+            "generation": "1568646237739456",
+            "bytes": 321473,
+            "sha256": "98c607b708655497bc33479ff15759d1dc89b9840a9b8c55d85f5b62e2fe51d7"
+          },
+          "train/51090.txt": {
+            "generation": "1568646387853161",
+            "bytes": 1159770,
+            "sha256": "668098635748b1e44dee84555f0a9080faf2414db6da949d87f9a8ed0890b9a5"
+          },
+          "train/52862.txt": {
+            "generation": "1568646395963395",
+            "bytes": 904173,
+            "sha256": "6f885a049de8aaaa681291758487e21ef702c374106155ee6042e951fae7bbd0"
+          },
+          "train/56654.txt": {
+            "generation": "1568646416504303",
+            "bytes": 881570,
+            "sha256": "75eb672f03181cb1b3d32ff5f562ed8b82b28aa29827125b5e9342d0678b43d4"
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "e6f1290bab290426854cc7b64e4b0d20ef9ebd8332d6b58ece032a07a5f6e17b",
+        "masks.npy": "dc1bc899d130f9cf1a5b43e0ec4b97a953ad912508d9f3f37d05ef5b6dbb712e",
+        "documents.jsonl": "4f56a76749b4e0b562aee2aa1ad059ab00f69991bcfec1e3b0a1043136f0e348"
+      }
+    },
+    "ag_news/train": {
+      "corpus": "ag_news",
+      "role": "train",
+      "documents": 38222,
+      "sequences": 38222,
+      "source_text_tokens": 2000000,
+      "special_tokens": 76443,
+      "non_padding_tokens": 2076443,
+      "scored_tokens": 2038221,
+      "source_coverage": {
+        "source": {
+          "repo": "fancyzhx/ag_news",
+          "revision": "eb185aade064a813bc0b7f42de02595523103ca4",
+          "adapter": "ag_news",
+          "split_policy": "official_test__official_training_partitioned_by_normalized_text_hash"
+        },
+        "role": "train",
+        "asset_metadata_cache": "C:\\Users\\vleou\\Downloads\\IIB_project\\data\\corpus_bank\\cross_corpus_v1\\source_objects\\ag_news\\train",
+        "files": {
+          "data/train-00000-of-00001.parquet": {
+            "rows_read": 42094
+          }
+        }
+      },
+      "rejected_documents": {
+        "duplicate_identity": 53,
+        "cross_collection_passage": 150,
+        "historical_training_overlap": 0,
+        "empty": 0
+      },
+      "files": {
+        "tokens.npy": "10d49be4a5ee77c8bf7e22205282e946e78544bc7701424af530d87b0b9106a2",
+        "masks.npy": "23fbf6d215812a6754120eb904022126de7d312936596a78fdcf04be10164e89",
+        "documents.jsonl": "1abf30fcccf6ed6892a2eb85018341865c728c212a6629570d32497ff326ae1c"
+      }
+    }
+  },
+  "files": {
+    "ag_news/test/documents.jsonl": "ee910a5cca906238fe26fc5bba768954e4295e2ae7a1dec14c88a361250574aa",
+    "ag_news/test/masks.npy": "faef2d2e0ff793eb007e45446b6829ec85d2929a4d88c82c5798632c2b02aabf",
+    "ag_news/test/tokens.npy": "ae9fe92657688be931f56b30db270c40033ae4d5b062c50c85d4b011b648870e",
+    "ag_news/train/documents.jsonl": "1abf30fcccf6ed6892a2eb85018341865c728c212a6629570d32497ff326ae1c",
+    "ag_news/train/masks.npy": "23fbf6d215812a6754120eb904022126de7d312936596a78fdcf04be10164e89",
+    "ag_news/train/tokens.npy": "10d49be4a5ee77c8bf7e22205282e946e78544bc7701424af530d87b0b9106a2",
+    "ag_news/validation/documents.jsonl": "d3df8ea2024f858ba2713b664173c127a72d6ed17d22a87ffe4f2c49f69565a7",
+    "ag_news/validation/masks.npy": "00748255672d3c487dfbcc9f0432dff6ee001c9ed3386acbdcc607f678fa20d7",
+    "ag_news/validation/tokens.npy": "ed4f3de3fcc91e707e13320c0bbb25bfa8b0089b63d2e8595f0f49b0819dcdc2",
+    "c4_en/test/documents.jsonl": "fc8fa5fc20b1dbebb1661ca7713229ff41d2465fd53292afeff9442d349d48c2",
+    "c4_en/test/masks.npy": "25c9b71a875899eae0771290a2948970f5ef8b369624624dce03bbd69d7ef27f",
+    "c4_en/test/tokens.npy": "b309d5fd834b98e223969466ce2c07191f8aad113232d7fca9a13385b0b0a6dd",
+    "c4_en/train/documents.jsonl": "f9d72760c987a847cd610b6984daaa5928fdc360ca03401b1b7d530ba7979ec7",
+    "c4_en/train/masks.npy": "fe555320fd8931958982979f8cf8a6ddd779c406e2798e343431041e488b402b",
+    "c4_en/train/tokens.npy": "6b57325e103ccc1dfc6372f60ac3621098ccb5b18d66d6c151b7d57a1f7dd34d",
+    "c4_en/validation/documents.jsonl": "6aef624863b11cca61d0c18595e969e0363030705c788735fa555e812890cd72",
+    "c4_en/validation/masks.npy": "06f9d84f3ad315d4876cf5df319308d545330dffcf76c90e8074d9626c4af1f7",
+    "c4_en/validation/tokens.npy": "9467a5b07e7794045ebd773558341a025a2196721e168db527d8829a7ea68f9e",
+    "fineweb_edu/test/documents.jsonl": "9d924ff010f4eb76888d26847c90d3c3af9272765c4b8a668112331a95764c16",
+    "fineweb_edu/test/masks.npy": "0ec455806aa68f22f65aeb5e4d69b9b66a55f36b0b4eb99e20c9565703a2b830",
+    "fineweb_edu/test/tokens.npy": "2f61b814ff72db6e50715d5bb123fb0cb611317ec5d57e06a9e71b9b6d84a68f",
+    "fineweb_edu/train/documents.jsonl": "894f6d8f846715ce4cb6b494c4fa1573da109362ae9045b8e2198f7984377da7",
+    "fineweb_edu/train/masks.npy": "e07afd9adc5e19255791c853021bf6bea2a9197fbb12abf826fe2aac59dc80c0",
+    "fineweb_edu/train/tokens.npy": "6640a1afa02f6e3a0eb1c754b6d11e0100098daf3c396539bdea40576b865906",
+    "fineweb_edu/validation/documents.jsonl": "69e9652716e260f9bcdb7d2b8cfec21e2fa53bb1cfcf4838588a226129177ffc",
+    "fineweb_edu/validation/masks.npy": "d32417061397120893ed8e78a5b6f2d2a991c8d4ad277f6bd4dfc99d322b8a74",
+    "fineweb_edu/validation/tokens.npy": "42742ec9c3939068d6f568af43bbb333ff5274cdcc4f2ac45620aabe0284f5ab",
+    "pg19/test/documents.jsonl": "cf6d28481c92189cbe79c3329e4f544499192c43110a4dd2c75f1fc39b1229a4",
+    "pg19/test/masks.npy": "a3948ac9e893b10910806bfdaab8bc389e7ab7ff2ae7bbe3f34075fc1893e17b",
+    "pg19/test/tokens.npy": "2f8db2dd1a456a35fe80c248485502f77a330a4e6d29d53b6796af099070cef8",
+    "pg19/train/documents.jsonl": "4f56a76749b4e0b562aee2aa1ad059ab00f69991bcfec1e3b0a1043136f0e348",
+    "pg19/train/masks.npy": "dc1bc899d130f9cf1a5b43e0ec4b97a953ad912508d9f3f37d05ef5b6dbb712e",
+    "pg19/train/tokens.npy": "e6f1290bab290426854cc7b64e4b0d20ef9ebd8332d6b58ece032a07a5f6e17b",
+    "pg19/validation/documents.jsonl": "224139ace391dbed9d64db8bb9a978bb0f37fdbf61f660e8333e8050f1304a6d",
+    "pg19/validation/masks.npy": "a3948ac9e893b10910806bfdaab8bc389e7ab7ff2ae7bbe3f34075fc1893e17b",
+    "pg19/validation/tokens.npy": "f3e8c75948443c491d2eb9d9fa8e1a6c3d3755cdf5e312fac654ded3ea4b68fa",
+    "preparation.json": "2f4e1f197612d361aa8d10cd122e7d65360b3623ec395bc1ef17da2f17f1398d",
+    "source_objects/pg19/test/test_26183.txt.json": "7898186eebe9b16f8c67dfa2b928f99524a56d32b75a9b3a41b765d1b7b3a493",
+    "source_objects/pg19/test/test_28444.txt.json": "840936d03aa4809402551355e7ef26ebe54268c64b082b2198fd44e481d2e2fc",
+    "source_objects/pg19/test/test_29594.txt.json": "65de39d33e4ce42ed893c55ee0a3ac6298f95611b4ac333d623231a7116ebc39",
+    "source_objects/pg19/test/test_38106.txt.json": "0185535664d6643fcffd4bb1211d32195a11bee87061dc3a91106c113e4ef9d6",
+    "source_objects/pg19/test/test_40579.txt.json": "8d739c312c36a1aa0eeea1137db1da16b2664932cbb2aa08da1fa2f6159dc00c",
+    "source_objects/pg19/test/test_40700.txt.json": "ba05fb3c921ab62b5d9cefaeeacba876e55787cab4a9760cecf24c2d6af98ec3",
+    "source_objects/pg19/test/test_53345.txt.json": "69cf6aba53e74f8280c8d27907e4838f90064373a1491f8cfbc834cb406e0403",
+    "source_objects/pg19/test/test_55339.txt.json": "28ecae8070f8bcf4364b068a991fa901a433360375be3900301f27fb983f1408",
+    "source_objects/pg19/train/train_10319.txt.json": "dc44fb732b2732a6717b32ddf53ff4ccd5c165544db2fcd0e8f7ac1256953347",
+    "source_objects/pg19/train/train_1048.txt.json": "e85063ce111cd7a585c36b784d0cbf69ffc7bb966c4dd44b490e2fb11aa73654",
+    "source_objects/pg19/train/train_10980.txt.json": "90b137c8e790ee62a3458a5136e755ea9010fddea76ba9eeded6ad7ea18b9d57",
+    "source_objects/pg19/train/train_11017.txt.json": "af07c7543d1bbe503043cbb7cfa4731816b1c4ff2e4cd5cfa6ef89ec3a8bcac0",
+    "source_objects/pg19/train/train_11033.txt.json": "8d13ff9c021d9bebb8084b73fd967ae1faf9a9d5a4dd940689c6836c07647a2e",
+    "source_objects/pg19/train/train_13889.txt.json": "2f53f0f3b8fbeeff52f18857857af55340fd6e806fbcdb9cecd46e8b9d41e632",
+    "source_objects/pg19/train/train_16199.txt.json": "f9ad5c2f9076f6bbca6ff1128aeef8927f6311bbdebbcdf1323cfdd061465637",
+    "source_objects/pg19/train/train_2196.txt.json": "c532819102803ff27e7c6d015d46242ad91dcc39ad0af785264cca534f07f0de",
+    "source_objects/pg19/train/train_2239.txt.json": "05c6e327ef871ba1f43fddc953d632316524ce11526f16f7be4d81e315eb711f",
+    "source_objects/pg19/train/train_22884.txt.json": "5328b322be8b6d3300e7f1d5cda05e93bd2aab1d1f42b6e1f1a0e487b706768f",
+    "source_objects/pg19/train/train_23304.txt.json": "ba70400ce5f57dc5a4288a5ade8946cfda5393a624419995f30f46d0589f2c4d",
+    "source_objects/pg19/train/train_2413.txt.json": "23d18e9c78b0853797937d9090f0f982c7cd9bd8abf001dea0c2df743b9cdc30",
+    "source_objects/pg19/train/train_24453.txt.json": "012c73bbfc0e504ad0bb69f2443c869e380ee9f7c710fa6a6e3c3c431b16e083",
+    "source_objects/pg19/train/train_2457.txt.json": "96d70883e48a930d65e0edca675970d3ded9ab5766136f832cb30453db7b630b",
+    "source_objects/pg19/train/train_26624.txt.json": "1521ba6861e2a979f71c5b2a18e6f6a0bbde51159d8a5acdd251617bc12822b3",
+    "source_objects/pg19/train/train_27614.txt.json": "ef2360d9784ffe69f21137529876945f6bb4a28db0912a4b8f1f34ceca4f93ce",
+    "source_objects/pg19/train/train_27781.txt.json": "951e7cd8e50182b874bfed28856623df7cb900c2b39d8ac928161e1fdbc2f4ee",
+    "source_objects/pg19/train/train_28299.txt.json": "e5a69e3afd3e48828aa07a44db949f3647047e8bf0bbe1a6adaf89d308f11df6",
+    "source_objects/pg19/train/train_28304.txt.json": "c091ad8170e9c735c7c9ad904b6b546c57343fa98f38eaa0a3b26534fff20a53",
+    "source_objects/pg19/train/train_29005.txt.json": "7f44bc16b12cde287cd7a4fc78f6d88342fd770fa41f2c031a9ed5857db72869",
+    "source_objects/pg19/train/train_29107.txt.json": "a4a09e3196ccd3e977a6370b9a815640893f1ecf3bd3760e93ad62fb69bd9841",
+    "source_objects/pg19/train/train_29157.txt.json": "edf90977d156bd90c5d03e1719d1baf73bbfb72979838c26b1ce551ba18d2ca0",
+    "source_objects/pg19/train/train_30128.txt.json": "2bd2e39a52ebfafe05088ad4d2cdd1955843a5b8cf8d4209edf433cb2a537c8a",
+    "source_objects/pg19/train/train_30248.txt.json": "c5748568192b37e03912c1382c794c5e1827fa548b5b51a2a57de560050e75fc",
+    "source_objects/pg19/train/train_30390.txt.json": "ccdf2c11ef77e7080d627b6df48c98fae1bd7a35e781942d2354022f56438faf",
+    "source_objects/pg19/train/train_30879.txt.json": "eb64f351cb597b0784f515efc0cd579441440251233d20e3e160ff09f0b9be6f",
+    "source_objects/pg19/train/train_31335.txt.json": "a1eab6c1621f062203ef05a2d0be8e9e4722715e5dd08e02ec6991a1f3468492",
+    "source_objects/pg19/train/train_31860.txt.json": "a164386c2a68167b718ccbfc0abed5edef2a522abb89d4444e478f0d73a2155d",
+    "source_objects/pg19/train/train_31957.txt.json": "1ba8efa224667df67c1ac23e25ce2a3f733b4672e964f344a438bef2375b2141",
+    "source_objects/pg19/train/train_32123.txt.json": "df30bdfef70ddfb12623cb7429ed6b76ca990185911d7423cf4fc64f288ff633",
+    "source_objects/pg19/train/train_32397.txt.json": "e4cddfc3d86a1883ae9986c2a1867a3ae23e5c0b4e76eb3473f202bce552b7ad",
+    "source_objects/pg19/train/train_32467.txt.json": "a59f75f5fc18e2e770592f0ee66db3f7c852bda001e8fcacdec12fed4b903e4b",
+    "source_objects/pg19/train/train_3270.txt.json": "0aabc4374fc98440a4cb762a43bebe3b0023656d785e9d53f78f9a4cdeb2eb76",
+    "source_objects/pg19/train/train_3281.txt.json": "4d4d84d67928e508a11f068c2665e0c9b4f763d672f77c5cef19d1f169a9380a",
+    "source_objects/pg19/train/train_32997.txt.json": "7df8811d19f453a0ae1d4a31cd0b6c81faacf2c5b8abd0bd26a39d9ce221303c",
+    "source_objects/pg19/train/train_33008.txt.json": "7633f8ec315f0e66d6f53d8525a22478ab24c4dadabfdb94c03fdb22855973c5",
+    "source_objects/pg19/train/train_3311.txt.json": "25b6efa1518e9d67e7b2f9d9a79c7188003e618728f9b39398d06d7a25cc29cb",
+    "source_objects/pg19/train/train_33714.txt.json": "8dbe9a128e424c9cf875ad8339eb222fba3b0520c4bb2422c7e844624b288bba",
+    "source_objects/pg19/train/train_33717.txt.json": "6e021c13cfd3fb98f46660b65456ddb56ade103aac481ed3a20ea7e7d5499ef3",
+    "source_objects/pg19/train/train_34035.txt.json": "f57b7889159f182d3d50ba10305f877b1f889ab0b77b7236928dee44c6c0aff3",
+    "source_objects/pg19/train/train_34057.txt.json": "f45b4fe0b1daca8238fdeaa8adda3c08ddc728b6ee222072137f7b2ed99d64d8",
+    "source_objects/pg19/train/train_34438.txt.json": "34f67e6c2cfcb782479782875aa237436af39a066f7e1f690b1b8cf6d8a4e39a",
+    "source_objects/pg19/train/train_3447.txt.json": "64f56d6da4b789736b1d904fb98fc7643a58ce6b910549ff6e38adbb426ae3af",
+    "source_objects/pg19/train/train_34823.txt.json": "7aacfad935599e7edb6ec967f975cce5e0a6c8c449122514006f2aaca4269475",
+    "source_objects/pg19/train/train_35587.txt.json": "7504048ccc287b2b436e5a5992cfd5813c9e3edda79b087a49be5767aba0d041",
+    "source_objects/pg19/train/train_35650.txt.json": "b24efe5b19c5e148dfd8de5b92dbfa823a0f305e57dd841d711d627bc64110c5",
+    "source_objects/pg19/train/train_35765.txt.json": "ba7e0655a3308610b2f7cd36727246fdd150881e2116ec0f69e1d02a5d2fb6cc",
+    "source_objects/pg19/train/train_35931.txt.json": "552d3ba2d2436294742bde632be560074d0bf0fdd5e45658c9b7dc826efea5d6",
+    "source_objects/pg19/train/train_3602.txt.json": "c3e9496e686fd7c9edb90c780608ada2e7004cbd5a22e8d775a4cba4dd402bd3",
+    "source_objects/pg19/train/train_36431.txt.json": "52b2822959956a3bce5a98f55375dd3a1080b8389c3ebf8ac99a64b703454b9f",
+    "source_objects/pg19/train/train_37873.txt.json": "a8900e4026058b45f55dcfcf91b4dbe3e42f3d4ebcf75265eb5f3b2d323d5df2",
+    "source_objects/pg19/train/train_39080.txt.json": "eaa0c7d8d7834c4e06e01fa0778f68963d22ece5980fa4d817175a66b0ce5384",
+    "source_objects/pg19/train/train_39598.txt.json": "79ad197aacd9228dc053e72a66108697d2f63dc62fcd8c5dea9f77ca9340098f",
+    "source_objects/pg19/train/train_40027.txt.json": "cb0a97db514c0097ec70a2097a2bc7d932fdf5c9ff57583c1c33639ec84f7407",
+    "source_objects/pg19/train/train_40073.txt.json": "6db36fd8c03d1ad26ed3451193ecc045259f24cf2ad2522f45ee7665ae6aca7c",
+    "source_objects/pg19/train/train_4055.txt.json": "f7cfa9f4614a73fcbb2ecfd3c3368866545bbca0b185cc6064e3ac8ddff08ee9",
+    "source_objects/pg19/train/train_4059.txt.json": "78d5fbc70cddc111edca01f5e74b5daa1814d0b167bf281bc7a43ee77bddea51",
+    "source_objects/pg19/train/train_4114.txt.json": "96c93bac41b17f47957ceaa3cbacc9db23ad5d74d58b828f98385079c8e05df1",
+    "source_objects/pg19/train/train_4141.txt.json": "cc4233ce303149bb35454ed624b626b590602d1344f2fd524f5d9be985f6242a",
+    "source_objects/pg19/train/train_41476.txt.json": "221a787e268630fd63e0286ae8fd9c6efc0a3c80da8eca2f62bf7ecc83279ea4",
+    "source_objects/pg19/train/train_41826.txt.json": "66622efc2769c9e3c7be91401c83e14d1483bdf54a55a5762afe02c462b5ba01",
+    "source_objects/pg19/train/train_42357.txt.json": "4176e606a42df1eb8f3bc6d8e31e464e9a1f8d2bed8f4c3310d5eaf76c51856e",
+    "source_objects/pg19/train/train_42396.txt.json": "e988bf05ff8a072952bfc2a11e620c546aa2aae0474d974df970b48c67104ce3",
+    "source_objects/pg19/train/train_4367.txt.json": "ae0c5a8b3488c118d664d6605486f8abb94aad5907fa3674503455f4dcd72399",
+    "source_objects/pg19/train/train_44376.txt.json": "450daec35c65dfe1715730ac493330ee314da9752e6cbec1fedf100d0354e316",
+    "source_objects/pg19/train/train_44624.txt.json": "a3c6e4ed45204bda2ba7024d9564e52e4b1e02ac082ac754cc0714d398ce92f7",
+    "source_objects/pg19/train/train_45229.txt.json": "c5ea6b30ebe7731c13c4ed3f3f86c847073409343940b1783bddf706627fddd1",
+    "source_objects/pg19/train/train_45230.txt.json": "2283b68a67400a0ce887080eecc72ecbe1552fbb89073efef7556c260402934e",
+    "source_objects/pg19/train/train_45232.txt.json": "ce13df8d840ab98aaf4eccfc7ec5a7e04e00d5edc662c2aeccd02735e1eebdba",
+    "source_objects/pg19/train/train_45510.txt.json": "6545888565f73c014f9608eb0e0eb185bb51854f801db822e76fafbd243b34f2",
+    "source_objects/pg19/train/train_45666.txt.json": "9ae1a3ba3d81a8148eeff3dcfde6ab785d0d20082e82f919c1b1994e717ea964",
+    "source_objects/pg19/train/train_45721.txt.json": "f80ea1afa8e90796fc7775d67be5d94a48897c4ea16dbaee05383e31cb73a7c3",
+    "source_objects/pg19/train/train_46313.txt.json": "53422ec1426443aeb6fa8a5042cb1701f404e2c2070ef16b5eef04fe0a45c999",
+    "source_objects/pg19/train/train_46324.txt.json": "e66ed6247761ad8e526796686700dc2ab3188974ca7e62b30d6e83f611e602ee",
+    "source_objects/pg19/train/train_46757.txt.json": "fa4f582423e6c1341fe44472b06e029071ce84215e9edf45c46b37af5024c89b",
+    "source_objects/pg19/train/train_4710.txt.json": "ef3791a693e24a27354f94a164d4f5a845a0a4dfaa170cdacf9111406d75551c",
+    "source_objects/pg19/train/train_47213.txt.json": "07e2140be13e19fc7b9b2a3276f39aa50ee1a6e50149d63d11d2a3122613e6bb",
+    "source_objects/pg19/train/train_47261.txt.json": "f476d5a0a4e24f99d57651f48855619eeb0f17b46a02a5a7963eca6f6b6b6d28",
+    "source_objects/pg19/train/train_47520.txt.json": "cb9e6b56e88fa7154bbd76f16192e201d574d12b4d38b2a6948c29c065a22b50",
+    "source_objects/pg19/train/train_47695.txt.json": "c9bcd307f9c542f95aae66efc33e46131634fa0c2603fdf92bfb356914a838e5",
+    "source_objects/pg19/train/train_48136.txt.json": "a3d205850f06f99edbf9bacf4a80baefbd2adfa248c941e2e22a3a3305818d40",
+    "source_objects/pg19/train/train_48304.txt.json": "8c889a1fd3d90c7e877dca9421410ae757cc2572399f836bbdf72775df0ff552",
+    "source_objects/pg19/train/train_48443.txt.json": "9d427d601f15eb8871d69aae945c2bc6cf93fd9b89990a656c80ecbde0e10265",
+    "source_objects/pg19/train/train_48912.txt.json": "029ec7ebd4ffbfed5ccfb38fd938fb5ca73700df7018a46bf7fa76c3fcafdc86",
+    "source_objects/pg19/train/train_49516.txt.json": "3864906dc1303eee012967af097f7bc55b6489d17abd9d92276b13ac95b68787",
+    "source_objects/pg19/train/train_4976.txt.json": "17ad83c17680d0df0ea2b280a63b8e25b0c78c0cf7da079edb38b0311025a18c",
+    "source_objects/pg19/train/train_50001.txt.json": "e0d3992f9c9071bef5ae07edecb5731b7f790653e4d7003da9bfcc92764141ff",
+    "source_objects/pg19/train/train_51090.txt.json": "180195b33a8bfea9efe2e7e8195aabaed31782184e598dd44f8f47f4d9f867ad",
+    "source_objects/pg19/train/train_51665.txt.json": "75741d73ca8b4d0c81b7238b6923b8eccd9fe9fa2347668ce866ccc645af045e",
+    "source_objects/pg19/train/train_51718.txt.json": "8b8e0f049ebed0ffd484e53d9150b6627f3d3e9132876f93799464558422aa0e",
+    "source_objects/pg19/train/train_51966.txt.json": "742d4b3f2429a8dc27e1ec3735b262ce5aabc570392f4c5fa68b47ed3f869914",
+    "source_objects/pg19/train/train_51969.txt.json": "36436e7377a0114ee1d7449b70df21829d1151ac4e56dc6449c2458a44972ba2",
+    "source_objects/pg19/train/train_52422.txt.json": "be5c9d3f9d74ae2e2a0e35cc2c10f8cea96c83337fa4e34b8f59af302bb8b68d",
+    "source_objects/pg19/train/train_52636.txt.json": "b508303e8a00ab467ebd98ac014fe7f2998f8b9aae1dd092bd8ae66c6f5870d4",
+    "source_objects/pg19/train/train_52755.txt.json": "4f86ae2c4c1306b0718e8b915f815287635e8c984936d6969045b9fd6917badc",
+    "source_objects/pg19/train/train_52862.txt.json": "f1ad0c89cb5f226499d56707fe9acdbb1ec61e6d2e65910c6f52a54344b9dc7b",
+    "source_objects/pg19/train/train_53263.txt.json": "36c4b1a7b2657fd1eb64140f013e912135b03288961cbd73ab7ae98e384317ce",
+    "source_objects/pg19/train/train_53297.txt.json": "eb5eb5f9dc5d937ffcb20dfc2712e0d084b188265eca1172395fe2c5d6c116ec",
+    "source_objects/pg19/train/train_53894.txt.json": "fe62d8d5e70c35ffec1c9362bca886e086f69e38c1f6f446d24f7eb17dab0e2e",
+    "source_objects/pg19/train/train_54137.txt.json": "0ec419b4c839e5f66de8d63d669f5fa2b941599489c245698ccd764f3c244647",
+    "source_objects/pg19/train/train_54424.txt.json": "e436e129ffc8218794c16d75a2494064247cd338262b0c82f710e520a802f254",
+    "source_objects/pg19/train/train_54558.txt.json": "04d4d7add965efb88b8670ad008dac505001e4524f2e7b97535eda89e16c069d",
+    "source_objects/pg19/train/train_54767.txt.json": "61ee431aeaa5973963666350e325aca736b78d85a8d4ac1d4ad7cef5c82cebb5",
+    "source_objects/pg19/train/train_55297.txt.json": "5b1266e040e2554b693401b5f8fe84f69fee4a262d4b9fc014aebb14f652d540",
+    "source_objects/pg19/train/train_56486.txt.json": "073a40587cdcd45f46fd82952bace3da8c2119a8973f5b5d4d6621e7a363ee7e",
+    "source_objects/pg19/train/train_56506.txt.json": "f15a1ca7576803ae40c55ac31472a6613dbe322d9d85687238c52fb1ab69e0ec",
+    "source_objects/pg19/train/train_56544.txt.json": "f2a48e6302e55a2c9e41ea1bb7deb856b85d6d236c7725c7429fdee456d63e08",
+    "source_objects/pg19/train/train_56654.txt.json": "7a4671b9a525e14b1c335993c629f04cccecdd8c77d392c7aedd5260f0dcebb8",
+    "source_objects/pg19/train/train_56758.txt.json": "763e100884832d70b7f3400900cf79d999dca610f6a4733e9ade4501f3451c71",
+    "source_objects/pg19/train/train_57558.txt.json": "d080c4d5e10d5661df5e8dd229ca26d8efa011aa91b20ac2cabe1fd784ef5064",
+    "source_objects/pg19/train/train_57599.txt.json": "372bbcbc4cd48c8c38646291ee3272826661dedc8c2eaa5bf09d3559e4412b3a",
+    "source_objects/pg19/train/train_58074.txt.json": "f4bee83d3593de200ad05f5be5721944a4c69ecce58bf0066afd52eb4d2654e1",
+    "source_objects/pg19/train/train_58196.txt.json": "b24e3ddb00e50723c567f04fb93836a9d62b3fea4371c8e06300b1113017c876",
+    "source_objects/pg19/train/train_5821.txt.json": "5a23bd9cb54c1f0b8bcbba8a9a78446dc9cac0fb571c910d9b608f1757e2900b",
+    "source_objects/pg19/train/train_58488.txt.json": "7c1761b8e8bf3d9a95cbd868a997bdfe322a8a78a9608e806da95586cf62585d",
+    "source_objects/pg19/train/train_585.txt.json": "21dc1dc1ca19b6039408f928b6826195b06828581ac8c48dda9d18bebf8750d7",
+    "source_objects/pg19/train/train_58719.txt.json": "4a9caca0f477b6f3a236979d7bb21db70c3ad4ed4d99acc901ec6bcf975dafef",
+    "source_objects/pg19/train/train_58774.txt.json": "f12bcf48f8fa9c5d44e55ed6c6f2ac65839702b7c319dd6cca4b33a9d97af14e",
+    "source_objects/pg19/train/train_5949.txt.json": "6750133c3f6238e3ebb7f667bca925dc15f72fccdcd29fadb97fcf1b32c9b96a",
+    "source_objects/pg19/train/train_5988.txt.json": "dab912f9ab6d209cadb8a705a6f1977d9fea595f4d264883e65791d941e6f26a",
+    "source_objects/pg19/train/train_6799.txt.json": "5b5204fb6488532fa6fd713db6adf161a47de0588726b304c41e272d9f642df7",
+    "source_objects/pg19/train/train_6866.txt.json": "ae21c4a220ccee3131db1b456feb7e30052d65c04c1bb906156cb8467ff55793",
+    "source_objects/pg19/train/train_7107.txt.json": "273e712aa32b40d073125aa993fa85af745a217c0916a5a1463591b5296805fc",
+    "source_objects/pg19/train/train_7110.txt.json": "8a2cf5d6793e8acd61747f0c72b10db4f807e01797fddcb282ed568c08ee8dc2",
+    "source_objects/pg19/train/train_7495.txt.json": "8b0d0069efd80a81a7b7ca01421e898bd8cce3204e12f0b5fbc15500da1a0fae",
+    "source_objects/pg19/train/train_7523.txt.json": "5ab2d8b972077469a5a2dd4eb246276da206fdabd40635583b194d539af7e30a",
+    "source_objects/pg19/train/train_8661.txt.json": "43d7ecccec311702b63461728cb900862338b5abf1830a2b42076408f46173fe",
+    "source_objects/pg19/train/train_8701.txt.json": "dea13ac805b75031cf9798443d503bd9396cdbd69d5b2c006fbd52bbc19875cf",
+    "source_objects/pg19/train/train_9559.txt.json": "d899855dd325f36a64e4323c6d3bbf9546ce3cb5893cc24e9796119a9327f60c",
+    "source_objects/pg19/validation/validation_35816.txt.json": "e524d121af951cd99e36a80ef5ae52e2072b269da83a2e5365ed259fd609a321",
+    "source_objects/pg19/validation/validation_44912.txt.json": "91faed22ed830cbbd1b1ef3b3a114e321b5c59e34e914b67f7e34b531f81578f",
+    "source_objects/pg19/validation/validation_48089.txt.json": "872f55bc46f6bb1cebafa5b95aadfac6c7c2ef58cc423c26fcbfb6156bf0a662",
+    "source_objects/pg19/validation/validation_48677.txt.json": "8fee92a322aac603610a924ec530ad317047dc31e54701fb1f4a80e8ca06747a",
+    "source_objects/pg19/validation/validation_53682.txt.json": "13a6a98003e1beee7f7c8d89139d0f57d68e04c244f38391c4e7b581795ed6dc",
+    "source_objects/pg19/validation/validation_54098.txt.json": "192196c89d3b495d4474091bf5f70c1ea43e57d43ffa1b70c6f3f7d4b8533184",
+    "source_objects/pg19/validation/validation_57843.txt.json": "02c9b92914c6d1e045458ae6be572ff22a2c07e8a6d9cd4614edb9b93005c943",
+    "source_objects/pg19/validation/validation_8545.txt.json": "7cc15f758ec3c8d30e775dd39b3cb58665bbf055951e5e55fa4ceaaf4711a220",
+    "wikitext103/test/documents.jsonl": "705422090557ed0d8f33b02f746599455aaed14a7ac02131c32a3326d7126e8d",
+    "wikitext103/test/masks.npy": "5171eaec2af71d76fa7ccf748b15c59dd636874c828b6992da5a7246d1a152ce",
+    "wikitext103/test/tokens.npy": "9ded2e1d3b419daba9e2c4d83c2ebac5bc180fa8bd153b79d92f65fb737a9887",
+    "wikitext103/train/documents.jsonl": "eeefe12096e68ba91143cb83e0fed2c936b1122f26f0bd75d081795176ea6ca6",
+    "wikitext103/train/masks.npy": "34ce0eb4a4fba089dadbf10f24cc0ea7ba1858e3721ba1f52376180d3099598a",
+    "wikitext103/train/tokens.npy": "2d9dcfe9f218aaf0849f349486b58eba3923c8f6fa1b144a5fcb50f2d3f3dce8",
+    "wikitext103/validation/documents.jsonl": "97fdb8383635585f7a676c73aad360967ac6c4c8ef645c3c88f20892e745e621",
+    "wikitext103/validation/masks.npy": "08fada51fb7adc8a9a114332ddb43d9d6de43a1830a2f275d18e7225f18a1aa3",
+    "wikitext103/validation/tokens.npy": "0688436830d9ac29f790e321109f4b7da10ed66f9b7cd9cdb871d3820b6fa027",
+    "fineweb_edu/validation/manifest.json": "3f06a1b059b016a0d62ffa8f6bc346a125694cf69fc72aaac4fcf7bd4ca8c22a",
+    "wikitext103/validation/manifest.json": "c3c2245fc263548cedce9c3d0c61196384e122d0cee52acc33c2f41ebd85afc4",
+    "c4_en/validation/manifest.json": "24274e0379fe2e084a9d80490eed400fed0685eb3a6e55d5c2d45557e371a21f",
+    "pg19/validation/manifest.json": "fd5a77bd1fef97961587e9630db358b8af2be0e6b15e88678c5613eeebb9279b",
+    "ag_news/validation/manifest.json": "6aa8b66e511e5ab59dd0faf488e6e18335555755dcacd7a8468785c467d6a5e7",
+    "fineweb_edu/test/manifest.json": "5d7b80352338ad9fe5801fd9d5147a84306f41dd350eba12db4ba5214a4a901c",
+    "wikitext103/test/manifest.json": "8a313b1f91687150d7c8ffc6e28b471c8561492048ce06b8f633e441b5cd0208",
+    "c4_en/test/manifest.json": "8e6f394111fd7cfaa8c69ec5978eb59c4e24b358d904f5e4422a720e899f461b",
+    "pg19/test/manifest.json": "623f0f7d3f4713f67c07cee4c813f8474d347fe166b4e381506ce5e4542d0a1e",
+    "ag_news/test/manifest.json": "63ba282d0daff27929282b2af851b2f3bcc236d3179332ba47ab704e9e6b90a6",
+    "fineweb_edu/train/manifest.json": "e2efd6148d220bb38111d21a0666f066f756ddcaef68bbaa35f009d718db1146",
+    "wikitext103/train/manifest.json": "8cdf6b9dbfd3dca14f8013be639901b9f87fb2933a85e4e2b99314abaf54151d",
+    "c4_en/train/manifest.json": "772d7daf50c1e16d7b7b35ef7c6f18bcb1c09beb5d252658ac1df460f004a6ec",
+    "pg19/train/manifest.json": "24390888ede7c61e8f3431e4ab0fb43660bf0731e9bad01e411b9bd4ea4bed99",
+    "ag_news/train/manifest.json": "40f1a6588ca16f4a39b68b98830dcab84b4bedf463f1ac022f1c97c10bbcfc1a"
+  },
+  "overlap_scope": "Document ID, canonical Wikipedia title, normalized URL/text and exact sliding 64-token passages across all bank collections. Evaluation also excludes all recorded FineWeb training identities/passages.",
+  "sampling": "Pinned source streams, seeded file/document shuffles and stable native-split partitions. Long source documents contribute a deterministic contiguous window up to the document token cap. Finite read coverage is recorded.",
+  "token_policy": "Original pretrained OPT tokenizer; BOS per sequence; up to 510 source tokens; EOS at genuine document endings only; right padding excluded from attention/targets."
+}

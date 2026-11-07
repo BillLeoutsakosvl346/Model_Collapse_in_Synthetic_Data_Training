@@ -1,0 +1,35 @@
+{
+  "time": 1794059981.1058562,
+  "new_regressions_passed": 22,
+  "focused_existing_checks_passed": 45,
+  "full_suite": "passed",
+  "checks": [
+    "exact 85/90/95 ratios and nested selections across ten cycles",
+    "full and smoke protocol identities match per ratio",
+    "same bank and scientific settings as mixed80",
+    "scoped matching owner admission and duplicate guards",
+    "remaining sibling budget reservations",
+    "content-addressed multipart S3 upload and cold SHA recovery",
+    "corrupted recovered bytes rejected",
+    "Hub index routes bulk to private S3 and pins checksums",
+    "historical metadata schema accepted",
+    "existing recovery/provenance/storage/CLI/report regressions passed"
+  ],
+  "runtime_files": {
+    "model_collapse/cloud/s3_artifacts.py": "34ed5b947ebd273f0d106186ecd94e4b969ed157d8710e1f18e7953b8e3cdfcb",
+    "model_collapse/cloud/parallel.py": "35eea9f659dae92361f93a64698313dd56ae6abda1bc9905257b2e6c86977d7e",
+    "model_collapse/hub.py": "c1f0f1259f672863150e815224843a1773749498b6954225006ea177bdb7a4dc",
+    "model_collapse/remote.py": "27390552346d51179c982f622dc5e89845c25926f9021e8811b3e4a7068ec4b9",
+    "model_collapse/workflow/completion.py": "b80817baa4f07b245f0bd6f003225b1479ded335dbb14476c39ad434ef177a97",
+    "pyproject.toml": "60159848b437b587d6649a6f310067c1c4d4731cab37037651e7b418af049594"
+  },
+  "full_suite_tests": 506,
+  "full_suite_seconds": 473.76,
+  "completed_at": 1794060174.5778995,
+  "additional_host_launcher_tests_passed": 4,
+  "host_launcher_tests_seconds": 0.53,
+  "total_distinct_offline_tests": 515,
+  "host_recovery_syntax_verified": true,
+  "additional_host_regressions_passed": 9,
+  "latest_focused_tests_passed": 31
+}

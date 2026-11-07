@@ -1,0 +1,356 @@
+{
+  "run_id": "20261106T193918Z-full-completion64",
+  "pod_id": "udbovqu03vp3h0",
+  "provider_status": "RUNNING",
+  "checked_at": 1794012922.7193336,
+  "live": {
+    "status": {
+      "state": "running",
+      "phase": "synthetic",
+      "active_child": "20261106T193918Z-full-completion64-synthetic",
+      "time": 1794007934.8126442
+    },
+    "completion": {},
+    "watchdog": {
+      "pid": 139,
+      "time": 1794012922.6647239,
+      "deadline": 1794045591.7757857
+    },
+    "supervisor": {
+      "pid": 253,
+      "child_pid": 255,
+      "time": 1794012923.3863587
+    },
+    "arms": {
+      "real": {
+        "status": {
+          "state": "complete",
+          "time": 1794007805.1805072
+        },
+        "completion": {
+          "complete": true,
+          "cycles": 10,
+          "data_kind": "real",
+          "time": 1794007805.158535
+        },
+        "stages": [
+          {
+            "name": "gen_00",
+            "sealed": false,
+            "weights": null,
+            "global_step": null,
+            "test_ppl": 29.17631807160739,
+            "validation_ppl": 28.91131926861199,
+            "time": null
+          },
+          {
+            "name": "gen_01",
+            "sealed": true,
+            "weights": "b34441cea7739f822111a3348475cf865fc403c8b1514eead3e1989229de2521",
+            "global_step": 79,
+            "test_ppl": 28.394860500529408,
+            "validation_ppl": 28.15496563836113,
+            "time": null
+          },
+          {
+            "name": "gen_02",
+            "sealed": true,
+            "weights": "2f27258b23a6057e9af69ea429a5919fff9cc1aed53ae3b175fe1d5ede9fc9cc",
+            "global_step": 158,
+            "test_ppl": 28.326857305281344,
+            "validation_ppl": 28.07589746404158,
+            "time": null
+          },
+          {
+            "name": "gen_03",
+            "sealed": true,
+            "weights": "2f52d7ef790e12d13a11775756846b543f69f3631bbf7668f2d7a9576a06b6b1",
+            "global_step": 237,
+            "test_ppl": 28.23693282860609,
+            "validation_ppl": 28.001786598596247,
+            "time": null
+          },
+          {
+            "name": "gen_04",
+            "sealed": true,
+            "weights": "645e41157b76acf79fb4337cdbc04fa6a75a932b88406413e3aaa835b96fd064",
+            "global_step": 316,
+            "test_ppl": 28.1839982887638,
+            "validation_ppl": 27.949970344112486,
+            "time": null
+          },
+          {
+            "name": "gen_05",
+            "sealed": true,
+            "weights": "cc7f84d49df9e17a7f375375a92cd7d9616388c23ac0cc8b02054ee3134a8f98",
+            "global_step": 395,
+            "test_ppl": 28.156432921952394,
+            "validation_ppl": 27.939286405248115,
+            "time": null
+          },
+          {
+            "name": "gen_06",
+            "sealed": true,
+            "weights": "a484d82d1f41a3e7a07af818968d9737ae484fb0aa5c334eb538c138ed5c80d3",
+            "global_step": 474,
+            "test_ppl": 28.124313318751334,
+            "validation_ppl": 27.896960116137954,
+            "time": null
+          },
+          {
+            "name": "gen_07",
+            "sealed": true,
+            "weights": "f586fe2b070e5c680d6077bc2750b8c6dc8dd5e73bedbe90f1e3d8b77e9700eb",
+            "global_step": 553,
+            "test_ppl": 28.103924091528082,
+            "validation_ppl": 27.883941121533,
+            "time": null
+          },
+          {
+            "name": "gen_08",
+            "sealed": true,
+            "weights": "d2d56c05e2953eac9c14a05e4ab14479201bfc8dc6a0f50813b84aabd472f78f",
+            "global_step": 632,
+            "test_ppl": 28.08495584318017,
+            "validation_ppl": 27.865152381268494,
+            "time": null
+          },
+          {
+            "name": "gen_09",
+            "sealed": true,
+            "weights": "d27bcaca1a7132922b73639fd0454b81c0f8e54628195cc41f9e7e2700688a04",
+            "global_step": 711,
+            "test_ppl": 28.06148268873929,
+            "validation_ppl": 27.838999385340035,
+            "time": null
+          },
+          {
+            "name": "gen_10",
+            "sealed": true,
+            "weights": "ce965eb7ade03782bdd8ece0f8a0cc95bc58159a5ef72113d113564bf5982a4a",
+            "global_step": 790,
+            "test_ppl": 28.05292061370485,
+            "validation_ppl": 27.82947225980966,
+            "time": null
+          }
+        ],
+        "last_events": [
+          {
+            "time": 1794007410.856943,
+            "event": "epoch_complete",
+            "generation": 9,
+            "epoch": 1,
+            "learning_rate": 1.3819660112501133e-06,
+            "train_loss": 3.3769344135284425,
+            "validation_loss": 3.32643789320177,
+            "train_seconds": 30.216729279141873,
+            "training_target_tokens_per_second": 21180.320149400875,
+            "global_step": 711,
+            "learning_rate_end": 1.0978869674096952e-06,
+            "scored_training_tokens": 640000
+          },
+          {
+            "time": 1794007490.4328668,
+            "event": "completion_cycle_complete",
+            "cycle": 9,
+            "test_perplexity": 28.06148268873929
+          },
+          {
+            "time": 1794007627.7464435,
+            "event": "epoch_complete",
+            "generation": 10,
+            "epoch": 1,
+            "learning_rate": 1.0978869674096952e-06,
+            "train_loss": 3.3799329490661623,
+            "validation_loss": 3.3260956123615806,
+            "train_seconds": 30.26617951109074,
+            "training_target_tokens_per_second": 21145.71479910368,
+            "global_step": 790,
+            "learning_rate_end": 1e-06,
+            "scored_training_tokens": 640000
+          },
+          {
+            "time": 1794007707.2670317,
+            "event": "completion_cycle_complete",
+            "cycle": 10,
+            "test_perplexity": 28.05292061370485
+          }
+        ],
+        "backup": {
+          "run_id": "20261106T193918Z-full-completion64-real",
+          "repos": {
+            "model": "iib-model-collapse-bill/iib-model-collapse-models",
+            "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+          },
+          "revisions": {
+            "model": "a1e40f239c03df92dd5c49134708849a6159201c",
+            "dataset": "ee062b51bdb675369023f9af10eab494283a7a99"
+          },
+          "artifact_index_sha256": "c8db03c264bcd29af567ee434c25e7493934b9483a390383d3a84a808dff231d"
+        }
+      },
+      "synthetic": {
+        "status": {
+          "state": "running",
+          "generation": 8,
+          "stage": "input",
+          "time": 1794012761.6123803
+        },
+        "completion": {},
+        "stages": [
+          {
+            "name": "gen_00",
+            "sealed": false,
+            "weights": null,
+            "global_step": null,
+            "test_ppl": 29.17631807160739,
+            "validation_ppl": 28.91131926861199,
+            "time": null
+          },
+          {
+            "name": "gen_01",
+            "sealed": true,
+            "weights": "893c2d2c2ad41f594ca23c5364653c5077805687887b69ad1e7f6642251ecf41",
+            "global_step": 79,
+            "test_ppl": 44.63599157605971,
+            "validation_ppl": 44.02603603035869,
+            "time": null
+          },
+          {
+            "name": "gen_02",
+            "sealed": true,
+            "weights": "d75de575af10a12f635130fb31a86e352c0873da44b2113b8a202a744d4674b1",
+            "global_step": 158,
+            "test_ppl": 72.87668989626287,
+            "validation_ppl": 72.14883760634235,
+            "time": null
+          },
+          {
+            "name": "gen_03",
+            "sealed": true,
+            "weights": "27312159d8c838a7758eb19cb2aa90e91f6ed486545cd75e019f67f2c500964f",
+            "global_step": 237,
+            "test_ppl": 107.0633143499608,
+            "validation_ppl": 106.45080925590227,
+            "time": null
+          },
+          {
+            "name": "gen_04",
+            "sealed": true,
+            "weights": "1634798e5b9e03884c2260b8895ad7968770a14bf9a4d22c4cf7ccc2e984d077",
+            "global_step": 316,
+            "test_ppl": 145.21778979097022,
+            "validation_ppl": 144.85733736649283,
+            "time": null
+          },
+          {
+            "name": "gen_05",
+            "sealed": true,
+            "weights": "9d8f4fdcda8cdb3dc0bc4db9edcfc3ceff1f07a7880f544e7be06297d3d930a4",
+            "global_step": 395,
+            "test_ppl": 185.83044832226776,
+            "validation_ppl": 186.01582074537583,
+            "time": null
+          },
+          {
+            "name": "gen_06",
+            "sealed": true,
+            "weights": "8c208d67223dbf7105e5a6de88bc1fcbc26a9ed9aa9d86448bc9a8ba7acf3815",
+            "global_step": 474,
+            "test_ppl": 221.7124746059012,
+            "validation_ppl": 222.67949144353216,
+            "time": null
+          },
+          {
+            "name": "gen_07",
+            "sealed": true,
+            "weights": "057d21cbc58fbf238630a42ebf3d2b65a8d1dd64f5be30fbd3254d1b49baf432",
+            "global_step": 553,
+            "test_ppl": 254.9922194976934,
+            "validation_ppl": 256.6249387360288,
+            "time": null
+          }
+        ],
+        "last_events": [
+          {
+            "time": 1794012879.1409295,
+            "event": "generation_shard_complete",
+            "generation": 7,
+            "completed": 2304,
+            "total": 10000,
+            "reused": false
+          },
+          {
+            "time": 1794012891.884863,
+            "event": "generation_shard_complete",
+            "generation": 7,
+            "completed": 2560,
+            "total": 10000,
+            "reused": false
+          },
+          {
+            "time": 1794012904.5830474,
+            "event": "generation_shard_complete",
+            "generation": 7,
+            "completed": 2816,
+            "total": 10000,
+            "reused": false
+          },
+          {
+            "time": 1794012917.3849618,
+            "event": "generation_shard_complete",
+            "generation": 7,
+            "completed": 3072,
+            "total": 10000,
+            "reused": false
+          }
+        ],
+        "backup": {
+          "run_id": "20261106T193918Z-full-completion64-synthetic",
+          "repos": {
+            "model": "iib-model-collapse-bill/iib-model-collapse-models",
+            "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+          },
+          "revisions": {
+            "model": "0babab733b6d225c09a435b0a23b19cc779b37d8",
+            "dataset": "78445f051a3ae824149505aea162040652874aa8"
+          },
+          "artifact_index_sha256": "8dab957761125e5eb7cd1aed0b388514c055351142b3db94c16fcf6c255171b0"
+        }
+      }
+    },
+    "watchdog_age_seconds": 1.5505096912384033,
+    "supervisor_age_seconds": 0.8288772106170654
+  },
+  "recent_cycle_timings": {
+    "now": 1794012946.434648,
+    "cycles": [
+      {
+        "time": 1794010573.0463505,
+        "event": "completion_cycle_complete",
+        "cycle": 4,
+        "test_perplexity": 145.21778979097022
+      },
+      {
+        "time": 1794011257.9420846,
+        "event": "completion_cycle_complete",
+        "cycle": 5,
+        "test_perplexity": 185.83044832226776
+      },
+      {
+        "time": 1794011955.8644366,
+        "event": "completion_cycle_complete",
+        "cycle": 6,
+        "test_perplexity": 221.7124746059012
+      },
+      {
+        "time": 1794012666.0769026,
+        "event": "completion_cycle_complete",
+        "cycle": 7,
+        "test_perplexity": 254.9922194976934
+      }
+    ]
+  },
+  "recent_cycle_mean_seconds": 697.676850716273,
+  "estimated_finish_utc": "2026-11-07T01:25:59.107455+00:00"
+}

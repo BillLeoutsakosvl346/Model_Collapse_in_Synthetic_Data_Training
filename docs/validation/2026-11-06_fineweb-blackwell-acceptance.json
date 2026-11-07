@@ -1,0 +1,76 @@
+{
+  "recorded_utc": "2026-11-06T15:09:37.422903+00:00",
+  "run_id": "20261106T145728Z-smoke-fresh-real",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "gpu_hourly_usd": 0.57,
+  "runtime_sha256": "13ddfea86bc9a87377bb08e81f1a43377c3e8767cf3965a3da34561dcf3cc0c7",
+  "protocol_fingerprint": "ea54588894a9d0ccab721781c389848e7660aa57ac2595e5c005f95e9ee293f4",
+  "checks": {
+    "three_real_cycles": true,
+    "terminal_checkpoints_reload": true,
+    "worker_interruptions_recovered": true,
+    "restored_evaluation": true,
+    "direct_shifted_nll_calculation": true,
+    "private_bulk_restore": true,
+    "exact_source_token_quotas": true,
+    "continuous_optimizer_and_scheduler": true,
+    "completed_cycle_unchanged": true,
+    "disjoint_documents_and_passages": true,
+    "restored_model_and_optimizer_state": true,
+    "masked_token_weighted_loss": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "private_bulk_restore": {
+    "run_id": "20261106T145728Z-smoke-fresh-real",
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "revisions": {
+      "model": "a07e5d90ec05547fefbce5572195e8e81de1a2c6",
+      "dataset": "667bc8ec65af18c2d8441e2dee0840764a2ac3f7"
+    },
+    "artifact_index_sha256": "587eb0034a4927a711537f67986f17973b41fda804faf335f3ff27a2adb16657",
+    "indexed_files": 92,
+    "verified_files": 92,
+    "verified_bytes": 5027105746,
+    "metadata_only": false,
+    "scope": "full",
+    "preserved_control_files": {},
+    "operational_files_outside_immutable_index": [
+      "events.jsonl",
+      "status.json"
+    ],
+    "path": "/workspace/runs/fresh-real-restored-ttpvvhfq"
+  },
+  "restored_test": {
+    "nll_sum": 344493.6721388423,
+    "scored_tokens": 98995,
+    "loss": 3.479909815029469,
+    "perplexity": 32.45679482878377,
+    "seconds": 1.1379355408716947,
+    "mean_sequence_perplexity": 36.5028863651165,
+    "std_sequence_perplexity": 17.442490237053967,
+    "context_tokens": 512
+  },
+  "provider_shutdown": {
+    "provider_pod_id": "55a5iv5effly73",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Fri Nov 06 2026 15:08:45 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1793977725.0,
+    "observed_at": 1793977739.2240148
+  },
+  "cleanup": {
+    "pod_removed": true,
+    "volume_removed": true,
+    "actual_account_balance_delta_usd": 0.10523091850000021
+  },
+  "all_fineweb_validation_attempts_usd": 0.2379062256104407,
+  "validation_cap_usd": 0.5,
+  "science_changes": [],
+  "affected_offline_tests_passed": 18,
+  "prior_full_offline_suite_passed": 402,
+  "scope": "Capacity-driven hardware acceptance for the user-authorized full pilot. Original Ada validation evidence remains preserved."
+}

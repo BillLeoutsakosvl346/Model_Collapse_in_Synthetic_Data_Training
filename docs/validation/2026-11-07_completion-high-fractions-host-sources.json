@@ -1,0 +1,26 @@
+{
+  "worker_runtime_sha256": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+  "repo": "iib-model-collapse-bill/iib-model-collapse-data",
+  "revision": "513e338bd4ce825ad3b8d4d18f63c420dc23f7f0",
+  "path": "source_bundles/eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f/host-20261107T153051Z.source",
+  "archive_sha256": "efdd77fc56af1e15172fdeddc2c3de3e5cf8a810fbc638b25f78cfcf5f4013c9",
+  "files": {
+    "scripts/operations/launch_high_fraction_completions.py": "92083b24efe86324787b4e631229856bfc95a3fe844deac02a4b56fd19cb4d54",
+    "scripts/operations/launch_concurrent_high_fraction.py": "a96a9dc5f18fd7fac608381d459f754639e6c2a7c16af28abef1c2fffae909b1",
+    "scripts/operations/validate_high_fraction_completions.py": "7ffeaf1fa609e9e0029ce7b0e56788186034d738804854c6a15e45ad52b0aaaf",
+    "scripts/operations/resume_high_fraction_validation.py": "da4e54ca12e850cd7ae37627a7597103e9df10e1c0f4befe082965ee1247658d",
+    "scripts/operations/migrate_high_fraction_validation.py": "f82fa36243d09b5036b38652661d538c9955b1b4fab79e99b4ffaca8841f617b",
+    "scripts/operations/verify_high_fraction_full.py": "f31704cddc0ba6fa006c5f90d21b61f719af9c3cc65a390e65d27875dddfd736",
+    "comparisons/fineweb_completion64_mixed85/full.yaml": "be6edd0db605cb80614fb7dd6af1eddc63a85a1f9f550272d7b7e126829a0a07",
+    "comparisons/fineweb_completion64_mixed85/README.md": "bbc07ba8e3a87725cd41d344468039634799d50789f9278331f7fc6fb988ff14",
+    "comparisons/fineweb_completion64_mixed85/smoke.yaml": "813dc9f15c831660c2765c1dbbf929716fb35d71f427b5419566ca8eef8eaf5d",
+    "comparisons/fineweb_completion64_mixed90/full.yaml": "6fd90ce36b6b74276d2ca7dddafcf5fc699024efbcacde936b1eef2c23f2c292",
+    "comparisons/fineweb_completion64_mixed90/README.md": "793a83b7ab54bdf160854e35b7fe58b785e007a27dce0368e079ebc40b9ae3b7",
+    "comparisons/fineweb_completion64_mixed90/smoke.yaml": "c892037deb392d605da84fa76e35aef902c2ec60d74dd4bfd81bf3c8aed61c0f",
+    "comparisons/fineweb_completion64_mixed95/full.yaml": "600864a0606244deb1d6c3167b26803eefc3fa855e37200dd0f2507329a33622",
+    "comparisons/fineweb_completion64_mixed95/README.md": "73be688428e770279ff2347f529583d30bda71c04789c938555fef7d1391e8b6",
+    "comparisons/fineweb_completion64_mixed95/smoke.yaml": "fd88cde66a6b7e72ffaeed93dd0a3bff39755020cb67417f5cf2e8546042f0cb"
+  },
+  "restored_hash_verified": true,
+  "scope": "Final operational entry points/configurations; worker runtime has its separate immutable archive and GPU certificates."
+}

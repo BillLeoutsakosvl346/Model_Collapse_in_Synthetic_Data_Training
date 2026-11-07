@@ -1,0 +1,135 @@
+{
+  "date_utc": "2026-11-06T14:43:58.888207+00:00",
+  "run_id": "20261106T143315Z-smoke-fresh-real",
+  "technical_readiness": "passed_actual_gpu",
+  "full_pilot_launched": false,
+  "runtime_sha256": "13ddfea86bc9a87377bb08e81f1a43377c3e8767cf3965a3da34561dcf3cc0c7",
+  "protocol_fingerprint": "ee1cad91c589d649fd1edf4addf8ca8b0acc5757ea1f157341d49a12ed7a55ef",
+  "configuration_sha256": "fc181d5dd7cffb39dac8ba3b35449ba4f6ee2921d5fadcded213d1af95ad78c1",
+  "gpu": "NVIDIA RTX 4000 Ada Generation",
+  "gpu_hourly_usd": 0.28,
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "dataset_revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+  "model_revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+  "offline_tests_passed": 402,
+  "offline_suite_receipt": ".state/fineweb-accepted-offline.xml",
+  "checks": {
+    "exact_source_token_quotas": true,
+    "worker_interruptions_recovered": true,
+    "restored_evaluation": true,
+    "three_real_cycles": true,
+    "private_bulk_restore": true,
+    "direct_shifted_nll_calculation": true,
+    "disjoint_documents_and_passages": true,
+    "continuous_optimizer_and_scheduler": true,
+    "terminal_checkpoints_reload": true,
+    "restored_model_and_optimizer_state": true,
+    "masked_token_weighted_loss": true,
+    "completed_cycle_unchanged": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "selected_epoch_each_cycle": 1,
+  "validation_attempts": [
+    "20261106T141204Z-smoke-fresh-real",
+    "20261106T143315Z-smoke-fresh-real"
+  ],
+  "conservative_all_validation_attempts_usd": 0.11383228408885873,
+  "observed_combined_account_balance_delta_usd": 0.09544734810000044,
+  "account_delta_scope": "Includes concurrent historical storage and billing timing; not an itemized task charge.",
+  "conservative_cumulative_estimate_usd": 43.35079383131954,
+  "cumulative_ceiling_usd": 50,
+  "reserve_usd": 2,
+  "setup_validation_cap_usd": 0.5,
+  "forecast": {
+    "workflow": "fresh_real",
+    "estimated_hours": 0.8400302576028917,
+    "estimated_compute_and_running_storage_usd": 0.23992645028794923,
+    "training_cycles": 10,
+    "source_training_tokens": 6400000,
+    "training_seconds": 380.03790453076357,
+    "evaluation_seconds": 542.6869138741228,
+    "preparation_seconds": 13.347799842053913,
+    "method": "Measured masked training/evaluation, document/shuffle preparation scaling, 1.5x margin, 300s setup and 120s per checkpoint/backup.",
+    "historical_storage_during_run_usd": 0.023820036072677908,
+    "seven_days_new_volume_storage_usd": 0.48328767123287675,
+    "running_cost_with_watchdog_padding_usd": 0.2759154178311416,
+    "available_after_reserve_usd": 4.649223691705451,
+    "account_credit_usd_at_handoff": 11.5579208183,
+    "affordable_at_handoff": true
+  },
+  "recovery": {
+    "run_id": "20261106T143315Z-smoke-fresh-real",
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "revisions": {
+      "model": "46ecef261a0870341733061359bdfd0c169650d3",
+      "dataset": "bbfd75200a792ad69d983a780b2f20da884f5272"
+    },
+    "artifact_index_sha256": "4f88d7d48cd2a943283dd60f3dd69dad8d1cdb644d21ddf2af503dc2cef40b4c",
+    "indexed_files": 92,
+    "verified_files": 92,
+    "verified_bytes": 5027103384,
+    "metadata_only": false,
+    "scope": "full",
+    "preserved_control_files": {},
+    "operational_files_outside_immutable_index": [
+      "events.jsonl",
+      "status.json"
+    ],
+    "path": "/workspace/runs/fresh-real-restored-6zacym_8"
+  },
+  "recovery_scope": "All indexed bulk objects restored and checksum-verified on the GPU, final checkpoint and optimizer restored, held-out test evaluation reproduced. Small records only downloaded locally.",
+  "recovery_fix": "Reused verified historical control-file redirects; current registry preserved. Changed runtime reaccepted on the GPU.",
+  "preliminary_and_corrected_data_byte_identical": true,
+  "preliminary_and_corrected_selected_tensor_hashes_identical": true,
+  "temporary_resources_removed": true,
+  "validation_resources": [
+    {
+      "run_id": "20261106T141204Z-smoke-fresh-real",
+      "pod_id": "ngcfe9z1vb4vf8",
+      "volume_id": "apn00g82v6",
+      "compute_stopped_at": 1793975030.0,
+      "state": "removed"
+    },
+    {
+      "run_id": "20261106T143315Z-smoke-fresh-real",
+      "pod_id": "0oc5w5ohfyy3dh",
+      "volume_id": "yluwqzm7aq",
+      "compute_stopped_at": 1793976137.0,
+      "state": "removed"
+    }
+  ],
+  "provider_inventory_at_handoff": {
+    "active_pods": 0,
+    "retained_pods": [
+      "0kj0h4jzxtkrbi",
+      "faocwszff0eaq6",
+      "aa1rxwnq8uwyss",
+      "0quyi2z2jv8vd6",
+      "m3s3z9i92lvdx9",
+      "itwdnizndn5hws",
+      "5h4prisj4todis"
+    ],
+    "retained_network_volumes": [
+      "11hvbmunz5",
+      "xo027a9d51",
+      "axxpvi80iq",
+      "08ypgkuw40",
+      "z6ziujxxus",
+      "wortjkxvr7"
+    ]
+  },
+  "report": "reports/20261106T143315Z-smoke-fresh-real/report.md",
+  "scientific_stability": "Pending full ten-cycle pilot; smoke results validate the pipeline.",
+  "limitations": [
+    "One descriptive seed.",
+    "Shuffled-stream sampling with recorded finite coverage.",
+    "Web-text human authorship and OPT pretraining overlap unaudited.",
+    "Exact overlap checks cover sliding 64-token passages; shorter and semantic overlap remain outside scope.",
+    "Forecast extrapolates smoke throughput, held-out document lengths and conservative backup allowances.",
+    "Live matching hardware, credit and cumulative allowance are rechecked at later launch."
+  ]
+}

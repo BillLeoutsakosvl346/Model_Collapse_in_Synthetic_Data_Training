@@ -1,0 +1,23 @@
+{
+  "time": 1794060306.129468,
+  "active_pods": [],
+  "failed_temporary_volume": "rpmsn2gqmh",
+  "temporary_volume_removed": true,
+  "gpu_validation_spend_usd": 0,
+  "failure": "Matching RTX PRO 4000 stock disappeared; provider returned explicit no-capacity 400. No Pod was created.",
+  "alternative_gpu_authorized": true,
+  "backup_volume_preserved": "mng23iliig",
+  "failed_allocations": [
+    {
+      "run_id": "20261107T140345Z-smoke-completion64-mixed85",
+      "volume_id": "rpmsn2gqmh",
+      "removed_verified": true
+    },
+    {
+      "run_id": "20261107T141245Z-smoke-completion64-mixed90",
+      "volume_id": "iwu76tygjx",
+      "removed_verified": true
+    }
+  ],
+  "all_failed_temporary_volumes_removed": true
+}

@@ -1,0 +1,128 @@
+{
+  "contract": "655351eb5739ed958fd969f78ee67eefc220dfe4c42aa3284364f30c08ce8308",
+  "collections": {
+    "validation": {
+      "collection": "validation",
+      "documents": 64,
+      "sequences": 149,
+      "source_text_tokens": 59209,
+      "non_padding_tokens": 59422,
+      "special_tokens": 213,
+      "scored_tokens": 59273,
+      "files": {
+        "tokens.npy": "71722b45aac57ae89b9aa101c5d501ec2dddd78900875c70ae7b5ea925ca37e8",
+        "masks.npy": "15a49de093bbc3790d251b443addc6842a611a1298841827efd545a092ff9147",
+        "documents.jsonl": "7bd4ac627e4f22a367f25edac724ab1631da6def49e567fd9ef41d8b09331ba4"
+      }
+    },
+    "test": {
+      "collection": "test",
+      "documents": 64,
+      "sequences": 226,
+      "source_text_tokens": 98931,
+      "non_padding_tokens": 99221,
+      "special_tokens": 290,
+      "scored_tokens": 98995,
+      "files": {
+        "tokens.npy": "1c0dc6e3cb68e9aeedfac717853b8772eca4bb62624f481a09333012d40cd119",
+        "masks.npy": "47c8eba710a7849c103732980b9ea06241a19ff41ef35529d97e3b9d297706db",
+        "documents.jsonl": "427334c8afaac4ced7108d4063328cd129c6a29a6f8b21b14f19cb00cbea22a8"
+      }
+    },
+    "cycle_01": {
+      "collection": "cycle_01",
+      "documents": 17,
+      "sequences": 42,
+      "source_text_tokens": 16384,
+      "non_padding_tokens": 16442,
+      "special_tokens": 58,
+      "scored_tokens": 16400,
+      "files": {
+        "tokens.npy": "673c8cdd43a323651f5ac19209c165382d32858da79cbd0476cdb381fa6dc27e",
+        "masks.npy": "bedc7a194c9dd45498b164fe95ab333d0df001aa0770621db759bab70df8e14a",
+        "documents.jsonl": "b467c493bfd8d3b09bfe71c3cfcbf5650c704067f767cb378c6a223ac5b46d64"
+      }
+    },
+    "cycle_02": {
+      "collection": "cycle_02",
+      "documents": 8,
+      "sequences": 36,
+      "source_text_tokens": 16384,
+      "non_padding_tokens": 16427,
+      "special_tokens": 43,
+      "scored_tokens": 16391,
+      "files": {
+        "tokens.npy": "216863ea2ad617f7dbfa95d53a55f791db826671e8b89a30be17092c365f8312",
+        "masks.npy": "d3627f53ac22b3e28e1723fb34c556ed49acbc6b94daa722c1e95a3e3d41078b",
+        "documents.jsonl": "3cd21799289f0563956ddda4923ccff89660448cf2c41e8b177628bc6ef06e1e"
+      }
+    },
+    "cycle_03": {
+      "collection": "cycle_03",
+      "documents": 24,
+      "sequences": 44,
+      "source_text_tokens": 16384,
+      "non_padding_tokens": 16451,
+      "special_tokens": 67,
+      "scored_tokens": 16407,
+      "files": {
+        "tokens.npy": "df61e20d0377f19a4f3886103bebfca7ba18f19d02732820d6b79665cd461385",
+        "masks.npy": "7a7b43ddafbef074779e5d8561c1f6905c0d67ae1c175742ac144141b1637885",
+        "documents.jsonl": "a05ab13db6f740fac9e1332afdbd91dbc872a464449b4b3322853f0105f01e3c"
+      }
+    }
+  },
+  "files": {
+    "cycle_01/documents.jsonl": "b467c493bfd8d3b09bfe71c3cfcbf5650c704067f767cb378c6a223ac5b46d64",
+    "cycle_01/masks.npy": "bedc7a194c9dd45498b164fe95ab333d0df001aa0770621db759bab70df8e14a",
+    "cycle_01/tokens.npy": "673c8cdd43a323651f5ac19209c165382d32858da79cbd0476cdb381fa6dc27e",
+    "cycle_02/documents.jsonl": "3cd21799289f0563956ddda4923ccff89660448cf2c41e8b177628bc6ef06e1e",
+    "cycle_02/masks.npy": "d3627f53ac22b3e28e1723fb34c556ed49acbc6b94daa722c1e95a3e3d41078b",
+    "cycle_02/tokens.npy": "216863ea2ad617f7dbfa95d53a55f791db826671e8b89a30be17092c365f8312",
+    "cycle_03/documents.jsonl": "a05ab13db6f740fac9e1332afdbd91dbc872a464449b4b3322853f0105f01e3c",
+    "cycle_03/masks.npy": "7a7b43ddafbef074779e5d8561c1f6905c0d67ae1c175742ac144141b1637885",
+    "cycle_03/tokens.npy": "df61e20d0377f19a4f3886103bebfca7ba18f19d02732820d6b79665cd461385",
+    "preparation.json": "0aa5a7c4ab83716a351f7b1a4124c70dde566ae9526837dac88f19e43749fe04",
+    "test/documents.jsonl": "427334c8afaac4ced7108d4063328cd129c6a29a6f8b21b14f19cb00cbea22a8",
+    "test/masks.npy": "47c8eba710a7849c103732980b9ea06241a19ff41ef35529d97e3b9d297706db",
+    "test/tokens.npy": "1c0dc6e3cb68e9aeedfac717853b8772eca4bb62624f481a09333012d40cd119",
+    "validation/documents.jsonl": "7bd4ac627e4f22a367f25edac724ab1631da6def49e567fd9ef41d8b09331ba4",
+    "validation/masks.npy": "15a49de093bbc3790d251b443addc6842a611a1298841827efd545a092ff9147",
+    "validation/tokens.npy": "71722b45aac57ae89b9aa101c5d501ec2dddd78900875c70ae7b5ea925ca37e8",
+    "validation/manifest.json": "9fca04084af2c09bae2d993905fa92b2f61f66a2dcf4edd78473440d5c1f183d",
+    "test/manifest.json": "1c8652419ceba2d9b5f6170a13fc965dfd54108cbe93553aa7bbf18aa07ce61e",
+    "cycle_01/manifest.json": "1815d191ee50e8c8059c61c10115584efe8d92f465a2ca41d7a038404359a6e4",
+    "cycle_02/manifest.json": "b5d8a5ff1cc0e1979d3e2a0a813177858bd0f73a2bbf3bdddd0fbcd67663b201",
+    "cycle_03/manifest.json": "98fc7976a32a5c32df331d64667a39e6774e52bb01313f923a5f0cd01c21eb87"
+  },
+  "coverage": {
+    "sampling": "Seeded shard permutation and bounded document shuffle; reproducible shuffled-stream sample.",
+    "shard_order": [
+      "sample/10BT/008_00000.parquet",
+      "sample/10BT/012_00000.parquet",
+      "sample/10BT/007_00000.parquet",
+      "sample/10BT/006_00000.parquet",
+      "sample/10BT/013_00000.parquet",
+      "sample/10BT/011_00000.parquet",
+      "sample/10BT/005_00000.parquet",
+      "sample/10BT/002_00000.parquet",
+      "sample/10BT/009_00000.parquet",
+      "sample/10BT/003_00000.parquet",
+      "sample/10BT/004_00000.parquet",
+      "sample/10BT/000_00000.parquet",
+      "sample/10BT/001_00000.parquet",
+      "sample/10BT/010_00000.parquet"
+    ],
+    "read_rows_by_file": {
+      "sample/10BT/008_00000.parquet": 10177
+    }
+  },
+  "rejected_documents": {
+    "empty": 0,
+    "duplicate_identity": 0,
+    "shared_64_token_passage": 0
+  },
+  "seconds": 7.777982499450445,
+  "verification": "Disjoint accepted document identities and exact sliding 64-source-token spans across collections; finite 128-bit passage fingerprints.",
+  "token_policy": "Source quotas exclude special/padding tokens; BOS per sequence, EOS at genuine document end, no EOS at trimmed end; right padding."
+}

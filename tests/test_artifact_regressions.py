@@ -228,7 +228,8 @@ def test_backup_receipt_is_outside_immutable_index(tmp_path, monkeypatch):
         def upload_folder(self, **kwargs):
             calls.append(kwargs["repo_type"])
         def repo_info(self, repo, repo_type):
-            assert calls == ["model", "dataset"]
+            # An empty model allowlist must never upload the complete metadata root.
+            assert calls == ["dataset"]
             return SimpleNamespace(sha=REVISIONS[repo_type])
     monkeypatch.setattr(hub, "HfApi", API)
     monkeypatch.setattr(hub, "get_token", lambda: None)

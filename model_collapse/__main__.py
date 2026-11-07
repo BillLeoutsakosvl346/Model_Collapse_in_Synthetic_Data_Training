@@ -28,6 +28,7 @@ def main():
             s.add_argument("--metadata-only", action="store_true", help="Keep model weights and token arrays in cloud storage")
         if name == "report":
             s.add_argument("--out", help="New analysis destination; published reports are protected")
+            s.add_argument("--reference-comparison", help="Completed matched completion comparison ID to include")
     for name in ("worker", "supervisor", "watchdog"):
         s = sub.add_parser(name)
         s.add_argument("--root", required=True)
@@ -55,6 +56,12 @@ def main():
             from .workflow.paired import run_pair as run
         elif read_json(Path(a.root) / "config.json").get("workflow") == "mixed_campaign":
             from .workflow.mixed_campaign import run_campaign as run
+        elif read_json(Path(a.root) / "config.json").get("workflow") == "fresh_real":
+            from .workflow.fresh_real import run
+        elif read_json(Path(a.root) / "config.json").get("workflow") == "completion_comparison":
+            from .workflow.completion import run
+        elif read_json(Path(a.root) / "config.json").get("workflow") == "completion_arm":
+            from .workflow.completion import run_arm as run
         else:
             from .pipeline import run
         from .engine import ValidationInterruption
@@ -95,15 +102,25 @@ def main():
         elif read_json(out / "config.json", {}).get("workflow") == "mixed_campaign":
             from .workflow.mixed_campaign import fetch_campaign
             result = fetch_campaign(out, r, metadata_only=a.metadata_only)
+        elif read_json(out / "config.json", {}).get("workflow") == "completion_comparison":
+            from .workflow.completion import fetch_comparison
+            result = fetch_comparison(out, r, metadata_only=a.metadata_only)
         else:
             result = fetch(a.run_id, r["repos"], out, metadata_only=a.metadata_only)
         atomic_json(out / "recovery_verified.json", result)
         bench = read_json(out / "benchmark.json")
         if bench:
-            atomic_json(STATE / "benchmark.json", bench)
+            workflow = read_json(out / "config.json", {}).get("workflow")
+            if workflow == "completion_comparison":
+                from .workflow.completion import benchmark_filename
+                benchmark_file = benchmark_filename(read_json(out / "config.json"))
+            else:
+                benchmark_file = "benchmark_fresh_real.json" if workflow == "fresh_real" else "benchmark.json"
+            atomic_json(STATE / benchmark_file, bench)
     elif a.command == "report":
         from .report import report
-        result = report(PROJECT / "runs" / a.run_id, a.out)
+        options = {"reference_comparison": PROJECT / "runs" / a.reference_comparison} if a.reference_comparison else {}
+        result = report(PROJECT / "runs" / a.run_id, a.out, **options)
     elif a.command == "validate":
         root = PROJECT / "runs" / a.run_id
         if read_json(root / "config.json").get("workflow") == "paired":
@@ -112,6 +129,12 @@ def main():
         elif read_json(root / "config.json").get("workflow") == "mixed_campaign":
             from .continued import validate_campaign_local
             result = validate_campaign_local(root)
+        elif read_json(root / "config.json").get("workflow") == "fresh_real":
+            from .workflow.fresh_validation import validate_local
+            result = validate_local(root)
+        elif read_json(root / "config.json").get("workflow") == "completion_comparison":
+            from .workflow.completion_validation import validate_local
+            result = validate_local(root)
         elif read_json(root / "config.json").get("initialization") in ("continued", "reset_s0"):
             from .continued import validate_local
             result = validate_local(root)

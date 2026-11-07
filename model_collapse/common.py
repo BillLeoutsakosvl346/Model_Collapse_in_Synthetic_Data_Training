@@ -77,6 +77,12 @@ def validate_config(c):
     if c.get("workflow") == "mixed_campaign":
         from .workflow.mixed_campaign import validate_campaign_config
         return validate_campaign_config(c)
+    if c.get("workflow") == "fresh_real":
+        from .workflow.fresh_real import validate_config
+        return validate_config(c)
+    if c.get("workflow") in ("completion_comparison", "completion_arm"):
+        from .workflow.completion import validate_config
+        return validate_config(c)
     from .mixing import mixture_enabled, synthetic_fraction
     synthetic_fraction(c)
     if mixture_enabled(c) and c.get("initialization") not in ("continued", "reset_s0"):

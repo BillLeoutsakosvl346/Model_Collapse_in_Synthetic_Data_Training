@@ -1,0 +1,222 @@
+{
+  "time": 1793985229.2592866,
+  "bank_manifest_sha256": "5c30545587cdad7497314868cfa10117aedb59d0231f459135b6a97b9f04a275",
+  "contract": "42627bee2ea70792783c736842840c1e69f5cc11f464e018f60ddb0e49b7eb4f",
+  "indexed_files_verified": 206,
+  "independent_unique_identity_keys": 115104,
+  "cross_collection_identity_conflicts": 0,
+  "collections": [
+    {
+      "collection": "fineweb_edu/validation",
+      "documents": 1000,
+      "sequences": 2460,
+      "source_text_tokens": 1000439,
+      "scored_tokens": 1001439,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "wikitext103/validation",
+      "documents": 29,
+      "sequences": 264,
+      "source_text_tokens": 128000,
+      "scored_tokens": 128027,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "c4_en/validation",
+      "documents": 276,
+      "sequences": 411,
+      "source_text_tokens": 128000,
+      "scored_tokens": 128275,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "pg19/validation",
+      "documents": 8,
+      "sequences": 258,
+      "source_text_tokens": 128000,
+      "scored_tokens": 128000,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "ag_news/validation",
+      "documents": 2473,
+      "sequences": 2473,
+      "source_text_tokens": 128000,
+      "scored_tokens": 130472,
+      "rejected_documents": {
+        "duplicate_identity": 2,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "fineweb_edu/test",
+      "documents": 1000,
+      "sequences": 2422,
+      "source_text_tokens": 978319,
+      "scored_tokens": 979319,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "wikitext103/test",
+      "documents": 34,
+      "sequences": 268,
+      "source_text_tokens": 128000,
+      "scored_tokens": 128033,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "c4_en/test",
+      "documents": 274,
+      "sequences": 422,
+      "source_text_tokens": 128000,
+      "scored_tokens": 128273,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "pg19/test",
+      "documents": 8,
+      "sequences": 258,
+      "source_text_tokens": 128000,
+      "scored_tokens": 128000,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "ag_news/test",
+      "documents": 2451,
+      "sequences": 2451,
+      "source_text_tokens": 128000,
+      "scored_tokens": 130450,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 3,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "fineweb_edu/train",
+      "documents": 1738,
+      "sequences": 4789,
+      "source_text_tokens": 2000000,
+      "scored_tokens": 2001734,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "wikitext103/train",
+      "documents": 543,
+      "sequences": 4196,
+      "source_text_tokens": 2000000,
+      "scored_tokens": 2000540,
+      "rejected_documents": {
+        "duplicate_identity": 5,
+        "cross_collection_passage": 1,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "c4_en/train",
+      "documents": 4345,
+      "sequences": 6524,
+      "source_text_tokens": 2000000,
+      "scored_tokens": 2004344,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 1,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "pg19/train",
+      "documents": 129,
+      "sequences": 4029,
+      "source_text_tokens": 2000000,
+      "scored_tokens": 2000011,
+      "rejected_documents": {
+        "duplicate_identity": 0,
+        "cross_collection_passage": 0,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    },
+    {
+      "collection": "ag_news/train",
+      "documents": 38222,
+      "sequences": 38222,
+      "source_text_tokens": 2000000,
+      "scored_tokens": 2038221,
+      "rejected_documents": {
+        "duplicate_identity": 53,
+        "cross_collection_passage": 150,
+        "historical_training_overlap": 0,
+        "empty": 0
+      }
+    }
+  ],
+  "checks": {
+    "all_file_hashes_verified": true,
+    "document_id_url_text_wikipedia_title_separation": true,
+    "old_fineweb_heldout_arrays_exactly_reproduced": true
+  },
+  "scope": "Document ID, canonical Wikipedia title, normalized URL/text and exact sliding 64-token passages across all bank collections. Evaluation also excludes all recorded FineWeb training identities/passages.",
+  "passage_checks": "Preparation uses exact sliding 64-token hashes across collections and excludes historical FineWeb training passages from every held-out collection. Independent post-preparation audit verifies identities and frozen file bytes.",
+  "private_backup": {
+    "repo": "Bill11235813/iib-model-collapse-week1-data",
+    "repo_type": "dataset",
+    "revision": "fa7fde7fde7b546d78020b29d1f176965f6404a8",
+    "path": "corpus_banks/cross_corpus_v1-42627bee2ea7",
+    "bank_manifest_sha256": "5c30545587cdad7497314868cfa10117aedb59d0231f459135b6a97b9f04a275",
+    "files": 209,
+    "all_remote_object_hashes_verified": true,
+    "manifest_download_verified": true
+  }
+}

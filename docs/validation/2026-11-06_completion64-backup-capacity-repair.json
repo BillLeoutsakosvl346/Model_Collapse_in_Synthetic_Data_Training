@@ -1,0 +1,85 @@
+{
+  "run_id": "20261106T193918Z-full-completion64",
+  "repair": {
+    "run_id": "20261106T193918Z-full-completion64",
+    "new_repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "original_repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "restored_private_backup": {
+      "run_id": "20261106T193918Z-full-completion64-real",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "73fb83abe068a036707dfa4ab8e4481be642ff0a",
+        "dataset": "0abcc518e67c250bcd7b140da1ac1ae30a1324f4"
+      },
+      "artifact_index_sha256": "63d402feef2f212a577773c10879958f9c202085a0ccec4005729a6883559451",
+      "indexed_files": 63,
+      "verified_files": 63,
+      "verified_bytes": 4556708592,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/backup_repair_restore/20261106T193918Z-full-completion64-real"
+    },
+    "source_snapshot": {
+      "run_id": "20261106T193918Z-full-completion64-real",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "73fb83abe068a036707dfa4ab8e4481be642ff0a",
+        "dataset": "0abcc518e67c250bcd7b140da1ac1ae30a1324f4"
+      },
+      "artifact_index_sha256": "63d402feef2f212a577773c10879958f9c202085a0ccec4005729a6883559451"
+    },
+    "unchanged_completed_stage_seals": {
+      "1": "6c57dd9d246b08fe6fcddb77260681919cc88b71c00408ea6957144b1ea706df",
+      "2": "974f5a90848d18bcbfcc7b44e8a284d1731a184263aa8a0efac3b1d6cb499ad6",
+      "3": "b8d10623de9dfb0f121f545fb4c42fd5dbc00c852dcd127e5d78f268d6d89305"
+    },
+    "training_reexecuted": false,
+    "archived_volatile_probe_journals": [
+      {
+        "source": "seed_42/gen_01/probe/events.jsonl",
+        "archive": "stage_journals/gen_01_probe_events.jsonl",
+        "sha256": "77a02977a4f1bfa91f1c9bcad8f876be209fa7a06ffe52511a2c35f5c50c1de4"
+      },
+      {
+        "source": "seed_42/gen_02/probe/events.jsonl",
+        "archive": "stage_journals/gen_02_probe_events.jsonl",
+        "sha256": "f1342d82b17ac7186d99910dfb763bfb2ff9f86450b5fccdd92f7fa40c939b31"
+      },
+      {
+        "source": "seed_42/gen_03/probe/events.jsonl",
+        "archive": "stage_journals/gen_03_probe_events.jsonl",
+        "sha256": "549127ff07f168011255e637e331a00b8aa1eb8861d97107283c09c8cae3158c"
+      }
+    ],
+    "time": 1794006121.973959
+  },
+  "cpu_shutdown": {
+    "provider_pod_id": "j65ffrowkw1l1a",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Fri Nov 06 2026 23:02:15 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1794006135.0,
+    "observed_at": 1794006136.9705164
+  },
+  "temporary_cpu_removed": true,
+  "full_volume_preserved": "s9pmtnqkir",
+  "source_runtime_unchanged": "35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497",
+  "new_gpu_training_started": false
+}

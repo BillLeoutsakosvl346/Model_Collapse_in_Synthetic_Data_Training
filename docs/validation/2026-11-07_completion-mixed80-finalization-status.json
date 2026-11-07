@@ -1,0 +1,102 @@
+{
+  "checked_at": 1794057018.525386,
+  "run_id": "20261107T113638Z-full-completion64-mixed80",
+  "provider_state": "RUNNING",
+  "live": {
+    "parent": {
+      "state": "running",
+      "phase": "mixed80",
+      "active_child": "20261107T113638Z-full-completion64-mixed80-mixed80",
+      "time": 1794051647.9238896
+    },
+    "completion": {},
+    "child": {
+      "state": "running",
+      "generation": 10,
+      "stage": "training",
+      "time": 1794056802.0589008
+    },
+    "child_completion": {},
+    "final_stage_sealed": true,
+    "final_metrics": {
+      "validation": {
+        "nll_sum": 1604544.4528052143,
+        "scored_tokens": 468608,
+        "loss": 3.4240654295385786,
+        "perplexity": 30.6939457878654,
+        "seconds": 6.153907792875543,
+        "mean_sequence_perplexity": 36.82783760955913,
+        "std_sequence_perplexity": 27.627562563631177,
+        "context_tokens": 129
+      },
+      "test": {
+        "nll_sum": 1571874.6373767047,
+        "scored_tokens": 457664,
+        "loss": 3.434560370439241,
+        "perplexity": 31.017773237597705,
+        "seconds": 5.993299480993301,
+        "mean_sequence_perplexity": 37.45262940265824,
+        "std_sequence_perplexity": 28.1751548747089,
+        "context_tokens": 129,
+        "median_example_nll": 3.4232335515280283,
+        "p95_example_nll": 4.444381165019877
+      }
+    },
+    "global_step": 790,
+    "final_training_epoch": 1,
+    "last_events": [
+      {
+        "time": 1794056798.5731106,
+        "event": "generation_shard_complete",
+        "generation": 9,
+        "completed": 7936,
+        "total": 8000,
+        "reused": false
+      },
+      {
+        "time": 1794056801.4231362,
+        "event": "generation_shard_complete",
+        "generation": 9,
+        "completed": 8000,
+        "total": 8000,
+        "reused": false
+      },
+      {
+        "time": 1794056846.6275995,
+        "event": "epoch_complete",
+        "generation": 10,
+        "epoch": 1,
+        "learning_rate": 1.0978869674096952e-06,
+        "train_loss": 0.7382176138877868,
+        "validation_loss": 3.4240654295385786,
+        "train_seconds": 30.535318838898093,
+        "training_target_tokens_per_second": 20959.335757277957,
+        "global_step": 790,
+        "learning_rate_end": 1e-06,
+        "scored_training_tokens": 640000
+      },
+      {
+        "time": 1794056919.0138679,
+        "event": "completion_cycle_complete",
+        "cycle": 10,
+        "test_perplexity": 31.017773237597705
+      }
+    ],
+    "private_snapshot": {
+      "run_id": "20261107T113638Z-full-completion64-mixed80-mixed80",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "b64a326324fe2e7334746282a7b6340f9d8991ab",
+        "dataset": "0958d2a93513c6fee1d441d8f0064331c45803a4"
+      },
+      "artifact_index_sha256": "13356c12576dd4452dedcc3e25bd9ff30abc34da881cd49865524d5b64540060"
+    },
+    "snapshot_matches_index": false,
+    "final_checkpoint_indexed": true,
+    "supervisor_age": 2.9685397148132324,
+    "watchdog_age": 2.6343746185302734
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "workflow": "completion_comparison",
+  "checks": {
+    "six_terminal_epochs": true,
+    "direct_masked_nll": true,
+    "generation_shard_recovery": true,
+    "training_recovery": true,
+    "matched_initial_weights_and_prompts": true,
+    "coordinator_recovery": true,
+    "continuation_only_loss": true,
+    "restored_evaluation": true,
+    "all_handoffs_and_optimizer_states": true,
+    "both_private_restores": true,
+    "completed_stages_unchanged": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "source_code_sha256": "35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497",
+  "protocol_fingerprint": "b22e6d66d82ea7393ee265b757a0d11f9e1d16f5519059faf798e0e285ab45ac",
+  "arm_audits": {
+    "real": {
+      "stages": [
+        {
+          "cycle": 1,
+          "weights_sha256": "998ad9ba4e9d58690ca593515db26fbb31f9bc740a56e9bb0b80011aa4c68a25",
+          "initializer_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+          "optimizer_step": 2,
+          "scored_training_tokens": 16384
+        },
+        {
+          "cycle": 2,
+          "weights_sha256": "75975f8f8b892ad278668899100ac5cd1a5827c9a595b423956ec8a39863ca6c",
+          "initializer_sha256": "998ad9ba4e9d58690ca593515db26fbb31f9bc740a56e9bb0b80011aa4c68a25",
+          "optimizer_step": 4,
+          "scored_training_tokens": 16384
+        },
+        {
+          "cycle": 3,
+          "weights_sha256": "8771c1514e983b7c4b3a20f0fca53aa72f845d9b2026359a1945f21f238bdcc3",
+          "initializer_sha256": "75975f8f8b892ad278668899100ac5cd1a5827c9a595b423956ec8a39863ca6c",
+          "optimizer_step": 6,
+          "scored_training_tokens": 16384
+        }
+      ],
+      "restored_loss_error": 0.0,
+      "direct_nll_error": 0.0,
+      "restored_optimizer_sha256": "2321ffb3791fc9b296cd5834e47bbb03864df23f08b54ca64903aefbf90aecde"
+    },
+    "synthetic": {
+      "stages": [
+        {
+          "cycle": 1,
+          "weights_sha256": "6c40158677f80413da5e49a8bcda3d5c5d22360f499ceb89dd3ef8b3195de9a5",
+          "initializer_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+          "optimizer_step": 2,
+          "scored_training_tokens": 16384
+        },
+        {
+          "cycle": 2,
+          "weights_sha256": "2cfaa1009264dda14c6b0aa095b6644f9ed0f5eaabc3fd3799953e3e6a5e4320",
+          "initializer_sha256": "6c40158677f80413da5e49a8bcda3d5c5d22360f499ceb89dd3ef8b3195de9a5",
+          "optimizer_step": 4,
+          "scored_training_tokens": 16384
+        },
+        {
+          "cycle": 3,
+          "weights_sha256": "0c9d30185223b675a3ea483a97742e1d2efe7edf77ffc4ab8fe2f86ae6e0b755",
+          "initializer_sha256": "2cfaa1009264dda14c6b0aa095b6644f9ed0f5eaabc3fd3799953e3e6a5e4320",
+          "optimizer_step": 6,
+          "scored_training_tokens": 16384
+        }
+      ],
+      "restored_loss_error": 0.0,
+      "direct_nll_error": 0.0,
+      "restored_optimizer_sha256": "e295e985c0a0fa7f57c5fadd56cea515c86af72326ef378eb9d00dbd4915ee6a"
+    }
+  },
+  "restorations": {
+    "real": {
+      "run_id": "20261106T191336Z-smoke-completion64-real",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "787b974a91ddaf4fe08b51939b58efd46e3d41a2",
+        "dataset": "52e04fbc9e980aebca9372aec5d71d007d1eb139"
+      },
+      "artifact_index_sha256": "40f1421e666dfd90d750795bf92d97fa5a6318896c18380340a9e66839b268b5",
+      "indexed_files": 61,
+      "verified_files": 61,
+      "verified_bytes": 4510494350,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/completion_acceptance_restore/20261106T191336Z-smoke-completion64-real"
+    },
+    "synthetic": {
+      "run_id": "20261106T191336Z-smoke-completion64-synthetic",
+      "repos": {
+        "model": "Bill11235813/iib-model-collapse-week1-models",
+        "dataset": "Bill11235813/iib-model-collapse-week1-data"
+      },
+      "revisions": {
+        "model": "869ec25c4d1c58928c2342c9828011593e20274d",
+        "dataset": "67c7dcc7439ddee13745a8c83c49e0844640899d"
+      },
+      "artifact_index_sha256": "8f7d61e22cb946895254267cf28b2bec8ff6cd01968961de1a3d6aea74da992a",
+      "indexed_files": 79,
+      "verified_files": 79,
+      "verified_bytes": 4510895150,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/completion_acceptance_restore/20261106T191336Z-smoke-completion64-synthetic"
+    }
+  },
+  "unique_training_stages": 6,
+  "executed_epochs": 6,
+  "validated_run_id": "20261106T191336Z-smoke-completion64",
+  "provider_pod_state": "EXITED",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell"
+}

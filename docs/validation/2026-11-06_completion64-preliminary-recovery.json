@@ -1,0 +1,70 @@
+{
+  "run_id": "20261106T184607Z-smoke-completion64",
+  "provider_shutdown": {
+    "provider_pod_id": "n0c99bcf01u50w",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Fri Nov 06 2026 18:59:40 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1793991580.0,
+    "observed_at": 1793991581.7089527
+  },
+  "recovery": {
+    "all_present_roots_restored": true,
+    "recoveries": {
+      "20261106T184607Z-smoke-completion64-real": {
+        "run_id": "20261106T184607Z-smoke-completion64-real",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "769a7561fa5f002a82746b13c1060e5a216f7bff",
+          "dataset": "ebaef3497a8388e352e99849ea778bb6da8a3c5d"
+        },
+        "artifact_index_sha256": "ff159ed50c05f904af11fc13dd711c58fd068bc1640fa9d8911b2ee23f9cb10c",
+        "indexed_files": 10,
+        "verified_files": 10,
+        "verified_bytes": 409452,
+        "metadata_only": false,
+        "scope": "full",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "status.json"
+        ],
+        "path": "/workspace/preliminary_private_restore/20261106T184607Z-smoke-completion64-real"
+      },
+      "20261106T184607Z-smoke-completion64": {
+        "run_id": "20261106T184607Z-smoke-completion64",
+        "repos": {
+          "model": "Bill11235813/iib-model-collapse-week1-models",
+          "dataset": "Bill11235813/iib-model-collapse-week1-data"
+        },
+        "revisions": {
+          "model": "769a7561fa5f002a82746b13c1060e5a216f7bff",
+          "dataset": "e6ea3d07170e627676e2a3cb03198e605c17158b"
+        },
+        "artifact_index_sha256": "6f6b5b9d60938f169d82734ebc94310c5b07881b7041d9acc389ca1ef0b6e955",
+        "indexed_files": 25,
+        "verified_files": 25,
+        "verified_bytes": 504397088,
+        "metadata_only": false,
+        "scope": "full",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "status.json"
+        ],
+        "path": "/workspace/preliminary_private_restore/20261106T184607Z-smoke-completion64"
+      }
+    },
+    "reason": "Launcher SSH-address propagation failure before any completed training epoch",
+    "full_training_launched": false,
+    "time": 1793991569.5193198
+  },
+  "temporary_pods_removed": [
+    "2kqwz7srpva17s",
+    "n0c99bcf01u50w"
+  ],
+  "temporary_volume_removed": "s15efun2ej",
+  "acceptance_spend_so_far_usd": 0.047038666662597844,
+  "full_training_launched": false
+}

@@ -1,0 +1,361 @@
+{
+  "run_id": "20261106T193918Z-full-completion64",
+  "checked_at": 1794006574.630952,
+  "state": "resumed_running",
+  "resources": {
+    "run_id": "20261106T193918Z-full-completion64",
+    "launch_id": "20261106T230313709378Z",
+    "kind": "full",
+    "pod_id": "udbovqu03vp3h0",
+    "volume_id": "s9pmtnqkir",
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1794006194.4834845,
+    "quoted_gpu_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6652671232876711,
+    "compute_hourly_usd": 0.6586506849315067,
+    "volume_hourly_usd": 0.005753424657534247,
+    "network_volume_gb": 60,
+    "volume_created_at": 1793993958.2741826,
+    "session_allowance_usd": 7.280478698473107,
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "code_sha256": "35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497",
+    "starting_balance_usd": 10.3796941727,
+    "remote_root": "/workspace/runs/20261106T193918Z-full-completion64",
+    "runtime_sha256": "35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497",
+    "git_commit": "41959902652229d30cabbc19bc4b3a9ddd3d16bd",
+    "configuration_sha256": "6c2d1dd02fc78c341e23bbbb4ce87fe5b80b2337fea3b19eaba09d7b2af56057",
+    "workflow": "completion_comparison",
+    "allocation": "fineweb_completion64",
+    "admission_forecast": {
+      "estimated_hours": 3.7951840023813856,
+      "estimated_compute_and_running_storage_usd": 2.195487950966656,
+      "unique_training_stages": 20,
+      "epochs": 20,
+      "full_generation_stages": 10,
+      "probe_sets": 21,
+      "training_target_exposures": 12800000,
+      "forecast_margin": 1.5,
+      "historical_storage_during_run_usd": 0.11853451404715927,
+      "seven_day_volume_storage_usd": 0.9665753424657535
+    },
+    "actual_pod_hourly_usd": 0.57,
+    "verified_ssh_direct": {
+      "command": "ssh root@213.173.104.47 -p 15663",
+      "host": "213.173.104.47",
+      "port": 15663,
+      "username": "root"
+    }
+  },
+  "new_private_backup_verified": {
+    "run_id": "20261106T193918Z-full-completion64-real",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "ac661d05cf035df2874e46ba05c2a6f92a071eff",
+      "dataset": "a1af8fb3f8da1ac41f577f18265458bb66e4506e"
+    },
+    "artifact_index_sha256": "cc454321ae229e462d02dc879098da47032e74317f4f7de16055cd3c6a643f79"
+  },
+  "fresh_cycle_4_and_checkpoint_handoffs": {
+    "ready": true,
+    "cycle": 4,
+    "history": [
+      {
+        "epoch": 1,
+        "learning_rate": 4.175570504584969e-06,
+        "train_loss": 3.3957852619171143,
+        "validation_loss": 3.330416138567003,
+        "train_seconds": 30.889537542825565,
+        "training_target_tokens_per_second": 20718.98937019363,
+        "global_step": 316,
+        "learning_rate_end": 3.6180339887499274e-06,
+        "scored_training_tokens": 640000
+      }
+    ],
+    "training": {
+      "generation": 4,
+      "initial_weights_sha256": "2f52d7ef790e12d13a11775756846b543f69f3631bbf7668f2d7a9576a06b6b1",
+      "selected_weights_sha256": "645e41157b76acf79fb4337cdbc04fa6a75a932b88406413e3aaa835b96fd064",
+      "input_tokens_sha256": "0ad1c871952c91004dc77800c2e5a1aa40138ae0876194ac52882b44a877eda7",
+      "training_blocks": 10000,
+      "selected_epoch": 1,
+      "best_validation_loss": 3.330416138567003,
+      "best_validation_epoch": 1,
+      "selected_validation_loss": 3.330416138567003,
+      "executed_epochs": 1,
+      "terminal_weights_sha256": "645e41157b76acf79fb4337cdbc04fa6a75a932b88406413e3aaa835b96fd064",
+      "training_contract_sha256": "b0ef4b1ead5fead8f342f1dfc50e54a65724d0346dc2bdf8e2ad66e7f2b16355",
+      "seconds": 49.67335529602133,
+      "peak_allocated_gpu_bytes": 6475284480,
+      "checkpoint_files": {
+        "config.json": "17769b65fac933c8db3a199d8eb4b570014cebe8d2e94bc1130d2f6ca6507753",
+        "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+        "model.safetensors": "006c90f4661e1b5e4cefe45d9d9e182b42b26f86d84fba858b1f4d61dde30e23"
+      },
+      "initialization": "continued",
+      "optimizer_initialization": "carried_across_cycles",
+      "checkpoint_selection": "final_epoch",
+      "optimizer_parent_sha256": "6067ef30bff587858f219a195f4462b6bf4c438779744e254242095e8a57b56b",
+      "global_step": 316,
+      "total_optimizer_steps": 790,
+      "state_files": {
+        "optimizer_state/cycle.pt": "a82392a4ecdd271f6482aca6e8e0faa7da8db07aeeb39f917e24cd16668361bf"
+      },
+      "lineage": {
+        "initializer_weights_sha256": "2f52d7ef790e12d13a11775756846b543f69f3631bbf7668f2d7a9576a06b6b1",
+        "optimizer_parent_sha256": "6067ef30bff587858f219a195f4462b6bf4c438779744e254242095e8a57b56b",
+        "generator_weights_sha256": null,
+        "generation_manifest_sha256": null,
+        "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+        "chunk_manifest_sha256": "60036fa646a1cd976d048d7959709be9c52d85838986f1d29e5bb7699c8a27ff",
+        "data_kind": "real"
+      }
+    },
+    "metrics": {
+      "generation": 4,
+      "weights_sha256": "645e41157b76acf79fb4337cdbc04fa6a75a932b88406413e3aaa835b96fd064",
+      "validation": {
+        "nll_sum": 1560659.645861606,
+        "scored_tokens": 468608,
+        "loss": 3.330416138567003,
+        "perplexity": 27.949970344112486,
+        "seconds": 6.188278111862019,
+        "mean_sequence_perplexity": 33.63285016302698,
+        "std_sequence_perplexity": 25.59358084117603,
+        "context_tokens": 129
+      },
+      "test": {
+        "nll_sum": 1528027.6847158484,
+        "scored_tokens": 457664,
+        "loss": 3.3387543803223507,
+        "perplexity": 28.1839982887638,
+        "seconds": 5.942250282969326,
+        "mean_sequence_perplexity": 34.101726695426706,
+        "std_sequence_perplexity": 25.7734050381783,
+        "context_tokens": 129,
+        "median_example_nll": 3.327874785671156,
+        "p95_example_nll": 4.3589301782285474
+      },
+      "secondary": {
+        "fineweb_edu": {
+          "nll_sum": 3240147.8442663737,
+          "scored_tokens": 979319,
+          "loss": 3.3085724307058,
+          "perplexity": 27.346059199202,
+          "seconds": 12.806697283871472,
+          "mean_sequence_perplexity": 39.91871036164597,
+          "std_sequence_perplexity": 229.92472232438112,
+          "context_tokens": 512
+        },
+        "wikitext103": {
+          "nll_sum": 468540.11985933635,
+          "scored_tokens": 128033,
+          "loss": 3.6595262147988126,
+          "perplexity": 38.84293530314279,
+          "seconds": 1.3804273700807244,
+          "mean_sequence_perplexity": 53.181875906599416,
+          "std_sequence_perplexity": 91.53392949698596,
+          "context_tokens": 512
+        },
+        "c4_en": {
+          "nll_sum": 428864.5854434028,
+          "scored_tokens": 128273,
+          "loss": 3.3433737843770928,
+          "perplexity": 28.31449273597653,
+          "seconds": 2.2802472449839115,
+          "mean_sequence_perplexity": 49.348834285255876,
+          "std_sequence_perplexity": 107.20684441232378,
+          "context_tokens": 512
+        },
+        "pg19": {
+          "nll_sum": 552636.1672693886,
+          "scored_tokens": 128000,
+          "loss": 4.317470056792098,
+          "perplexity": 74.99864575641074,
+          "seconds": 1.3323490291368216,
+          "mean_sequence_perplexity": 82.20143945231437,
+          "std_sequence_perplexity": 29.980961812021615,
+          "context_tokens": 512
+        },
+        "ag_news": {
+          "nll_sum": 517271.9184919474,
+          "scored_tokens": 130450,
+          "loss": 3.9652887580831537,
+          "perplexity": 52.735494991731656,
+          "seconds": 12.625328097958118,
+          "mean_sequence_perplexity": 72.01031080816617,
+          "std_sequence_perplexity": 65.08326856512517,
+          "context_tokens": 512
+        }
+      },
+      "probe": {
+        "distinct_1": 0.1641845703125,
+        "distinct_2": 0.390625,
+        "distinct_3": 0.5057333669354839,
+        "repeated_4gram_rate": 0.44198258196721313,
+        "repeated_4gram_denominator": 15616,
+        "duplicate_continuation_rate": 0.0,
+        "token_entropy_nats": 6.203692660755268,
+        "probe_count": 256,
+        "mean_within_entropy_nats": 3.0604032825702343,
+        "mean_within_repeated_4gram_rate": 0.4137423155737705,
+        "fraction_outputs_with_repeated_4gram": 0.921875,
+        "mean_within_distinct_1": 0.4283447265625,
+        "mean_within_distinct_2": 0.5285838293650793,
+        "mean_within_distinct_3": 0.5626890120967741,
+        "mean_within_distinct_4": 0.5862576844262295,
+        "newline_token_50118_count": 411,
+        "newline_token_50118_share": 0.02508544921875,
+        "newline_heavy_outputs_ge32": 0,
+        "all_newline_outputs": 0,
+        "continuation_tokens_sha256": "679caa84202c693db4ce3981287006420ca3358bc6a552243a02775b71542047"
+      },
+      "training": {
+        "generation": 4,
+        "initial_weights_sha256": "2f52d7ef790e12d13a11775756846b543f69f3631bbf7668f2d7a9576a06b6b1",
+        "selected_weights_sha256": "645e41157b76acf79fb4337cdbc04fa6a75a932b88406413e3aaa835b96fd064",
+        "input_tokens_sha256": "0ad1c871952c91004dc77800c2e5a1aa40138ae0876194ac52882b44a877eda7",
+        "training_blocks": 10000,
+        "selected_epoch": 1,
+        "best_validation_loss": 3.330416138567003,
+        "best_validation_epoch": 1,
+        "selected_validation_loss": 3.330416138567003,
+        "executed_epochs": 1,
+        "terminal_weights_sha256": "645e41157b76acf79fb4337cdbc04fa6a75a932b88406413e3aaa835b96fd064",
+        "training_contract_sha256": "b0ef4b1ead5fead8f342f1dfc50e54a65724d0346dc2bdf8e2ad66e7f2b16355",
+        "seconds": 49.67335529602133,
+        "peak_allocated_gpu_bytes": 6475284480,
+        "checkpoint_files": {
+          "config.json": "17769b65fac933c8db3a199d8eb4b570014cebe8d2e94bc1130d2f6ca6507753",
+          "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+          "model.safetensors": "006c90f4661e1b5e4cefe45d9d9e182b42b26f86d84fba858b1f4d61dde30e23"
+        },
+        "initialization": "continued",
+        "optimizer_initialization": "carried_across_cycles",
+        "checkpoint_selection": "final_epoch",
+        "optimizer_parent_sha256": "6067ef30bff587858f219a195f4462b6bf4c438779744e254242095e8a57b56b",
+        "global_step": 316,
+        "total_optimizer_steps": 790,
+        "state_files": {
+          "optimizer_state/cycle.pt": "a82392a4ecdd271f6482aca6e8e0faa7da8db07aeeb39f917e24cd16668361bf"
+        },
+        "lineage": {
+          "initializer_weights_sha256": "2f52d7ef790e12d13a11775756846b543f69f3631bbf7668f2d7a9576a06b6b1",
+          "optimizer_parent_sha256": "6067ef30bff587858f219a195f4462b6bf4c438779744e254242095e8a57b56b",
+          "generator_weights_sha256": null,
+          "generation_manifest_sha256": null,
+          "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+          "chunk_manifest_sha256": "60036fa646a1cd976d048d7959709be9c52d85838986f1d29e5bb7699c8a27ff",
+          "data_kind": "real"
+        }
+      },
+      "training_evaluation": {
+        "nll_sum": 2116646.9852611143,
+        "scored_tokens": 640000,
+        "loss": 3.307260914470491,
+        "perplexity": 27.31021790694634,
+        "seconds": 8.170410039136186,
+        "mean_sequence_perplexity": 32.97754473225549,
+        "std_sequence_perplexity": 26.761224842063434,
+        "context_tokens": 129
+      },
+      "input_manifest_sha256": "7bdff6915e611185e1ccfe51d3c6e356e4f871a9caf068a2af680a7b7b08834c"
+    },
+    "private_snapshot": {
+      "run_id": "20261106T193918Z-full-completion64-real",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "ac661d05cf035df2874e46ba05c2a6f92a071eff",
+        "dataset": "a1af8fb3f8da1ac41f577f18265458bb66e4506e"
+      },
+      "artifact_index_sha256": "cc454321ae229e462d02dc879098da47032e74317f4f7de16055cd3c6a643f79"
+    },
+    "training_json_sha256": "8d8faa6d0655741e3eb74346a9c60cc4cfc871e7a7d40f5063af712e6da79edc",
+    "completed_previous_stages_unchanged": {
+      "1": "6c57dd9d246b08fe6fcddb77260681919cc88b71c00408ea6957144b1ea706df",
+      "2": "974f5a90848d18bcbfcc7b44e8a284d1731a184263aa8a0efac3b1d6cb499ad6",
+      "3": "b8d10623de9dfb0f121f545fb4c42fd5dbc00c852dcd127e5d78f268d6d89305"
+    },
+    "epoch_event_after_this_launch": {
+      "time": 1794006446.315341,
+      "event": "epoch_complete",
+      "generation": 4,
+      "epoch": 1,
+      "learning_rate": 4.175570504584969e-06,
+      "train_loss": 3.3957852619171143,
+      "validation_loss": 3.330416138567003,
+      "train_seconds": 30.889537542825565,
+      "training_target_tokens_per_second": 20718.98937019363,
+      "global_step": 316,
+      "learning_rate_end": 3.6180339887499274e-06,
+      "scored_training_tokens": 640000
+    },
+    "watchdog": {
+      "pid": 139,
+      "time": 1794006574.7331324,
+      "deadline": 1794045591.7757857
+    },
+    "supervisor": {
+      "pid": 253,
+      "child_pid": 255,
+      "time": 1794006574.225156
+    },
+    "status": {
+      "state": "running",
+      "phase": "real",
+      "active_child": "20261106T193918Z-full-completion64-real",
+      "time": 1794006292.5538719
+    },
+    "child_status": {
+      "state": "running",
+      "generation": 4,
+      "stage": "training",
+      "time": 1794006399.1338422
+    }
+  },
+  "storage_admission": {
+    "quota_bytes": 100000000000,
+    "used_bytes": 5040598452,
+    "required_additional_bytes": 40000000000,
+    "reserve_bytes": 10000000000,
+    "available_after_reserve_bytes": 84959401548,
+    "admitted": true,
+    "namespace": "iib-model-collapse-bill",
+    "repositories": {
+      "model": {
+        "repo": "iib-model-collapse-bill/iib-model-collapse-models",
+        "revision": "73fb83abe068a036707dfa4ab8e4481be642ff0a",
+        "lfs_bytes_including_history": 2003918400,
+        "current_native_bytes": 5262
+      },
+      "dataset": {
+        "repo": "iib-model-collapse-bill/iib-model-collapse-data",
+        "revision": "2169f4d0a65767b986fbe003ad8124da45073ac5",
+        "lfs_bytes_including_history": 3032263921,
+        "current_native_bytes": 4410869
+      }
+    },
+    "checked_at": 1794006176.0052705,
+    "scope": "All repositories in the dedicated experiment namespace must be supplied. Native Git history and ordinary metadata growth are covered by the reserve."
+  },
+  "historical_stages_1_to_3_unchanged": true,
+  "remaining_at_resume": {
+    "real_training_cycles": 7,
+    "synthetic_training_cycles": 10
+  },
+  "watchdog_deadline_utc": "2026-11-07T09:59:51.775786+00:00",
+  "conservative_completion_estimate_utc": "2026-11-07T02:50:57.145893+00:00",
+  "scientific_configuration_and_accepted_runtime_unchanged": true,
+  "full_training_complete": false,
+  "paid_hugging_face_plan_used": false
+}

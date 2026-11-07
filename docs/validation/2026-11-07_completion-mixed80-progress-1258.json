@@ -1,0 +1,196 @@
+{
+  "checked_at": 1794056279.4873729,
+  "run_id": "20261107T113638Z-full-completion64-mixed80",
+  "pod_id": "uvhfubv6zpf6sm",
+  "provider_status": "RUNNING",
+  "live": {
+    "parent_status": {
+      "state": "running",
+      "phase": "mixed80",
+      "active_child": "20261107T113638Z-full-completion64-mixed80-mixed80",
+      "time": 1794051647.9238896
+    },
+    "child_status": {
+      "state": "running",
+      "generation": 9,
+      "stage": "training",
+      "time": 1794056229.9527044
+    },
+    "completion": {},
+    "supervisor_age_seconds": 0.3258352279663086,
+    "watchdog_age_seconds": 2.7257888317108154,
+    "stages": [
+      {
+        "cycle": 0,
+        "complete": false,
+        "test_perplexity": 29.17631807160739,
+        "validation_perplexity": 28.91131926861199,
+        "global_step": null,
+        "metric_sha256": "d9951f3d280b3331ae312af4ec47527e1ee3112f269bc426ad0b1c277023cb0c"
+      },
+      {
+        "cycle": 1,
+        "complete": true,
+        "test_perplexity": 33.046701048262406,
+        "validation_perplexity": 32.63273723289694,
+        "global_step": 79,
+        "metric_sha256": "2b16e4ceebb3efd658230fe0a791d9dabfa2d8666ead9b49640e5a95085a0631"
+      },
+      {
+        "cycle": 2,
+        "complete": true,
+        "test_perplexity": 32.34172214622492,
+        "validation_perplexity": 31.95726470470693,
+        "global_step": 158,
+        "metric_sha256": "b79d5101c89951cc13e217935e8172f8c1474f78212607a9973fbae3bdae8297"
+      },
+      {
+        "cycle": 3,
+        "complete": true,
+        "test_perplexity": 31.676734818611774,
+        "validation_perplexity": 31.337193055800487,
+        "global_step": 237,
+        "metric_sha256": "3d37ed8f3db11dba38b50c3ddbb51b74629cd8e7b02e3d61c85708cd9f80b5aa"
+      },
+      {
+        "cycle": 4,
+        "complete": true,
+        "test_perplexity": 31.67124283929349,
+        "validation_perplexity": 31.34055199700006,
+        "global_step": 316,
+        "metric_sha256": "3293b78dd214c4172abdb64303b275cc78b46433549268a7b82ce49c2944c801"
+      },
+      {
+        "cycle": 5,
+        "complete": true,
+        "test_perplexity": 31.272076664762714,
+        "validation_perplexity": 30.94960250928922,
+        "global_step": 395,
+        "metric_sha256": "3661892305d619aea1a4216fd26467ccc54271fe04f3a535b97aa23fb375d8d0"
+      },
+      {
+        "cycle": 6,
+        "complete": true,
+        "test_perplexity": 31.18591964883602,
+        "validation_perplexity": 30.868745838881942,
+        "global_step": 474,
+        "metric_sha256": "6dfd7a94e5ade135e3f6e78add966c6853a191eb849f26947b9ee7467d44c2a6"
+      },
+      {
+        "cycle": 7,
+        "complete": true,
+        "test_perplexity": 31.173558206500854,
+        "validation_perplexity": 30.859447476980908,
+        "global_step": 553,
+        "metric_sha256": "de779d6a633bb976d9171670da330d0a689215c9e3b73ef4b7851d2c1ea3f9de"
+      },
+      {
+        "cycle": 8,
+        "complete": true,
+        "test_perplexity": 31.05464019352706,
+        "validation_perplexity": 30.740333869905086,
+        "global_step": 632,
+        "metric_sha256": "c1ba9b5b89ac6d690144c5d768d679fbb891885ebdb237af4cf8db6dc4befa84"
+      }
+    ],
+    "cycle_timings": [
+      {
+        "time": 1794052118.3596346,
+        "event": "completion_cycle_complete",
+        "cycle": 1,
+        "test_perplexity": 33.046701048262406
+      },
+      {
+        "time": 1794052620.0323312,
+        "event": "completion_cycle_complete",
+        "cycle": 2,
+        "test_perplexity": 32.34172214622492
+      },
+      {
+        "time": 1794053127.345893,
+        "event": "completion_cycle_complete",
+        "cycle": 3,
+        "test_perplexity": 31.676734818611774
+      },
+      {
+        "time": 1794053640.0599535,
+        "event": "completion_cycle_complete",
+        "cycle": 4,
+        "test_perplexity": 31.67124283929349
+      },
+      {
+        "time": 1794054161.118447,
+        "event": "completion_cycle_complete",
+        "cycle": 5,
+        "test_perplexity": 31.272076664762714
+      },
+      {
+        "time": 1794054701.1410253,
+        "event": "completion_cycle_complete",
+        "cycle": 6,
+        "test_perplexity": 31.18591964883602
+      },
+      {
+        "time": 1794055242.8358378,
+        "event": "completion_cycle_complete",
+        "cycle": 7,
+        "test_perplexity": 31.173558206500854
+      },
+      {
+        "time": 1794055790.445776,
+        "event": "completion_cycle_complete",
+        "cycle": 8,
+        "test_perplexity": 31.05464019352706
+      }
+    ],
+    "current_generated_continuations": 8000,
+    "last_events": [
+      {
+        "time": 1794056226.585171,
+        "event": "generation_shard_complete",
+        "generation": 8,
+        "completed": 7936,
+        "total": 8000,
+        "reused": false
+      },
+      {
+        "time": 1794056229.360606,
+        "event": "generation_shard_complete",
+        "generation": 8,
+        "completed": 8000,
+        "total": 8000,
+        "reused": false
+      },
+      {
+        "time": 1794056274.9806237,
+        "event": "epoch_complete",
+        "generation": 9,
+        "epoch": 1,
+        "learning_rate": 1.3819660112501133e-06,
+        "train_loss": 0.7410445519685745,
+        "validation_loss": 3.428628177048106,
+        "train_seconds": 30.515955046983436,
+        "training_target_tokens_per_second": 20972.63543004417,
+        "global_step": 711,
+        "learning_rate_end": 1.0978869674096952e-06,
+        "scored_training_tokens": 640000
+      }
+    ],
+    "backup_snapshot": {
+      "run_id": "20261107T113638Z-full-completion64-mixed80-mixed80",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "ea7129031f67f95847fde454acdd8e6fd2d48d4e",
+        "dataset": "fd0406933107c89de0dcf6c9b3645e13b4614084"
+      },
+      "artifact_index_sha256": "6e76f762d124803a962f0bb7303507ff3306c00d394632dbb1be92d5eb602b2b"
+    },
+    "backup_index_consistent": true
+  },
+  "estimated_completion_utc": "2026-11-07T13:07:56.663995+00:00",
+  "recent_cycle_minutes": 9.051818494002024,
+  "estimated_remaining_minutes": 9.935723654429118
+}

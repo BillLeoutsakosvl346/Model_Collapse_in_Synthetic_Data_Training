@@ -1,0 +1,42 @@
+[
+  {
+    "corpus": "fineweb_edu",
+    "scored_tokens": 979319,
+    "pretrained_perplexity": 28.345533836222273,
+    "after_one_epoch_perplexity": 27.408978105092874,
+    "perplexity_change_percent": -3.3040680642697606,
+    "nll_change": -0.033598853330721656
+  },
+  {
+    "corpus": "wikitext103",
+    "scored_tokens": 128033,
+    "pretrained_perplexity": 39.52300233442832,
+    "after_one_epoch_perplexity": 38.7308626357322,
+    "perplexity_change_percent": -2.0042498087400884,
+    "nll_change": -0.020246073653132246
+  },
+  {
+    "corpus": "c4_en",
+    "scored_tokens": 128273,
+    "pretrained_perplexity": 28.985830024558677,
+    "after_one_epoch_perplexity": 28.20983458483259,
+    "perplexity_change_percent": -2.6771544546718706,
+    "nll_change": -0.027136429440130616
+  },
+  {
+    "corpus": "pg19",
+    "scored_tokens": 128000,
+    "pretrained_perplexity": 75.86166270384209,
+    "after_one_epoch_perplexity": 73.93154595679785,
+    "perplexity_change_percent": -2.544258428106516,
+    "nll_change": -0.025771843638843883
+  },
+  {
+    "corpus": "ag_news",
+    "scored_tokens": 130450,
+    "pretrained_perplexity": 54.629464033607064,
+    "after_one_epoch_perplexity": 51.773324115519074,
+    "perplexity_change_percent": -5.228204172625494,
+    "nll_change": -0.05369833336216745
+  }
+]

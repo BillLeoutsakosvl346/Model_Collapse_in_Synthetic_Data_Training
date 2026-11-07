@@ -1,0 +1,29 @@
+{
+  "generation": 0,
+  "weights_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+  "validation": {
+    "nll_sum": 200316.48477604074,
+    "scored_tokens": 59273,
+    "loss": 3.3795570458056914,
+    "perplexity": 29.357764088005602,
+    "seconds": 1.2158452812582254,
+    "mean_sequence_perplexity": 62.73494572476317,
+    "std_sequence_perplexity": 316.91781263251085,
+    "context_tokens": 512
+  },
+  "test": {
+    "nll_sum": 345164.1823157056,
+    "scored_tokens": 98995,
+    "loss": 3.4866829871781966,
+    "perplexity": 32.67737646296525,
+    "seconds": 1.842859923839569,
+    "mean_sequence_perplexity": 36.94985930002338,
+    "std_sequence_perplexity": 18.416263924937148,
+    "context_tokens": 512
+  },
+  "checkpoint_files": {
+    "config.json": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+    "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "model.safetensors": "b3a67b42504e0c101c739fe6ef0d57eb3a9ed90267e41aba8019149a472ceae1"
+  }
+}

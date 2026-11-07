@@ -20,6 +20,14 @@ def training_contract(c):
     settings = {**{k: c[k] for k in keys}, "checkpoint_selection": selection_policy(c)}
     if c.get("synthetic_fraction", 1.0) != 1.0:
         settings["synthetic_fraction"] = c["synthetic_fraction"]
+    if c.get("workflow") == "fresh_real":
+        from ..fresh_data import data_contract
+        settings.update(workflow="fresh_real", data_contract=data_contract(c),
+                        optimizer_policy="carry_across_cycles", scheduler_policy="global_cosine_per_step")
+    if c.get("workflow") == "completion_arm":
+        settings.update(workflow="completion_arm", objective="conditional_continuation_64",
+                        bank=c["prepared_bank"]["manifest_sha256"], data_kind=c["data_kind"],
+                        optimizer_policy="carry_across_cycles", scheduler_policy="global_cosine_per_step")
     return digest(settings)
 
 

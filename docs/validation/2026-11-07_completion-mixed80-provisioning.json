@@ -1,0 +1,57 @@
+{
+  "recorded_at": 1794051518.2663882,
+  "resources": {
+    "run_id": "20261107T113638Z-full-completion64-mixed80",
+    "launch_id": "20261107T113638784385Z",
+    "kind": "full",
+    "pod_id": "uvhfubv6zpf6sm",
+    "volume_id": "ygb6njmthn",
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1794051400.035704,
+    "quoted_gpu_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6652671232876711,
+    "compute_hourly_usd": 0.6586506849315067,
+    "volume_hourly_usd": 0.005753424657534247,
+    "network_volume_gb": 60,
+    "volume_created_at": 1794051398.7896814,
+    "session_allowance_usd": 2.7240614656784388,
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "code_sha256": "0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170",
+    "starting_balance_usd": 36.7068371396,
+    "remote_root": "/workspace/runs/20261107T113638Z-full-completion64-mixed80",
+    "runtime_sha256": "0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170",
+    "git_commit": "41959902652229d30cabbc19bc4b3a9ddd3d16bd",
+    "configuration_sha256": "1f30af9ec9ce3a98127d72ec97cee4fa3963519c3aafc45dd1148591cf822fdc",
+    "workflow": "completion_comparison",
+    "allocation": "fineweb_completion64_mixtures_mixed80",
+    "admission_forecast": {
+      "estimated_hours": 2.6034642368717527,
+      "estimated_compute_and_running_storage_usd": 1.5060862290834809,
+      "unique_training_stages": 10,
+      "epochs": 10,
+      "full_generation_stages": 0,
+      "generation_stages": 10,
+      "probe_sets": 11,
+      "training_target_exposures": 6400000,
+      "forecast_margin": 1.5,
+      "generated_training_continuations": 80000,
+      "generated_training_tokens": 5120000,
+      "historical_storage_during_run_usd": 0.11127134820534934,
+      "seven_day_volume_storage_usd": 0.9665753424657535
+    },
+    "actual_pod_hourly_usd": 0.57,
+    "verified_ssh_direct": {
+      "command": "ssh root@213.173.107.11 -p 42642",
+      "host": "213.173.107.11",
+      "port": 42642,
+      "username": "root"
+    }
+  },
+  "startup_verification_pending": true,
+  "acceptance_receipt": "docs/validation/2026-11-07_completion-mixed80-setup.json"
+}

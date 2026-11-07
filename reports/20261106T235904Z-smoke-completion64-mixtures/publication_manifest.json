@@ -1,0 +1,99 @@
+{
+  "run_id": "20261106T235904Z-smoke-completion64-mixtures",
+  "files": {
+    "dataset_examples.json": {
+      "sha256": "cae91e5181bc6d313a924dc82eea9f2a7680d80906f59acf2202651608506188",
+      "bytes": 5863
+    },
+    "report.md": {
+      "sha256": "e3eef2dcee6476f001f92233420669f80e5534dd2718ac40a803981fdec30aa6",
+      "bytes": 6720
+    },
+    "generated/gpu_validation/analysis_manifest.json": {
+      "sha256": "de1264f0f878d04c547c478f45856c0c609fb2c87cac5d3513017b1a27bfd864",
+      "bytes": 5373
+    },
+    "generated/gpu_validation/distinct_2.png": {
+      "sha256": "0e1f049db596459f564f873e434552799d2b325b94a388ae7ac833b29b29cad2",
+      "bytes": 89677
+    },
+    "generated/gpu_validation/duplicate_continuation_rate.png": {
+      "sha256": "bc343712f609aab8883320ba55b6c408bc0bb308b969a7d1657eed6d730d5f56",
+      "bytes": 50065
+    },
+    "generated/gpu_validation/examples.json": {
+      "sha256": "6dc309c2633fa5264c832635bab576dc6f4aae31a5d4a6ccbc973233b777624e",
+      "bytes": 17142
+    },
+    "generated/gpu_validation/learning_rate_end.png": {
+      "sha256": "d35a123eb113d4adf27f383628b43db16a589657338440dcc89218e2bc1d92db",
+      "bytes": 53148
+    },
+    "generated/gpu_validation/mean_within_entropy_nats.png": {
+      "sha256": "d157a2d259bdfa4c3a6f389bc46ed5096c8ed9b060fdc77ea828cfcc39e5b8dc",
+      "bytes": 93027
+    },
+    "generated/gpu_validation/mean_within_repeated_4gram_rate.png": {
+      "sha256": "e710e0b069c73055a974618ef9f8cd67d630e6c0f69f680dd313b5b967b7818b",
+      "bytes": 97984
+    },
+    "generated/gpu_validation/metrics.csv": {
+      "sha256": "ed9ccbdb1a1dac3e7563ee2c694ef047fa5c7fd5fc5932b6afb0d577999fdd76",
+      "bytes": 6996
+    },
+    "generated/gpu_validation/metrics.json": {
+      "sha256": "db0db45683f916f1eae18fb8df6eff9496f45202c4a921baea73fbc1d45c035f",
+      "bytes": 17221
+    },
+    "generated/gpu_validation/repeated_4gram_rate.png": {
+      "sha256": "dc3281e74256d934b924ea2acd0f4a68d0b25bb94592bf2b8b107b90a73c0757",
+      "bytes": 96864
+    },
+    "generated/gpu_validation/report.md": {
+      "sha256": "0faa4b3fa1c3218e753dd9e4a409a59523510e6298e539c5cbd6d2509e508f2e",
+      "bytes": 2293
+    },
+    "generated/gpu_validation/secondary_ag_news_perplexity.png": {
+      "sha256": "481d54d97f633f5af6d52a9f2198a812578d60e9d65de31551b47d659d920db7",
+      "bytes": 91306
+    },
+    "generated/gpu_validation/secondary_c4_en_perplexity.png": {
+      "sha256": "b9b55e5cf5c8ca5abced11e5674096e7edb2a6a7a6d3469a10ca611f452be305",
+      "bytes": 75245
+    },
+    "generated/gpu_validation/secondary_fineweb_edu_perplexity.png": {
+      "sha256": "65eb4245572b6589662c0cab66c20b9e2eb7509655fe52a72df040e4b3b9720a",
+      "bytes": 85734
+    },
+    "generated/gpu_validation/secondary_pg19_perplexity.png": {
+      "sha256": "6d218cb824aededf8c81365b6931522b6152f5baaec3a9b54f751a711b2b489c",
+      "bytes": 86368
+    },
+    "generated/gpu_validation/secondary_wikitext103_perplexity.png": {
+      "sha256": "971a27084c171dd6434fb5e4428a0b7c5f06f63b674f23a778261bdcacbd7374",
+      "bytes": 81114
+    },
+    "generated/gpu_validation/test_nll_p95.png": {
+      "sha256": "d0126679a99981b13d17dcb0f7f587a3c4be1b5d493ea029e7958cca8e5d7504",
+      "bytes": 90692
+    },
+    "generated/gpu_validation/test_perplexity.png": {
+      "sha256": "fcd098e0bb460ad54c07aa084d2fcdd9f46cd79404fa2542b6085d59301c4de2",
+      "bytes": 91258
+    },
+    "generated/gpu_validation/token_entropy_nats.png": {
+      "sha256": "ed8ddc2ce443fb033d590c6b32acbe1b9ab56492f8cf860134294084f180a2d3",
+      "bytes": 87368
+    },
+    "generated/gpu_validation/training_seconds.png": {
+      "sha256": "b4cd68fef1e24f17ed5186173481d19f3079df42c948ae83e5c006bfedbae3d0",
+      "bytes": 79925
+    }
+  },
+  "source_runtime_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+  "source_protocol_fingerprint": "c411a4e72d8215365c4f0acc84809bcacd3f20af8bdbe627d33d714af6660c13",
+  "input_artifact_indexes": {
+    "mixed50": "837713dde317aabd460e7b998b73590ac772b69989dec364219bb9df16d2fcc8",
+    "mixed20": "e5c4cda7bf366fedffaf516f19df25d59ea613f3e077f833331ed94c90172514"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "runtime_sha256": "35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497",
+  "source_archive_sha256": "1b838cbc1524e67e2167e4b8e7f86e246ac64aadc3bc3d50a5097b5a72167cfa",
+  "baseline_tests": 414,
+  "full_suite_passed": 429,
+  "focused_suite_passed": 26,
+  "bank": {
+    "run_id": "completion64-bank-4a64334cc9e9224b",
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "revisions": {
+      "model": "44a68acbee36f23450eef4cba670f221a6d678b9",
+      "dataset": "e331d80522cc5dc64df04f2f21e57b26d8c873bd"
+    },
+    "artifact_index_sha256": "9c312b19903d1a875e78144d2cadcc4fb841d97dc2034923e13153724ef56bbf",
+    "manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+    "contract": "4a64334cc9e9224be880545aeaea525c4cad0a48179fc7abce0703e12021a0b6"
+  },
+  "protocol_before_gpu_selection": "81ef4ad64344f76dde1f310d412e58052b5b237709260a971a1fa5d83bb2c6a7",
+  "full_training_launched": false,
+  "checks": [
+    "full source bank reconstructed",
+    "masked NLL direct calculation",
+    "first continuation alignment",
+    "target-weighted gradients",
+    "identical targets give identical weights",
+    "optimizer and scheduler continuity",
+    "partial generation recovery",
+    "coordinator and worker recovery",
+    "historical compatibility",
+    "corrupted artifacts rejected"
+  ],
+  "transport_regression_tests_passed": 3,
+  "transport_focused_suite_passed": 46,
+  "latest_full_suite_pending": false,
+  "accepted_gpu_pending": false,
+  "focused_workflow_tests_passed": 7,
+  "regressions": [
+    "bounded SSH-address propagation recovery",
+    "previously authenticated SSH endpoint reuse",
+    "coordinator CUDA cache release before subprocess workers",
+    "detached launch requires a completed measured stage"
+  ],
+  "accepted_gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "accepted_protocol": "b22e6d66d82ea7393ee265b757a0d11f9e1d16f5519059faf798e0e285ab45ac",
+  "setup_receipt": "docs/validation/2026-11-06_completion64-setup.json"
+}

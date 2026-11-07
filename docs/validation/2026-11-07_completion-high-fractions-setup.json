@@ -1,0 +1,121 @@
+{
+  "time": 1794064025.6613493,
+  "runtime_sha256": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+  "conditions": {
+    "85": {
+      "checks": {
+        "restored_evaluation": true,
+        "training_recovery": true,
+        "nested_selections": true,
+        "completed_stages_unchanged": true,
+        "matched_initial_weights_and_prompts": true,
+        "direct_masked_nll": true,
+        "sealed_private_stage_restores": true,
+        "exact_mixture_reconstruction": true,
+        "three_terminal_epochs": true,
+        "private_restore": true,
+        "continuation_only_loss": true,
+        "all_handoffs_and_optimizer_states": true,
+        "generation_shard_recovery": true,
+        "coordinator_recovery": true,
+        "detached_progress_verified": true,
+        "independent_budget_guard_and_provider_stop_verified": true
+      },
+      "protocol": "e8152de86ed54d8d420658350da58fb4e6616469b75fbd457f3d5cfb7dee8e69",
+      "forecast": {
+        "estimated_hours": 2.1465342044705644,
+        "estimated_compute_and_running_storage_usd": 1.5637354656677345,
+        "unique_training_stages": 10,
+        "epochs": 10,
+        "full_generation_stages": 0,
+        "generation_stages": 10,
+        "probe_sets": 11,
+        "training_target_exposures": 6400000,
+        "forecast_margin": 1.5,
+        "generated_training_continuations": 85000,
+        "generated_training_tokens": 5440000
+      },
+      "setup": 0.25034469518367375
+    },
+    "90": {
+      "checks": {
+        "all_handoffs_and_optimizer_states": true,
+        "sealed_private_stage_restores": true,
+        "exact_mixture_reconstruction": true,
+        "private_restore": true,
+        "completed_stages_unchanged": true,
+        "three_terminal_epochs": true,
+        "nested_selections": true,
+        "direct_masked_nll": true,
+        "coordinator_recovery": true,
+        "generation_shard_recovery": true,
+        "restored_evaluation": true,
+        "continuation_only_loss": true,
+        "training_recovery": true,
+        "matched_initial_weights_and_prompts": true,
+        "detached_progress_verified": true,
+        "independent_budget_guard_and_provider_stop_verified": true
+      },
+      "protocol": "36add4af6575b47874b70c7e5d459ac2b96ccc2a36a3f075250e6dfe830a0f7c",
+      "forecast": {
+        "estimated_hours": 2.2286541490601213,
+        "estimated_compute_and_running_storage_usd": 1.6235592828358527,
+        "unique_training_stages": 10,
+        "epochs": 10,
+        "full_generation_stages": 0,
+        "generation_stages": 10,
+        "probe_sets": 11,
+        "training_target_exposures": 6400000,
+        "forecast_margin": 1.5,
+        "generated_training_continuations": 90000,
+        "generated_training_tokens": 5760000
+      },
+      "setup": 0.29678266165256134
+    },
+    "95": {
+      "checks": {
+        "training_recovery": true,
+        "coordinator_recovery": true,
+        "continuation_only_loss": true,
+        "matched_initial_weights_and_prompts": true,
+        "direct_masked_nll": true,
+        "generation_shard_recovery": true,
+        "completed_stages_unchanged": true,
+        "exact_mixture_reconstruction": true,
+        "three_terminal_epochs": true,
+        "restored_evaluation": true,
+        "all_handoffs_and_optimizer_states": true,
+        "sealed_private_stage_restores": true,
+        "private_restore": true,
+        "nested_selections": true,
+        "detached_progress_verified": true,
+        "independent_budget_guard_and_provider_stop_verified": true
+      },
+      "protocol": "68cd00ab0c98da52879e529a7550c1b6bc2fd1717a1a21e7c0bf0a3b3f2d61af",
+      "forecast": {
+        "estimated_hours": 2.516018350894682,
+        "estimated_compute_and_running_storage_usd": 1.8329021356243724,
+        "unique_training_stages": 10,
+        "epochs": 10,
+        "full_generation_stages": 0,
+        "generation_stages": 10,
+        "probe_sets": 11,
+        "training_target_exposures": 6400000,
+        "forecast_margin": 1.5,
+        "generated_training_continuations": 95000,
+        "generated_training_tokens": 6080000
+      },
+      "setup": 0.22502535838602342
+    }
+  },
+  "offline_full_suite_passed": 506,
+  "additional_host_regressions_passed": 7,
+  "validation_conservative_usd": 0.7721527152222585,
+  "validation_cap_usd": 0.9,
+  "full_jobs_authorized": true,
+  "full_jobs_unlaunched_at_this_check": true,
+  "campaign_ceiling_usd": 11.75,
+  "cumulative_ceiling_usd": 64.03635289829083,
+  "original_temporary_placements_removed": true,
+  "shared_backup_volume_preserved": "mng23iliig"
+}

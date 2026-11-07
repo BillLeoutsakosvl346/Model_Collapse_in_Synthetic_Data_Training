@@ -1,0 +1,215 @@
+{
+  "recorded_at": 1794051349.7782903,
+  "run_id": "20261107T111914Z-smoke-completion64-mixed80",
+  "technical_readiness": true,
+  "affordable_at_handoff": true,
+  "runtime_sha256": "0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170",
+  "protocol_fingerprint": "566ba603f84a65d601ead18dc0a1af98420a276a3b14bc0c5ec395c7ff970f59",
+  "offline_tests": 481,
+  "additional_host_launcher_tests": 3,
+  "checks": {
+    "restored_evaluation": true,
+    "training_recovery": true,
+    "continuation_only_loss": true,
+    "three_terminal_epochs": true,
+    "direct_masked_nll": true,
+    "coordinator_recovery": true,
+    "matched_initial_weights_and_prompts": true,
+    "all_handoffs_and_optimizer_states": true,
+    "generation_shard_recovery": true,
+    "completed_stages_unchanged": true,
+    "private_restore": true,
+    "exact_mixture_reconstruction": true,
+    "nested_selections": true,
+    "sealed_private_stage_restores": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "acceptance": {
+    "workflow": "completion_comparison",
+    "checks": {
+      "restored_evaluation": true,
+      "training_recovery": true,
+      "continuation_only_loss": true,
+      "three_terminal_epochs": true,
+      "direct_masked_nll": true,
+      "coordinator_recovery": true,
+      "matched_initial_weights_and_prompts": true,
+      "all_handoffs_and_optimizer_states": true,
+      "generation_shard_recovery": true,
+      "completed_stages_unchanged": true,
+      "private_restore": true,
+      "exact_mixture_reconstruction": true,
+      "nested_selections": true,
+      "sealed_private_stage_restores": true,
+      "detached_progress_verified": true,
+      "independent_budget_guard_and_provider_stop_verified": true
+    },
+    "source_code_sha256": "0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170",
+    "protocol_fingerprint": "566ba603f84a65d601ead18dc0a1af98420a276a3b14bc0c5ec395c7ff970f59",
+    "arm_audits": {
+      "mixed80": {
+        "stages": [
+          {
+            "cycle": 1,
+            "weights_sha256": "fc591b344c160cacc02a429b202d3c7c0ef3c45263dd1c10345619e1cdc3abc8",
+            "initializer_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+            "optimizer_step": 3,
+            "scored_training_tokens": 20480,
+            "real_pairs": 64,
+            "synthetic_pairs": 256
+          },
+          {
+            "cycle": 2,
+            "weights_sha256": "ee9242fd0e0bd5597fa3b625369f84d1447bc86a8caf2a02eec5d28a26483ea9",
+            "initializer_sha256": "fc591b344c160cacc02a429b202d3c7c0ef3c45263dd1c10345619e1cdc3abc8",
+            "optimizer_step": 6,
+            "scored_training_tokens": 20480,
+            "real_pairs": 64,
+            "synthetic_pairs": 256
+          },
+          {
+            "cycle": 3,
+            "weights_sha256": "c637277e00898c57a8fa467929f87c07ea2628060c8c7438b814ab9ea19350d7",
+            "initializer_sha256": "ee9242fd0e0bd5597fa3b625369f84d1447bc86a8caf2a02eec5d28a26483ea9",
+            "optimizer_step": 9,
+            "scored_training_tokens": 20480,
+            "real_pairs": 64,
+            "synthetic_pairs": 256
+          }
+        ],
+        "restored_loss_error": 0.0,
+        "direct_nll_error": 0.0,
+        "restored_optimizer_sha256": "f20c89c0d1440da70b4fd5c74bee6e0ecc234e6ac9703fe1febd7c669eb2ba7c"
+      }
+    },
+    "restorations": {
+      "mixed80": {
+        "run_id": "20261107T111914Z-smoke-completion64-mixed80-mixed80",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "3e0dc639eb4cdef249b2b9d357e9dfcff23e9f93",
+          "dataset": "5bda336e346cb6a2c237eb8ed692bc6dd788588f"
+        },
+        "artifact_index_sha256": "a60a20331c009e35cc5a5db09437331b30624d58dd4fabd462329363d19c4696",
+        "indexed_files": 145,
+        "verified_files": 145,
+        "verified_bytes": 4511481652,
+        "metadata_only": false,
+        "scope": "full",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "/workspace/completion_acceptance_restore/20261107T111914Z-smoke-completion64-mixed80-mixed80"
+      }
+    },
+    "unique_training_stages": 3,
+    "executed_epochs": 3,
+    "validated_run_id": "20261107T111914Z-smoke-completion64-mixed80",
+    "provider_pod_state": "EXITED",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell"
+  },
+  "metadata_recovery": {
+    "run_id": "20261107T111914Z-smoke-completion64-mixed80",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "3e0dc639eb4cdef249b2b9d357e9dfcff23e9f93",
+      "dataset": "56485e53570d65776565f94ff4edc0016af85c70"
+    },
+    "artifact_index_sha256": "8755acc7811eaa5086392f7b317c24ce3d07def1c250048f4b1b1a2ab9082f76",
+    "indexed_files": 50,
+    "verified_files": 46,
+    "verified_bytes": 4508827,
+    "metadata_only": true,
+    "scope": "metadata_only",
+    "preserved_control_files": {
+      "resources.json": {
+        "recovered_path": "fetched_control/9f7ef8ab1acf55da6b1bced74c5f546b4568f7ce3aef8a765c3e9996d7edd525/resources.json",
+        "sha256": "9f7ef8ab1acf55da6b1bced74c5f546b4568f7ce3aef8a765c3e9996d7edd525",
+        "authoritative_local_sha256": "aab2a438a2a359c8f939758320fc78f57993e4c5eac5121f650c4005a0633414"
+      }
+    },
+    "operational_files_outside_immutable_index": [
+      "events.jsonl",
+      "status.json",
+      "watchdog_exit.json"
+    ],
+    "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261107T111914Z-smoke-completion64-mixed80",
+    "children": {
+      "mixed80": {
+        "run_id": "20261107T111914Z-smoke-completion64-mixed80-mixed80",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "3e0dc639eb4cdef249b2b9d357e9dfcff23e9f93",
+          "dataset": "5bda336e346cb6a2c237eb8ed692bc6dd788588f"
+        },
+        "artifact_index_sha256": "a60a20331c009e35cc5a5db09437331b30624d58dd4fabd462329363d19c4696",
+        "indexed_files": 145,
+        "verified_files": 79,
+        "verified_bytes": 96659,
+        "metadata_only": true,
+        "scope": "metadata_only",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261107T111914Z-smoke-completion64-mixed80-mixed80"
+      }
+    }
+  },
+  "provider_shutdown": {
+    "provider_pod_id": "ro7v3ifs5a1pou",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Sat Nov 07 2026 11:34:07 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1794051247.0,
+    "observed_at": 1794051263.5374513
+  },
+  "temporary_resources_removed": {
+    "run_id": "20261107T111914Z-smoke-completion64-mixed80",
+    "pod_removed": true,
+    "volume_removed": true,
+    "account_balance_delta_usd": 0.11406916949999868
+  },
+  "validation_conservative_usd": 0.16466718611621234,
+  "full_forecast": {
+    "estimated_hours": 2.6034642368717527,
+    "estimated_compute_and_running_storage_usd": 1.5060862290834809,
+    "unique_training_stages": 10,
+    "epochs": 10,
+    "full_generation_stages": 0,
+    "generation_stages": 10,
+    "probe_sets": 11,
+    "training_target_exposures": 6400000,
+    "forecast_margin": 1.5,
+    "generated_training_continuations": 80000,
+    "generated_training_tokens": 5120000,
+    "historical_storage_during_run_usd": 0.11127134820532802,
+    "seven_day_volume_storage_usd": 0.9665753424657535
+  },
+  "available_running_allowance_usd": 2.835332813883788,
+  "account": {
+    "clientBalance": 36.7373441674,
+    "currentSpendPerHr": 0.043,
+    "isAutoPayEnabled": false,
+    "enableBackupPayments": false
+  },
+  "report": "reports\\20261107T111914Z-smoke-completion64-mixed80",
+  "generated_analysis": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261107T111914Z-smoke-completion64-mixed80\\generated\\20261107T113544Z-352794a6",
+  "full_training_launched": false,
+  "trained_bulk_restored_and_reevaluated_on_gpu": true,
+  "local_recovery_scope": "Small records and immutable shared pretrained baseline. Trained bulk stays in pinned private backups.",
+  "host_launcher_sha256": "19c4bc0c0a5e7df4168cbb4a78809158b64d57287da7de6b4a138e8e92d132a6"
+}

@@ -2,6 +2,9 @@
 
 | Comparison | Shared beginning | Deliberate difference | Report |
 | --- | --- | --- | --- |
+| [85%](fineweb_completion64_mixed85/README.md), [90%](fineweb_completion64_mixed90/README.md), [95%](fineweb_completion64_mixed95/README.md) FineWeb synthetic targets | Same original pretrained OPT and frozen ten-chunk completion bank | Each condition replaces its own selected targets using its preceding checkpoint; three matching GPU jobs | [Validation and operations](../docs/fineweb-high-fractions-handoff.md) |
+| [FineWeb continuation mixtures](fineweb_completion64_mixtures/README.md) | Original pretrained OPT, same ten fresh chunks and held-out continuations | Replace 50% or 20% of targets using each condition's preceding checkpoint | [Setup handoff](../docs/fineweb-completion-mixtures-handoff.md) |
+| [FineWeb real versus synthetic completions](fineweb_real_vs_synthetic_completion64/README.md) | Original pretrained OPT, identical ten fresh prompt chunks and fixed real held-out continuations | Real versus self-generated 64-token continuation targets; one epoch per chunk and persistent optimization state | [Validated handoff](../docs/fineweb-completion64-handoff.md), [GPU validation](../reports/20261106T191336Z-smoke-completion64/report.md) |
 | [Shared S0/S1 reset versus continue](shared_s0_s1_reset_vs_continue/README.md) | Exact historical real S0, selected-epoch-1 S1 and D2 | Initialize later stages from fixed S0 versus preceding selected weights | [Week 2 matched extension](../reports/20261027T211852Z-full-reset-s0/report.md) |
 | [Shared final epoch 5](shared_start_final_epoch5/README.md) | Historical S0/D1, new epoch-5 S1 and new D2 | Fixed S0 versus preceding epoch-5 weights | [Week 3](../reports/20261030T180755Z-full-paired-final5/report.md) |
 | [50/50 versus synthetic-only](continued_mixed50_vs_synthetic_final5/README.md) | Exact S0 and initial D1 pool; matched recorded environment and training budget | Half real/half synthetic versus entirely synthetic targets; continued epoch-5 weights in both | [Week 3, Part 2](../reports/20261031T163428Z-full-continued/report.md) |
@@ -10,3 +13,5 @@
 Each directory holds matching requirements, artifact provenance, configuration and independent analysis. The Week 2 and Week 3 shared S1/D2 are different artifacts; do not reuse one as the other. The earliest pretrained-reset and continued plots had different first updates and GPUs, so they are contextual trajectories rather than a shared-start causal comparison.
 
 Keep independent evidence audits distinct from presentation scripts. Reproduce into a new output directory and retain original reports/hashes. See [metrics](../docs/metrics.md) for probe limitations and [reports](../reports/README.md) for verification scope. The 50/50 continued experiment is a separate condition; no completed matched reset mixture arm is implied.
+
+The [FineWeb 80% synthetic condition](fineweb_completion64_mixed80/README.md) extends the completed four-fraction comparison using the identical frozen bank and one continued-training arm.

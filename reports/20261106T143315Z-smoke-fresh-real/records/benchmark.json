@@ -1,0 +1,92 @@
+{
+  "workflow": "fresh_real",
+  "training_target_tokens_per_second": 17177.233960544498,
+  "evaluation_target_tokens_per_second": 62154.27650393614,
+  "training_step_seconds": [
+    0.7793499678373337,
+    0.47479004971683025,
+    0.4737957715988159,
+    0.47504738066345453,
+    0.47573952563107014
+  ],
+  "preparation_seconds": 7.777982499450445,
+  "sampled_source_tokens": 207292,
+  "sampled_documents": 177,
+  "collections": {
+    "validation": {
+      "collection": "validation",
+      "documents": 64,
+      "sequences": 149,
+      "source_text_tokens": 59209,
+      "non_padding_tokens": 59422,
+      "special_tokens": 213,
+      "scored_tokens": 59273,
+      "files": {
+        "tokens.npy": "71722b45aac57ae89b9aa101c5d501ec2dddd78900875c70ae7b5ea925ca37e8",
+        "masks.npy": "15a49de093bbc3790d251b443addc6842a611a1298841827efd545a092ff9147",
+        "documents.jsonl": "7bd4ac627e4f22a367f25edac724ab1631da6def49e567fd9ef41d8b09331ba4"
+      }
+    },
+    "test": {
+      "collection": "test",
+      "documents": 64,
+      "sequences": 226,
+      "source_text_tokens": 98931,
+      "non_padding_tokens": 99221,
+      "special_tokens": 290,
+      "scored_tokens": 98995,
+      "files": {
+        "tokens.npy": "1c0dc6e3cb68e9aeedfac717853b8772eca4bb62624f481a09333012d40cd119",
+        "masks.npy": "47c8eba710a7849c103732980b9ea06241a19ff41ef35529d97e3b9d297706db",
+        "documents.jsonl": "427334c8afaac4ced7108d4063328cd129c6a29a6f8b21b14f19cb00cbea22a8"
+      }
+    },
+    "cycle_01": {
+      "collection": "cycle_01",
+      "documents": 17,
+      "sequences": 42,
+      "source_text_tokens": 16384,
+      "non_padding_tokens": 16442,
+      "special_tokens": 58,
+      "scored_tokens": 16400,
+      "files": {
+        "tokens.npy": "673c8cdd43a323651f5ac19209c165382d32858da79cbd0476cdb381fa6dc27e",
+        "masks.npy": "bedc7a194c9dd45498b164fe95ab333d0df001aa0770621db759bab70df8e14a",
+        "documents.jsonl": "b467c493bfd8d3b09bfe71c3cfcbf5650c704067f767cb378c6a223ac5b46d64"
+      }
+    },
+    "cycle_02": {
+      "collection": "cycle_02",
+      "documents": 8,
+      "sequences": 36,
+      "source_text_tokens": 16384,
+      "non_padding_tokens": 16427,
+      "special_tokens": 43,
+      "scored_tokens": 16391,
+      "files": {
+        "tokens.npy": "216863ea2ad617f7dbfa95d53a55f791db826671e8b89a30be17092c365f8312",
+        "masks.npy": "d3627f53ac22b3e28e1723fb34c556ed49acbc6b94daa722c1e95a3e3d41078b",
+        "documents.jsonl": "3cd21799289f0563956ddda4923ccff89660448cf2c41e8b177628bc6ef06e1e"
+      }
+    },
+    "cycle_03": {
+      "collection": "cycle_03",
+      "documents": 24,
+      "sequences": 44,
+      "source_text_tokens": 16384,
+      "non_padding_tokens": 16451,
+      "special_tokens": 67,
+      "scored_tokens": 16407,
+      "files": {
+        "tokens.npy": "df61e20d0377f19a4f3886103bebfca7ba18f19d02732820d6b79665cd461385",
+        "masks.npy": "7a7b43ddafbef074779e5d8561c1f6905c0d67ae1c175742ac144141b1637885",
+        "documents.jsonl": "a05ab13db6f740fac9e1332afdbd91dbc872a464449b4b3322853f0105f01e3c"
+      }
+    }
+  },
+  "max_sequence_length": 512,
+  "microbatch": 4,
+  "effective_batch": 16,
+  "precision": "bf16",
+  "gpu": "NVIDIA RTX 4000 Ada Generation"
+}

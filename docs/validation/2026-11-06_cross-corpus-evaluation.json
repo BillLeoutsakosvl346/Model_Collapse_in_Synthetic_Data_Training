@@ -1,0 +1,150 @@
+{
+  "run_id": "20261106T171304Z-cross-corpus-evaluation",
+  "time": 1793986117.1622498,
+  "purpose": "Pretrained versus existing after-one-FineWeb-epoch checkpoint on five held-out corpora",
+  "training_updates_executed": 0,
+  "source_run_id": "20261106T151257Z-full-fresh-real",
+  "runtime_sha256": "13ddfea86bc9a87377bb08e81f1a43377c3e8767cf3965a3da34561dcf3cc0c7",
+  "evaluator_sha256": "063ab3952829b5777f209cd9a203f20d633861d5dfc1c55e7c29c4d6a4e3f3bf",
+  "bank_manifest_sha256": "5c30545587cdad7497314868cfa10117aedb59d0231f459135b6a97b9f04a275",
+  "bank_backup": {
+    "repo": "Bill11235813/iib-model-collapse-week1-data",
+    "repo_type": "dataset",
+    "revision": "fa7fde7fde7b546d78020b29d1f176965f6404a8",
+    "path": "corpus_banks/cross_corpus_v1-42627bee2ea7",
+    "bank_manifest_sha256": "5c30545587cdad7497314868cfa10117aedb59d0231f459135b6a97b9f04a275",
+    "files": 209,
+    "all_remote_object_hashes_verified": true,
+    "manifest_download_verified": true
+  },
+  "source_revisions": {
+    "model": "f4ec275e8c3077da3480cc7071e83fd2244e55af",
+    "dataset": "001430f851f1b104fd4ec2a87b66c35c48a15682"
+  },
+  "results": [
+    {
+      "corpus": "fineweb_edu",
+      "scored_tokens": 979319,
+      "pretrained_perplexity": 28.345533836222273,
+      "after_one_epoch_perplexity": 27.408978105092874,
+      "perplexity_change_percent": -3.3040680642697606,
+      "nll_change": -0.033598853330721656
+    },
+    {
+      "corpus": "wikitext103",
+      "scored_tokens": 128033,
+      "pretrained_perplexity": 39.52300233442832,
+      "after_one_epoch_perplexity": 38.7308626357322,
+      "perplexity_change_percent": -2.0042498087400884,
+      "nll_change": -0.020246073653132246
+    },
+    {
+      "corpus": "c4_en",
+      "scored_tokens": 128273,
+      "pretrained_perplexity": 28.985830024558677,
+      "after_one_epoch_perplexity": 28.20983458483259,
+      "perplexity_change_percent": -2.6771544546718706,
+      "nll_change": -0.027136429440130616
+    },
+    {
+      "corpus": "pg19",
+      "scored_tokens": 128000,
+      "pretrained_perplexity": 75.86166270384209,
+      "after_one_epoch_perplexity": 73.93154595679785,
+      "perplexity_change_percent": -2.544258428106516,
+      "nll_change": -0.025771843638843883
+    },
+    {
+      "corpus": "ag_news",
+      "scored_tokens": 130450,
+      "pretrained_perplexity": 54.629464033607064,
+      "after_one_epoch_perplexity": 51.773324115519074,
+      "perplexity_change_percent": -5.228204172625494,
+      "nll_change": -0.05369833336216745
+    }
+  ],
+  "checks": {
+    "pretrained": {
+      "tensor_hash": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+      "fineweb_test_loss_error": 6.5645517599577374e-06,
+      "historical_fineweb_loss": 3.3444760456741314,
+      "current_fineweb_loss": 3.3444694811223714,
+      "same_gpu_as_historical_run": false,
+      "historical_loss_within_tolerance": true,
+      "direct_nll_max_error": 0.0
+    },
+    "fineweb_epoch1": {
+      "tensor_hash": "a7fd9207463f2130ee72db9cfc2481dd54f7d4a6cd7f8b22f45ef93e999057bd",
+      "fineweb_test_loss_error": 3.4233732284505436e-06,
+      "historical_fineweb_loss": 3.310874051164878,
+      "current_fineweb_loss": 3.3108706277916498,
+      "same_gpu_as_historical_run": false,
+      "historical_loss_within_tolerance": true,
+      "direct_nll_max_error": 0.0
+    }
+  },
+  "restoration": {
+    "run_id": "20261106T171304Z-cross-corpus-evaluation",
+    "repos": {
+      "model": "Bill11235813/iib-model-collapse-week1-models",
+      "dataset": "Bill11235813/iib-model-collapse-week1-data"
+    },
+    "revisions": {
+      "model": "2364d8f96de10d7e1959adc66f60dcd97e463bc0",
+      "dataset": "9bf19933f94c4a429b506eb8a4e3929afa91a868"
+    },
+    "artifact_index_sha256": "599fe78e71f18e5e5da567992c452332cc428baa61dda7293ade96629d8a16b8",
+    "indexed_files": 33,
+    "verified_files": 33,
+    "verified_bytes": 24115389,
+    "metadata_only": false,
+    "scope": "full",
+    "preserved_control_files": {},
+    "operational_files_outside_immutable_index": [
+      "events.jsonl",
+      "status.json",
+      "watchdog_exit.json"
+    ],
+    "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261106T171304Z-cross-corpus-evaluation"
+  },
+  "conservative_compute_usd": 0.08299069704820984,
+  "temporary_storage_usd": 0.00020233421379209837,
+  "evaluation_cap_usd": 0.5,
+  "provider_shutdown": {
+    "provider_pod_id": "wzsib789g00q4m",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Fri Nov 06 2026 17:25:25 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1793985925.0,
+    "observed_at": 1793985928.9881582
+  },
+  "temporary_pods_removed": [
+    "5338mkb41egjhy",
+    "wzsib789g00q4m"
+  ],
+  "temporary_volume_removed": "3zpshkz9hh",
+  "first_attempt": "Cross-GPU historical NLL reproduction check failed. Preserved diagnostic, corrected cross-GPU calibration handling, retried on RTX 4090.",
+  "historical_resources_preserved": true,
+  "report": "reports/20261106T171304Z-cross-corpus-evaluation/report.md",
+  "offline_tests": {
+    "passed": 414,
+    "failures": 0,
+    "xml_sha256": "69b1dc59b2b6d50120e80a6e29c0b74f1c543b00cba740fa7ef20b9fa6e87716"
+  },
+  "runtime_identity_unchanged": true,
+  "final_provider_inventory_verified": {
+    "no_active_compute": true,
+    "task_temporary_pods_absent": true,
+    "temporary_volume_absent": true,
+    "historical_pods_present": [
+      "xf5ml3no72cg0z",
+      "0kj0h4jzxtkrbi",
+      "faocwszff0eaq6",
+      "aa1rxwnq8uwyss",
+      "0quyi2z2jv8vd6",
+      "m3s3z9i92lvdx9",
+      "itwdnizndn5hws",
+      "5h4prisj4todis"
+    ]
+  }
+}

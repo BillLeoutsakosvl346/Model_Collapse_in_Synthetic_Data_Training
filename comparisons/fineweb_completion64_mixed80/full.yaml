@@ -1,0 +1,83 @@
+model: facebook/opt-125m
+model_revision: 27dcfa74d334bc871f3234de431e71c6eeba5dd6
+dataset: HuggingFaceFW/fineweb-edu
+dataset_revision: 87f09149ef4734204d70ed1d046ddc9ca3f2b8f9
+dataset_config: sample-10BT
+dataset_files:
+- sample/10BT/000_00000.parquet
+- sample/10BT/001_00000.parquet
+- sample/10BT/002_00000.parquet
+- sample/10BT/003_00000.parquet
+- sample/10BT/004_00000.parquet
+- sample/10BT/005_00000.parquet
+- sample/10BT/006_00000.parquet
+- sample/10BT/007_00000.parquet
+- sample/10BT/008_00000.parquet
+- sample/10BT/009_00000.parquet
+- sample/10BT/010_00000.parquet
+- sample/10BT/011_00000.parquet
+- sample/10BT/012_00000.parquet
+- sample/10BT/013_00000.parquet
+shuffle_buffer: 10000
+seed: 42
+learning_rate: 5.0e-06
+min_learning_rate: 1.0e-06
+weight_decay: 0.01
+precision: bf16
+required_gpu: NVIDIA RTX PRO 4000 Blackwell
+required_image: runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404
+workflow: completion_comparison
+kind: full
+experiment_id: fineweb_completion64_mixed80
+generations: 10
+full_cycles: 10
+full_train_pairs: 10000
+train_pairs_per_cycle: 10000
+evaluation_pairs: null
+epochs: 1
+checkpoint_selection: final_epoch
+initialization: continued
+optimizer_policy: carry_across_cycles
+max_sequence_length: 129
+microbatch: 32
+effective_batch: 128
+eval_batch: 32
+generation_batch: 32
+generation_shard: 256
+block_size: 64
+new_tokens: 64
+num_beams: 5
+repetition_penalty: 1.0
+probe_count: 256
+network_volume_gb: 60
+storage_backend: network
+secondary_corpora:
+- fineweb_edu
+- wikitext103
+- c4_en
+- pg19
+- ag_news
+corpus_bank:
+  repo: Bill11235813/iib-model-collapse-week1-data
+  revision: fa7fde7fde7b546d78020b29d1f176965f6404a8
+  path: corpus_banks/cross_corpus_v1-42627bee2ea7
+  manifest_sha256: 5c30545587cdad7497314868cfa10117aedb59d0231f459135b6a97b9f04a275
+required_environment:
+  torch: 2.8.0+cu128
+  transformers: 4.37.2
+  datasets: 3.4.1
+completion_arms:
+- id: mixed80
+  synthetic_fraction: 0.8
+mixture_selection_policy: nested_seedsequence_6401_v1
+prepared_bank:
+  run_id: completion64-bank-4a64334cc9e9224b
+  repos:
+    model: Bill11235813/iib-model-collapse-week1-models
+    dataset: Bill11235813/iib-model-collapse-week1-data
+  revisions:
+    model: 44a68acbee36f23450eef4cba670f221a6d678b9
+    dataset: e331d80522cc5dc64df04f2f21e57b26d8c873bd
+  artifact_index_sha256: 9c312b19903d1a875e78144d2cadcc4fb841d97dc2034923e13153724ef56bbf
+  manifest_sha256: b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89
+  contract: 4a64334cc9e9224be880545aeaea525c4cad0a48179fc7abce0703e12021a0b6

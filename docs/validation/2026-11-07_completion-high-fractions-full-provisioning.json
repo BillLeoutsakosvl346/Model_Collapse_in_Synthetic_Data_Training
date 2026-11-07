@@ -1,0 +1,108 @@
+{
+  "time": 1794064746.4888036,
+  "jobs": [
+    {
+      "run_id": "20261107T150834Z-full-completion64-mixed85",
+      "launch_id": "20261107T150834161926Z",
+      "pod_id": "0ciiothsflf4ik",
+      "volume_id": "b82vo80i1g",
+      "provider_state": "RUNNING",
+      "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+      "data_center": "EU-RO-1",
+      "created_at": 1794064115.4294622,
+      "session_allowance_usd": 2.0090965344275435,
+      "runtime_sha256": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+      "admission_forecast": {
+        "estimated_hours": 2.1465342044705644,
+        "estimated_compute_and_running_storage_usd": 1.5637354656677345,
+        "unique_training_stages": 10,
+        "epochs": 10,
+        "full_generation_stages": 0,
+        "generation_stages": 10,
+        "probe_sets": 11,
+        "training_target_exposures": 6400000,
+        "forecast_margin": 1.5,
+        "generated_training_continuations": 85000,
+        "generated_training_tokens": 5440000,
+        "historical_storage_during_run_usd": 0.12055877038878293,
+        "seven_day_volume_storage_usd": 0.9665753424657535
+      },
+      "gpu_check": {
+        "torch": "2.8.0+cu128",
+        "cuda": true,
+        "bf16": true,
+        "gpu": "NVIDIA RTX PRO 4500 Blackwell"
+      }
+    },
+    {
+      "run_id": "20261107T151427Z-full-completion64-mixed90",
+      "launch_id": "20261107T151427434478Z",
+      "pod_id": "alhrmqkpvmiajn",
+      "volume_id": "tftzsocrpv",
+      "provider_state": "RUNNING",
+      "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+      "data_center": "EU-RO-1",
+      "created_at": 1794064468.517123,
+      "session_allowance_usd": 1.945131660376819,
+      "runtime_sha256": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+      "admission_forecast": {
+        "estimated_hours": 2.2286541490601213,
+        "estimated_compute_and_running_storage_usd": 1.6235592828358527,
+        "unique_training_stages": 10,
+        "epochs": 10,
+        "full_generation_stages": 0,
+        "generation_stages": 10,
+        "probe_sets": 11,
+        "training_target_exposures": 6400000,
+        "forecast_margin": 1.5,
+        "generated_training_continuations": 90000,
+        "generated_training_tokens": 5760000,
+        "historical_storage_during_run_usd": 0.13799338018727525,
+        "seven_day_volume_storage_usd": 0.9665753424657535
+      },
+      "gpu_check": {
+        "torch": "2.8.0+cu128",
+        "cuda": true,
+        "bf16": true,
+        "gpu": "NVIDIA RTX PRO 4500 Blackwell"
+      }
+    },
+    {
+      "run_id": "20261107T151610Z-full-completion64-mixed95",
+      "launch_id": "20261107T151610530305Z",
+      "pod_id": "z1090zdvysy3q8",
+      "volume_id": "jlo0o9gsvx",
+      "provider_state": "RUNNING",
+      "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+      "data_center": "EU-RO-1",
+      "created_at": 1794064571.7614822,
+      "session_allowance_usd": 2.279737936252876,
+      "runtime_sha256": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+      "admission_forecast": {
+        "estimated_hours": 2.516018350894682,
+        "estimated_compute_and_running_storage_usd": 1.8329021356243724,
+        "unique_training_stages": 10,
+        "epochs": 10,
+        "full_generation_stages": 0,
+        "generation_stages": 10,
+        "probe_sets": 11,
+        "training_target_exposures": 6400000,
+        "forecast_margin": 1.5,
+        "generated_training_continuations": 95000,
+        "generated_training_tokens": 6080000,
+        "historical_storage_during_run_usd": 0.17026206374712416,
+        "seven_day_volume_storage_usd": 0.9665753424657535
+      },
+      "gpu_check": {
+        "torch": "2.8.0+cu128",
+        "cuda": true,
+        "bf16": true,
+        "gpu": "NVIDIA RTX PRO 4500 Blackwell"
+      }
+    }
+  ],
+  "three_matching_gpus_running": true,
+  "first_checkpoints_and_backups_verification_pending": true,
+  "handoff_ready": false,
+  "full_launch_authorized": true
+}

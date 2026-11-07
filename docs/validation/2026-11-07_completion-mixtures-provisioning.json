@@ -1,0 +1,60 @@
+{
+  "recorded_at": 1794012162.954296,
+  "run_id": "20261107T004033Z-full-completion64-mixtures",
+  "resources": {
+    "run_id": "20261107T004033Z-full-completion64-mixtures",
+    "launch_id": "20261107T004033623837Z",
+    "kind": "full",
+    "pod_id": "6fgu2hphecnsbe",
+    "volume_id": "ljwf63rdw7",
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1794012034.8500516,
+    "quoted_gpu_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6652671232876711,
+    "compute_hourly_usd": 0.6586506849315067,
+    "volume_hourly_usd": 0.005753424657534247,
+    "network_volume_gb": 60,
+    "volume_created_at": 1794012033.6278393,
+    "session_allowance_usd": 5.693642847543421,
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "code_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+    "starting_balance_usd": 39.2612767457,
+    "remote_root": "/workspace/runs/20261107T004033Z-full-completion64-mixtures",
+    "runtime_sha256": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+    "git_commit": "41959902652229d30cabbc19bc4b3a9ddd3d16bd",
+    "configuration_sha256": "54da1c05d5a594d1e8445974b4f1ccf35f81eab89a30a20894f873f664cbe5ae",
+    "workflow": "completion_comparison",
+    "allocation": "fineweb_completion64_mixtures",
+    "admission_forecast": {
+      "estimated_hours": 3.008033041403991,
+      "estimated_compute_and_running_storage_usd": 1.7401265114861717,
+      "unique_training_stages": 20,
+      "epochs": 20,
+      "full_generation_stages": 0,
+      "generation_stages": 20,
+      "probe_sets": 21,
+      "training_target_exposures": 12800000,
+      "forecast_margin": 1.5,
+      "generated_training_continuations": 70000,
+      "generated_training_tokens": 4480000,
+      "historical_storage_during_run_usd": 2.092499039631278,
+      "seven_day_volume_storage_usd": 0.9665753424657535
+    },
+    "actual_pod_hourly_usd": 0.57,
+    "verified_ssh_direct": {
+      "command": "ssh root@213.173.104.20 -p 20056",
+      "host": "213.173.104.20",
+      "port": 20056,
+      "username": "root"
+    }
+  },
+  "state": "provisioning_startup_verification_pending",
+  "full_training_authorized": true,
+  "authorization": "2026-11-07_completion-mixtures-parallel-full-authorization.json",
+  "protected_run_id": "20261106T193918Z-full-completion64"
+}

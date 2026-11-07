@@ -6,6 +6,8 @@ Cambridge Engineering IIB research with OPT-125M and WikiText-2: recursively gen
 
 | Condition | Scientific difference | Recorded result/status |
 | --- | --- | --- |
+| [Matched FineWeb completions](comparisons/fineweb_real_vs_synthetic_completion64/README.md) | Same fresh prompts, real versus self-generated continuation targets, one epoch per chunk | [Validated handoff](docs/fineweb-completion64-handoff.md); [running comparison](docs/validation/2026-11-06_completion64-full-launch.json) |
+| [FineWeb-Edu real-only pilot](experiments/opt125m_fineweb_edu/fresh_real_one_epoch/README.md) | Fresh documents, one epoch per cycle, continuous AdamW and global cosine schedule | [Completed pilot and shutdown](docs/validation/2026-11-06_fineweb-full-completion-status.json); authored analysis pending |
 | [Pretrained reset](experiments/opt125m_wikitext2/pretrained_reset/README.md) | Reset to original pretrained OPT each cycle | [Week 1 report](reports/20261020T211121Z-full/report.md) |
 | [Continued weights](experiments/opt125m_wikitext2/continued_from_real_s0/README.md) | Continue from the preceding selected checkpoint | [Week 2 report](reports/20261026T192740Z-full-continued/report.md) |
 | [Shared-start reset versus continue](comparisons/shared_s0_s1_reset_vs_continue/README.md) | Same S0/S1/D2; fixed-S0 reset versus continued weights | [Matched Week 2 report](reports/20261027T211852Z-full-reset-s0/report.md) |

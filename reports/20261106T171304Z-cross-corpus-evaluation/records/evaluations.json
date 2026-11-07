@@ -1,0 +1,106 @@
+{
+  "pretrained": {
+    "fineweb_edu": {
+      "nll_sum": 3275302.5077832798,
+      "scored_tokens": 979319,
+      "loss": 3.3444694811223714,
+      "perplexity": 28.345533836222273,
+      "seconds": 8.994706067023799,
+      "mean_sequence_perplexity": 60.41194790454458,
+      "std_sequence_perplexity": 626.1649952287044,
+      "context_tokens": 512
+    },
+    "wikitext103": {
+      "nll_sum": 470762.3406530554,
+      "scored_tokens": 128033,
+      "loss": 3.6768828399948092,
+      "perplexity": 39.52300233442832,
+      "seconds": 0.9713460560888052,
+      "mean_sequence_perplexity": 56.42152516056023,
+      "std_sequence_perplexity": 114.29032862303619,
+      "context_tokens": 512
+    },
+    "c4_en": {
+      "nll_sum": 431870.4459492214,
+      "scored_tokens": 128273,
+      "loss": 3.366807090730094,
+      "perplexity": 28.985830024558677,
+      "seconds": 1.5040657268837094,
+      "mean_sequence_perplexity": 56.97646800378757,
+      "std_sequence_perplexity": 166.36554594060928,
+      "context_tokens": 512
+    },
+    "pg19": {
+      "nll_sum": 554100.6661219914,
+      "scored_tokens": 128000,
+      "loss": 4.3289114540780576,
+      "perplexity": 75.86166270384209,
+      "seconds": 0.9026477988809347,
+      "mean_sequence_perplexity": 84.07544989693797,
+      "std_sequence_perplexity": 33.13422616149622,
+      "context_tokens": 512
+    },
+    "ag_news": {
+      "nll_sum": 521874.7963142322,
+      "scored_tokens": 130450,
+      "loss": 4.00057337151577,
+      "perplexity": 54.629464033607064,
+      "seconds": 8.565153021132573,
+      "mean_sequence_perplexity": 75.84426741568453,
+      "std_sequence_perplexity": 69.84097127942229,
+      "context_tokens": 512
+    }
+  },
+  "fineweb_epoch1": {
+    "fineweb_edu": {
+      "nll_sum": 3242398.5123382905,
+      "scored_tokens": 979319,
+      "loss": 3.3108706277916498,
+      "perplexity": 27.408978105092874,
+      "seconds": 8.537830779096112,
+      "mean_sequence_perplexity": 38.13087449426241,
+      "std_sequence_perplexity": 175.21191908851452,
+      "context_tokens": 512
+    },
+    "wikitext103": {
+      "nll_sum": 468170.17510502395,
+      "scored_tokens": 128033,
+      "loss": 3.656636766341677,
+      "perplexity": 38.7308626357322,
+      "seconds": 0.9234434829559177,
+      "mean_sequence_perplexity": 52.79280624731621,
+      "std_sequence_perplexity": 89.60218508189239,
+      "context_tokens": 512
+    },
+    "c4_en": {
+      "nll_sum": 428389.5747356475,
+      "scored_tokens": 128273,
+      "loss": 3.3396706612899636,
+      "perplexity": 28.20983458483259,
+      "seconds": 1.4726302400231361,
+      "mean_sequence_perplexity": 48.24669413824054,
+      "std_sequence_perplexity": 105.14132792346943,
+      "context_tokens": 512
+    },
+    "pg19": {
+      "nll_sum": 550801.8701362193,
+      "scored_tokens": 128000,
+      "loss": 4.303139610439214,
+      "perplexity": 73.93154595679785,
+      "seconds": 0.8977396308910102,
+      "mean_sequence_perplexity": 80.88442127223743,
+      "std_sequence_perplexity": 29.377010386338142,
+      "context_tokens": 512
+    },
+    "ag_news": {
+      "nll_sum": 514869.8487271375,
+      "scored_tokens": 130450,
+      "loss": 3.946875038153603,
+      "perplexity": 51.773324115519074,
+      "seconds": 8.555002219974995,
+      "mean_sequence_perplexity": 70.62410430341417,
+      "std_sequence_perplexity": 63.425931044554986,
+      "context_tokens": 512
+    }
+  }
+}

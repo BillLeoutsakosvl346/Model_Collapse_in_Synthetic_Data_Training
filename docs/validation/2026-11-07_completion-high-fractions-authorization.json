@@ -1,0 +1,20 @@
+{
+  "authorized_at": 1794059269.3446083,
+  "instruction": "Set up, test and launch 85%, 90%, 95% synthetic FineWeb conditions on three matching RTX PRO 4000 Blackwell GPUs in parallel.",
+  "cumulative_ceiling_usd": 64.03635289829083,
+  "accrued_at_baseline_usd": 49.9547391597312,
+  "global_reserve_usd": 2,
+  "new_campaign_cap_usd": 11.75,
+  "validation_cap_usd": 0.5,
+  "bulk_backup_volume_gb": 80,
+  "working_volume_gb_per_condition": 60,
+  "use_existing_credit_only": true,
+  "historical_resources_preserved": true,
+  "s3_credential_confirmation": "User approved the specific key creation at action time",
+  "credential_name": "iib-high-fraction-backups-20261107",
+  "credential_saved_to": "ignored .env",
+  "matching_alternative_gpu_authorized": true,
+  "selected_gpu": "NVIDIA RTX PRO 4500 Blackwell",
+  "quoted_gpu_hourly_usd": 0.72,
+  "execution_difference": "Matching 4500 hardware for all three new fractions; prior completed fractions used 4000. Same precision, image, model, bank and scientific settings. Numerical equivalence across hardware is not assumed."
+}

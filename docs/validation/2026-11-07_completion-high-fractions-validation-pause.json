@@ -1,0 +1,70 @@
+{
+  "time": 1794061828.034098,
+  "runs": [
+    {
+      "run_id": "20261107T140623Z-smoke-completion64-mixed85",
+      "pod_id": "9y9roe7lmxkjba",
+      "volume_id": "pd3pwh2m57",
+      "provider_state": "EXITED",
+      "watchdog_exit": {
+        "reason": "budget_exhausted",
+        "time": 1794061245.9578938,
+        "pod_id": "9y9roe7lmxkjba"
+      },
+      "provider_shutdown": {
+        "provider_pod_id": "9y9roe7lmxkjba",
+        "provider_status": "EXITED",
+        "field": "lastStatusChange",
+        "value": "Exited by user: Sat Nov 07 2026 14:20:48 GMT+0000 (Coordinated Universal Time)",
+        "provider_shutdown_epoch": 1794061248.0,
+        "observed_at": 1794061821.7407038
+      },
+      "recovery_scope": "Training artifacts preserved; cold restoration and GPU certificate incomplete."
+    },
+    {
+      "run_id": "20261107T141453Z-smoke-completion64-mixed90",
+      "pod_id": "psihil8242szet",
+      "volume_id": "oihc6m86w1",
+      "provider_state": "EXITED",
+      "watchdog_exit": {
+        "reason": "budget_exhausted",
+        "time": 1794061520.9362748,
+        "pod_id": "psihil8242szet"
+      },
+      "provider_shutdown": {
+        "provider_pod_id": "psihil8242szet",
+        "provider_status": "EXITED",
+        "field": "lastStatusChange",
+        "value": "Exited by user: Sat Nov 07 2026 14:25:23 GMT+0000 (Coordinated Universal Time)",
+        "provider_shutdown_epoch": 1794061523.0,
+        "observed_at": 1794061824.3764236
+      },
+      "recovery_scope": "Training artifacts preserved; cold restoration and GPU certificate incomplete."
+    },
+    {
+      "run_id": "20261107T141842Z-smoke-completion64-mixed95",
+      "pod_id": "7h1k2qzap6pf9j",
+      "volume_id": "h5fe6huiug",
+      "provider_state": "EXITED",
+      "watchdog_exit": {
+        "reason": "budget_exhausted",
+        "time": 1794061747.4413638,
+        "pod_id": "7h1k2qzap6pf9j"
+      },
+      "provider_shutdown": {
+        "provider_pod_id": "7h1k2qzap6pf9j",
+        "provider_status": "EXITED",
+        "field": "lastStatusChange",
+        "value": "Exited by user: Sat Nov 07 2026 14:29:09 GMT+0000 (Coordinated Universal Time)",
+        "provider_shutdown_epoch": 1794061749.0,
+        "observed_at": 1794061826.7369037
+      },
+      "recovery_scope": "Training artifacts preserved; cold restoration and GPU certificate incomplete."
+    }
+  ],
+  "all_compute_stopped": true,
+  "validation_conservative_accrued_usd": 0.4935736268734968,
+  "historical_setup_conservative_accrued_usd": 2.7562164867846195,
+  "pending_user_input": "Raise setup to USD 3.50 and validation to USD 0.90; global and campaign ceilings unchanged.",
+  "full_jobs_unlaunched": true
+}

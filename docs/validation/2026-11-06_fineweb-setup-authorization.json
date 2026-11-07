@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-06",
+  "condition": "opt125m_fineweb_edu_fresh_real_one_epoch",
+  "authorization": "User explicitly requested implementation and validation of the accepted FineWeb-Edu pilot plan.",
+  "setup_only": true,
+  "full_run_authorized": false,
+  "combined_new_validation_cap_usd": 0.5,
+  "existing_total_setup_cap_usd": 3.0,
+  "cumulative_ceiling_usd": 50.0,
+  "reserve_usd": 2.0,
+  "credit_purchase_authorized": false,
+  "validation_profile": {"cycles": 3, "epochs_per_cycle": 1, "source_tokens_per_cycle": 16384, "validation_documents": 64, "test_documents": 64},
+  "full_profile": {"cycles": 10, "epochs_per_cycle": 1, "source_tokens_per_cycle": 640000, "validation_documents": 1000, "test_documents": 1000},
+  "dataset_revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+  "model_revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6"
+}

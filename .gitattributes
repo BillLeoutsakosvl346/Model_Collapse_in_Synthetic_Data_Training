@@ -1,4 +1,9 @@
 # Preserve cloud-record bytes so artifact SHA-256 hashes also match on Windows.
+# FineWeb publications retain exact original CSV/JSON/figure/source bytes.
+/reports/20261106*/** -text whitespace=cr-at-eol
+/reports/20261107*/** -text whitespace=cr-at-eol
+/docs/validation/2026-11-06*.json -text whitespace=cr-at-eol
+/docs/validation/2026-11-07*.json -text whitespace=cr-at-eol
 /reports/20261020T211121Z-full/records/** -text
 /reports/20261026T182856Z-smoke-continued/records/** -text
 /reports/20261026T192740Z-full-continued/records/** -text

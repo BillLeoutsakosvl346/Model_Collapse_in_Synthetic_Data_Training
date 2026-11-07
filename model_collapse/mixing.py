@@ -128,7 +128,7 @@ def certificate_name(c, runtime=None):
     if runtime is not None or workflow == "mixed_campaign":
         from .common import digest
         from .workflow.profiles import protocol_fingerprint
-        label = workflow if workflow in ("paired", "mixed_campaign") else c.get("initialization", "fresh_base")
+        label = workflow if workflow in ("paired", "mixed_campaign", "fresh_real", "completion_comparison") else c.get("initialization", "fresh_base")
         if not workflow and mixture_enabled(c):
             label += "_mixed"
         profile = protocol_fingerprint(c)
@@ -146,4 +146,4 @@ def certificate_name(c, runtime=None):
 def certificate_candidates(c, runtime):
     """Legacy records are fallback locations only; every read still requires strict acceptance."""
     exact = certificate_name(c, runtime)
-    return (exact,) if c.get("workflow") == "mixed_campaign" else (exact, certificate_name(c))
+    return (exact,) if c.get("workflow") in ("mixed_campaign", "fresh_real", "completion_comparison") else (exact, certificate_name(c))

@@ -1,0 +1,14 @@
+{
+  "recorded_utc": "2026-11-06T14:59:23.432109+00:00",
+  "reason": "Accepted RTX 4000 Ada stock disappeared before provisioning. Initial launch plus six bounded retries and a pinned RTX 3090 smoke attempt found no matching Standard-network-volume capacity before resource creation.",
+  "authorization_scope": "Operational GPU fallback for the user-authorized full pilot, within the existing USD 50 ceiling, USD 2 reserve and combined USD 0.50 FineWeb setup-validation cap. No credit purchases or payment changes.",
+  "fallback_validation_run_id": "20261106T145728Z-smoke-fresh-real",
+  "pod_id": "55a5iv5effly73",
+  "volume_id": "6qxqco5uql",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "gpu_hourly_usd": 0.57,
+  "runtime_sha256": "13ddfea86bc9a87377bb08e81f1a43377c3e8767cf3965a3da34561dcf3cc0c7",
+  "science_changes": [],
+  "hardware_acceptance": "Pending actual production-workflow smoke validation on the selected GPU before full training.",
+  "full_pilot_launched": false
+}
