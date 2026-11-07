@@ -1,6 +1,6 @@
 # Current recorded state
 
-Snapshot refreshed after completion verification on 7 November 2026. **Latest verified high-fraction completion: 7 November, 17:26 UTC/London.** Earlier observations are preserved in the [byte-exact chronology](history/2026-11-07_pre-cleanup-current-state.txt).
+Snapshot refreshed after 99% full-run startup verification on 7 November 2026. Earlier observations are preserved in the [byte-exact chronology](history/2026-11-07_pre-cleanup-current-state.txt).
 
 ## Authorized work and limits
 
@@ -10,6 +10,7 @@ Snapshot refreshed after completion verification on 7 November 2026. **Latest ve
 | High-fraction campaign | USD 11.75 including its separately reserved storage |
 | Total setup allowance | USD 3.50 |
 | Combined high-fraction validation cap | USD 0.90; recorded conservative spend USD 0.7843 |
+| Standalone 99% condition | USD 5 allocation including USD 2 reserve; USD 0.30 combined validation cap; accepted validation USD 0.21584 |
 | Parallel exception | Only the three named 85/90/95% FineWeb jobs, matching RTX PRO 4500 Blackwell |
 | Cleanup task | Local organisation and offline verification; no provisioning, paid validation, resource deletion or deployment |
 
@@ -27,7 +28,11 @@ The [completion receipt](validation/2026-11-07_completion-high-fractions-complet
 
 Preserve all three working volumes and shared 80 GB S3 store `mng23iliig`. Worker runtime is `eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f`; [host sources](validation/2026-11-07_completion-high-fractions-host-sources.json) are separately pinned. The [handoff](fineweb-high-fractions-handoff.md) records accepted protocols and operations. The [cleanup verification](validation/2026-11-07_repository-organisation.json) records 576 passing offline tests and a **new, offline-tested candidate runtime**; they do not modify deployed bundles or inherit their GPU acceptance.
 
-The user subsequently authorized standalone **99% synthetic** setup, GPU acceptance and full launch. Preparation and offline verification are in progress; no 99% GPU Pod has been launched yet. Its [authorization](validation/2026-11-07_completion-mixed99-authorization.json) allocates USD 5 including USD 2 reserved and at most USD 0.30 validation, within the unchanged cumulative/setup ceilings. The new [30 GB backup volume](validation/2026-11-07_completion-mixed99-backup-volume.json) is `6spnjhl8sv`; preserve it and all historical resources.
+The user subsequently authorized standalone **99% synthetic** setup, GPU acceptance and full launch. Offline verification passed 580 tests and independent review. [GPU acceptance](validation/2026-11-07_completion-mixed99-setup.json) `20261107T180907Z-smoke-completion64-mixed99` passed all sixteen checks, including three terminal epochs, exact mixture reconstruction, optimizer/model handoffs, interrupted recovery, detached progress, cold restoration of 157 files / 4.51 GB with identical held-out loss, and actual watchdog/provider shutdown. Temporary Pod `2qun5v3w6c3yqa` and volume `w657u28bn3` were recovered and removed; conservative acceptance cost USD 0.21584. Accepted runtime is `68033f3641fff5dd51ab10b7f32639ed42c0f7d3251c0ccd568cdda6a5ec6b11`, protocol `28a50992262d1057fab089d43cb7e64273a58f4652fbba3b4a3636cfc91d1a3b`.
+
+Full run **`20261107T183326Z-full-completion64-mixed99`** launched at 18:33 UTC/London on Pod `wbsu8iw7f32vi3`, new 60 GB volume `6ii1cd7qbw`, matching RTX PRO 4500 in EU-CZ-1 at USD 0.72/hour. The [full startup receipt](validation/2026-11-07_completion-mixed99-full-launch.json) verifies RUNNING provider state, detached progress across SSH disconnection, advancing supervisor/watchdog heartbeats, and the first complete stage with a downloaded/checksummed pinned backup index. The stage used exactly 9,900 synthetic / 100 real pairs, 640,000 scored targets and 79 updates; test PPL changed 29.176318 → 43.564475. Cycle 2 uses the next frozen prompt chunk and the selected cycle-1 checkpoint as its generator. Avoid duplicate launches. A preceding capacity-race attempt created no Pod and its empty volume was [removed and reconciled](validation/2026-11-07_completion-mixed99-capacity-retry.json).
+
+Its [authorization](validation/2026-11-07_completion-mixed99-authorization.json) allocates USD 5 including USD 2 reserved and at most USD 0.30 validation, within the unchanged cumulative/setup ceilings. The new [30 GB backup volume](validation/2026-11-07_completion-mixed99-backup-volume.json) is `6spnjhl8sv`; preserve it and all historical resources. The full-GPU benchmark forecasts 2.32 hours / USD 1.69 compute and running storage, approximately 20:53 UTC finish; seven days of the new working and backup volumes total USD 1.45. The independent funded deadline is 21:16 UTC on 7 November. Full completion, bulk restoration and final analysis are not yet claimed.
 
 ## Completed work and recovery obligations
 

@@ -9,7 +9,7 @@ conditions:
     workflow: completion_comparison
     logical_arm: mixed99
     synthetic_fraction: 0.99
-    state: prepared_offline
+    state: running
     definition: ../comparisons/fineweb_completion64_mixed99/README.md
     comparison_config: ../comparisons/fineweb_completion64_mixed99/full.yaml
     smoke_config: ../comparisons/fineweb_completion64_mixed99/smoke.yaml
@@ -22,8 +22,14 @@ conditions:
     checkpoint_selection: final_epoch
     mixture_selection_policy: nested_seedsequence_6401_v1
     required_gpu: NVIDIA RTX PRO 4500 Blackwell
-    acceptance: pending_actual_gpu
-    full_experiment_launched: false
+    acceptance: ../docs/validation/2026-11-07_completion-mixed99-setup.json
+    acceptance_run_id: 20261107T180907Z-smoke-completion64-mixed99
+    accepted_runtime_sha256: 68033f3641fff5dd51ab10b7f32639ed42c0f7d3251c0ccd568cdda6a5ec6b11
+    accepted_protocol_fingerprint: 28a50992262d1057fab089d43cb7e64273a58f4652fbba3b4a3636cfc91d1a3b
+    full_experiment_launched: true
+    full_comparison_run_id: 20261107T183326Z-full-completion64-mixed99
+    logical_run_id: 20261107T183326Z-full-completion64-mixed99-mixed99
+    full_launch_record: ../docs/validation/2026-11-07_completion-mixed99-full-launch.json
     authorization: ../docs/validation/2026-11-07_completion-mixed99-authorization.json
 
   fineweb_completion_mixed85_one_epoch:

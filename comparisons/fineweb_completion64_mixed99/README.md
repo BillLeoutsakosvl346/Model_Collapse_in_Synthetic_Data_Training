@@ -17,7 +17,9 @@ Pin RTX PRO 4500 Blackwell and the same official image to match the 85/90/95% ru
 
 This is a standalone condition. The old three-job parallel authorization and its GPU certificates do not certify it. The dedicated 99% authorization is recorded separately. The user subsequently authorized paid validation and full launch. Actual acceptance/launch status belongs in current state and dated receipts. The reorganised runtime also needs its own GPU acceptance. Per-session caps in the configuration are limits, not spending authorization.
 
-After successful operational validation/admission:
+The [GPU acceptance](../../docs/validation/2026-11-07_completion-mixed99-setup.json) passed all sixteen checks, including cold restoration and shutdown. Validation cost USD 0.21584; its temporary Pod/volume were removed. The separately authorized [full run](../../docs/validation/2026-11-07_completion-mixed99-full-launch.json) is now running as `20261107T183326Z-full-completion64-mixed99`. Its first stage, exact mixture, pinned private index and cycle-2 generator handoff are verified. See [current state](../../docs/current-state.md) before any operation; do not duplicate an active run.
+
+Recorded validation/launch entry points:
 
 ```powershell
 python -m scripts.operations.validate_high_fraction_completions --percent 99
