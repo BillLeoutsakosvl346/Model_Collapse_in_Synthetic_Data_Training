@@ -4,12 +4,36 @@ description: "Scientific conditions and their recorded runs; week labels are pre
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
 conditions:
+  fineweb_completion_mixed99p9_one_epoch:
+    name: "OPT-125M / FineWeb-Edu: 99.9% self-generated continuation targets"
+    workflow: completion_comparison
+    logical_arm: mixed99p9
+    synthetic_fraction: 0.999
+    state: prepared_offline
+    definition: ../comparisons/fineweb_completion64_mixed99p9/README.md
+    comparison_config: ../comparisons/fineweb_completion64_mixed99p9/full.yaml
+    smoke_config: ../comparisons/fineweb_completion64_mixed99p9/smoke.yaml
+    starting_weights: original_pretrained
+    synthetic_generator: own_preceding_selected_checkpoint
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    smoke_pairs_per_cycle: 1000
+    optimizer_policy: carry_across_cycles
+    checkpoint_selection: final_epoch
+    mixture_selection_policy: nested_seedsequence_6401_v1
+    required_gpu: NVIDIA RTX PRO 4500 Blackwell
+    acceptance: pending_actual_gpu
+    backup_volume_id: vx78hsoirz
+    authorization: ../docs/validation/2026-11-07_completion-mixed99p9-authorization.json
+    full_experiment_launched: false
+
   fineweb_completion_mixed99_one_epoch:
     name: "OPT-125M / FineWeb-Edu: 99% self-generated continuation targets"
     workflow: completion_comparison
     logical_arm: mixed99
     synthetic_fraction: 0.99
-    state: running
+    state: completed
     definition: ../comparisons/fineweb_completion64_mixed99/README.md
     comparison_config: ../comparisons/fineweb_completion64_mixed99/full.yaml
     smoke_config: ../comparisons/fineweb_completion64_mixed99/smoke.yaml
@@ -30,6 +54,9 @@ conditions:
     full_comparison_run_id: 20261107T183326Z-full-completion64-mixed99
     logical_run_id: 20261107T183326Z-full-completion64-mixed99-mixed99
     full_launch_record: ../docs/validation/2026-11-07_completion-mixed99-full-launch.json
+    completion_record: ../docs/validation/2026-11-07_completion-mixed99-completion-analysis.json
+    final_test_perplexity: 82.67730137818421
+    final_validation_perplexity: 81.75334747170915
     authorization: ../docs/validation/2026-11-07_completion-mixed99-authorization.json
 
   fineweb_completion_mixed85_one_epoch:

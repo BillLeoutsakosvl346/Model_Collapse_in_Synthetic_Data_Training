@@ -1,4 +1,4 @@
-"""Launch named high-fraction conditions; 99% is a separately admitted standalone job."""
+"""Launch named high-fraction conditions with separate allocation and acceptance."""
 from __future__ import annotations
 
 import argparse
@@ -6,16 +6,32 @@ import json
 import os
 
 
+PROFILES = {85: ("mixed85", .85), 90: ("mixed90", .90), 95: ("mixed95", .95),
+            99: ("mixed99", .99), 99.9: ("mixed99p9", .999)}
+
+
+def profile(percent):
+    if isinstance(percent, bool) or percent not in PROFILES:
+        raise ValueError("Only the named high-fraction conditions are supported")
+    return PROFILES[percent]
+
+
+def parse_percent(value):
+    number = float(value)
+    if number not in PROFILES:
+        raise argparse.ArgumentTypeError("Choose 85, 90, 95, 99 or 99.9 percent")
+    return int(number) if number.is_integer() else number
+
+
 def launch_one(percent, *, smoke=False, resume_id=None):
     from model_collapse import remote
     from model_collapse.common import PROJECT, config
     from model_collapse.workflow.completion import allocation_id
-    if percent not in (85, 90, 95, 99):
-        raise ValueError("Only the named high-fraction conditions are supported")
+    name, fraction = profile(percent)
     kind = "smoke" if smoke else "full"
-    path = PROJECT / f"comparisons/fineweb_completion64_mixed{percent}/{kind}.yaml"
+    path = PROJECT / f"comparisons/fineweb_completion64_{name}/{kind}.yaml"
     settings = config(path)
-    if settings["completion_arms"] != [{"id": f"mixed{percent}", "synthetic_fraction": percent / 100}]:
+    if settings["completion_arms"] != [{"id": name, "synthetic_fraction": fraction}]:
         raise RuntimeError("Condition configuration differs from its named ratio")
     existing = [entry for entry in remote.ledger()["launches"]
                 if entry.get("allocation") == allocation_id(settings) and entry.get("kind") == kind]
@@ -56,7 +72,7 @@ def main():
     if os.name == "nt":
         os.environ.setdefault("HF_HUB_CACHE", r"C:\hf")
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--percent", type=int, choices=(85, 90, 95, 99))
+    parser.add_argument("--percent", type=parse_percent, choices=PROFILES)
     parser.add_argument("--smoke", action="store_true")
     args = parser.parse_args()
     # Provision serially to keep registry and ledger admission atomic; all

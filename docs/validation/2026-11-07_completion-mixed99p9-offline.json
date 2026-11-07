@@ -1,0 +1,36 @@
+{
+  "checked_at": 1794086491.311035,
+  "full_suite_before_graph_label_fix": {
+    "passed": 607,
+    "warnings": 4,
+    "seconds": 431.09
+  },
+  "focused_after_graph_label_fix": {
+    "passed": 112,
+    "seconds": 26.46
+  },
+  "final_config_scope_checks_passed": 28,
+  "repository_checks": {
+    "configs": 44,
+    "publication_manifests": 20,
+    "passed": true
+  },
+  "full_configuration_sha256": "761df308bc57930418267128901530f7325b898b2c7debd4b0d014a48bf37385",
+  "smoke_configuration_sha256": "26de3adf5baa97599427df7a3052f602db66ab8feafe0254fe45cf6d9a7f74e8",
+  "protocol_fingerprint": "e349373087bdc1a3f079b41480e8f75b8ddc2792ac86238a6e4787e2306ce776",
+  "full_counts": {
+    "real": 10,
+    "synthetic": 9990,
+    "scored_targets": 640000
+  },
+  "smoke_counts": {
+    "real": 1,
+    "synthetic": 999,
+    "cycles": 3
+  },
+  "graph_labels": "99.9% is distinct from 100%",
+  "gpu_acceptance": "pending",
+  "private_backup_probe": "passed; dedicated 30 GB store admits 19.89 GB plus 3 GB margin",
+  "review": "Manual diff review; no sub-agent requested for this condition",
+  "cumulative_ceiling_unchanged": true
+}

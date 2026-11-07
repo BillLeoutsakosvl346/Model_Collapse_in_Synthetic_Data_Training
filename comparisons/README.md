@@ -2,6 +2,7 @@
 
 | Comparison | Shared beginning | Deliberate difference | Report |
 | --- | --- | --- | --- |
+| [99.9% FineWeb synthetic targets](fineweb_completion64_mixed99p9/README.md) | Same pretrained OPT and frozen ten-chunk bank | 9,990 own-checkpoint synthetic / 10 real targets per cycle; 1,000-pair smoke represents both sources | Setup and launch authorized; offline checks, backup placement and GPU acceptance pending |
 | [99% FineWeb synthetic targets](fineweb_completion64_mixed99/README.md) | Same pretrained OPT and frozen ten-chunk bank | 9,900 own-checkpoint synthetic / 100 real targets per cycle; match RTX PRO 4500 | [GPU acceptance](../docs/validation/2026-11-07_completion-mixed99-setup.json); current launch state in [current state](../docs/current-state.md) |
 | [85%](fineweb_completion64_mixed85/README.md), [90%](fineweb_completion64_mixed90/README.md), [95%](fineweb_completion64_mixed95/README.md) FineWeb synthetic targets | Same original pretrained OPT and frozen ten-chunk completion bank | Each condition replaces its own selected targets using its preceding checkpoint; three matching GPU jobs | [Validation and operations](../docs/fineweb-high-fractions-handoff.md) |
 | [FineWeb continuation mixtures](fineweb_completion64_mixtures/README.md) | Original pretrained OPT, same ten fresh chunks and held-out continuations | Replace 50% or 20% of targets using each condition's preceding checkpoint | [Setup handoff](../docs/fineweb-completion-mixtures-handoff.md) |

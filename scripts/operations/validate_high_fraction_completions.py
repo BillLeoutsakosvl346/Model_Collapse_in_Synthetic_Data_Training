@@ -6,7 +6,7 @@ import os
 import time
 from pathlib import Path
 
-from scripts.operations.launch_high_fraction_completions import launch_one
+from scripts.operations.launch_high_fraction_completions import launch_one, profile, parse_percent, PROFILES
 
 
 def validate_one(percent, resume_id=None):
@@ -108,7 +108,7 @@ def finalize_validation(percent, resources):
         'checks': certificate['checks'], 'remote_validation': read_json(root / 'remote_validation.json'),
         'cleanup': cleanup, 'time': now(),
         'cost_usd_conservative': remote.campaign_accrued(remote.ledger(), resources['acceptance_campaign'])}
-    atomic_json(PROJECT / f'docs/validation/2026-11-07_completion-mixed{percent}-setup.json', receipt)
+    atomic_json(PROJECT / f'docs/validation/2026-11-07_completion-{profile(percent)[0]}-setup.json', receipt)
     print(json.dumps({'validated': percent, 'run_id': run_id, 'cost': receipt['cost_usd_conservative'], 'cleanup': cleanup}), flush=True)
     return receipt
 
@@ -117,7 +117,7 @@ def main():
     import argparse
     os.environ.setdefault('HF_HUB_CACHE', r'C:\hf' if os.name == 'nt' else '/workspace/hf-cache/hub')
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--percent', type=int, choices=(85, 90, 95, 99))
+    parser.add_argument('--percent', type=parse_percent, choices=PROFILES)
     parser.add_argument('--resume', metavar='RUN_ID')
     args = parser.parse_args()
     for percent in ([args.percent] if args.percent else [85, 90, 95]):

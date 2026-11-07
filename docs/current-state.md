@@ -1,6 +1,6 @@
 # Current recorded state
 
-Snapshot refreshed after 99% full-run startup verification on 7 November 2026. Earlier observations are preserved in the [byte-exact chronology](history/2026-11-07_pre-cleanup-current-state.txt).
+Snapshot refreshed after 99% completion verification and nine-fraction analysis on 7 November 2026, 21:01 UTC/London. Earlier observations are preserved in the [byte-exact chronology](history/2026-11-07_pre-cleanup-current-state.txt).
 
 ## Authorized work and limits
 
@@ -8,15 +8,18 @@ Snapshot refreshed after 99% full-run startup verification on 7 November 2026. E
 | --- | --- |
 | Cumulative spending ceiling | USD 64.03635, existing credit only |
 | High-fraction campaign | USD 11.75 including its separately reserved storage |
-| Total setup allowance | USD 3.50 |
+| Total setup allowance | USD 3.85, explicitly increased for the 99.9% validation |
 | Combined high-fraction validation cap | USD 0.90; recorded conservative spend USD 0.7843 |
 | Standalone 99% condition | USD 5 allocation including USD 2 reserve; USD 0.30 combined validation cap; accepted validation USD 0.21584 |
+| Standalone 99.9% condition | USD 5 allocation including USD 2 reserve; USD 0.30 combined validation cap; smoke then full launch authorized after checks pass |
 | Parallel exception | Only the three named 85/90/95% FineWeb jobs, matching RTX PRO 4500 Blackwell |
 | Cleanup task | Local organisation and offline verification; no provisioning, paid validation, resource deletion or deployment |
 
 [Campaign authorization](validation/2026-11-07_completion-high-fractions-authorization.json), [testing sublimits](validation/2026-11-07_completion-high-fractions-testing-authorization.json). Other allocation-specific reserves and historical receipts remain binding within their scopes; older cumulative ceilings are superseded. No payment settings may be changed.
 
 ## Latest recorded execution
+
+The user has [authorized](validation/2026-11-07_completion-mixed99p9-authorization.json) **99.9% synthetic / 0.1% real** preparation, validation and full launch after acceptance. Its [definition](../comparisons/fineweb_completion64_mixed99p9/README.md) preserves the matched full protocol with 9,990 synthetic / 10 real targets per cycle. The declared smoke uses 1,000 pairs (999 synthetic / one real) to represent both sources. The 607-test suite passed, followed by 112 focused checks after fixing fractional graph labels; fresh GPU acceptance is pending. The new [30 GB backup volume](validation/2026-11-07_completion-mixed99p9-backup-volume.json) `vx78hsoirz` passed private round-trip and capacity admission. No 99.9% compute has launched. The total ceiling remains USD 64.03635; existing completed-run recovery storage is preserved.
 
 The [completion receipt](validation/2026-11-07_completion-high-fractions-completion-status.json) verifies all three completed ten-cycle jobs, 790 updates each, final metric checksums and pinned backups. Provider states are EXITED; watchdog reason is complete. Final test PPL is 32.09515 / 33.68304 / 38.56880 for 85/90/95%. Avoid duplicate launches or resuming completed compute. Full model restoration/re-evaluation remains separate.
 
@@ -30,9 +33,9 @@ Preserve all three working volumes and shared 80 GB S3 store `mng23iliig`. Worke
 
 The user subsequently authorized standalone **99% synthetic** setup, GPU acceptance and full launch. Offline verification passed 580 tests and independent review. [GPU acceptance](validation/2026-11-07_completion-mixed99-setup.json) `20261107T180907Z-smoke-completion64-mixed99` passed all sixteen checks, including three terminal epochs, exact mixture reconstruction, optimizer/model handoffs, interrupted recovery, detached progress, cold restoration of 157 files / 4.51 GB with identical held-out loss, and actual watchdog/provider shutdown. Temporary Pod `2qun5v3w6c3yqa` and volume `w657u28bn3` were recovered and removed; conservative acceptance cost USD 0.21584. Accepted runtime is `68033f3641fff5dd51ab10b7f32639ed42c0f7d3251c0ccd568cdda6a5ec6b11`, protocol `28a50992262d1057fab089d43cb7e64273a58f4652fbba3b4a3636cfc91d1a3b`.
 
-Full run **`20261107T183326Z-full-completion64-mixed99`** launched at 18:33 UTC/London on Pod `wbsu8iw7f32vi3`, new 60 GB volume `6ii1cd7qbw`, matching RTX PRO 4500 in EU-CZ-1 at USD 0.72/hour. The [full startup receipt](validation/2026-11-07_completion-mixed99-full-launch.json) verifies RUNNING provider state, detached progress across SSH disconnection, advancing supervisor/watchdog heartbeats, and the first complete stage with a downloaded/checksummed pinned backup index. The stage used exactly 9,900 synthetic / 100 real pairs, 640,000 scored targets and 79 updates; test PPL changed 29.176318 → 43.564475. Cycle 2 uses the next frozen prompt chunk and the selected cycle-1 checkpoint as its generator. Avoid duplicate launches. A preceding capacity-race attempt created no Pod and its empty volume was [removed and reconciled](validation/2026-11-07_completion-mixed99-capacity-retry.json).
+Full run **`20261107T183326Z-full-completion64-mixed99` completed all ten cycles / ten terminal epochs / 790 updates at 20:17:39 UTC/London**. The [completion and comparison receipt](validation/2026-11-07_completion-mixed99-completion-analysis.json) verifies 79 pinned small files, all continued model/optimizer/generator handoffs, 9,900 synthetic / 100 real pairs and 640,000 scored targets per cycle. Test PPL changed 29.176318 → 82.677301; final validation PPL is 81.753347. Watchdog reason is `complete`; provider shutdown is verified at 20:17:50. Pod `wbsu8iw7f32vi3` is EXITED. Preserve its 60 GB working volume `6ii1cd7qbw` and 30 GB backup volume `6spnjhl8sv`. Do not resume or duplicate completed compute. The [startup receipt](validation/2026-11-07_completion-mixed99-full-launch.json) and [capacity-race reconciliation](validation/2026-11-07_completion-mixed99-capacity-retry.json) remain historical evidence.
 
-Its [authorization](validation/2026-11-07_completion-mixed99-authorization.json) allocates USD 5 including USD 2 reserved and at most USD 0.30 validation, within the unchanged cumulative/setup ceilings. The new [30 GB backup volume](validation/2026-11-07_completion-mixed99-backup-volume.json) is `6spnjhl8sv`; preserve it and all historical resources. The full-GPU benchmark forecasts 2.32 hours / USD 1.69 compute and running storage, approximately 20:53 UTC finish; seven days of the new working and backup volumes total USD 1.45. The independent funded deadline is 21:16 UTC on 7 November. Full completion, bulk restoration and final analysis are not yet claimed.
+Its [authorization](validation/2026-11-07_completion-mixed99-authorization.json) allocated USD 5 including USD 2 reserved and at most USD 0.30 validation, within the unchanged cumulative/setup ceilings. The completion receipt records the new square nine-fraction plots, 99 metric rows, pinned inputs and output hashes; the prior eight-fraction analysis is unchanged. All scientific settings/bank/evaluation identities match; 85/90/95/99% used RTX PRO 4500, while the remaining conditions used RTX PRO 4000. Full checkpoint/dataset restoration and re-evaluation remain separate. Retained storage continues billing; seven days of the new working and backup volumes total approximately USD 1.45.
 
 ## Completed work and recovery obligations
 

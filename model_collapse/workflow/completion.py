@@ -74,6 +74,15 @@ def acceptance_checks(c):
     return checks
 
 
+def smoke_pair_count(c):
+    """Keep historical scopes, with explicit larger smoke sets for sparse mixtures."""
+    default = 320 if c.get("completion_arms") is not None else 256
+    count = c.get("smoke_train_pairs", default)
+    if type(count) is not int or not 256 <= count <= 10000:
+        raise ValueError("Completion smoke_train_pairs must be an integer from 256 to 10000")
+    return count
+
+
 def required_backup_bytes(c):
     if len(arm_specs(c)) == 2:
         return 40_000_000_000
@@ -117,7 +126,7 @@ def validate_config(c):
     if any(c.get(k) != v for k, v in expected.items()) or c.get("repetition_penalty") != 1.0:
         raise ValueError("Completion comparison has an incompatible length, decoding or bank policy")
     profile = (c.get("generations"), c.get("train_pairs_per_cycle"), c.get("evaluation_pairs"), c.get("probe_count"))
-    smoke_pairs = 320 if c.get("completion_arms") is not None else 256
+    smoke_pairs = smoke_pair_count(c)
     if profile != ({"full": (10, 10000, None, 256), "smoke": (3, smoke_pairs, 64, 64)}.get(c.get("kind"))):
         raise ValueError("Completion comparison scope differs from its full/smoke definition")
     for key in ("microbatch", "effective_batch", "generation_batch", "generation_shard", "eval_batch", "shuffle_buffer"):

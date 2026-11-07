@@ -10,7 +10,7 @@ import numpy as np
 
 from ..common import STATE, atomic_json, read_json, sha256, verify_files
 from ..completion_data import assemble, load_pairs, restore_bank
-from .completion import acceptance_checks, bank_path, child_roots, verify_completed_arm, benchmark_filename
+from .completion import acceptance_checks, bank_path, child_roots, verify_completed_arm, benchmark_filename, smoke_pair_count
 from ..mixing import mixture_counts
 
 
@@ -21,7 +21,7 @@ def validate_remote(root):
     from .profiles import protocol_fingerprint
     root = Path(root)
     c, resources = read_json(root / "config.json"), read_json(root / "resources.json")
-    count = 320 if c.get("completion_arms") is not None else 256
+    count = smoke_pair_count(c)
     if c["kind"] != "smoke" or c["generations"] != 3 or c["train_pairs_per_cycle"] != count:
         raise RuntimeError("Completion GPU validation requires the declared three-cycle smoke")
     bank = bank_path(root, c)

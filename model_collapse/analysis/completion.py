@@ -68,6 +68,11 @@ def comparison_contract(root):
             "objective": "bos_prompt64_continuation64_score_positions65_to128"}
 
 
+def fraction_label(fraction):
+    # Preserve decimal percentages: 99.9% must not be labelled as 100%.
+    return f"{100 * fraction:.12g}% synthetic"
+
+
 def report(root, out=None, *, for_backup=False, reference=None):
     import matplotlib
     matplotlib.use("Agg")
@@ -114,7 +119,7 @@ def report(root, out=None, *, for_backup=False, reference=None):
         ax.set_box_aspect(1)
         for fraction in sorted({row["synthetic_fraction"] for row in rows}):
             selected = sorted((row for row in rows if row["synthetic_fraction"] == fraction), key=lambda row: row["cycle"])
-            ax.plot([row["cycle"] for row in selected], [row[metric] for row in selected], "o-", label=f"{fraction:.0%} synthetic")
+            ax.plot([row["cycle"] for row in selected], [row[metric] for row in selected], "o-", label=fraction_label(fraction))
         ax.set(xlabel="Training cycle", ylabel=label, title=label)
         ax.grid(alpha=.2)
         ax.legend()

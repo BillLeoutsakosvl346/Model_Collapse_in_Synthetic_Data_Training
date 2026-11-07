@@ -1,0 +1,60 @@
+{
+  "checked_at_utc": "2026-11-07T21:01:24.089934+00:00",
+  "run_id": "20261107T183326Z-full-completion64-mixed99",
+  "pod_id": "wbsu8iw7f32vi3",
+  "working_volume_id": "6ii1cd7qbw",
+  "backup_volume_id": "6spnjhl8sv",
+  "provider_state": "EXITED",
+  "provider_shutdown": {
+    "provider_pod_id": "wbsu8iw7f32vi3",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Sat Nov 07 2026 20:17:50 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1794082670.0,
+    "observed_at": 1794085156.7331526
+  },
+  "watchdog_exit": {
+    "reason": "complete",
+    "time": 1794082668.8182397,
+    "pod_id": "wbsu8iw7f32vi3"
+  },
+  "parent_completion": {
+    "complete": true,
+    "workflow": "completion_comparison",
+    "cycles": 10,
+    "unique_training_stages": 10,
+    "executed_epochs": 10,
+    "time": 1794082659.786016
+  },
+  "child_snapshot": {
+    "run_id": "20261107T183326Z-full-completion64-mixed99-mixed99",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "defa7c6c55dbd102a7e1e869af25bd6ece11105c",
+      "dataset": "0b22007c03e1dad6f356323c6b25ec6a55c4b491"
+    },
+    "artifact_index_sha256": "0d6308e5451f7841795a22f85feb03a0199abc6c27ffffb77f3ee5348e57ce1c"
+  },
+  "baseline_test_perplexity": 29.17631807160739,
+  "final_test_perplexity": 82.67730137818421,
+  "final_validation_perplexity": 81.75334747170915,
+  "executed_epochs": 10,
+  "global_step": 790,
+  "scored_training_targets": 6400000,
+  "per_cycle_real_pairs": 100,
+  "per_cycle_synthetic_pairs": 9900,
+  "verified_small_files": 79,
+  "analysis_directory": "reports\\20261107T183326Z-full-completion64-mixed99\\generated\\20261107T210124Z-nine-fractions",
+  "input_provenance_sha256": "4be92443fa17cb6d7483fd2ab323c3cc02ce73c5fd445105ee7ce317351686a9",
+  "bulk_restoration_performed": false,
+  "historical_storage_preserved": true,
+  "analysis_manifest_sha256": "1aebf851d69903dbe027dab589e9d3c75d78ae76140e4e5216cd632a69ffd060",
+  "figure_hashes": {
+    "test_perplexity_all_nine.png": "c82c80d2341b527c64dd1361bd40c14122a804f29ce4711d1ad25e64c63e6714",
+    "test_perplexity_without_100.png": "3dff5d446f02ed47fd5b21bd1190606277f66b46a426a54971faf8b89abe1d16"
+  },
+  "comparison_metric_rows": 99
+}
