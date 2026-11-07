@@ -1,0 +1,23 @@
+{
+  "checked_at": 1794074917.768883,
+  "full_suite_passed": 580,
+  "full_suite_seconds": 244.53,
+  "focused_passed": 82,
+  "independent_review": "review_cloud_recovery: no concrete remaining defects",
+  "full_configuration_sha256": "c6dde50fcd9a0c2576b9bd9e9cb6a3bf778f8433adca49cf99df25cf02aa044b",
+  "smoke_configuration_sha256": "aa1bbba9e02b7be12a3cf73657059dcba392f74ad4a048ee6ac2aa0227776fd0",
+  "protocol_fingerprint": "28a50992262d1057fab089d43cb7e64273a58f4652fbba3b4a3636cfc91d1a3b",
+  "full_counts": {
+    "real": 100,
+    "synthetic": 9900,
+    "scored_targets": 640000
+  },
+  "smoke_counts": {
+    "real": 3,
+    "synthetic": 317,
+    "cycles": 3
+  },
+  "gpu_acceptance": "pending",
+  "private_backup_probe": "passed; dedicated 30 GB store, 19.89 GB required plus 3 GB margin",
+  "cumulative_and_setup_limits_unchanged": true
+}

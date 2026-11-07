@@ -1,6 +1,6 @@
 # Current recorded state
 
-Snapshot assembled during the 7 November 2026 repository cleanup. **Latest provider observation: 7 November, 15:32 UTC/London. No live provider check was made for cleanup.** Earlier observations are preserved in the [byte-exact chronology](history/2026-11-07_pre-cleanup-current-state.txt).
+Snapshot refreshed after completion verification on 7 November 2026. **Latest verified high-fraction completion: 7 November, 17:26 UTC/London.** Earlier observations are preserved in the [byte-exact chronology](history/2026-11-07_pre-cleanup-current-state.txt).
 
 ## Authorized work and limits
 
@@ -17,7 +17,7 @@ Snapshot assembled during the 7 November 2026 repository cleanup. **Latest provi
 
 ## Latest recorded execution
 
-The [full-launch receipt](validation/2026-11-07_completion-high-fractions-full-launch.json) observed all three jobs RUNNING, at cycles 3/2/2, with detached supervision, independent watchdogs, actual training and pinned backup indexes verified. It does not establish later completion. Avoid duplicate launches or resuming active/completed compute.
+The [completion receipt](validation/2026-11-07_completion-high-fractions-completion-status.json) verifies all three completed ten-cycle jobs, 790 updates each, final metric checksums and pinned backups. Provider states are EXITED; watchdog reason is complete. Final test PPL is 32.09515 / 33.68304 / 38.56880 for 85/90/95%. Avoid duplicate launches or resuming completed compute. Full model restoration/re-evaluation remains separate.
 
 | Run | Pod | Working volume, 60 GB |
 | --- | --- | --- |
@@ -26,6 +26,8 @@ The [full-launch receipt](validation/2026-11-07_completion-high-fractions-full-l
 | `20261107T151610Z-full-completion64-mixed95` | `z1090zdvysy3q8` | `jlo0o9gsvx` |
 
 Preserve all three working volumes and shared 80 GB S3 store `mng23iliig`. Worker runtime is `eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f`; [host sources](validation/2026-11-07_completion-high-fractions-host-sources.json) are separately pinned. The [handoff](fineweb-high-fractions-handoff.md) records accepted protocols and operations. The [cleanup verification](validation/2026-11-07_repository-organisation.json) records 576 passing offline tests and a **new, offline-tested candidate runtime**; they do not modify deployed bundles or inherit their GPU acceptance.
+
+The user subsequently authorized standalone **99% synthetic** setup, GPU acceptance and full launch. Preparation and offline verification are in progress; no 99% GPU Pod has been launched yet. Its [authorization](validation/2026-11-07_completion-mixed99-authorization.json) allocates USD 5 including USD 2 reserved and at most USD 0.30 validation, within the unchanged cumulative/setup ceilings. The new [30 GB backup volume](validation/2026-11-07_completion-mixed99-backup-volume.json) is `6spnjhl8sv`; preserve it and all historical resources.
 
 ## Completed work and recovery obligations
 

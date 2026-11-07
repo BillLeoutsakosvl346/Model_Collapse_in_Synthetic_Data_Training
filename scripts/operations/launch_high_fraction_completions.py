@@ -1,4 +1,4 @@
-"""Start the authorized independent 85/90/95% jobs with overlapping execution."""
+"""Launch named high-fraction conditions; 99% is a separately admitted standalone job."""
 from __future__ import annotations
 
 import argparse
@@ -10,8 +10,8 @@ def launch_one(percent, *, smoke=False, resume_id=None):
     from model_collapse import remote
     from model_collapse.common import PROJECT, config
     from model_collapse.workflow.completion import allocation_id
-    if percent not in (85, 90, 95):
-        raise ValueError("Only the three authorized fractions are supported")
+    if percent not in (85, 90, 95, 99):
+        raise ValueError("Only the named high-fraction conditions are supported")
     kind = "smoke" if smoke else "full"
     path = PROJECT / f"comparisons/fineweb_completion64_mixed{percent}/{kind}.yaml"
     settings = config(path)
@@ -56,7 +56,7 @@ def main():
     if os.name == "nt":
         os.environ.setdefault("HF_HUB_CACHE", r"C:\hf")
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--percent", type=int, choices=(85, 90, 95))
+    parser.add_argument("--percent", type=int, choices=(85, 90, 95, 99))
     parser.add_argument("--smoke", action="store_true")
     args = parser.parse_args()
     # Provision serially to keep registry and ledger admission atomic; all

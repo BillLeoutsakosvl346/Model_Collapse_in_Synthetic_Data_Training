@@ -1,0 +1,157 @@
+{
+  "checked_at_utc": "2026-11-07T17:26:52.371098+00:00",
+  "provider_states": "All three EXITED, independently read through Runpod plugin this turn",
+  "scope": "Pinned small completion/index/final metric records; no bulk model restoration",
+  "jobs": [
+    {
+      "percent": 85,
+      "run_id": "20261107T150834Z-full-completion64-mixed85",
+      "pod_id": "0ciiothsflf4ik",
+      "volume_id": "b82vo80i1g",
+      "pinned_parent_dataset_revision": "88d990964ad47198cbf39947c4a71c4c07fa8ded",
+      "parent_index_sha256": "51b25b865bf36791344510d1a8910beb179f8cc489dd4ce368812438c81d764c",
+      "parent_completion": {
+        "complete": true,
+        "workflow": "completion_comparison",
+        "cycles": 10,
+        "unique_training_stages": 10,
+        "executed_epochs": 10,
+        "time": 1794070517.7912962
+      },
+      "child_completion": {
+        "complete": true,
+        "cycles": 10,
+        "data_kind": "mixed",
+        "time": 1794070301.756444
+      },
+      "child_snapshot": {
+        "run_id": "20261107T150834Z-full-completion64-mixed85-mixed85",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "a73527423ec3a14cf1dbac8f32806bb01b29d567",
+          "dataset": "10c151674a661ffda83ceaa86baaf93d3379fad4"
+        },
+        "artifact_index_sha256": "3cd2e6ed9973087c5cb4f6de60dbf727c996712ae5b183a1d12812486c16d39b"
+      },
+      "child_index_sha256_verified": "3cd2e6ed9973087c5cb4f6de60dbf727c996712ae5b183a1d12812486c16d39b",
+      "watchdog_exit": {
+        "reason": "complete",
+        "time": 1794070537.7626755,
+        "pod_id": "0ciiothsflf4ik"
+      },
+      "watchdog_exit_sha256": "d84396dac7503f2e469eee83116f63ee8ad002d47afb36243a8d5048fd723ecf",
+      "test_perplexity": 32.0951453777414,
+      "validation_perplexity": 31.739595063438767,
+      "baseline_test_perplexity": 29.17631807160739,
+      "executed_epochs": 1,
+      "selected_epoch": 1,
+      "global_step": 790,
+      "final_metrics_sha256": "e1b098f19fda3a8b2c8ea8b4a138c2e30d3fc832f073a5b6b6651f8557e01715",
+      "small_backup_metadata_verified": true,
+      "bulk_restoration_performed": false
+    },
+    {
+      "percent": 90,
+      "run_id": "20261107T151427Z-full-completion64-mixed90",
+      "pod_id": "alhrmqkpvmiajn",
+      "volume_id": "tftzsocrpv",
+      "pinned_parent_dataset_revision": "88d990964ad47198cbf39947c4a71c4c07fa8ded",
+      "parent_index_sha256": "9d366da70070b11b2634681b412bca7f456b111a59c25f16e7d0975eb51d69ee",
+      "parent_completion": {
+        "complete": true,
+        "workflow": "completion_comparison",
+        "cycles": 10,
+        "unique_training_stages": 10,
+        "executed_epochs": 10,
+        "time": 1794070492.6556127
+      },
+      "child_completion": {
+        "complete": true,
+        "cycles": 10,
+        "data_kind": "mixed",
+        "time": 1794070307.9819705
+      },
+      "child_snapshot": {
+        "run_id": "20261107T151427Z-full-completion64-mixed90-mixed90",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "a73527423ec3a14cf1dbac8f32806bb01b29d567",
+          "dataset": "4edb5585bb616fbf2000a6774a84fa24b51b5b72"
+        },
+        "artifact_index_sha256": "47b11933c410151a9d03610135ab55d579695a8f37d49975662f8ac7f52ca1ed"
+      },
+      "child_index_sha256_verified": "47b11933c410151a9d03610135ab55d579695a8f37d49975662f8ac7f52ca1ed",
+      "watchdog_exit": {
+        "reason": "complete",
+        "time": 1794070513.8740816,
+        "pod_id": "alhrmqkpvmiajn"
+      },
+      "watchdog_exit_sha256": "3b9d1434e349e832f57adeb2db2e96159b12ce6513bbc5a39457b3bddaf8eeec",
+      "test_perplexity": 33.68303735324691,
+      "validation_perplexity": 33.28336049902129,
+      "baseline_test_perplexity": 29.17631807160739,
+      "executed_epochs": 1,
+      "selected_epoch": 1,
+      "global_step": 790,
+      "final_metrics_sha256": "0d5a7de9a6f19118102967e06b957aa8e3d3f75e428499d0bb8b887c9b8356f2",
+      "small_backup_metadata_verified": true,
+      "bulk_restoration_performed": false
+    },
+    {
+      "percent": 95,
+      "run_id": "20261107T151610Z-full-completion64-mixed95",
+      "pod_id": "z1090zdvysy3q8",
+      "volume_id": "jlo0o9gsvx",
+      "pinned_parent_dataset_revision": "88d990964ad47198cbf39947c4a71c4c07fa8ded",
+      "parent_index_sha256": "ed0bb62ae92ad675439890855bb0be425eb1db1c93e6b4e70cdb999d1ab87b3f",
+      "parent_completion": {
+        "complete": true,
+        "workflow": "completion_comparison",
+        "cycles": 10,
+        "unique_training_stages": 10,
+        "executed_epochs": 10,
+        "time": 1794070920.9795792
+      },
+      "child_completion": {
+        "complete": true,
+        "cycles": 10,
+        "data_kind": "mixed",
+        "time": 1794070695.8585508
+      },
+      "child_snapshot": {
+        "run_id": "20261107T151610Z-full-completion64-mixed95-mixed95",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "2718a041813864d9f414290661d383a1f43a4e79",
+          "dataset": "e1a0693651b6495e6fbdb4d8a6a68aa0b54d4d16"
+        },
+        "artifact_index_sha256": "1395dbccd69129657d935411fe63439e6a9ab2cdf4f0adf7c079d39eb6598d60"
+      },
+      "child_index_sha256_verified": "1395dbccd69129657d935411fe63439e6a9ab2cdf4f0adf7c079d39eb6598d60",
+      "watchdog_exit": {
+        "reason": "complete",
+        "time": 1794070948.6776175,
+        "pod_id": "z1090zdvysy3q8"
+      },
+      "watchdog_exit_sha256": "d7910dba8fa791c41cec33a5d4620a143132a6825a1f6ecf7e705fa3a8f239e9",
+      "test_perplexity": 38.568803350529,
+      "validation_perplexity": 38.05708218337102,
+      "baseline_test_perplexity": 29.17631807160739,
+      "executed_epochs": 1,
+      "selected_epoch": 1,
+      "global_step": 790,
+      "final_metrics_sha256": "0787583035090559853d6a77f995dc352b2285fa69bc2d7e11f434f49e52b1ff",
+      "small_backup_metadata_verified": true,
+      "bulk_restoration_performed": false
+    }
+  ]
+}

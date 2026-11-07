@@ -117,7 +117,7 @@ def main():
     import argparse
     os.environ.setdefault('HF_HUB_CACHE', r'C:\hf' if os.name == 'nt' else '/workspace/hf-cache/hub')
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--percent', type=int, choices=(85, 90, 95))
+    parser.add_argument('--percent', type=int, choices=(85, 90, 95, 99))
     parser.add_argument('--resume', metavar='RUN_ID')
     args = parser.parse_args()
     for percent in ([args.percent] if args.percent else [85, 90, 95]):

@@ -125,3 +125,18 @@ def test_cost_update_rejects_same_launch_id_with_foreign_volume(sandbox):
     remote.update_ledger(resource())
     with pytest.raises(RuntimeError, match="ownership tuple"):
         remote.update_ledger(resource(volume_id="foreign"), stopped_at=3600.)
+
+
+def test_ledger_backup_retries_a_lost_response_without_duplicate_charges(sandbox, monkeypatch):
+    from requests.exceptions import ConnectionError
+    calls = []
+    def upload(**kwargs):
+        calls.append(kwargs)
+        if len(calls) == 1:
+            raise ConnectionError("Lost commit response")
+    monkeypatch.setattr(remote, "HfApi", lambda **kwargs: SimpleNamespace(upload_file=upload))
+    from model_collapse import hub
+    monkeypatch.setattr(hub.time, "sleep", lambda _: None)
+    remote.update_ledger(resource(repos={"dataset": "fake/private"}), state="running")
+    assert len(calls) == 2
+    assert len(remote.ledger()["launches"]) == len(remote.ledger()["volumes"]) == 1

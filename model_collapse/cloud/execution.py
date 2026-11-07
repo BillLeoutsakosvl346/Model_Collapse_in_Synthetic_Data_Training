@@ -14,7 +14,7 @@ import paramiko
 from huggingface_hub import HfApi, get_token
 
 from ..common import PROJECT, STATE, atomic_json, config, digest, load_secrets, now, read_json, sha256
-from ..hub import destinations
+from ..hub import destinations, retry_transfer
 from ..runpod_api import Runpod
 from .ownership import latest_session, same_owner, terminal_state
 
@@ -42,7 +42,7 @@ def _update_ledger(resources, **updates):
     # Private control copy survives a lost local checkout. No secrets in this ledger.
     repos = resources.get("repos")
     if repos:
-        HfApi(token=os.environ.get("HF_TOKEN") or get_token()).upload_file(path_or_fileobj=str(STATE / "ledger.json"),
+        retry_transfer(HfApi(token=os.environ.get("HF_TOKEN") or get_token()).upload_file, path_or_fileobj=str(STATE / "ledger.json"),
             path_in_repo="_control/ledger.json", repo_id=repos["dataset"], repo_type="dataset", commit_message="Update task cost ledger")
     return d
 
@@ -419,16 +419,18 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             raise RuntimeError("Mixtures require the verified dedicated free private backup namespace")
         metadata_only = bool(c.get("backup_store"))
         if metadata_only:
-            from ..cloud.s3_artifacts import probe
+            from ..cloud.s3_artifacts import probe, check_capacity
             bulk_probe = probe(c["backup_store"])
             volume_info = api.request("GET", "/network-volumes/" + c["backup_store"]["bucket"])
-            if (volume_info["size"] < 80 or volume_info["dataCenter"] != c["backup_store"]["region"]):
+            if volume_info["dataCenter"] != c["backup_store"]["region"]:
                 raise RuntimeError("Bulk backup volume capacity/region differs from admission")
+            bulk_capacity = check_capacity(c["backup_store"], volume_info["size"], required_backup_bytes(c))
         storage_admission = check_storage(p["hugging_face"]["repos"], destination["organization"],
             100_000_000_000, 50_000_000 if metadata_only else required_backup_bytes(c), 10_000_000_000,
             HfApi(token=os.environ.get("HF_TOKEN") or get_token()))
         if metadata_only:
             storage_admission["bulk_round_trip"] = bulk_probe
+            storage_admission["bulk_capacity"] = bulk_capacity
     # Preflight's final read is the live catalogue snapshot. Re-reading it here
     # adds a race and can discard a just-observed slot before placement begins.
     choices = p.get("gpu_candidates")
@@ -496,7 +498,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             allowance = min(allowance, authorization["validation_cap_usd"] - accrued(validation_state))
         if completion:
             from ..workflow.completion import acceptance_campaign
-            allowance = min(allowance, .50 - campaign_accrued(ledger_state, acceptance_campaign(c)))
+            allowance = min(allowance, allocation.get("validation_cap_usd", .50) - campaign_accrued(ledger_state, acceptance_campaign(c)))
         elif paired:
             allowance = min(allowance, .75 - campaign_accrued(ledger(), "shared_start_final_epoch5"))
         elif fresh_real:

@@ -31,13 +31,13 @@ def setup_scope(monkeypatch):
 @pytest.mark.parametrize('cycle', range(1, 11))
 def test_new_fractions_have_exact_nested_selections(cycle):
     previous = np.array([], dtype=np.int64)
-    for pct in (20, 50, 80, 85, 90, 95, 100):
+    for pct in (20, 50, 80, 85, 90, 95, 99, 100):
         selection, real = select_rows(10000, pct / 100, 42, cycle)
         indices = selection['synthetic_indices']
         assert len(indices) == 100 * pct and real == 10000 - 100 * pct
         assert np.array_equal(indices[:len(previous)], previous)
         previous = indices
-    for pct, count in ((85, 272), (90, 288), (95, 304)):
+    for pct, count in ((85, 272), (90, 288), (95, 304), (99, 317)):
         selection, real = select_rows(320, pct / 100, 42, cycle)
         assert len(selection['synthetic_indices']) == count and real == 320 - count
 
@@ -78,3 +78,20 @@ def test_full_smoke_protocol_and_matching_bank(pct):
     assert full['required_image'] == old['required_image']
     for key in ('learning_rate', 'microbatch', 'effective_batch', 'num_beams', 'optimizer_policy'):
         assert full[key] == old[key]
+
+
+def test_99_profile_preserves_science_without_inheriting_parallel_authorization():
+    full = config('comparisons/fineweb_completion64_mixed99/full.yaml')
+    smoke = config('comparisons/fineweb_completion64_mixed99/smoke.yaml')
+    old = config('comparisons/fineweb_completion64_mixed95/full.yaml')
+    assert protocol_fingerprint(full) == protocol_fingerprint(smoke)
+    assert full['completion_arms'] == [{'id': 'mixed99', 'synthetic_fraction': .99}]
+    assert 'parallel_campaign' not in full and 'parallel_campaign' not in smoke
+    excluded = {'experiment_id', 'completion_arms', 'parallel_campaign', 'backup_store'}
+    assert {k:v for k,v in full.items() if k not in excluded} == {k:v for k,v in old.items() if k not in excluded}
+    assert full['backup_store']['backend'] == old['backup_store']['backend'] == 'runpod_s3'
+    assert full['backup_store']['region'] == old['backup_store']['region']
+    from model_collapse.workflow.profiles import require_acceptance
+    certificate = {'source_code_sha256': 'runtime', 'protocol_fingerprint': protocol_fingerprint(old)}
+    with pytest.raises(RuntimeError, match='scientific protocol'):
+        require_acceptance(full, certificate, 'runtime')

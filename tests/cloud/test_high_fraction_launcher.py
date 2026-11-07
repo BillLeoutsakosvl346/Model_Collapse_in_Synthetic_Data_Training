@@ -1,7 +1,7 @@
 import pytest
 
 
-@pytest.mark.parametrize('pct', (85, 90, 95))
+@pytest.mark.parametrize('pct', (85, 90, 95, 99))
 def test_host_admission_overrides_are_restored_and_keep_catalog_truth(monkeypatch, pct):
     from model_collapse import remote
     from scripts.operations.launch_high_fraction_completions import launch_one

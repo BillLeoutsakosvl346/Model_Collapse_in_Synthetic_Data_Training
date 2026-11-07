@@ -51,6 +51,16 @@ def reference(store, checksum):
     return {**store, "key": store["prefix"] + "/objects/" + checksum}
 
 
+def check_capacity(store, capacity_gb, required_bytes, *, reserve_bytes=3_000_000_000, api=None):
+    """Count the entire physical bucket before admitting additional checkpoints."""
+    from .hf_storage import admission
+    api = client(store) if api is None else api
+    used = 0
+    for page in api.get_paginator("list_objects_v2").paginate(Bucket=store["bucket"]):
+        used += sum(item["Size"] for item in page.get("Contents", []))
+    return admission(int(capacity_gb * 1_000_000_000), used, required_bytes, reserve_bytes)
+
+
 def validate_reference(ref, checksum):
     if not isinstance(ref, dict) or set(ref) != {"backend", "bucket", "region", "prefix", "key"}:
         raise ValueError("Invalid bulk artifact reference")

@@ -60,6 +60,19 @@ def test_bulk_reference_is_bound_to_sha_and_historical_metadata_still_works():
         _check_meta(meta)
 
 
+def test_bulk_capacity_counts_all_pages_and_keeps_shutdown_storage_margin():
+    from types import SimpleNamespace
+    def pages(**kwargs):
+        assert kwargs == {'Bucket': STORE['bucket']}
+        return [{'Contents': [{'Size': 1_000_000_000}]},
+                {'Contents': [{'Size': 4_000_000_000}]}]
+    api = SimpleNamespace(get_paginator=lambda name: SimpleNamespace(paginate=pages))
+    result = s3.check_capacity(STORE, 30, 20_000_000_000, api=api)
+    assert result['used_bytes'] == 5_000_000_000 and result['admitted']
+    with pytest.raises(RuntimeError, match='insufficient'):
+        s3.check_capacity(STORE, 25, 20_000_000_000, api=api)
+
+
 def test_hub_backup_routes_bulk_and_pins_its_index(tmp_path, monkeypatch):
     from model_collapse import hub
     from model_collapse.common import atomic_json, read_json
