@@ -1,0 +1,56 @@
+{
+  "inputs": {
+    "20261107T111914Z-smoke-completion64-mixed80-mixed80/seed_42/gen_00/metrics.json": "4c5a4bc654e29b720872f5e98b6f2363e8c48f9047023a8ee601512d4a5ae133",
+    "20261107T111914Z-smoke-completion64-mixed80:mixed80:0:examples": "e020373d1276a4004f39e300e412d6518d066fa0c48681fdc4d9c937d90bcc45",
+    "20261107T111914Z-smoke-completion64-mixed80-mixed80/seed_42/gen_01/metrics.json": "558fd37604c8dee365df774ac6ccbe16395a18808809d35efd2c45fa0758bc44",
+    "20261107T111914Z-smoke-completion64-mixed80:mixed80:1:examples": "3a1b12a7da1f2ab16250977caae54cf32fa12a5b54cabcf32e21a47f152cfecb",
+    "20261107T111914Z-smoke-completion64-mixed80-mixed80/seed_42/gen_02/metrics.json": "3ab77e4308842d1ef6f5a48bcbe89440824bf2faa4706d8b0c8b66d32910ce55",
+    "20261107T111914Z-smoke-completion64-mixed80:mixed80:2:examples": "3de80ff1a4d28269c9b46a0864e3cc1c3ac6caeecace9719acf99106f77f9337",
+    "20261107T111914Z-smoke-completion64-mixed80-mixed80/seed_42/gen_03/metrics.json": "83f94abe05158af3039c7f027a6943e1737cb614c960968b48cd11ae895958e2",
+    "20261107T111914Z-smoke-completion64-mixed80:mixed80:3:examples": "07abaa717660711e44bacb99b7c2ab740f35781d35212069bb9e9579287578b7"
+  },
+  "configuration_sha256": "3689a448e840222bfcccb0d44647d12c17c1f67d8b5ed8311e7276b2750e271f",
+  "script_sha256": "51921ea1affff636fbdc53223d5e69ae1f0d627ff302b746c6768b6994c91926",
+  "runtime_sha256": "0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170",
+  "python": "3.12.1",
+  "matplotlib": "3.8.4",
+  "training_environment": {
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "cuda": "12.8",
+    "driver_version": "595.91.07",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "packages": {
+      "transformers": "4.37.2",
+      "datasets": "3.4.1",
+      "numpy": "2.1.2",
+      "huggingface-hub": "0.34.4",
+      "matplotlib": "3.9.4"
+    },
+    "determinism": "Fixed seeds and epoch-local shuffle; TF32 disabled; no promise of bitwise equality across GPU/library versions."
+  },
+  "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+  "comparison_contract_sha256": "311a053c1efaf297d478fa534e18de1b71c441d4d79f08c7f9b8cee718973b13",
+  "reference_contract": null,
+  "outputs": {
+    "distinct_2.png": "8614cae59e6a5a52f5620400bc6c18bab425be51ac054549692f2e138b901280",
+    "duplicate_continuation_rate.png": "67948d84bc91f59230daf0132f82ff25dc8a301ba679fecc947e1939eceea537",
+    "examples.json": "e1efe05b4663bb56c44c366bc970205330b688d13be5c61a7bde69e2e28ec7da",
+    "learning_rate_end.png": "7bc899002843293e20529e22ba812b7ca5898f7dd8039bc97116384c5f517137",
+    "mean_within_entropy_nats.png": "01ff3f0d7f65f137ab047cf435e05fecc977f13abbb937407929281b4135a2be",
+    "mean_within_repeated_4gram_rate.png": "0ad44413aeffa464c14ac93d15704506337d6228881df9168ff09e6f1a9b0f18",
+    "metrics.csv": "c9fcab2911351404ecb343682a114897b1107fa8348a09738445309fd79d0987",
+    "metrics.json": "2f458a5ae9ef69c7a6e18fd55e0e33cfcfc249637f6196fdbf63cc2f911d6d4c",
+    "repeated_4gram_rate.png": "9f16086bca29ccc2d1ef6c957f74e518e47ef261205c0dbd1549d38eb7483719",
+    "report.md": "e9360c037a28819f4930158aad33c4eeebe999cdf901cab34386a8f9fe2f2b74",
+    "secondary_ag_news_perplexity.png": "e45f45161faed5270957c604de4b97657e1e50c0e569b2240ec682debe5b9e39",
+    "secondary_c4_en_perplexity.png": "829f6c35e06e0dc9857d664f58fd8fb8a2707da27fc8849c1464e399f22220f5",
+    "secondary_fineweb_edu_perplexity.png": "921f84c05dfdca6d86fac29f4adb53b2c96dbd112fdd23208520b80dd144b1ba",
+    "secondary_pg19_perplexity.png": "553073f5c1b71fb39e71b06cddb78fc6513fc702fc389c4672921eb087b089e9",
+    "secondary_wikitext103_perplexity.png": "3bbd9556175903d3206b3f7e4a5ceff96a24c709b814f3cacefc5045ed781980",
+    "test_nll_p95.png": "0b98565c549ecd1b9ff5f79565a932d416f41a4ef5b713ac2b4c10eef10a2871",
+    "test_perplexity.png": "44eeedd2c87a97a40686d660574017d547700af27ae1c90b63f177a53d1c3fd9",
+    "token_entropy_nats.png": "3044c9ce257d9c2af23d9c12bc31b769e2f60e7ce3496095ab60c05bfb2a7371",
+    "training_seconds.png": "5aae9efeff9cd4160af46149f03e05395a61fea29a5dd932d6401cbadccb3004"
+  }
+}

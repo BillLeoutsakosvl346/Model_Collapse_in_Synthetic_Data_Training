@@ -1,0 +1,62 @@
+{
+  "inputs": {
+    "20261106T191336Z-smoke-completion64-real/seed_42/gen_00/metrics.json": "a53911f99853a99aa30a97333eeecb614668d8c565ec2f5ad161caee0745cea8",
+    "seed_42\\gen_00\\probe_examples.json:real0": "e020373d1276a4004f39e300e412d6518d066fa0c48681fdc4d9c937d90bcc45",
+    "20261106T191336Z-smoke-completion64-real/seed_42/gen_01/metrics.json": "87cae9770cfc8f96c63cba8db5e2604bf9b911fcebd2bfdac99250c5ff7197a1",
+    "seed_42\\gen_01\\probe_examples.json:real1": "58e2d09d540ca162416356384fd6b43f9d743288d1c4c17bca565275a36b6747",
+    "20261106T191336Z-smoke-completion64-real/seed_42/gen_02/metrics.json": "f325ea6befb1a7c0f6d120b9485d4543f8606de30dea6ede42e421af5827f5e4",
+    "seed_42\\gen_02\\probe_examples.json:real2": "8b311d3e603c4fd208d61fe518f57c3c8fb15ababe63c799190f1a008badb3fb",
+    "20261106T191336Z-smoke-completion64-real/seed_42/gen_03/metrics.json": "2c6f23b11ce26817ac081ba0fe0996c300fe821f0df56272f87b1a9d467d292d",
+    "seed_42\\gen_03\\probe_examples.json:real3": "733a00aa2c9c1eac5fc8443b15e109790417787db18891dbe5c2552ddac8c133",
+    "20261106T191336Z-smoke-completion64-synthetic/seed_42/gen_00/metrics.json": "a53911f99853a99aa30a97333eeecb614668d8c565ec2f5ad161caee0745cea8",
+    "seed_42\\gen_00\\probe_examples.json:synthetic0": "e020373d1276a4004f39e300e412d6518d066fa0c48681fdc4d9c937d90bcc45",
+    "20261106T191336Z-smoke-completion64-synthetic/seed_42/gen_01/metrics.json": "ccb86fe6115956b71a927a525c105a107091cc1d5c302947ce9933bceabedc75",
+    "seed_42\\gen_01\\probe_examples.json:synthetic1": "d92f1f80ad5d7cd08013ba0eaad6e55632a653ca9be8df36d800ba1b5705ddc7",
+    "20261106T191336Z-smoke-completion64-synthetic/seed_42/gen_02/metrics.json": "677459e150876e38543394e2120fffa6a863b7f31ce8931349dbf52a20ffe4a0",
+    "seed_42\\gen_02\\probe_examples.json:synthetic2": "3de80ff1a4d28269c9b46a0864e3cc1c3ac6caeecace9719acf99106f77f9337",
+    "20261106T191336Z-smoke-completion64-synthetic/seed_42/gen_03/metrics.json": "21506f7c2a682942ddfcf4def82e99668112fa044e55141f600cfd2a43f9ee5d",
+    "seed_42\\gen_03\\probe_examples.json:synthetic3": "3de80ff1a4d28269c9b46a0864e3cc1c3ac6caeecace9719acf99106f77f9337"
+  },
+  "configuration_sha256": "5b89ed401117531137fbe8fdcc9e1061a1db20f02c5538652f7560e1432f79ba",
+  "script_sha256": "8bfcc7c4a6f1385313165165324469b59437ce7af75b2ce16592659a0b6cb9b2",
+  "runtime_sha256": "35fbfb2f2a278f9cf2a58b1dbfeecaf90389c48241eed25db20b183cbcb59497",
+  "python": "3.12.1",
+  "matplotlib": "3.8.4",
+  "training_environment": {
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "cuda": "12.8",
+    "driver_version": "595.91.07",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "packages": {
+      "transformers": "4.37.2",
+      "datasets": "3.4.1",
+      "numpy": "2.1.2",
+      "huggingface-hub": "0.34.4",
+      "matplotlib": "3.9.4"
+    },
+    "determinism": "Fixed seeds and epoch-local shuffle; TF32 disabled; no promise of bitwise equality across GPU/library versions."
+  },
+  "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+  "outputs": {
+    "distinct_2.png": "e4c623fc495db86c67606d97f278a33af1085c0616cfa866ffa15c225a61d4b9",
+    "duplicate_continuation_rate.png": "ee03b864734d683cb8cd7235c96fa4e3abd9b415680703d884b5acfeb8ac34cc",
+    "examples.json": "9cb2432ce478f75f77eceb0265e1808f72d6d954f23f02f327c960adf698ab5e",
+    "learning_rate_end.png": "1f1652d0b93820903ca33c231519116bed1e0dd5e2565ea96133420950152ced",
+    "mean_within_entropy_nats.png": "f2814e6ad3bd00230f883b534bbfeb7353ac917b468a911b49b7e8b1cfdb7f09",
+    "mean_within_repeated_4gram_rate.png": "0c3aca374b4116e0f0ffb7e9d726e8d3ebac6be13a6f035069874ee980d3b24d",
+    "metrics.csv": "2579a5b1f23a76e54e2e84a16a146baea3a291b527dc47cac9d9501a124d6e22",
+    "metrics.json": "8da46da376ce1af3aca90f96eb178eaec4e497ffb784cc6b086cad99113ae261",
+    "repeated_4gram_rate.png": "44ba830510fa25fb27810dd2e6fab653183c5d2b302b141a0b5fb960deda1904",
+    "report.md": "03e5546e7e79b30ef488df8d38755faa807121b6426167a40a759aebcfa4f7fa",
+    "secondary_ag_news_perplexity.png": "d043373f7e19a2b7caa4a73409e3a7fff948c6fe197866c8a4c182d94ac304c2",
+    "secondary_c4_en_perplexity.png": "3862a8f4efdd7acc102b3af5ff270aee4adc0334b5f8e06e355ea60f945ba640",
+    "secondary_fineweb_edu_perplexity.png": "5f463c391f9f34b44880007e1502bb2cc02043969c6723470ae108388dcf1fe9",
+    "secondary_pg19_perplexity.png": "6215555cfdfbbca0f8bd2c2fb06f65420da194ef01be59fb8babc2fefbc9ee40",
+    "secondary_wikitext103_perplexity.png": "5ebef729bcc5322dcf954d94a93802cd0cb0cfe19b73904fd4e0fe0b54044350",
+    "test_nll_p95.png": "84af82eb753aa6352934b8a3092a76ccb9c764487e030a4d1db2ca7d69fb8c4a",
+    "test_perplexity.png": "060529ab11e76e2a5f8d9143bbdc50496be4c8120388a78d1959f418b5ce7ed6",
+    "token_entropy_nats.png": "3b585ed52f913fb33c617390b48680a33a8f4070e2821f4742d23d4914581378",
+    "training_seconds.png": "75f294ca147caf09f420c129ebed87b70e15a7cb349df68aae87cbb8c0d9b3ee"
+  }
+}
