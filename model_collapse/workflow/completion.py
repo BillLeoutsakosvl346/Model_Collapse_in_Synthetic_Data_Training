@@ -10,6 +10,8 @@ import shutil
 import time
 from pathlib import Path
 
+from . import smollm
+
 import numpy as np
 from filelock import FileLock
 
@@ -52,6 +54,8 @@ def source_collection(c, cycle):
 
 
 def arm_specs(c):
+    if smollm.enabled(c):
+        return smollm.specs(c)
     decoders = c.get("decoding_arms")
     if decoders is not None:
         expected = [{"id": "greedy", "decoder": "greedy"}, {"id": "sampling", "decoder": "sampling"}]
@@ -82,6 +86,8 @@ def arm_specs(c):
 
 
 def allocation_id(c):
+    if smollm.enabled(c):
+        return smollm.ALLOCATION
     if c.get("decoding_arms") is not None:
         return DECODING_ALLOCATION
     if c.get("training_chunk_policy") == "repeat_fixed":
@@ -98,6 +104,8 @@ def acceptance_campaign(c):
 
 
 def benchmark_filename(c):
+    if smollm.enabled(c):
+        return "benchmark_smollm2_completion64.json"
     if c.get("decoding_arms") is not None:
         return "benchmark_completion_decoding.json"
     if c.get("training_chunk_policy") == "repeat_fixed":
@@ -110,6 +118,8 @@ def benchmark_filename(c):
 
 
 def acceptance_checks(c):
+    if smollm.enabled(c):
+        return smollm.CHECKS
     extra = {"exact_mixture_reconstruction", "nested_selections", "sealed_private_stage_restores"}
     checks = CHECKS | extra if c.get("completion_arms") is not None else CHECKS
     if c.get("decoding_arms") is not None:
@@ -129,6 +139,8 @@ def acceptance_checks(c):
 
 
 def smoke_pair_count(c):
+    if smollm.enabled(c):
+        return 128
     """Keep historical scopes, with explicit larger smoke sets for sparse mixtures."""
     default = 320 if c.get("completion_arms") is not None else 256
     count = c.get("smoke_train_pairs", default)
@@ -138,6 +150,8 @@ def smoke_pair_count(c):
 
 
 def required_backup_bytes(c):
+    if smollm.enabled(c):
+        return 6_000_000_000 if c["kind"] == "smoke" else 131_000_000_000
     if len(arm_specs(c)) == 2:
         return 40_000_000_000
     # The verified OPT stages use <1.53 GB each, including model, optimizer,
@@ -148,6 +162,11 @@ def required_backup_bytes(c):
 
 
 def arm_config(c, name):
+    if smollm.enabled(c):
+        spec = next(x for x in arm_specs(c) if x["id"] == name)
+        f = spec["synthetic_fraction"]
+        return {**c, "workflow": "completion_arm", "arm_id": name, "synthetic_fraction": f,
+                "data_kind": "real" if f == 0 else "synthetic" if f == 1 else "mixed"}
     arm = {**c, "workflow": "completion_arm", "data_kind": name}
     if c.get("decoding_arms") is not None:
         from ..science.decoding import decoder_config
@@ -160,6 +179,8 @@ def arm_config(c, name):
 
 
 def validate_config(c):
+    if smollm.enabled(c):
+        return smollm.validate(c)
     from .configuration import validate_training_numbers
     validate_training_numbers(c)
     specs = arm_specs(c)
@@ -233,6 +254,8 @@ def validate_config(c):
 
 
 def resolve_inputs(c):
+    if smollm.enabled(c):
+        return smollm.resolve_inputs(c)
     c = copy.deepcopy(c)
     ref = c.get("prepared_bank") or read_json(STATE / "completion64_bank.json")
     if not ref or ref.get("contract") != bank_contract(c):
@@ -304,7 +327,7 @@ def measure(stage, model, bank, c, weights, cycle):
     for corpus in c["secondary_corpora"]:
         tokens = np.load(bank / "secondary" / corpus / "tokens.npy", mmap_mode="r")
         masks = np.load(bank / "secondary" / corpus / "masks.npy", mmap_mode="r")
-        limit = 64 if c["kind"] == "smoke" else None
+        limit = (1 if smollm.enabled(c) else 64) if c["kind"] == "smoke" else None
         result["secondary"][corpus] = engine.evaluate(model, tokens[:limit], c, masks=masks[:limit])
     validation, _, _ = load_pairs(bank, "validation")
     indices = np.load(bank / "probe_indices.npy")[:c["probe_count"]]
@@ -315,7 +338,8 @@ def measure(stage, model, bank, c, weights, cycle):
         probe_c = {**decoder_config(c, "beam"), "generation_purpose": "probe"}
         result["probe_decoding"] = engine.decoding_settings(probe_c)
     values, provenance = engine.generate(stage / "probe", cycle, model, prompts, probe_c, weights)
-    result["probe"] = {**diversity(values), **probe_diagnostics(values),
+    diagnostics = smollm.probe_diagnostics(values, c["newline_token_ids"]) if smollm.enabled(c) else probe_diagnostics(values)
+    result["probe"] = {**diversity(values), **diagnostics,
                        "continuation_tokens_sha256": provenance["continuation_tokens_sha256"]}
     from transformers import AutoTokenizer
     tokenizer = AutoTokenizer.from_pretrained(c["model"], revision=c["model_revision"])
@@ -335,7 +359,7 @@ def benchmark(root, c, bank):
     model = engine.load_model(c)
     optimizer = torch.optim.AdamW(model.parameters(), lr=c["learning_rate"])
     train_seconds = []
-    for step in range(5):
+    for step in range(2 if smollm.enabled(c) else 5):
         model.train()
         optimizer.zero_grad(set_to_none=True)
         engine.sync()
@@ -346,7 +370,8 @@ def benchmark(root, c, bank):
             with engine.autocast(c):
                 loss = model(input_ids=ids, attention_mask=mask, labels=ids.masked_fill(~loss_mask.bool(), -100), use_cache=False).loss
             (loss * len(rows) / c["effective_batch"]).backward()
-        optimizer.step()
+        if not smollm.enabled(c):
+            optimizer.step()
         engine.sync()
         train_seconds.append(time.perf_counter() - start)
     model.eval()
@@ -358,7 +383,7 @@ def benchmark(root, c, bank):
         for mode in modes:
             config = decoder_config(c, mode) if c.get("decoding_arms") is not None else c
             durations = []
-            for step in range(3):
+            for step in range(2 if smollm.enabled(c) else 3):
                 ids = engine.tensor(_visible_prompt(prompts[:c["generation_batch"]], c["bos_token_id"]))
                 engine.sync()
                 start = time.perf_counter()
@@ -375,7 +400,7 @@ def benchmark(root, c, bank):
     secondary_tokens = np.load(bank / "secondary/fineweb_edu/tokens.npy", mmap_mode="r")[:64]
     secondary_masks = np.load(bank / "secondary/fineweb_edu/masks.npy", mmap_mode="r")[:64]
     secondary = engine.evaluate(model, secondary_tokens, c, masks=secondary_masks)
-    result = {"training_target_tokens_per_second": c["effective_batch"] * 64 / float(np.median(train_seconds[2:])),
+    result = {"training_target_tokens_per_second": c["effective_batch"] * 64 / float(np.median(train_seconds[1:] if smollm.enabled(c) else train_seconds[2:])),
               "generation_new_tokens_per_second": c["generation_batch"] * 64 / float(np.median(generation_seconds[1:])),
               "primary_target_tokens_per_second": primary["scored_tokens"] / primary["seconds"],
               "secondary_target_tokens_per_second": secondary["scored_tokens"] / secondary["seconds"],
@@ -383,7 +408,7 @@ def benchmark(root, c, bank):
               "microbatch": c["microbatch"], "effective_batch": c["effective_batch"], "generation_batch": c["generation_batch"],
               "full_primary_targets": {s: read_json(bank / s / "manifest.json")["target_tokens"] for s in ("validation", "test")},
               "full_secondary_targets": sum(int(np.load(bank / "secondary" / name / "masks.npy", mmap_mode="r")[:, 1:].sum()) for name in c["secondary_corpora"]),
-              "benchmark_updates_discarded": 5, "gpu": torch.cuda.get_device_name() if torch.cuda.is_available() else "cpu"}
+              "benchmark_updates_discarded": 0 if smollm.enabled(c) else 5, "gpu": torch.cuda.get_device_name() if torch.cuda.is_available() else "cpu"}
     if c.get("decoding_arms") is not None:
         result["decoder_rates"] = decoder_rates
     atomic_json(path, result)
@@ -435,7 +460,7 @@ def _targets(root, cycle, prompt, c, parent_checkpoint, parent_hash, validation,
         model = engine.load_model(c, parent_checkpoint)
     try:
         values, manifest = engine.generate(root, cycle - 1, model, _visible_prompt(prompt, c["bos_token_id"]), c,
-                                           parent_hash, inject=validation and cycle == 2)
+                                           parent_hash, inject=validation and cycle == 2 and not smollm.enabled(c))
     finally:
         del model
         gc.collect()
@@ -468,7 +493,7 @@ def training_input(root, cycle, prompt, real, c, checkpoint, previous, optimizer
     stage = Path(root) / f"seed_42/gen_{cycle:02d}"
     selected_prompt = prompt
     selection = description = None
-    if c.get("completion_arms") is not None:
+    if c.get("completion_arms") is not None and not (smollm.enabled(c) and c["data_kind"] in ("real", "synthetic")):
         from ..completion_mixing import freeze_selection
         selection, description = freeze_selection(stage, prompt, real, c["synthetic_fraction"],
                                                   c["seed"], cycle, previous, create=create)
@@ -565,13 +590,13 @@ def run_arm(root, validation=False):
                 atomic_json(root / "status.json", {"state": "running", "generation": cycle, "stage": "training", "time": now()})
                 training = engine.train(root, cycle, tokens, val, c, previous, initial_checkpoint=checkpoint, lineage=lineage,
                                         masks=attention, val_masks=val_attention, loss_masks=scoring, val_loss_masks=val_scoring,
-                                        optimizer_checkpoint=optimizer_state, total_steps=total_steps, inject=validation and cycle == 2)
+                                        optimizer_checkpoint=optimizer_state, total_steps=total_steps, inject=validation and cycle == 2 and not smollm.enabled(c))
                 model = engine.load_model(c, stage / "checkpoint")
                 metrics = measure(stage, model, bank, c, training["selected_weights_sha256"], cycle)
                 metrics["training"] = training
                 metrics["training_evaluation"] = engine.evaluate(model, tokens, c, masks=attention, loss_masks=scoring)
                 metrics["input_manifest_sha256"] = sha256(stage / "training_input/manifest.json")
-                if c.get("completion_arms") is not None:
+                if c.get("completion_arms") is not None and not (smollm.enabled(c) and c["data_kind"] in ("real", "synthetic")):
                     metrics["mixture"] = {k: lineage[k] for k in ("synthetic_fraction", "real_pairs", "synthetic_pairs", "mixture_manifest_sha256")}
                 atomic_json(stage / "metrics.json", metrics)
                 files = {p.relative_to(stage).as_posix(): sha256(p) for p in stage.rglob("*") if p.is_file()
@@ -663,9 +688,11 @@ def run(root, validation=False):
         bank = bank_path(root, c)
         data = restore_bank(c["prepared_bank"], bank)
         c["bos_token_id"] = data["bos_token_id"]
+        if smollm.enabled(c):
+            c["newline_token_ids"] = data["newline_token_ids"]
         atomic_json(root / "status.json", {"state": "running", "phase": "baseline", "time": now()})
         if not (root / "seed_42/gen_00/metrics.json").exists():
-            if shutil.disk_usage(root).free < 40_000_000_000:
+            if shutil.disk_usage(root).free < ((8_000_000_000 if c["kind"] == "smoke" else 150_000_000_000) if smollm.enabled(c) else 40_000_000_000):
                 raise RuntimeError("Completion comparison requires 40 GB initially free")
             benchmark(root, c, bank)
             model = engine.load_model(c)
@@ -708,12 +735,15 @@ def run(root, validation=False):
             if not validation and c.get("training_chunk_policy") == "repeat_fixed":
                 from .completion_restore import verify_terminal_restore
                 verify_terminal_restore(root, child, arm)
-            if validation and name == next(iter(roots)) and not (root / ".handoff_injected").exists():
+            if validation and not smollm.enabled(c) and name == next(iter(roots)) and not (root / ".handoff_injected").exists():
                 (root / ".handoff_injected").touch()
                 event(root, "completion_handoff_interruption")
                 raise engine.ValidationInterruption("Injected completion coordinator handoff exit")
         if validation:
-            from .completion_validation import validate_remote
+            if smollm.enabled(c):
+                from .smollm_validation import validate_remote
+            else:
+                from .completion_validation import validate_remote
             validate_remote(root)
         from ..analysis.completion import report
         report(root, for_backup=True)

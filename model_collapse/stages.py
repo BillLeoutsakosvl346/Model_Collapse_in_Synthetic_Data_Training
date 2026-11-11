@@ -28,14 +28,23 @@ def stage(name, root, generation=0, config_path=None):
             c = resolve_initial_dataset(c)
         atomic_json(root / "config.json", c)
     if name == "prepare":
-        tok = AutoTokenizer.from_pretrained(c["model"], revision=c["model_revision"])
+        try:
+            tok = AutoTokenizer.from_pretrained(c["model"], revision=c["model_revision"], local_files_only=True)
+        except OSError:
+            tok = AutoTokenizer.from_pretrained(c["model"], revision=c["model_revision"])
         if c.get("workflow") == "completion_comparison":
-            from .completion_data import prepare_bank, audit_bank, publish_bank
+            from .workflow.smollm import enabled
+            from .completion_data import audit_bank
+            if enabled(c):
+                from .science.completion_bank_v2 import prepare_bank
+                from .artifacts.native_bank import publish_bank
+            else:
+                from .completion_data import prepare_bank, publish_bank
             from .hub import destinations
             result = prepare_bank(root, c, tok)
             audit = audit_bank(root, tok)
             from .common import STATE, sha256
-            reference = read_json(STATE / "completion64_bank.json")
+            reference = read_json(STATE / ("smollm2_completion64_bank.json" if enabled(c) else "completion64_bank.json"))
             if not reference or reference["manifest_sha256"] != sha256(root / "manifest.json"):
                 reference = publish_bank(root, c, destinations(probe=True)["repos"])
             return {"bank": reference, "audit": audit, "collections": result["collections"]}

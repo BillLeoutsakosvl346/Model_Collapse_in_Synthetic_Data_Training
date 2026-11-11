@@ -55,6 +55,7 @@ def accrued(d, kind=None):
 def campaign_accrued(d, campaign):
     launches = [x for x in d["launches"] if x.get("acceptance_campaign") == campaign]
     ids = {x["volume_id"] for x in launches}
+    ids.update(k for k,v in d.get("volumes",{}).items() if v.get("acceptance_campaign") == campaign)
     selected = {**d, "launches": launches, "volumes": {k: v for k, v in d.get("volumes", {}).items() if k in ids}}
     return accrued(selected)
 
@@ -438,6 +439,9 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         from ..workflow.mixed_campaign import verified_resume_jobs
         resume_work = verified_resume_jobs(PROJECT / "runs" / resume_id, previous, c)
     api = Runpod()
+    if completion and c.get("completion_profile") == "smollm2_completion64_v1":
+        from ..workflow.smollm import resolve_backup
+        c = resolve_backup(c, api)
     p = preflight(probe=True, network_storage=False) if pod_storage else preflight(probe=True)
     check_active_pods(c, api.request("GET", "/pods")["pods"], ledger())
     storage_admission = None
@@ -511,6 +515,8 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             raise RuntimeError("Completion comparison requires its recorded allocation")
         allocated = {**ledger_state, "launches": [x for x in ledger_state["launches"] if x.get("allocation") == allocation_name]}
         ids = {x["volume_id"] for x in allocated["launches"]}
+        if c.get("completion_profile") == "smollm2_completion64_v1":
+            ids.update(k for k,v in ledger_state.get("volumes",{}).items() if v.get("allocation") == allocation_name)
         allocated["volumes"] = {k: v for k, v in ledger_state.get("volumes", {}).items() if k in ids}
         allowance = min(allowance, allocation["budget_usd"] - accrued(allocated) - allocation["reserve_usd"])
     if c.get("max_session_usd") is not None:
@@ -539,6 +545,10 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             from ..mixing import CAMPAIGN, mixture_enabled
             if mixture_enabled(c):
                 allowance = min(allowance, .75 - campaign_accrued(ledger(), CAMPAIGN))
+    if completion and c.get("completion_profile") == "smollm2_completion64_v1" and c["kind"] == "smoke":
+        elapsed = sum(max(0, x.get("compute_stopped_at", x.get("stopped_at", now())) - x.get("compute_started_at", x["created_at"])) for x in ledger_state["launches"] if x.get("allocation") == allocation_name and x.get("kind") == "smoke")
+        if elapsed >= c["validation_max_seconds"]:
+            raise RuntimeError("Combined fast-validation paid-time allowance exhausted")
     if allowance <= 0.1:
         raise RuntimeError("Insufficient budget after shutdown/storage reserve")
     if c["kind"] == "full":
@@ -578,6 +588,10 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                 exclude_volume=previous.get("volume_id") if previous else None)
             estimate["seven_day_volume_storage_usd"] = volume_hourly * 24 * 7
             allowance -= estimate["historical_storage_during_run_usd"]
+            if c.get("completion_profile") == "smollm2_completion64_v1":
+                from ..workflow.smollm import retention_forecast
+                estimate.update(retention_forecast(c, storage_admission["bulk_capacity"]["quota_bytes"], RESERVE))
+                allowance -= estimate["retention_above_existing_reserve_usd"]
             if estimate["estimated_compute_and_running_storage_usd"] * 1.15 > allowance:
                 raise RuntimeError("Completion comparison forecast exceeds the padded watchdog allowance")
         elif fresh_real:
@@ -660,7 +674,12 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                 pod = api.pod(previous["pod_id"])
             else:
                 pod_request_started = True
-                pod = api.request("POST", "/pods", payload)
+                if c.get("pod_create_api", "rest_v2") == "graphql":
+                    pod = api.create_pod_graphql(payload)
+                elif c.get("pod_create_api", "rest_v2") == "rest_v2":
+                    pod = api.request("POST", "/pods", payload)
+                else:
+                    raise ValueError("Unsupported Pod creation API")
         except Exception as error:
             detail = str(error)
             for secret in (api.key if hasattr(api, "key") else None, os.environ.get("HF_TOKEN")):
@@ -688,6 +707,10 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                      "volume_hourly_usd": volume_hourly, "network_volume_gb": 0 if pod_storage else volume_gb, "volume_created_at": volume_created_at,
                      "session_allowance_usd": allowance, "repos": p["hugging_face"]["repos"], "code_sha256": code_hash,
                      "starting_balance_usd": p["account"]["clientBalance"], "remote_root": "/workspace/runs/" + run_id}
+        if completion and c.get("completion_profile") == "smollm2_completion64_v1" and c["kind"] == "smoke":
+            allocation_name = allocation_id(c) if completion else None
+            used_seconds = sum(max(0, x.get("compute_stopped_at", x.get("stopped_at", now())) - x.get("compute_started_at", x["created_at"])) for x in ledger()["launches"] if x.get("allocation") == allocation_name and x.get("kind") == "smoke")
+            resources["absolute_deadline"] = created + max(0, c["validation_max_seconds"] - used_seconds)
         bundle = read_json(STATE / "source_bundle.json", {})
         resources.update(runtime_sha256=code_hash, git_commit=bundle.get("git_commit"))
         resources["configuration_sha256"] = digest(c)
@@ -1105,7 +1128,9 @@ def cleanup(run_id):
         verify_recovery(local)
         verify_recovered_files(local, index["files"])
         if any(v["metadata_only"] for v in read_json(local / "recovery_verified.json")["children"].values()):
-            if not read_json(local / "validation_results.json", {}).get("checks", {}).get("independent_budget_guard_and_provider_stop_verified"):
+            from ..workflow.smollm import enabled
+            shutdown_check = "independent_watchdog_and_provider_stop_verified" if enabled(read_json(local / "config.json")) else "independent_budget_guard_and_provider_stop_verified"
+            if not read_json(local / "validation_results.json", {}).get("checks", {}).get(shutdown_check):
                 raise RuntimeError("Completion cleanup requires full recovery or validated private restores")
     elif campaign:
         from ..workflow.mixed_campaign import verify_campaign_recovery

@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "recorded_at": 1794422711.7020128,
+  "status": "gpu_acceptance_blocked_capacity",
+  "full_training_launched": false,
+  "runtime_sha256": "89d432dd198103487ab16b9ad02dc5557640d45fb7042b61cd50a0b6897d8ca8",
+  "protocol_fingerprint": "3d9fbafc88b555f43e130880ce36fea540059e935e2e477b5cd2f67ede1df2d0",
+  "accepted_runtime_sha256": null,
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "model_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "bank": {
+    "run_id": "smollm2-completion64-bank-75c3da6d89516ffd",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "e159be342ba19fe2ec4c2a4a03ce8242287d1d36",
+      "dataset": "61b426c93d46c2e5caafa24b9c07f1fc342aa3d5"
+    },
+    "artifact_index_sha256": "f753ec670c96a4935447c13af31129aeef4c72191a4de608fb39302999283bdf",
+    "manifest_sha256": "8c475f058606fed0610d7555128139ea445b2f4753c2a1abc8eccd44e06c9837",
+    "contract": "75c3da6d89516ffde3e41649c059d26aed75af5ee1943821ab526d26964ceebf",
+    "bulk_store": {
+      "backend": "runpod_s3",
+      "bucket": "1b2vuplxer",
+      "region": "EU-RO-1",
+      "prefix": "smollm2-native-bank"
+    }
+  },
+  "bank_audit": {
+    "all_file_hashes_verified": true,
+    "all_pairs_reconstructed": true,
+    "disjoint_documents_and_passages": true,
+    "probe_document_stratification": true,
+    "counts": {
+      "validation": {
+        "pairs": 7447,
+        "target_tokens": 476608,
+        "documents": 983
+      },
+      "test": {
+        "pairs": 7303,
+        "target_tokens": 467392,
+        "documents": 983
+      },
+      "cycle_01": {
+        "pairs": 10000,
+        "target_tokens": 640000,
+        "documents": 1168
+      },
+      "cycle_02": {
+        "pairs": 10000,
+        "target_tokens": 640000,
+        "documents": 1102
+      },
+      "cycle_03": {
+        "pairs": 10000,
+        "target_tokens": 640000,
+        "documents": 1219
+      },
+      "cycle_04": {
+        "pairs": 10000,
+        "target_tokens": 640000,
+        "documents": 1213
+      },
+      "cycle_05": {
+        "pairs": 10000,
+        "target_tokens": 640000,
+        "documents": 1238
+      },
+      "cycle_06": {
+        "pairs": 10000,
+        "target_tokens": 640000,
+        "documents": 1154
+      },
+      "cycle_07": {
+        "pairs": 10000,
+        "target_tokens": 640000,
+        "documents": 1330
+      },
+      "cycle_08": {
+        "pairs": 10000,
+        "target_tokens": 640000,
+        "documents": 1259
+      },
+      "cycle_09": {
+        "pairs": 10000,
+        "target_tokens": 640000,
+        "documents": 1297
+      },
+      "cycle_10": {
+        "pairs": 10000,
+        "target_tokens": 640000,
+        "documents": 1315
+      }
+    }
+  },
+  "offline_checks": {
+    "targeted_run": {
+      "passed": 98,
+      "seconds": 37.62
+    },
+    "final_profile_storage_budget_run": {
+      "passed": 46,
+      "seconds": 7.41,
+      "coverage_overlaps_targeted_run": true
+    },
+    "historical_full_suite_run": false,
+    "final_focused_run": {
+      "passed": 104,
+      "seconds": 17.58,
+      "coverage_overlaps_prior_runs": true
+    }
+  },
+  "independent_review": "docs/validation/2026-11-11_smollm2-independent-review.json",
+  "cloud_attempts": [
+    {
+      "id": "20261111T173935Z-smoke-completion64-mixed50",
+      "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+      "data_center": null,
+      "working_storage": "network",
+      "deployment_api": "rest_v2",
+      "pod_created": false,
+      "compute_seconds": 0,
+      "error_summary": "SUPPLY_CONSTRAINT: no instances with requested specifications",
+      "pending_volume": {
+        "volume_id": "dabnrsvkhn",
+        "created_by_task": true
+      }
+    },
+    {
+      "id": "20261111T174205Z-smoke-completion64-mixed50",
+      "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+      "data_center": null,
+      "working_storage": "network",
+      "deployment_api": "rest_v2",
+      "pod_created": false,
+      "compute_seconds": 0,
+      "error_summary": "SUPPLY_CONSTRAINT: no instances with requested specifications",
+      "pending_volume": {
+        "volume_id": "iaga0m8h8a",
+        "created_by_task": true
+      }
+    },
+    {
+      "id": "20261111T174518Z-smoke-completion64-mixed50",
+      "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+      "data_center": null,
+      "working_storage": "pod_persistent",
+      "deployment_api": "rest_v2",
+      "pod_created": false,
+      "compute_seconds": 0,
+      "error_summary": "SUPPLY_CONSTRAINT: no instances with requested specifications",
+      "pending_volume": null
+    },
+    {
+      "id": "20261111T180448Z-smoke-completion64-mixed50",
+      "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+      "data_center": "EU-RO-1",
+      "working_storage": "network",
+      "deployment_api": "rest_v2",
+      "pod_created": false,
+      "compute_seconds": 0,
+      "error_summary": "SUPPLY_CONSTRAINT: no instances with requested specifications",
+      "pending_volume": {
+        "volume_id": "3kxby83p5p",
+        "created_by_task": true
+      }
+    },
+    {
+      "id": "20261111T181255Z-smoke-completion64-mixed50",
+      "gpu": "NVIDIA GeForce RTX 5090",
+      "data_center": "EU-RO-1",
+      "working_storage": "network",
+      "deployment_api": "rest_v2",
+      "pod_created": false,
+      "compute_seconds": 0,
+      "error_summary": "SUPPLY_CONSTRAINT: no instances with requested specifications",
+      "pending_volume": {
+        "volume_id": "094uyazg42",
+        "created_by_task": true
+      }
+    },
+    {
+      "id": "20261111T184054Z-smoke-completion64-mixed50",
+      "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+      "data_center": "EU-RO-1",
+      "working_storage": "network",
+      "deployment_api": "graphql",
+      "pod_created": false,
+      "compute_seconds": 0,
+      "error_summary": "SUPPLY_CONSTRAINT: no instances with requested specifications",
+      "pending_volume": {
+        "volume_id": "ad9vwhxkxe",
+        "created_by_task": true
+      }
+    },
+    {
+      "id": "20261111T184204Z-smoke-completion64-mixed50",
+      "gpu": "NVIDIA RTX A6000",
+      "data_center": "EU-SE-1",
+      "working_storage": "network",
+      "deployment_api": "graphql",
+      "pod_created": false,
+      "compute_seconds": 0,
+      "error_summary": "SUPPLY_CONSTRAINT: no instances with requested specifications",
+      "pending_volume": {
+        "volume_id": "36248jobme",
+        "created_by_task": true
+      }
+    }
+  ],
+  "provider_verified_new_pods": [],
+  "provider_verified_active_pods": [],
+  "gpu_checks_executed": false,
+  "optimizer_updates_executed": 0,
+  "gpu_validation_compute_usd": 0.0,
+  "estimated_task_storage_cost_usd": 0.002871611797002171,
+  "estimated_project_accrued_usd": 74.61657917410616,
+  "retained_resources": [
+    {
+      "id": "1b2vuplxer",
+      "type": "STANDARD network volume",
+      "size_gb": 10,
+      "purpose": "prepared native bank",
+      "estimated_monthly_usd": 0.7
+    }
+  ],
+  "temporary_network_volumes_removed": [
+    "dabnrsvkhn",
+    "iaga0m8h8a",
+    "3kxby83p5p",
+    "094uyazg42",
+    "ad9vwhxkxe",
+    "36248jobme"
+  ],
+  "recovery_scope": {
+    "local_all_bank_files_reconstructed_and_hashed": true,
+    "bulk_upload_inputs_hashed_and_remote_lengths_checked": true,
+    "private_pinned_index_download_checksum_verified": true,
+    "s3_random_probe_cold_restored_bytes": 4096,
+    "full_bank_cold_restore": false,
+    "model_optimizer_cold_restore": false,
+    "gpu_checkpoint_reevaluation": false
+  },
+  "remaining_checks": [
+    "actual two-update mixed50 GPU test",
+    "stage2 model/optimizer continuity on GPU",
+    "terminal checkpoint reload",
+    "representative private model/optimizer cold restore and miniature evaluation",
+    "detached progress and ordinary automatic provider shutdown",
+    "production-batch benchmark"
+  ],
+  "full_forecast": null,
+  "forecast_reason": "No validation GPU could be provisioned; native-model throughput not measured.",
+  "launch_blockers": [
+    "Actual GPU placement and scoped acceptance",
+    "Full allocation and cumulative admission (budget increase requested, not yet approved)",
+    "Verified 200GB working/200GB backup capacity and measured forecast"
+  ],
+  "limits": {
+    "authorized_at": 1794416706.5217562,
+    "cumulative_ceiling_usd": 80.0,
+    "setup_ceiling_usd": 5.05,
+    "task_allocation_usd": 3.0,
+    "reserve_usd": 2.0,
+    "validation_cap_usd": 0.5,
+    "validation_paid_seconds_cap": 900,
+    "full_training_authorized": false,
+    "model": "HuggingFaceTB/SmolLM2-135M",
+    "fractions": [
+      0.0,
+      0.5,
+      0.8,
+      0.95,
+      0.99,
+      0.999,
+      1.0
+    ],
+    "source": "Explicit user implementation of the approved plan; setup only."
+  },
+  "tokenizer_files_sha256": {
+    "config.json": "1d556eab73b69c7f11f64c557a2f9c6f440bd4c6b89bb2584a6b498c92603843",
+    "special_tokens_map.json": "e786b595b9a23148bf1630df78d9037a048ea671e48bfd3549a1e3c233742bb3",
+    "tokenizer.json": "9ca9acddb6525a194ec8ac7a87f24fbba7232a9a15ffa1af0c1224fcd888e47c",
+    "tokenizer_config.json": "4bb9af56a342753d39374f4016a16574cab299fe088e896f425ce3c433f61424"
+  },
+  "private_control_backup": {
+    "repo": "iib-model-collapse-bill/iib-model-collapse-data",
+    "revision": "f533de5eefb28904e4fdcd12060d011be45c7fa1",
+    "ledger_sha256": "d86dff1f1e88b0dd655453896b3cf28c1b263876cd3561f73f5ba16360036217",
+    "source_bundle_path": "_control/source-bundles/code-1f2342e3f44f69860e5006c7f3a5ce1490095445fa90933fb3e8c1889160f12e.tar.gz",
+    "source_bundle_sha256": "bd32bab5ce55de59622af6073d3c5df5333a1dc3e95fb6c17e4e86f9a9206084"
+  },
+  "full_training_authorized": true,
+  "full_authorization": "docs/validation/2026-11-11_smollm2-conditional-launch-authorization.json",
+  "monetary_limits_unchanged": true,
+  "provider_quota_read": {
+    "max_running_gpus": 8,
+    "max_high_performance_running_gpus": 1,
+    "conclusion": "No evidence stopped-Pod count caused rejection; GraphQL returned SUPPLY_CONSTRAINT."
+  },
+  "historical_resources_changed": false,
+  "full_storage_seven_day_estimate_usd": 6.443835616438356,
+  "budget_increase_requested_not_authorized": {
+    "task_allocation_usd": 15,
+    "cumulative_ceiling_usd": 90
+  }
+}

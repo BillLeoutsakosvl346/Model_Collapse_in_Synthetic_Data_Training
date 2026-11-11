@@ -29,6 +29,8 @@ The root-level package and `python -m model_collapse` CLI remain stable. These a
 
 ### Compatibility and frozen data builders
 
+The SmolLM2 portability profile lives in `workflow/smollm.py`; its bounded acceptance lives in `workflow/smollm_validation.py`. They reuse `completion.py` and the shared engine. `science/completion_bank_v2.py` is the versioned native-tokenizer builder; it does not replace the byte-preserved OPT builders. Profile-specific validation and storage policies do not redefine historical condition meanings.
+
 `engine.py`, `data.py`, `pipeline.py`, `remote.py`, `runpod_api.py`, `supervisor.py` and `hub.py` at package root are compatibility aliases. Each shares its canonical implementation's module object, preserving established imports and patched globals. Add implementation to its subpackage rather than a second engine or launcher at the old path.
 
 `completion_data.py` and `fresh_data.py` remain at root with their original bytes. The completion-bank identity includes its builder source hash; relocating that implementation without a versioned legacy reader would invalidate a pinned bank. `completion_mixing.py` and `mixing.py` remain distinct scientific algorithms: FineWeb replaces targets at fixed prompt rows; WikiText samples independent block pools. They share only pure count and token-hash utilities.

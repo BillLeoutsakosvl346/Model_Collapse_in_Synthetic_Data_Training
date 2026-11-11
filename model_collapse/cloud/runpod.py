@@ -64,6 +64,31 @@ class Runpod:
     def pod(self, pod_id):
         return self.request("GET", "/pods/" + pod_id)
 
+    def create_pod_graphql(self, payload):
+        """Explicit alternative transport; callers retain unique-name reconciliation."""
+        mounts = payload.get("mounts", {}).get("network", [])
+        if len(mounts) != 1 or payload.get("cloud") != "SECURE":
+            raise ValueError("GraphQL deployment requires one Secure Cloud network volume")
+        gpu = payload["gpu"]
+        if set(gpu) - {"id", "count", "allowedCudaVersions"}:
+            raise ValueError("Unsupported GraphQL GPU restriction")
+        inputs = {"name": payload["name"], "imageName": payload["image"],
+            "gpuTypeId": gpu["id"], "gpuCount": gpu["count"], "cloudType": "SECURE",
+            "networkVolumeId": mounts[0]["volumeId"], "dataCenterIds": payload["dataCenterIds"],
+            "containerDiskInGb": payload["disk"], "volumeInGb": 0,
+            "volumeMountPath": mounts[0]["path"], "ports": ",".join(payload["ports"]),
+            "startSsh": payload["startSsh"], "startJupyter": payload["startJupyter"]}
+        if "allowedCudaVersions" in gpu:
+            inputs["allowedCudaVersions"] = gpu["allowedCudaVersions"]
+        result = self.request("POST", "", {"query":
+            "mutation($input: PodFindAndDeployOnDemandInput!) { podFindAndDeployOnDemand(input: $input) { id } }",
+            "variables": {"input": inputs}}, graphql=True)
+        if result.get("errors"):
+            raise RuntimeError("Runpod GraphQL deployment: " + json.dumps(result["errors"])[:1200])
+        # Return the acquired identity before any fallible REST readback. The launcher
+        # records ownership first, then waits for readiness using this exact id.
+        return {"id": result["data"]["podFindAndDeployOnDemand"]["id"]}
+
     def billing(self):
         return self.request("GET", "/billing?lastN=1&bucketSize=day")
 

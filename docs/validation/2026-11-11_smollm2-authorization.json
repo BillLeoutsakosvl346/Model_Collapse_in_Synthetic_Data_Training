@@ -1,0 +1,21 @@
+{
+  "authorized_at": 1794416706.5217562,
+  "cumulative_ceiling_usd": 80.0,
+  "setup_ceiling_usd": 5.05,
+  "task_allocation_usd": 3.0,
+  "reserve_usd": 2.0,
+  "validation_cap_usd": 0.5,
+  "validation_paid_seconds_cap": 900,
+  "full_training_authorized": false,
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "fractions": [
+    0.0,
+    0.5,
+    0.8,
+    0.95,
+    0.99,
+    0.999,
+    1.0
+  ],
+  "source": "Explicit user implementation of the approved plan; setup only."
+}

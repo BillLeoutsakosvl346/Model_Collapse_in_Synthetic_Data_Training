@@ -26,7 +26,7 @@ def accrued_cost(d, timestamp, kind=None, *, default_volume_hourly=30 * 0.07 / 7
                 "hourly_usd": x.get("volume_hourly_usd", default_volume_hourly), "deleted_at": x.get("volume_deleted_at")}
     allowed_runs = {x.get("run_id") for x in d["launches"] if not kind or x["kind"] == kind}
     for volume in volumes.values():
-        if volume.get("charge_started_at") is None or (kind and volume.get("run_id") not in allowed_runs):
+        if volume.get("charge_started_at") is None or (kind and volume.get("run_id") not in allowed_runs and volume.get("kind") != kind):
             continue
         end = volume.get("deleted_at") or timestamp
         total += max(0, end - volume["charge_started_at"]) / 3600 * volume["hourly_usd"]

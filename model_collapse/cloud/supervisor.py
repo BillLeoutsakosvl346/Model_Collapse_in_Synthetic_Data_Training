@@ -38,7 +38,8 @@ def _publish_shutdown_intent(root, resources):
 
 def deadline(resources):
     # Deadline never resets on a process restart. Includes the entire provisioning interval.
-    return resources["created_at"] + resources["session_allowance_usd"] / resources["guard_hourly_usd"] * 3600
+    budget_deadline = resources["created_at"] + resources["session_allowance_usd"] / resources["guard_hourly_usd"] * 3600
+    return min(budget_deadline, resources.get("absolute_deadline", budget_deadline))
 
 
 def watchdog(root):
@@ -125,7 +126,7 @@ def supervise(root, validation=False):
     try:
         workflow = read_json(root / "config.json", {}).get("workflow")
         run_worker(root, validation=validation, max_restarts=1 if workflow == "paired" else 2, heartbeat_root=root)
-        if validation:
+        if validation and read_json(root / "config.json", {}).get("completion_profile") != "smollm2_completion64_v1":
             # A deliberately tiny additional cost allowance exercises the real budget-guard shutdown.
             r = read_json(root / "resources.json")
             atomic_json(root / "validation_guard_deadline.json", {"deadline": now() + 8,

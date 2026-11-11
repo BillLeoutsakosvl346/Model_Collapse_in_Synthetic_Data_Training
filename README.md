@@ -6,6 +6,7 @@ Cambridge Engineering IIB research with OPT-125M, WikiText-2 and FineWeb-Edu: re
 
 | Condition | Scientific difference | Recorded result/status |
 | --- | --- | --- |
+| [SmolLM2-135M fraction sweep](comparisons/smollm2_135m_fineweb_completion64_fractions/README.md) | Seven native-tokenizer continuation mixtures; fast two-update compatibility acceptance | Setup only; full launch remains separate |
 | [Matched FineWeb completions](comparisons/fineweb_real_vs_synthetic_completion64/README.md) | Same fresh prompts, real versus self-generated continuation targets, one epoch per chunk | [Completed comparison and analysis](docs/validation/2026-11-07_fineweb-four-fraction-completion-analysis.json) |
 | [FineWeb-Edu real-only pilot](experiments/opt125m_fineweb_edu/fresh_real_one_epoch/README.md) | Fresh documents, one epoch per cycle, continuous AdamW and global cosine schedule | [Completed pilot and shutdown](docs/validation/2026-11-06_fineweb-full-completion-status.json); authored analysis pending |
 | [Pretrained reset](experiments/opt125m_wikitext2/pretrained_reset/README.md) | Reset to original pretrained OPT each cycle | [Week 1 report](reports/20261020T211121Z-full/report.md) |

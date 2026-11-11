@@ -237,6 +237,10 @@ def validate_remote(root):
 
 
 def validate_local(root):
+    from .smollm import enabled
+    if enabled(read_json(Path(root) / "config.json")):
+        from .smollm_validation import validate_local as fast_validate
+        return fast_validate(root)
     from ..remote import local_resources, source_archive, Runpod
     from ..mixing import certificate_name
     from .completion import verify_recovery

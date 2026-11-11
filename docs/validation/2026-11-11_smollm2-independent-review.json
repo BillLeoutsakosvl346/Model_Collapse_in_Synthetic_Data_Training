@@ -1,0 +1,31 @@
+{
+  "reviewer": "/root/review_smollm_setup",
+  "scope": [
+    "model/tokenizer compatibility",
+    "continuation masks and direct loss",
+    "seven fractions and routing",
+    "optimizer lineage",
+    "source integrity",
+    "fast acceptance",
+    "private backup and capacity"
+  ],
+  "material_findings_resolved": [
+    "indexed original document checksums",
+    "pinned source tokenizer without report cache",
+    "correct cold bank restoration argument order",
+    "model-derived report description",
+    "200GB full backup admission",
+    "Smol-only combined deadline",
+    "separate bank-volume allocation accounting",
+    "GraphQL acquired identity returned before REST readback",
+    "seven-day working plus actual backup-capacity admission"
+  ],
+  "remaining_material_findings": [],
+  "gpu_acceptance_at_review": "pending",
+  "focused_checks": {
+    "passed": 98,
+    "seconds": 37.62,
+    "complete_historical_suite_run": false
+  },
+  "scope_limit": "Independent source review and offline checks; not a substitute for the scoped actual GPU acceptance."
+}

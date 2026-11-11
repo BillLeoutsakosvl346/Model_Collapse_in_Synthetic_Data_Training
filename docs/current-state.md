@@ -1,6 +1,14 @@
 # Current recorded state
 
-Snapshot refreshed after completion, analysis and Google Doc delivery of greedy versus sampling on 11 November 2026. Earlier observations are preserved in the [byte-exact chronology](history/2026-11-07_pre-cleanup-current-state.txt).
+Snapshot refreshed after SmolLM2 setup reached a provider-capacity blocker on 11 November 2026. Earlier observations are preserved in the [byte-exact chronology](history/2026-11-07_pre-cleanup-current-state.txt).
+
+## SmolLM2 seven-fraction setup: prepared, GPU acceptance blocked
+
+The [approved setup](validation/2026-11-11_smollm2-authorization.json) prepares the [seven-condition native-tokenizer comparison](../comparisons/smollm2_135m_fineweb_completion64_fractions/README.md). The bank has ten 10,000-pair chunks and 7,447/7,303 validation/test pairs; full reconstruction and separation checks passed. Independent review and focused tests passed. Seven actual placement requests (REST and GraphQL; preferred Blackwell and an alternate data centre) returned supply errors and created no Pod; all six temporary network volumes were verified removed. **No validation GPU or full experiment ran.** See the [handoff](smollm2-fractions-handoff.md) and [receipt](validation/2026-11-11_smollm2-setup.json). Actual two-update mixed50 GPU acceptance and its throughput forecast remain pending, within the unchanged USD 0.50/900-second combined paid-compute caps. The user subsequently [authorized the full seven-condition launch](validation/2026-11-11_smollm2-conditional-launch-authorization.json), conditional on actual GPU acceptance and affordable admission; the monetary limits are unchanged.
+
+Authorization is now USD 80 cumulative, USD 5.05 total historical setup allowance, and a separate USD 3 setup-task allocation including USD 2 reserve. The future full sweep requires separately verified 200 GB working/backup capacities and affordable admission. Full-size storage is not allocated by this setup. Preserve every historical recovery resource.
+
+Retain the new **10 GB Standard S3 volume `1b2vuplxer`** in EU-RO-1: it holds the prepared native bank and costs approximately USD 0.70/month until deleted. Private Hub metadata/indexes are pinned and verified, and a 4 KB S3 probe was cold-restored; this does not establish full-bank or checkpoint cold recovery. GPU spend is zero; small storage estimates are recorded separately. Final provider reads found no active GPU.
 
 ## Greedy versus sampling: completed and reported
 
@@ -34,9 +42,9 @@ Conservative task cost at the [analysis receipt](../reports/20261110T151528Z-ful
 
 | Scope | Recorded authorization |
 | --- | --- |
-| Cumulative spending ceiling | USD 75.00, existing credit only |
+| Cumulative spending ceiling | USD 80.00, existing credit only; SmolLM2 setup authorization recorded above |
 | High-fraction campaign | USD 11.75 including its separately reserved storage |
-| Total setup allowance | USD 4.55, including the authorized decoding-restoration allowance |
+| Total setup allowance | USD 5.05, including the authorized bounded SmolLM2 compatibility test |
 | Combined high-fraction validation cap | USD 0.90; recorded conservative spend USD 0.7843 |
 | Standalone 99% condition | USD 5 allocation including USD 2 reserve; USD 0.30 combined validation cap; accepted validation USD 0.21584 |
 | Standalone 99.9% condition | USD 5 allocation including USD 2 reserve; USD 0.30 combined validation cap; smoke then full launch authorized after checks pass |

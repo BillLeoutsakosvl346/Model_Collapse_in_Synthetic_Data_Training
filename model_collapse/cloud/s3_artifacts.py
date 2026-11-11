@@ -29,7 +29,7 @@ def validate_store(store):
     return store
 
 
-def client(store):
+def client(store, *, connect_timeout=20):
     import boto3
     from botocore.config import Config
     validate_store(store)
@@ -41,7 +41,7 @@ def client(store):
         endpoint_url="https://s3api-" + store["region"].lower() + ".runpod.io",
         aws_access_key_id=access, aws_secret_access_key=secret,
         config=Config(signature_version="s3v4", retries={"max_attempts": 5, "mode": "standard"},
-                      connect_timeout=20, read_timeout=120, s3={"addressing_style": "path"}))
+                      connect_timeout=connect_timeout, read_timeout=120, s3={"addressing_style": "path"}))
 
 
 def reference(store, checksum):

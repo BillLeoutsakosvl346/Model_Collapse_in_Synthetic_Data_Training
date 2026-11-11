@@ -155,7 +155,7 @@ def report(root, out=None, *, for_backup=False, reference=None):
         fig.savefig(destination / (metric + ".png"), dpi=180)
         plt.close(fig)
     text = ("# Matched FineWeb completion comparison\n\n"
-            "All conditions begin at original pretrained OPT. Each cycle supplies the same real 64-token prompts. "
+            f"All conditions begin at original pretrained {c['model']}. Each cycle supplies the same real 64-token prompts. "
             "Real targets are the actual next 64 source tokens. Each condition generates its synthetic targets using its own preceding checkpoint. "
             "Mixtures replace selected continuations at their original prompt rows and retain the remaining real targets. "
             "BOS and prompt positions remain visible, while the continuation alone contributes to training loss.\n\n"

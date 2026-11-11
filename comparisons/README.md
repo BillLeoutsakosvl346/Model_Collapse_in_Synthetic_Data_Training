@@ -2,6 +2,7 @@
 
 | Comparison | Shared beginning | Deliberate difference | Report |
 | --- | --- | --- | --- |
+| [SmolLM2-135M fraction sweep](smollm2_135m_fineweb_completion64_fractions/README.md) | Same pretrained SmolLM2, native prompt chunks and fixed held-out documents | 0/50/80/95/99/99.9/100% own-checkpoint synthetic targets | Setup only; see [current state](../docs/current-state.md) |
 | [FineWeb training decoders](fineweb_completion64_decoding/README.md) | Same pretrained OPT, ten fresh chunks and historical evaluation | Greedy versus pure-sampled training targets; common five-beam output probes | Implementation and validation status in [current state](../docs/current-state.md) |
 | [99.9% FineWeb synthetic targets](fineweb_completion64_mixed99p9/README.md) | Same pretrained OPT and frozen ten-chunk bank | 9,990 own-checkpoint synthetic / 10 real targets per cycle; 1,000-pair smoke represents both sources | [GPU acceptance](../docs/validation/2026-11-07_completion-mixed99p9-setup.json); full launch state in [current state](../docs/current-state.md) |
 | [99% FineWeb synthetic targets](fineweb_completion64_mixed99/README.md) | Same pretrained OPT and frozen ten-chunk bank | 9,900 own-checkpoint synthetic / 100 real targets per cycle; match RTX PRO 4500 | [GPU acceptance](../docs/validation/2026-11-07_completion-mixed99-setup.json); current launch state in [current state](../docs/current-state.md) |
