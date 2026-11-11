@@ -6,6 +6,8 @@ Full experiments measure scientific trajectories; smoke experiments validate the
 
 The [independent FineWeb fraction audit](20261111_fineweb_fraction_audit/README.md) checks the original synthetic-mixture code, frozen bank, actual lineage, final 99% arrays,77 metric rows and 70 probes. No numerical/training fault was found;44 inherited source-hash fields have mixed checksum scope, resolved in a new explicit provenance map. Historical results remain unchanged. This is read-only analysis, not new training.
 
+The audit also exposed a [Windows frozen-builder portability issue](../docs/validation/2026-11-11_windows-frozen-builder-portability.json): automatic CRLF conversion changed bank-contract hashes in a fresh checkout. Explicit LF source rules and a Windows regression preserve the original archived identity; historical results are unaffected.
+
 ## Full experiments
 
 The [decoder comparison](20261110T234038Z-full-completion64-decoding/report.md) completed ten new greedy and ten pure-sampling continued cycles. Final real-test PPL is **390.99 greedy / 31.88 sampling**, versus **342.01 five-beam / 28.05 real-only** for historical controls. [Forty-four rows and thirteen square figures](20261110T234038Z-full-completion64-decoding/generated/decoding-20261111/README.md) reproduce offline. [Delivery](../docs/validation/2026-11-11_decoding-completion-analysis-and-doc.json) verifies Google Doc pages 110–130, nine figures/seven tables, preserved prior pages, common five-beam probes, private-array recomputation and explicitly limited recovery scope. The new arms share RTX PRO 4500; historical controls used 4000. Compute stopped automatically; volumes remain retained.

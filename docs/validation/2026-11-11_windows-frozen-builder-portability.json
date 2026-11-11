@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-11-11T15:09:43.100841+00:00",
+  "issue": "Fresh Windows checkout changes raw builder hashes through automatic CRLF conversion",
+  "discovered_by": "Clean private-cache-free checkout of d364e3c",
+  "affected_test": "tests/science/test_decoding.py::test_named_profiles_preserve_bank_and_separate_certificates",
+  "historical_result_values_affected": false,
+  "historical_gpu_source_used_correct_lf_bytes": true,
+  "source_content_or_scientific_algorithm_changed": false,
+  "builders": {
+    "model_collapse/completion_data.py": {
+      "pinned_lf_sha256": "0d0594d48957ffca5db9e1d941761daba04bba2fd1ee46fc01809f0f27fee61d",
+      "converted_crlf_sha256": "347345829a3e312fe635147583e6cea98df1e57fc2b8c7a7437f2038a7dc286f"
+    },
+    "model_collapse/fresh_data.py": {
+      "pinned_lf_sha256": "990e84dac5291762d214e58d685fbdf1a7be563642dff39405d6215642fff890",
+      "converted_crlf_sha256": "2db9b072214a870174e099498e61f55783a5bf41c24c565bef53ff4f49d3600a"
+    }
+  },
+  "fix": "Explicit text eol=lf attributes for both frozen builders; exact archived source regression added to Windows integrity CI.",
+  "scope": "Portability/reproduction guard failure, not a change to the experiments or numerical results."
+}

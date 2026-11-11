@@ -96,3 +96,7 @@
 /scripts/analysis/build_repeated_chunk_comparison.py text eol=lf
 /scripts/analysis/build_decoding_comparison.py text eol=lf
 /scripts/analysis/audit_fineweb_fraction_records.py text eol=lf
+
+# Frozen bank contracts include the exact builder source bytes, also on Windows.
+/model_collapse/completion_data.py text eol=lf
+/model_collapse/fresh_data.py text eol=lf

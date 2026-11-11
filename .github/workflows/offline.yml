@@ -62,4 +62,4 @@ jobs:
       - name: Check configurations and exact publication bytes without training dependencies
         run: python -m scripts.maintenance.check_repository
       - name: Verify private-path policy and archived bytes
-        run: python -m pytest -q tests/repository/test_organisation.py -k "private_path or scientific_publications or archived_operational or markdown_anchor or empty_publication or historical_artifacts"
+        run: python -m pytest -q tests/repository/test_organisation.py -k "private_path or scientific_publications or archived_operational or markdown_anchor or empty_publication or historical_artifacts or frozen_data_builder"

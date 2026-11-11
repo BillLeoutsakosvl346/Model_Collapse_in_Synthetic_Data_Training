@@ -175,6 +175,23 @@ def test_unknown_workflow_is_rejected_before_legacy_fallback():
         validate_config({**config(PROJECT / "configs/smoke.yaml"), "workflow": "typo"})
 
 
+def test_frozen_data_builder_bytes_keep_their_archived_identity():
+    import hashlib
+    from pathlib import Path
+
+    project = Path(__file__).resolve().parents[2]
+    expected = {
+        "completion_data.py": "0d0594d48957ffca5db9e1d941761daba04bba2fd1ee46fc01809f0f27fee61d",
+        "fresh_data.py": "990e84dac5291762d214e58d685fbdf1a7be563642dff39405d6215642fff890",
+    }
+    # These legacy algorithms are intentionally frozen. A versioned successor
+    # needs a separate identity instead of silently changing old bank contracts.
+    for name, checksum in expected.items():
+        data = (project / "model_collapse" / name).read_bytes()
+        assert b"\r\n" not in data, "Git checkout must preserve frozen LF source bytes"
+        assert hashlib.sha256(data).hexdigest() == checksum
+
+
 def test_setup_allowance_uses_recorded_limit_and_preserves_default():
     from model_collapse import remote
     assert remote.setup_budget({}) == remote.SETUP_BUDGET
