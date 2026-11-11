@@ -24,7 +24,6 @@ learning_rate: 5.0e-06
 min_learning_rate: 1.0e-06
 weight_decay: 0.01
 precision: bf16
-required_gpu: NVIDIA RTX PRO 4500 Blackwell
 required_image: runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404
 workflow: completion_comparison
 kind: full
@@ -43,7 +42,7 @@ microbatch: 32
 effective_batch: 128
 eval_batch: 32
 generation_batch: 32
-generation_shard: 32
+generation_shard: 256
 block_size: 64
 new_tokens: 64
 num_beams: 5
@@ -115,6 +114,8 @@ prepared_bank:
     bucket: 1b2vuplxer
     region: EU-RO-1
     prefix: smollm2-native-bank
-required_data_center: EU-RO-1
 required_host_cuda_version: '13.2'
-pod_create_api: graphql
+pod_create_api: rest_v2
+container_disk_gb: 30
+required_gpu: NVIDIA RTX PRO 4000 Blackwell
+required_data_center: EU-RO-1

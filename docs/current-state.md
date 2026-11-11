@@ -1,14 +1,16 @@
 # Current recorded state
 
-Snapshot refreshed after SmolLM2 setup reached a provider-capacity blocker on 11 November 2026. Earlier observations are preserved in the [byte-exact chronology](history/2026-11-07_pre-cleanup-current-state.txt).
+Snapshot refreshed on 11 November 2026. Recorded state is not a live check. The earlier SmolLM2 capacity-blocked snapshot is [preserved verbatim](history/2026-11-11_smollm2-pre-launch-current-state.txt).
 
-## SmolLM2 seven-fraction setup: prepared, GPU acceptance blocked
+## SmolLM2 seven-fraction sweep: running
 
-The [approved setup](validation/2026-11-11_smollm2-authorization.json) prepares the [seven-condition native-tokenizer comparison](../comparisons/smollm2_135m_fineweb_completion64_fractions/README.md). The bank has ten 10,000-pair chunks and 7,447/7,303 validation/test pairs; full reconstruction and separation checks passed. Independent review and focused tests passed. Seven actual placement requests (REST and GraphQL; preferred Blackwell and an alternate data centre) returned supply errors and created no Pod; all six temporary network volumes were verified removed. **No validation GPU or full experiment ran.** See the [handoff](smollm2-fractions-handoff.md) and [receipt](validation/2026-11-11_smollm2-setup.json). Actual two-update mixed50 GPU acceptance and its throughput forecast remain pending, within the unchanged USD 0.50/900-second combined paid-compute caps. The user subsequently [authorized the full seven-condition launch](validation/2026-11-11_smollm2-conditional-launch-authorization.json), conditional on actual GPU acceptance and affordable admission; the monetary limits are unchanged.
+Run **`20261111T210854Z-full-completion64-mixtures`** has acquired **RTX PRO 4000 Blackwell at USD 0.57/hour**, Pod `oan7wv9pkt61fi`, EU-RO-1. The guarded launcher verified completed first-epoch training (79 updates, 640,000 scored targets), an advancing supervisor/watchdog and progress across closed SSH sessions. Laptop closure does not stop execution. Do not start another launch. Seven conditions (0/50/80/95/99/99.9/100% synthetic) run sequentially on this one GPU; each starts independently from pretrained SmolLM2 and carries its own weights/AdamW/scheduler/RNG across ten fresh chunks.
 
-Authorization is now USD 80 cumulative, USD 5.05 total historical setup allowance, and a separate USD 3 setup-task allocation including USD 2 reserve. The future full sweep requires separately verified 200 GB working/backup capacities and affordable admission. Full-size storage is not allocated by this setup. Preserve every historical recovery resource.
+The [new acceptance/startup receipt](validation/2026-11-11_smollm2-acceptance-and-launch.json) supersedes the earlier capacity-blocked status, without rewriting its evidence. Actual GPU acceptance passed all ten checks on the selected GPU and separately on A40. Only mixed50 was GPU-trained in the short test: two updates; seven fraction counts/routing were checked offline. Terminal model/optimizer cold restoration reproduced held-out NLL exactly. Recovery required an explicitly [recorded time-only extension](validation/2026-11-11_smollm2-recovery-only-extension.json); three paid sessions total **1134.5 seconds / USD 0.2114 conservative compute**, not account-debit attribution. The monetary validation cap remains USD 0.50. All validation compute is stopped; its recovery workspaces are retained.
 
-Retain the new **10 GB Standard S3 volume `1b2vuplxer`** in EU-RO-1: it holds the prepared native bank and costs approximately USD 0.70/month until deleted. Private Hub metadata/indexes are pinned and verified, and a 4 KB S3 probe was cold-restored; this does not establish full-bank or checkpoint cold recovery. GPU spend is zero; small storage estimates are recorded separately. Final provider reads found no active GPU.
+Accepted/deployed runtime: `44bae015987c72fb96d9750c59e2065c0fcaca5e3f2121379e2a6354df593a1f`. Full working volume **`cw2u22hhef` (200 GB)**; private backup **`tsp5kiuw8v` (200 GB)**; native data bank **`1b2vuplxer` (10 GB)**. Retain all three, plus historical recovery storage. Every full checkpoint/optimizer state is preserved remotely; local metadata-only fetching avoids bulk laptop downloads.
+
+The user manually added USD 30 and [authorized proceeding](validation/2026-11-11_smollm2-funded-launch-authorization.json). Enforced limits: **USD 110 cumulative, USD 30 task, USD 2 reserve, USD 5.05 historical setup, USD 0.50 new validation**. The later USD 10–15 request is a spending target, not a guaranteed total. Never purchase credits or change payments. Forecast: **22.2 hours / USD 13.17 compute and running work storage**, plus USD 3.59 conservatively reserved for other retained storage during execution and USD 6.44 for seven days of the new 400 GB. These are padded admission estimates, not a charge. Independent watchdog and ordinary completion shutdown apply. See the [handoff](smollm2-fractions-handoff.md).
 
 ## Greedy versus sampling: completed and reported
 
@@ -42,7 +44,8 @@ Conservative task cost at the [analysis receipt](../reports/20261110T151528Z-ful
 
 | Scope | Recorded authorization |
 | --- | --- |
-| Cumulative spending ceiling | USD 80.00, existing credit only; SmolLM2 setup authorization recorded above |
+| Cumulative spending ceiling | USD 110.00, existing credit only; later funded SmolLM2 launch authorization supersedes USD 80 |
+| SmolLM2 seven-condition sweep | USD 30 task allocation, USD 2 reserve, USD 0.50 combined validation; USD 10-15 user spending target |
 | High-fraction campaign | USD 11.75 including its separately reserved storage |
 | Total setup allowance | USD 5.05, including the authorized bounded SmolLM2 compatibility test |
 | Combined high-fraction validation cap | USD 0.90; recorded conservative spend USD 0.7843 |

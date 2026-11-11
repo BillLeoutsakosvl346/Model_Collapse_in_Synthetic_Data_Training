@@ -45,3 +45,12 @@ def test_auth_handshake_timeout_retries_but_rejected_keys_do_not(monkeypatch):
     with pytest.raises(paramiko.AuthenticationException):
         execution._transport_read(rejected, 130)
     assert len(calls) == 1
+
+
+def test_explicit_container_disk_price_preserves_legacy_default():
+    from model_collapse.cloud.execution import configured_container_disk,CONTAINER_HOURLY
+    import pytest
+    assert configured_container_disk({})==(20,CONTAINER_HOURLY)
+    assert configured_container_disk({'container_disk_gb':30})==(30,30*.10/730)
+    for size in (True,19,101,30.):
+        with pytest.raises(ValueError):configured_container_disk({'container_disk_gb':size})

@@ -1,6 +1,6 @@
 # SmolLM2-135M: matched synthetic fractions
 
-**Setup status:** implementation, data and offline review are complete; actual GPU acceptance is blocked by provider capacity. No full experiment has launched. See the [handoff](../../docs/smollm2-fractions-handoff.md).
+**Execution status:** GPU acceptance passed; full run `20261111T210854Z-full-completion64-mixtures` is running with verified detached training on the accepted RTX PRO 4000 Blackwell. Do not launch a duplicate. See the [handoff](../../docs/smollm2-fractions-handoff.md).
 
 Seven independently initialized conditions use synthetic fractions **0%, 50%, 80%, 95%, 99%, 99.9% and 100%**. This is a model-native replication of the OPT completion protocol, using base `HuggingFaceTB/SmolLM2-135M` at commit `93efa2f097d58c2a74874c7e644dbc9b0cee75a2`.
 
@@ -48,11 +48,11 @@ python -m model_collapse cleanup COMPARISON_ID
 
 The short smoke executes **only mixed50**, two successive fresh chunks of 128 pairs, one optimizer update each; 32 validation/test pairs and 32 probe prompts. Production batches and decoding stay unchanged. One terminal model/optimizer backup is cold-restored and re-evaluated. Seven fractions are checked offline, not all trained on GPU. This scoped certificate does not claim the legacy interruption matrix or deliberate budget exhaustion.
 
-All validation attempts share a 900-second paid-compute deadline, including bootstrap, and a USD 0.50 cap. The independent watchdog handles ordinary completion/failure/deadline shutdown. No full experiment has launched. The later user instruction authorizes launch after acceptance and affordability pass.
+The original 900-second combined validation limit was extended to 1,200 seconds for recovery-only finalization, with no additional optimizer updates; the USD 0.50 cap stayed unchanged. Both accepted GPU tests passed ordinary independent shutdown. See the dated acceptance/startup receipt. The independent watchdog handles completion, failure and budget shutdown.
 
 ## Full-launch admission and interpretation
 
-The planned sweep runs seven arms sequentially on the accepted GPU. It requires 200 GB working storage and a separately verified 200 GB private S3 backup volume. Setup does not provision either full-size volume. The launcher rejects a missing/undersized backup descriptor (`.state/smollm2_backup_store.json`) before provisioning compute, and checks actual free capacity, budget, credit and the measured forecast. The USD 3 setup allocation is not full-sweep spending authorization.
+The planned sweep runs seven arms sequentially on the accepted GPU. It requires 200 GB working storage and a separately verified 200 GB private S3 backup volume. Both full-size volumes are now allocated for the authorized launch. The launcher rejects a missing/undersized backup descriptor (`.state/smollm2_backup_store.json`) before provisioning compute, and checks actual free capacity, budget, credit and the measured forecast. The later full-task authorization is USD 30, with USD 2 reserved, under the USD 110 cumulative ceiling.
 
 Compare fractions directly within this native tokenizer. Cross-model figures should emphasize baseline-relative trajectories and explicitly label tokenizer, pretraining and hardware differences; absolute OPT/SmolLM2 perplexities are not directly interchangeable. SmolLM2 pretraining includes FineWeb-Edu, so experimental held-out separation does not establish pretraining novelty. These are one-seed descriptive trajectories with decreasing learning rate.
 

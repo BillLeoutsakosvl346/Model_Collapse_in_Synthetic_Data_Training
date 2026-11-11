@@ -1,0 +1,469 @@
+{
+  "recorded_at": 1794431878.81876,
+  "status": "full_running_detached_training_verified",
+  "run_id": "20261111T210854Z-full-completion64-mixtures",
+  "resources": {
+    "run_id": "20261111T210854Z-full-completion64-mixtures",
+    "launch_id": "20261111T210854829055Z",
+    "kind": "full",
+    "pod_id": "oan7wv9pkt61fi",
+    "volume_id": "cw2u22hhef",
+    "container_disk_gb": 30,
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1794431335.8271067,
+    "quoted_gpu_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6822808219178081,
+    "compute_hourly_usd": 0.6602260273972602,
+    "volume_hourly_usd": 0.019178082191780823,
+    "network_volume_gb": 200,
+    "volume_created_at": 1794431334.8310318,
+    "session_allowance_usd": 19.729870476838247,
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "code_sha256": "44bae015987c72fb96d9750c59e2065c0fcaca5e3f2121379e2a6354df593a1f",
+    "starting_balance_usd": 43.099659018,
+    "remote_root": "/workspace/runs/20261111T210854Z-full-completion64-mixtures",
+    "runtime_sha256": "44bae015987c72fb96d9750c59e2065c0fcaca5e3f2121379e2a6354df593a1f",
+    "git_commit": "0f70b03e791b40f0b56b491721d0ce75fa378113",
+    "configuration_sha256": "f0d6f8d09ed17c157d146ba0d210f5bf052128f75cce2b7fe88e42389aa5acb8",
+    "backup_store": {
+      "backend": "runpod_s3",
+      "bucket": "tsp5kiuw8v",
+      "region": "EU-RO-1",
+      "prefix": "smollm2-seven-fractions-full"
+    },
+    "workflow": "completion_comparison",
+    "allocation": "smollm2_completion64_fractions",
+    "admission_forecast": {
+      "estimated_hours": 22.191279752373067,
+      "estimated_compute_and_running_storage_usd": 13.165812685962706,
+      "unique_training_stages": 70,
+      "epochs": 70,
+      "full_generation_stages": 10,
+      "generation_stages": 60,
+      "probe_sets": 71,
+      "training_target_exposures": 44800000,
+      "forecast_margin": 1.5,
+      "generated_training_continuations": 523900,
+      "generated_training_tokens": 33529600,
+      "historical_storage_during_run_usd": 3.5901234777491737,
+      "seven_day_volume_storage_usd": 3.221917808219178,
+      "seven_day_backup_storage_usd": 3.221917808219178,
+      "seven_day_combined_storage_usd": 6.443835616438356,
+      "retention_above_existing_reserve_usd": 4.443835616438356
+    },
+    "host_cuda_version": "13.2",
+    "actual_pod_hourly_usd": 0.57,
+    "verified_ssh_direct": {
+      "command": "ssh root@213.173.104.30 -p 22421",
+      "host": "213.173.104.30",
+      "port": 22421,
+      "username": "root"
+    }
+  },
+  "validation_run_id": "20261111T203922Z-smoke-completion64-mixed50",
+  "validation": {
+    "workflow": "completion_comparison",
+    "acceptance_scope": "smollm2_fast_model_portability_v1",
+    "source_code_sha256": "44bae015987c72fb96d9750c59e2065c0fcaca5e3f2121379e2a6354df593a1f",
+    "protocol_fingerprint": "5ae626027315c69635809496f1327530c335d6f42dbd3d46ccbaaaf409ee6cda",
+    "checks": {
+      "private_terminal_restore": true,
+      "seven_fraction_offline_checks": true,
+      "preceding_model_and_optimizer": true,
+      "terminal_checkpoint_reload": true,
+      "two_optimizer_updates": true,
+      "exact_mixed_targets": true,
+      "finite_direct_conditional_nll": true,
+      "native_special_tokens_and_masks": true,
+      "detached_progress_verified": true,
+      "independent_watchdog_and_provider_stop_verified": true
+    },
+    "gpu_tested_fractions": [
+      0.5
+    ],
+    "offline_fractions": [
+      {
+        "fraction": 0.0,
+        "synthetic_pairs": 0,
+        "real_pairs": 10000,
+        "nested": true
+      },
+      {
+        "fraction": 0.5,
+        "synthetic_pairs": 5000,
+        "real_pairs": 5000,
+        "nested": true
+      },
+      {
+        "fraction": 0.8,
+        "synthetic_pairs": 8000,
+        "real_pairs": 2000,
+        "nested": true
+      },
+      {
+        "fraction": 0.95,
+        "synthetic_pairs": 9500,
+        "real_pairs": 500,
+        "nested": true
+      },
+      {
+        "fraction": 0.99,
+        "synthetic_pairs": 9900,
+        "real_pairs": 100,
+        "nested": true
+      },
+      {
+        "fraction": 0.999,
+        "synthetic_pairs": 9990,
+        "real_pairs": 10,
+        "nested": true
+      },
+      {
+        "fraction": 1.0,
+        "synthetic_pairs": 10000,
+        "real_pairs": 0,
+        "nested": true
+      }
+    ],
+    "optimizer_updates": 2,
+    "stages": [
+      {
+        "cycle": 1,
+        "initializer": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+        "selected": "170f909b76a6f90b8192c594c9fa1bfc5bf2365a2e19f66b99be89b8e17e0540",
+        "generator": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+        "global_step": 1,
+        "real_pairs": 64,
+        "synthetic_pairs": 64
+      },
+      {
+        "cycle": 2,
+        "initializer": "170f909b76a6f90b8192c594c9fa1bfc5bf2365a2e19f66b99be89b8e17e0540",
+        "selected": "a3fe3b41ae46b90a2fd1a35079acde884e2dce2947e0b85a78e894d0222c9efc",
+        "generator": "170f909b76a6f90b8192c594c9fa1bfc5bf2365a2e19f66b99be89b8e17e0540",
+        "global_step": 2,
+        "real_pairs": 64,
+        "synthetic_pairs": 64
+      }
+    ],
+    "direct_nll_absolute_error": 0.0,
+    "terminal_restore": {
+      "snapshot": {
+        "run_id": "20261111T203922Z-smoke-completion64-mixed50-mixed50",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "672d411e03a8803c0cba5a087f66df89826dd7bc",
+          "dataset": "5783355a35e0d051db78e7a3c0479cf6be78e90c"
+        },
+        "artifact_index_sha256": "3ef3df213aea37ffd5d521d1a05212b63cec73b26e47bc5e8189ebd303115178"
+      },
+      "scope": "complete_terminal_stage_only",
+      "restored_path": "/workspace/completion_terminal_restore/20261111T203922Z-smoke-completion64-mixed50-mixed50/seed_42/gen_02",
+      "verified_files": 26,
+      "verified_bytes": 1614690065,
+      "optimizer_sha256": "9da7bbd485cdda21673c1851b56c392f566d5b391f72e6d61e02c0ec491f86f3",
+      "weights_sha256": "a3fe3b41ae46b90a2fd1a35079acde884e2dce2947e0b85a78e894d0222c9efc",
+      "test": {
+        "nll_sum": 5803.502255795302,
+        "scored_tokens": 2048,
+        "loss": 2.8337413358375496,
+        "perplexity": 17.008978230289998,
+        "seconds": 0.11297168000601232,
+        "mean_sequence_perplexity": 19.828609157336025,
+        "std_sequence_perplexity": 10.20903320389166,
+        "context_tokens": 129
+      },
+      "test_loss_absolute_error": 0.0
+    },
+    "coverage_limit": "One representative mixed arm; no claim of seven-condition GPU execution, full-data training or every-stage cold restoration.",
+    "validated_run_id": "20261111T203922Z-smoke-completion64-mixed50",
+    "provider_pod_state": "EXITED",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "validation_storage_backend": "network",
+    "full_working_storage_backend": "network"
+  },
+  "other_validated_gpu_run": "20261111T195247Z-smoke-completion64-mixed50",
+  "accepted_runtime_sha256": "44bae015987c72fb96d9750c59e2065c0fcaca5e3f2121379e2a6354df593a1f",
+  "validation_cost": {
+    "provider_verified_compute_seconds": 1134.4587020874023,
+    "conservative_compute_usd": 0.21140100868405814,
+    "not_provider_account_debits": true,
+    "validation_cap_usd": 0.5
+  },
+  "validation_time_exception": {
+    "original_seconds": 900,
+    "recovery_only_combined_cap_seconds": 1200,
+    "receipt": "2026-11-11_smollm2-recovery-only-extension.json",
+    "new_optimizer_updates_during_recovery": 0
+  },
+  "recovery_scope": "One complete terminal model/optimizer stage restored on each accepted GPU and held-out NLL reproduced exactly. Parent/child metadata recovered locally; not every checkpoint downloaded.",
+  "bank": {
+    "run_id": "smollm2-completion64-bank-75c3da6d89516ffd",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "e159be342ba19fe2ec4c2a4a03ce8242287d1d36",
+      "dataset": "61b426c93d46c2e5caafa24b9c07f1fc342aa3d5"
+    },
+    "artifact_index_sha256": "f753ec670c96a4935447c13af31129aeef4c72191a4de608fb39302999283bdf",
+    "manifest_sha256": "8c475f058606fed0610d7555128139ea445b2f4753c2a1abc8eccd44e06c9837",
+    "contract": "75c3da6d89516ffde3e41649c059d26aed75af5ee1943821ab526d26964ceebf",
+    "bulk_store": {
+      "backend": "runpod_s3",
+      "bucket": "1b2vuplxer",
+      "region": "EU-RO-1",
+      "prefix": "smollm2-native-bank"
+    }
+  },
+  "limits": {
+    "cumulative_usd": 110,
+    "task_usd": 30,
+    "reserve_usd": 2,
+    "historical_setup_usd": 5.05,
+    "validation_usd": 0.5
+  },
+  "user_cost_target_usd": [
+    10,
+    15
+  ],
+  "cost_target_is_not_a_guarantee": true,
+  "forecast": {
+    "estimated_hours": 22.191279752373067,
+    "estimated_compute_and_running_storage_usd": 13.165812685962706,
+    "unique_training_stages": 70,
+    "epochs": 70,
+    "full_generation_stages": 10,
+    "generation_stages": 60,
+    "probe_sets": 71,
+    "training_target_exposures": 44800000,
+    "forecast_margin": 1.5,
+    "generated_training_continuations": 523900,
+    "generated_training_tokens": 33529600,
+    "historical_storage_during_run_usd": 3.5901234777491737,
+    "seven_day_volume_storage_usd": 3.221917808219178,
+    "seven_day_backup_storage_usd": 3.221917808219178,
+    "seven_day_combined_storage_usd": 6.443835616438356,
+    "retention_above_existing_reserve_usd": 4.443835616438356
+  },
+  "historical_resources_changed": false,
+  "validation_resources": {
+    "all_validation_compute_stopped": true,
+    "recovery_workspaces_retained": [
+      "wnz3vyv6zu",
+      "f7x2kv68h4"
+    ],
+    "reason": "Retain raw evidence until complete recovery, without downloading large parent checkpoints to laptop."
+  },
+  "host_control": {
+    "remote_scientific_runtime_unchanged": true,
+    "adapters": [
+      "smollm_full_capacity_retry.py",
+      "smollm_mcp_launch.py",
+      "smollm_fetch_fast.py",
+      "smollm_finish_4000.py"
+    ],
+    "purpose": "Bounded local transport/retry/admission caching and explicitly recorded recovery-only session; no scientific overrides.",
+    "preserved_sources": {
+      "run_id": "20261111T210854Z-full-completion64-mixtures",
+      "runtime_sha256": "44bae015987c72fb96d9750c59e2065c0fcaca5e3f2121379e2a6354df593a1f",
+      "git_commit_at_deployment": "0f70b03e791b40f0b56b491721d0ce75fa378113",
+      "source_archive_sha256": "5904e1155d644e971ed768c15e1825fccf7e03dcc036f6f20c3c695e65bdc2e0",
+      "host_files": {
+        "smollm_full_capacity_retry.py": "a90e420fc5ae8b188c652612aa59debd5023cbd5763d1b48512e7f864275e9fa",
+        "smollm_mcp_launch.py": "e72ae200b8aaa91f60d7bb1283dd60d4f5e34510a56c3410c59b3412b77fa46d",
+        "smollm_fetch_fast.py": "f7633b9cdb39083f00a27f9781231a6ec97113d7d8c30f7f474a869c654d36f3",
+        "smollm_finish_4000.py": "08acd4dd2d53606643dc23b6935957ccad1fa475e53a29417f6f0a9bf483efb5",
+        "smollm-recovery-host-launch.py": "da0dbe385555d763d9266b65bbd191f50e870fb3f5c938ccba67be5779ca6c25"
+      },
+      "time": 1794431574.2422497,
+      "scope": "Host-only transport/admission and recovery controls are separate from the unchanged scientific runtime.",
+      "private_commit": "ad7a2dce20792b36d2f86b525ec3cbb5b4a46ab4",
+      "source_archive_cold_download_verified": true
+    }
+  },
+  "final_offline_recheck": {
+    "passed": 27,
+    "seconds": 9.88,
+    "coverage_overlaps_prior_runs": true,
+    "test_files": [
+      "tests/cloud/test_decoding_placement.py",
+      "tests/workflow/test_smollm_fast.py"
+    ],
+    "repository_links_configs_publication_manifests_passed": true
+  },
+  "full_training_launched": true,
+  "detached_verification": {
+    "pod_id": "oan7wv9pkt61fi",
+    "launch_id": "20261111T210854829055Z",
+    "run_id": "20261111T210854Z-full-completion64-mixtures",
+    "progress_after_disconnect": true,
+    "observations": [
+      {
+        "time": 1794431429.2870982,
+        "status": {
+          "state": "running",
+          "phase": "preparation",
+          "time": 1794431423.57452
+        },
+        "child_status": {
+          "state": "running",
+          "phase": "preparation",
+          "time": 1794431423.57452
+        },
+        "event_bytes": 0,
+        "epochs": 0,
+        "new_epochs": 0,
+        "finite_new_training": false,
+        "completed_new_stages": 0,
+        "supervisor": {
+          "pid": 269,
+          "child_pid": 271,
+          "time": 1794431428.9315
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1794431427.5508385,
+          "deadline": 1794535438.9052453
+        }
+      },
+      {
+        "time": 1794431756.1702,
+        "status": {
+          "state": "running",
+          "phase": "real",
+          "active_child": "20261111T210854Z-full-completion64-mixtures-real",
+          "time": 1794431589.6555326
+        },
+        "child_status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "time": 1794431596.139385
+        },
+        "event_bytes": 488,
+        "epochs": 1,
+        "new_epochs": 1,
+        "finite_new_training": true,
+        "completed_new_stages": 1,
+        "supervisor": {
+          "pid": 269,
+          "child_pid": 271,
+          "time": 1794431755.7560759
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1794431755.438917,
+          "deadline": 1794535438.9052453
+        }
+      }
+    ],
+    "observations_sha256": "eb8656186296cd65be953bebe97b4434097f54f739ad4e495f22094416ca7a39",
+    "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+  },
+  "launch_verification": {
+    "watchdog": {
+      "pid": 139,
+      "time": 1794431424.5268562,
+      "deadline": 1794535438.9052453
+    },
+    "supervisor": {
+      "pid": 269,
+      "child_pid": 271,
+      "time": 1794431425.8877013
+    },
+    "status": {
+      "state": "running",
+      "phase": "preparation",
+      "time": 1794431423.57452
+    },
+    "detached_progress": {
+      "pod_id": "oan7wv9pkt61fi",
+      "launch_id": "20261111T210854829055Z",
+      "run_id": "20261111T210854Z-full-completion64-mixtures",
+      "progress_after_disconnect": true,
+      "observations": [
+        {
+          "time": 1794431429.2870982,
+          "status": {
+            "state": "running",
+            "phase": "preparation",
+            "time": 1794431423.57452
+          },
+          "child_status": {
+            "state": "running",
+            "phase": "preparation",
+            "time": 1794431423.57452
+          },
+          "event_bytes": 0,
+          "epochs": 0,
+          "new_epochs": 0,
+          "finite_new_training": false,
+          "completed_new_stages": 0,
+          "supervisor": {
+            "pid": 269,
+            "child_pid": 271,
+            "time": 1794431428.9315
+          },
+          "watchdog": {
+            "pid": 139,
+            "time": 1794431427.5508385,
+            "deadline": 1794535438.9052453
+          }
+        },
+        {
+          "time": 1794431756.1702,
+          "status": {
+            "state": "running",
+            "phase": "real",
+            "active_child": "20261111T210854Z-full-completion64-mixtures-real",
+            "time": 1794431589.6555326
+          },
+          "child_status": {
+            "state": "running",
+            "generation": 1,
+            "stage": "training",
+            "time": 1794431596.139385
+          },
+          "event_bytes": 488,
+          "epochs": 1,
+          "new_epochs": 1,
+          "finite_new_training": true,
+          "completed_new_stages": 1,
+          "supervisor": {
+            "pid": 269,
+            "child_pid": 271,
+            "time": 1794431755.7560759
+          },
+          "watchdog": {
+            "pid": 139,
+            "time": 1794431755.438917,
+            "deadline": 1794535438.9052453
+          }
+        }
+      ],
+      "observations_sha256": "eb8656186296cd65be953bebe97b4434097f54f739ad4e495f22094416ca7a39",
+      "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+    }
+  },
+  "first_epoch": {
+    "epoch": 1,
+    "learning_rate": 5e-06,
+    "train_loss": 2.9016365398406982,
+    "validation_loss": 2.894890236933269,
+    "train_seconds": 45.170219148974866,
+    "training_target_tokens_per_second": 14168.627295989658,
+    "global_step": 79,
+    "learning_rate_end": 4.902113032590307e-06,
+    "scored_training_tokens": 640000
+  }
+}

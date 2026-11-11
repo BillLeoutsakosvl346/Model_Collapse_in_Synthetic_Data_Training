@@ -55,7 +55,7 @@ def validate(c):
     target = {"full": (10, 10000, None, 256, 200), "smoke": (2, 128, 32, 32, 30)}.get(kind)
     if target != tuple(c.get(k) for k in ("generations", "train_pairs_per_cycle", "evaluation_pairs", "probe_count", "network_volume_gb")):
         raise ValueError("SmolLM2 full/fast-smoke scope differs")
-    if c.get("generation_shard") != 32 or c.get("decoding_arms") or c.get("endpoint_arms") or c.get("training_chunk_policy", "fresh_per_cycle") != "fresh_per_cycle":
+    if c.get("generation_shard") != (32 if kind == "smoke" else 256) or c.get("decoding_arms") or c.get("endpoint_arms") or c.get("training_chunk_policy", "fresh_per_cycle") != "fresh_per_cycle":
         raise ValueError("SmolLM2 requires fresh chunks and fixed five-beam decoding")
     if kind == "smoke" and (c.get("validation_max_seconds") != 900 or c.get("max_session_usd") != .5):
         raise ValueError("Fast SmolLM2 validation requires its 15-minute/$0.50 limits")

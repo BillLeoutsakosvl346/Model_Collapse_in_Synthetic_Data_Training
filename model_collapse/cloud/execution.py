@@ -103,6 +103,13 @@ def configured_gpu_request(c, choice):
     return request
 
 
+def configured_container_disk(c):
+    size = c.get("container_disk_gb", 20)
+    if type(size) is not int or not 20 <= size <= 100:
+        raise ValueError("Container disk must be an integer from 20 to 100 GB")
+    return size, size * .10 / 730
+
+
 def check_active_pods(c, pods, ledger_state):
     if c.get("parallel_campaign"):
         from ..cloud.parallel import check_active
@@ -407,6 +414,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             c["required_gpu"] = gpu.strip()
     from ..common import validate_config
     validate_config(c)
+    container_disk_gb, container_hourly = configured_container_disk(c)
     if c.get("workflow") == "completion_arm":
         raise ValueError("Completion arms are launched by their owning comparison coordinator")
     load_secrets()
@@ -443,6 +451,24 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         from ..workflow.smollm import resolve_backup
         c = resolve_backup(c, api)
     p = preflight(probe=True, network_storage=False) if pod_storage else preflight(probe=True)
+    # Use preflight for the initial screen. Native-model launches recheck after
+    # the slower storage/authentication work, immediately before acquisition.
+    choices = p.get("gpu_candidates")
+    if choices is None:  # Compatibility with older preflight adapters.
+        choices = api.candidates()
+    if gpu == "auto":
+        modern = ("ada", "blackwell", "a100", "a40", "a4000", "a4500", "a5000", "a6000",
+                  "l4", "h100", "h200", "b200", "b300", "geforce rtx 30", "geforce rtx 40", "geforce rtx 50")
+        choices = [x for x in choices if x["hourly_usd"] <= 1.19 and " mig " not in x["gpu"].casefold()
+                   and any(name in x["gpu"].casefold() for name in modern)]
+    if fresh_real or completion:
+        modern = ("ada", "blackwell", "a100", "a40", "a4000", "a4500", "a5000", "a6000", "l4", "h100", "h200", "b200", "b300", "geforce rtx 30", "geforce rtx 40", "geforce rtx 50")
+        choices = [item for item in choices if item["vram_gb"] >= 16 and " mig " not in item["gpu"].casefold()
+                   and any(value in item["gpu"].casefold() for value in modern)]
+    choices = configured_placements(c, choices)
+    if not choices:
+        raise RuntimeError("No compatible Secure Cloud GPU is currently available" if pod_storage else
+                           "No compatible Secure Cloud GPU with Standard network storage is available")
     check_active_pods(c, api.request("GET", "/pods")["pods"], ledger())
     storage_admission = None
     if completion and (c.get("completion_arms") is not None or c.get("decoding_arms") is not None or c.get("training_chunk_policy") == "repeat_fixed"):
@@ -465,24 +491,6 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         if metadata_only:
             storage_admission["bulk_round_trip"] = bulk_probe
             storage_admission["bulk_capacity"] = bulk_capacity
-    # Preflight's final read is the live catalogue snapshot. Re-reading it here
-    # adds a race and can discard a just-observed slot before placement begins.
-    choices = p.get("gpu_candidates")
-    if choices is None:  # Compatibility with older preflight adapters.
-        choices = api.candidates()
-    if gpu == "auto":
-        modern = ("ada", "blackwell", "a100", "a40", "a4000", "a4500", "a5000", "a6000",
-                  "l4", "h100", "h200", "b200", "b300", "geforce rtx 30", "geforce rtx 40", "geforce rtx 50")
-        choices = [x for x in choices if x["hourly_usd"] <= 1.19 and " mig " not in x["gpu"].casefold()
-                   and any(name in x["gpu"].casefold() for name in modern)]
-    if fresh_real or completion:
-        modern = ("ada", "blackwell", "a100", "a40", "a4000", "a4500", "a5000", "a6000", "l4", "h100", "h200", "b200", "b300", "geforce rtx 30", "geforce rtx 40", "geforce rtx 50")
-        choices = [item for item in choices if item["vram_gb"] >= 16 and " mig " not in item["gpu"].casefold()
-                   and any(value in item["gpu"].casefold() for value in modern)]
-    choices = configured_placements(c, choices)
-    if not choices:
-        raise RuntimeError("No compatible Secure Cloud GPU is currently available" if pod_storage else
-                           "No compatible Secure Cloud GPU with Standard network storage is available")
     archive, code_hash = source_archive()
     if previous and previous["code_sha256"] != code_hash and c["kind"] != "smoke":
         raise RuntimeError("Resume requires the original code; restore its recorded commit")
@@ -577,7 +585,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             estimate_kwargs["first_new_cycle"] = 2
         if completion:
             from ..workflow.completion import forecast as completion_forecast
-            estimate = completion_forecast(b, c, choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY)
+            estimate = completion_forecast(b, c, choice["hourly_usd"] + volume_hourly + container_hourly)
             projection_state = ledger_state
             if c.get("parallel_campaign"):
                 # Sibling compute is already reserved above. Its storage remains
@@ -596,7 +604,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                 raise RuntimeError("Completion comparison forecast exceeds the padded watchdog allowance")
         elif fresh_real:
             from ..workflow.fresh_real import forecast as fresh_forecast
-            estimate = fresh_forecast(b, c, choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY)
+            estimate = fresh_forecast(b, c, choice["hourly_usd"] + volume_hourly + container_hourly)
             estimate["historical_storage_during_run_usd"] = historical_running_storage(ledger_state, estimate["estimated_hours"],
                 exclude_volume=previous.get("volume_id") if previous else None)
             allowance -= estimate["historical_storage_during_run_usd"]
@@ -604,11 +612,11 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                 raise RuntimeError("FineWeb forecast cannot fit the padded watchdog allowance")
         elif paired:
             from ..analysis.forecasts import forecast_pair
-            estimate = forecast_pair(b, c["arms"]["continued"]["generations"], choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY)
+            estimate = forecast_pair(b, c["arms"]["continued"]["generations"], choice["hourly_usd"] + volume_hourly + container_hourly)
         elif campaign:
             from ..analysis.forecasts import forecast_campaign
             forecast_options = {"completed_jobs": resume_work["sealed_completed_jobs"]} if resume_work else {}
-            estimate = forecast_campaign(b, c["jobs"]["continued20"]["generations"], choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY,
+            estimate = forecast_campaign(b, c["jobs"]["continued20"]["generations"], choice["hourly_usd"] + volume_hourly + container_hourly,
                                          **forecast_options)
             if resume_work:
                 estimate["resume_work_verification"] = resume_work
@@ -619,7 +627,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             if estimate["padded_watchdog_required_usd"] > allowance:
                 raise RuntimeError("Conservative campaign runtime cannot fit the padded watchdog deadline after historical storage and reserve")
         else:
-            estimate = forecast(b, c["generations"], choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY, **estimate_kwargs)
+            estimate = forecast(b, c["generations"], choice["hourly_usd"] + volume_hourly + container_hourly, **estimate_kwargs)
         if estimate["estimated_compute_and_running_storage_usd"] > allowance:
             raise RuntimeError("Conservative full-run estimate exceeds remaining budget; select fewer generations")
     # Resolve the private source, including its weight-file checksum, before spending.
@@ -659,8 +667,12 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                 raise RuntimeError("Volume read-back mismatch")
         created = now()
         try:
+            if completion and c.get("completion_profile") == "smollm2_completion64_v1":
+                live_choices = configured_placements(c, api.candidates())
+                if not live_choices or live_choices[0]["hourly_usd"] > choice["hourly_usd"]:
+                    raise RuntimeError("GPU placement disappeared or became more expensive before acquisition")
             payload = {"name": "iib-" + run_id, "cloud": "SECURE", "image": template["image"],
-                "disk": 20, "gpu": gpu_request,
+                "disk": container_disk_gb, "gpu": gpu_request,
                 "dataCenterIds": [choice["data_center"]],
                 "mounts": {"persistent": {"size": volume_gb, "path": "/workspace"}} if pod_storage else {"network": [{"volumeId": volume["id"], "path": "/workspace"}]},
                 "startSsh": True, "startJupyter": False, "ports": ["22/tcp"]}
@@ -701,9 +713,10 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         if pod_storage:
             volume = {"id": pod["id"]}  # The persistent disk is a component owned by this exact Pod.
         resources = {"run_id": run_id, "launch_id": launch_id, "kind": c["kind"], "pod_id": pod["id"], "volume_id": volume["id"],
+                     "container_disk_gb": container_disk_gb,
                      "data_center": choice["data_center"], "gpu": choice["gpu"], "image": template["image"], "created_at": created,
-                     "quoted_gpu_hourly_usd": choice["hourly_usd"], "guard_hourly_usd": (choice["hourly_usd"] + volume_hourly + CONTAINER_HOURLY) * 1.15,
-                     "compute_hourly_usd": (choice["hourly_usd"] + CONTAINER_HOURLY) * 1.15,
+                     "quoted_gpu_hourly_usd": choice["hourly_usd"], "guard_hourly_usd": (choice["hourly_usd"] + volume_hourly + container_hourly) * 1.15,
+                     "compute_hourly_usd": (choice["hourly_usd"] + container_hourly) * 1.15,
                      "volume_hourly_usd": volume_hourly, "network_volume_gb": 0 if pod_storage else volume_gb, "volume_created_at": volume_created_at,
                      "session_allowance_usd": allowance, "repos": p["hugging_face"]["repos"], "code_sha256": code_hash,
                      "starting_balance_usd": p["account"]["clientBalance"], "remote_root": "/workspace/runs/" + run_id}
@@ -783,8 +796,8 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                 raise RuntimeError("Pod persistent-disk read-back mismatch")
         resources["actual_pod_hourly_usd"] = pod["cost"]
         resources["verified_ssh_direct"] = pod["ssh"]["direct"]
-        resources["guard_hourly_usd"] = max(resources["guard_hourly_usd"], (pod["cost"] + volume_hourly + CONTAINER_HOURLY) * 1.15)
-        resources["compute_hourly_usd"] = max(resources["compute_hourly_usd"], (pod["cost"] + CONTAINER_HOURLY) * 1.15)
+        resources["guard_hourly_usd"] = max(resources["guard_hourly_usd"], (pod["cost"] + volume_hourly + container_hourly) * 1.15)
+        resources["compute_hourly_usd"] = max(resources["compute_hourly_usd"], (pod["cost"] + container_hourly) * 1.15)
         register_resources(resources)
         if campaign and c["kind"] == "full" and resources["session_allowance_usd"] / resources["guard_hourly_usd"] < estimate["estimated_hours"]:
             raise RuntimeError("Actual provider rate makes the campaign's padded watchdog deadline unaffordable")
