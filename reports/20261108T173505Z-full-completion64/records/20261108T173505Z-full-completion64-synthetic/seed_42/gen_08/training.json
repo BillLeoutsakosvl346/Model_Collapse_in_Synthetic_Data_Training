@@ -1,0 +1,42 @@
+{
+  "generation": 8,
+  "initial_weights_sha256": "a28bb7eb4b4552a41bb08987237132a61e03bb49c1cc93fe7d22f1b9f8e8d39e",
+  "selected_weights_sha256": "d601c61b8468a913bc4a8b1b61e6f098bbbb6eace46b40b4c5202e03d7f7c872",
+  "input_tokens_sha256": "707c52de0738b2d6f7d7af05f186d497a3e729bd9f2669ae5ebddc7537a8028a",
+  "training_blocks": 10000,
+  "selected_epoch": 1,
+  "best_validation_loss": 5.302432676823334,
+  "best_validation_epoch": 1,
+  "selected_validation_loss": 5.302432676823334,
+  "executed_epochs": 1,
+  "terminal_weights_sha256": "d601c61b8468a913bc4a8b1b61e6f098bbbb6eace46b40b4c5202e03d7f7c872",
+  "training_contract_sha256": "5575f9331d8b335ea27754c7746c73a0a8a9a53d70840bcaea1b6b4e47c2b517",
+  "seconds": 49.27469668514095,
+  "peak_allocated_gpu_bytes": 6487666688,
+  "checkpoint_files": {
+    "config.json": "c76a2a4fe60c3f3508f9b480f0814406200d98d0c06e97c4206923b9f4b558d5",
+    "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "model.safetensors": "57bc3bbda832932114c7c841cd8a42c4e589a489d1d7d65de1f4f40ba0610910"
+  },
+  "initialization": "continued",
+  "optimizer_initialization": "carried_across_cycles",
+  "checkpoint_selection": "final_epoch",
+  "optimizer_parent_sha256": "96cf4b43235e6952557af88577c547f1f44696d8aebbbf2748c9cb6d5dd84189",
+  "global_step": 632,
+  "total_optimizer_steps": 790,
+  "state_files": {
+    "optimizer_state/cycle.pt": "c1db31947d92d9982ff8f3706aeeeb9f645bcb28df00378764f3162c402c7635"
+  },
+  "lineage": {
+    "initializer_weights_sha256": "a28bb7eb4b4552a41bb08987237132a61e03bb49c1cc93fe7d22f1b9f8e8d39e",
+    "optimizer_parent_sha256": "96cf4b43235e6952557af88577c547f1f44696d8aebbbf2748c9cb6d5dd84189",
+    "generator_weights_sha256": "a28bb7eb4b4552a41bb08987237132a61e03bb49c1cc93fe7d22f1b9f8e8d39e",
+    "generation_manifest_sha256": "c2a5fabbb261f231c3ab396cd52639afbb8489395e015b1aae70c716aa6eaa24",
+    "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+    "chunk_manifest_sha256": "f76505392b7c9f49a00c655ff05503aab2dbb34cf5b8bd5b048227efb690d4c8",
+    "data_kind": "synthetic",
+    "training_chunk_policy": "repeat_fixed",
+    "source_collection": "cycle_01",
+    "training_epoch": 8
+  }
+}

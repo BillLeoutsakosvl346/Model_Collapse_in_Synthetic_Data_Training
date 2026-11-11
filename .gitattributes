@@ -84,3 +84,15 @@
 
 # Byte-exact operational chronology preserved during the November cleanup.
 /docs/history/2026-11-07_pre-cleanup-*.txt -text whitespace=cr-at-eol
+
+# Preserve newly published experiment/audit bytes across Windows checkouts.
+/reports/20261108*/** -text whitespace=cr-at-eol,-blank-at-eof
+/reports/20261110*/** -text whitespace=cr-at-eol,-blank-at-eof
+/reports/20261111_fineweb_fraction_audit/** -text whitespace=cr-at-eol,-blank-at-eof
+/docs/validation/2026-11-08*.json -text whitespace=cr-at-eol
+/docs/validation/2026-11-10*.json -text whitespace=cr-at-eol
+/docs/validation/2026-11-11*.json -text whitespace=cr-at-eol
+/scripts/analysis/build_fineweb_endpoint_summary.py text eol=lf
+/scripts/analysis/build_repeated_chunk_comparison.py text eol=lf
+/scripts/analysis/build_decoding_comparison.py text eol=lf
+/scripts/analysis/audit_fineweb_fraction_records.py text eol=lf

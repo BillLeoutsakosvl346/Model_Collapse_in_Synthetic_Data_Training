@@ -1,0 +1,16 @@
+{
+  "run_id": "20261110T225009Z-smoke-completion64-decoding",
+  "provider_error": {
+    "error_type": "RuntimeError",
+    "error": "Runpod POST /pods: HTTP 400: {\"detail\":\"There are no longer any instances available with the requested specifications. Please refresh and try again.\",\"status\":400,\"title\":\"Bad Request\"}\n"
+  },
+  "pod_absent": true,
+  "working_volume_id": "8zma78ec4z",
+  "working_volume_deleted_verified": true,
+  "conservative_storage_interval": [
+    1794351009.0,
+    1794351147.480911
+  ],
+  "estimated_storage_usd": 0.00022131652445553645,
+  "no_gpu_compute_created": true
+}

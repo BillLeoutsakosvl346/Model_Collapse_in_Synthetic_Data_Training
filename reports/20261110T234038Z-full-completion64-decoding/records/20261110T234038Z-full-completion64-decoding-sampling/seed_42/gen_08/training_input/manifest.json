@@ -1,0 +1,36 @@
+{
+  "lineage": {
+    "initializer_weights_sha256": "5ba7245b02ee3031ee6599395b7c38b76d68a63d72041186cecba019efa98e74",
+    "optimizer_parent_sha256": "12612e9e256429b767066245582a1672661e24649d7b0d8c29c9a9f9290fd51f",
+    "generator_weights_sha256": "5ba7245b02ee3031ee6599395b7c38b76d68a63d72041186cecba019efa98e74",
+    "generation_manifest_sha256": "8ced1498837e6739daf9bed6e2239c5095813202ee66bf825b6f7e9845c38dbc",
+    "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+    "chunk_manifest_sha256": "da893d3476f2280f0626d3771ba8ed968b5cbff44a5c0e013a10b4ac8013c7ba",
+    "data_kind": "synthetic",
+    "training_decoder": "sampling",
+    "decoding": {
+      "num_beams": 1,
+      "do_sample": true,
+      "min_new_tokens": 64,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.0,
+      "no_repeat_ngram_size": 0,
+      "forced_eos_token_id": null,
+      "use_cache": true,
+      "temperature": 1.0,
+      "top_k": 0,
+      "top_p": 1.0
+    },
+    "sampling_policy": "sha256_seed_cycle_purpose_batch_v1"
+  },
+  "prompt_content_sha256": "dbd2fda7f004055b10d57c3fb7cd9ed7c776f6888aa39503c82432ea8c19b535",
+  "target_content_sha256": "731f00c6f1b8cd465948b0e01a6aa6c8cd7503a95c2b401360cd1168e9059959",
+  "pairs": 10000,
+  "scored_targets": 640000,
+  "objective": "conditional_continuation_64",
+  "files": {
+    "tokens.npy": "e79a87b4f11999ac41f4eba550c09628a611d3bb95b6867eb3b3e5541e303abc",
+    "attention.npy": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+    "loss_mask.npy": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+  }
+}

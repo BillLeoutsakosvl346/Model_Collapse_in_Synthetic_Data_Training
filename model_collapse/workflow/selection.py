@@ -29,6 +29,12 @@ def training_contract(c):
         settings.update(workflow="completion_arm", objective="conditional_continuation_64",
                         bank=c["prepared_bank"]["manifest_sha256"], data_kind=c["data_kind"],
                         optimizer_policy="carry_across_cycles", scheduler_policy="global_cosine_per_step")
+        if c.get("training_chunk_policy") == "repeat_fixed":
+            settings.update(training_chunk_policy="repeat_fixed", fixed_chunk=c["fixed_chunk"])
+        if c.get("decoding_arms") is not None:
+            from ..science.decoding import decoding_settings, SAMPLING_POLICY
+            settings.update(training_decoder=c["generation_decoder"], decoding=decoding_settings(c),
+                            generation_batch=c["generation_batch"], sampling_policy=SAMPLING_POLICY)
     return digest(settings)
 
 

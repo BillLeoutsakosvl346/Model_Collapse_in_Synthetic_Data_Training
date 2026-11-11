@@ -1,0 +1,47 @@
+{
+  "snapshot": {
+    "run_id": "20261107T183326Z-full-completion64-mixed99-mixed99",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "defa7c6c55dbd102a7e1e869af25bd6ece11105c",
+      "dataset": "0b22007c03e1dad6f356323c6b25ec6a55c4b491"
+    },
+    "artifact_index_sha256": "0d6308e5451f7841795a22f85feb03a0199abc6c27ffffb77f3ee5348e57ce1c"
+  },
+  "cycle": 10,
+  "recovered_files": {
+    "synthetic_for_gen_10/tokens.npy": {
+      "sha256": "25365934d0d33764200e950a58ec7ff308fd4ec6389cfae08f54ebad0e3e45b0",
+      "bytes": 2534528
+    },
+    "seed_42/gen_10/mixture/targets.npy": {
+      "sha256": "67ad81932277841ac09d9f97b07757b2ff8da5b0c5146b68ebcbb257d3f66b7b",
+      "bytes": 2560128
+    },
+    "seed_42/gen_10/training_input/tokens.npy": {
+      "sha256": "f3e043230d396695fb2af7e636ab1e6520b47d6e33f916efb54fb187911682f9",
+      "bytes": 5160128
+    },
+    "seed_42/gen_10/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128
+    },
+    "seed_42/gen_10/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128
+    }
+  },
+  "real_pairs": 100,
+  "synthetic_pairs": 9900,
+  "one_example_per_prompt": true,
+  "all_real_continuations_preserved": true,
+  "generated_targets_scattered_to_exact_selected_rows": true,
+  "training_tokens_attention_and_loss_mask_exactly_reconstructed": true,
+  "scored_target_tokens": 640000,
+  "prompts_visible_to_attention": true,
+  "prompt_positions_not_scored": true,
+  "claim_scope": "Direct byte recovery/reconstruction of 99% cycle10 only; no checkpoint cold restore or GPU inference."
+}

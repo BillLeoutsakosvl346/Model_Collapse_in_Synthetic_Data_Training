@@ -1,0 +1,62 @@
+{
+  "checked_at_utc": "2026-11-08T00:23:55.681173+00:00",
+  "run_id": "20261107T214406Z-full-completion64-mixed99p9",
+  "pod_id": "sjosn7yibxv46y",
+  "working_volume_id": "fukkge8vrw",
+  "backup_volume_id": "vx78hsoirz",
+  "provider_state": "EXITED",
+  "provider_shutdown": {
+    "provider_pod_id": "sjosn7yibxv46y",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Sat Nov 07 2026 23:36:13 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1794094573.0,
+    "observed_at": 1794097386.4408052
+  },
+  "watchdog_exit": {
+    "reason": "complete",
+    "time": 1794094571.3473377,
+    "pod_id": "sjosn7yibxv46y"
+  },
+  "parent_completion": {
+    "complete": true,
+    "workflow": "completion_comparison",
+    "cycles": 10,
+    "unique_training_stages": 10,
+    "executed_epochs": 10,
+    "time": 1794094557.2453208
+  },
+  "child_snapshot": {
+    "run_id": "20261107T214406Z-full-completion64-mixed99p9-mixed99p9",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "e7d07afaa73a47eac887a913a7addcdf05f25ace",
+      "dataset": "862be5fa219c42ce5e6ff94d13a3c14e2efffbb3"
+    },
+    "artifact_index_sha256": "97c7bc618a04c2b3218424a51b219f1f0b8eda3f559078be7b4fab8df1f26cb2"
+  },
+  "baseline_test_perplexity": 29.17631807160739,
+  "final_test_perplexity": 258.67824747548127,
+  "final_validation_perplexity": 259.75821145579556,
+  "executed_epochs": 10,
+  "global_step": 790,
+  "scored_training_targets": 6400000,
+  "per_cycle_real_pairs": 10,
+  "per_cycle_synthetic_pairs": 9990,
+  "verified_small_files": 79,
+  "analysis_directory": "reports\\20261107T214406Z-full-completion64-mixed99p9\\generated\\20261108T002355Z-ten-fractions",
+  "input_provenance_sha256": "8270ea78de2e5e6c361191334e4166f7188c40132c24ef8237373df8accef68f",
+  "bulk_restoration_performed": false,
+  "historical_storage_preserved": true,
+  "analysis_manifest_sha256": "a39259a1f91854e1d22ff7304e5840f89ce3d17b452f8d4c6390335ac2949909",
+  "figure_hashes": {
+    "test_perplexity_all_ten.png": "b7b99efffed45980e65496d4659e8574483a578e4ab7edd5672ba9e1142558dd",
+    "test_perplexity_high_fractions.png": "44d4e6b89e65adfc28484aed3aa75eecc1b840db037637364fda5f45dd33cfd3",
+    "test_perplexity_without_100.png": "f0fbb4c7604975773901afec1408dc8e4dd09f1699a25c0b17bf96d98497d322"
+  },
+  "comparison_metric_rows": 110,
+  "interpretation_scope": "Ten-cycle trajectories under a shared decreasing cosine LR; no claim of permanent stability, independently measured GPU effect, or a universal real-data threshold."
+}

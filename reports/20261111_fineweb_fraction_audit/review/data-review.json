@@ -1,0 +1,709 @@
+{
+  "reviewer": "audit_fineweb_mixtures",
+  "faults_found": [],
+  "scope": "Read-only independent mixing/data/source-code review. No cloud writes, new training or inference. One new ignored audit receipt requested by parent.",
+  "independent_full_bank_audit": {
+    "fresh_rerun_passed": true,
+    "seconds": 92.06595730781555,
+    "tokenizer_source": "reports/20261110T234038Z-full-completion64-decoding/records/20261106T193918Z-full-completion64/seed_42/gen_00/tokenizer",
+    "all_file_hashes_verified": true,
+    "all_pairs_reconstructed": true,
+    "disjoint_documents_and_exact_sliding64_token_passages": true,
+    "probe_document_stratification": true,
+    "counts": {
+      "validation": {
+        "pairs": 7322,
+        "documents": 980,
+        "target_tokens": 468608
+      },
+      "test": {
+        "pairs": 7151,
+        "documents": 976,
+        "target_tokens": 457664
+      },
+      "cycle_01": {
+        "pairs": 10000,
+        "documents": 1176,
+        "target_tokens": 640000
+      },
+      "cycle_02": {
+        "pairs": 10000,
+        "documents": 1124,
+        "target_tokens": 640000
+      },
+      "cycle_03": {
+        "pairs": 10000,
+        "documents": 1258,
+        "target_tokens": 640000
+      },
+      "cycle_04": {
+        "pairs": 10000,
+        "documents": 1243,
+        "target_tokens": 640000
+      },
+      "cycle_05": {
+        "pairs": 10000,
+        "documents": 1260,
+        "target_tokens": 640000
+      },
+      "cycle_06": {
+        "pairs": 10000,
+        "documents": 1189,
+        "target_tokens": 640000
+      },
+      "cycle_07": {
+        "pairs": 10000,
+        "documents": 1359,
+        "target_tokens": 640000
+      },
+      "cycle_08": {
+        "pairs": 10000,
+        "documents": 1279,
+        "target_tokens": 640000
+      },
+      "cycle_09": {
+        "pairs": 10000,
+        "documents": 1317,
+        "target_tokens": 640000
+      },
+      "cycle_10": {
+        "pairs": 10000,
+        "documents": 1332,
+        "target_tokens": 640000
+      }
+    }
+  },
+  "source_sampling_scope": {
+    "shard_order": [
+      "sample/10BT/008_00000.parquet",
+      "sample/10BT/012_00000.parquet",
+      "sample/10BT/007_00000.parquet",
+      "sample/10BT/006_00000.parquet",
+      "sample/10BT/013_00000.parquet",
+      "sample/10BT/011_00000.parquet",
+      "sample/10BT/005_00000.parquet",
+      "sample/10BT/002_00000.parquet",
+      "sample/10BT/009_00000.parquet",
+      "sample/10BT/003_00000.parquet",
+      "sample/10BT/004_00000.parquet",
+      "sample/10BT/000_00000.parquet",
+      "sample/10BT/001_00000.parquet",
+      "sample/10BT/010_00000.parquet"
+    ],
+    "read_rows_by_file": {
+      "sample/10BT/008_00000.parquet": 24950
+    }
+  },
+  "stages_audited": [
+    {
+      "condition": 0.5,
+      "cycle": 1,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 5000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "test_perplexity": 29.761193605823557
+    },
+    {
+      "condition": 0.5,
+      "cycle": 2,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 5000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "test_perplexity": 29.560513906954682
+    },
+    {
+      "condition": 0.5,
+      "cycle": 3,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 5000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "test_perplexity": 29.312513415843814
+    },
+    {
+      "condition": 0.5,
+      "cycle": 4,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 5000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "test_perplexity": 29.31617128894346
+    },
+    {
+      "condition": 0.5,
+      "cycle": 5,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 5000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "test_perplexity": 29.183747133943694
+    },
+    {
+      "condition": 0.5,
+      "cycle": 6,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 5000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "test_perplexity": 29.107395630653237
+    },
+    {
+      "condition": 0.5,
+      "cycle": 7,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 5000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "test_perplexity": 29.138610021070185
+    },
+    {
+      "condition": 0.5,
+      "cycle": 8,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 5000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "test_perplexity": 29.11899056639124
+    },
+    {
+      "condition": 0.5,
+      "cycle": 9,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 5000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "test_perplexity": 29.112648722463565
+    },
+    {
+      "condition": 0.5,
+      "cycle": 10,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 5000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "test_perplexity": 29.06977110812519
+    },
+    {
+      "condition": 0.2,
+      "cycle": 1,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 2000,
+      "real_pairs": 8000,
+      "synthetic_pairs": 2000,
+      "test_perplexity": 28.708535756620265
+    },
+    {
+      "condition": 0.2,
+      "cycle": 2,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 2000,
+      "real_pairs": 8000,
+      "synthetic_pairs": 2000,
+      "test_perplexity": 28.676541934288604
+    },
+    {
+      "condition": 0.2,
+      "cycle": 3,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 2000,
+      "real_pairs": 8000,
+      "synthetic_pairs": 2000,
+      "test_perplexity": 28.58094175216143
+    },
+    {
+      "condition": 0.2,
+      "cycle": 4,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 2000,
+      "real_pairs": 8000,
+      "synthetic_pairs": 2000,
+      "test_perplexity": 28.508447226470345
+    },
+    {
+      "condition": 0.2,
+      "cycle": 5,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 2000,
+      "real_pairs": 8000,
+      "synthetic_pairs": 2000,
+      "test_perplexity": 28.475494276879022
+    },
+    {
+      "condition": 0.2,
+      "cycle": 6,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 2000,
+      "real_pairs": 8000,
+      "synthetic_pairs": 2000,
+      "test_perplexity": 28.46065294804792
+    },
+    {
+      "condition": 0.2,
+      "cycle": 7,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 2000,
+      "real_pairs": 8000,
+      "synthetic_pairs": 2000,
+      "test_perplexity": 28.435150134553613
+    },
+    {
+      "condition": 0.2,
+      "cycle": 8,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 2000,
+      "real_pairs": 8000,
+      "synthetic_pairs": 2000,
+      "test_perplexity": 28.389408930312587
+    },
+    {
+      "condition": 0.2,
+      "cycle": 9,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 2000,
+      "real_pairs": 8000,
+      "synthetic_pairs": 2000,
+      "test_perplexity": 28.390608332338243
+    },
+    {
+      "condition": 0.2,
+      "cycle": 10,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 2000,
+      "real_pairs": 8000,
+      "synthetic_pairs": 2000,
+      "test_perplexity": 28.37127655201339
+    },
+    {
+      "condition": 0.99,
+      "cycle": 1,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9900,
+      "real_pairs": 100,
+      "synthetic_pairs": 9900,
+      "test_perplexity": 43.56447526245149
+    },
+    {
+      "condition": 0.99,
+      "cycle": 2,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9900,
+      "real_pairs": 100,
+      "synthetic_pairs": 9900,
+      "test_perplexity": 61.29489714445457
+    },
+    {
+      "condition": 0.99,
+      "cycle": 3,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9900,
+      "real_pairs": 100,
+      "synthetic_pairs": 9900,
+      "test_perplexity": 73.74841601977397
+    },
+    {
+      "condition": 0.99,
+      "cycle": 4,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9900,
+      "real_pairs": 100,
+      "synthetic_pairs": 9900,
+      "test_perplexity": 82.84535626741295
+    },
+    {
+      "condition": 0.99,
+      "cycle": 5,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9900,
+      "real_pairs": 100,
+      "synthetic_pairs": 9900,
+      "test_perplexity": 84.40956398466248
+    },
+    {
+      "condition": 0.99,
+      "cycle": 6,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9900,
+      "real_pairs": 100,
+      "synthetic_pairs": 9900,
+      "test_perplexity": 83.05677918161118
+    },
+    {
+      "condition": 0.99,
+      "cycle": 7,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9900,
+      "real_pairs": 100,
+      "synthetic_pairs": 9900,
+      "test_perplexity": 82.9925821379357
+    },
+    {
+      "condition": 0.99,
+      "cycle": 8,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9900,
+      "real_pairs": 100,
+      "synthetic_pairs": 9900,
+      "test_perplexity": 83.21605665039269
+    },
+    {
+      "condition": 0.99,
+      "cycle": 9,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9900,
+      "real_pairs": 100,
+      "synthetic_pairs": 9900,
+      "test_perplexity": 83.32159878851571
+    },
+    {
+      "condition": 0.99,
+      "cycle": 10,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9900,
+      "real_pairs": 100,
+      "synthetic_pairs": 9900,
+      "test_perplexity": 82.67730137818421
+    },
+    {
+      "condition": 0.999,
+      "cycle": 1,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9990,
+      "real_pairs": 10,
+      "synthetic_pairs": 9990,
+      "test_perplexity": 44.58488352283855
+    },
+    {
+      "condition": 0.999,
+      "cycle": 2,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9990,
+      "real_pairs": 10,
+      "synthetic_pairs": 9990,
+      "test_perplexity": 70.7030315926263
+    },
+    {
+      "condition": 0.999,
+      "cycle": 3,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9990,
+      "real_pairs": 10,
+      "synthetic_pairs": 9990,
+      "test_perplexity": 101.19889262576591
+    },
+    {
+      "condition": 0.999,
+      "cycle": 4,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9990,
+      "real_pairs": 10,
+      "synthetic_pairs": 9990,
+      "test_perplexity": 133.07669015599393
+    },
+    {
+      "condition": 0.999,
+      "cycle": 5,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9990,
+      "real_pairs": 10,
+      "synthetic_pairs": 9990,
+      "test_perplexity": 160.88911650715914
+    },
+    {
+      "condition": 0.999,
+      "cycle": 6,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9990,
+      "real_pairs": 10,
+      "synthetic_pairs": 9990,
+      "test_perplexity": 188.16298685906546
+    },
+    {
+      "condition": 0.999,
+      "cycle": 7,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9990,
+      "real_pairs": 10,
+      "synthetic_pairs": 9990,
+      "test_perplexity": 208.41662713601508
+    },
+    {
+      "condition": 0.999,
+      "cycle": 8,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9990,
+      "real_pairs": 10,
+      "synthetic_pairs": 9990,
+      "test_perplexity": 229.88658995699222
+    },
+    {
+      "condition": 0.999,
+      "cycle": 9,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9990,
+      "real_pairs": 10,
+      "synthetic_pairs": 9990,
+      "test_perplexity": 247.8964384644185
+    },
+    {
+      "condition": 0.999,
+      "cycle": 10,
+      "selected_array_file_hashes_reproduced": 4,
+      "correct_chunk_and_prompt_provenance": true,
+      "correct_generator_initializer_optimizer_handoff": true,
+      "actual_generator_prompt_count": 9990,
+      "real_pairs": 10,
+      "synthetic_pairs": 9990,
+      "test_perplexity": 258.67824747548127
+    }
+  ],
+  "terminal99_scatter_audit": {
+    "independent_of_current_mixer": true,
+    "cycle": 10,
+    "pairs": 10000,
+    "real_pairs": 100,
+    "synthetic_pairs": 9900,
+    "synthetic_selected_rows_equal_generated": true,
+    "all100_real_rows_equal_original": true,
+    "all10000_mixed_rows_equal_reconstruction": true,
+    "prompt_position_alignment": true,
+    "bos2": true,
+    "attention_all129_positions": true,
+    "loss_positions65_through128_only": true,
+    "exactly64_scored_targets_per_pair": true,
+    "scored_targets": 640000,
+    "file_checksums": {
+      "synthetic_for_gen_10/tokens.npy": "25365934d0d33764200e950a58ec7ff308fd4ec6389cfae08f54ebad0e3e45b0",
+      "seed_42/gen_10/mixture/targets.npy": "67ad81932277841ac09d9f97b07757b2ff8da5b0c5146b68ebcbb257d3f66b7b",
+      "seed_42/gen_10/training_input/tokens.npy": "f3e043230d396695fb2af7e636ab1e6520b47d6e33f916efb54fb187911682f9",
+      "seed_42/gen_10/training_input/attention.npy": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "seed_42/gen_10/training_input/loss_mask.npy": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+    },
+    "scope": "Only recovered terminal99% arrays were directly reconstructed; other stage inputs verified by metadata/pinned hashes and deterministic selections."
+  },
+  "historical_executed_archives": [
+    {
+      "run_id": "20261107T004033Z-full-completion64-mixtures",
+      "runtime_identity": "98f59dfdc0edc3205fe24fcb72b7202537b0efbe77eeaa0f20c3be0f8f866e37",
+      "archive_file_sha256": "987d2721899f54ec61215132539ac5d8d3ef0445df9162dbe41b60402e91d59c",
+      "critical_function_AST_sha256": {
+        "select_rows": "061ecc7bfe7c882d9aff66688085ee744dd9b9631d7277cbf096ff630d568c38",
+        "freeze_selection": "818aae52f1055ee7f78efcaa1f0c5e55ad5dbffb0fc7a3ace0d57cb3c9d49fab",
+        "freeze_targets": "ac2d874abc99e9e1b2b6efe733c092e02c0a65b7952a8e247a32895c0b050161",
+        "_targets": "f26669714056a6656191f4cf91f133ca4b30ed774605b9c438c65408384d7837",
+        "training_input": "0f8ff5ff9ee13f18e6238c625519fcc0189aa2f931c079dea5766d77efb3a512"
+      }
+    },
+    {
+      "run_id": "20261107T113638Z-full-completion64-mixed80",
+      "runtime_identity": "0243a64f9b998e0ca56b12fa0467ed35ee15b968962950c0c01f0aa3b5544170",
+      "archive_file_sha256": "80644832f0af0992fa6207ed526bdd4b9055bbfc6484f35c7b751049a160230a",
+      "critical_function_AST_sha256": {
+        "select_rows": "061ecc7bfe7c882d9aff66688085ee744dd9b9631d7277cbf096ff630d568c38",
+        "freeze_selection": "818aae52f1055ee7f78efcaa1f0c5e55ad5dbffb0fc7a3ace0d57cb3c9d49fab",
+        "freeze_targets": "ac2d874abc99e9e1b2b6efe733c092e02c0a65b7952a8e247a32895c0b050161",
+        "_targets": "f26669714056a6656191f4cf91f133ca4b30ed774605b9c438c65408384d7837",
+        "training_input": "0f8ff5ff9ee13f18e6238c625519fcc0189aa2f931c079dea5766d77efb3a512"
+      }
+    },
+    {
+      "run_id": "20261107T150834Z-full-completion64-mixed85",
+      "runtime_identity": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+      "archive_file_sha256": "4555d08052e7e2d4b6e733d46b8221902eea7c7de81e8000c6f57556504ca421",
+      "critical_function_AST_sha256": {
+        "select_rows": "061ecc7bfe7c882d9aff66688085ee744dd9b9631d7277cbf096ff630d568c38",
+        "freeze_selection": "818aae52f1055ee7f78efcaa1f0c5e55ad5dbffb0fc7a3ace0d57cb3c9d49fab",
+        "freeze_targets": "ac2d874abc99e9e1b2b6efe733c092e02c0a65b7952a8e247a32895c0b050161",
+        "_targets": "f26669714056a6656191f4cf91f133ca4b30ed774605b9c438c65408384d7837",
+        "training_input": "0f8ff5ff9ee13f18e6238c625519fcc0189aa2f931c079dea5766d77efb3a512"
+      }
+    },
+    {
+      "run_id": "20261107T151427Z-full-completion64-mixed90",
+      "runtime_identity": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+      "archive_file_sha256": "4555d08052e7e2d4b6e733d46b8221902eea7c7de81e8000c6f57556504ca421",
+      "critical_function_AST_sha256": {
+        "select_rows": "061ecc7bfe7c882d9aff66688085ee744dd9b9631d7277cbf096ff630d568c38",
+        "freeze_selection": "818aae52f1055ee7f78efcaa1f0c5e55ad5dbffb0fc7a3ace0d57cb3c9d49fab",
+        "freeze_targets": "ac2d874abc99e9e1b2b6efe733c092e02c0a65b7952a8e247a32895c0b050161",
+        "_targets": "f26669714056a6656191f4cf91f133ca4b30ed774605b9c438c65408384d7837",
+        "training_input": "0f8ff5ff9ee13f18e6238c625519fcc0189aa2f931c079dea5766d77efb3a512"
+      }
+    },
+    {
+      "run_id": "20261107T151610Z-full-completion64-mixed95",
+      "runtime_identity": "eb6b3104dbe395bbe192ccd14afbc74de6d24d9d22578486804f0c8c1a490e7f",
+      "archive_file_sha256": "4555d08052e7e2d4b6e733d46b8221902eea7c7de81e8000c6f57556504ca421",
+      "critical_function_AST_sha256": {
+        "select_rows": "061ecc7bfe7c882d9aff66688085ee744dd9b9631d7277cbf096ff630d568c38",
+        "freeze_selection": "818aae52f1055ee7f78efcaa1f0c5e55ad5dbffb0fc7a3ace0d57cb3c9d49fab",
+        "freeze_targets": "ac2d874abc99e9e1b2b6efe733c092e02c0a65b7952a8e247a32895c0b050161",
+        "_targets": "f26669714056a6656191f4cf91f133ca4b30ed774605b9c438c65408384d7837",
+        "training_input": "0f8ff5ff9ee13f18e6238c625519fcc0189aa2f931c079dea5766d77efb3a512"
+      }
+    },
+    {
+      "run_id": "20261107T183326Z-full-completion64-mixed99",
+      "runtime_identity": "68033f3641fff5dd51ab10b7f32639ed42c0f7d3251c0ccd568cdda6a5ec6b11",
+      "archive_file_sha256": "d073fff6520f9355ec9abd358da7d6cb5110d8348290977c6658e27068c25999",
+      "critical_function_AST_sha256": {
+        "select_rows": "061ecc7bfe7c882d9aff66688085ee744dd9b9631d7277cbf096ff630d568c38",
+        "freeze_selection": "818aae52f1055ee7f78efcaa1f0c5e55ad5dbffb0fc7a3ace0d57cb3c9d49fab",
+        "freeze_targets": "ac2d874abc99e9e1b2b6efe733c092e02c0a65b7952a8e247a32895c0b050161",
+        "_targets": "f26669714056a6656191f4cf91f133ca4b30ed774605b9c438c65408384d7837",
+        "training_input": "0f8ff5ff9ee13f18e6238c625519fcc0189aa2f931c079dea5766d77efb3a512"
+      }
+    },
+    {
+      "run_id": "20261107T214406Z-full-completion64-mixed99p9",
+      "runtime_identity": "20883eacf9076d69b061c0776188c73eccc71abcd77bb48e9a94830b7689f4f5",
+      "archive_file_sha256": "f082a48f13bf3755399e89d1389beea988631f8c3f0619a96bd0cba7ff2389a6",
+      "critical_function_AST_sha256": {
+        "select_rows": "061ecc7bfe7c882d9aff66688085ee744dd9b9631d7277cbf096ff630d568c38",
+        "freeze_selection": "818aae52f1055ee7f78efcaa1f0c5e55ad5dbffb0fc7a3ace0d57cb3c9d49fab",
+        "freeze_targets": "ac2d874abc99e9e1b2b6efe733c092e02c0a65b7952a8e247a32895c0b050161",
+        "_targets": "f26669714056a6656191f4cf91f133ca4b30ed774605b9c438c65408384d7837",
+        "training_input": "0f8ff5ff9ee13f18e6238c625519fcc0189aa2f931c079dea5766d77efb3a512"
+      }
+    }
+  ],
+  "critical_function_semantics_identical_across_all_mixture_runtime_archives": true,
+  "real_anchor_document_coverage": {
+    "0.5": {
+      "real_source_documents_per_cycle": [
+        1014,
+        986,
+        1083,
+        1079,
+        1083,
+        1054,
+        1197,
+        1125,
+        1147,
+        1148
+      ],
+      "sum_disjoint_documents": 10916
+    },
+    "0.99": {
+      "real_source_documents_per_cycle": [
+        86,
+        79,
+        85,
+        87,
+        89,
+        86,
+        87,
+        83,
+        91,
+        85
+      ],
+      "sum_disjoint_documents": 858
+    },
+    "0.999": {
+      "real_source_documents_per_cycle": [
+        9,
+        9,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "sum_disjoint_documents": 98
+    }
+  },
+  "offline_tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/science/test_completion_mixing.py tests/science/test_completion_data.py tests/workflow/test_completion_sparse_mixture.py -q",
+    "passed": 52,
+    "seconds": 13.02
+  },
+  "limitations": [
+    "No full checkpoint/optimizer restoration or GPU re-evaluation by this reviewer.",
+    "Percentages describe continuation labels; all arms retain real64-token prompts.",
+    "Sourcebank uses first shuffled shard and bounded shuffle; not uniform addressing of the entire10B corpus.",
+    "Document/exact64-token exclusion is not a semantic near-duplicate or pretraining-contamination audit.",
+    "One seed and finite ten-cycle decreasing-LR horizon cannot establish permanent stability."
+  ]
+}

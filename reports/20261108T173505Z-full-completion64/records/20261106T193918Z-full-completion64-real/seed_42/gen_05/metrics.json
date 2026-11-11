@@ -1,0 +1,150 @@
+{
+  "generation": 5,
+  "weights_sha256": "cc7f84d49df9e17a7f375375a92cd7d9616388c23ac0cc8b02054ee3134a8f98",
+  "validation": {
+    "nll_sum": 1560480.4851579026,
+    "scored_tokens": 468608,
+    "loss": 3.330033813246685,
+    "perplexity": 27.939286405248115,
+    "seconds": 6.0646483360324055,
+    "mean_sequence_perplexity": 33.63542145854899,
+    "std_sequence_perplexity": 25.681693315157894,
+    "context_tokens": 129
+  },
+  "test": {
+    "nll_sum": 1527579.8472828746,
+    "scored_tokens": 457664,
+    "loss": 3.337775851460623,
+    "perplexity": 28.156432921952394,
+    "seconds": 5.899338372051716,
+    "mean_sequence_perplexity": 34.08119152159165,
+    "std_sequence_perplexity": 25.803467756354785,
+    "context_tokens": 129,
+    "median_example_nll": 3.326853604943608,
+    "p95_example_nll": 4.356167351617842
+  },
+  "secondary": {
+    "fineweb_edu": {
+      "nll_sum": 3238971.7678164416,
+      "scored_tokens": 979319,
+      "loss": 3.307371518184005,
+      "perplexity": 27.313238685515305,
+      "seconds": 12.550017044879496,
+      "mean_sequence_perplexity": 39.2469914331773,
+      "std_sequence_perplexity": 207.43657281249915,
+      "context_tokens": 512
+    },
+    "wikitext103": {
+      "nll_sum": 468423.23574569344,
+      "scored_tokens": 128033,
+      "loss": 3.658613293023622,
+      "perplexity": 38.80749092312709,
+      "seconds": 1.382538734935224,
+      "mean_sequence_perplexity": 52.814205264138835,
+      "std_sequence_perplexity": 88.81567658727079,
+      "context_tokens": 512
+    },
+    "c4_en": {
+      "nll_sum": 428756.16969038144,
+      "scored_tokens": 128273,
+      "loss": 3.342528588949985,
+      "perplexity": 28.290571566650687,
+      "seconds": 2.1756057259626687,
+      "mean_sequence_perplexity": 49.474907055936846,
+      "std_sequence_perplexity": 110.4281376978033,
+      "context_tokens": 512
+    },
+    "pg19": {
+      "nll_sum": 550855.5880714188,
+      "scored_tokens": 128000,
+      "loss": 4.303559281807959,
+      "perplexity": 73.9625794213558,
+      "seconds": 1.3343681131955236,
+      "mean_sequence_perplexity": 80.9890180148915,
+      "std_sequence_perplexity": 29.416684984025363,
+      "context_tokens": 512
+    },
+    "ag_news": {
+      "nll_sum": 517515.69931625365,
+      "scored_tokens": 130450,
+      "loss": 3.967157526379867,
+      "perplexity": 52.83413755422303,
+      "seconds": 12.613856325857341,
+      "mean_sequence_perplexity": 72.15553248195113,
+      "std_sequence_perplexity": 65.13909639898448,
+      "context_tokens": 512
+    }
+  },
+  "probe": {
+    "distinct_1": 0.15985107421875,
+    "distinct_2": 0.3815104166666667,
+    "distinct_3": 0.49489667338709675,
+    "repeated_4gram_rate": 0.4526767418032787,
+    "repeated_4gram_denominator": 15616,
+    "duplicate_continuation_rate": 0.0,
+    "token_entropy_nats": 6.181600411133042,
+    "probe_count": 256,
+    "mean_within_entropy_nats": 3.0398634358902896,
+    "mean_within_repeated_4gram_rate": 0.42129866803278687,
+    "fraction_outputs_with_repeated_4gram": 0.93359375,
+    "mean_within_distinct_1": 0.421875,
+    "mean_within_distinct_2": 0.5200892857142858,
+    "mean_within_distinct_3": 0.5542464717741935,
+    "mean_within_distinct_4": 0.5787013319672132,
+    "newline_token_50118_count": 395,
+    "newline_token_50118_share": 0.02410888671875,
+    "newline_heavy_outputs_ge32": 0,
+    "all_newline_outputs": 0,
+    "continuation_tokens_sha256": "51dd9e2edb59dbb4ec76cff93d7be3b89f7569945415cef882d39faf0024d2f6"
+  },
+  "training": {
+    "generation": 5,
+    "initial_weights_sha256": "645e41157b76acf79fb4337cdbc04fa6a75a932b88406413e3aaa835b96fd064",
+    "selected_weights_sha256": "cc7f84d49df9e17a7f375375a92cd7d9616388c23ac0cc8b02054ee3134a8f98",
+    "input_tokens_sha256": "afe15d09b48571746cae3fe74ea2e0def66d19cdc87167cf65b14142845a70a1",
+    "training_blocks": 10000,
+    "selected_epoch": 1,
+    "best_validation_loss": 3.330033813246685,
+    "best_validation_epoch": 1,
+    "selected_validation_loss": 3.330033813246685,
+    "executed_epochs": 1,
+    "terminal_weights_sha256": "cc7f84d49df9e17a7f375375a92cd7d9616388c23ac0cc8b02054ee3134a8f98",
+    "training_contract_sha256": "b0ef4b1ead5fead8f342f1dfc50e54a65724d0346dc2bdf8e2ad66e7f2b16355",
+    "seconds": 48.78241213806905,
+    "peak_allocated_gpu_bytes": 6485772800,
+    "checkpoint_files": {
+      "config.json": "eb6479cc979fab3456b47257f0f4358b6c6b0eaacdb1b04012c5854206c04439",
+      "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "model.safetensors": "a0162c2fe0d876df6ab142fdf2e028d3bb841a0fde73d068975557c9bb96ac69"
+    },
+    "initialization": "continued",
+    "optimizer_initialization": "carried_across_cycles",
+    "checkpoint_selection": "final_epoch",
+    "optimizer_parent_sha256": "a82392a4ecdd271f6482aca6e8e0faa7da8db07aeeb39f917e24cd16668361bf",
+    "global_step": 395,
+    "total_optimizer_steps": 790,
+    "state_files": {
+      "optimizer_state/cycle.pt": "e5cd44be4d272e0b11fbe164fff63ab1587b69bc56466bcd0bee9a6e729072a1"
+    },
+    "lineage": {
+      "initializer_weights_sha256": "645e41157b76acf79fb4337cdbc04fa6a75a932b88406413e3aaa835b96fd064",
+      "optimizer_parent_sha256": "a82392a4ecdd271f6482aca6e8e0faa7da8db07aeeb39f917e24cd16668361bf",
+      "generator_weights_sha256": null,
+      "generation_manifest_sha256": null,
+      "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+      "chunk_manifest_sha256": "b7d50774ee36e1f27cf8b327c489309176b86e8a1c352bf29b805bfbbc04e632",
+      "data_kind": "real"
+    }
+  },
+  "training_evaluation": {
+    "nll_sum": 2120509.9822597364,
+    "scored_tokens": 640000,
+    "loss": 3.313296847280838,
+    "perplexity": 27.475559039269296,
+    "seconds": 8.091040108120069,
+    "mean_sequence_perplexity": 33.722685238438785,
+    "std_sequence_perplexity": 28.010267312677097,
+    "context_tokens": 129
+  },
+  "input_manifest_sha256": "532ec6016f82fdf3c065f18d8037c2cf617f405800a68c6d83bba25ebc8d462b"
+}

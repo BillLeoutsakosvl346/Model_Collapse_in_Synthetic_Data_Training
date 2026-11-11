@@ -12,6 +12,8 @@ Current procedures and recovery requirements are in [operations](../../docs/oper
 
 ## Scope and compatibility
 
+[finish_decoding_validation.py](finish_decoding_validation.py) is a dated restoration-only adapter for the interrupted 10 November greedy/sampling smoke test. It requires all six training stages and their original detached-training proof, keeps the exact deployed worker archive, and verifies fresh restoration progress across SSH disconnection without claiming new training. Its [authorization and source identity](../../docs/validation/2026-11-10_decoding-restoration-authorization.json) are recorded separately. The completed test must not be resumed again; ordinary full runs use the standard launcher.
+
 These adapters encode particular dated authorizations or recovery actions. They retain established paths and, where needed, legacy global patches. A source move in the local candidate does not update a deployed job or transfer an old GPU certificate. Consult the named receipt/current state before invoking any adapter; ordinary future workflows should use explicit configurations and shared cloud helpers.
 
 The ordinary and high-fraction staged launchers now share `launch.lock`. Their admission/deployment phase is serialized; independent training observation may overlap only within the recorded parallel scope.

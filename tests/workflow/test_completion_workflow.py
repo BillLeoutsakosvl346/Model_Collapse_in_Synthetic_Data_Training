@@ -122,8 +122,12 @@ def test_full_bank_scope_rejected_before_provider_reads(tmp_path, monkeypatch):
         completion.resolve_inputs(c)
 
 
-@pytest.mark.parametrize("mixtures", [False, True, "single"])
+@pytest.mark.parametrize("mixtures", [False, True, "single", "repeat", "decoding"])
 def test_entire_comparison_recovers_workers_handoff_and_preserves_stages(tmp_path, monkeypatch, mixtures):
+    decoding = mixtures == "decoding"
+    repeated = mixtures == "repeat"
+    if repeated or decoding:
+        mixtures = False
     import transformers
     torch.set_num_threads(1)
     engine.seed_all(42)
@@ -139,7 +143,10 @@ def test_entire_comparison_recovers_workers_handoff_and_preserves_stages(tmp_pat
     monkeypatch.setattr(engine, "device", lambda: "cpu")
     def generated(self, input_ids, attention_mask, **settings):
         assert input_ids.shape[1] == 65 and torch.all(input_ids[:, 0] == 2)
-        assert settings["num_beams"] == 5 and settings["max_new_tokens"] == 64
+        assert settings["num_beams"] in (1, 5) and settings["max_new_tokens"] == 64
+        if settings["do_sample"]:
+            assert settings["temperature"] == 1 and settings["top_k"] == 0 and settings["top_p"] == 1
+            return torch.cat([input_ids, torch.randint(3, 40, (len(input_ids), 64))], dim=1)
         return torch.cat([input_ids, input_ids[:, -1:].repeat(1, 64)], dim=1)
     monkeypatch.setattr(OPTForCausalLM, "generate", generated)
     class Tokenizer:
@@ -168,6 +175,10 @@ def test_entire_comparison_recovers_workers_handoff_and_preserves_stages(tmp_pat
     np.save(folder / "masks.npy", np.ones((2, 512), dtype=np.int32))
     definition = "fineweb_completion64_mixtures" if mixtures else "fineweb_real_vs_synthetic_completion64"
     c = yaml.safe_load(Path(f"comparisons/{definition}/smoke.yaml").read_text())
+    if decoding:
+        c["decoding_arms"] = [{"id": "greedy", "decoder": "greedy"}, {"id": "sampling", "decoder": "sampling"}]
+    if repeated:
+        c.update(training_chunk_policy="repeat_fixed", fixed_chunk=1)
     if mixtures == "single":
         c["completion_arms"] = [{"id": "mixed80", "synthetic_fraction": .8}]
     c.update(precision="fp32", train_pairs_per_cycle=pairs, evaluation_pairs=4, probe_count=2, microbatch=1,
@@ -220,6 +231,13 @@ def test_entire_comparison_recovers_workers_handoff_and_preserves_stages(tmp_pat
         completion.verify_completed_arm(child, arm)
         assert read_json(child / "seed_42/gen_03/training.json")["global_step"] == 3 * math.ceil(pairs / 2)
         assert read_json(child / "seed_42/gen_00/metrics.json")["weights_sha256"] == engine.weights_hash(original)
+        if repeated:
+            inputs = [read_json(child / f"seed_42/gen_{i:02d}/training_input/manifest.json") for i in range(1, 4)]
+            assert len({m["prompt_content_sha256"] for m in inputs}) == 1
+            assert all(m["lineage"]["source_collection"] == "cycle_01" for m in inputs)
+            if name == "real":
+                assert len({m["target_content_sha256"] for m in inputs}) == 1
+            assert read_json(child / "seed_42/gen_03/metrics.json")["fixed_real_anchor"]["scored_tokens"] == pairs * 64
         if mixtures:
             indexed = hub.artifact_files(child)
             for cycle in range(1, 4):

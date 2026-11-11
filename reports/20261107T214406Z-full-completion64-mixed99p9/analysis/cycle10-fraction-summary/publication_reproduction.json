@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-08T14:29:09.072113+00:00",
+  "source_root": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261107T214406Z-full-completion64-mixed99p9",
+  "scope": "Seven fixed cycle-10 endpoints; actual numeric fraction spacing, no fits and no new model evaluation.",
+  "inputs": {
+    "analysis/seven-fractions/metrics.json": {
+      "sha256": "259226b54f5ff6228e28152c456b010a5cf0bc4f5745c9da43dd07b23dde11c9",
+      "bytes": 161268
+    },
+    "publication_manifest.json": {
+      "sha256": "982c486b37c4b6802e78967b07a5ffc615da92477c3b7abb3dd329ca5e83594e",
+      "bytes": 4071
+    }
+  },
+  "analysis": {
+    "revision": "93f921ff30b05e3bc4a25ff4f0d4cdba09ec4be1",
+    "script": "build_fineweb_endpoint_summary.py",
+    "script_sha256": "174e6d267f021add112b3f798a86c9dc6ac9a08f6a3bb5c32005ee3c52368f96",
+    "helpers": {
+      "publication.py": "9cbe6685e551384808c4673943655f8c4a8d616100372ffd89190f2c77eb25fc"
+    },
+    "python": "3.12.1",
+    "packages": {
+      "numpy": "2.1.2",
+      "matplotlib": "3.8.4",
+      "transformers": "4.37.2"
+    }
+  },
+  "outputs": {
+    "01_final_perplexity.pdf": {
+      "sha256": "52eee57b7636326fa9c9f9ae06cf8822c37e693f5bfb7a1aa55ad6a66b76a3fc",
+      "bytes": 29547
+    },
+    "01_final_perplexity.png": {
+      "sha256": "b230a0ec0d2a3c1687477d951ffa6b710f325e85a495bb25a4528e5df2d497e0",
+      "bytes": 241657
+    },
+    "02_final_pooled_entropy.pdf": {
+      "sha256": "0140d2fa261a8b4b4d37f0fbb0e1752b34cc24c13236123abb6cbf218b48b561",
+      "bytes": 30005
+    },
+    "02_final_pooled_entropy.png": {
+      "sha256": "16abe19d27fa0cd70536988bc6371341ebab9656e6e591351f2aac97c53e32d4",
+      "bytes": 240729
+    },
+    "03_final_within_entropy.pdf": {
+      "sha256": "a621cc957924a6b4cfc2ab69362c17126d6d9b356d60561b4c055f2dc475cc4e",
+      "bytes": 29679
+    },
+    "03_final_within_entropy.png": {
+      "sha256": "6f4e7f1d8205d2395355b0d492103c3b696c130d47ffe3981106db9239eca382",
+      "bytes": 229254
+    },
+    "04_final_distinct2.pdf": {
+      "sha256": "1d5cac05cde0bbd9193e275ebf100e256542f7fbb492b52019155cb6dea9fc92",
+      "bytes": 30118
+    },
+    "04_final_distinct2.png": {
+      "sha256": "d4794aeab566f1ec88282f64a704b3d5685c1a635ac9ed8dbe983ef153c0f941",
+      "bytes": 238121
+    },
+    "05_final_distinct3.pdf": {
+      "sha256": "0ffaf32eaadf82ce70448021de6521b9b51baff25aa81b268894863607c1cc70",
+      "bytes": 30187
+    },
+    "05_final_distinct3.png": {
+      "sha256": "54f8a8ab40539c9848681ebcaf3896bc9b779197ae7be241d6c7644751d5c936",
+      "bytes": 226525
+    },
+    "06_final_repetition.pdf": {
+      "sha256": "3427bb5229344a8400f09779ea13c3aa3a735033551e839bdc4ab1010193a151",
+      "bytes": 30055
+    },
+    "06_final_repetition.png": {
+      "sha256": "122c96b073bda16f4422878c8095e7dfcd92fd7aac5644f50fa9eeaee36f45e5",
+      "bytes": 244486
+    },
+    "cycle10_metrics.csv": {
+      "sha256": "8f40303fd0f6df756c1ee16bd71c6616a9cccbd32e60c2946d8268f6c899bb3c",
+      "bytes": 6388
+    },
+    "cycle10_metrics.json": {
+      "sha256": "2bd4efdc214e310485034d686ffe9aaa5788ed339937dde271c64b8cb0748621",
+      "bytes": 14577
+    }
+  },
+  "hash_scope": "Output hashes exclude this self-referential manifest."
+}

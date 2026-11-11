@@ -1,0 +1,51 @@
+{
+  "generation": 3,
+  "initial_weights_sha256": "ecf7d8d9299d896a6954b3644f816c3bb52de26607c3691f5dd4b276382cdbc3",
+  "selected_weights_sha256": "d00fac88f07b940e1aaac66b10d10a3982c05b5be7201a2e0e487923c0796e05",
+  "input_tokens_sha256": "204592b263e22a32a6ca6da5f32d3fef7f6885435f95823f89d51b1bdecad2f2",
+  "training_blocks": 10000,
+  "selected_epoch": 1,
+  "best_validation_loss": 4.979080462271539,
+  "best_validation_epoch": 1,
+  "selected_validation_loss": 4.979080462271539,
+  "executed_epochs": 1,
+  "terminal_weights_sha256": "d00fac88f07b940e1aaac66b10d10a3982c05b5be7201a2e0e487923c0796e05",
+  "training_contract_sha256": "f89218dbf9fdb1b59adc575dd7344a99b03a0b15531817599852d6b1aad6d350",
+  "seconds": 31.711406321031973,
+  "peak_allocated_gpu_bytes": 6474493440,
+  "checkpoint_files": {
+    "config.json": "cb94f5390d3d07780b29acca518b9619f2b8a699f494f73dfa4c1468b3b0e4ec",
+    "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "model.safetensors": "2c96570a20698009c60b5c8ff0ffacbfd6f63d02c7f61e9273255d4aef0042a3"
+  },
+  "initialization": "continued",
+  "optimizer_initialization": "carried_across_cycles",
+  "checkpoint_selection": "final_epoch",
+  "optimizer_parent_sha256": "fb94770b92020f1c1ff4b46c72ea78302febf8c83466370c61bca6170800d2ea",
+  "global_step": 237,
+  "total_optimizer_steps": 790,
+  "state_files": {
+    "optimizer_state/cycle.pt": "b24d57738cda1f0280707f4b62181604baaa2d79867b0c28d0acacba5d354904"
+  },
+  "lineage": {
+    "initializer_weights_sha256": "ecf7d8d9299d896a6954b3644f816c3bb52de26607c3691f5dd4b276382cdbc3",
+    "optimizer_parent_sha256": "fb94770b92020f1c1ff4b46c72ea78302febf8c83466370c61bca6170800d2ea",
+    "generator_weights_sha256": "ecf7d8d9299d896a6954b3644f816c3bb52de26607c3691f5dd4b276382cdbc3",
+    "generation_manifest_sha256": "380637a65cc30282486d8f3cb6001ea0a72cd180c8476e07743fa1b477e005ad",
+    "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+    "chunk_manifest_sha256": "2e6f7597584219286fae210b4b120bbda89914a55a42d9399f33f43d56f5d1b9",
+    "data_kind": "synthetic",
+    "training_decoder": "greedy",
+    "decoding": {
+      "num_beams": 1,
+      "do_sample": false,
+      "min_new_tokens": 64,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.0,
+      "no_repeat_ngram_size": 0,
+      "forced_eos_token_id": null,
+      "use_cache": true
+    },
+    "sampling_policy": null
+  }
+}

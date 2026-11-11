@@ -1,0 +1,76 @@
+{
+  "provider_status": {
+    "run_id": "20261110T234038Z-full-completion64-decoding",
+    "pod_id": "nabmvspk2imnf8",
+    "pod_state": "EXITED",
+    "reported_pod_rate_usd": 0.72,
+    "compute_running": false,
+    "status.json": {
+      "state": "complete",
+      "time": 1794361678.4510841
+    },
+    "watchdog_exit.json": {
+      "reason": "complete",
+      "time": 1794361690.966717,
+      "pod_id": "nabmvspk2imnf8"
+    },
+    "provider_shutdown": {
+      "provider_pod_id": "nabmvspk2imnf8",
+      "provider_status": "EXITED",
+      "field": "lastStatusChange",
+      "value": "Exited by user: Wed Nov 11 2026 01:48:13 GMT+0000 (Coordinated Universal Time)",
+      "provider_shutdown_epoch": 1794361693.0,
+      "observed_at": 1794394367.7015936
+    }
+  },
+  "pod_id": "nabmvspk2imnf8",
+  "working_volume_retained": "j55fyloork",
+  "backup_volume_retained": "wff30vuwhp",
+  "full_pod_lifetime_hours": 2.1257101540433037,
+  "provider_pod_billing_read": {
+    "metadata": {
+      "query": {
+        "bucketSize": "day",
+        "endTime": "2026-11-12T00:00:00Z",
+        "podId": "nabmvspk2imnf8",
+        "startTime": "2026-11-10T00:00:00Z"
+      },
+      "recordCount": 2,
+      "totals": {
+        "cpuAmount": 0,
+        "diskAmount": 0.006018519168719649,
+        "gpuAmount": 1.5304106031544507,
+        "totalAmount": 1.5364291223231703
+      },
+      "uniquePodCount": 1
+    },
+    "records": [
+      {
+        "cpuAmount": 0,
+        "diskAmount": 0.0009259260259568691,
+        "endTime": "2026-11-11T00:00:00Z",
+        "gpuAmount": 0.18304020026698709,
+        "podId": "nabmvspk2imnf8",
+        "startTime": "2026-11-10T00:00:00Z",
+        "totalAmount": 0.18396612629294395
+      },
+      {
+        "cpuAmount": 0,
+        "diskAmount": 0.00509259314276278,
+        "endTime": "2026-11-12T00:00:00Z",
+        "gpuAmount": 1.3473704028874636,
+        "podId": "nabmvspk2imnf8",
+        "startTime": "2026-11-11T00:00:00Z",
+        "totalAmount": 1.3524629960302263
+      }
+    ]
+  },
+  "conservative_task_accrued_usd": 2.2975831275493874,
+  "as_of_epoch": 1794395727.7014587,
+  "validation_conservative_usd": 0.3974,
+  "next_seven_days_two_60gb_standard_volumes_estimate_usd": 1.933150684931507,
+  "billing_scope": "Provider Pod total excludes separate network volumes and validation. Task ledger estimate includes conservative cost intervals; it is not a finalized account debit.",
+  "ledger_sha256": "d981c4815e36fa459eff878032eaa3d6a1f93778823aa12153f0e64605a71540",
+  "credit_purchased": false,
+  "payment_settings_changed": false
+}

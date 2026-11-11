@@ -1,0 +1,285 @@
+{
+  "run_id": "20261108T173505Z-full-completion64",
+  "repos": {
+    "model": "iib-model-collapse-bill/iib-model-collapse-models",
+    "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+  },
+  "files": {
+    "benchmark.json": {
+      "sha256": "da7894c26f14510ae1457cc9aa4750e8a59c0bfa6a1dd57c6717699996cf8e36",
+      "bytes": 765,
+      "repo_type": "dataset"
+    },
+    "child_snapshots.json": {
+      "sha256": "5d2f9436eb60d539825782b28ec6ca13a7791bc6940b19cb1676e9dee3607d07",
+      "bytes": 957,
+      "repo_type": "dataset"
+    },
+    "children.json": {
+      "sha256": "529deb4d980ff8d91f4bc2e9dd4090670b09aea5f766d5eebd3fb835e7dcb1ed",
+      "bytes": 119,
+      "repo_type": "dataset"
+    },
+    "completion.json": {
+      "sha256": "61e30fdefc0635d478096567efdc0b4233727ce48f62a05542b90bb502c6ebc8",
+      "bytes": 165,
+      "repo_type": "dataset"
+    },
+    "config.json": {
+      "sha256": "a8cdd34d8be24dff034d57a678b40a8e2fd9a65812e3119e25d16ad43bb1886f",
+      "bytes": 2820,
+      "repo_type": "dataset"
+    },
+    "detached_verification.json": {
+      "sha256": "6404289e076a02793b5dd24b8d956cda91723642bc5dee0ea425664e9dee4fb5",
+      "bytes": 1383,
+      "repo_type": "dataset"
+    },
+    "environment.json": {
+      "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+      "bytes": 433,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/analysis_manifest.json": {
+      "sha256": "09eef3c330ff40dab899cd1875b03a0b3cd1a502cdaf174312639a80ca8fc4cd",
+      "bytes": 9299,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/distinct_2.png": {
+      "sha256": "61584af0b71b406afb837a107f652b083855cd4e82a1d87d72861f4e1f9d9bb9",
+      "bytes": 104133,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/duplicate_continuation_rate.png": {
+      "sha256": "a3105bebee36140014d278e7d766a6993711971fa8d2e248bd1c4e863918a383",
+      "bytes": 58794,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/examples.json": {
+      "sha256": "f9550cf3b6ddc71b40c69c1bdd1259e851ab01b1c82cdd268993a3e56cf26723",
+      "bytes": 46615,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/fixed_real_anchor_loss.png": {
+      "sha256": "fb3c8791081013f9a9950709f3b41b4b8040c3c8fa63dc2fb1c71191fc1468d8",
+      "bytes": 81720,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/fixed_real_anchor_perplexity.png": {
+      "sha256": "2be82889aa68dc123e9ec6a7421a69d0549e9779a537ab7678d318f30b323ef0",
+      "bytes": 83297,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/learning_rate_end.png": {
+      "sha256": "d06e3bc2f896c5fa1265d80be80a7c5db454727fbd50e9f730dc205910a75563",
+      "bytes": 81926,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/mean_within_entropy_nats.png": {
+      "sha256": "c868f4b925a9f857d8937d8446f8ee329aa969ecd5bcf35df7bd2491cffbc3d4",
+      "bytes": 114332,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/mean_within_repeated_4gram_rate.png": {
+      "sha256": "507295cd9b37d1c456c664d2dd537ca3815f1f88114787c087660b61e190cfe0",
+      "bytes": 106685,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/metrics.csv": {
+      "sha256": "d8c37eff1e432e214fd272427ac7f1fa33b2128d5439099604d1ef3c99f948b8",
+      "bytes": 18992,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/metrics.json": {
+      "sha256": "14d14f64e554071c92c1a72b3e39ec5347c03710d709094422830b51889626d3",
+      "bytes": 51230,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/real_anchor_generalization_gap.png": {
+      "sha256": "f83ee6c4be827e35e165103b2a26b73c9dd99d7d81b2998396b31cf8408defa0",
+      "bytes": 93158,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/repeated_4gram_rate.png": {
+      "sha256": "e410f936d16d854cee8f345fcd6e02b9ef7ebac8fd3e4a4faffb51adaf0578ce",
+      "bytes": 101557,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/report.md": {
+      "sha256": "c77c4cd98eca56b58e6ac985c10cd3e2990ec6245185085fdf9c7d11af2db9c2",
+      "bytes": 3452,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/secondary_ag_news_perplexity.png": {
+      "sha256": "78ea6da0dd5591d2c9697dc22c3f298a9255cf112dc92c681b5c62861a5b8190",
+      "bytes": 83873,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/secondary_c4_en_perplexity.png": {
+      "sha256": "921938c4e6e339a52a6e07d85b495013b23a11d5ff1e3a8a35212d880192994c",
+      "bytes": 80259,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/secondary_fineweb_edu_perplexity.png": {
+      "sha256": "c71f500c2ed7d95a1d59814d92bdbc6dd1c9b4a6fc9108f82b116760b408ebed",
+      "bytes": 85351,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/secondary_pg19_perplexity.png": {
+      "sha256": "7b8b003da3834e1d33bcf2d151a6db78256bea40e6d1471671fcc5cf30b31b01",
+      "bytes": 82377,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/secondary_wikitext103_perplexity.png": {
+      "sha256": "b8b56b3af54c51fdf907806119fba061c92d8237d9d76419817104e8ee406e05",
+      "bytes": 86929,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/test_nll_p95.png": {
+      "sha256": "d1d0678d6a10cd5d53791e0b2ff7f25d4f4e61577a2240f628df6e60309eff82",
+      "bytes": 77166,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/test_perplexity.png": {
+      "sha256": "fe4483674a84722b1ca8c31b6eab7c30ed51ce54f24af9a99fb1fb3e28b279a4",
+      "bytes": 84813,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/token_entropy_nats.png": {
+      "sha256": "cbed166fc5b29981a53fa5f21d5e0dc18010520e3769b0d4717ce610bc576c02",
+      "bytes": 96067,
+      "repo_type": "dataset"
+    },
+    "generated/20261108T204837Z-5d389273/training_seconds.png": {
+      "sha256": "3d37b5866daffaf7f1b51191786f05fe8040053914e3b8bff2fbfa10e9c034af",
+      "bytes": 85453,
+      "repo_type": "dataset"
+    },
+    "manifest.json": {
+      "sha256": "632a4ed372ab385e8a41522994169896abb5e2285c5f43a99861fa18527f3b5f",
+      "bytes": 173,
+      "repo_type": "dataset"
+    },
+    "requirements-tested.txt": {
+      "sha256": "a491dd8ea1f01e8e5152b2fc8d51434910bfc68ced52b5890aae4722ee5e173e",
+      "bytes": 3410,
+      "repo_type": "dataset"
+    },
+    "resources.json": {
+      "sha256": "4d210bccd92a0367fd7e8d52b612c03a6d14c2b1ea0b3c579bbfe29acac9ee8d",
+      "bytes": 2028,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/checkpoint/config.json": {
+      "sha256": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+      "bytes": 747,
+      "repo_type": "model"
+    },
+    "seed_42/gen_00/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_00/checkpoint/model.safetensors": {
+      "sha256": "b3a67b42504e0c101c739fe6ef0d57eb3a9ed90267e41aba8019149a472ceae1",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/b3a67b42504e0c101c739fe6ef0d57eb3a9ed90267e41aba8019149a472ceae1"
+      }
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "f1b81ee33ba3da38439273435413127544326f438d52d7e803346ec6df082988",
+      "bytes": 4226,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/probe/events.jsonl": {
+      "sha256": "830a77f862f5cfb9724f013a7b283349749e10a4da720315c95b4f9c259b6ec9",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/manifest.json": {
+      "sha256": "9c008091beac648db0ff535b5ede658bcced990f231426189cdb4995fafa7d19",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/shard_0000000.json": {
+      "sha256": "8b2f4cc3d714a41e12542c4ac0e90393485ee28343a48ddaa65386bc571d1502",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/shard_0000000.npy": {
+      "sha256": "2f5919216df257d0fdad5e3e7e83c61390f6dd7d9534ecafae8201682cec66ce",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/2f5919216df257d0fdad5e3e7e83c61390f6dd7d9534ecafae8201682cec66ce"
+      }
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/tokens.npy": {
+      "sha256": "2f5919216df257d0fdad5e3e7e83c61390f6dd7d9534ecafae8201682cec66ce",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/2f5919216df257d0fdad5e3e7e83c61390f6dd7d9534ecafae8201682cec66ce"
+      }
+    },
+    "seed_42/gen_00/probe_examples.json": {
+      "sha256": "e020373d1276a4004f39e300e412d6518d066fa0c48681fdc4d9c937d90bcc45",
+      "bytes": 2091,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/test_sequences.json": {
+      "sha256": "faadb6f999e2fc81cf7a7f6a799d179c5d4ea479abe995e7a027be53c4f85f4d",
+      "bytes": 224908,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/tokenizer/merges.txt": {
+      "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+      "bytes": 456318,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/tokenizer/special_tokens_map.json": {
+      "sha256": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+      "bytes": 548,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/tokenizer/tokenizer.json": {
+      "sha256": "7533f606534785fe34218f683c9596386e39096eea9aebddb2609a0e40184f9e",
+      "bytes": 2108630,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/tokenizer/tokenizer_config.json": {
+      "sha256": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+      "bytes": 669,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/tokenizer/vocab.json": {
+      "sha256": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+      "bytes": 798293,
+      "repo_type": "dataset"
+    },
+    "terminal_restores/20261108T173505Z-full-completion64-real.json": {
+      "sha256": "fe65d3426066ed61cac70d7f0badd39be3efbf57cd372c431a226c4f076d6b4d",
+      "bytes": 1220,
+      "repo_type": "dataset"
+    },
+    "terminal_restores/20261108T173505Z-full-completion64-synthetic.json": {
+      "sha256": "ac906061ba3e81de1400dee16b5f4da4d7cb448129cf1c2a9162929d6185b893",
+      "bytes": 1228,
+      "repo_type": "dataset"
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "generation": 10,
+  "weights_sha256": "ce965eb7ade03782bdd8ece0f8a0cc95bc58159a5ef72113d113564bf5982a4a",
+  "validation": {
+    "nll_sum": 1558635.0127175355,
+    "scored_tokens": 468608,
+    "loss": 3.3260956123615806,
+    "perplexity": 27.82947225980966,
+    "seconds": 6.063798523973674,
+    "mean_sequence_perplexity": 33.496576284340364,
+    "std_sequence_perplexity": 25.547339083148845,
+    "context_tokens": 129
+  },
+  "test": {
+    "nll_sum": 1525894.2235346874,
+    "scored_tokens": 457664,
+    "loss": 3.334092748249125,
+    "perplexity": 28.05292061370485,
+    "seconds": 5.9534106138162315,
+    "mean_sequence_perplexity": 33.94490136171665,
+    "std_sequence_perplexity": 25.605626973612164,
+    "context_tokens": 129,
+    "median_example_nll": 3.322525973642769,
+    "p95_example_nll": 4.34934175784656
+  },
+  "secondary": {
+    "fineweb_edu": {
+      "nll_sum": 3235682.2325155893,
+      "scored_tokens": 979319,
+      "loss": 3.3040125153454487,
+      "perplexity": 27.2216473531312,
+      "seconds": 12.5840724168811,
+      "mean_sequence_perplexity": 38.96113681147723,
+      "std_sequence_perplexity": 207.11665454861603,
+      "context_tokens": 512
+    },
+    "wikitext103": {
+      "nll_sum": 467065.3916203487,
+      "scored_tokens": 128033,
+      "loss": 3.6480078700049883,
+      "perplexity": 38.39809580700866,
+      "seconds": 1.3824652119074017,
+      "mean_sequence_perplexity": 52.16698792538861,
+      "std_sequence_perplexity": 87.29440653310357,
+      "context_tokens": 512
+    },
+    "c4_en": {
+      "nll_sum": 428619.2080395994,
+      "scored_tokens": 128273,
+      "loss": 3.3414608533331207,
+      "perplexity": 28.26038083649474,
+      "seconds": 2.175187651067972,
+      "mean_sequence_perplexity": 49.505476615828265,
+      "std_sequence_perplexity": 112.15407436963945,
+      "context_tokens": 512
+    },
+    "pg19": {
+      "nll_sum": 551230.3954007544,
+      "scored_tokens": 128000,
+      "loss": 4.306487464068394,
+      "perplexity": 74.17947273094941,
+      "seconds": 1.3340935700107366,
+      "mean_sequence_perplexity": 81.198178809306,
+      "std_sequence_perplexity": 29.386236256570935,
+      "context_tokens": 512
+    },
+    "ag_news": {
+      "nll_sum": 517449.5297060217,
+      "scored_tokens": 130450,
+      "loss": 3.9666502852128915,
+      "perplexity": 52.80734470042756,
+      "seconds": 12.611717829946429,
+      "mean_sequence_perplexity": 71.99984492212839,
+      "std_sequence_perplexity": 64.7134225758379,
+      "context_tokens": 512
+    }
+  },
+  "probe": {
+    "distinct_1": 0.16619873046875,
+    "distinct_2": 0.39477926587301587,
+    "distinct_3": 0.5109627016129032,
+    "repeated_4gram_rate": 0.4362832991803279,
+    "repeated_4gram_denominator": 15616,
+    "duplicate_continuation_rate": 0.0,
+    "token_entropy_nats": 6.209954122485482,
+    "probe_count": 256,
+    "mean_within_entropy_nats": 3.0703631897813084,
+    "mean_within_repeated_4gram_rate": 0.4061859631147541,
+    "fraction_outputs_with_repeated_4gram": 0.9296875,
+    "mean_within_distinct_1": 0.43304443359375,
+    "mean_within_distinct_2": 0.5360243055555556,
+    "mean_within_distinct_3": 0.5699344758064516,
+    "mean_within_distinct_4": 0.5938140368852459,
+    "newline_token_50118_count": 409,
+    "newline_token_50118_share": 0.02496337890625,
+    "newline_heavy_outputs_ge32": 0,
+    "all_newline_outputs": 0,
+    "continuation_tokens_sha256": "c923055bcf6c0956ddbb6952b993295fe1975e3d1d6e52870987cc8c39d29213"
+  },
+  "training": {
+    "generation": 10,
+    "initial_weights_sha256": "d27bcaca1a7132922b73639fd0454b81c0f8e54628195cc41f9e7e2700688a04",
+    "selected_weights_sha256": "ce965eb7ade03782bdd8ece0f8a0cc95bc58159a5ef72113d113564bf5982a4a",
+    "input_tokens_sha256": "dca68c78aa1a4a769cdde28cec0000c6c559719c6b572102222e0d9d3b8d0b5e",
+    "training_blocks": 10000,
+    "selected_epoch": 1,
+    "best_validation_loss": 3.3260956123615806,
+    "best_validation_epoch": 1,
+    "selected_validation_loss": 3.3260956123615806,
+    "executed_epochs": 1,
+    "terminal_weights_sha256": "ce965eb7ade03782bdd8ece0f8a0cc95bc58159a5ef72113d113564bf5982a4a",
+    "training_contract_sha256": "b0ef4b1ead5fead8f342f1dfc50e54a65724d0346dc2bdf8e2ad66e7f2b16355",
+    "seconds": 48.92427787114866,
+    "peak_allocated_gpu_bytes": 6479753728,
+    "checkpoint_files": {
+      "config.json": "80f73de9d7962ca49b28d34171af8f63a34b433fcaedca82c47b1ef369e5595f",
+      "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "model.safetensors": "6ccc4dd6d4a49d7694e43a439af0cb586a3509260a57d3a712e6265ac515db3f"
+    },
+    "initialization": "continued",
+    "optimizer_initialization": "carried_across_cycles",
+    "checkpoint_selection": "final_epoch",
+    "optimizer_parent_sha256": "12973abc90ff1a991d800195149e07580f89174601443b7856f9f3625200b4c5",
+    "global_step": 790,
+    "total_optimizer_steps": 790,
+    "state_files": {
+      "optimizer_state/cycle.pt": "accbfff1b4717bcea1064973b300c81d6236d25f250abcbcb7ebe382ca150361"
+    },
+    "lineage": {
+      "initializer_weights_sha256": "d27bcaca1a7132922b73639fd0454b81c0f8e54628195cc41f9e7e2700688a04",
+      "optimizer_parent_sha256": "12973abc90ff1a991d800195149e07580f89174601443b7856f9f3625200b4c5",
+      "generator_weights_sha256": null,
+      "generation_manifest_sha256": null,
+      "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+      "chunk_manifest_sha256": "c6ff366e2cd04a0761ed27e8cdca8ddeab1bb55cce3861d74c3a80fa2cd54664",
+      "data_kind": "real"
+    }
+  },
+  "training_evaluation": {
+    "nll_sum": 2121213.2134002117,
+    "scored_tokens": 640000,
+    "loss": 3.3143956459378305,
+    "perplexity": 27.505765739143193,
+    "seconds": 8.085734952939674,
+    "mean_sequence_perplexity": 33.17373742907298,
+    "std_sequence_perplexity": 27.908956270221083,
+    "context_tokens": 129
+  },
+  "input_manifest_sha256": "c3e12ecd4565e60d5e7e940d76eaf3a8d9bc86b3ba7c7652314cf91a07cb0f3f"
+}

@@ -1,0 +1,137 @@
+{
+  "run_id": "20261110T151528Z-full-completion64",
+  "epochs": 20,
+  "optimizer_updates": 1580,
+  "target_token_exposures": 12800000,
+  "baseline_test_perplexity": 29.17617885771507,
+  "minimum_test_perplexity": 28.347486616012585,
+  "minimum_at_epoch": 2,
+  "final_test_perplexity": 30.803449827140643,
+  "baseline_training_nll": 3.411009082717887,
+  "final_training_nll": 2.723085852474711,
+  "constant_lr": 5e-06,
+  "all_initializer_optimizer_and_repeated_input_checks": true,
+  "validation_and_test_counts_frozen": true,
+  "provider_shutdown": {
+    "provider_pod_id": "xht5rffbiuynaw",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Tue Nov 10 2026 17:50:06 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1794333006.0,
+    "observed_at": 1794333033.7351897
+  },
+  "watchdog_reason": "complete",
+  "terminal_restore": {
+    "snapshot": {
+      "run_id": "20261110T151528Z-full-completion64-real",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "464e5cd8a053f77497ab48b130e83e7ad6498248",
+        "dataset": "75f58b542d1ee76b8b7d881e73b60f7efdff4ee6"
+      },
+      "artifact_index_sha256": "858371502f2c602d6c3b92000a0da10fa695fea464141aa36808f63e5ae52dca"
+    },
+    "scope": "complete_terminal_stage_only",
+    "restored_path": "/workspace/completion_terminal_restore/20261110T151528Z-full-completion64-real/seed_42/gen_20",
+    "verified_files": 19,
+    "verified_bytes": 1518900123,
+    "optimizer_sha256": "7b6b98b0ff683860b8709db4ed7aa3a7ec6c9884f99c6cc83bc4402f69021a48",
+    "weights_sha256": "44942d64eccc71c54caf46ab56db34de8a1594e641dbe1be009d0828440dde60",
+    "test": {
+      "nll_sum": 1568701.3419472917,
+      "scored_tokens": 457664,
+      "loss": 3.4276266910818673,
+      "perplexity": 30.803449827140643,
+      "seconds": 16.62095316592604,
+      "mean_sequence_perplexity": 37.841101106835794,
+      "std_sequence_perplexity": 30.154463391601684,
+      "context_tokens": 129
+    },
+    "test_loss_absolute_error": 0.0
+  },
+  "task_cost_conservative_at_receipt_usd": 0.8549143201592196,
+  "cost_observed_at": 1794333165.1185746,
+  "retained_working_plus_backup_storage_usd_per_day": 0.5326027397260276,
+  "recorded_at": 1794333246.5887165,
+  "source_code_sha256": "03dc76a4555874c6f19c4a07254f5769a2ea69d759136c4c9962f28b1fa09c4d",
+  "protocol_fingerprint": "1992d22596582a16f93874f782098a41644dcc14315297c366a66f7e5f2e9e4e",
+  "full_pod_lifetime_hours": 2.576972996791204,
+  "quoted_gpu_hourly_usd": 0.24,
+  "gpu_rate_times_verified_lifetime_usd": 0.6184735192298889,
+  "provider_active_pods_at_check": [],
+  "retained_pod_and_working_disk": "xht5rffbiuynaw",
+  "retained_bulk_backup_volume": "m3lus2w6we",
+  "recovery": {
+    "run_id": "20261110T151528Z-full-completion64",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "464e5cd8a053f77497ab48b130e83e7ad6498248",
+      "dataset": "2b5eed7a95a6a30dc01755571f66b24991113da7"
+    },
+    "artifact_index_sha256": "d70ce1a9aa090c1ec75364a123678e514c49b14a2b9805d6d887bb4f77f99865",
+    "indexed_files": 50,
+    "verified_files": 47,
+    "verified_bytes": 5251317,
+    "metadata_only": true,
+    "scope": "metadata_only",
+    "preserved_control_files": {
+      "resources.json": {
+        "recovered_path": "fetched_control/c7834f6332db094afad9c194aa1acc405781e1186372aa7a6d8bf833f7744faa/resources.json",
+        "sha256": "c7834f6332db094afad9c194aa1acc405781e1186372aa7a6d8bf833f7744faa",
+        "authoritative_local_sha256": "dfb22602cc31858df99d11dee7de9fe6bcfcdb32400f011830f1db991bd041d1"
+      }
+    },
+    "operational_files_outside_immutable_index": [
+      "status.json",
+      "watchdog_exit.json"
+    ],
+    "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261110T151528Z-full-completion64",
+    "children": {
+      "real": {
+        "run_id": "20261110T151528Z-full-completion64-real",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "464e5cd8a053f77497ab48b130e83e7ad6498248",
+          "dataset": "75f58b542d1ee76b8b7d881e73b60f7efdff4ee6"
+        },
+        "artifact_index_sha256": "858371502f2c602d6c3b92000a0da10fa695fea464141aa36808f63e5ae52dca",
+        "indexed_files": 386,
+        "verified_files": 246,
+        "verified_bytes": 4837576,
+        "metadata_only": true,
+        "scope": "metadata_only",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261110T151528Z-full-completion64-real"
+      }
+    }
+  },
+  "analysis_manifest_sha256": "85bfc19bf2a515985bf1959d2a5d40f16bbd573c1644b2e34d872a7f165be1f9",
+  "plots_visually_verified": [
+    "heldout_perplexity.png",
+    "constant_vs_historical_cosine.png",
+    "training_vs_heldout_nll.png"
+  ],
+  "cumulative_ceiling_unchanged_usd": 74.03635289829083,
+  "setup_ceiling_unchanged_usd": 4.35,
+  "credit_purchases_or_payment_changes": false,
+  "final_offline_repository_checks": {
+    "markdown_files": 125,
+    "configurations": 48,
+    "publication_manifests": 24,
+    "errors": [],
+    "git_diff_check_passed": true
+  }
+}

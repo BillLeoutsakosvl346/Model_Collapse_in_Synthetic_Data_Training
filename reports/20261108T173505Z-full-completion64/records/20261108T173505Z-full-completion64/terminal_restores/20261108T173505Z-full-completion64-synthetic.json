@@ -1,0 +1,31 @@
+{
+  "snapshot": {
+    "run_id": "20261108T173505Z-full-completion64-synthetic",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "d2c4168cb45ce7ff315cd22a6729ab4ed6814aea",
+      "dataset": "94db2ce7900bb43a91db98e521b005eb1bf52922"
+    },
+    "artifact_index_sha256": "26d6cc7fe1bd97ce1159f508d646fe16dc763709947fa85310467a320f4077bb"
+  },
+  "scope": "complete_terminal_stage_only",
+  "restored_path": "/workspace/completion_terminal_restore/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10",
+  "verified_files": 19,
+  "verified_bytes": 1518897982,
+  "optimizer_sha256": "7406468e512761ce91b08447e15f11ac90567081653a6547b6c9b1b18ad08a87",
+  "weights_sha256": "e2845d80601518166711c3ead4e3b7a7e00dc03fe6782c455014a1e2c1e9d7a2",
+  "test": {
+    "nll_sum": 2458773.837915916,
+    "scored_tokens": 457664,
+    "loss": 5.372443185209927,
+    "perplexity": 215.38845928221318,
+    "seconds": 5.872704800916836,
+    "mean_sequence_perplexity": 302.8557391953772,
+    "std_sequence_perplexity": 303.85453666783894,
+    "context_tokens": 129
+  },
+  "test_loss_absolute_error": 0.0
+}

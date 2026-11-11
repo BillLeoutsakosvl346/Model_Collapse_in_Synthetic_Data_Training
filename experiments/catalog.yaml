@@ -1,15 +1,113 @@
 schema_version: 1
-updated: "2026-11-07"
+updated: "2026-11-11"
 description: "Scientific conditions and their recorded runs; week labels are presentation aliases."
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
 conditions:
+  fineweb_completion_decoding:
+    name: "OPT-125M / FineWeb-Edu: greedy versus pure sampling for recursive targets"
+    workflow: completion_comparison
+    state: completed
+    definition: ../comparisons/fineweb_completion64_decoding/README.md
+    comparison_config: ../comparisons/fineweb_completion64_decoding/full.yaml
+    smoke_config: ../comparisons/fineweb_completion64_decoding/smoke.yaml
+    starting_weights: original_pretrained
+    synthetic_generator: own_preceding_selected_checkpoint
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    optimizer_policy: carry_across_cycles
+    checkpoint_selection: final_epoch
+    historical_comparison_run_id: 20261106T193918Z-full-completion64
+    full_experiment_launched: true
+    required_gpu: NVIDIA RTX PRO 4500 Blackwell
+    acceptance: ../docs/validation/2026-11-10_decoding-setup.json
+    acceptance_run_id: 20261110T230452Z-smoke-completion64-decoding
+    accepted_runtime_sha256: 7de3d994dfe35e75b5aeabb9a41cffbf54a66871456db0883b666a1d8f63fd6d
+    accepted_protocol_fingerprint: a24bca22b917161e338e97bfa9262d4dc3c5986e6e4aefd8cb6b7b05e526c96f
+    full_comparison_run_id: 20261110T234038Z-full-completion64-decoding
+    full_launch_record: ../docs/validation/2026-11-10_decoding-full-launch.json
+    logical_run_ids: [20261110T234038Z-full-completion64-decoding-greedy, 20261110T234038Z-full-completion64-decoding-sampling]
+    optimizer_updates_per_arm: 790
+    completion_record: ../docs/validation/2026-11-11_decoding-completion-analysis-and-doc.json
+    analysis: ../reports/20261110T234038Z-full-completion64-decoding/generated/decoding-20261111/README.md
+    completed_new_epochs: 20
+    final_test_perplexity: {greedy: 390.9933317025859, sampling: 31.878168650161445}
+    recovery_scope: metadata_probes_and_final_target_pools_verified
+  fineweb_repeated_real_constant20:
+    name: "OPT-125M / FineWeb-Edu: twenty repeated-real epochs at constant 5e-6"
+    workflow: completion_comparison
+    state: completed
+    definition: ../comparisons/fineweb_completion64_repeated_real_constant20/README.md
+    comparison_config: ../comparisons/fineweb_completion64_repeated_real_constant20/full.yaml
+    smoke_config: ../comparisons/fineweb_completion64_repeated_real_constant20/smoke.yaml
+    authorization: ../docs/validation/2026-11-10_constant-real20-authorization.json
+    endpoint_arms: [real]
+    training_chunk_policy: repeat_fixed
+    fixed_chunk: 1
+    starting_weights: original_pretrained
+    target_last_cycle: 20
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    optimizer_policy: carry_across_cycles
+    checkpoint_selection: final_epoch
+    learning_rate: 5.0e-6
+    min_learning_rate: 5.0e-6
+    required_gpu: NVIDIA RTX 2000 Ada Generation
+    hardware_note: "RTX PRO 4000 was unavailable; validation uses RTX 2000 Ada after reconciled placement failures. Record the execution difference from the earlier control."
+    historical_comparison_run_id: 20261108T173505Z-full-completion64
+    acceptance: ../docs/validation/2026-11-10_constant-real20-setup.json
+    acceptance_run_id: 20261110T144634Z-smoke-completion64
+    accepted_runtime_sha256: 03dc76a4555874c6f19c4a07254f5769a2ea69d759136c4c9962f28b1fa09c4d
+    accepted_protocol_fingerprint: 1992d22596582a16f93874f782098a41644dcc14315297c366a66f7e5f2e9e4e
+    full_experiment_launched: true
+    full_comparison_run_id: 20261110T151528Z-full-completion64
+    full_launch_record: ../docs/validation/2026-11-10_constant-real20-full-launch.json
+    completion_record: ../docs/validation/2026-11-10_constant-real20-completion.json
+    analysis: ../reports/20261110T151528Z-full-completion64/analysis/constant-real20/README.md
+    completed_new_epochs: 20
+    final_test_perplexity: 30.803449827140643
+  fineweb_completion_repeated_chunk_one_epoch:
+    name: "OPT-125M / FineWeb-Edu: repeated first chunk, real versus recursive synthetic"
+    workflow: completion_comparison
+    state: completed
+    definition: ../comparisons/fineweb_completion64_repeated_chunk/README.md
+    comparison_config: ../comparisons/fineweb_completion64_repeated_chunk/full.yaml
+    smoke_config: ../comparisons/fineweb_completion64_repeated_chunk/smoke.yaml
+    authorization: ../docs/validation/2026-11-08_repeated-chunk-authorization.json
+    training_chunk_policy: repeat_fixed
+    fixed_chunk: 1
+    starting_weights: original_pretrained
+    synthetic_generator: own_preceding_selected_checkpoint
+    target_last_cycle: 10
+    epochs_per_cycle: 1
+    pairs_per_cycle: 10000
+    optimizer_policy: carry_across_cycles
+    checkpoint_selection: final_epoch
+    required_gpu: NVIDIA RTX PRO 4000 Blackwell
+    historical_comparison_run_id: 20261106T193918Z-full-completion64
+    acceptance: ../docs/validation/2026-11-08_repeated-chunk-setup.json
+    acceptance_run_id: 20261108T165042Z-smoke-completion64
+    accepted_runtime_sha256: 443b7a31a72910914bcd337919ffdc846294904b64b7a3ff7a7d6d70305d9580
+    accepted_protocol_fingerprint: 55d0e90184308cbfed3e68577b2623c7bd5d89ac9c6fbb5453e1d883133b6552
+    full_experiment_launched: true
+    full_comparison_run_id: 20261108T173505Z-full-completion64
+    full_launch_record: ../docs/validation/2026-11-08_repeated-chunk-full-launch.json
+    logical_run_ids: [20261108T173505Z-full-completion64-real, 20261108T173505Z-full-completion64-synthetic]
+    completed_new_epochs: 20
+    optimizer_updates_per_arm: 790
+    completion_record: ../docs/validation/2026-11-08_repeated-chunk-completion-analysis-and-doc.json
+    report: ../reports/20261108T173505Z-full-completion64/report.md
+    metrics: ../reports/20261108T173505Z-full-completion64/analysis/four-condition/metrics.csv
+    recovery_scope: terminal_stages_bulk_verified_plus_metadata_probes_and_synthetic_pools
+    recovery_note: "Both terminal models/optimization states cold-restored remotely with identical test loss; prior full bulk stages remain private."
+
   fineweb_completion_mixed99p9_one_epoch:
     name: "OPT-125M / FineWeb-Edu: 99.9% self-generated continuation targets"
     workflow: completion_comparison
     logical_arm: mixed99p9
     synthetic_fraction: 0.999
-    state: running
+    state: completed
     definition: ../comparisons/fineweb_completion64_mixed99p9/README.md
     comparison_config: ../comparisons/fineweb_completion64_mixed99p9/full.yaml
     smoke_config: ../comparisons/fineweb_completion64_mixed99p9/smoke.yaml
@@ -33,6 +131,11 @@ conditions:
     full_comparison_run_id: 20261107T214406Z-full-completion64-mixed99p9
     logical_run_id: 20261107T214406Z-full-completion64-mixed99p9-mixed99p9
     full_launch_record: ../docs/validation/2026-11-07_completion-mixed99p9-full-launch.json
+    completion_record: ../docs/validation/2026-11-08_completion-mixed99p9-completion-analysis.json
+    analysis_report: ../reports/20261107T214406Z-full-completion64-mixed99p9/report.md
+    analysis_and_doc_record: ../docs/validation/2026-11-08_fineweb-seven-fraction-analysis-and-doc.json
+    final_test_perplexity: 258.67824747548127
+    final_validation_perplexity: 259.75821145579556
 
   fineweb_completion_mixed99_one_epoch:
     name: "OPT-125M / FineWeb-Edu: 99% self-generated continuation targets"

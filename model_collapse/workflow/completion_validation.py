@@ -10,7 +10,7 @@ import numpy as np
 
 from ..common import STATE, atomic_json, read_json, sha256, verify_files
 from ..completion_data import assemble, load_pairs, restore_bank
-from .completion import acceptance_checks, bank_path, child_roots, verify_completed_arm, benchmark_filename, smoke_pair_count
+from .completion import acceptance_checks, bank_path, child_roots, verify_completed_arm, benchmark_filename, smoke_pair_count, source_collection
 from ..mixing import mixture_counts
 
 
@@ -47,7 +47,7 @@ def validate_remote(root):
             ids = np.load(stage / "training_input/tokens.npy")
             attention = np.load(stage / "training_input/attention.npy")
             scoring = np.load(stage / "training_input/loss_mask.npy")
-            prompt, target, _ = load_pairs(bank, f"cycle_{cycle:02d}", count)
+            prompt, target, _ = load_pairs(bank, source_collection(c, cycle), count)
             if (ids.shape != (count, 129) or not np.all(attention == 1) or
                     not np.all(scoring[:, :65] == 0) or not np.all(scoring[:, 65:] == 1) or
                     not np.array_equal(ids[:, 1:65], prompt) or int(scoring[:, 1:].sum()) != count * 64):
@@ -83,6 +83,13 @@ def validate_remote(root):
                 raise RuntimeError("Optimizer state did not continue across all cycles")
             if cycle == 3 and not math.isclose(state["optimizer"]["param_groups"][0]["lr"], c["min_learning_rate"], rel_tol=1e-9):
                 raise RuntimeError("Global cosine schedule did not reach its terminal learning rate")
+            if c["learning_rate"] == c["min_learning_rate"] and (
+                    history[0]["learning_rate"] != c["learning_rate"] or
+                    history[0]["learning_rate_end"] != c["learning_rate"] or
+                    any(group["lr"] != c["learning_rate"] for group in state["optimizer"]["param_groups"]) or
+                    state["scheduler"]["eta_min"] != c["learning_rate"] or
+                    any(lr != c["learning_rate"] for lr in state["scheduler"]["base_lrs"])):
+                raise RuntimeError("Constant learning rate changed during GPU training")
             summaries.append({"cycle": cycle, "weights_sha256": training["selected_weights_sha256"],
                               "initializer_sha256": training["initial_weights_sha256"], "optimizer_step": step,
                               "scored_training_tokens": count * 64,
@@ -100,7 +107,7 @@ def validate_remote(root):
         recovery = fetch(child.name, resources["repos"], restored, revisions=snapshot["revisions"])
         if recovery["artifact_index_sha256"] != snapshot["artifact_index_sha256"]:
             raise RuntimeError("Restored child backup index differs")
-        if c.get("completion_arms") is not None:
+        if c.get("completion_arms") is not None or c.get("decoding_arms") is not None:
             for cycle in range(1, 4):
                 restored_stage = restored / f"seed_42/gen_{cycle:02d}"
                 if sha256(restored_stage / "stage_completion.json") != sha256(child / f"seed_42/gen_{cycle:02d}/stage_completion.json"):
@@ -111,7 +118,7 @@ def validate_remote(root):
             first = child / "seed_42/gen_01"
             prompt, real, _ = load_pairs(bank, "cycle_01", count)
             trained = np.load(first / "training_input/tokens.npy")[:, 65:]
-            indices = selections[name][1]["synthetic_indices"][:3]
+            indices = selections[name][1]["synthetic_indices"][:3] if selections else np.arange(3)
             examples[name] = [{"row_index": int(i), "prompt": tokenizer.decode(prompt[i]),
                                "real_continuation": tokenizer.decode(real[i]),
                                "generated_training_continuation": tokenizer.decode(trained[i])} for i in indices]
@@ -137,6 +144,49 @@ def validate_remote(root):
         optimizer = torch.load(final / "optimizer_state/cycle.pt", map_location="cpu", weights_only=False)
         if optimizer["model_weights_sha256"] != engine.weights_hash(model):
             raise RuntimeError("Restored optimization state belongs to different weights")
+        if c.get("decoding_arms") is not None:
+            from ..science.decoding import decoder_config
+            import pickle
+            for cycle in range(1, 4):
+                metric = read_json(child / f"seed_42/gen_{cycle:02d}/metrics.json")
+                source = read_json(child / f"synthetic_for_gen_{cycle:02d}/manifest.json")
+                expected_decoder = engine.decoding_settings(arm)
+                if (source["provenance"].get("decoding") != expected_decoder or
+                        source["provenance"].get("decoder") != name or
+                        metric.get("probe_decoding") != engine.decoding_settings(decoder_config(arm, "beam"))):
+                    raise RuntimeError("Training decoder or common five-beam probe differs")
+                checkpoint = engine.load_model(arm, child / f"seed_42/gen_{cycle:02d}/checkpoint")
+                if engine.weights_hash(checkpoint) != metric["weights_sha256"]:
+                    raise RuntimeError("Decoder checkpoint reload differs")
+                del checkpoint
+            # Regenerate an entire interrupted collection independently, from its
+            # recorded preceding weights. This checks skipped-shard RNG recovery.
+            from .completion import _visible_prompt
+            generator = engine.load_model(arm, child / "seed_42/gen_01/checkpoint")
+            generator.eval()
+            prompt, _, _ = load_pairs(bank, "cycle_02", count)
+            visible = _visible_prompt(prompt, c["bos_token_id"])
+            before = engine.capture_rng()
+            replay, _ = engine.generate(root / "decoder_replay" / name, 1, generator, visible, arm,
+                                         summaries[0]["weights_sha256"])
+            after = engine.capture_rng()
+            if (not np.array_equal(replay, np.load(child / "synthetic_for_gen_02/tokens.npy")) or
+                    not torch.equal(before["torch"], after["torch"]) or
+                    len(before["cuda"]) != len(after["cuda"]) or
+                    any(not torch.equal(a, b) for a, b in zip(before["cuda"], after["cuda"])) or
+                    pickle.dumps(before["python"]) != pickle.dumps(after["python"]) or
+                    pickle.dumps(before["numpy"]) != pickle.dumps(after["numpy"])):
+                raise RuntimeError("Decoder replay or isolated sampling RNG differs")
+            inputs = engine.tensor(visible[:c["generation_batch"]])
+            old = {"num_beams": 5, "do_sample": False, "min_new_tokens": 64, "max_new_tokens": 64,
+                   "repetition_penalty": 1.0, "no_repeat_ngram_size": 0, "forced_eos_token_id": None, "use_cache": True}
+            with torch.inference_mode(), engine.autocast(arm):
+                a = generator.generate(input_ids=inputs, attention_mask=torch.ones_like(inputs), **old)
+                b = generator.generate(input_ids=inputs, attention_mask=torch.ones_like(inputs),
+                                       **engine.decoding_settings(decoder_config(arm, "beam")))
+            if not torch.equal(a, b):
+                raise RuntimeError("Historical five-beam decoding changed")
+            del generator, a, b
         audits[name] = {"stages": summaries, "restored_loss_error": error, "direct_nll_error": direct_error,
                         "restored_optimizer_sha256": sha256(final / "optimizer_state/cycle.pt")}
         restores[name] = recovery
@@ -144,6 +194,26 @@ def validate_remote(root):
         gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
+    if c.get("training_chunk_policy") == "repeat_fixed":
+        identities = {}
+        for name, child in child_roots(root).items():
+            inputs = [read_json(child / f"seed_42/gen_{i:02d}/training_input/manifest.json") for i in range(1, 4)]
+            if len({m["prompt_content_sha256"] for m in inputs}) != 1:
+                raise RuntimeError("Repeated-chunk prompts changed across epochs")
+            if name == "real" and len({m["target_content_sha256"] for m in inputs}) != 1:
+                raise RuntimeError("Repeated-real targets changed across epochs")
+            if any(m["lineage"]["source_collection"] != "cycle_01" for m in inputs):
+                raise RuntimeError("Repeated-chunk source lineage differs")
+            for i, m in enumerate(inputs, 1):
+                metric = read_json(child / f"seed_42/gen_{i:02d}/metrics.json")
+                anchor = metric.get("fixed_real_anchor", {})
+                if anchor.get("scored_tokens") != count * 64 or not math.isfinite(anchor.get("loss", math.nan)):
+                    raise RuntimeError("Fixed real diagnostic was not scored correctly")
+                if name == "synthetic" and m["lineage"]["generator_weights_sha256"] != audits[name]["stages"][i-1]["initializer_sha256"]:
+                    raise RuntimeError("Repeated synthetic generator is not its preceding checkpoint")
+            identities[name] = inputs[0]["prompt_content_sha256"]
+        if len(set(identities.values())) != 1:
+            raise RuntimeError("Repeated arms do not share the same prompt chunk")
     events = [json.loads(line)["event"] for line in (root / "events.jsonl").read_text().splitlines()]
     if events.count("completion_handoff_interruption") != 1 or events.count("validation_worker_resumed") != 1:
         raise RuntimeError("Coordinator did not recover exactly once across the arm handoff")

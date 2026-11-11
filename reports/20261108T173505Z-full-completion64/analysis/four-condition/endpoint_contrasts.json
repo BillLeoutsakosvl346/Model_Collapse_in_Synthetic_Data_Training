@@ -1,0 +1,54 @@
+{
+  "scope": "Descriptive cycle-10 differences; one seed per condition, no significance test",
+  "metrics": {
+    "test_loss": {
+      "reuse_effect_with_real_targets": 0.019665302820820685,
+      "reuse_effect_with_synthetic_targets": -0.4624007367701495,
+      "difference_of_reuse_effects": -0.48206603959097016,
+      "synthetic_effect_with_fresh_prompts": 2.5007511737309516,
+      "synthetic_effect_with_repeated_prompts": 2.0186851341399814
+    },
+    "test_perplexity": {
+      "reuse_effect_with_real_targets": 0.5571292824054446,
+      "reuse_effect_with_synthetic_targets": -126.62289014787595,
+      "difference_of_reuse_effects": -127.18001943028139,
+      "synthetic_effect_with_fresh_prompts": 313.9584288163843,
+      "synthetic_effect_with_repeated_prompts": 186.77840938610288
+    },
+    "token_entropy_nats": {
+      "reuse_effect_with_real_targets": -0.009312461169884934,
+      "reuse_effect_with_synthetic_targets": 0.008385596910119197,
+      "difference_of_reuse_effects": 0.01769805808000413,
+      "synthetic_effect_with_fresh_prompts": 0.34915617495817486,
+      "synthetic_effect_with_repeated_prompts": 0.366854233038179
+    },
+    "mean_within_entropy_nats": {
+      "reuse_effect_with_real_targets": 0.017826570470465875,
+      "reuse_effect_with_synthetic_targets": 0.17014688172921488,
+      "difference_of_reuse_effects": 0.152320311258749,
+      "synthetic_effect_with_fresh_prompts": -0.31338664961938534,
+      "synthetic_effect_with_repeated_prompts": -0.16106633836063633
+    },
+    "distinct_2": {
+      "reuse_effect_with_real_targets": 0.00868055555555558,
+      "reuse_effect_with_synthetic_targets": 0.03608630952380948,
+      "difference_of_reuse_effects": 0.0274057539682539,
+      "synthetic_effect_with_fresh_prompts": -0.026227678571428548,
+      "synthetic_effect_with_repeated_prompts": 0.001178075396825351
+    },
+    "distinct_3": {
+      "reuse_effect_with_real_targets": 0.014994959677419373,
+      "reuse_effect_with_synthetic_targets": 0.047820060483870996,
+      "difference_of_reuse_effects": 0.032825100806451624,
+      "synthetic_effect_with_fresh_prompts": -0.0824722782258065,
+      "synthetic_effect_with_repeated_prompts": -0.04964717741935487
+    },
+    "mean_within_repeated_4gram_rate": {
+      "reuse_effect_with_real_targets": -0.01889088114754095,
+      "reuse_effect_with_synthetic_targets": -0.053598872950819665,
+      "difference_of_reuse_effects": -0.034707991803278715,
+      "synthetic_effect_with_fresh_prompts": 0.14952612704918034,
+      "synthetic_effect_with_repeated_prompts": 0.11481813524590162
+    }
+  }
+}

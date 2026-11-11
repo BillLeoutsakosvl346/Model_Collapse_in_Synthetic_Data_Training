@@ -1,0 +1,42 @@
+{
+  "generation": 4,
+  "initial_weights_sha256": "5eedc6e5966d33677e03e33f4205b8dbdadbda1e44f3c4d2db8ced3226688155",
+  "selected_weights_sha256": "09ab81f82ff44bd718aaaf6de985b1e29e71ab49c3f1e13340b0503429eff75f",
+  "input_tokens_sha256": "bf32ce1fa59415092e63f5b40a514ebb5fa9e4b0874dc02497a18e7dc1a85b67",
+  "training_blocks": 10000,
+  "selected_epoch": 1,
+  "best_validation_loss": 3.337621474643842,
+  "best_validation_epoch": 1,
+  "selected_validation_loss": 3.337621474643842,
+  "executed_epochs": 1,
+  "terminal_weights_sha256": "09ab81f82ff44bd718aaaf6de985b1e29e71ab49c3f1e13340b0503429eff75f",
+  "training_contract_sha256": "079439c647edc87260e8657d47b8027607fe8541e55b55c253eee3d59a2e9598",
+  "seconds": 49.20531405811198,
+  "peak_allocated_gpu_bytes": 6462321664,
+  "checkpoint_files": {
+    "config.json": "d4bd3aea1715b365a33c09c2a88bdb1ca3e73ef783c536daaf5a168953b58fa9",
+    "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "model.safetensors": "5371241a89c399ab85294d3a55c90cd777a9129ec5863ea2d51e665c5fe3b6a3"
+  },
+  "initialization": "continued",
+  "optimizer_initialization": "carried_across_cycles",
+  "checkpoint_selection": "final_epoch",
+  "optimizer_parent_sha256": "026c32bca4dd051b4752f9e960af2b13f866c0c8330bc3505c415e76cd28e6cb",
+  "global_step": 316,
+  "total_optimizer_steps": 790,
+  "state_files": {
+    "optimizer_state/cycle.pt": "ab56cc73773e8247a5637459a279740b4b10fbab1bad52a94a0a9340c102de48"
+  },
+  "lineage": {
+    "initializer_weights_sha256": "5eedc6e5966d33677e03e33f4205b8dbdadbda1e44f3c4d2db8ced3226688155",
+    "optimizer_parent_sha256": "026c32bca4dd051b4752f9e960af2b13f866c0c8330bc3505c415e76cd28e6cb",
+    "generator_weights_sha256": null,
+    "generation_manifest_sha256": null,
+    "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+    "chunk_manifest_sha256": "f76505392b7c9f49a00c655ff05503aab2dbb34cf5b8bd5b048227efb690d4c8",
+    "data_kind": "real",
+    "training_chunk_policy": "repeat_fixed",
+    "source_collection": "cycle_01",
+    "training_epoch": 4
+  }
+}

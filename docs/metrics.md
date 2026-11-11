@@ -55,6 +55,8 @@ The `completion_comparison` workflow supplies BOS, 64 prompt tokens and 64 conti
 - Secondary FineWeb, WikiText-103, C4, PG-19 and AG News scores reuse the frozen 512-token full-text arrays. Their context and scoring objective differ from the primary continuation metric.
 - The GPU smoke uses 256 pairs per training cycle, 64 held-out pairs per split and a 64-document probe. Its trajectory validates execution. The full scientific comparison remains a separate run.
 
+Repeated-chunk controls additionally score the fixed real first chunk at baseline and every checkpoint. `fixed_real_anchor_loss` uses the original real continuations in both arms; `real_anchor_generalization_gap` is test NLL minus this anchor NLL. The anchor is training data for the repeated-real arm, not a held-out collection. Interpret changes from its baseline because the two collections can differ in difficulty. Falling training loss together with rising held-out loss supports overfitting; a widening gap alone does not establish held-out deterioration. Synthetic own-target training NLL and real-anchor NLL score different targets and must remain separately labelled.
+
 ## What the existing results support
 
 The Week 2 run has clear overall deterioration in fixed-real-text prediction and increased final repetition, with an early perplexity recovery and mixed diversity. Its final distinct scores exceed S0 and its final empirical token entropy is close to S0; it does not establish uniform vocabulary collapse. A concrete repeated output illustrates a failure mode but does not estimate its full-corpus prevalence.

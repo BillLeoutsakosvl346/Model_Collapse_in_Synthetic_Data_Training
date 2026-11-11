@@ -1,0 +1,39 @@
+{
+  "created_with": "plot.py",
+  "python": "3.12.1",
+  "matplotlib": "3.8.4",
+  "numpy": "2.1.2",
+  "git_revision": "93f921ff30b05e3bc4a25ff4f0d4cdba09ec4be1",
+  "metric_rows": 77,
+  "fractions": [
+    0.0,
+    0.5,
+    0.8,
+    0.95,
+    0.99,
+    0.999,
+    1.0
+  ],
+  "input_hashes": {
+    "metrics.json": "259226b54f5ff6228e28152c456b010a5cf0bc4f5745c9da43dd07b23dde11c9",
+    "input_provenance.json": "4130a06f7fc859a187af237509daf90014da46473496b32e71fee68582b68ef5",
+    "probe_audit.json": "fda4fc423729af368887b0eb674c33b408cc07d5a460870c0efe42b8390b622c"
+  },
+  "outputs": {
+    "01_test_perplexity.pdf": "5ffa8d2947a87bd4e9e49d78e3caccb617ee844b4670e0aa14e7e76483c8f04d",
+    "01_test_perplexity.png": "6ebfc845dd6197cc37ab29a0c85fc4604804ecc2e21dcfa51c29842879e5254d",
+    "02_test_perplexity_lower_fractions.pdf": "f06fd3c848feb4da2b75b3561f0ab6d4da18fe2cda90ee4431d7a35825d4cbcf",
+    "02_test_perplexity_lower_fractions.png": "395cd9a7a8d62102afc736eddbab6113ff9e3ce76e903bfda01e6d51d6a2f8ac",
+    "03_entropy.pdf": "9be6d8e37eca28aa2011648a691a0a3326b0ece86e777203015dc1bf77e0d28e",
+    "03_entropy.png": "f1ba4d824231a974bee353a27f489890b4ad31ce26e7b1dfd3b1e36c6ea33405",
+    "04_distinct.pdf": "fc474e9c9d6396e36878d07c1f079004ce47f3a6da1e512859cdb6c61d8fb151",
+    "04_distinct.png": "a87e6405921e019286b1126011d3797498d4a6115a2bfc49642e30ddbbf7a1be",
+    "05_within_repetition.pdf": "1e781cc1ec70ae560c754374264b172e8f0fe621c6d1d19004441fe6c4bd7504",
+    "05_within_repetition.png": "5af0484506aa153379832de3d57bd582e30b3aa12388f49eb9fe24c1ae001805",
+    "06_secondary_corpora.pdf": "ee329530e40e3825c40c61e0426a90c305beb509147b62e3287725c8e33e5751",
+    "06_secondary_corpora.png": "0362078a8928110e0311ade6bf5d0550b56009fd86dfa4766630115505a147aa",
+    "07_learning_rate.pdf": "8dfd2d7fd6298f74ce9ff00c56b01decb602f1e1c204e66cd01fbad939dbe45f",
+    "07_learning_rate.png": "a3b2a0114c8c98d462d35d449cf7cce72e073eae7b09d3d59ee787cb511713b7"
+  },
+  "analysis_script_sha256": "689b7bfe5b574b8f73521ce28ab1d23a68afdd6b5885ad0522d71ec165ba4dc6"
+}

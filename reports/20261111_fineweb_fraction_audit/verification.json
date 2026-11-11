@@ -1,0 +1,41 @@
+{
+  "created_utc": "2026-11-11T15:03:12.187074+00:00",
+  "reviewers": 5,
+  "read_only_scientific_audit": true,
+  "new_paid_compute": false,
+  "historical_results_changed": false,
+  "local_full_suite": {
+    "passed": 666,
+    "seconds": 411.99
+  },
+  "private_cache_independent_focused_suite": {
+    "passed": 21,
+    "attempted_private_reads": 0
+  },
+  "data_mixing_focused_suite": {
+    "passed": 52
+  },
+  "source_runtime_archives_verified": 6,
+  "saved_stage_lineages_verified": 70,
+  "selection_array_file_hashes_reconstructed": 160,
+  "direct99_cycle10_files_recovered": 5,
+  "direct99_bytes_recovered": 20575040,
+  "full_bank_reconstruction_passed": true,
+  "numerical_audit": {
+    "raw_stage_rows_verified": 77,
+    "trained_probe_arrays_recomputed": 70,
+    "available_example_loss_arrays_checked": 30,
+    "aggregate_conditions": 10,
+    "ppl_arithmetic_relative_tolerance": 1e-13,
+    "probe_metric_absolute_tolerance": 1e-12
+  },
+  "source_metrics_checksum_scope_ambiguities": 44,
+  "numeric_corrections_required": 0,
+  "fixed_private_cache_test_dependencies": 2,
+  "publication_safeguards": [
+    "New report/receipt bytes preserved with -text attributes",
+    "Only explicit scientific generated outputs included despite global generated-directory ignore",
+    "Credentials,authoritative state,bulk models/training arrays and local literature excluded"
+  ],
+  "recovery_scope": "No fresh GPU inference or full historical checkpoint cold restoration; exact source/record arithmetic, probes, full frozen bank reconstruction and direct99%cycle10 arrays checked."
+}

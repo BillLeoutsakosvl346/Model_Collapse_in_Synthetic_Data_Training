@@ -1,0 +1,227 @@
+{
+  "run_id": "20261108T173505Z-full-completion64",
+  "provider_status": {
+    "run_id": "20261108T173505Z-full-completion64",
+    "pod_id": "obfk7e2vpall1d",
+    "pod_state": "EXITED",
+    "reported_pod_rate_usd": 0.57,
+    "compute_running": false,
+    "status.json": {
+      "state": "complete",
+      "time": 1794170921.5638485
+    },
+    "watchdog_exit.json": {
+      "reason": "complete",
+      "time": 1794170935.3799803,
+      "pod_id": "obfk7e2vpall1d"
+    },
+    "provider_shutdown": {
+      "provider_pod_id": "obfk7e2vpall1d",
+      "provider_status": "EXITED",
+      "field": "lastStatusChange",
+      "value": "Exited by user: Sun Nov 08 2026 20:48:57 GMT+0000 (Coordinated Universal Time)",
+      "provider_shutdown_epoch": 1794170937.0,
+      "observed_at": 1794170983.0315955
+    }
+  },
+  "cost": {
+    "allocation_usd": 10,
+    "validation_cap_usd": 0.5,
+    "reserved_usd": 2,
+    "validation_conservative_usd": 0.27600777473509486,
+    "task_conservative_accrued_usd": 2.4470203860862014,
+    "as_of_epoch": 1794172177.3185096,
+    "provider_billing_observations": {
+      "full_pod": {
+        "metadata": {
+          "query": {
+            "bucketSize": "day",
+            "endTime": "2026-11-09T00:00:00Z",
+            "podId": "obfk7e2vpall1d",
+            "startTime": "2026-11-08T00:00:00Z"
+          },
+          "recordCount": 1,
+          "totals": {
+            "cpuAmount": 0,
+            "diskAmount": 0.007175926701165736,
+            "gpuAmount": 1.432368990033865,
+            "totalAmount": 1.4395449167350307
+          },
+          "uniquePodCount": 1
+        },
+        "records": [
+          {
+            "cpuAmount": 0,
+            "diskAmount": 0.007175926701165736,
+            "endTime": "2026-11-09T00:00:00Z",
+            "gpuAmount": 1.432368990033865,
+            "podId": "obfk7e2vpall1d",
+            "startTime": "2026-11-08T00:00:00Z",
+            "totalAmount": 1.4395449167350307
+          }
+        ]
+      },
+      "validation_pod": {
+        "metadata": {
+          "query": {
+            "bucketSize": "day",
+            "endTime": "2026-11-09T00:00:00Z",
+            "podId": "pa1qlnp9tk6w9n",
+            "startTime": "2026-11-08T00:00:00Z"
+          },
+          "recordCount": 1,
+          "totals": {
+            "cpuAmount": 0,
+            "diskAmount": 0.0011574075324460864,
+            "gpuAmount": 0.2334092988166958,
+            "totalAmount": 0.2345667063491419
+          },
+          "uniquePodCount": 1
+        },
+        "records": [
+          {
+            "cpuAmount": 0,
+            "diskAmount": 0.0011574075324460864,
+            "endTime": "2026-11-09T00:00:00Z",
+            "gpuAmount": 0.2334092988166958,
+            "podId": "pa1qlnp9tk6w9n",
+            "startTime": "2026-11-08T00:00:00Z",
+            "totalAmount": 0.2345667063491419
+          }
+        ]
+      },
+      "working_volume": {
+        "metadata": {
+          "query": {
+            "bucketSize": "day",
+            "endTime": "2026-11-09T00:00:00Z",
+            "networkVolumeId": "hjaf4nl5bf",
+            "startTime": "2026-11-08T00:00:00Z"
+          },
+          "recordCount": 1,
+          "totals": {
+            "highPerformanceAmount": 0,
+            "standardAmount": 0.011666666716337204,
+            "totalAmount": 0.011666666716337204
+          },
+          "uniqueNetworkVolumeCount": 1
+        },
+        "records": [
+          {
+            "endTime": "2026-11-09T00:00:00Z",
+            "highPerformanceAmount": 0,
+            "networkVolumeId": "hjaf4nl5bf",
+            "standardAmount": 0.011666666716337204,
+            "startTime": "2026-11-08T00:00:00Z",
+            "totalAmount": 0.011666666716337204
+          }
+        ]
+      },
+      "backup_volume": {
+        "metadata": {
+          "query": {
+            "bucketSize": "day",
+            "endTime": "2026-11-09T00:00:00Z",
+            "networkVolumeId": "x00ckmzcka",
+            "startTime": "2026-11-08T00:00:00Z"
+          },
+          "recordCount": 1,
+          "totals": {
+            "highPerformanceAmount": 0,
+            "standardAmount": 0.017500000074505806,
+            "totalAmount": 0.017500000074505806
+          },
+          "uniqueNetworkVolumeCount": 1
+        },
+        "records": [
+          {
+            "endTime": "2026-11-09T00:00:00Z",
+            "highPerformanceAmount": 0,
+            "networkVolumeId": "x00ckmzcka",
+            "standardAmount": 0.017500000074505806,
+            "startTime": "2026-11-08T00:00:00Z",
+            "totalAmount": 0.017500000074505806
+          }
+        ]
+      },
+      "lb89qoa6e0": {
+        "metadata": {
+          "query": {
+            "bucketSize": "day",
+            "endTime": "2026-11-09T00:00:00Z",
+            "networkVolumeId": "lb89qoa6e0",
+            "startTime": "2026-11-08T00:00:00Z"
+          },
+          "recordCount": 1,
+          "totals": {
+            "highPerformanceAmount": 0,
+            "standardAmount": 0.005833333358168602,
+            "totalAmount": 0.005833333358168602
+          },
+          "uniqueNetworkVolumeCount": 1
+        },
+        "records": [
+          {
+            "endTime": "2026-11-09T00:00:00Z",
+            "highPerformanceAmount": 0,
+            "networkVolumeId": "lb89qoa6e0",
+            "standardAmount": 0.005833333358168602,
+            "startTime": "2026-11-08T00:00:00Z",
+            "totalAmount": 0.005833333358168602
+          }
+        ]
+      },
+      "746ryrka3i": {
+        "metadata": {
+          "query": {
+            "bucketSize": "day",
+            "endTime": "2026-11-09T00:00:00Z",
+            "networkVolumeId": "746ryrka3i",
+            "startTime": "2026-11-08T00:00:00Z"
+          },
+          "recordCount": 0,
+          "totals": {
+            "highPerformanceAmount": 0,
+            "standardAmount": 0,
+            "totalAmount": 0
+          },
+          "uniqueNetworkVolumeCount": 0
+        },
+        "records": []
+      },
+      "nchqpcrn5o": {
+        "metadata": {
+          "query": {
+            "bucketSize": "day",
+            "endTime": "2026-11-09T00:00:00Z",
+            "networkVolumeId": "nchqpcrn5o",
+            "startTime": "2026-11-08T00:00:00Z"
+          },
+          "recordCount": 0,
+          "totals": {
+            "highPerformanceAmount": 0,
+            "standardAmount": 0,
+            "totalAmount": 0
+          },
+          "uniqueNetworkVolumeCount": 0
+        },
+        "records": []
+      }
+    },
+    "provider_reported_to_date_usd": 1.7091116232331842,
+    "billing_is_partial": true,
+    "billing_note": "Provider records lag elapsed runtime; reported-to-date charges are not the final invoice or a replacement for the conservative ledger.",
+    "full_provider_lifetime_hours": 3.2306497508949703,
+    "future_two_60gb_network_volumes_seven_days_estimate_usd": 1.933150684931507,
+    "storage_formula": "120 GB * $0.07/GB/month / 730 hours * 168 hours; approximation, retained volumes continue billing.",
+    "storage_pricing_source": "https://docs.runpod.io/pods/storage/types",
+    "forecast_accrued_plus_next_seven_days_usd": 4.380171071017708,
+    "credit_purchased": false,
+    "payment_settings_changed": false,
+    "ledger_sha256": "a0e441008351024b1a877d172a7ad3ff2c2e07b8ce3c17acf4106d13da07356a",
+    "baseline_ledger_sha256": "def6d6e2c71b64a11742b95b5b7362b127810e7d2d91940e87994a1dcddaf720"
+  },
+  "working_volume_preserved": "hjaf4nl5bf",
+  "backup_volume_preserved": "x00ckmzcka",
+  "temporary_resources_removed": true
+}

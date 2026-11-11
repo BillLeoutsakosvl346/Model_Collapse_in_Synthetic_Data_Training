@@ -1,0 +1,32 @@
+{
+  "bank_index_sha256": "9c312b19903d1a875e78144d2cadcc4fb841d97dc2034923e13153724ef56bbf",
+  "bank_indexed_files_verified": 86,
+  "cycle10_input_and_mask_reconstruction": [
+    {
+      "condition": "real",
+      "cycle": 10,
+      "three_input_files_reconstructed": true,
+      "scored_targets": 640000
+    },
+    {
+      "condition": "beam",
+      "cycle": 10,
+      "three_input_files_reconstructed": true,
+      "scored_targets": 640000
+    },
+    {
+      "condition": "greedy",
+      "cycle": 10,
+      "three_input_files_reconstructed": true,
+      "scored_targets": 640000
+    },
+    {
+      "condition": "sampling",
+      "cycle": 10,
+      "three_input_files_reconstructed": true,
+      "scored_targets": 640000
+    }
+  ],
+  "offline_core_outputs_byte_identical": 31,
+  "scope": "Reconstructs terminal training inputs; earlier inputs checked through pinned source/lineage manifests, not newly reconstructed token arrays."
+}

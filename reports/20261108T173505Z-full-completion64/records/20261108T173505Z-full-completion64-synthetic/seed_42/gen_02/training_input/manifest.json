@@ -1,0 +1,24 @@
+{
+  "lineage": {
+    "initializer_weights_sha256": "893c2d2c2ad41f594ca23c5364653c5077805687887b69ad1e7f6642251ecf41",
+    "optimizer_parent_sha256": "fad314557b0b50d4ea0289d36fd9f9f6b638a04c6cab22079db58c96caa6a18a",
+    "generator_weights_sha256": "893c2d2c2ad41f594ca23c5364653c5077805687887b69ad1e7f6642251ecf41",
+    "generation_manifest_sha256": "2d3aa6d6ac5cd21532a6825133394ad2a7fd580ae1eba2171d35507e477d58ec",
+    "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+    "chunk_manifest_sha256": "f76505392b7c9f49a00c655ff05503aab2dbb34cf5b8bd5b048227efb690d4c8",
+    "data_kind": "synthetic",
+    "training_chunk_policy": "repeat_fixed",
+    "source_collection": "cycle_01",
+    "training_epoch": 2
+  },
+  "prompt_content_sha256": "8453027b64505a48294ee3062ade04d2d59fc8a88b0f798c90e064972f28d525",
+  "target_content_sha256": "a4859abf726e31a7584be6a51efacaac39d86a1ce501abfb3b2c4bdc5715b75b",
+  "pairs": 10000,
+  "scored_targets": 640000,
+  "objective": "conditional_continuation_64",
+  "files": {
+    "tokens.npy": "6003af5f07a4d5ea9c64b6ddf44ba79df576fae46c9027400d7dd3d9ab2e46df",
+    "attention.npy": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+    "loss_mask.npy": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+  }
+}

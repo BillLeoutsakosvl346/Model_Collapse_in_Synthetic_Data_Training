@@ -1,0 +1,33 @@
+{
+  "lineage": {
+    "initializer_weights_sha256": "4fbef756b1fbb72e928c87bb648938bcff4013f43f01896a543f1a7954ed48c3",
+    "optimizer_parent_sha256": "3e2ef2a783caa18f85507bcc664f3218dfb6460700d4deeae0d5596b157d01fe",
+    "generator_weights_sha256": "4fbef756b1fbb72e928c87bb648938bcff4013f43f01896a543f1a7954ed48c3",
+    "generation_manifest_sha256": "0738628729f8c9e88315793b2cfd37374488cbe17eb22e9b4ff803c5b99cd695",
+    "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+    "chunk_manifest_sha256": "3310753c116c4d12cc6c464e5e8ad272241e0bbd4415a7d8b870fa0772570a53",
+    "data_kind": "synthetic",
+    "training_decoder": "greedy",
+    "decoding": {
+      "num_beams": 1,
+      "do_sample": false,
+      "min_new_tokens": 64,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.0,
+      "no_repeat_ngram_size": 0,
+      "forced_eos_token_id": null,
+      "use_cache": true
+    },
+    "sampling_policy": null
+  },
+  "prompt_content_sha256": "99ac85ee1b66a1c520aae4c48e6a013941e806a5ea8b89c2b2c8c2c157518334",
+  "target_content_sha256": "45a8e4846c8f41513779327451d63a9b2dd710cac734633b2476de480457d336",
+  "pairs": 10000,
+  "scored_targets": 640000,
+  "objective": "conditional_continuation_64",
+  "files": {
+    "tokens.npy": "947c9bc0a3bee2f1b274ec9a26d53b2e8c1d8fa919ca147b4160dd84602d6d61",
+    "attention.npy": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+    "loss_mask.npy": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+  }
+}

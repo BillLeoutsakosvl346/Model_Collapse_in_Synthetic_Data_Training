@@ -1,0 +1,93 @@
+{
+  "recorded_at": 1794157186.0935874,
+  "run_id": "20261108T165042Z-smoke-completion64",
+  "pod_id": "pa1qlnp9tk6w9n",
+  "volume_id": "lb89qoa6e0",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "quoted_gpu_hourly_usd": 0.57,
+  "runtime_sha256": "443b7a31a72910914bcd337919ffdc846294904b64b7a3ff7a7d6d70305d9580",
+  "detached_verification": {
+    "pod_id": "pa1qlnp9tk6w9n",
+    "launch_id": "20261108T165042768612Z",
+    "run_id": "20261108T165042Z-smoke-completion64",
+    "progress_after_disconnect": true,
+    "observations": [
+      {
+        "time": 1794156763.9938202,
+        "status": {
+          "state": "running",
+          "phase": "preparation",
+          "time": 1794156760.136608
+        },
+        "child_status": {
+          "state": "running",
+          "phase": "preparation",
+          "time": 1794156760.136608
+        },
+        "event_bytes": 0,
+        "epochs": 0,
+        "new_epochs": 0,
+        "finite_new_training": false,
+        "completed_new_stages": 0,
+        "supervisor": {
+          "pid": 266,
+          "child_pid": 268,
+          "time": 1794156760.9986205
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1794156763.2601013,
+          "deadline": 1794159349.7021139
+        }
+      },
+      {
+        "time": 1794156941.5531464,
+        "status": {
+          "state": "running",
+          "phase": "real",
+          "active_child": "20261108T165042Z-smoke-completion64-real",
+          "time": 1794156903.7782657
+        },
+        "child_status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "time": 1794156908.1609955
+        },
+        "event_bytes": 486,
+        "epochs": 1,
+        "new_epochs": 1,
+        "finite_new_training": true,
+        "completed_new_stages": 1,
+        "supervisor": {
+          "pid": 266,
+          "child_pid": 268,
+          "time": 1794156939.5420315
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1794156939.682392,
+          "deadline": 1794159349.7021139
+        }
+      }
+    ],
+    "observations_sha256": "8cfe25d4c9e9fd3a9d6d02b0ed6969bb3650543d84f939f5f07dabec0d713e3c",
+    "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+  },
+  "preliminary_full_forecast": {
+    "estimated_hours": 4.518795955184834,
+    "estimated_compute_and_running_storage_usd": 2.614092509417199,
+    "unique_training_stages": 20,
+    "epochs": 20,
+    "full_generation_stages": 10,
+    "generation_stages": 10,
+    "probe_sets": 21,
+    "training_target_exposures": 12800000,
+    "forecast_margin": 1.5,
+    "generated_training_continuations": 100000,
+    "generated_training_tokens": 6400000
+  },
+  "full_training_launched": false,
+  "acceptance_pending": true
+}

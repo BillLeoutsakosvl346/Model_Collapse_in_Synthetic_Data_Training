@@ -1,0 +1,122 @@
+{
+  "recorded_at": 1794323041.271729,
+  "run_id": "20261110T144634Z-smoke-completion64",
+  "offline_tests_passed": 639,
+  "source_code_sha256": "03dc76a4555874c6f19c4a07254f5769a2ea69d759136c4c9962f28b1fa09c4d",
+  "protocol_fingerprint": "1992d22596582a16f93874f782098a41644dcc14315297c366a66f7e5f2e9e4e",
+  "checks": {
+    "training_recovery": true,
+    "matched_initial_weights_and_prompts": true,
+    "all_handoffs_and_optimizer_states": true,
+    "restored_evaluation": true,
+    "three_terminal_epochs": true,
+    "private_restore": true,
+    "coordinator_recovery": true,
+    "completed_stages_unchanged": true,
+    "fixed_chunk_inputs": true,
+    "fixed_real_anchor": true,
+    "continuation_only_loss": true,
+    "direct_masked_nll": true,
+    "constant_learning_rate_all_updates": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "validation_conservative_usd": 0.07200006952234599,
+  "validation_results_sha256": "42016f0e735ff52aa7fd0f10f6249dd81cb7b005fb0b9244f132c9894536b9d3",
+  "restorations": {
+    "real": {
+      "run_id": "20261110T144634Z-smoke-completion64-real",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "8e04e50d4ddc775d96d9fdd0d9987f6f89c480d8",
+        "dataset": "18cd211235f31c95aec68cdc402efdc6e39ff0d7"
+      },
+      "artifact_index_sha256": "7ad882716729e204e5b62f487e5ccc85d97b383f0b3aade058b86a86c958d106",
+      "indexed_files": 70,
+      "verified_files": 70,
+      "verified_bytes": 4510501283,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/completion_acceptance_restore/20261110T144634Z-smoke-completion64-real"
+    }
+  },
+  "arm_audits": {
+    "real": {
+      "stages": [
+        {
+          "cycle": 1,
+          "weights_sha256": "969567dc5626542070d4e0e753f1cc0c244636e3a8e83d7c76b7e468e7804d21",
+          "initializer_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+          "optimizer_step": 2,
+          "scored_training_tokens": 16384,
+          "real_pairs": 256,
+          "synthetic_pairs": 0
+        },
+        {
+          "cycle": 2,
+          "weights_sha256": "57b252fefdbe82c501b322df678f42fe58c10e0ee215c5140981aef4cbc5cd7e",
+          "initializer_sha256": "969567dc5626542070d4e0e753f1cc0c244636e3a8e83d7c76b7e468e7804d21",
+          "optimizer_step": 4,
+          "scored_training_tokens": 16384,
+          "real_pairs": 256,
+          "synthetic_pairs": 0
+        },
+        {
+          "cycle": 3,
+          "weights_sha256": "dd06f202139e8da94faa2d37917a76090786c82af48e8912472212a089fe07d2",
+          "initializer_sha256": "57b252fefdbe82c501b322df678f42fe58c10e0ee215c5140981aef4cbc5cd7e",
+          "optimizer_step": 6,
+          "scored_training_tokens": 16384,
+          "real_pairs": 256,
+          "synthetic_pairs": 0
+        }
+      ],
+      "restored_loss_error": 0.0,
+      "direct_nll_error": 0.0,
+      "restored_optimizer_sha256": "4a363d5bd42f6f167312be229e343e2dc9e5d21f979408ed584f562c3a7c96f5"
+    }
+  },
+  "benchmark": {
+    "training_target_tokens_per_second": 8392.697504690503,
+    "generation_new_tokens_per_second": 1042.392165664703,
+    "primary_target_tokens_per_second": 26030.25888590723,
+    "secondary_target_tokens_per_second": 27426.91155318592,
+    "training_step_seconds": [
+      1.2663474769797176,
+      0.9731301139108837,
+      0.9743048949167132,
+      0.9760866509750485,
+      0.9773564001079649
+    ],
+    "generation_batch_seconds": [
+      2.089073209092021,
+      1.9748087930493057,
+      1.9546144460327923
+    ],
+    "microbatch": 32,
+    "effective_batch": 128,
+    "generation_batch": 32,
+    "full_primary_targets": {
+      "validation": 468608,
+      "test": 457664
+    },
+    "full_secondary_targets": 1494075,
+    "benchmark_updates_discarded": 5,
+    "gpu": "NVIDIA RTX 2000 Ada Generation"
+  },
+  "cleanup": {
+    "pod_removed": true,
+    "volume_removed": true,
+    "actual_account_balance_delta_usd": 0.1348873334000018
+  },
+  "hardware_note": "RTX 2000 Ada; historical repeated-real control used RTX PRO 4000",
+  "full_experiment_launched_at_receipt": false
+}

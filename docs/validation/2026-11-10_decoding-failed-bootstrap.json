@@ -1,0 +1,113 @@
+{
+  "run_id": "20261110T225650Z-smoke-completion64-decoding",
+  "pod_id": "jtoieyg20ntsi8",
+  "volume_id": "3j86453jot",
+  "runtime": "50b10d35eec510641631330f848abc0224b2b83824f9697aa1aa20faf6a009d0",
+  "files": {
+    "benchmark.json": {
+      "sha256": "7da789447f8ec1f6e9be7cc14275d9e5059595d3bc9535b39130daa0779eb370",
+      "bytes": 1390
+    },
+    "config.json": {
+      "sha256": "71981a258b416c5d1d755e2bcfc564642975a96a88977647a75ed0b3afa27519",
+      "bytes": 3131
+    },
+    "environment.json": {
+      "sha256": "5f799779e783435290423b8aeaf0d2928a547456f8b77e428b3e2de1b01b5067",
+      "bytes": 433
+    },
+    "manifest.json": {
+      "sha256": "55e80aa7dd73a95234da056a587eb5c3905f171a2e7fcc750001ddd140c0bbc4",
+      "bytes": 173
+    },
+    "pipeline.log": {
+      "sha256": "0d8520f23eebc5ff36459fbfd284c234ff789d48145214625f5703d9c51a0e90",
+      "bytes": 858
+    },
+    "requirements-tested.txt": {
+      "sha256": "8ee9b2f71d0cd8cc9d6bb26ef32c0bf4f4c0221f9a1e3cccac0d78ed863b4b2a",
+      "bytes": 3410
+    },
+    "resources.json": {
+      "sha256": "fb7d168163f54883cd06b9d08278c2d22dcd6380ad4f929065338203e7a6f7db",
+      "bytes": 1623
+    },
+    "seed_42/gen_00/checkpoint/config.json": {
+      "sha256": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+      "bytes": 747
+    },
+    "seed_42/gen_00/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132
+    },
+    "seed_42/gen_00/probe/events.jsonl": {
+      "sha256": "febb21ec67f3cba72080bab7fe58d91acb649afb982710bcd4689f5bc14c3870",
+      "bytes": 262
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/manifest.json": {
+      "sha256": "97e0d9124371dac93e3622ffc7c0252f8b26b807ac2486d721eaab707162e1b8",
+      "bytes": 813
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/shard_0000000.json": {
+      "sha256": "20bb5d968018c37178c880b0342da880904ae76be1a9f7f3e024f97a2f3b83b6",
+      "bytes": 395
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/shard_0000032.json": {
+      "sha256": "623e669bb5abf6aff806f9f8f4bf0e33932789dfa76de288dcd8cf61aef366cf",
+      "bytes": 395
+    },
+    "seed_42/gen_00/probe_examples.json": {
+      "sha256": "e020373d1276a4004f39e300e412d6518d066fa0c48681fdc4d9c937d90bcc45",
+      "bytes": 2091
+    },
+    "seed_42/gen_00/test_sequences.json": {
+      "sha256": "d7eaeef31f3128806dbe79645428cc52caf91a8151b86625e3f215f5da889fd2",
+      "bytes": 2085
+    },
+    "seed_42/gen_00/tokenizer/merges.txt": {
+      "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+      "bytes": 456318
+    },
+    "seed_42/gen_00/tokenizer/special_tokens_map.json": {
+      "sha256": "edbf5e1520a90884935090c0cfb0e50e7c9c138906936d43bee1496f3af22094",
+      "bytes": 548
+    },
+    "seed_42/gen_00/tokenizer/tokenizer_config.json": {
+      "sha256": "d53fa00db53a71845d1f19dfd83644a64bc2ec83530b82268e13c4f1729d0869",
+      "bytes": 669
+    },
+    "seed_42/gen_00/tokenizer/vocab.json": {
+      "sha256": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e",
+      "bytes": 798293
+    },
+    "status.json": {
+      "sha256": "7b0d02febb6d656e768417661d8278910c40de12c25b29c3024e450af4c540cc",
+      "bytes": 78
+    },
+    "supervisor.json": {
+      "sha256": "97ef196024afa9a38d9c6cf012e914e43e2e11f38aa59d4f1e5dc5f2667039b5",
+      "bytes": 67
+    },
+    "supervisor.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "watchdog.json": {
+      "sha256": "e021ad29e3e6b463008fedf2f690cecc19c3497faae7eeb2cc31f2c283fa9de8",
+      "bytes": 80
+    }
+  },
+  "no_training_stage_started_verified": true,
+  "provider_stop": {
+    "provider_pod_id": "jtoieyg20ntsi8",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Tue Nov 10 2026 23:00:28 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1794351628.0,
+    "observed_at": 1794351637.2974296
+  },
+  "observed_at": 1794351857.424646,
+  "pod_removed": true,
+  "volume_removed": true,
+  "completed_training_stages": 0
+}

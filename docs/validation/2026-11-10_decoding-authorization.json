@@ -1,0 +1,23 @@
+{
+  "budget_usd": 4.6,
+  "reserve_usd": 2.0,
+  "validation_cap_usd": 0.3,
+  "authorized_at": 1794349577.9389877,
+  "accrued_baseline_usd": 69.70302961634665,
+  "max_active_pods": 1,
+  "scope": "User requested starting two ten-cycle continuous synthetic runs, greedy and pure sampling, matching the historical five-beam condition. Necessary implementation and GPU acceptance precede full launch. No increase to cumulative or setup ceilings; no credit purchases.",
+  "ledger_snapshot_sha256": "27c3f67dee8e04cd2bf506807a0844184bb1d81a1c54eb5a55d490d53dd40277",
+  "allocation": "fineweb_completion64_decoding",
+  "cumulative_ceiling_unchanged_usd": 74.03635289829083,
+  "setup_ceiling_unchanged_usd": 4.35,
+  "full_launch_authorized_after_acceptance": true,
+  "matching_gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "hardware_substitution_requires_user_choice": true,
+  "credit_purchase_authorized": false,
+  "hardware_substitution": {
+    "authorized_at": 1794350622.95816,
+    "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+    "condition": "Only if existing budget covers it",
+    "source": "User reply to hardware-choice question"
+  }
+}

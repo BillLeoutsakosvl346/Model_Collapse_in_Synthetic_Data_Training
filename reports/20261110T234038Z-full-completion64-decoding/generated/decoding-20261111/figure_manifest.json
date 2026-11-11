@@ -1,0 +1,54 @@
+[
+  {
+    "name": "01_test_perplexity",
+    "title": "Real-test perplexity: training-target decoder"
+  },
+  {
+    "name": "02_sampling_real_zoom",
+    "title": "Sampling and real targets: enlarged scale"
+  },
+  {
+    "name": "03_validation_perplexity",
+    "title": "Fixed real-validation perplexity"
+  },
+  {
+    "name": "04_pooled_entropy",
+    "title": "Token diversity across the fixed probe"
+  },
+  {
+    "name": "05_within_entropy",
+    "title": "Token diversity inside individual outputs"
+  },
+  {
+    "name": "06_distinct2",
+    "title": "Unique two-token phrases across the probe"
+  },
+  {
+    "name": "07_distinct3",
+    "title": "Unique three-token phrases across the probe"
+  },
+  {
+    "name": "08_repeated4",
+    "title": "Repetition inside individual outputs"
+  },
+  {
+    "name": "09_nll_p95",
+    "title": "Harder real passages: 95th-percentile NLL"
+  },
+  {
+    "name": "10_training_nll",
+    "title": "Likelihood of each arm\u2019s own training targets"
+  },
+  {
+    "name": "11_learning_rate",
+    "title": "Preserved global cosine learning-rate schedule"
+  },
+  {
+    "name": "12_newlines",
+    "title": "Formatting in the fixed generated probe"
+  },
+  {
+    "name": "13_secondary_corpora",
+    "title": "Transfer across frozen real-text corpora"
+  }
+]

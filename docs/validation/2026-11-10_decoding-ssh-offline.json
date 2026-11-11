@@ -1,0 +1,10 @@
+{
+  "runtime_sha256": "7de3d994dfe35e75b5aeabb9a41cffbf54a66871456db0883b666a1d8f63fd6d",
+  "protocol_fingerprint": "a24bca22b917161e338e97bfa9262d4dc3c5986e6e4aefd8cb6b7b05e526c96f",
+  "frozen_at": 1794351877.3607557,
+  "baseline_suite_passed": 660,
+  "final_affected_checks_passed": 66,
+  "checks_log_sha256": "26cd63aed4b98748c2b69072f6e19e19140c020eb2dcec9867e42168f11fe275",
+  "fix": "Retry only SSH authentication handshake timeouts; rejected keys/host-key changes remain fatal; close failed SSH connections",
+  "remaining_smoke_session_cap_usd": 0.24
+}

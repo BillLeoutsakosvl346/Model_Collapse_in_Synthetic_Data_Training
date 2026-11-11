@@ -1,0 +1,1479 @@
+{
+  "run_id": "20261108T173505Z-full-completion64-real",
+  "repos": {
+    "model": "iib-model-collapse-bill/iib-model-collapse-models",
+    "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+  },
+  "files": {
+    "completion.json": {
+      "sha256": "263891266b643e774fc5a72a9589239652ddb84fa7b073642905b93a8004e10d",
+      "bytes": 92,
+      "repo_type": "dataset"
+    },
+    "config.json": {
+      "sha256": "232c25f208ee239e070cfb3dc4c79e16c516792291b1315475cec17c03ecda58",
+      "bytes": 3156,
+      "repo_type": "dataset"
+    },
+    "manifest.json": {
+      "sha256": "72e44c15fb3fe64d70c006e577efc2c7a9e5c531f67e9f17bfe5bd5014722c46",
+      "bytes": 258,
+      "repo_type": "dataset"
+    },
+    "requirements-tested.txt": {
+      "sha256": "a491dd8ea1f01e8e5152b2fc8d51434910bfc68ced52b5890aae4722ee5e173e",
+      "bytes": 3410,
+      "repo_type": "dataset"
+    },
+    "resources.json": {
+      "sha256": "a21d4ba7829320b0f423203fc9f0619b0ae61a53bf1ce44a4f1378229c6fed01",
+      "bytes": 2323,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "f1b81ee33ba3da38439273435413127544326f438d52d7e803346ec6df082988",
+      "bytes": 4226,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/checkpoint/config.json": {
+      "sha256": "acea6f6e6e5f700cb6e06a882b14aafe1cf59b903213c426cb6835fa1fe5c968",
+      "bytes": 806,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/checkpoint/model.safetensors": {
+      "sha256": "9b0d558533bace5096409555222e0a18c593848a220d878f7947ad072c50cd0a",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/9b0d558533bace5096409555222e0a18c593848a220d878f7947ad072c50cd0a"
+      }
+    },
+    "seed_42/gen_01/metrics.json": {
+      "sha256": "5d5ca7c0cd90f584ad9d1d077b769cfd37fa4aad8baac11088a2bfff96bcf555",
+      "bytes": 6443,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/optimizer_state/cycle.pt": {
+      "sha256": "d8e3587f3d85c8240dff43b51333aa008e4674ce67ed4a224f23d466d3634aca",
+      "bytes": 1002065083,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/d8e3587f3d85c8240dff43b51333aa008e4674ce67ed4a224f23d466d3634aca"
+      }
+    },
+    "seed_42/gen_01/probe/events.jsonl": {
+      "sha256": "45042ab6932db3720f2d1411976baf451676b68a8bd9898829274305ec1e269d",
+      "bytes": 132,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json": {
+      "sha256": "438d3e99be112562cc52e919cdba95186f138c2523516464877f7f975ed00857",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/shard_0000000.json": {
+      "sha256": "6a86150e5c0d05924a253182723165b2c341088c8ea4c3f13b24e7ff4e003c04",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/shard_0000000.npy": {
+      "sha256": "0d2ebdc608c1eee342d2418d33fad3baf48da90b039b9c2fe9e58d3614b7beee",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/0d2ebdc608c1eee342d2418d33fad3baf48da90b039b9c2fe9e58d3614b7beee"
+      }
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/tokens.npy": {
+      "sha256": "0d2ebdc608c1eee342d2418d33fad3baf48da90b039b9c2fe9e58d3614b7beee",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/0d2ebdc608c1eee342d2418d33fad3baf48da90b039b9c2fe9e58d3614b7beee"
+      }
+    },
+    "seed_42/gen_01/probe_examples.json": {
+      "sha256": "5b410d8dd849643d8af2845930cf6eb6c25f8f3fa57edd4e10d5f99cb6f6c5a9",
+      "bytes": 2004,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/stage_completion.json": {
+      "sha256": "0cd4883df088175753b5b81edd531a78c961ee4dc639836714ffc4e6bd71699e",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/test_sequences.json": {
+      "sha256": "92fc0a13bec4e21c0235c4646cb57afff0ab597f6df1659f11c9000808aedd07",
+      "bytes": 224940,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training.json": {
+      "sha256": "7defad2627859ce31bc41e70add68639eb6e906a9212d6c8722df103be5f0eb3",
+      "bytes": 1987,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_history.json": {
+      "sha256": "5fe1f7ed588e418c85c722236dd4a1c975c487b700171dd94d9e344e76c2eb8c",
+      "bytes": 346,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_01/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_01/training_input/manifest.json": {
+      "sha256": "a7d6731f7aaa4e6388b3c39153ba7a0dba3d4f32456868d7031fac2050a780d2",
+      "bytes": 1127,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e"
+      }
+    },
+    "seed_42/gen_02/checkpoint/config.json": {
+      "sha256": "5be683c4d76e85b0dbc7c39bedc0060830d04e0d7c620c582040a6b2828ab6d4",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/checkpoint/model.safetensors": {
+      "sha256": "9180161fae01120e0e7be6c4e110f4a4df581717a2d4908e32421c68d44f138d",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/9180161fae01120e0e7be6c4e110f4a4df581717a2d4908e32421c68d44f138d"
+      }
+    },
+    "seed_42/gen_02/metrics.json": {
+      "sha256": "b439454370bd3f32b04c89fe145d31f48f4c9d0db813c070877803aae7838a4a",
+      "bytes": 6521,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/optimizer_state/cycle.pt": {
+      "sha256": "9789b10ae6115caa5114854554d4f47587de120c33f4bb9c28ab77e35dab7704",
+      "bytes": 1002067771,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/9789b10ae6115caa5114854554d4f47587de120c33f4bb9c28ab77e35dab7704"
+      }
+    },
+    "seed_42/gen_02/probe/events.jsonl": {
+      "sha256": "dd7282f2c0bc954ba46abc8c3a8ab93ea077f48268a257772b27df1f0b5d38ea",
+      "bytes": 132,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json": {
+      "sha256": "b7ba6e4d26cd364e74f7c90099e6e8065dff500f3be38ceeea6cdec0cc8e569c",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/shard_0000000.json": {
+      "sha256": "d74d0d4d6104b325d14fbe31c89fd3816d0ce6e2afb7d6cba9e3fda0458260a4",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/shard_0000000.npy": {
+      "sha256": "884aa78d8d8cd6882ce292023c6a0060e8512bc1e8ee182dc66a0d5e2cc68bc1",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/884aa78d8d8cd6882ce292023c6a0060e8512bc1e8ee182dc66a0d5e2cc68bc1"
+      }
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/tokens.npy": {
+      "sha256": "884aa78d8d8cd6882ce292023c6a0060e8512bc1e8ee182dc66a0d5e2cc68bc1",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/884aa78d8d8cd6882ce292023c6a0060e8512bc1e8ee182dc66a0d5e2cc68bc1"
+      }
+    },
+    "seed_42/gen_02/probe_examples.json": {
+      "sha256": "060c9d7a6e8b7c4af01557d989ecfe40c126596f926897fbce893c1b8741f223",
+      "bytes": 2052,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/stage_completion.json": {
+      "sha256": "fe45e91f1bf6c0df61e8e1f699c6a3773b3c8dc237e945f649f0865798a4c858",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/test_sequences.json": {
+      "sha256": "3b087f7273492738b049937a3f2cd4e02672a390f35fe91a6842f5719e37f4e7",
+      "bytes": 224922,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training.json": {
+      "sha256": "498a28f093d186b79497b26be566f36f26829cf12995d2809f48a783625287a8",
+      "bytes": 2108,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_history.json": {
+      "sha256": "edf154db8adb784a590c69a70953e75256e1eea887f11a9a5d220f64312fae38",
+      "bytes": 361,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_02/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_02/training_input/manifest.json": {
+      "sha256": "636bbccef5e9b3ca78e3673e4d1a91dc4342c3e5ff135c5dfc56f11a8f37ca5c",
+      "bytes": 1189,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e"
+      }
+    },
+    "seed_42/gen_03/checkpoint/config.json": {
+      "sha256": "600143ffc732749d3fe937e2b6b21a20da4e760b591db43af189ef89725342db",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_03/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_03/checkpoint/model.safetensors": {
+      "sha256": "2ccc672a5192ab8e6af8baf0e5a2f02b14261da88d045218f26dbec27c4148a8",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/2ccc672a5192ab8e6af8baf0e5a2f02b14261da88d045218f26dbec27c4148a8"
+      }
+    },
+    "seed_42/gen_03/metrics.json": {
+      "sha256": "38b94cd18eff513ec0406b64f7343fc5d19cae8356ea54c5005cb65ab37e5cab",
+      "bytes": 6547,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/optimizer_state/cycle.pt": {
+      "sha256": "026c32bca4dd051b4752f9e960af2b13f866c0c8330bc3505c415e76cd28e6cb",
+      "bytes": 1002067771,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/026c32bca4dd051b4752f9e960af2b13f866c0c8330bc3505c415e76cd28e6cb"
+      }
+    },
+    "seed_42/gen_03/probe/events.jsonl": {
+      "sha256": "37a59401e0bfdc7e7a07c4bafb02b57ea3b48c62058b0396962f8491880423c2",
+      "bytes": 132,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json": {
+      "sha256": "60ca823cbe23ee7dc345c1816064293d916319025a7b7df12d38c650013da2c3",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/shard_0000000.json": {
+      "sha256": "d4ef4d0ef36bde18a6ba55b3fd8c1c43e41cc6374d60ab4af662ef138ce5e15d",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/shard_0000000.npy": {
+      "sha256": "5f86e86105ee5967fd65435bc5ab3b7ec5c65bf2cb7788a58ce5eba3dc4f08a1",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/5f86e86105ee5967fd65435bc5ab3b7ec5c65bf2cb7788a58ce5eba3dc4f08a1"
+      }
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/tokens.npy": {
+      "sha256": "5f86e86105ee5967fd65435bc5ab3b7ec5c65bf2cb7788a58ce5eba3dc4f08a1",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/5f86e86105ee5967fd65435bc5ab3b7ec5c65bf2cb7788a58ce5eba3dc4f08a1"
+      }
+    },
+    "seed_42/gen_03/probe_examples.json": {
+      "sha256": "021caf333168f13764197ac80717c29270b8a67acac2761bff6b8e6bfc34e0a2",
+      "bytes": 1991,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/stage_completion.json": {
+      "sha256": "be1673a17c1ca6e2a51745658db3c4fd34388972740f298e771bb482967295fb",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/test_sequences.json": {
+      "sha256": "7c399cb71c71e784a960aa7fb97a86a32535c650dd2ddc5e501393e99c919f68",
+      "bytes": 224973,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training.json": {
+      "sha256": "553926d6d032f20b6db7c57443300f5e323523091d01d1ccbea85f9bc238b881",
+      "bytes": 2110,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_history.json": {
+      "sha256": "914c65a723f5aed79477796258c5508f8bad948a2af5d6308a128e9b0d99e2a1",
+      "bytes": 365,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_03/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_03/training_input/manifest.json": {
+      "sha256": "7dd2463253089f168df6a0b98cbe7ea2deee7de171dfb9ab37577d06a574feec",
+      "bytes": 1189,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e"
+      }
+    },
+    "seed_42/gen_04/checkpoint/config.json": {
+      "sha256": "d4bd3aea1715b365a33c09c2a88bdb1ca3e73ef783c536daaf5a168953b58fa9",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_04/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_04/checkpoint/model.safetensors": {
+      "sha256": "5371241a89c399ab85294d3a55c90cd777a9129ec5863ea2d51e665c5fe3b6a3",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/5371241a89c399ab85294d3a55c90cd777a9129ec5863ea2d51e665c5fe3b6a3"
+      }
+    },
+    "seed_42/gen_04/metrics.json": {
+      "sha256": "b52d07b52c57e26128732dbceb1c770887e1bcae0ff3e6357e82428aae13cdd2",
+      "bytes": 6547,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/optimizer_state/cycle.pt": {
+      "sha256": "ab56cc73773e8247a5637459a279740b4b10fbab1bad52a94a0a9340c102de48",
+      "bytes": 1002067771,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/ab56cc73773e8247a5637459a279740b4b10fbab1bad52a94a0a9340c102de48"
+      }
+    },
+    "seed_42/gen_04/probe/events.jsonl": {
+      "sha256": "8f6a28fd158f5979129a5c6c8597ca5db641aabfbf11b19e898f2e68dc6bfc49",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json": {
+      "sha256": "fbf4518bb2c3398aa0c98e12400e1d8a386ea1ccd6fcd83abe5fcd90f68f1d68",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/shard_0000000.json": {
+      "sha256": "0363c1c82237e1e191f90524dfcc2c8e1c65bb399b7db79d4a84311d9172b278",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/shard_0000000.npy": {
+      "sha256": "284f416a6c69598775b6ef151b1e0f52944387d27e59c99dd341457725b5a332",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/284f416a6c69598775b6ef151b1e0f52944387d27e59c99dd341457725b5a332"
+      }
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/tokens.npy": {
+      "sha256": "284f416a6c69598775b6ef151b1e0f52944387d27e59c99dd341457725b5a332",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/284f416a6c69598775b6ef151b1e0f52944387d27e59c99dd341457725b5a332"
+      }
+    },
+    "seed_42/gen_04/probe_examples.json": {
+      "sha256": "4dbbf7a7943b439a7bbc4e3b0a66c5cb711ab7d6c5cc7f7b6d366697c1a57e3e",
+      "bytes": 2041,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/stage_completion.json": {
+      "sha256": "5a1d4597675f15dfcb0077d5bfc0b9b45a5733863265ff0c5f3e25e9619be623",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/test_sequences.json": {
+      "sha256": "a2662c6c3df3ea8e556bd31977f65f5fe9a07336d991b8c20c76d9d37d50ef0a",
+      "bytes": 225036,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training.json": {
+      "sha256": "b797e0347be1fa22dd4c4154286ab4265227a77c9698b506806a8e2abf09733c",
+      "bytes": 2108,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_history.json": {
+      "sha256": "455b4214e1c94128e66934e9290956d80b44f8102ff1e8027e1c3c0a28c24969",
+      "bytes": 363,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_04/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_04/training_input/manifest.json": {
+      "sha256": "c92c3ec644316ed51f50bd32c2fbc511ebb27d47c698a3c5af5158631b8a3ba2",
+      "bytes": 1189,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e"
+      }
+    },
+    "seed_42/gen_05/checkpoint/config.json": {
+      "sha256": "87a8d1a20e9c4d9527517d54c2d22a7406c1e2a46820b5afc3d83b7189e5611a",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_05/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_05/checkpoint/model.safetensors": {
+      "sha256": "5a620a7702013f8fd9295e9f6247894116404eed6c8eb2f50229b6cb449bb8a3",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/5a620a7702013f8fd9295e9f6247894116404eed6c8eb2f50229b6cb449bb8a3"
+      }
+    },
+    "seed_42/gen_05/metrics.json": {
+      "sha256": "a96f8cc08f997b026662bcd06bc41b1d272335e60e38e705e6d1b1280d7ba5c0",
+      "bytes": 6564,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/optimizer_state/cycle.pt": {
+      "sha256": "80fe52be9a549077e135dfde1c326110b5f54693d30de588c3ad4a5f04c6db1d",
+      "bytes": 1002067771,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/80fe52be9a549077e135dfde1c326110b5f54693d30de588c3ad4a5f04c6db1d"
+      }
+    },
+    "seed_42/gen_05/probe/events.jsonl": {
+      "sha256": "5f626783e6205fe0d8dcdff2289de2016392712df4909daaed727e8f3237b0aa",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json": {
+      "sha256": "88f490258f9fa90f81287df661952edefbe02ae5bcb388c0584a7d8acce07165",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/shard_0000000.json": {
+      "sha256": "79674d2d0ff5863dd1517ed86f495f8a4175d40b15c0b9cab7a4de7c992b0e4a",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/shard_0000000.npy": {
+      "sha256": "e679b85ec39d8a69fcc7ef5a8013a6abdf9ea43431ff232355a1d24b124dd40e",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/e679b85ec39d8a69fcc7ef5a8013a6abdf9ea43431ff232355a1d24b124dd40e"
+      }
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/tokens.npy": {
+      "sha256": "e679b85ec39d8a69fcc7ef5a8013a6abdf9ea43431ff232355a1d24b124dd40e",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/e679b85ec39d8a69fcc7ef5a8013a6abdf9ea43431ff232355a1d24b124dd40e"
+      }
+    },
+    "seed_42/gen_05/probe_examples.json": {
+      "sha256": "e7603a60a77ef26b24f3b5317e243a22f4ca0f04815106e9cd2a202dad923325",
+      "bytes": 2048,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/stage_completion.json": {
+      "sha256": "3562fe3c9c469560c7202dca9c82af8a6feb47c1c24307903816b8b92d3f4096",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/test_sequences.json": {
+      "sha256": "e62e16e66fc5082fd12c7a29c24fe419d819bf52e437fc538376f459c96bdc0e",
+      "bytes": 224923,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training.json": {
+      "sha256": "e03ae55880552b7173a33f96ccb035389c469d3fe5b1eba769f3f0ac79c9c0b7",
+      "bytes": 2111,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_history.json": {
+      "sha256": "f4c6105c0438218e10a7b9920402fc76433bc2305be17cf419a4c64fab0eef50",
+      "bytes": 365,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_05/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_05/training_input/manifest.json": {
+      "sha256": "085ee2372771b928d616ed7e7bb4a858214cdc40f83aab047cd8246be2bb5f4c",
+      "bytes": 1189,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e"
+      }
+    },
+    "seed_42/gen_06/checkpoint/config.json": {
+      "sha256": "094f38bbebaa6ab6ed7e57d11724c229122e8aa82fd10eabb03b370a3da14b96",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_06/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_06/checkpoint/model.safetensors": {
+      "sha256": "db16e9f4f713c0a7cec16aca26d129446fbfef3cbb7ab8b0377c837d23dfd1ba",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/db16e9f4f713c0a7cec16aca26d129446fbfef3cbb7ab8b0377c837d23dfd1ba"
+      }
+    },
+    "seed_42/gen_06/metrics.json": {
+      "sha256": "52c090ca603a6497a54ac0fdcbc2977bff71059318e4d31a1041b9361fc04e98",
+      "bytes": 6551,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/optimizer_state/cycle.pt": {
+      "sha256": "d8a6e039b6f46f9feac88af8b2019cd4099c9baaacc33416be68130e0c273038",
+      "bytes": 1002067771,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/d8a6e039b6f46f9feac88af8b2019cd4099c9baaacc33416be68130e0c273038"
+      }
+    },
+    "seed_42/gen_06/probe/events.jsonl": {
+      "sha256": "ffc0a048e792e02419846d59140d836ba116739680226b503e333fe3e510f35d",
+      "bytes": 132,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json": {
+      "sha256": "ad7d0f70efa5c6d399f58560a46be9afc32b6a45d093e8c6ed6bf40789bb9d20",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/shard_0000000.json": {
+      "sha256": "de1227f6737e7c3741be14a6870e41ab68e41aa239f480fbca38d3185465fb4a",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/shard_0000000.npy": {
+      "sha256": "4a618ebed99d64d182bcbb1cf3d9b4cf0c50e0fef2bb175a62f2c57c1eca073d",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/4a618ebed99d64d182bcbb1cf3d9b4cf0c50e0fef2bb175a62f2c57c1eca073d"
+      }
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/tokens.npy": {
+      "sha256": "4a618ebed99d64d182bcbb1cf3d9b4cf0c50e0fef2bb175a62f2c57c1eca073d",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/4a618ebed99d64d182bcbb1cf3d9b4cf0c50e0fef2bb175a62f2c57c1eca073d"
+      }
+    },
+    "seed_42/gen_06/probe_examples.json": {
+      "sha256": "e7603a60a77ef26b24f3b5317e243a22f4ca0f04815106e9cd2a202dad923325",
+      "bytes": 2048,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/stage_completion.json": {
+      "sha256": "2497b61197eef3f5c95719dfb1cd06a006614fef9fe845e62b4d8e5fef9b56df",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/test_sequences.json": {
+      "sha256": "4cde6c29950d288d6206d4b8c9acb0f20b18caaef6267f0c74c58055cbf2cb3a",
+      "bytes": 224806,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training.json": {
+      "sha256": "cb6dd9eadbc2c8f33e76e9a5ae1e1c8bab77af6864ee1d18cb1282e9756b095e",
+      "bytes": 2107,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_history.json": {
+      "sha256": "d005b6ea7675e221267d64785481e7dabc559a0289a5ec0319bf2f548db73792",
+      "bytes": 363,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_06/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_06/training_input/manifest.json": {
+      "sha256": "3d3ff2808ac0c1bba90157eb6bc5801e8964ae346c137e018c2dd1cabe3a0545",
+      "bytes": 1189,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e"
+      }
+    },
+    "seed_42/gen_07/checkpoint/config.json": {
+      "sha256": "f9df238d1dbc79fa71a1267071f2d6422d7eb2623587355e2f989d42f1d6702a",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_07/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_07/checkpoint/model.safetensors": {
+      "sha256": "c1920212af85d5c69848dc6abfcd14c00f2914d39eed7c1f98ec2108a08ee271",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/c1920212af85d5c69848dc6abfcd14c00f2914d39eed7c1f98ec2108a08ee271"
+      }
+    },
+    "seed_42/gen_07/metrics.json": {
+      "sha256": "edc785b5d32ff86fe8a6699444a3bd3488637ea3468271624d8302f6c1eda557",
+      "bytes": 6552,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/optimizer_state/cycle.pt": {
+      "sha256": "5e22970f063736f29ee480c98963e397aa1b64d5dde9c3c93fe82f3fa4aa9103",
+      "bytes": 1002067771,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/5e22970f063736f29ee480c98963e397aa1b64d5dde9c3c93fe82f3fa4aa9103"
+      }
+    },
+    "seed_42/gen_07/probe/events.jsonl": {
+      "sha256": "7f62a531942388b726ec2f81052ae3a2e2317aa6d27568ab89a306456f10cb66",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json": {
+      "sha256": "b60258ed4545b0b65938b6bad08e6df6117dff485027e0a6e112a23dae74637f",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/shard_0000000.json": {
+      "sha256": "8aff15db60f425be54826cf34548a7eb036d4a0aa8633cf4bcdac08c3621eda4",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/shard_0000000.npy": {
+      "sha256": "8c2c7669e26ba1739a6dd55dd657d18ce61e02f475eb9f1fbbd6205f48fdba9a",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/8c2c7669e26ba1739a6dd55dd657d18ce61e02f475eb9f1fbbd6205f48fdba9a"
+      }
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/tokens.npy": {
+      "sha256": "8c2c7669e26ba1739a6dd55dd657d18ce61e02f475eb9f1fbbd6205f48fdba9a",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/8c2c7669e26ba1739a6dd55dd657d18ce61e02f475eb9f1fbbd6205f48fdba9a"
+      }
+    },
+    "seed_42/gen_07/probe_examples.json": {
+      "sha256": "21b635cfb93b55403c83c425e1e20e7a5960e40b6d529b1f544ff787c080ec7d",
+      "bytes": 2025,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/stage_completion.json": {
+      "sha256": "ff971fcd64543dc0ade6b2bdb687a6ccb7e0906516d20489cc304c675fc54432",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/test_sequences.json": {
+      "sha256": "e9e5b3fcb5c68bb366e244904472f6cf28132378e36a7c0d66ed3535043355ce",
+      "bytes": 224984,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training.json": {
+      "sha256": "b7c1abfcd950aaa656220ee9082451c95cdfcb0ba77ec0e0b39cae60f679cb05",
+      "bytes": 2110,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_history.json": {
+      "sha256": "c25a2c9a55578e6cf9e4f48319ea96fa0aeb5406f61f2e5a854d19fcb19b6f73",
+      "bytes": 364,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_07/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_07/training_input/manifest.json": {
+      "sha256": "d63f209eeb3c7032d808255a9e240d69a20c4424263105e7e0075485bff6a21a",
+      "bytes": 1189,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e"
+      }
+    },
+    "seed_42/gen_08/checkpoint/config.json": {
+      "sha256": "401cd53450a24a3319d03cbd4381c59c811d3a29f6eb770a0d5fc290bfe25388",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_08/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_08/checkpoint/model.safetensors": {
+      "sha256": "8e0ac858432527d6e5599e31cab6edf8b917636b50b36eb76ab5d92188ff9a95",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/8e0ac858432527d6e5599e31cab6edf8b917636b50b36eb76ab5d92188ff9a95"
+      }
+    },
+    "seed_42/gen_08/metrics.json": {
+      "sha256": "6815206382df6ef910e240f159bac6b672e34aa9e3ad9e79ace5955979d6f17d",
+      "bytes": 6555,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/optimizer_state/cycle.pt": {
+      "sha256": "f3f9a69bd98db10055d0601737c6b8c0c391eaca6dd5ced001bd5f76802da041",
+      "bytes": 1002067771,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/f3f9a69bd98db10055d0601737c6b8c0c391eaca6dd5ced001bd5f76802da041"
+      }
+    },
+    "seed_42/gen_08/probe/events.jsonl": {
+      "sha256": "f7e0cfaedc3acabb87313ca5504101083f8cad0a19ca95382015e98471b46d41",
+      "bytes": 131,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json": {
+      "sha256": "98d16ef1a61abd7275e39be842183d5dd3c4a0370567f76f039774df40f73578",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/shard_0000000.json": {
+      "sha256": "2d1e8f8f4e34605fc709cd0544b5fc25ce186dfa8726a88c8eddd31ae6abfd53",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/shard_0000000.npy": {
+      "sha256": "3bcb0dd09ca9a85868a24763010fe357f5095325e24bc5c8d0bf0a2b6b2bc873",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/3bcb0dd09ca9a85868a24763010fe357f5095325e24bc5c8d0bf0a2b6b2bc873"
+      }
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/tokens.npy": {
+      "sha256": "3bcb0dd09ca9a85868a24763010fe357f5095325e24bc5c8d0bf0a2b6b2bc873",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/3bcb0dd09ca9a85868a24763010fe357f5095325e24bc5c8d0bf0a2b6b2bc873"
+      }
+    },
+    "seed_42/gen_08/probe_examples.json": {
+      "sha256": "43a1c0eeb3d753bbb9f03be8a45af61a68e6be31284d8b630fbc52c696be2f7f",
+      "bytes": 2008,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/stage_completion.json": {
+      "sha256": "451a41bc48ca195a71bda4de83eacb3c933c49072ed9bc32a3c707513f45b1af",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/test_sequences.json": {
+      "sha256": "d7f49030921037e64c84e802e66d022450dda647a0db092df6966a2ccb2302d5",
+      "bytes": 224833,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training.json": {
+      "sha256": "24790d6321ce77defef6a8571262493f8ff0e4787a39d50aba457158ae92e364",
+      "bytes": 2109,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_history.json": {
+      "sha256": "ebc923dd4dcda4feddaa84a470276a6a5a2356cadd1ce56601e09ddc77642e33",
+      "bytes": 364,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_08/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_08/training_input/manifest.json": {
+      "sha256": "e98a3955e97a6cf9a744ecba6f2e7bacee10696cd929aee264fe85596b7135bd",
+      "bytes": 1189,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e"
+      }
+    },
+    "seed_42/gen_09/checkpoint/config.json": {
+      "sha256": "ad062f80df37403f377d3d8d073436aeced5323277bea6de460df7662fc9e7b4",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_09/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_09/checkpoint/model.safetensors": {
+      "sha256": "32f28adddd32f009dbe5aa69a595d6bebca23dd45366f788e52b905aea26140d",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/32f28adddd32f009dbe5aa69a595d6bebca23dd45366f788e52b905aea26140d"
+      }
+    },
+    "seed_42/gen_09/metrics.json": {
+      "sha256": "8bbc16d51792a1647d138eb8faf873841ec6a74d1cf754fb77aac13eb6b5e76b",
+      "bytes": 6560,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/optimizer_state/cycle.pt": {
+      "sha256": "fb8605d27285cc8707deb98e2ed63545b44b029fec216b7c7131b25c883cfe98",
+      "bytes": 1002067771,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/fb8605d27285cc8707deb98e2ed63545b44b029fec216b7c7131b25c883cfe98"
+      }
+    },
+    "seed_42/gen_09/probe/events.jsonl": {
+      "sha256": "f651abf9ca5f7bfa0d8eb137f3d99cb7e7bd8d64d510d10cc79e817d477743b4",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json": {
+      "sha256": "2f6c265e7b7fd74bc8c06adf8ad0a31521bfb576363eb2b94357e64a3f569c90",
+      "bytes": 719,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/shard_0000000.json": {
+      "sha256": "d7959b624f082f9e554c0f179b19e87536fb2fd2a04bbd43581ee74a4ddde8fb",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/shard_0000000.npy": {
+      "sha256": "eb0270df59b90e4683d394de431b8c6b7ae152daeed7a14820877c80c7e60bfe",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/eb0270df59b90e4683d394de431b8c6b7ae152daeed7a14820877c80c7e60bfe"
+      }
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/tokens.npy": {
+      "sha256": "eb0270df59b90e4683d394de431b8c6b7ae152daeed7a14820877c80c7e60bfe",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/eb0270df59b90e4683d394de431b8c6b7ae152daeed7a14820877c80c7e60bfe"
+      }
+    },
+    "seed_42/gen_09/probe_examples.json": {
+      "sha256": "e7603a60a77ef26b24f3b5317e243a22f4ca0f04815106e9cd2a202dad923325",
+      "bytes": 2048,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/stage_completion.json": {
+      "sha256": "4a48d23be3568244e5a3599a3cedfbe05b5170ad9d3b925db05cab70f99ed56a",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/test_sequences.json": {
+      "sha256": "af14121aa3f700f1b180919a360d968c5b45162e4e0bdeaa272f8f435ad68239",
+      "bytes": 224899,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training.json": {
+      "sha256": "e7a87aae0b935ac985d748b81d480a8afe8e630e0be30fd3147699580da09919",
+      "bytes": 2110,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_history.json": {
+      "sha256": "0d8f2a5d50fb1e3ad2fa8ce1865f6b4500462866fadfaa2a0782718ad62d945b",
+      "bytes": 366,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_09/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_09/training_input/manifest.json": {
+      "sha256": "6eec532dc6643183a6c311b130b1c61890ac6f413ce2b28380c83b96f91db496",
+      "bytes": 1189,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e"
+      }
+    },
+    "seed_42/gen_10/checkpoint/config.json": {
+      "sha256": "31296d48f1b08ae964f5f5078d34554d401a44a58d10231c4b8c6834b3d540a7",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_10/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_10/checkpoint/model.safetensors": {
+      "sha256": "df0dcd8afab407f5f81c82216230ef39f99d5564b8c6885ab8684786aaa1fcac",
+      "bytes": 500979600,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/df0dcd8afab407f5f81c82216230ef39f99d5564b8c6885ab8684786aaa1fcac"
+      }
+    },
+    "seed_42/gen_10/metrics.json": {
+      "sha256": "fa2657f025ecf7da27bee914d12ba63fcbe37125e78879ebb05345ce13d65c5b",
+      "bytes": 6567,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/optimizer_state/cycle.pt": {
+      "sha256": "a2c40ad73049c0289d8b97cbaf51e03e2eec5d905c2803810391d9bf275c800c",
+      "bytes": 1002067771,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/a2c40ad73049c0289d8b97cbaf51e03e2eec5d905c2803810391d9bf275c800c"
+      }
+    },
+    "seed_42/gen_10/probe/events.jsonl": {
+      "sha256": "a7230302683dec6c6979157d27d9c220a51e8651873d17d4bee632bad7be3541",
+      "bytes": 134,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json": {
+      "sha256": "dbecd5f43944dd6de97f60d8b2eee490f68070e249f1e81ee96720495e4e50b6",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/shard_0000000.json": {
+      "sha256": "8fefcc2c02246d6ec08eef8ac16c60835da91cf1d1208a7e0229c776b85aee22",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/shard_0000000.npy": {
+      "sha256": "0fef6d34cb227e22f4f0a4cec495f44eee488e5a5670e8f0edf4776c69c84ad9",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/0fef6d34cb227e22f4f0a4cec495f44eee488e5a5670e8f0edf4776c69c84ad9"
+      }
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/tokens.npy": {
+      "sha256": "0fef6d34cb227e22f4f0a4cec495f44eee488e5a5670e8f0edf4776c69c84ad9",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/0fef6d34cb227e22f4f0a4cec495f44eee488e5a5670e8f0edf4776c69c84ad9"
+      }
+    },
+    "seed_42/gen_10/probe_examples.json": {
+      "sha256": "e7603a60a77ef26b24f3b5317e243a22f4ca0f04815106e9cd2a202dad923325",
+      "bytes": 2048,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/stage_completion.json": {
+      "sha256": "04841fac168cb004794b85af6304024eaf1c57a9026dc98a0b48975c4f0a4e87",
+      "bytes": 1887,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/test_sequences.json": {
+      "sha256": "36de114364bf638e182bc434fc66831b670fa10d71a8a6f73014dcee4c96eb16",
+      "bytes": 224961,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training.json": {
+      "sha256": "106959d7ca8302a6c61e2d64c07d690d0b3bf37e82b7c85fdbac09f49432f5dd",
+      "bytes": 2113,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_history.json": {
+      "sha256": "16180741d09049f948ac8348ab19070efac9356b802ba18388127b719ee1a9c6",
+      "bytes": 347,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_10/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_10/training_input/manifest.json": {
+      "sha256": "0a98a3446199ac39a21daee2b6f1c01849593fad8c47d759f3f04269f4f84692",
+      "bytes": 1190,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "x00ckmzcka",
+        "region": "EU-RO-1",
+        "prefix": "fineweb-repeated-chunk-20261108",
+        "key": "fineweb-repeated-chunk-20261108/objects/621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e"
+      }
+    }
+  }
+}

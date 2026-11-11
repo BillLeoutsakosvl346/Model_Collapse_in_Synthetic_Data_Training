@@ -1,0 +1,17 @@
+{
+  "run_id": "20261110T225431Z-smoke-completion64-decoding",
+  "provider_error": {
+    "error_type": "RuntimeError",
+    "error": "Runpod POST /pods: HTTP 400: {\"detail\":\"gpu.allowedCudaVersions and gpu.minCudaVersion are mutually exclusive; supply one or the other\",\"status\":400,\"title\":\"Bad Request\"}\n"
+  },
+  "pod_absent": true,
+  "working_volume_id": "d153vc9y32",
+  "working_volume_deleted_verified": true,
+  "conservative_storage_interval": [
+    1794351271.0,
+    1794351375.7906172
+  ],
+  "estimated_storage_usd": 0.0001674735891764567,
+  "no_gpu_compute_created": true,
+  "correction": "Explicit CUDA allowlist must omit minCudaVersion"
+}

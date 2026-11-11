@@ -1,0 +1,36 @@
+{
+  "created_utc": "2026-11-11T15:05:32.696253+00:00",
+  "task": "Independent historical FineWeb mixture audit and publication of all pending project work",
+  "base_revision": "93f921ff30b05e3bc4a25ff4f0d4cdba09ec4be1",
+  "new_audit": "reports/20261111_fineweb_fraction_audit/README.md",
+  "audit_verification_sha256": "30c71249adf62c6d00a717fade7f635cc2e589b72abd322eb82acf5fb5098be7",
+  "reviewer_count": 5,
+  "experimental_numeric_fault_found": false,
+  "ambiguous_provenance_fields": 44,
+  "published_result_values_modified": false,
+  "new_training_or_paid_compute": false,
+  "full_historical_checkpoint_cold_restore": false,
+  "local_offline_tests_passed": 666,
+  "private_cache_independent_focused_tests_passed": 21,
+  "data_mixing_focused_tests_passed": 52,
+  "staged_pre_receipt_scan": {
+    "changed_staged_files": 1438,
+    "changed_staged_bytes": 52487776,
+    "manifest_files_checked": 24,
+    "manifest_referenced_files_byte_verified": 2690,
+    "private_paths_excluded": true,
+    "bulk_models_and_training_arrays_excluded": true,
+    "credential_pattern_matches": 0,
+    "largest_changed_file_bytes": 2108630
+  },
+  "repository_check": {
+    "markdown_files": 129,
+    "configurations": 50,
+    "publication_manifests": 26,
+    "link_scope": "Relative targets and current-document Markdown heading anchors; external URLs are not fetched. Historical report/history anchors are preserved.",
+    "paid_operations": false,
+    "errors": [],
+    "passed": true
+  },
+  "publication_policy": "Explicit source/configuration/test/docs/report paths and manifest-required ignored generated outputs only. Private credentials/state/recovery archives/bulk artifacts and local papers excluded. Staged SHA256 bytes checked against scientific manifests."
+}

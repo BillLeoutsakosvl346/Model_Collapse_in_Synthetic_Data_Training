@@ -1,0 +1,2275 @@
+{
+  "scope": "Small immutable scientific/provenance records; no credentials, authoritative controls or bulk arrays",
+  "files": {
+    "20261106T193918Z-full-completion64/artifact_index.json": {
+      "sha256": "0a3d11464d057a5d7dd4d70f9bd595a309421e172e7d790396c392c99e225b8f",
+      "bytes": 10357,
+      "source": "runs/20261106T193918Z-full-completion64/artifact_index.json"
+    },
+    "20261106T193918Z-full-completion64/child_snapshots.json": {
+      "sha256": "1fc4ff788ac4d90a0f4059fd7b6d3df9cb54a3b54776a6d67df217dd38dc9c45",
+      "bytes": 957,
+      "source": "runs/20261106T193918Z-full-completion64/child_snapshots.json"
+    },
+    "20261106T193918Z-full-completion64/children.json": {
+      "sha256": "c38f6fed1fae4404fbf7ab531eed897a6d51d4fc78f6496f1ab7b382618e7bbb",
+      "bytes": 119,
+      "source": "runs/20261106T193918Z-full-completion64/children.json"
+    },
+    "20261106T193918Z-full-completion64/completion.json": {
+      "sha256": "3ff05d7ad6e257344c2885116ed2be6f036b4a3d206397f6219cfb7647464c5d",
+      "bytes": 165,
+      "source": "runs/20261106T193918Z-full-completion64/completion.json"
+    },
+    "20261106T193918Z-full-completion64/config.json": {
+      "sha256": "67d99dfa75bec16a7212d95f2d3c30e7f4f73b291736ac38673be84558a5b93c",
+      "bytes": 2632,
+      "source": "runs/20261106T193918Z-full-completion64/config.json"
+    },
+    "20261106T193918Z-full-completion64/environment.json": {
+      "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+      "bytes": 433,
+      "source": "runs/20261106T193918Z-full-completion64/environment.json"
+    },
+    "20261106T193918Z-full-completion64/manifest.json": {
+      "sha256": "656270042ea7bbc96d95d32ae536e339d434af5ef4bd1433929b2f2f15fabad1",
+      "bytes": 173,
+      "source": "runs/20261106T193918Z-full-completion64/manifest.json"
+    },
+    "20261106T193918Z-full-completion64/recovery_snapshot.json": {
+      "sha256": "099b58b3772ec70bf44b21a81e92830377709506a017fab37cb0f20d29073752",
+      "bytes": 1183,
+      "source": "runs/20261106T193918Z-full-completion64/recovery_snapshot.json"
+    },
+    "20261106T193918Z-full-completion64/seed_42/gen_00/checkpoint/config.json": {
+      "sha256": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+      "bytes": 747,
+      "source": "runs/20261106T193918Z-full-completion64/seed_42/gen_00/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64/seed_42/gen_00/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64/seed_42/gen_00/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64/seed_42/gen_00/metrics.json": {
+      "sha256": "22438ccf2c26cde62e181e84db2872aba0fd1e29d10a3f50aa0a3a330b7ce9b7",
+      "bytes": 3766,
+      "source": "runs/20261106T193918Z-full-completion64/seed_42/gen_00/metrics.json"
+    },
+    "20261106T193918Z-full-completion64/seed_42/gen_00/probe/synthetic_for_gen_01/manifest.json": {
+      "sha256": "a6aa7f0a3e542a33b02162aaaa7377861e8eb3377e6ba6b2840953239b787680",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64/seed_42/gen_00/probe/synthetic_for_gen_01/manifest.json"
+    },
+    "20261106T193918Z-full-completion64/seed_42/gen_00/probe_examples.json": {
+      "sha256": "e020373d1276a4004f39e300e412d6518d066fa0c48681fdc4d9c937d90bcc45",
+      "bytes": 2091,
+      "source": "runs/20261106T193918Z-full-completion64/seed_42/gen_00/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64/seed_42/gen_00/test_sequences.json": {
+      "sha256": "faadb6f999e2fc81cf7a7f6a799d179c5d4ea479abe995e7a027be53c4f85f4d",
+      "bytes": 224908,
+      "source": "runs/20261106T193918Z-full-completion64/seed_42/gen_00/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/artifact_index.json": {
+      "sha256": "c8db03c264bcd29af567ee434c25e7493934b9483a390383d3a84a808dff231d",
+      "bytes": 36858,
+      "source": "runs/20261106T193918Z-full-completion64-real/artifact_index.json"
+    },
+    "20261106T193918Z-full-completion64-real/completion.json": {
+      "sha256": "34de6d972f5069a48f44bd507904e9edbdef44a05a0f640a4b14c299ae9c04be",
+      "bytes": 91,
+      "source": "runs/20261106T193918Z-full-completion64-real/completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/config.json": {
+      "sha256": "585bdbbf16b3ad96447c3b30c49187cb88e894e1ab3c0a247eb17860dd2c96f7",
+      "bytes": 2942,
+      "source": "runs/20261106T193918Z-full-completion64-real/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/manifest.json": {
+      "sha256": "693e22c84ead239cfd6130d10a8bc6a07cc2e22fac847ede628014ee328a7806",
+      "bytes": 258,
+      "source": "runs/20261106T193918Z-full-completion64-real/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/recovery_snapshot.json": {
+      "sha256": "179b490b6999559c219493b3cb24360d807852ee423582067fe42832a71ab513",
+      "bytes": 819,
+      "source": "runs/20261106T193918Z-full-completion64-real/recovery_snapshot.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_00/metrics.json": {
+      "sha256": "22438ccf2c26cde62e181e84db2872aba0fd1e29d10a3f50aa0a3a330b7ce9b7",
+      "bytes": 3766,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_00/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_01/checkpoint/config.json": {
+      "sha256": "e5b9200d0e1c894fa9d759a56c27605d649263d7354187d4a7e662a3ab4b97b9",
+      "bytes": 806,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_01/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_01/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_01/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_01/metrics.json": {
+      "sha256": "b738f616c2e2682213782507a5aeef063a9f45ad094bb53d5291616413371776",
+      "bytes": 5866,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_01/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json": {
+      "sha256": "7d36b9cd96e159bd8263ef94cb18059a29e5ff8a5a911a52a90f1d1a8154fcf9",
+      "bytes": 720,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_01/probe_examples.json": {
+      "sha256": "5b410d8dd849643d8af2845930cf6eb6c25f8f3fa57edd4e10d5f99cb6f6c5a9",
+      "bytes": 2004,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_01/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_01/stage_completion.json": {
+      "sha256": "6c57dd9d246b08fe6fcddb77260681919cc88b71c00408ea6957144b1ea706df",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_01/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_01/test_sequences.json": {
+      "sha256": "92fc0a13bec4e21c0235c4646cb57afff0ab597f6df1659f11c9000808aedd07",
+      "bytes": 224940,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_01/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_01/training.json": {
+      "sha256": "43b58220d45b4caf0ba48845cfcdb482c74b962601e05ccd2ef4cb9bfd9cdfe3",
+      "bytes": 1879,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_01/training.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_01/training_history.json": {
+      "sha256": "c7a6cd33eee6057388a9330ddfd0c8e72374406095b7ba498da0c05fa0fe3aab",
+      "bytes": 347,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_01/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_01/training_input/manifest.json": {
+      "sha256": "3fb983b3037cec2d5607710334025855035236a5e900db72a771b33c76aa3ce7",
+      "bytes": 1020,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_01/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_02/checkpoint/config.json": {
+      "sha256": "9eebdb358b8e580cc7974b9eee3a9916c09ce76b9b43eea445fc66fe2f6d0c03",
+      "bytes": 811,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_02/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_02/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_02/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_02/metrics.json": {
+      "sha256": "a96e8b0744a24bc5cf851e870b0b1ced3b667257d74141aa094bcac8bde4bdb3",
+      "bytes": 5976,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_02/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json": {
+      "sha256": "4a65c511d05d4d26eb1fb176ac53ff9188d44f2d5f9af8c8bffa288da9e4141e",
+      "bytes": 720,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_02/probe_examples.json": {
+      "sha256": "f782db97c864d10d6ac8fef103feae2879d7b03c9ec743c3cc4c96a57ffbbfa6",
+      "bytes": 2019,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_02/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_02/stage_completion.json": {
+      "sha256": "974f5a90848d18bcbfcc7b44e8a284d1731a184263aa8a0efac3b1d6cb499ad6",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_02/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_02/test_sequences.json": {
+      "sha256": "186c9415435b771fa73e896564c309cd24b1e8ff13b9044154c8a5b547fbd387",
+      "bytes": 224933,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_02/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_02/training.json": {
+      "sha256": "8fcb1f6f4f804354c000aed94674c8b5acf7db8c7ddc48dd98a38fd23ef3ca53",
+      "bytes": 2003,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_02/training.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_02/training_history.json": {
+      "sha256": "c2d4fa645bed66c8ae96c58bd80b1aa1bfc69bfc386e6322f7c95c34a77fc2f7",
+      "bytes": 364,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_02/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_02/training_input/manifest.json": {
+      "sha256": "f9a79d20a8e3f2d3d58cf9922c02277ce3350322e6d476fcd9636749af7af66d",
+      "bytes": 1082,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_02/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_03/checkpoint/config.json": {
+      "sha256": "5293e7bbf23665c97b45f786b372a3eb4b43e4af7e3352c4d26f96cd7933682c",
+      "bytes": 811,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_03/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_03/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_03/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_03/metrics.json": {
+      "sha256": "b5875ac6bda579d231f0a7caa2c76363897c0780564f01d8c4670ce57a9f8bf5",
+      "bytes": 5971,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_03/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json": {
+      "sha256": "525e651ea3d8b56f592cbd984bc01ca029d723e028332ae1f640ba0097620ac3",
+      "bytes": 720,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_03/probe_examples.json": {
+      "sha256": "fdfbc57e8252f81613e9cedf18386c98d62b50580c8d6c2ef69e9d05bef3d592",
+      "bytes": 2062,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_03/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_03/stage_completion.json": {
+      "sha256": "b8d10623de9dfb0f121f545fb4c42fd5dbc00c852dcd127e5d78f268d6d89305",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_03/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_03/test_sequences.json": {
+      "sha256": "a491f7e6b59bff52429e08d152fe6d771a329dca50d3a886bf595511947dd8f5",
+      "bytes": 224946,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_03/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_03/training.json": {
+      "sha256": "139adb05efd3802769a5bc714550f3d81e549e0205d65c17ea93812a966f8c55",
+      "bytes": 2002,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_03/training.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_03/training_history.json": {
+      "sha256": "ef5612158a65e74a945edd77f89ec1ae5e1b7c7ee8f2197600d9ac8be263b7e0",
+      "bytes": 363,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_03/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_03/training_input/manifest.json": {
+      "sha256": "6835ec5bfaa58ceff3b6e53e660368bdb71e447f063ad7379e1e1ecbc8b2afcf",
+      "bytes": 1082,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_03/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_04/checkpoint/config.json": {
+      "sha256": "17769b65fac933c8db3a199d8eb4b570014cebe8d2e94bc1130d2f6ca6507753",
+      "bytes": 811,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_04/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_04/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_04/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_04/metrics.json": {
+      "sha256": "e6fb117676b88404ec05fcf7d78f10e85efd64989ad91cc6fd06837d8a10d1dc",
+      "bytes": 5969,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_04/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json": {
+      "sha256": "b453870d7a37f1803c39b00d97470dff4ae933dc43ab2ca462bd947983e87cf0",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_04/probe_examples.json": {
+      "sha256": "acc0ffd69a90a52e4133cc918e5c2d1985900e3655cb348e3b6b11e5217b59ed",
+      "bytes": 1977,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_04/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_04/stage_completion.json": {
+      "sha256": "ae0d6c0e3b5af68f12eacf9ad5c39cf20344905fe1ac4f0217ce0fe1e12ea246",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_04/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_04/test_sequences.json": {
+      "sha256": "f2ad1042fac327f662e82d3cafefb20f547b7c037fed29160281b080203ac87f",
+      "bytes": 224919,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_04/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_04/training.json": {
+      "sha256": "8d8faa6d0655741e3eb74346a9c60cc4cfc871e7a7d40f5063af712e6da79edc",
+      "bytes": 2001,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_04/training.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_04/training_history.json": {
+      "sha256": "a0e20e83bc9f24db5eaa402356f32b0d94fcf2dac0444e4fe74fca809c93112d",
+      "bytes": 363,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_04/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_04/training_input/manifest.json": {
+      "sha256": "7bdff6915e611185e1ccfe51d3c6e356e4f871a9caf068a2af680a7b7b08834c",
+      "bytes": 1082,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_04/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_05/checkpoint/config.json": {
+      "sha256": "eb6479cc979fab3456b47257f0f4358b6c6b0eaacdb1b04012c5854206c04439",
+      "bytes": 811,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_05/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_05/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_05/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_05/metrics.json": {
+      "sha256": "0b7c6ae910b07eb8d30f76f253cd0017ec6377699563d7abe13420458b29bb73",
+      "bytes": 5981,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_05/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json": {
+      "sha256": "abb50295c4a6b53ed979ec3a5f5365bc863afdb4dc883c29a7762061ec712797",
+      "bytes": 720,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_05/probe_examples.json": {
+      "sha256": "f7fc6a5dc5475e39dec9044e1a0840eb0506f62059e77c854aa75bf728a14f95",
+      "bytes": 2066,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_05/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_05/stage_completion.json": {
+      "sha256": "c31ff293a55c3c35e24a2a6bf53b22a04d4bc7e374e2f399f736e0ab53e89e15",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_05/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_05/test_sequences.json": {
+      "sha256": "ef62f6677cdb96e323c857783cf9497aab0758b6147d2b4c2814deb58094494e",
+      "bytes": 224965,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_05/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_05/training.json": {
+      "sha256": "3961cd7781708a3fb7d8de49081186595686bb3e6bfa6ad6319b632a921291c7",
+      "bytes": 2001,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_05/training.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_05/training_history.json": {
+      "sha256": "4f0494963a3249f3285a34473579aa7daf46fc64c42598798d297ed919ef3af1",
+      "bytes": 362,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_05/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_05/training_input/manifest.json": {
+      "sha256": "532ec6016f82fdf3c065f18d8037c2cf617f405800a68c6d83bba25ebc8d462b",
+      "bytes": 1082,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_05/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_06/checkpoint/config.json": {
+      "sha256": "db819ef03d3d441753c75a8d01e19fbdb308e2bbdc7fe7acb70b84e16454247d",
+      "bytes": 811,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_06/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_06/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_06/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_06/metrics.json": {
+      "sha256": "9ca8013ff3ea7004812ddb2a63f98b89919ce9e05fecde8c32b80876499ad599",
+      "bytes": 5986,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_06/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json": {
+      "sha256": "ed5e997ef4a2cd4ac4af1f3c7d087d8efd516149b26a7249736392cd4a49abeb",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_06/probe_examples.json": {
+      "sha256": "c22b87a34cba36201e02d561720258e74b834bb290a97b10102620e30d2d6346",
+      "bytes": 1975,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_06/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_06/stage_completion.json": {
+      "sha256": "20308960f23ba41be6e848bcd7b2b667db0c96221c39456887fc23e2425d5744",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_06/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_06/test_sequences.json": {
+      "sha256": "8b470c20d32fb0ad92d8d7ea0ed17e5a8f0b84d82058863afaca0e25763140ab",
+      "bytes": 224889,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_06/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_06/training.json": {
+      "sha256": "14a0d02c9223974dc941f09c079a794bd2543f9c05ff8fedb5e1a1f7e26f4a44",
+      "bytes": 2002,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_06/training.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_06/training_history.json": {
+      "sha256": "720f1ee4e7d0e8c4d0ce4502f0a495a47245d8085c10959479148419398a992e",
+      "bytes": 361,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_06/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_06/training_input/manifest.json": {
+      "sha256": "847d0ddf035f7b9a88ecf30a157bcfacff822d611d16e1103aa0a5fad9055071",
+      "bytes": 1082,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_06/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_07/checkpoint/config.json": {
+      "sha256": "6eba560d237cf95580a40880f344331c5dae5f8e7cfd2369b2c10aeb0dde03a0",
+      "bytes": 811,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_07/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_07/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_07/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_07/metrics.json": {
+      "sha256": "dd45447a68a8398c3d9d49f4efb02a0a789c09971deea9e2e242dff5d611d2ee",
+      "bytes": 5974,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_07/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json": {
+      "sha256": "e95f2be920644b34af63bee11157040975ae710ca8d53c39811faee6ee032737",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_07/probe_examples.json": {
+      "sha256": "a9a2dfbcb5ff18e9bee5ef3cc4a6e440c27097f01bb048a6a8b0f9071cdf592e",
+      "bytes": 2071,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_07/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_07/stage_completion.json": {
+      "sha256": "46e790d194f484c00833e4b2ddd83b6c6511d910f5ca3981f491da3d24576203",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_07/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_07/test_sequences.json": {
+      "sha256": "4ce30406ec42c15b0c260d739f0e6346603db736b92bc0d35a13bb39f73e3379",
+      "bytes": 224914,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_07/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_07/training.json": {
+      "sha256": "e2d3ef683051a231afc7b783f5206c08b356a6aa853104cc05bf4ac5cf171d33",
+      "bytes": 2002,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_07/training.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_07/training_history.json": {
+      "sha256": "76deab6ea3e3c1ce08dd3d47c36341f0930fbd89e975986840546ce8e8228eea",
+      "bytes": 362,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_07/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_07/training_input/manifest.json": {
+      "sha256": "92fb03bf84e2ccda43361d702ce428ac78104825f57674e6ad4147ead19ba354",
+      "bytes": 1082,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_07/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_08/checkpoint/config.json": {
+      "sha256": "957d92b58741b9fbdf88b9cbf1e5732017db6811ecc1b4c77f8a0b4b1f7c6cf9",
+      "bytes": 811,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_08/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_08/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_08/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_08/metrics.json": {
+      "sha256": "2fdd12526b533870c802f789a266a0f88df42bdaa78f4ae8c125604214288857",
+      "bytes": 5980,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_08/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json": {
+      "sha256": "93ddb1b413f92f48ddf502c939d7b94d71c912a121d432a3712a55d000a117b3",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_08/probe_examples.json": {
+      "sha256": "62f141978631f121d102393d5fe7478e041f38b614471d20625321ad782bfdde",
+      "bytes": 1972,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_08/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_08/stage_completion.json": {
+      "sha256": "8bd06822e935dee50136e3e6a8a250db2525e22f730ef82e15b182fc8b12b8fc",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_08/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_08/test_sequences.json": {
+      "sha256": "bdeb374263d4dd4a3120b3ab0eaecb5db47f2caef957c93297bb65118e7085ac",
+      "bytes": 224968,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_08/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_08/training.json": {
+      "sha256": "7b93445d42aca08584bcb58fe393577c3f88438c4ab724460d8d8bd19dc1c3e3",
+      "bytes": 2001,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_08/training.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_08/training_history.json": {
+      "sha256": "3cfdbc6287a64cd9f5f7cab1d7c3b4a77ff8e925d3276d56b4840cd82cf95a38",
+      "bytes": 363,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_08/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_08/training_input/manifest.json": {
+      "sha256": "7eb4fb7126d0d42a0f9d45ef3ec36e059651e8ff6f705a3e4eb1a5c6f37356d9",
+      "bytes": 1082,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_08/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_09/checkpoint/config.json": {
+      "sha256": "b2d16803324e411e4e55fc8c45c11faaba19f4817a38ab824d8e48a164c9a2d7",
+      "bytes": 811,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_09/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_09/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_09/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_09/metrics.json": {
+      "sha256": "53160595c448cc488ff71e4bfe77873c1306ab4279e04e899b291bc3ac17a405",
+      "bytes": 5991,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_09/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json": {
+      "sha256": "ca7e9a80aaeef8e28f53e9a6e946cb24b330c51ae1b9328c8b89ccffc1f97b78",
+      "bytes": 720,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_09/probe_examples.json": {
+      "sha256": "a9a2dfbcb5ff18e9bee5ef3cc4a6e440c27097f01bb048a6a8b0f9071cdf592e",
+      "bytes": 2071,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_09/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_09/stage_completion.json": {
+      "sha256": "ff4ff690b23d4d305430557f81132e7c734ed791ebe25aafe58edb0dffc2cc92",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_09/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_09/test_sequences.json": {
+      "sha256": "b4acb27d1c716faa3c9b5e12749809f330bfb7e8125730f684918d11ba535193",
+      "bytes": 224999,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_09/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_09/training.json": {
+      "sha256": "ca8b21e47a9498d71e133966369e08bd1cee32eeadfdde818623d5439be028c2",
+      "bytes": 2000,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_09/training.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_09/training_history.json": {
+      "sha256": "8bfd9fb1d53192deeb860b7e8c1e5e6eb176c5ce7229e246fda534502bc66a8c",
+      "bytes": 364,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_09/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_09/training_input/manifest.json": {
+      "sha256": "78f2529e08456f9a6a4b89fb02ebae1b9753279d98ffd8a864cd0244ef952c71",
+      "bytes": 1082,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_09/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_10/checkpoint/config.json": {
+      "sha256": "80f73de9d7962ca49b28d34171af8f63a34b433fcaedca82c47b1ef369e5595f",
+      "bytes": 811,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_10/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_10/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_10/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_10/metrics.json": {
+      "sha256": "03e622a80317724820e8a90c96df507a2a8d79a53f46fc02972e6baa7b8f46b3",
+      "bytes": 5986,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_10/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json": {
+      "sha256": "9c3e789396e1c65754a626e6784d9f24c257e61f9270c9d308681b4752231a23",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_10/probe_examples.json": {
+      "sha256": "e4e21261e02af5a5979b42ce8daf597b42bbe00141108df602f8765198b3bb56",
+      "bytes": 2076,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_10/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_10/stage_completion.json": {
+      "sha256": "006f132f3fac893f8205a7ddfc4243da8ec9254390eff6a6cc80d1637f545af3",
+      "bytes": 1887,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_10/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_10/test_sequences.json": {
+      "sha256": "fdf4ed6955803d51126f08ee64d61eb034cdbbb4a87231cc368f3501134bcb8b",
+      "bytes": 224956,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_10/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_10/training.json": {
+      "sha256": "d3fd86cb755d5bde0929c9c780b959de71df5fd691ae94d1398e1e2348925d9a",
+      "bytes": 2004,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_10/training.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_10/training_history.json": {
+      "sha256": "bd588adf8ba73915f52337cd59d0b35a6116d7f76796269837efe332706a4a32",
+      "bytes": 347,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_10/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-real/seed_42/gen_10/training_input/manifest.json": {
+      "sha256": "c3e12ecd4565e60d5e7e940d76eaf3a8d9bc86b3ba7c7652314cf91a07cb0f3f",
+      "bytes": 1082,
+      "source": "runs/20261106T193918Z-full-completion64-real/seed_42/gen_10/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/artifact_index.json": {
+      "sha256": "22c9cdef81ebcf26a5a2abafbfb0a1e08113dfbbaf2fca7ecfd00bb241d3668e",
+      "bytes": 191405,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/artifact_index.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/completion.json": {
+      "sha256": "6ee2d0e59a01f9637b8f116d12410813b205152f9f63b629287ab6b501a49239",
+      "bytes": 97,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/config.json": {
+      "sha256": "7eb605a2bf36a508520efbb4de0b26d12a5ace2c47d50a6247c810aeae6edf7a",
+      "bytes": 2947,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/manifest.json": {
+      "sha256": "e5a58583a1b0548b1486e54603d4dbd62bfe1a7c7eb4a15f7f59e373f0829370",
+      "bytes": 258,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/recovery_snapshot.json": {
+      "sha256": "a6f81d06e3f85ff3aa10bb067880ab1281ef0d1454a6842c46a5cbbcefcd2739",
+      "bytes": 830,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/recovery_snapshot.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_00/metrics.json": {
+      "sha256": "22438ccf2c26cde62e181e84db2872aba0fd1e29d10a3f50aa0a3a330b7ce9b7",
+      "bytes": 3766,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_00/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/checkpoint/config.json": {
+      "sha256": "e5b9200d0e1c894fa9d759a56c27605d649263d7354187d4a7e662a3ab4b97b9",
+      "bytes": 806,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/metrics.json": {
+      "sha256": "1159f244757414d94647865ca23a695d9f9bb81ee27fb697cc49945f47e26ebd",
+      "bytes": 5981,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json": {
+      "sha256": "2cc6311026f37b8a06c01b2633c660078e2a3266ed13eb07b15a4f5cf4604ea3",
+      "bytes": 720,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/probe_examples.json": {
+      "sha256": "969911ef9bee461d3d25d07af62d079dbe3fe14eac9846fce9505a3aa5690771",
+      "bytes": 2028,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/stage_completion.json": {
+      "sha256": "7bd880169caa3c1bf99159163fe371a8956a288d33fe0bf2b156a00f1e79314f",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/test_sequences.json": {
+      "sha256": "3551aab8d4d39dd1a0ce2583b6e45261a9413650c7af044464a11eed353a02b5",
+      "bytes": 224109,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/training.json": {
+      "sha256": "7ad993699b9bae5561230b182defa544c6dc899c0689d899731f409b03a9ae43",
+      "bytes": 2001,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/training.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/training_history.json": {
+      "sha256": "178816bc1636fff623bc86a88c13db5fb61f5418d086cbc8243db2959b40fd16",
+      "bytes": 340,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/training_input/manifest.json": {
+      "sha256": "74f4fa7534f065538b200f09ad0d58c9b17c90a25d233cb35450e2e194a48e91",
+      "bytes": 1149,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_01/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/checkpoint/config.json": {
+      "sha256": "7452236e6ae2f903c00b4e425ef41175e7be7978e1214db865bfd544061c5754",
+      "bytes": 816,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/metrics.json": {
+      "sha256": "6ae7a2d48edb8a74b32e1d51a080c78527ab0676872e04d3fcbf4677da022ff4",
+      "bytes": 6105,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json": {
+      "sha256": "6e73d18f2691996322c2cee7ae82efcbf9cebd590eefee57ff6141a3a3cbd9ae",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/probe_examples.json": {
+      "sha256": "40403a5d9effcfc3c51bd463e403715e913c6d4c632b5455ec65af1ded9ee5d1",
+      "bytes": 1933,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/stage_completion.json": {
+      "sha256": "978f8c4d29d3005fce0dd8233f555d5f72f4eb437eb2fdb8512150fd4c8e21e3",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/test_sequences.json": {
+      "sha256": "1d0555b18c9203ceceacf7b905b018516f6a02d91915a23c30adf6bbfdc084fe",
+      "bytes": 223000,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/training.json": {
+      "sha256": "3c3f8cc31b7fa6375020d2406968fb5cbd3497308f3ea75820a9efacc92edf9b",
+      "bytes": 2130,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/training.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/training_history.json": {
+      "sha256": "fd4d3c01e56f3f955ddac2671cf8509e03f32d1f075da1d1f3aa6dbeeaa60124",
+      "bytes": 364,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/training_input/manifest.json": {
+      "sha256": "bcd98f9117af96205a27300f7e407e91e47b8d52ba447e24426f93d45bc1d3b2",
+      "bytes": 1211,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_02/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/checkpoint/config.json": {
+      "sha256": "fac02b797eaa2f31fbc4673dbcaa5eb5c8561611c92c88f89bcd0ff7c9a5ee27",
+      "bytes": 816,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/metrics.json": {
+      "sha256": "d1c2451bfa3ba52d73525966961b888ea4f4bbdd897764a1e5cdbab7b507b140",
+      "bytes": 6115,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json": {
+      "sha256": "dcbbc0abc956b470401e2c80fc4ed006b1735108288346db416a069de918d5fa",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/probe_examples.json": {
+      "sha256": "b3d15c07c4c9495aeb67e4d0ad85fb2aa9ae2773ac32f6caa33b6e67da4cb57d",
+      "bytes": 2045,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/stage_completion.json": {
+      "sha256": "0507a70de7923c93349f994db3686d2e3bb55809d34e4f880d16b1cbd682bb34",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/test_sequences.json": {
+      "sha256": "6a1e0430c174c2202bc9aaefb024036ba5b818adcef7cf8a691c27431701fc5a",
+      "bytes": 222489,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/training.json": {
+      "sha256": "fa6b155795e7bae11ac84e10f6710cb8d8d571daa9b572e955f5b394df0e5a4a",
+      "bytes": 2130,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/training.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/training_history.json": {
+      "sha256": "6251819594bccf3388c6a36ee96dc99f34f44c3e605480abcba6746a173c07c5",
+      "bytes": 364,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/training_input/manifest.json": {
+      "sha256": "2c9b2391a429cc54e7569ce1f0b4e5db10f653aecf79f55b322a923f6dafaefd",
+      "bytes": 1211,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_03/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/checkpoint/config.json": {
+      "sha256": "802f1a571369adeba98e33cbe580de99bb3cfff6d2ecb52b5cb2a9ae16f15d4e",
+      "bytes": 816,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/metrics.json": {
+      "sha256": "0e39b6a7835cc5616f8f26205bc5f917dd3665a2521c8e53e2f95fbe48437a0f",
+      "bytes": 6116,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json": {
+      "sha256": "69d0d581225f6b443afefa1a8841b5f0ca66d3bda0d3a3548ce56bcad3993480",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/stage_completion.json": {
+      "sha256": "344b30dbf5d9f5802b5f5a7241f792dbe7d7f1f90b18a0849495d1d74d923351",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/test_sequences.json": {
+      "sha256": "6a7080b28d5289a3b207b8acbf1376146d80bb44415085c54dcf55100149d402",
+      "bytes": 222207,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/training.json": {
+      "sha256": "3a3273dd0984b59d96507f9807a873572f2f77781998002e7d38003e7c5025fc",
+      "bytes": 2132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/training.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/training_history.json": {
+      "sha256": "47180d7083433f4f1580c208b8d17f0a4c659da8f89858d92e5a21228be2a7ed",
+      "bytes": 366,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/training_input/manifest.json": {
+      "sha256": "54a33be61fafe8280d25d782ff06199ecefa7b9a2e18969cae745be7209b9319",
+      "bytes": 1211,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_04/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/checkpoint/config.json": {
+      "sha256": "4272cdac1385b627b4fcf744e977abb9bbcf7ba5e4b22a1ed15c5069446169ae",
+      "bytes": 816,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/metrics.json": {
+      "sha256": "5326bf1bf8fc8ee193ae1067c425b3b2fa3cf3743614818777af3e501ea2dea1",
+      "bytes": 6109,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json": {
+      "sha256": "e6e118cd8f677ed844f438003ec33c08ee8fadee0e681407f1b53bbc42673a2b",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/stage_completion.json": {
+      "sha256": "fa5e0bd2ecdd8055ee96cb84e709edce13d56452fb7c8e7b940a663068097fad",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/test_sequences.json": {
+      "sha256": "66d2b7c1acb398248590b52d2b1d5dd6356979c9ca2d38a43c39719ddac92734",
+      "bytes": 221975,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/training.json": {
+      "sha256": "f7f7ce4f159c804a8507c5eb8cd860b6c4f6809fee054c6f8098537466a7b34a",
+      "bytes": 2131,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/training.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/training_history.json": {
+      "sha256": "49a224b6a76c4763b7cab2fd5100564a015181f376f4a300f8ddf44adce00c9d",
+      "bytes": 366,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/training_input/manifest.json": {
+      "sha256": "7a52a67fb6af7991d8c5b83c1916ca82b95e98b0524e633135b4dcefce88893f",
+      "bytes": 1211,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_05/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/checkpoint/config.json": {
+      "sha256": "5ac9a07ed2d9e3aff4b5dfa58cb7360bcd6baeeb2bb690feae2e2b72e696665e",
+      "bytes": 816,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/metrics.json": {
+      "sha256": "6e5733c67ceb43578424019e76daabd0ee48f300c34950a5399aacc6879e556d",
+      "bytes": 6098,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json": {
+      "sha256": "a39f55fc4e1d33d20a2e946fa300c129aafc9e5bab838e5153fc1a8091fa7949",
+      "bytes": 719,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/stage_completion.json": {
+      "sha256": "f17b67b2c2612e022ecd88abc95b8e9619070b7bb59ec59a5d301f202740b235",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/test_sequences.json": {
+      "sha256": "2a185d98fea4ae1ce4bea957cc3dae5553b9152d31c132260bafbf8e75331239",
+      "bytes": 222016,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/training.json": {
+      "sha256": "b05159a04c8919c7cd030c628bccee63c8ac4147f545741dd4db96b76037d822",
+      "bytes": 2130,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/training.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/training_history.json": {
+      "sha256": "604e104947fb3f4f7025a83822e74fa429598f7a701f8e5a45c864e3ac6fa596",
+      "bytes": 365,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/training_input/manifest.json": {
+      "sha256": "d5547c8c9ee142265823ea97f9964a1323b842bf532451852704b9bfb090d62e",
+      "bytes": 1211,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_06/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/checkpoint/config.json": {
+      "sha256": "c6b535cb65b0d4409ff7c1cde424aa668c4faee3207c60f7fcc4a022e4e5c4d6",
+      "bytes": 816,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/metrics.json": {
+      "sha256": "d379b46e6dcdd1ff19a13abce0d08d374c6edf98c85d84adb6850080c599767e",
+      "bytes": 6120,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json": {
+      "sha256": "4b9e44022a840947618778abd3da1a968fc881ccb97ff5a56b5e2c765b405908",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/stage_completion.json": {
+      "sha256": "614d4be6837bf10ee519e8e2596e00e39af56f8d35cd101b855dec6fa0358dc6",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/test_sequences.json": {
+      "sha256": "ee773940f8e836644177dfc1566127c0e87e16b2658ee840b79ee81298ac75f2",
+      "bytes": 221974,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/training.json": {
+      "sha256": "767ffa2769f470666b5d84965ee610d097a3b56d46d3e411c4223fd22cb718aa",
+      "bytes": 2132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/training.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/training_history.json": {
+      "sha256": "09bfcc273e3e91f0036f68d68c00c0082ad11a89beddfc61be3b9feb7fc9196e",
+      "bytes": 366,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/training_input/manifest.json": {
+      "sha256": "9e5aab4dca8ad2f12fcd61ec7d30a4763d8f2a7523069af58ccc6abb5ed815ae",
+      "bytes": 1211,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_07/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/checkpoint/config.json": {
+      "sha256": "99ebb71679585a56ceecc5618dba7eeac0aa04d0ed887755ec87931898104b6e",
+      "bytes": 816,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/metrics.json": {
+      "sha256": "c672cbc3bdda0be195b504c22c0f9779f2b1b3bdcf481d7ba9991b235ec35587",
+      "bytes": 6108,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json": {
+      "sha256": "b540e086d2bdd5351f2ea0e85aebe74079797282bc9e1c54fc270430951c87db",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/stage_completion.json": {
+      "sha256": "13ce935fef39e9a3f0ee8a29170e64d4c5f0875cc25c6589e336a389b2832f3b",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/test_sequences.json": {
+      "sha256": "edc2212146d51035e9cd9a721ef99ae0ab5c8156ea860d674442c7219123a6a7",
+      "bytes": 222011,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/training.json": {
+      "sha256": "f3209f7e87c39a8b826da42dd1a83b38fdfc3c561ae79f84ac3eae4f12acdb65",
+      "bytes": 2131,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/training.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/training_history.json": {
+      "sha256": "003eb570615e8aa63cdbb3528edd61c9439dcb243b46e328b5d39b0c022b5413",
+      "bytes": 367,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/training_input/manifest.json": {
+      "sha256": "de18963235bbc21c791fa0fd7b3cd77c9edf5f2c36b1a735ab21e22e7e23dc6d",
+      "bytes": 1211,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_08/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/checkpoint/config.json": {
+      "sha256": "388fdca04da4a64b0ee5b6b3962d91185e01eb53bd0844e959d3503d1437e433",
+      "bytes": 816,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/metrics.json": {
+      "sha256": "e6fffe7f0888796c091971098a50f8dffb63f5054a1b2716a83fe32dee83582b",
+      "bytes": 6112,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json": {
+      "sha256": "96e0c01f69ef6f9a7497f6215ca8f10cbafa054a52fd581e184e19f19985bfc1",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/probe_examples.json": {
+      "sha256": "3f0002e259e66afc33de22338f11f94de99ea031472313023edf6f76ce2b4502",
+      "bytes": 2141,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/stage_completion.json": {
+      "sha256": "a84c3ea4cd7749861d1b06bface744498ac884decd0d173dcdddb3df8bbeb1e4",
+      "bytes": 1886,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/test_sequences.json": {
+      "sha256": "4fb6ff73284bb4b612cc6d6f15711f013c304f4ae573e9a1e3cc1fe46879a185",
+      "bytes": 221923,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/training.json": {
+      "sha256": "87fa185cbc02707570fe7063df0e9a0a6f52330ee13a40fde5353d927cc17f13",
+      "bytes": 2130,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/training.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/training_history.json": {
+      "sha256": "26a1a35c0912680e38b094046416a71a41362cf999375651ee21cf936f33c843",
+      "bytes": 365,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/training_input/manifest.json": {
+      "sha256": "ff190287297488429710978fdd21aa17e2ccadf77446f8d43efc32634fc0609f",
+      "bytes": 1211,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_09/training_input/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/checkpoint/config.json": {
+      "sha256": "b5cbc4c7c84c7b1820a913aafb1abc213fc6f77e3498aae5f6dc09bf591a2cb2",
+      "bytes": 816,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/checkpoint/config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/checkpoint/generation_config.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/metrics.json": {
+      "sha256": "c43fda7ad6f1f703671b5e2f1a04605d09fbb8947b1933ae8b961030f3a84313",
+      "bytes": 6110,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/metrics.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json": {
+      "sha256": "f0a1cdd1fca9778952a26f3f30f0a6a76b18c74156d245c115eae5ebba537bcf",
+      "bytes": 721,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/probe_examples.json": {
+      "sha256": "3f0002e259e66afc33de22338f11f94de99ea031472313023edf6f76ce2b4502",
+      "bytes": 2141,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/probe_examples.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/stage_completion.json": {
+      "sha256": "3f61438584116eb7977f0c5ec0770739ba869f191c228bbf4186a84973c26493",
+      "bytes": 1887,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/stage_completion.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/test_sequences.json": {
+      "sha256": "8ae28c19e4eeb155a8705ead65663f161dfb4295c2f99bb777128143903ef99a",
+      "bytes": 221958,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/test_sequences.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/training.json": {
+      "sha256": "320cb2ef64be186f89512293748892d77431f5b2bee45daee79793256332ea2d",
+      "bytes": 2132,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/training.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/training_history.json": {
+      "sha256": "968a05955a7376f8c4f2db219a4b637f45e57370746b52a8d4975022dcdd10ab",
+      "bytes": 347,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/training_history.json"
+    },
+    "20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/training_input/manifest.json": {
+      "sha256": "fbc18c83eab42c48093f9b985a8075b2a8e39f152d4da230378faaee0682a5ed",
+      "bytes": 1211,
+      "source": "runs/20261106T193918Z-full-completion64-synthetic/seed_42/gen_10/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64/artifact_index.json": {
+      "sha256": "39b108bc3ee0b4828952f02f9f8b0acb5df5f35fa0c50c831d854d153dc17cce",
+      "bytes": 11188,
+      "source": "runs/20261108T173505Z-full-completion64/artifact_index.json"
+    },
+    "20261108T173505Z-full-completion64/child_snapshots.json": {
+      "sha256": "5d2f9436eb60d539825782b28ec6ca13a7791bc6940b19cb1676e9dee3607d07",
+      "bytes": 957,
+      "source": "runs/20261108T173505Z-full-completion64/child_snapshots.json"
+    },
+    "20261108T173505Z-full-completion64/children.json": {
+      "sha256": "529deb4d980ff8d91f4bc2e9dd4090670b09aea5f766d5eebd3fb835e7dcb1ed",
+      "bytes": 119,
+      "source": "runs/20261108T173505Z-full-completion64/children.json"
+    },
+    "20261108T173505Z-full-completion64/completion.json": {
+      "sha256": "61e30fdefc0635d478096567efdc0b4233727ce48f62a05542b90bb502c6ebc8",
+      "bytes": 165,
+      "source": "runs/20261108T173505Z-full-completion64/completion.json"
+    },
+    "20261108T173505Z-full-completion64/config.json": {
+      "sha256": "a8cdd34d8be24dff034d57a678b40a8e2fd9a65812e3119e25d16ad43bb1886f",
+      "bytes": 2820,
+      "source": "runs/20261108T173505Z-full-completion64/config.json"
+    },
+    "20261108T173505Z-full-completion64/environment.json": {
+      "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+      "bytes": 433,
+      "source": "runs/20261108T173505Z-full-completion64/environment.json"
+    },
+    "20261108T173505Z-full-completion64/manifest.json": {
+      "sha256": "632a4ed372ab385e8a41522994169896abb5e2285c5f43a99861fa18527f3b5f",
+      "bytes": 173,
+      "source": "runs/20261108T173505Z-full-completion64/manifest.json"
+    },
+    "20261108T173505Z-full-completion64/recovery_snapshot.json": {
+      "sha256": "7e5d5e6d82049646f022be30e414cf8c426dbf3d8bfb3cc8ae68f681b17003d2",
+      "bytes": 1162,
+      "source": "runs/20261108T173505Z-full-completion64/recovery_snapshot.json"
+    },
+    "20261108T173505Z-full-completion64/seed_42/gen_00/checkpoint/config.json": {
+      "sha256": "166e221ea9a6e5d0c26174f372a8360e8fa9b58aed4a3c0c34d635b59658f814",
+      "bytes": 747,
+      "source": "runs/20261108T173505Z-full-completion64/seed_42/gen_00/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64/seed_42/gen_00/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64/seed_42/gen_00/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64/seed_42/gen_00/metrics.json": {
+      "sha256": "f1b81ee33ba3da38439273435413127544326f438d52d7e803346ec6df082988",
+      "bytes": 4226,
+      "source": "runs/20261108T173505Z-full-completion64/seed_42/gen_00/metrics.json"
+    },
+    "20261108T173505Z-full-completion64/seed_42/gen_00/probe/synthetic_for_gen_01/manifest.json": {
+      "sha256": "9c008091beac648db0ff535b5ede658bcced990f231426189cdb4995fafa7d19",
+      "bytes": 721,
+      "source": "runs/20261108T173505Z-full-completion64/seed_42/gen_00/probe/synthetic_for_gen_01/manifest.json"
+    },
+    "20261108T173505Z-full-completion64/seed_42/gen_00/probe_examples.json": {
+      "sha256": "e020373d1276a4004f39e300e412d6518d066fa0c48681fdc4d9c937d90bcc45",
+      "bytes": 2091,
+      "source": "runs/20261108T173505Z-full-completion64/seed_42/gen_00/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64/seed_42/gen_00/test_sequences.json": {
+      "sha256": "faadb6f999e2fc81cf7a7f6a799d179c5d4ea479abe995e7a027be53c4f85f4d",
+      "bytes": 224908,
+      "source": "runs/20261108T173505Z-full-completion64/seed_42/gen_00/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64/terminal_restores/20261108T173505Z-full-completion64-real.json": {
+      "sha256": "fe65d3426066ed61cac70d7f0badd39be3efbf57cd372c431a226c4f076d6b4d",
+      "bytes": 1220,
+      "source": "runs/20261108T173505Z-full-completion64/terminal_restores/20261108T173505Z-full-completion64-real.json"
+    },
+    "20261108T173505Z-full-completion64/terminal_restores/20261108T173505Z-full-completion64-synthetic.json": {
+      "sha256": "ac906061ba3e81de1400dee16b5f4da4d7cb448129cf1c2a9162929d6185b893",
+      "bytes": 1228,
+      "source": "runs/20261108T173505Z-full-completion64/terminal_restores/20261108T173505Z-full-completion64-synthetic.json"
+    },
+    "20261108T173505Z-full-completion64-real/artifact_index.json": {
+      "sha256": "62267e62134206776676904229597248ff2a4536f1f82f2c6142ef337b8a09ac",
+      "bytes": 58660,
+      "source": "runs/20261108T173505Z-full-completion64-real/artifact_index.json"
+    },
+    "20261108T173505Z-full-completion64-real/completion.json": {
+      "sha256": "263891266b643e774fc5a72a9589239652ddb84fa7b073642905b93a8004e10d",
+      "bytes": 92,
+      "source": "runs/20261108T173505Z-full-completion64-real/completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/config.json": {
+      "sha256": "232c25f208ee239e070cfb3dc4c79e16c516792291b1315475cec17c03ecda58",
+      "bytes": 3156,
+      "source": "runs/20261108T173505Z-full-completion64-real/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/manifest.json": {
+      "sha256": "72e44c15fb3fe64d70c006e577efc2c7a9e5c531f67e9f17bfe5bd5014722c46",
+      "bytes": 258,
+      "source": "runs/20261108T173505Z-full-completion64-real/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/recovery_snapshot.json": {
+      "sha256": "0870091cd551100f0ec2fcba591aa18b1bc94a65f18c385fbc4b2f4775ffbb40",
+      "bytes": 819,
+      "source": "runs/20261108T173505Z-full-completion64-real/recovery_snapshot.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_00/metrics.json": {
+      "sha256": "f1b81ee33ba3da38439273435413127544326f438d52d7e803346ec6df082988",
+      "bytes": 4226,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_00/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_01/checkpoint/config.json": {
+      "sha256": "acea6f6e6e5f700cb6e06a882b14aafe1cf59b903213c426cb6835fa1fe5c968",
+      "bytes": 806,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_01/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_01/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_01/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_01/metrics.json": {
+      "sha256": "5d5ca7c0cd90f584ad9d1d077b769cfd37fa4aad8baac11088a2bfff96bcf555",
+      "bytes": 6443,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_01/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json": {
+      "sha256": "438d3e99be112562cc52e919cdba95186f138c2523516464877f7f975ed00857",
+      "bytes": 721,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_01/probe_examples.json": {
+      "sha256": "5b410d8dd849643d8af2845930cf6eb6c25f8f3fa57edd4e10d5f99cb6f6c5a9",
+      "bytes": 2004,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_01/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_01/stage_completion.json": {
+      "sha256": "0cd4883df088175753b5b81edd531a78c961ee4dc639836714ffc4e6bd71699e",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_01/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_01/test_sequences.json": {
+      "sha256": "92fc0a13bec4e21c0235c4646cb57afff0ab597f6df1659f11c9000808aedd07",
+      "bytes": 224940,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_01/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_01/training.json": {
+      "sha256": "7defad2627859ce31bc41e70add68639eb6e906a9212d6c8722df103be5f0eb3",
+      "bytes": 1987,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_01/training.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_01/training_history.json": {
+      "sha256": "5fe1f7ed588e418c85c722236dd4a1c975c487b700171dd94d9e344e76c2eb8c",
+      "bytes": 346,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_01/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_01/training_input/manifest.json": {
+      "sha256": "a7d6731f7aaa4e6388b3c39153ba7a0dba3d4f32456868d7031fac2050a780d2",
+      "bytes": 1127,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_01/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_02/checkpoint/config.json": {
+      "sha256": "5be683c4d76e85b0dbc7c39bedc0060830d04e0d7c620c582040a6b2828ab6d4",
+      "bytes": 811,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_02/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_02/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_02/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_02/metrics.json": {
+      "sha256": "b439454370bd3f32b04c89fe145d31f48f4c9d0db813c070877803aae7838a4a",
+      "bytes": 6521,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_02/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json": {
+      "sha256": "b7ba6e4d26cd364e74f7c90099e6e8065dff500f3be38ceeea6cdec0cc8e569c",
+      "bytes": 721,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_02/probe_examples.json": {
+      "sha256": "060c9d7a6e8b7c4af01557d989ecfe40c126596f926897fbce893c1b8741f223",
+      "bytes": 2052,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_02/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_02/stage_completion.json": {
+      "sha256": "fe45e91f1bf6c0df61e8e1f699c6a3773b3c8dc237e945f649f0865798a4c858",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_02/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_02/test_sequences.json": {
+      "sha256": "3b087f7273492738b049937a3f2cd4e02672a390f35fe91a6842f5719e37f4e7",
+      "bytes": 224922,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_02/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_02/training.json": {
+      "sha256": "498a28f093d186b79497b26be566f36f26829cf12995d2809f48a783625287a8",
+      "bytes": 2108,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_02/training.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_02/training_history.json": {
+      "sha256": "edf154db8adb784a590c69a70953e75256e1eea887f11a9a5d220f64312fae38",
+      "bytes": 361,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_02/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_02/training_input/manifest.json": {
+      "sha256": "636bbccef5e9b3ca78e3673e4d1a91dc4342c3e5ff135c5dfc56f11a8f37ca5c",
+      "bytes": 1189,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_02/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_03/checkpoint/config.json": {
+      "sha256": "600143ffc732749d3fe937e2b6b21a20da4e760b591db43af189ef89725342db",
+      "bytes": 811,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_03/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_03/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_03/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_03/metrics.json": {
+      "sha256": "38b94cd18eff513ec0406b64f7343fc5d19cae8356ea54c5005cb65ab37e5cab",
+      "bytes": 6547,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_03/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json": {
+      "sha256": "60ca823cbe23ee7dc345c1816064293d916319025a7b7df12d38c650013da2c3",
+      "bytes": 721,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_03/probe_examples.json": {
+      "sha256": "021caf333168f13764197ac80717c29270b8a67acac2761bff6b8e6bfc34e0a2",
+      "bytes": 1991,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_03/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_03/stage_completion.json": {
+      "sha256": "be1673a17c1ca6e2a51745658db3c4fd34388972740f298e771bb482967295fb",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_03/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_03/test_sequences.json": {
+      "sha256": "7c399cb71c71e784a960aa7fb97a86a32535c650dd2ddc5e501393e99c919f68",
+      "bytes": 224973,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_03/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_03/training.json": {
+      "sha256": "553926d6d032f20b6db7c57443300f5e323523091d01d1ccbea85f9bc238b881",
+      "bytes": 2110,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_03/training.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_03/training_history.json": {
+      "sha256": "914c65a723f5aed79477796258c5508f8bad948a2af5d6308a128e9b0d99e2a1",
+      "bytes": 365,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_03/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_03/training_input/manifest.json": {
+      "sha256": "7dd2463253089f168df6a0b98cbe7ea2deee7de171dfb9ab37577d06a574feec",
+      "bytes": 1189,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_03/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_04/checkpoint/config.json": {
+      "sha256": "d4bd3aea1715b365a33c09c2a88bdb1ca3e73ef783c536daaf5a168953b58fa9",
+      "bytes": 811,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_04/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_04/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_04/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_04/metrics.json": {
+      "sha256": "b52d07b52c57e26128732dbceb1c770887e1bcae0ff3e6357e82428aae13cdd2",
+      "bytes": 6547,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_04/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json": {
+      "sha256": "fbf4518bb2c3398aa0c98e12400e1d8a386ea1ccd6fcd83abe5fcd90f68f1d68",
+      "bytes": 721,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_04/probe_examples.json": {
+      "sha256": "4dbbf7a7943b439a7bbc4e3b0a66c5cb711ab7d6c5cc7f7b6d366697c1a57e3e",
+      "bytes": 2041,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_04/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_04/stage_completion.json": {
+      "sha256": "5a1d4597675f15dfcb0077d5bfc0b9b45a5733863265ff0c5f3e25e9619be623",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_04/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_04/test_sequences.json": {
+      "sha256": "a2662c6c3df3ea8e556bd31977f65f5fe9a07336d991b8c20c76d9d37d50ef0a",
+      "bytes": 225036,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_04/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_04/training.json": {
+      "sha256": "b797e0347be1fa22dd4c4154286ab4265227a77c9698b506806a8e2abf09733c",
+      "bytes": 2108,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_04/training.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_04/training_history.json": {
+      "sha256": "455b4214e1c94128e66934e9290956d80b44f8102ff1e8027e1c3c0a28c24969",
+      "bytes": 363,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_04/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_04/training_input/manifest.json": {
+      "sha256": "c92c3ec644316ed51f50bd32c2fbc511ebb27d47c698a3c5af5158631b8a3ba2",
+      "bytes": 1189,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_04/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_05/checkpoint/config.json": {
+      "sha256": "87a8d1a20e9c4d9527517d54c2d22a7406c1e2a46820b5afc3d83b7189e5611a",
+      "bytes": 811,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_05/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_05/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_05/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_05/metrics.json": {
+      "sha256": "a96f8cc08f997b026662bcd06bc41b1d272335e60e38e705e6d1b1280d7ba5c0",
+      "bytes": 6564,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_05/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json": {
+      "sha256": "88f490258f9fa90f81287df661952edefbe02ae5bcb388c0584a7d8acce07165",
+      "bytes": 720,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_05/probe_examples.json": {
+      "sha256": "e7603a60a77ef26b24f3b5317e243a22f4ca0f04815106e9cd2a202dad923325",
+      "bytes": 2048,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_05/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_05/stage_completion.json": {
+      "sha256": "3562fe3c9c469560c7202dca9c82af8a6feb47c1c24307903816b8b92d3f4096",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_05/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_05/test_sequences.json": {
+      "sha256": "e62e16e66fc5082fd12c7a29c24fe419d819bf52e437fc538376f459c96bdc0e",
+      "bytes": 224923,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_05/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_05/training.json": {
+      "sha256": "e03ae55880552b7173a33f96ccb035389c469d3fe5b1eba769f3f0ac79c9c0b7",
+      "bytes": 2111,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_05/training.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_05/training_history.json": {
+      "sha256": "f4c6105c0438218e10a7b9920402fc76433bc2305be17cf419a4c64fab0eef50",
+      "bytes": 365,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_05/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_05/training_input/manifest.json": {
+      "sha256": "085ee2372771b928d616ed7e7bb4a858214cdc40f83aab047cd8246be2bb5f4c",
+      "bytes": 1189,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_05/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_06/checkpoint/config.json": {
+      "sha256": "094f38bbebaa6ab6ed7e57d11724c229122e8aa82fd10eabb03b370a3da14b96",
+      "bytes": 811,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_06/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_06/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_06/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_06/metrics.json": {
+      "sha256": "52c090ca603a6497a54ac0fdcbc2977bff71059318e4d31a1041b9361fc04e98",
+      "bytes": 6551,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_06/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json": {
+      "sha256": "ad7d0f70efa5c6d399f58560a46be9afc32b6a45d093e8c6ed6bf40789bb9d20",
+      "bytes": 721,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_06/probe_examples.json": {
+      "sha256": "e7603a60a77ef26b24f3b5317e243a22f4ca0f04815106e9cd2a202dad923325",
+      "bytes": 2048,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_06/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_06/stage_completion.json": {
+      "sha256": "2497b61197eef3f5c95719dfb1cd06a006614fef9fe845e62b4d8e5fef9b56df",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_06/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_06/test_sequences.json": {
+      "sha256": "4cde6c29950d288d6206d4b8c9acb0f20b18caaef6267f0c74c58055cbf2cb3a",
+      "bytes": 224806,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_06/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_06/training.json": {
+      "sha256": "cb6dd9eadbc2c8f33e76e9a5ae1e1c8bab77af6864ee1d18cb1282e9756b095e",
+      "bytes": 2107,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_06/training.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_06/training_history.json": {
+      "sha256": "d005b6ea7675e221267d64785481e7dabc559a0289a5ec0319bf2f548db73792",
+      "bytes": 363,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_06/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_06/training_input/manifest.json": {
+      "sha256": "3d3ff2808ac0c1bba90157eb6bc5801e8964ae346c137e018c2dd1cabe3a0545",
+      "bytes": 1189,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_06/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_07/checkpoint/config.json": {
+      "sha256": "f9df238d1dbc79fa71a1267071f2d6422d7eb2623587355e2f989d42f1d6702a",
+      "bytes": 811,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_07/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_07/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_07/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_07/metrics.json": {
+      "sha256": "edc785b5d32ff86fe8a6699444a3bd3488637ea3468271624d8302f6c1eda557",
+      "bytes": 6552,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_07/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json": {
+      "sha256": "b60258ed4545b0b65938b6bad08e6df6117dff485027e0a6e112a23dae74637f",
+      "bytes": 720,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_07/probe_examples.json": {
+      "sha256": "21b635cfb93b55403c83c425e1e20e7a5960e40b6d529b1f544ff787c080ec7d",
+      "bytes": 2025,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_07/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_07/stage_completion.json": {
+      "sha256": "ff971fcd64543dc0ade6b2bdb687a6ccb7e0906516d20489cc304c675fc54432",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_07/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_07/test_sequences.json": {
+      "sha256": "e9e5b3fcb5c68bb366e244904472f6cf28132378e36a7c0d66ed3535043355ce",
+      "bytes": 224984,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_07/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_07/training.json": {
+      "sha256": "b7c1abfcd950aaa656220ee9082451c95cdfcb0ba77ec0e0b39cae60f679cb05",
+      "bytes": 2110,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_07/training.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_07/training_history.json": {
+      "sha256": "c25a2c9a55578e6cf9e4f48319ea96fa0aeb5406f61f2e5a854d19fcb19b6f73",
+      "bytes": 364,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_07/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_07/training_input/manifest.json": {
+      "sha256": "d63f209eeb3c7032d808255a9e240d69a20c4424263105e7e0075485bff6a21a",
+      "bytes": 1189,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_07/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_08/checkpoint/config.json": {
+      "sha256": "401cd53450a24a3319d03cbd4381c59c811d3a29f6eb770a0d5fc290bfe25388",
+      "bytes": 811,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_08/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_08/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_08/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_08/metrics.json": {
+      "sha256": "6815206382df6ef910e240f159bac6b672e34aa9e3ad9e79ace5955979d6f17d",
+      "bytes": 6555,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_08/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json": {
+      "sha256": "98d16ef1a61abd7275e39be842183d5dd3c4a0370567f76f039774df40f73578",
+      "bytes": 721,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_08/probe_examples.json": {
+      "sha256": "43a1c0eeb3d753bbb9f03be8a45af61a68e6be31284d8b630fbc52c696be2f7f",
+      "bytes": 2008,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_08/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_08/stage_completion.json": {
+      "sha256": "451a41bc48ca195a71bda4de83eacb3c933c49072ed9bc32a3c707513f45b1af",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_08/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_08/test_sequences.json": {
+      "sha256": "d7f49030921037e64c84e802e66d022450dda647a0db092df6966a2ccb2302d5",
+      "bytes": 224833,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_08/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_08/training.json": {
+      "sha256": "24790d6321ce77defef6a8571262493f8ff0e4787a39d50aba457158ae92e364",
+      "bytes": 2109,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_08/training.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_08/training_history.json": {
+      "sha256": "ebc923dd4dcda4feddaa84a470276a6a5a2356cadd1ce56601e09ddc77642e33",
+      "bytes": 364,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_08/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_08/training_input/manifest.json": {
+      "sha256": "e98a3955e97a6cf9a744ecba6f2e7bacee10696cd929aee264fe85596b7135bd",
+      "bytes": 1189,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_08/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_09/checkpoint/config.json": {
+      "sha256": "ad062f80df37403f377d3d8d073436aeced5323277bea6de460df7662fc9e7b4",
+      "bytes": 811,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_09/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_09/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_09/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_09/metrics.json": {
+      "sha256": "8bbc16d51792a1647d138eb8faf873841ec6a74d1cf754fb77aac13eb6b5e76b",
+      "bytes": 6560,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_09/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json": {
+      "sha256": "2f6c265e7b7fd74bc8c06adf8ad0a31521bfb576363eb2b94357e64a3f569c90",
+      "bytes": 719,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_09/probe_examples.json": {
+      "sha256": "e7603a60a77ef26b24f3b5317e243a22f4ca0f04815106e9cd2a202dad923325",
+      "bytes": 2048,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_09/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_09/stage_completion.json": {
+      "sha256": "4a48d23be3568244e5a3599a3cedfbe05b5170ad9d3b925db05cab70f99ed56a",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_09/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_09/test_sequences.json": {
+      "sha256": "af14121aa3f700f1b180919a360d968c5b45162e4e0bdeaa272f8f435ad68239",
+      "bytes": 224899,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_09/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_09/training.json": {
+      "sha256": "e7a87aae0b935ac985d748b81d480a8afe8e630e0be30fd3147699580da09919",
+      "bytes": 2110,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_09/training.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_09/training_history.json": {
+      "sha256": "0d8f2a5d50fb1e3ad2fa8ce1865f6b4500462866fadfaa2a0782718ad62d945b",
+      "bytes": 366,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_09/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_09/training_input/manifest.json": {
+      "sha256": "6eec532dc6643183a6c311b130b1c61890ac6f413ce2b28380c83b96f91db496",
+      "bytes": 1189,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_09/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_10/checkpoint/config.json": {
+      "sha256": "31296d48f1b08ae964f5f5078d34554d401a44a58d10231c4b8c6834b3d540a7",
+      "bytes": 811,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_10/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_10/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_10/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_10/metrics.json": {
+      "sha256": "fa2657f025ecf7da27bee914d12ba63fcbe37125e78879ebb05345ce13d65c5b",
+      "bytes": 6567,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_10/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json": {
+      "sha256": "dbecd5f43944dd6de97f60d8b2eee490f68070e249f1e81ee96720495e4e50b6",
+      "bytes": 720,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_10/probe_examples.json": {
+      "sha256": "e7603a60a77ef26b24f3b5317e243a22f4ca0f04815106e9cd2a202dad923325",
+      "bytes": 2048,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_10/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_10/stage_completion.json": {
+      "sha256": "04841fac168cb004794b85af6304024eaf1c57a9026dc98a0b48975c4f0a4e87",
+      "bytes": 1887,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_10/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_10/test_sequences.json": {
+      "sha256": "36de114364bf638e182bc434fc66831b670fa10d71a8a6f73014dcee4c96eb16",
+      "bytes": 224961,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_10/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_10/training.json": {
+      "sha256": "106959d7ca8302a6c61e2d64c07d690d0b3bf37e82b7c85fdbac09f49432f5dd",
+      "bytes": 2113,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_10/training.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_10/training_history.json": {
+      "sha256": "16180741d09049f948ac8348ab19070efac9356b802ba18388127b719ee1a9c6",
+      "bytes": 347,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_10/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-real/seed_42/gen_10/training_input/manifest.json": {
+      "sha256": "0a98a3446199ac39a21daee2b6f1c01849593fad8c47d759f3f04269f4f84692",
+      "bytes": 1190,
+      "source": "runs/20261108T173505Z-full-completion64-real/seed_42/gen_10/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/artifact_index.json": {
+      "sha256": "26d6cc7fe1bd97ce1159f508d646fe16dc763709947fa85310467a320f4077bb",
+      "bytes": 335315,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/artifact_index.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/completion.json": {
+      "sha256": "471f0c5057d292d5beeb95d73b1a37fcbdb3824989fe8d04ab7546413d46a31f",
+      "bytes": 97,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/config.json": {
+      "sha256": "4a4180efb134521cfa15854d5fdaefdfdcaba9c43dca4c98bfa71a1213fbb0a4",
+      "bytes": 3161,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/manifest.json": {
+      "sha256": "a5756ffd03743fba76eaf808f0d34f17b8b5b5762554155365f9fe476a09012b",
+      "bytes": 258,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/recovery_snapshot.json": {
+      "sha256": "f3a7bdf331bd69c586a357059bbb1291c2e890ee649c320439354c8bb556acab",
+      "bytes": 830,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/recovery_snapshot.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_00/metrics.json": {
+      "sha256": "f1b81ee33ba3da38439273435413127544326f438d52d7e803346ec6df082988",
+      "bytes": 4226,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_00/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/checkpoint/config.json": {
+      "sha256": "acea6f6e6e5f700cb6e06a882b14aafe1cf59b903213c426cb6835fa1fe5c968",
+      "bytes": 806,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/metrics.json": {
+      "sha256": "f33a1360a9266fc587323cc0ca728b4a4bba60265773ada963b461508471c9a3",
+      "bytes": 6551,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json": {
+      "sha256": "c5acba8f5b8a94cf77919123608c3037b1b15cf80a07a25e63a6532c5449ef0a",
+      "bytes": 720,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/probe_examples.json": {
+      "sha256": "969911ef9bee461d3d25d07af62d079dbe3fe14eac9846fce9505a3aa5690771",
+      "bytes": 2028,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/stage_completion.json": {
+      "sha256": "d446d8cf4d929a46fd1fe5092804492e63223b90053405ce65f9ebf85a6670e4",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/test_sequences.json": {
+      "sha256": "3551aab8d4d39dd1a0ce2583b6e45261a9413650c7af044464a11eed353a02b5",
+      "bytes": 224109,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/training.json": {
+      "sha256": "b78231a2caae13af2b192e173d5dc264c547fd00b01f58321376ee02f6df1a6b",
+      "bytes": 2107,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/training.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/training_history.json": {
+      "sha256": "75ddec2153b8ba7015a8a5180722aec5c0a6138bb9af053a78541b6a28d22e65",
+      "bytes": 343,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/training_input/manifest.json": {
+      "sha256": "86d7498c67babe95e614f9c064cdb86706e2a23611e23b74a62ae730548a0548",
+      "bytes": 1256,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_01/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/checkpoint/config.json": {
+      "sha256": "f792ab0da0378c49be49e6a263c965232008686909bff02d0932f9c5ee985590",
+      "bytes": 816,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/metrics.json": {
+      "sha256": "40731be79deaaaa4b880b1fbafab9dad423b418fc74d6386482e0f13eefb6026",
+      "bytes": 6683,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json": {
+      "sha256": "a5ff6199c69609d2f398eeb02f7e5fa050f102a407fb872430d0ae0b64ca0e30",
+      "bytes": 721,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/probe_examples.json": {
+      "sha256": "83a55da3782edcb3d24d11f1eadc9a1eeeb27b4d904f3cdeb1ce65a657296df1",
+      "bytes": 2036,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/stage_completion.json": {
+      "sha256": "d120f780101cd1a7fdc8ab21d6182bbf121f28877f12a02d80cfe78fe08ead42",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/test_sequences.json": {
+      "sha256": "5b74a93d58c82edf5b3ba3a11bf676bcbb72aea7384ee80ff927328b65a43c51",
+      "bytes": 223074,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/training.json": {
+      "sha256": "746a7f03087749c52d7c89c440839eb123bf32b1837eda418c937066fc64a551",
+      "bytes": 2237,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/training.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/training_history.json": {
+      "sha256": "9f80d8ee4ea53a43fc62e068b8ded67d466e605d26c7aa0ed1c0dae8ebed7f13",
+      "bytes": 362,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/training_input/manifest.json": {
+      "sha256": "bcab61f07234e24636ce40e6f38d2f557366a1db592186194f89a9603179cfa3",
+      "bytes": 1318,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_02/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/checkpoint/config.json": {
+      "sha256": "6636e568990f026fc7099fc7a70431ab6a9f47674276e56d2df1b60ba142833b",
+      "bytes": 816,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/metrics.json": {
+      "sha256": "bdf5a580b429a669dce3225eaefa0c78aec8d764b0de301ff543df23b7eb3e8a",
+      "bytes": 6682,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json": {
+      "sha256": "230a19070969c396a8230f13f836c096a5bf24af09da353cb99e369201a8b257",
+      "bytes": 720,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/probe_examples.json": {
+      "sha256": "138dbc0dd7a48221545fdde164b022e841bbcc214eaa9be577cf3cec5f058e08",
+      "bytes": 2040,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/stage_completion.json": {
+      "sha256": "397727cc3469dba16eb72866f4e5f07d4a5d1c6647c6c24526d2aa81d340e8b8",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/test_sequences.json": {
+      "sha256": "160ff7409398e0eb0ed6fe30eec0d3d462ce3d20f9d175408142ec6e4abc1534",
+      "bytes": 222519,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/training.json": {
+      "sha256": "9cb49218570655c6ea6ae4d90bdd9d2fb64ca35dd5cc844726df8da40efce630",
+      "bytes": 2237,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/training.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/training_history.json": {
+      "sha256": "587eaf4fb49ee7478a61fd4c42fdf055189c96f28fe230f104637779c286d29a",
+      "bytes": 363,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/training_input/manifest.json": {
+      "sha256": "521e08cc5956ac74e2a7ddee563c98cf618ab231725e52d475cff600660bce9d",
+      "bytes": 1318,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_03/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/checkpoint/config.json": {
+      "sha256": "35a452a8a4bfaef4d30998b26dced48c7d094bfd70638dd32cdedae9456c36d5",
+      "bytes": 816,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/metrics.json": {
+      "sha256": "71ca9173710ac5ce8df6b4b188419bcd40768dedd31ebb53925a8094eb7c6758",
+      "bytes": 6695,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json": {
+      "sha256": "05dcdbf11981faffce7ddb7b66534382cdf548230eac30a93f9fc070c27a1d0d",
+      "bytes": 721,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/stage_completion.json": {
+      "sha256": "51143f11f880bd147c3ce7bd7b8cbb710b52b764740c6ec279cc011f4fa264ad",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/test_sequences.json": {
+      "sha256": "e0b4c38dbd66728a699d9513050d92462bd75d1a487f8dc78f9c2a4d5dcd2642",
+      "bytes": 222278,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/training.json": {
+      "sha256": "3b723501bc3dc1f134793459d863317c5e55f2f73cafeb75329d7a64305afa54",
+      "bytes": 2239,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/training.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/training_history.json": {
+      "sha256": "a650e95694f36d6680e06e5c67f6758d714cd7e1f7359ab285f73dd8e15f25c1",
+      "bytes": 365,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/training_input/manifest.json": {
+      "sha256": "8142b275ed3e722b7ff154301ad8ba20c24db66ab40ac54204775a20458a8892",
+      "bytes": 1318,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_04/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/checkpoint/config.json": {
+      "sha256": "f51fe8fbe9db16d648e8313edbd3d0a902e78d5b167b1815266b644ebfc87144",
+      "bytes": 816,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/metrics.json": {
+      "sha256": "907f3c27445301d7767a21b5460cefa1e90a4bb8775b5a6412c1855cce950d18",
+      "bytes": 6681,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json": {
+      "sha256": "c248fc64486cced6fbf5a90613083e8e80d1978abbe302c7f2bb31d5015c66f0",
+      "bytes": 720,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/stage_completion.json": {
+      "sha256": "d3b05d5b639a8d143acde4f985dad4d10e5cb50f5947cb20df9cb7d37c81e228",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/test_sequences.json": {
+      "sha256": "f557499761eb5f5a9bd09e35b39eaabbb95ba7214c34f541febbaf6dc68f85ab",
+      "bytes": 222162,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/training.json": {
+      "sha256": "f1583ff86e9fb79f7602eadb350240d02e3c741666d337b0582bcb1e650f2437",
+      "bytes": 2233,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/training.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/training_history.json": {
+      "sha256": "a0a2e020e7544303980b45ebb8639181e5836a66fdcef9bbf99ba935bf61589d",
+      "bytes": 364,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/training_input/manifest.json": {
+      "sha256": "5053816a7a56a6d680714f304ba1320b20745d4d99a701471afcc9094871eda9",
+      "bytes": 1318,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_05/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/checkpoint/config.json": {
+      "sha256": "17c0f4edf9b40368796cb4400b39a5f1138fc8552f9002eaa16108c5ebe5fe68",
+      "bytes": 816,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/metrics.json": {
+      "sha256": "4ac78637161e10aba53fe47c6d961ad54f6cbb7c5a434308e57dd97d432ab43c",
+      "bytes": 6689,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json": {
+      "sha256": "96ae5627fe6ff4ad0e0634559757536180e615718265791fda6f58597fa749f9",
+      "bytes": 720,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/stage_completion.json": {
+      "sha256": "3f3528514a72964940ecc5c375cca3c70bf2d83a4a684027f1663a97feb4c426",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/test_sequences.json": {
+      "sha256": "539c2b67f154c025bb04b664ef3bfab52d7011492d370844c71daf32e72896d7",
+      "bytes": 222130,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/training.json": {
+      "sha256": "9a00660dda076b597127bf84427c87d4a67952c6d1ebf44da82f6a0ea18a2dbf",
+      "bytes": 2237,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/training.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/training_history.json": {
+      "sha256": "1b4fc7f26e859e9b60be653a050afc4e7750e62922c544e7f34dc82ce67bf539",
+      "bytes": 365,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/training_input/manifest.json": {
+      "sha256": "d312b36d5084735a8f5f6f9fb7c7e9fac228efea61c192cce8e72cecc9c84a35",
+      "bytes": 1318,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_06/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/checkpoint/config.json": {
+      "sha256": "bd069856ffbab06e9e6710225e2ec5d49acae1ab1f0f72e0ec7c48f129dd3b0b",
+      "bytes": 816,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/metrics.json": {
+      "sha256": "4140d8552973765f312c2653745dd64c81de9f2b6c18a7ae34a63de8e6c179df",
+      "bytes": 6686,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json": {
+      "sha256": "3f7888da2c0692331f4c761a32b6063a02d881eb6c9e49eddcd20adc55b47749",
+      "bytes": 721,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/stage_completion.json": {
+      "sha256": "7e0351b3850f29af027584b2e88b8ebc52dcb3abf9f47df7f41534e10359e4e4",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/test_sequences.json": {
+      "sha256": "8abdb6231a54658143d61aa4ecc5642b4a0605852678904d7325339062e49b94",
+      "bytes": 222060,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/training.json": {
+      "sha256": "4643c0297215338c828a0e223d27ddc01ecbf8e19ce5dbb7615c5dba92949be5",
+      "bytes": 2237,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/training.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/training_history.json": {
+      "sha256": "ac7ade793f9fbedcb5cd2555cbf44f663666201e19cdc56b93f462ffa3396772",
+      "bytes": 362,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/training_input/manifest.json": {
+      "sha256": "605c240d80c5cc97b767d97123705d1ae92d5fe37358e0993cf4ea32f155f6af",
+      "bytes": 1318,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_07/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/checkpoint/config.json": {
+      "sha256": "c76a2a4fe60c3f3508f9b480f0814406200d98d0c06e97c4206923b9f4b558d5",
+      "bytes": 816,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/metrics.json": {
+      "sha256": "0d56f68bf21678c9607fcb94fe4abb1891c9e00f8eb25f0566bad72075cfe929",
+      "bytes": 6678,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json": {
+      "sha256": "17481bb27b68509688602dee49c8dc1c779fa1405bcf9c6e68713c4e8b2b9546",
+      "bytes": 719,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/stage_completion.json": {
+      "sha256": "1f8538077de2733104ce2bcfae43dc0b8b92d19d471494fb30a5ecdaf28e7a1e",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/test_sequences.json": {
+      "sha256": "529749b9c3f21b536558f06d24689b45a68b8b934d4ce9d7327e4de3235b13a0",
+      "bytes": 222031,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/training.json": {
+      "sha256": "717a8573222132cb9183cc8e9f3da871015dafae70d86f517f72e2cf70472b4d",
+      "bytes": 2237,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/training.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/training_history.json": {
+      "sha256": "cff60608e91f6996c5f366c133f5ab16a83747682df81eea67c56c1f014cfb8d",
+      "bytes": 364,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/training_input/manifest.json": {
+      "sha256": "9d8bcbd0c78128c5f6bb450e682d7e128f39d8e8577b13e98313373edc454e3b",
+      "bytes": 1318,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_08/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/checkpoint/config.json": {
+      "sha256": "d9a3440e1d738c12e9e908fbd7f28e1ad48b1176415a38fd90116c51eba1e7de",
+      "bytes": 816,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/metrics.json": {
+      "sha256": "252d529b899883d1db562b5d433a1d292be2e67eb422dd5547054a9480e789fd",
+      "bytes": 6687,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json": {
+      "sha256": "8ad5fa885da25d5b53d29f5227c13256754ec23f4e82c42a8c42309ac8b7a45e",
+      "bytes": 720,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/stage_completion.json": {
+      "sha256": "c75a42cc0835e2f0493e5137695a927f1236e5fe8a57e432c8039d6f5046cae9",
+      "bytes": 1886,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/test_sequences.json": {
+      "sha256": "6bf72bb95f9e8aa14331dd889964ecb71c405ceaef459d8a6c8352cbf49528a8",
+      "bytes": 222007,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/training.json": {
+      "sha256": "5cecb01826b988f4a72468e3915db65724f3dc2cc8865cca9d9b49b22f73f4e0",
+      "bytes": 2237,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/training.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/training_history.json": {
+      "sha256": "3b87abc0d6aa4aba20889654a3177888aae26dfae327ff9533b8d70e24617041",
+      "bytes": 366,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/training_input/manifest.json": {
+      "sha256": "0a3840e076f1ce1da41b9e81e16ef875d44fa06d41cc966fce47860ff8352752",
+      "bytes": 1318,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_09/training_input/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/checkpoint/config.json": {
+      "sha256": "d21ac66aa652499c6e9771b151b191b51b996dfbf77dfef5ef24a964c660dc20",
+      "bytes": 816,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/checkpoint/config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/checkpoint/generation_config.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/metrics.json": {
+      "sha256": "2e4a3604cf3bc034413ed1b74ff68feb25547640377ae2f11d1d6c65aeddc740",
+      "bytes": 6688,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/metrics.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json": {
+      "sha256": "fae518c1cc9d6f6de47a1b660b6926e851cc80392c62aaaa5e2e2e986dce4367",
+      "bytes": 718,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/probe_examples.json": {
+      "sha256": "b9d374df67a3f57ac0ce4cd441666a092ce8cca63bcfd92e5fc51ff0d54cb873",
+      "bytes": 2138,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/probe_examples.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/stage_completion.json": {
+      "sha256": "18ddef8a8e50a3903095644226b0a657613d34c9807af689a8370f316f88059b",
+      "bytes": 1887,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/stage_completion.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/test_sequences.json": {
+      "sha256": "cf6c51c16c641d29f2f14cc299d3badbc425925dd3ccaedee010c3ecdf525066",
+      "bytes": 222083,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/test_sequences.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/training.json": {
+      "sha256": "2b82de93eee67af05e55b4dc4bef9c7eb78535a04cbacf204bec8d68ea9887a5",
+      "bytes": 2239,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/training.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/training_history.json": {
+      "sha256": "fe5ec90878de3e019aee05c5c523b8b344562acb700ace2ec76c971e4c8e7cb2",
+      "bytes": 349,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/training_history.json"
+    },
+    "20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/training_input/manifest.json": {
+      "sha256": "9d9c521efa861aac9ccefec6c0a3c76ccf1eb2c45df7d30db23bba36687b2610",
+      "bytes": 1319,
+      "source": "runs/20261108T173505Z-full-completion64-synthetic/seed_42/gen_10/training_input/manifest.json"
+    }
+  }
+}

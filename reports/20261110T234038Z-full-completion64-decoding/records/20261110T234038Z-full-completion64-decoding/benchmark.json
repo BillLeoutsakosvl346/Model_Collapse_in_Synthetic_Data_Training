@@ -1,0 +1,54 @@
+{
+  "training_target_tokens_per_second": 33197.81478566233,
+  "generation_new_tokens_per_second": 1642.2965431364948,
+  "primary_target_tokens_per_second": 105515.6432255915,
+  "secondary_target_tokens_per_second": 112574.85120796744,
+  "training_step_seconds": [
+    0.6493828911334276,
+    0.24261674308218062,
+    0.24676322983577847,
+    0.24709408008493483,
+    0.2467614901252091
+  ],
+  "generation_batch_seconds": [
+    1.3958404171280563,
+    1.2370704498607665,
+    1.2569980039261281
+  ],
+  "microbatch": 32,
+  "effective_batch": 128,
+  "generation_batch": 32,
+  "full_primary_targets": {
+    "validation": 468608,
+    "test": 457664
+  },
+  "full_secondary_targets": 1494075,
+  "benchmark_updates_discarded": 5,
+  "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+  "decoder_rates": {
+    "beam": {
+      "new_tokens_per_second": 1642.2965431364948,
+      "generation_batch_seconds": [
+        1.3958404171280563,
+        1.2370704498607665,
+        1.2569980039261281
+      ]
+    },
+    "greedy": {
+      "new_tokens_per_second": 3935.0770309188074,
+      "generation_batch_seconds": [
+        1.5063466920983046,
+        0.5206919701304287,
+        0.5202025200705975
+      ]
+    },
+    "sampling": {
+      "new_tokens_per_second": 4336.304536551261,
+      "generation_batch_seconds": [
+        0.537769366055727,
+        0.4750818652100861,
+        0.46950123901478946
+      ]
+    }
+  }
+}

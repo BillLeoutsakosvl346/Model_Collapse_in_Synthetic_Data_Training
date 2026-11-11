@@ -1,0 +1,12 @@
+{
+  "run_id": "20261110T142558Z-smoke-completion64",
+  "temporary_volume_id": "t7do2uge3a",
+  "pod_create_error": {
+    "error_type": "RuntimeError",
+    "error": "Runpod POST /pods: HTTP 400: {\"detail\":\"There are no longer any instances available with the requested specifications. Please refresh and try again.\",\"status\":400,\"title\":\"Bad Request\"}\n"
+  },
+  "provider_pod_absent_verified": true,
+  "temporary_volume_absent_verified": true,
+  "compute_started": false,
+  "reconciled_at": 1794320851.064197
+}

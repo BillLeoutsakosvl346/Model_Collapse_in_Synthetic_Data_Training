@@ -1,0 +1,959 @@
+{
+  "run_id": "20261106T193918Z-full-completion64-real",
+  "repos": {
+    "model": "iib-model-collapse-bill/iib-model-collapse-models",
+    "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+  },
+  "files": {
+    "completion.json": {
+      "sha256": "34de6d972f5069a48f44bd507904e9edbdef44a05a0f640a4b14c299ae9c04be",
+      "bytes": 91,
+      "repo_type": "dataset"
+    },
+    "config.json": {
+      "sha256": "585bdbbf16b3ad96447c3b30c49187cb88e894e1ab3c0a247eb17860dd2c96f7",
+      "bytes": 2942,
+      "repo_type": "dataset"
+    },
+    "manifest.json": {
+      "sha256": "693e22c84ead239cfd6130d10a8bc6a07cc2e22fac847ede628014ee328a7806",
+      "bytes": 258,
+      "repo_type": "dataset"
+    },
+    "requirements-tested.txt": {
+      "sha256": "1643fcd0ba5075dc5f5f03c5b8ab032d5299e25e4329b025cf19342dbc9d8a49",
+      "bytes": 3340,
+      "repo_type": "dataset"
+    },
+    "resources.json": {
+      "sha256": "67d1f657aeeaee53424bf1c6fa523fcd23874879fed1ed1bdec74a8900c428cb",
+      "bytes": 2038,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "22438ccf2c26cde62e181e84db2872aba0fd1e29d10a3f50aa0a3a330b7ce9b7",
+      "bytes": 3766,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/checkpoint/config.json": {
+      "sha256": "e5b9200d0e1c894fa9d759a56c27605d649263d7354187d4a7e662a3ab4b97b9",
+      "bytes": 806,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/checkpoint/model.safetensors": {
+      "sha256": "9b0d558533bace5096409555222e0a18c593848a220d878f7947ad072c50cd0a",
+      "bytes": 500979600,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/metrics.json": {
+      "sha256": "b738f616c2e2682213782507a5aeef063a9f45ad094bb53d5291616413371776",
+      "bytes": 5866,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/optimizer_state/cycle.pt": {
+      "sha256": "d8e3587f3d85c8240dff43b51333aa008e4674ce67ed4a224f23d466d3634aca",
+      "bytes": 1002065083,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json": {
+      "sha256": "7d36b9cd96e159bd8263ef94cb18059a29e5ff8a5a911a52a90f1d1a8154fcf9",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/shard_0000000.json": {
+      "sha256": "6a86150e5c0d05924a253182723165b2c341088c8ea4c3f13b24e7ff4e003c04",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/shard_0000000.npy": {
+      "sha256": "0d2ebdc608c1eee342d2418d33fad3baf48da90b039b9c2fe9e58d3614b7beee",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/tokens.npy": {
+      "sha256": "0d2ebdc608c1eee342d2418d33fad3baf48da90b039b9c2fe9e58d3614b7beee",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe_examples.json": {
+      "sha256": "5b410d8dd849643d8af2845930cf6eb6c25f8f3fa57edd4e10d5f99cb6f6c5a9",
+      "bytes": 2004,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/stage_completion.json": {
+      "sha256": "6c57dd9d246b08fe6fcddb77260681919cc88b71c00408ea6957144b1ea706df",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/test_sequences.json": {
+      "sha256": "92fc0a13bec4e21c0235c4646cb57afff0ab597f6df1659f11c9000808aedd07",
+      "bytes": 224940,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training.json": {
+      "sha256": "43b58220d45b4caf0ba48845cfcdb482c74b962601e05ccd2ef4cb9bfd9cdfe3",
+      "bytes": 1879,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_history.json": {
+      "sha256": "c7a6cd33eee6057388a9330ddfd0c8e72374406095b7ba498da0c05fa0fe3aab",
+      "bytes": 347,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/manifest.json": {
+      "sha256": "3fb983b3037cec2d5607710334025855035236a5e900db72a771b33c76aa3ce7",
+      "bytes": 1020,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/tokens.npy": {
+      "sha256": "621ca4488c29abbee6084dbf0bec1dc1538880bd58a2a180d9b932101ebe8e1e",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/checkpoint/config.json": {
+      "sha256": "9eebdb358b8e580cc7974b9eee3a9916c09ce76b9b43eea445fc66fe2f6d0c03",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/checkpoint/model.safetensors": {
+      "sha256": "a473da890093e4a9d4d941f9384ad0888cc597e9068ba7fd49f74891683bfc8b",
+      "bytes": 500979600,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/metrics.json": {
+      "sha256": "a96e8b0744a24bc5cf851e870b0b1ced3b667257d74141aa094bcac8bde4bdb3",
+      "bytes": 5976,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/optimizer_state/cycle.pt": {
+      "sha256": "a1dfeffb2f35adb807c1b30763925c5721046ec96ea0580e260253ff9f5cc0a2",
+      "bytes": 1002067771,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json": {
+      "sha256": "4a65c511d05d4d26eb1fb176ac53ff9188d44f2d5f9af8c8bffa288da9e4141e",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/shard_0000000.json": {
+      "sha256": "cb8009c87fcda1e7e9400236f9bbff6ffe20dd4c834804e5b2924a74771a1546",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/shard_0000000.npy": {
+      "sha256": "d4a942306efd2788096f32d255174284d5f2ad7df244d0ed11501d5c5ed6a4c7",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/tokens.npy": {
+      "sha256": "d4a942306efd2788096f32d255174284d5f2ad7df244d0ed11501d5c5ed6a4c7",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe_examples.json": {
+      "sha256": "f782db97c864d10d6ac8fef103feae2879d7b03c9ec743c3cc4c96a57ffbbfa6",
+      "bytes": 2019,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/stage_completion.json": {
+      "sha256": "974f5a90848d18bcbfcc7b44e8a284d1731a184263aa8a0efac3b1d6cb499ad6",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/test_sequences.json": {
+      "sha256": "186c9415435b771fa73e896564c309cd24b1e8ff13b9044154c8a5b547fbd387",
+      "bytes": 224933,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training.json": {
+      "sha256": "8fcb1f6f4f804354c000aed94674c8b5acf7db8c7ddc48dd98a38fd23ef3ca53",
+      "bytes": 2003,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_history.json": {
+      "sha256": "c2d4fa645bed66c8ae96c58bd80b1aa1bfc69bfc386e6322f7c95c34a77fc2f7",
+      "bytes": 364,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/manifest.json": {
+      "sha256": "f9a79d20a8e3f2d3d58cf9922c02277ce3350322e6d476fcd9636749af7af66d",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/tokens.npy": {
+      "sha256": "acda8d7501dfc1339bd605ef8754e0f23a040787317959f0fcd7f50e8692fa7d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/checkpoint/config.json": {
+      "sha256": "5293e7bbf23665c97b45f786b372a3eb4b43e4af7e3352c4d26f96cd7933682c",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_03/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_03/checkpoint/model.safetensors": {
+      "sha256": "1233b60a59cf368aacf3636d690156e50fc093983fdc36fc5d27606816c0e598",
+      "bytes": 500979600,
+      "repo_type": "model"
+    },
+    "seed_42/gen_03/metrics.json": {
+      "sha256": "b5875ac6bda579d231f0a7caa2c76363897c0780564f01d8c4670ce57a9f8bf5",
+      "bytes": 5971,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/optimizer_state/cycle.pt": {
+      "sha256": "6067ef30bff587858f219a195f4462b6bf4c438779744e254242095e8a57b56b",
+      "bytes": 1002067771,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json": {
+      "sha256": "525e651ea3d8b56f592cbd984bc01ca029d723e028332ae1f640ba0097620ac3",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/shard_0000000.json": {
+      "sha256": "8222534dcd1d2f10b233a59f751ca386e5d9e2a356bd531a4cd7dee9d81f6627",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/shard_0000000.npy": {
+      "sha256": "5b107ab1a7428da84a10ae359c15659008f8e508c0104c9072ec804acb2f5668",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/tokens.npy": {
+      "sha256": "5b107ab1a7428da84a10ae359c15659008f8e508c0104c9072ec804acb2f5668",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe_examples.json": {
+      "sha256": "fdfbc57e8252f81613e9cedf18386c98d62b50580c8d6c2ef69e9d05bef3d592",
+      "bytes": 2062,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/stage_completion.json": {
+      "sha256": "b8d10623de9dfb0f121f545fb4c42fd5dbc00c852dcd127e5d78f268d6d89305",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/test_sequences.json": {
+      "sha256": "a491f7e6b59bff52429e08d152fe6d771a329dca50d3a886bf595511947dd8f5",
+      "bytes": 224946,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training.json": {
+      "sha256": "139adb05efd3802769a5bc714550f3d81e549e0205d65c17ea93812a966f8c55",
+      "bytes": 2002,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_history.json": {
+      "sha256": "ef5612158a65e74a945edd77f89ec1ae5e1b7c7ee8f2197600d9ac8be263b7e0",
+      "bytes": 363,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_input/manifest.json": {
+      "sha256": "6835ec5bfaa58ceff3b6e53e660368bdb71e447f063ad7379e1e1ecbc8b2afcf",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_input/tokens.npy": {
+      "sha256": "67dae62dc118310e1cc37f6c4568926b6920118c72d4ae67c2545f8943ab8768",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/checkpoint/config.json": {
+      "sha256": "17769b65fac933c8db3a199d8eb4b570014cebe8d2e94bc1130d2f6ca6507753",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_04/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_04/checkpoint/model.safetensors": {
+      "sha256": "006c90f4661e1b5e4cefe45d9d9e182b42b26f86d84fba858b1f4d61dde30e23",
+      "bytes": 500979600,
+      "repo_type": "model"
+    },
+    "seed_42/gen_04/metrics.json": {
+      "sha256": "e6fb117676b88404ec05fcf7d78f10e85efd64989ad91cc6fd06837d8a10d1dc",
+      "bytes": 5969,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/optimizer_state/cycle.pt": {
+      "sha256": "a82392a4ecdd271f6482aca6e8e0faa7da8db07aeeb39f917e24cd16668361bf",
+      "bytes": 1002067771,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json": {
+      "sha256": "b453870d7a37f1803c39b00d97470dff4ae933dc43ab2ca462bd947983e87cf0",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/shard_0000000.json": {
+      "sha256": "15e084422f2166cb3b25f484b807e99c1cc8da7db4591762eb2acbb0e34c4dc6",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/shard_0000000.npy": {
+      "sha256": "a661b316112c91f40ee63df970fc2c2c8c1c23d889de290b99ec8ff672ba04d6",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/tokens.npy": {
+      "sha256": "a661b316112c91f40ee63df970fc2c2c8c1c23d889de290b99ec8ff672ba04d6",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe_examples.json": {
+      "sha256": "acc0ffd69a90a52e4133cc918e5c2d1985900e3655cb348e3b6b11e5217b59ed",
+      "bytes": 1977,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/stage_completion.json": {
+      "sha256": "ae0d6c0e3b5af68f12eacf9ad5c39cf20344905fe1ac4f0217ce0fe1e12ea246",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/test_sequences.json": {
+      "sha256": "f2ad1042fac327f662e82d3cafefb20f547b7c037fed29160281b080203ac87f",
+      "bytes": 224919,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training.json": {
+      "sha256": "8d8faa6d0655741e3eb74346a9c60cc4cfc871e7a7d40f5063af712e6da79edc",
+      "bytes": 2001,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_history.json": {
+      "sha256": "a0e20e83bc9f24db5eaa402356f32b0d94fcf2dac0444e4fe74fca809c93112d",
+      "bytes": 363,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_input/manifest.json": {
+      "sha256": "7bdff6915e611185e1ccfe51d3c6e356e4f871a9caf068a2af680a7b7b08834c",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_input/tokens.npy": {
+      "sha256": "6e5072563f797d697e1fecbea13ccf6e2d9693676deb80817b8c388e7000e169",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/checkpoint/config.json": {
+      "sha256": "eb6479cc979fab3456b47257f0f4358b6c6b0eaacdb1b04012c5854206c04439",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_05/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_05/checkpoint/model.safetensors": {
+      "sha256": "a0162c2fe0d876df6ab142fdf2e028d3bb841a0fde73d068975557c9bb96ac69",
+      "bytes": 500979600,
+      "repo_type": "model"
+    },
+    "seed_42/gen_05/metrics.json": {
+      "sha256": "0b7c6ae910b07eb8d30f76f253cd0017ec6377699563d7abe13420458b29bb73",
+      "bytes": 5981,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/optimizer_state/cycle.pt": {
+      "sha256": "e5cd44be4d272e0b11fbe164fff63ab1587b69bc56466bcd0bee9a6e729072a1",
+      "bytes": 1002067771,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json": {
+      "sha256": "abb50295c4a6b53ed979ec3a5f5365bc863afdb4dc883c29a7762061ec712797",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/shard_0000000.json": {
+      "sha256": "34bf052bca9fb4fece6316429c6362e7f1b4664cccb13cda15d401793c748d5d",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/shard_0000000.npy": {
+      "sha256": "5739a5b52ead6034efe46a830c228e28468931f1e4ee472e1b7e5829684a7dfb",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/tokens.npy": {
+      "sha256": "5739a5b52ead6034efe46a830c228e28468931f1e4ee472e1b7e5829684a7dfb",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe_examples.json": {
+      "sha256": "f7fc6a5dc5475e39dec9044e1a0840eb0506f62059e77c854aa75bf728a14f95",
+      "bytes": 2066,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/stage_completion.json": {
+      "sha256": "c31ff293a55c3c35e24a2a6bf53b22a04d4bc7e374e2f399f736e0ab53e89e15",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/test_sequences.json": {
+      "sha256": "ef62f6677cdb96e323c857783cf9497aab0758b6147d2b4c2814deb58094494e",
+      "bytes": 224965,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training.json": {
+      "sha256": "3961cd7781708a3fb7d8de49081186595686bb3e6bfa6ad6319b632a921291c7",
+      "bytes": 2001,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_history.json": {
+      "sha256": "4f0494963a3249f3285a34473579aa7daf46fc64c42598798d297ed919ef3af1",
+      "bytes": 362,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_input/manifest.json": {
+      "sha256": "532ec6016f82fdf3c065f18d8037c2cf617f405800a68c6d83bba25ebc8d462b",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_input/tokens.npy": {
+      "sha256": "064dfe5f2522c0e0d00754cd9061d76651eb7c9c2d40a3691c4f3bececfefcc4",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/checkpoint/config.json": {
+      "sha256": "db819ef03d3d441753c75a8d01e19fbdb308e2bbdc7fe7acb70b84e16454247d",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_06/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_06/checkpoint/model.safetensors": {
+      "sha256": "1720d29e0a6e1ff9c98a8fe03d7c49d16c6748ea96e0a7642c9b23cc385c424a",
+      "bytes": 500979600,
+      "repo_type": "model"
+    },
+    "seed_42/gen_06/metrics.json": {
+      "sha256": "9ca8013ff3ea7004812ddb2a63f98b89919ce9e05fecde8c32b80876499ad599",
+      "bytes": 5986,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/optimizer_state/cycle.pt": {
+      "sha256": "447b48ef1cc20b92ea151ef657f0ff9f9640a06a2e170235c16b6be023bfc9e1",
+      "bytes": 1002067771,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json": {
+      "sha256": "ed5e997ef4a2cd4ac4af1f3c7d087d8efd516149b26a7249736392cd4a49abeb",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/shard_0000000.json": {
+      "sha256": "cea00b8ab99fa602868f8bbf41bc9f38a80b7b7edebb60da765ac821f5d87cc1",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/shard_0000000.npy": {
+      "sha256": "80114c674b94177a147d9a745cb5f5cb47e82a7b224a075e0a2249e24cd2a4bb",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/tokens.npy": {
+      "sha256": "80114c674b94177a147d9a745cb5f5cb47e82a7b224a075e0a2249e24cd2a4bb",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe_examples.json": {
+      "sha256": "c22b87a34cba36201e02d561720258e74b834bb290a97b10102620e30d2d6346",
+      "bytes": 1975,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/stage_completion.json": {
+      "sha256": "20308960f23ba41be6e848bcd7b2b667db0c96221c39456887fc23e2425d5744",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/test_sequences.json": {
+      "sha256": "8b470c20d32fb0ad92d8d7ea0ed17e5a8f0b84d82058863afaca0e25763140ab",
+      "bytes": 224889,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training.json": {
+      "sha256": "14a0d02c9223974dc941f09c079a794bd2543f9c05ff8fedb5e1a1f7e26f4a44",
+      "bytes": 2002,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_history.json": {
+      "sha256": "720f1ee4e7d0e8c4d0ce4502f0a495a47245d8085c10959479148419398a992e",
+      "bytes": 361,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_input/manifest.json": {
+      "sha256": "847d0ddf035f7b9a88ecf30a157bcfacff822d611d16e1103aa0a5fad9055071",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_input/tokens.npy": {
+      "sha256": "ce585f3ff0270545d0c93e850bcc41b6c3e969b04372c0224219346448aab572",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/checkpoint/config.json": {
+      "sha256": "6eba560d237cf95580a40880f344331c5dae5f8e7cfd2369b2c10aeb0dde03a0",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_07/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_07/checkpoint/model.safetensors": {
+      "sha256": "51427d8e03cb224f95e5a7b3575b82583eab019fa59f25fab158873ed39bf588",
+      "bytes": 500979600,
+      "repo_type": "model"
+    },
+    "seed_42/gen_07/metrics.json": {
+      "sha256": "dd45447a68a8398c3d9d49f4efb02a0a789c09971deea9e2e242dff5d611d2ee",
+      "bytes": 5974,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/optimizer_state/cycle.pt": {
+      "sha256": "6ca290ff75b3bdd77fa78c1fb93ea3e11ebd71968b05c6c1719acdfd9b55aee9",
+      "bytes": 1002067771,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json": {
+      "sha256": "e95f2be920644b34af63bee11157040975ae710ca8d53c39811faee6ee032737",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/shard_0000000.json": {
+      "sha256": "b1b7e6cb2b874f31ef19df4b5e04e664affa1500f54a1c8ff05a16dd3b105a14",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/shard_0000000.npy": {
+      "sha256": "c8787369d8b6306a797553f86e58641bcc561ffda6eaa00f47e9835e3802bf3f",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/tokens.npy": {
+      "sha256": "c8787369d8b6306a797553f86e58641bcc561ffda6eaa00f47e9835e3802bf3f",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe_examples.json": {
+      "sha256": "a9a2dfbcb5ff18e9bee5ef3cc4a6e440c27097f01bb048a6a8b0f9071cdf592e",
+      "bytes": 2071,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/stage_completion.json": {
+      "sha256": "46e790d194f484c00833e4b2ddd83b6c6511d910f5ca3981f491da3d24576203",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/test_sequences.json": {
+      "sha256": "4ce30406ec42c15b0c260d739f0e6346603db736b92bc0d35a13bb39f73e3379",
+      "bytes": 224914,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training.json": {
+      "sha256": "e2d3ef683051a231afc7b783f5206c08b356a6aa853104cc05bf4ac5cf171d33",
+      "bytes": 2002,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_history.json": {
+      "sha256": "76deab6ea3e3c1ce08dd3d47c36341f0930fbd89e975986840546ce8e8228eea",
+      "bytes": 362,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_input/manifest.json": {
+      "sha256": "92fb03bf84e2ccda43361d702ce428ac78104825f57674e6ad4147ead19ba354",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_input/tokens.npy": {
+      "sha256": "55f8f116a26b1b1880f19dad19d82360ae3dc86139913495584918a6e1013265",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/checkpoint/config.json": {
+      "sha256": "957d92b58741b9fbdf88b9cbf1e5732017db6811ecc1b4c77f8a0b4b1f7c6cf9",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_08/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_08/checkpoint/model.safetensors": {
+      "sha256": "35160951013adc85448d6ee88d5045a59313f95a94a6948c82e69adfb7c628c4",
+      "bytes": 500979600,
+      "repo_type": "model"
+    },
+    "seed_42/gen_08/metrics.json": {
+      "sha256": "2fdd12526b533870c802f789a266a0f88df42bdaa78f4ae8c125604214288857",
+      "bytes": 5980,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/optimizer_state/cycle.pt": {
+      "sha256": "8f718265ceb444c239be1aa01f62cadb23461051458441d634e251fa5f9c92d6",
+      "bytes": 1002067771,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json": {
+      "sha256": "93ddb1b413f92f48ddf502c939d7b94d71c912a121d432a3712a55d000a117b3",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/shard_0000000.json": {
+      "sha256": "ca3f8f224a32757895aa271ee5b8bac0a0c19dc2dabbd9167971203fa10023c7",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/shard_0000000.npy": {
+      "sha256": "7f02614b1bd1b3f6b43807e2591032213890592f0df36732da7a61172316aa30",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/tokens.npy": {
+      "sha256": "7f02614b1bd1b3f6b43807e2591032213890592f0df36732da7a61172316aa30",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe_examples.json": {
+      "sha256": "62f141978631f121d102393d5fe7478e041f38b614471d20625321ad782bfdde",
+      "bytes": 1972,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/stage_completion.json": {
+      "sha256": "8bd06822e935dee50136e3e6a8a250db2525e22f730ef82e15b182fc8b12b8fc",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/test_sequences.json": {
+      "sha256": "bdeb374263d4dd4a3120b3ab0eaecb5db47f2caef957c93297bb65118e7085ac",
+      "bytes": 224968,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training.json": {
+      "sha256": "7b93445d42aca08584bcb58fe393577c3f88438c4ab724460d8d8bd19dc1c3e3",
+      "bytes": 2001,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_history.json": {
+      "sha256": "3cfdbc6287a64cd9f5f7cab1d7c3b4a77ff8e925d3276d56b4840cd82cf95a38",
+      "bytes": 363,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_input/manifest.json": {
+      "sha256": "7eb4fb7126d0d42a0f9d45ef3ec36e059651e8ff6f705a3e4eb1a5c6f37356d9",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_input/tokens.npy": {
+      "sha256": "8c0e63ab8927a6135dc09667a3c3c4fe7618c555a4f808eeaf157c159fa4f28e",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/checkpoint/config.json": {
+      "sha256": "b2d16803324e411e4e55fc8c45c11faaba19f4817a38ab824d8e48a164c9a2d7",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_09/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_09/checkpoint/model.safetensors": {
+      "sha256": "523797948768d07510ee35f8770e0e0d4d5c5e0da9feac023960797506f72ddb",
+      "bytes": 500979600,
+      "repo_type": "model"
+    },
+    "seed_42/gen_09/metrics.json": {
+      "sha256": "53160595c448cc488ff71e4bfe77873c1306ab4279e04e899b291bc3ac17a405",
+      "bytes": 5991,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/optimizer_state/cycle.pt": {
+      "sha256": "12973abc90ff1a991d800195149e07580f89174601443b7856f9f3625200b4c5",
+      "bytes": 1002067771,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json": {
+      "sha256": "ca7e9a80aaeef8e28f53e9a6e946cb24b330c51ae1b9328c8b89ccffc1f97b78",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/shard_0000000.json": {
+      "sha256": "5aff581acd986ac6dc2f9d8c2db9a79dc242b7a336b1f362b4a5d877a083fbe9",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/shard_0000000.npy": {
+      "sha256": "c945fdd595460a7be82dec44dfd29c58ceca7ac9cc8f13e5205d2ee19a2af820",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/tokens.npy": {
+      "sha256": "c945fdd595460a7be82dec44dfd29c58ceca7ac9cc8f13e5205d2ee19a2af820",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe_examples.json": {
+      "sha256": "a9a2dfbcb5ff18e9bee5ef3cc4a6e440c27097f01bb048a6a8b0f9071cdf592e",
+      "bytes": 2071,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/stage_completion.json": {
+      "sha256": "ff4ff690b23d4d305430557f81132e7c734ed791ebe25aafe58edb0dffc2cc92",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/test_sequences.json": {
+      "sha256": "b4acb27d1c716faa3c9b5e12749809f330bfb7e8125730f684918d11ba535193",
+      "bytes": 224999,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training.json": {
+      "sha256": "ca8b21e47a9498d71e133966369e08bd1cee32eeadfdde818623d5439be028c2",
+      "bytes": 2000,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_history.json": {
+      "sha256": "8bfd9fb1d53192deeb860b7e8c1e5e6eb176c5ce7229e246fda534502bc66a8c",
+      "bytes": 364,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_input/manifest.json": {
+      "sha256": "78f2529e08456f9a6a4b89fb02ebae1b9753279d98ffd8a864cd0244ef952c71",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_input/tokens.npy": {
+      "sha256": "8dfe4bb242184e764994dd2a879eccaf3f92878788465fb88d823fd178b918a2",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/checkpoint/config.json": {
+      "sha256": "80f73de9d7962ca49b28d34171af8f63a34b433fcaedca82c47b1ef369e5595f",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_10/checkpoint/generation_config.json": {
+      "sha256": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+      "bytes": 132,
+      "repo_type": "model"
+    },
+    "seed_42/gen_10/checkpoint/model.safetensors": {
+      "sha256": "6ccc4dd6d4a49d7694e43a439af0cb586a3509260a57d3a712e6265ac515db3f",
+      "bytes": 500979600,
+      "repo_type": "model"
+    },
+    "seed_42/gen_10/metrics.json": {
+      "sha256": "03e622a80317724820e8a90c96df507a2a8d79a53f46fc02972e6baa7b8f46b3",
+      "bytes": 5986,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/optimizer_state/cycle.pt": {
+      "sha256": "accbfff1b4717bcea1064973b300c81d6236d25f250abcbcb7ebe382ca150361",
+      "bytes": 1002067771,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json": {
+      "sha256": "9c3e789396e1c65754a626e6784d9f24c257e61f9270c9d308681b4752231a23",
+      "bytes": 721,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/shard_0000000.json": {
+      "sha256": "d5762fcd8ed1f5ef77853d2d6e7ae5592e734a169ebd063d2492fc85d2f51438",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/shard_0000000.npy": {
+      "sha256": "3868b24a33f8bec0dc13db7c0efabfbb5aa6086d5c32f258cf4f9210eda7f1fa",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/tokens.npy": {
+      "sha256": "3868b24a33f8bec0dc13db7c0efabfbb5aa6086d5c32f258cf4f9210eda7f1fa",
+      "bytes": 65664,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe_examples.json": {
+      "sha256": "e4e21261e02af5a5979b42ce8daf597b42bbe00141108df602f8765198b3bb56",
+      "bytes": 2076,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/stage_completion.json": {
+      "sha256": "006f132f3fac893f8205a7ddfc4243da8ec9254390eff6a6cc80d1637f545af3",
+      "bytes": 1887,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/test_sequences.json": {
+      "sha256": "fdf4ed6955803d51126f08ee64d61eb034cdbbb4a87231cc368f3501134bcb8b",
+      "bytes": 224956,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training.json": {
+      "sha256": "d3fd86cb755d5bde0929c9c780b959de71df5fd691ae94d1398e1e2348925d9a",
+      "bytes": 2004,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_history.json": {
+      "sha256": "bd588adf8ba73915f52337cd59d0b35a6116d7f76796269837efe332706a4a32",
+      "bytes": 347,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_input/manifest.json": {
+      "sha256": "c3e12ecd4565e60d5e7e940d76eaf3a8d9bc86b3ba7c7652314cf91a07cb0f3f",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_input/tokens.npy": {
+      "sha256": "bd8a17325b9fbe51bc6df48bab605b6a8f55803a3ac8d9758085a43492e1986b",
+      "bytes": 5160128,
+      "repo_type": "dataset"
+    },
+    "stage_journals/gen_01_probe_events.jsonl": {
+      "sha256": "77a02977a4f1bfa91f1c9bcad8f876be209fa7a06ffe52511a2c35f5c50c1de4",
+      "bytes": 132,
+      "repo_type": "dataset"
+    },
+    "stage_journals/gen_02_probe_events.jsonl": {
+      "sha256": "f1342d82b17ac7186d99910dfb763bfb2ff9f86450b5fccdd92f7fa40c939b31",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "stage_journals/gen_03_probe_events.jsonl": {
+      "sha256": "549127ff07f168011255e637e331a00b8aa1eb8861d97107283c09c8cae3158c",
+      "bytes": 131,
+      "repo_type": "dataset"
+    },
+    "stage_journals/manifest.json": {
+      "sha256": "e70b59092685a63c4139194abfe83cbf456c8809a2399b4cdd18a2fca1102a45",
+      "bytes": 603,
+      "repo_type": "dataset"
+    }
+  }
+}

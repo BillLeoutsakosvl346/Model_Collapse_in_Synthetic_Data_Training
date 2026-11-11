@@ -1,0 +1,177 @@
+{
+  "validated_at": 1794158494.0070267,
+  "run_id": "20261108T165042Z-smoke-completion64",
+  "runtime_sha256": "443b7a31a72910914bcd337919ffdc846294904b64b7a3ff7a7d6d70305d9580",
+  "protocol_fingerprint": "55d0e90184308cbfed3e68577b2623c7bd5d89ac9c6fbb5453e1d883133b6552",
+  "checks": {
+    "generation_shard_recovery": true,
+    "restored_evaluation": true,
+    "all_handoffs_and_optimizer_states": true,
+    "continuation_only_loss": true,
+    "fixed_chunk_inputs": true,
+    "recursive_same_prompt_targets": true,
+    "six_terminal_epochs": true,
+    "matched_initial_weights_and_prompts": true,
+    "both_private_restores": true,
+    "training_recovery": true,
+    "fixed_real_anchor": true,
+    "coordinator_recovery": true,
+    "direct_masked_nll": true,
+    "completed_stages_unchanged": true,
+    "detached_progress_verified": true,
+    "independent_budget_guard_and_provider_stop_verified": true
+  },
+  "restorations": {
+    "real": {
+      "run_id": "20261108T165042Z-smoke-completion64-real",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "274edc72c312b291d8831f67b6c7b0fc2b79728b",
+        "dataset": "a4e1e8077ab650d2fc67c8bdfbec86df83d37078"
+      },
+      "artifact_index_sha256": "ab634aae3fa1509e2b918320ec7e96263ec1d066f6f846ea2458fd35a9eda1f9",
+      "indexed_files": 70,
+      "verified_files": 70,
+      "verified_bytes": 4510501204,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/completion_acceptance_restore/20261108T165042Z-smoke-completion64-real"
+    },
+    "synthetic": {
+      "run_id": "20261108T165042Z-smoke-completion64-synthetic",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "23a680427675d89c66eeb889d5ee2d733d57aa90",
+        "dataset": "050ba0192ae7a2966702c5f3b7bab75f652aedc6"
+      },
+      "artifact_index_sha256": "1020237e17e078d846af3fc120f49b93fb6bef78f20c61f9e51b904297af1cb9",
+      "indexed_files": 124,
+      "verified_files": 124,
+      "verified_bytes": 4510913154,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "/workspace/completion_acceptance_restore/20261108T165042Z-smoke-completion64-synthetic"
+    }
+  },
+  "arm_audits": {
+    "real": {
+      "stages": [
+        {
+          "cycle": 1,
+          "weights_sha256": "998ad9ba4e9d58690ca593515db26fbb31f9bc740a56e9bb0b80011aa4c68a25",
+          "initializer_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+          "optimizer_step": 2,
+          "scored_training_tokens": 16384,
+          "real_pairs": 256,
+          "synthetic_pairs": 0
+        },
+        {
+          "cycle": 2,
+          "weights_sha256": "34ee2a29135b4187540c557139317b7b96786b264cc0957e4a733865b1031514",
+          "initializer_sha256": "998ad9ba4e9d58690ca593515db26fbb31f9bc740a56e9bb0b80011aa4c68a25",
+          "optimizer_step": 4,
+          "scored_training_tokens": 16384,
+          "real_pairs": 256,
+          "synthetic_pairs": 0
+        },
+        {
+          "cycle": 3,
+          "weights_sha256": "809a0e729bdcad2c9d5a8864ddd6bb731bc1ca23fe592016dd17ac411ade5524",
+          "initializer_sha256": "34ee2a29135b4187540c557139317b7b96786b264cc0957e4a733865b1031514",
+          "optimizer_step": 6,
+          "scored_training_tokens": 16384,
+          "real_pairs": 256,
+          "synthetic_pairs": 0
+        }
+      ],
+      "restored_loss_error": 0.0,
+      "direct_nll_error": 0.0,
+      "restored_optimizer_sha256": "c4c2033dc10fc8eb2e8f630a1e00ec179fa71b1c9fb77587e626942e9c73b207"
+    },
+    "synthetic": {
+      "stages": [
+        {
+          "cycle": 1,
+          "weights_sha256": "6c40158677f80413da5e49a8bcda3d5c5d22360f499ceb89dd3ef8b3195de9a5",
+          "initializer_sha256": "681529e645f341e1c148dd9f041c3884864df313f6314466377e1056cf2646ba",
+          "optimizer_step": 2,
+          "scored_training_tokens": 16384,
+          "real_pairs": 0,
+          "synthetic_pairs": 256
+        },
+        {
+          "cycle": 2,
+          "weights_sha256": "1d6fa70ad38a0468a91158e34f9a3a4fed312cffa70fbd560dc7dea1cf56b82a",
+          "initializer_sha256": "6c40158677f80413da5e49a8bcda3d5c5d22360f499ceb89dd3ef8b3195de9a5",
+          "optimizer_step": 4,
+          "scored_training_tokens": 16384,
+          "real_pairs": 0,
+          "synthetic_pairs": 256
+        },
+        {
+          "cycle": 3,
+          "weights_sha256": "e90af542dcc31cecdbe6d582b915f8d54f81dbc05663f57920abb8dec68f30a8",
+          "initializer_sha256": "1d6fa70ad38a0468a91158e34f9a3a4fed312cffa70fbd560dc7dea1cf56b82a",
+          "optimizer_step": 6,
+          "scored_training_tokens": 16384,
+          "real_pairs": 0,
+          "synthetic_pairs": 256
+        }
+      ],
+      "restored_loss_error": 0.0,
+      "direct_nll_error": 0.0,
+      "restored_optimizer_sha256": "f3f916ceed8fbb7211d310328d7b333165c2c5b0f98c0da52e1c29065dc0c6ff"
+    }
+  },
+  "provider_shutdown": {
+    "run_id": "20261108T165042Z-smoke-completion64",
+    "pod_id": "pa1qlnp9tk6w9n",
+    "pod_state": "EXITED",
+    "reported_pod_rate_usd": 0.57,
+    "compute_running": false,
+    "status.json": {
+      "state": "complete",
+      "time": 1794158096.1338923
+    },
+    "watchdog_exit.json": {
+      "reason": "validation_budget_guard",
+      "time": 1794158118.567544,
+      "pod_id": "pa1qlnp9tk6w9n"
+    },
+    "provider_shutdown": {
+      "provider_pod_id": "pa1qlnp9tk6w9n",
+      "provider_status": "EXITED",
+      "field": "lastStatusChange",
+      "value": "Exited by user: Sun Nov 08 2026 17:15:20 GMT+0000 (Coordinated Universal Time)",
+      "provider_shutdown_epoch": 1794158120.0,
+      "observed_at": 1794158492.6675248
+    }
+  },
+  "validation_spend_usd_conservative": 0.27600777473509486,
+  "provider_billing_finalized": false,
+  "temporary_resource_cleanup_pending": false,
+  "full_launch_authorized": true,
+  "full_training_launched": false,
+  "cleanup": {
+    "pod_removed": true,
+    "volume_removed": true,
+    "actual_account_balance_delta_usd": 0.3347055962999974
+  },
+  "parent_bulk_recovery": "Pinned parent baseline/probes verified locally; both three-stage child backups restored and re-evaluated remotely."
+}

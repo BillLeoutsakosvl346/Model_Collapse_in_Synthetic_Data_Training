@@ -72,12 +72,17 @@ def test_token_weighted_accumulation_matches_larger_microbatch(tmp_path, tiny):
         assert torch.allclose(value, right.state_dict()[name], atol=1e-7, rtol=1e-6)
 
 
-def test_same_targets_produce_identical_arms_and_carried_states(tmp_path, tiny):
+@pytest.mark.parametrize("decoders", [False, True])
+def test_same_targets_produce_identical_arms_and_carried_states(tmp_path, tiny, decoders):
     model, base, c, tokens, attention, scoring = tiny
     results = []
-    for name in ("real", "synthetic"):
+    for name in (("greedy", "sampling") if decoders else ("real", "synthetic")):
         root = tmp_path / name
         arm = {**c, "data_kind": name}
+        if decoders:
+            from model_collapse.science.decoding import decoder_config
+            arm = decoder_config({**arm, "data_kind": "synthetic", "generation_batch": 2,
+                "decoding_arms": [{"id": "greedy", "decoder": "greedy"}, {"id": "sampling", "decoder": "sampling"}]}, name)
         first = train(root, base, arm, tokens, attention, scoring)
         state = root / "seed_42/gen_01/optimizer_state/cycle.pt"
         second = train(root, root / "seed_42/gen_01/checkpoint", arm, tokens, attention, scoring,

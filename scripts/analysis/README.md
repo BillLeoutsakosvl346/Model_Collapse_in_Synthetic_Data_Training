@@ -2,6 +2,26 @@
 
 These tools read saved evidence. They do not train, provision resources or edit Google Docs. Use new output directories; original reports/raw records remain preserved. Each rebuilt report records input/output hashes, script identity, Git revision and environment.
 
+## Repeated versus fresh FineWeb completions
+
+Reproduce the completed four-condition comparison from verified local metadata:
+
+```powershell
+python -m scripts.analysis.build_repeated_chunk_comparison --root runs/COMPARISON_ID --reference runs/20261106T193918Z-full-completion64 --out reports/COMPARISON_ID/generated/four-condition-review
+```
+
+The builder requires matching bank, primary evaluation, initial weights, hardware and scientific settings. It keeps fresh/repeated conditions separate at each synthetic fraction, verifies 44 checkpoint rows and 790 updates per arm, and saves square figures plus input/output hashes. Fixed-real-anchor diagnostics apply to the new repeated arms. Incomplete comparisons and nonempty outputs are rejected. No training or cloud access occurs.
+
+The [completed publication](../../reports/20261108T173505Z-full-completion64/analysis/four-condition/README.md) also provides a fully offline command using its committed small records, fourteen figure families and independent output/lineage audits.
+
+## FineWeb cycle-10 endpoints
+
+```powershell
+python -m scripts.analysis.build_fineweb_endpoint_summary --source reports/20261107T214406Z-full-completion64-mixed99p9 --out reports/20261107T214406Z-full-completion64-mixed99p9/generated/reproduce-cycle10-endpoints
+```
+
+Verifies the existing publication, selects exactly the seven terminal cycle-10 rows, and plots final perplexity, pooled/within-output entropy, distinct-2/3 and within-output repetition against actual numeric percentages. [The published appendix](../../reports/20261107T214406Z-full-completion64-mixed99p9/analysis/cycle10-fraction-summary/README.md) records explicit zoom ranges and the no-fit, single-seed scope. The output directory must be new; no cloud/model work occurs.
+
 ## FineWeb real-only validation
 
 ```powershell
@@ -107,3 +127,7 @@ python scripts/analysis/export_campaign_acceptance.py runs/CAMPAIGN_ID --out .st
 Run after campaign metadata recovery and local GPU/provider validation. This offline exporter requires a completed six-stage / thirty-epoch smoke campaign and binds its acceptance receipt to the exact run, manifest runtime/configuration, required campaign protocol and all three child audits. It checks saved epoch-5 selection, NLL/PPL arithmetic, mixture counts/selections and shared cycle-2 identities, then copies allowlisted scientific JSON into a new destination. It preserves three sibling job directories and reuses the campaign/per-job reporters for tables and figure families. It does not copy checkpoints, token arrays, tokenizer contents, credentials or resource registries, and performs no cloud access or model evaluation.
 
 The export contains a report, per-stage and mixture CSVs, selected records, analysis provenance and a checksummed publication manifest. Source indexes also reference uncopied bulk objects; the export is explicitly selected metadata rather than a new full restoration. Spending and current resource state remain separate dated operational evidence. Never overwrite a historical publication with regenerated output.
+
+- `build_decoding_comparison.py`: offline 44-row greedy/sampling versus historical beam/real analysis, matched scientific contract with declared GPU difference, lineage/loss audit and thirteen square figure families. Optional private arrays enable probe and final-target recomputation. See the [reproduction guide](../../reports/20261110T234038Z-full-completion64-decoding/generated/decoding-20261111/README.md).
+
+- `audit_fineweb_fraction_records.py`: offline independent check of 77 published fraction rows against committed indexed metrics, 70 saved probe arrays and 30 example-loss arrays; exports a provenance map that distinguishes inherited aggregate-table checksums from per-stage checksums. See the [audit](../../reports/20261111_fineweb_fraction_audit/README.md).

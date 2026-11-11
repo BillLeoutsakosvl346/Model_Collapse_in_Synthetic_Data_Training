@@ -1,0 +1,38 @@
+{
+  "time": 1794156616.9204502,
+  "tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "627",
+    "time": "284.098",
+    "timestamp": "2026-11-08T16:44:36.689859+00:00",
+    "hostname": "Vasilis"
+  },
+  "test_report_sha256": "4e9c248ee525aa202bc0f0790bad04ad57e0e8084ff367e6d8ce57553a50be92",
+  "runtime_sha256": "443b7a31a72910914bcd337919ffdc846294904b64b7a3ff7a7d6d70305d9580",
+  "archive_sha256": "184a8c0865f94533ac85343922361368e32a8a054fed4fb8d3b95f7d4e5fff5e",
+  "backup_round_trip": {
+    "store": {
+      "backend": "runpod_s3",
+      "bucket": "x00ckmzcka",
+      "region": "EU-RO-1",
+      "prefix": "fineweb-repeated-chunk-20261108"
+    },
+    "bytes": 4096,
+    "sha256": "ecc63e553c5d9720efe800073ddebdd10b345d6c0a66a6cb93818893e9eb2fac",
+    "cold_round_trip": true
+  },
+  "backup_capacity": {
+    "quota_bytes": 60000000000,
+    "used_bytes": 4096,
+    "required_additional_bytes": 40000000000,
+    "reserve_bytes": 3000000000,
+    "available_after_reserve_bytes": 56999995904,
+    "admitted": true
+  },
+  "historical_bank_preserved": true,
+  "full_training_launched": false,
+  "gpu_acceptance_pending": true
+}

@@ -1,0 +1,110 @@
+{
+  "verified_at": 1794159818.8691142,
+  "run_id": "20261108T173505Z-full-completion64",
+  "pod_id": "obfk7e2vpall1d",
+  "volume_id": "hjaf4nl5bf",
+  "backup_volume_id": "x00ckmzcka",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "gpu_hourly_usd": 0.57,
+  "runtime_sha256": "443b7a31a72910914bcd337919ffdc846294904b64b7a3ff7a7d6d70305d9580",
+  "first_epoch_historical_match": {
+    "test_loss_identical": true,
+    "selected_tensor_hash_identical": true,
+    "weights_sha256": "b34441cea7739f822111a3348475cf865fc403c8b1514eead3e1989229de2521",
+    "test_perplexity": 28.394860500529408
+  },
+  "detached_verification": {
+    "pod_id": "obfk7e2vpall1d",
+    "launch_id": "20261108T173505145815Z",
+    "run_id": "20261108T173505Z-full-completion64",
+    "progress_after_disconnect": true,
+    "observations": [
+      {
+        "time": 1794159403.7989285,
+        "status": {
+          "state": "running",
+          "phase": "preparation",
+          "time": 1794159399.1407084
+        },
+        "child_status": {
+          "state": "running",
+          "phase": "preparation",
+          "time": 1794159399.1407084
+        },
+        "event_bytes": 0,
+        "epochs": 0,
+        "new_epochs": 0,
+        "finite_new_training": false,
+        "completed_new_stages": 0,
+        "supervisor": {
+          "pid": 254,
+          "child_pid": 256,
+          "time": 1794159400.8885124
+        },
+        "watchdog": {
+          "pid": 140,
+          "time": 1794159403.2969995,
+          "deadline": 1794198761.27246
+        }
+      },
+      {
+        "time": 1794159724.5578847,
+        "status": {
+          "state": "running",
+          "phase": "real",
+          "active_child": "20261108T173505Z-full-completion64-real",
+          "time": 1794159585.45808
+        },
+        "child_status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "time": 1794159590.9154294
+        },
+        "event_bytes": 489,
+        "epochs": 1,
+        "new_epochs": 1,
+        "finite_new_training": true,
+        "completed_new_stages": 1,
+        "supervisor": {
+          "pid": 254,
+          "child_pid": 256,
+          "time": 1794159721.717425
+        },
+        "watchdog": {
+          "pid": 140,
+          "time": 1794159722.4658065,
+          "deadline": 1794198761.27246
+        }
+      }
+    ],
+    "observations_sha256": "426a7e656adf7bee7115f15f97354753dff80aaf3a117d79de049af9da70eaa0",
+    "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+  },
+  "forecast": {
+    "estimated_hours": 4.026905867863577,
+    "estimated_compute_and_running_storage_usd": 2.3295374630120387,
+    "unique_training_stages": 20,
+    "epochs": 20,
+    "full_generation_stages": 10,
+    "generation_stages": 10,
+    "probe_sets": 21,
+    "training_target_exposures": 12800000,
+    "forecast_margin": 1.5,
+    "generated_training_continuations": 100000,
+    "generated_training_tokens": 6400000
+  },
+  "full_training_started": true,
+  "full_training_complete": false,
+  "maximum_session_usd": 7.291071093084376,
+  "shutdown_policy": "Independent watchdog after both arms and terminal restores complete, or failure/budget exhaustion; preserve recovery storage.",
+  "synthetic_first_epoch_historical_match": {
+    "recorded_at": 1794162820.0919561,
+    "tensor_hash_identical": true,
+    "training_prompt_and_target_content_identical": true,
+    "test_loss_identical": true,
+    "test_perplexity": 44.63599157605971,
+    "weights_sha256": "893c2d2c2ad41f594ca23c5364653c5077805687887b69ad1e7f6642251ecf41"
+  }
+}

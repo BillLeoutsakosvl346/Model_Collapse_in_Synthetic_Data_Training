@@ -1,0 +1,19 @@
+{
+  "budget_usd": 6.0,
+  "reserve_usd": 2.0,
+  "validation_cap_usd": 0.3,
+  "authorized_at": 1794320475.2610052,
+  "accrued_baseline_usd": 67.92081415099582,
+  "scope": "User requested running the real-data overfitting control for twenty epochs at a constant learning rate, with results shown in chat. Agent-selected task cap within the existing cumulative authorization, without increasing any spending ceiling.",
+  "max_active_pods": 1,
+  "condition": "fineweb_completion64_repeated_real_constant20",
+  "ledger_snapshot_sha256": "a0e441008351024b1a877d172a7ad3ff2c2e07b8ce3c17acf4106d13da07356a",
+  "allocation": "fineweb_completion64_repeated_chunk_real_20epochs",
+  "cumulative_ceiling_unchanged_usd": 74.03635289829083,
+  "setup_ceiling_unchanged_usd": 4.35,
+  "credit_purchase_authorized": false,
+  "learning_rate": 5e-06,
+  "training_epochs": 20,
+  "training_chunk": "cycle_01",
+  "target_source": "real"
+}

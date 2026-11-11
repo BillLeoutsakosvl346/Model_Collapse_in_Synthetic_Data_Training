@@ -1,0 +1,108 @@
+{
+  "checked_at": "2026-11-08T14:15:53.169624+00:00",
+  "run_id": "20261106T193918Z-full-completion64-real",
+  "pinned_snapshot": {
+    "run_id": "20261106T193918Z-full-completion64-real",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "a1e40f239c03df92dd5c49134708849a6159201c",
+      "dataset": "ee062b51bdb675369023f9af10eab494283a7a99"
+    },
+    "artifact_index_sha256": "c8db03c264bcd29af567ee434c25e7493934b9483a390383d3a84a808dff231d"
+  },
+  "ten_real_training_cycles": [
+    {
+      "cycle": 1,
+      "source_target_hash_matches_real_bank": true,
+      "assembled_training_arrays_match_all_three_saved_hashes": true,
+      "global_step": 79
+    },
+    {
+      "cycle": 2,
+      "source_target_hash_matches_real_bank": true,
+      "assembled_training_arrays_match_all_three_saved_hashes": true,
+      "global_step": 158
+    },
+    {
+      "cycle": 3,
+      "source_target_hash_matches_real_bank": true,
+      "assembled_training_arrays_match_all_three_saved_hashes": true,
+      "global_step": 237
+    },
+    {
+      "cycle": 4,
+      "source_target_hash_matches_real_bank": true,
+      "assembled_training_arrays_match_all_three_saved_hashes": true,
+      "global_step": 316
+    },
+    {
+      "cycle": 5,
+      "source_target_hash_matches_real_bank": true,
+      "assembled_training_arrays_match_all_three_saved_hashes": true,
+      "global_step": 395
+    },
+    {
+      "cycle": 6,
+      "source_target_hash_matches_real_bank": true,
+      "assembled_training_arrays_match_all_three_saved_hashes": true,
+      "global_step": 474
+    },
+    {
+      "cycle": 7,
+      "source_target_hash_matches_real_bank": true,
+      "assembled_training_arrays_match_all_three_saved_hashes": true,
+      "global_step": 553
+    },
+    {
+      "cycle": 8,
+      "source_target_hash_matches_real_bank": true,
+      "assembled_training_arrays_match_all_three_saved_hashes": true,
+      "global_step": 632
+    },
+    {
+      "cycle": 9,
+      "source_target_hash_matches_real_bank": true,
+      "assembled_training_arrays_match_all_three_saved_hashes": true,
+      "global_step": 711
+    },
+    {
+      "cycle": 10,
+      "source_target_hash_matches_real_bank": true,
+      "assembled_training_arrays_match_all_three_saved_hashes": true,
+      "global_step": 790
+    }
+  ],
+  "final_generation_checkpoint_matches_terminal_weights": true,
+  "prompt_matches_frozen_validation_probe": true,
+  "final_example_matches_saved_token_decode": true,
+  "report_example_matches_pinned_saved_example": true,
+  "baseline_example": {
+    "probe_index": 0,
+    "prompt": "The U.S. Food and Drug Administration (FDA) announced today it will convene its Veterinary Medicine Advisory Committee (VMAC) to consider a salmon that has been genetically engineered to reach its market weight in half the time of conventionally raised salmon.\nThe VMAC meeting, part of a rigorous regulatory process",
+    "generated_continuation": ", is expected to take place in Washington, D.C., in the coming weeks.\nThe genetically engineered salmon has been genetically engineered to reach its market weight in half the time of conventionally raised salmon.\nThe genetically engineered salmon has been genetically engineered to reach its market weight in half the time of conventionally raised"
+  },
+  "final_example": {
+    "probe_index": 0,
+    "prompt": "The U.S. Food and Drug Administration (FDA) announced today it will convene its Veterinary Medicine Advisory Committee (VMAC) to consider a salmon that has been genetically engineered to reach its market weight in half the time of conventionally raised salmon.\nThe VMAC meeting, part of a rigorous regulatory process",
+    "generated_continuation": ", is expected to take place in Washington, D.C., this fall.\nThe genetically engineered salmon, which has been genetically engineered to reach its market weight in half the time of conventionally raised salmon, has been genetically engineered to reach its market weight in half the time of conventionally raised salmon.\nThe genetically"
+  },
+  "initial_test_perplexity": 29.17631807160739,
+  "final_test_perplexity": 28.05292061370485,
+  "initial_mean_within_repeated_4gram_rate": 0.3938268442622951,
+  "final_mean_within_repeated_4gram_rate": 0.4061859631147541,
+  "generation_settings": {
+    "num_beams": 5,
+    "do_sample": false,
+    "min_new_tokens": 64,
+    "max_new_tokens": 64,
+    "repetition_penalty": 1.0,
+    "no_repeat_ngram_size": 0
+  },
+  "fresh_generation_reexecuted": false,
+  "bulk_checkpoint_restored": false,
+  "paid_compute_started": false,
+  "scope": "Pinned evidence, exact reconstruction of all real training inputs and decoding of saved output tokens; not a fresh generation from restored terminal weights."
+}

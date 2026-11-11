@@ -1,0 +1,58 @@
+[
+  {
+    "name": "01_test_perplexity",
+    "title": "Fixed real-test continuation perplexity"
+  },
+  {
+    "name": "02_validation_perplexity",
+    "title": "Fixed real-validation continuation perplexity"
+  },
+  {
+    "name": "03_real_only_perplexity",
+    "title": "Real targets: fresh versus repeated data"
+  },
+  {
+    "name": "04_pooled_entropy",
+    "title": "Token diversity across the fixed probe"
+  },
+  {
+    "name": "05_within_entropy",
+    "title": "Token diversity inside individual outputs"
+  },
+  {
+    "name": "06_distinct2",
+    "title": "Unique two-token phrases across the probe"
+  },
+  {
+    "name": "07_distinct3",
+    "title": "Unique three-token phrases across the probe"
+  },
+  {
+    "name": "08_repeated4",
+    "title": "Repetition inside individual outputs"
+  },
+  {
+    "name": "09_real_anchor_and_test",
+    "title": "Real first-chunk versus held-out loss"
+  },
+  {
+    "name": "10_real_anchor_gap",
+    "title": "Held-out minus real first-chunk loss"
+  },
+  {
+    "name": "14_fixed_real_answers",
+    "title": "Original real answers on the repeated prompts"
+  },
+  {
+    "name": "11_secondary_corpora",
+    "title": "Secondary full-text corpus evaluation"
+  },
+  {
+    "name": "12_learning_rate",
+    "title": "Preserved global cosine learning-rate schedule"
+  },
+  {
+    "name": "13_test_nll_p95",
+    "title": "Harder held-out passages: 95th-percentile NLL"
+  }
+]

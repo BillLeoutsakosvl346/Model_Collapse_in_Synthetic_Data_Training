@@ -1,0 +1,103 @@
+{
+  "run_id": "20261110T151528Z-full-completion64",
+  "launch_id": "20261110T151528895209Z",
+  "pod_id": "xht5rffbiuynaw",
+  "volume_id": "xht5rffbiuynaw",
+  "gpu": "NVIDIA RTX 2000 Ada Generation",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "storage_backend": "pod_persistent",
+  "runtime_sha256": "03dc76a4555874c6f19c4a07254f5769a2ea69d759136c4c9962f28b1fa09c4d",
+  "configuration_sha256": "a502f920de2f45351625327fef554523099b3fb87910c8fc5df904977155fb99",
+  "created_at": 1794323728.8972116,
+  "guard_hourly_usd": 0.2980547945205479,
+  "session_allowance_usd": 1.4057218993888938,
+  "admission_forecast": {
+    "estimated_hours": 3.1893783432369753,
+    "estimated_compute_and_running_storage_usd": 0.8266169623841584,
+    "unique_training_stages": 20,
+    "epochs": 20,
+    "full_generation_stages": 0,
+    "generation_stages": 0,
+    "probe_sets": 21,
+    "training_target_exposures": 12800000,
+    "forecast_margin": 1.5,
+    "generated_training_continuations": 0,
+    "generated_training_tokens": 0,
+    "historical_storage_during_run_usd": 0.3442781006111062,
+    "seven_day_volume_storage_usd": 2.7616438356164377
+  },
+  "recorded_at": 1794324441.3295915,
+  "baseline_in_progress": false,
+  "actual_training_progress_verified": true,
+  "detached_proof": {
+    "pod_id": "xht5rffbiuynaw",
+    "launch_id": "20261110T151528895209Z",
+    "run_id": "20261110T151528Z-full-completion64",
+    "progress_after_disconnect": true,
+    "observations": [
+      {
+        "time": 1794323809.4850924,
+        "status": {
+          "state": "running",
+          "phase": "preparation",
+          "time": 1794323805.1120393
+        },
+        "child_status": {
+          "state": "running",
+          "phase": "preparation",
+          "time": 1794323805.1120393
+        },
+        "event_bytes": 0,
+        "epochs": 0,
+        "new_epochs": 0,
+        "finite_new_training": false,
+        "completed_new_stages": 0,
+        "supervisor": {
+          "pid": 253,
+          "child_pid": 255,
+          "time": 1794323807.262922
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1794323806.910928,
+          "deadline": 1794340707.650551
+        }
+      },
+      {
+        "time": 1794324398.7946846,
+        "status": {
+          "state": "running",
+          "phase": "real",
+          "active_child": "20261110T151528Z-full-completion64-real",
+          "time": 1794324102.1322126
+        },
+        "child_status": {
+          "state": "running",
+          "generation": 1,
+          "stage": "training",
+          "time": 1794324108.2135398
+        },
+        "event_bytes": 469,
+        "epochs": 1,
+        "new_epochs": 1,
+        "finite_new_training": true,
+        "completed_new_stages": 1,
+        "supervisor": {
+          "pid": 253,
+          "child_pid": 255,
+          "time": 1794324398.629478
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1794324398.3214328,
+          "deadline": 1794340707.650551
+        }
+      }
+    ],
+    "observations_sha256": "9c4ec4678b89d34791ab3822ae22b8d198d5c0f0edcaa5021d8c0bf13358c614",
+    "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+  },
+  "first_epoch_test_perplexity": 28.39807582983245,
+  "learning_rate_start": 5e-06,
+  "learning_rate_end": 5e-06
+}

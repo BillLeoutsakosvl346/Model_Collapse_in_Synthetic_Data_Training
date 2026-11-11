@@ -21,6 +21,8 @@ ALLOCATION = "fineweb_completion64"
 ACCEPTANCE = "fineweb_completion64_acceptance"
 ORDER = ("real", "synthetic")
 MIXTURE_ALLOCATION = "fineweb_completion64_mixtures"
+REPEATED_ALLOCATION = "fineweb_completion64_repeated_chunk"
+DECODING_ALLOCATION = "fineweb_completion64_decoding"
 CHECKS = {"six_terminal_epochs", "matched_initial_weights_and_prompts", "continuation_only_loss",
           "all_handoffs_and_optimizer_states", "generation_shard_recovery", "training_recovery",
           "completed_stages_unchanged", "coordinator_recovery", "both_private_restores",
@@ -32,10 +34,39 @@ class BackupPending(RuntimeError):
     pass
 
 
+def source_collection(c, cycle):
+    """Resolve scientific data identity independently of the training epoch."""
+    policy = c.get("training_chunk_policy", "fresh_per_cycle")
+    if policy not in ("fresh_per_cycle", "repeat_fixed"):
+        raise ValueError("Unknown completion training_chunk_policy")
+    if type(cycle) is not int or not 1 <= cycle <= c.get("training_cycles", c.get("full_cycles", 10)):
+        raise ValueError("Invalid completion training cycle")
+    fixed = c.get("fixed_chunk")
+    if policy == "repeat_fixed":
+        if type(fixed) is not int or fixed != 1:
+            raise ValueError("Repeated-chunk control requires fixed_chunk: 1")
+        cycle = fixed
+    elif fixed is not None:
+        raise ValueError("fixed_chunk is valid only for repeat_fixed")
+    return f"cycle_{cycle:02d}"
+
+
 def arm_specs(c):
+    decoders = c.get("decoding_arms")
+    if decoders is not None:
+        expected = [{"id": "greedy", "decoder": "greedy"}, {"id": "sampling", "decoder": "sampling"}]
+        if decoders != expected or c.get("completion_arms") is not None or c.get("endpoint_arms") is not None:
+            raise ValueError("Decoding comparison requires greedy then sampling, without mixture/endpoint definitions")
+        return [{**item, "synthetic_fraction": 1.0} for item in decoders]
     definitions = c.get("completion_arms")
     if definitions is None:
-        return [{"id": "real", "synthetic_fraction": 0.0}, {"id": "synthetic", "synthetic_fraction": 1.0}]
+        endpoints = c.get("endpoint_arms", list(ORDER))
+        if (not isinstance(endpoints, list) or not endpoints or len(endpoints) > 2 or
+                any(name not in ORDER for name in endpoints) or len(set(endpoints)) != len(endpoints)):
+            raise ValueError("Endpoint arms must be a unique nonempty real/synthetic subset")
+        return [{"id": name, "synthetic_fraction": float(name == "synthetic")} for name in endpoints]
+    if c.get("endpoint_arms") is not None:
+        raise ValueError("Endpoint arms and mixture arms are mutually exclusive")
     if not isinstance(definitions, list) or len(definitions) not in (1, 2):
         raise ValueError("Completion comparison requires one or two ordered arm definitions")
     names = set()
@@ -51,6 +82,12 @@ def arm_specs(c):
 
 
 def allocation_id(c):
+    if c.get("decoding_arms") is not None:
+        return DECODING_ALLOCATION
+    if c.get("training_chunk_policy") == "repeat_fixed":
+        if c.get("endpoint_arms") is not None:
+            return REPEATED_ALLOCATION + "_" + "_".join(x["id"] for x in arm_specs(c)) + "_" + str(c.get("training_cycles", c["full_cycles"])) + "epochs"
+        return REPEATED_ALLOCATION
     if c.get("completion_arms") is not None and len(arm_specs(c)) == 1:
         return MIXTURE_ALLOCATION + "_" + arm_specs(c)[0]["id"]
     return MIXTURE_ALLOCATION if c.get("completion_arms") is not None else ALLOCATION
@@ -61,6 +98,12 @@ def acceptance_campaign(c):
 
 
 def benchmark_filename(c):
+    if c.get("decoding_arms") is not None:
+        return "benchmark_completion_decoding.json"
+    if c.get("training_chunk_policy") == "repeat_fixed":
+        if c.get("endpoint_arms") is not None:
+            return "benchmark_" + allocation_id(c) + ".json"
+        return "benchmark_completion_repeated_chunk.json"
     if c.get("completion_arms") is not None and len(arm_specs(c)) == 1:
         return "benchmark_completion_" + arm_specs(c)[0]["id"] + ".json"
     return "benchmark_completion_mixtures.json" if c.get("completion_arms") is not None else "benchmark_completion64.json"
@@ -69,6 +112,17 @@ def benchmark_filename(c):
 def acceptance_checks(c):
     extra = {"exact_mixture_reconstruction", "nested_selections", "sealed_private_stage_restores"}
     checks = CHECKS | extra if c.get("completion_arms") is not None else CHECKS
+    if c.get("decoding_arms") is not None:
+        checks |= {"explicit_training_decoders", "fixed_five_beam_probe", "sampling_rng_isolation",
+                   "sampling_recovery_byte_identity", "historical_beam_parity", "sealed_private_stage_restores"}
+    if c.get("training_chunk_policy") == "repeat_fixed":
+        checks = checks | {"fixed_chunk_inputs", "fixed_real_anchor"}
+        if any(item["synthetic_fraction"] for item in arm_specs(c)):
+            checks = checks | {"recursive_same_prompt_targets"}
+    if c["learning_rate"] == c["min_learning_rate"]:
+        checks = checks | {"constant_learning_rate_all_updates"}
+    if not any(item["synthetic_fraction"] for item in arm_specs(c)):
+        checks = checks - {"generation_shard_recovery"}
     if len(arm_specs(c)) == 1:
         return (checks - {"six_terminal_epochs", "both_private_restores"}) | {"three_terminal_epochs", "private_restore"}
     return checks
@@ -89,13 +143,17 @@ def required_backup_bytes(c):
     # The verified OPT stages use <1.53 GB each, including model, optimizer,
     # inputs and generated pools. Namespace admission also keeps 10 GB free.
     # Smoke admission covers its three stages plus the later ten-stage run.
-    stages = c["full_cycles"] + (c["generations"] if c["kind"] == "smoke" else 0)
+    stages = c.get("training_cycles", c["full_cycles"]) + (c["generations"] if c["kind"] == "smoke" else 0)
     return stages * 1_530_000_000
 
 
 def arm_config(c, name):
     arm = {**c, "workflow": "completion_arm", "data_kind": name}
-    if c.get("completion_arms") is not None:
+    if c.get("decoding_arms") is not None:
+        from ..science.decoding import decoder_config
+        spec = next(x for x in arm_specs(c) if x["id"] == name)
+        arm = decoder_config({**arm, "data_kind": "synthetic", "arm_id": name}, spec["decoder"])
+    elif c.get("completion_arms") is not None:
         spec = next(x for x in arm_specs(c) if x["id"] == name)
         arm.update(data_kind="mixed", arm_id=name, synthetic_fraction=spec["synthetic_fraction"])
     return arm
@@ -105,6 +163,24 @@ def validate_config(c):
     from .configuration import validate_training_numbers
     validate_training_numbers(c)
     specs = arm_specs(c)
+    source_collection(c, 1)
+    if c.get("decoding_arms") is not None:
+        from ..science.decoding import decoding_settings
+        decoding_settings(c)
+        if c.get("training_chunk_policy", "fresh_per_cycle") != "fresh_per_cycle":
+            raise ValueError("Decoding comparison requires ten fresh chunks")
+        if c["generation_shard"] % c["generation_batch"]:
+            raise ValueError("Decoding shard size must be divisible by its batch size")
+        if c["workflow"] == "completion_comparison" and c.get("generation_decoder") is not None:
+            raise ValueError("The parent retains historical five-beam probe decoding")
+    cycles = c.get("training_cycles", c["full_cycles"])
+    if (type(cycles) is not int or not 1 <= cycles <= 20 or
+            (cycles != c["full_cycles"] and c.get("training_chunk_policy") != "repeat_fixed")):
+        raise ValueError("Only repeated-chunk controls may extend training beyond the frozen bank")
+    if c.get("endpoint_arms") is not None and c.get("training_chunk_policy") != "repeat_fixed":
+        raise ValueError("Explicit endpoint subsets currently require repeat_fixed")
+    if c.get("training_chunk_policy") == "repeat_fixed" and c.get("completion_arms") is not None:
+        raise ValueError("Repeated-chunk control requires the historical real/synthetic endpoint arms")
     if c.get("backup_store"):
         from ..cloud.s3_artifacts import validate_store
         validate_store(c["backup_store"])
@@ -122,12 +198,14 @@ def validate_config(c):
         if len(c.get(key, "")) != 40 or any(x not in "0123456789abcdef" for x in c[key]):
             raise ValueError("Completion sources require pinned revisions")
     expected = {"full_cycles": 10, "full_train_pairs": 10000, "max_sequence_length": 129,
-                "block_size": 64, "new_tokens": 64, "num_beams": 5, "network_volume_gb": 60}
+                "block_size": 64, "new_tokens": 64, "network_volume_gb": 60}
+    if c.get("decoding_arms") is None:
+        expected["num_beams"] = 5
     if any(c.get(k) != v for k, v in expected.items()) or c.get("repetition_penalty") != 1.0:
         raise ValueError("Completion comparison has an incompatible length, decoding or bank policy")
     profile = (c.get("generations"), c.get("train_pairs_per_cycle"), c.get("evaluation_pairs"), c.get("probe_count"))
     smoke_pairs = smoke_pair_count(c)
-    if profile != ({"full": (10, 10000, None, 256), "smoke": (3, smoke_pairs, 64, 64)}.get(c.get("kind"))):
+    if profile != ({"full": (cycles, 10000, None, 256), "smoke": (3, smoke_pairs, 64, 64)}.get(c.get("kind"))):
         raise ValueError("Completion comparison scope differs from its full/smoke definition")
     for key in ("microbatch", "effective_batch", "generation_batch", "generation_shard", "eval_batch", "shuffle_buffer"):
         if type(c.get(key)) is not int or c[key] <= 0:
@@ -136,10 +214,17 @@ def validate_config(c):
         raise ValueError("Invalid completion accumulation or precision")
     if not 0 < c.get("min_learning_rate", 0) <= c.get("learning_rate", 0) or c.get("weight_decay", -1) < 0:
         raise ValueError("Invalid completion optimizer settings")
-    if c.get("storage_backend") != "network" or not c.get("dataset_files"):
-        raise ValueError("Completion comparison requires pinned sample shards and network storage")
+    if c.get("storage_backend") not in ("network", "pod_persistent") or not c.get("dataset_files"):
+        raise ValueError("Completion comparison requires pinned sample shards and persistent storage")
+    if c.get("storage_backend") == "pod_persistent" and not (
+            c.get("training_chunk_policy") == "repeat_fixed" and len(specs) == 1):
+        raise ValueError("Pod-persistent completion storage requires one repeated endpoint")
     if c["workflow"] == "completion_arm":
-        if c.get("completion_arms") is None:
+        if c.get("decoding_arms") is not None:
+            spec = next((x for x in specs if x["id"] == c.get("arm_id")), None)
+            if not spec or c.get("data_kind") != "synthetic" or c.get("generation_decoder") != spec["decoder"]:
+                raise ValueError("Training decoder arm differs from its parent definition")
+        elif c.get("completion_arms") is None:
             if c.get("data_kind") not in ORDER:
                 raise ValueError("Unknown completion arm")
         elif (c.get("data_kind") != "mixed" or not any(
@@ -210,6 +295,12 @@ def measure(stage, model, bank, c, weights, cycle):
     result = {"generation": cycle, "weights_sha256": weights,
               "validation": _primary(model, bank, "validation", c),
               "test": _primary(model, bank, "test", c, stage / "test_sequences.json"), "secondary": {}}
+    if c.get("training_chunk_policy") == "repeat_fixed":
+        prompt, target, _ = load_pairs(bank, source_collection(c, 1), c["train_pairs_per_cycle"])
+        ids, attention, scoring = assemble(prompt, target, c["bos_token_id"])
+        result["fixed_real_anchor"] = engine.evaluate(model, ids, c, masks=attention, loss_masks=scoring)
+        result["fixed_real_anchor"].update(source_collection=source_collection(c, 1),
+            chunk_manifest_sha256=sha256(bank / source_collection(c, 1) / "manifest.json"))
     for corpus in c["secondary_corpora"]:
         tokens = np.load(bank / "secondary" / corpus / "tokens.npy", mmap_mode="r")
         masks = np.load(bank / "secondary" / corpus / "masks.npy", mmap_mode="r")
@@ -218,7 +309,12 @@ def measure(stage, model, bank, c, weights, cycle):
     validation, _, _ = load_pairs(bank, "validation")
     indices = np.load(bank / "probe_indices.npy")[:c["probe_count"]]
     prompts = _visible_prompt(validation[indices], c["bos_token_id"])
-    values, provenance = engine.generate(stage / "probe", cycle, model, prompts, c, weights)
+    probe_c = c
+    if c.get("decoding_arms") is not None:
+        from ..science.decoding import decoder_config
+        probe_c = {**decoder_config(c, "beam"), "generation_purpose": "probe"}
+        result["probe_decoding"] = engine.decoding_settings(probe_c)
+    values, provenance = engine.generate(stage / "probe", cycle, model, prompts, probe_c, weights)
     result["probe"] = {**diversity(values), **probe_diagnostics(values),
                        "continuation_tokens_sha256": provenance["continuation_tokens_sha256"]}
     from transformers import AutoTokenizer
@@ -255,15 +351,26 @@ def benchmark(root, c, bank):
         train_seconds.append(time.perf_counter() - start)
     model.eval()
     generation_seconds = []
+    decoder_rates = {}
+    modes = ["beam"] if c.get("decoding_arms") is None else ["beam", "greedy", "sampling"]
+    from ..science.decoding import decoder_config
     with torch.inference_mode():
-        for step in range(3):
-            ids = engine.tensor(_visible_prompt(prompts[:c["generation_batch"]], c["bos_token_id"]))
-            engine.sync()
-            start = time.perf_counter()
-            with engine.autocast(c):
-                model.generate(input_ids=ids, attention_mask=torch.ones_like(ids), **engine.decoding_settings(c))
-            engine.sync()
-            generation_seconds.append(time.perf_counter() - start)
+        for mode in modes:
+            config = decoder_config(c, mode) if c.get("decoding_arms") is not None else c
+            durations = []
+            for step in range(3):
+                ids = engine.tensor(_visible_prompt(prompts[:c["generation_batch"]], c["bos_token_id"]))
+                engine.sync()
+                start = time.perf_counter()
+                rng = engine.generation_rng(config, 0, step, {"parent_weights_sha256": "benchmark", "prompt_tokens_sha256": "benchmark"})
+                with rng, engine.autocast(config):
+                    model.generate(input_ids=ids, attention_mask=torch.ones_like(ids), **engine.decoding_settings(config))
+                engine.sync()
+                durations.append(time.perf_counter() - start)
+            decoder_rates[mode] = {"new_tokens_per_second": c["generation_batch"] * 64 / float(np.median(durations[1:])),
+                                   "generation_batch_seconds": durations}
+            if mode == "beam":
+                generation_seconds = durations
     primary = _primary(model, bank, "test", c)
     secondary_tokens = np.load(bank / "secondary/fineweb_edu/tokens.npy", mmap_mode="r")[:64]
     secondary_masks = np.load(bank / "secondary/fineweb_edu/masks.npy", mmap_mode="r")[:64]
@@ -277,6 +384,8 @@ def benchmark(root, c, bank):
               "full_primary_targets": {s: read_json(bank / s / "manifest.json")["target_tokens"] for s in ("validation", "test")},
               "full_secondary_targets": sum(int(np.load(bank / "secondary" / name / "masks.npy", mmap_mode="r")[:, 1:].sum()) for name in c["secondary_corpora"]),
               "benchmark_updates_discarded": 5, "gpu": torch.cuda.get_device_name() if torch.cuda.is_available() else "cpu"}
+    if c.get("decoding_arms") is not None:
+        result["decoder_rates"] = decoder_rates
     atomic_json(path, result)
     del model, optimizer
     gc.collect()
@@ -286,22 +395,29 @@ def benchmark(root, c, bank):
 
 
 def forecast(b, c, hourly):
-    targets = 10000 * 64 * 10
+    cycles = c.get("training_cycles", c["full_cycles"])
+    targets = 10000 * 64 * cycles
     specs = arm_specs(c)
-    stages = len(specs) * 10
+    stages = len(specs) * cycles
     probe_sets = stages + 1
-    generated_targets = sum(mixture_counts(10000, x["synthetic_fraction"])[1] * 64 * 10 for x in specs)
+    generated_targets = sum(mixture_counts(10000, x["synthetic_fraction"])[1] * 64 * cycles for x in specs)
     primary = sum(b["full_primary_targets"].values()) * probe_sets
     secondary = b["full_secondary_targets"] * probe_sets
     seconds = (len(specs) * targets / b["training_target_tokens_per_second"] + generated_targets / b["generation_new_tokens_per_second"] +
                probe_sets * 256 * 64 / b["generation_new_tokens_per_second"] + primary / b["primary_target_tokens_per_second"] +
                secondary / b["secondary_target_tokens_per_second"] + len(specs) * targets / b["primary_target_tokens_per_second"])
+    if c.get("decoding_arms") is not None:
+        seconds -= generated_targets / b["generation_new_tokens_per_second"]
+        seconds += sum(10000 * 64 * cycles / b["decoder_rates"][x["decoder"]]["new_tokens_per_second"] for x in specs)
+    if c.get("training_chunk_policy") == "repeat_fixed":
+        # Fixed real diagnostics at baseline/each stage and both cold terminal restores.
+        seconds += probe_sets * 640000 / b["primary_target_tokens_per_second"] + 900
     # Include checkpoint persistence, immutable private backups and ordinary setup.
     hours = (seconds * 1.5 + stages * 120 + 600) / 3600
     return {"estimated_hours": hours, "estimated_compute_and_running_storage_usd": hours * hourly,
             "unique_training_stages": stages, "epochs": stages,
-            "full_generation_stages": sum(x["synthetic_fraction"] == 1 for x in specs) * 10,
-            "generation_stages": sum(x["synthetic_fraction"] > 0 for x in specs) * 10,
+            "full_generation_stages": sum(x["synthetic_fraction"] == 1 for x in specs) * cycles,
+            "generation_stages": sum(x["synthetic_fraction"] > 0 for x in specs) * cycles,
             "probe_sets": probe_sets, "training_target_exposures": len(specs) * targets, "forecast_margin": 1.5,
             "generated_training_continuations": generated_targets // 64,
             "generated_training_tokens": generated_targets}
@@ -364,8 +480,15 @@ def training_input(root, cycle, prompt, real, c, checkpoint, previous, optimizer
     lineage = {"initializer_weights_sha256": previous, "optimizer_parent_sha256": optimizer_hash,
                "generator_weights_sha256": previous if generated is not None else None,
                "generation_manifest_sha256": generation_hash, "bank_manifest_sha256": c["prepared_bank"]["manifest_sha256"],
-               "chunk_manifest_sha256": sha256(bank_path(root, c) / f"cycle_{cycle:02d}/manifest.json"),
+               "chunk_manifest_sha256": sha256(bank_path(root, c) / source_collection(c, cycle) / "manifest.json"),
                "data_kind": c["data_kind"]}
+    if c.get("training_chunk_policy") == "repeat_fixed":
+        lineage.update(training_chunk_policy="repeat_fixed", source_collection=source_collection(c, cycle),
+                       training_epoch=cycle)
+    if c.get("decoding_arms") is not None:
+        from ..science.decoding import SAMPLING_POLICY, decoding_settings
+        lineage.update(training_decoder=c["generation_decoder"], decoding=decoding_settings(c),
+                       sampling_policy=SAMPLING_POLICY if c["generation_decoder"] == "sampling" else None)
     target = real if generated is None else generated
     if selection is not None:
         from ..completion_mixing import freeze_targets
@@ -410,7 +533,7 @@ def run_arm(root, validation=False):
         total_steps = c["generations"] * math.ceil(c["train_pairs_per_cycle"] / c["effective_batch"])
         for cycle in range(1, c["generations"] + 1):
             stage = root / f"seed_42/gen_{cycle:02d}"
-            prompt, real, _ = load_pairs(bank, f"cycle_{cycle:02d}", c["train_pairs_per_cycle"])
+            prompt, real, _ = load_pairs(bank, source_collection(c, cycle), c["train_pairs_per_cycle"])
             if c["kind"] == "full" and not (stage / "stage_completion.json").exists():
                 b = read_json(parent / "benchmark.json")
                 seconds = (len(prompt) * 64 / b["training_target_tokens_per_second"] +
@@ -419,7 +542,9 @@ def run_arm(root, validation=False):
                            b["full_secondary_targets"] / b["secondary_target_tokens_per_second"] +
                            c["probe_count"] * 64 / b["generation_new_tokens_per_second"] + 120)
                 fraction = c.get("synthetic_fraction", float(c["data_kind"] == "synthetic"))
-                seconds += mixture_counts(len(prompt), fraction)[1] * 64 / b["generation_new_tokens_per_second"]
+                generation_rate = (b["decoder_rates"][c["generation_decoder"]]["new_tokens_per_second"]
+                                   if c.get("decoding_arms") is not None else b["generation_new_tokens_per_second"])
+                seconds += mixture_counts(len(prompt), fraction)[1] * 64 / generation_rate
                 if seconds * 1.5 > deadline(resources) - now():
                     atomic_json(root / "status.json", {"state": "budget_paused", "generation": cycle, "time": now()})
                     backup(root)
@@ -495,7 +620,7 @@ def verify_completed_arm(child, c):
     optimizer_hash = None
     for cycle in range(1, c["generations"] + 1):
         stage = child / f"seed_42/gen_{cycle:02d}"
-        prompt, real, _ = load_pairs(bank, f"cycle_{cycle:02d}", c["train_pairs_per_cycle"])
+        prompt, real, _ = load_pairs(bank, source_collection(c, cycle), c["train_pairs_per_cycle"])
         _, lineage = training_input(child, cycle, prompt, real, c, None, previous, optimizer_hash, create=False)
         metrics = verify_stage(stage, c, lineage)
         expected_step = cycle * math.ceil(c["train_pairs_per_cycle"] / c["effective_batch"])
@@ -580,6 +705,9 @@ def run(root, validation=False):
             except BackupPending:
                 backup(child)
                 verify_completed_arm(child, arm)
+            if not validation and c.get("training_chunk_policy") == "repeat_fixed":
+                from .completion_restore import verify_terminal_restore
+                verify_terminal_restore(root, child, arm)
             if validation and name == next(iter(roots)) and not (root / ".handoff_injected").exists():
                 (root / ".handoff_injected").touch()
                 event(root, "completion_handoff_interruption")

@@ -80,6 +80,28 @@ def setup_budget(d):
     return float(amount)
 
 
+def configured_placements(c, choices):
+    """Respect an explicit live-verified GPU/DC instead of silently changing placement."""
+    if c.get("required_gpu"):
+        required = c["required_gpu"].casefold().removeprefix("nvidia ")
+        choices = [x for x in choices if any(str(x.get(key, "")).casefold().removeprefix("nvidia ") == required
+                   for key in ("gpu", "name", "display_name", "gpu_name"))]
+    if c.get("required_data_center"):
+        choices = [x for x in choices if x["data_center"] == c["required_data_center"]]
+    return choices
+
+
+def configured_gpu_request(c, choice):
+    request = {"id": choice["gpu"], "count": 1, "minCudaVersion": "12.8"}
+    version = c.get("required_host_cuda_version")
+    if version is not None:
+        if not isinstance(version, str) or not re.fullmatch(r"[0-9]+\.[0-9]+", version):
+            raise ValueError("required_host_cuda_version must be an explicit major.minor version")
+        request.pop("minCudaVersion")
+        request["allowedCudaVersions"] = [version]
+    return request
+
+
 def check_active_pods(c, pods, ledger_state):
     if c.get("parallel_campaign"):
         from ..cloud.parallel import check_active
@@ -204,8 +226,12 @@ def ssh_connect(pod, key):
     if known.exists():
         client.load_host_keys(str(known))
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(endpoint["host"], port=endpoint["port"], username=endpoint["username"], key_filename=str(key),
-                   timeout=20, auth_timeout=20, banner_timeout=20, look_for_keys=False, allow_agent=False)
+    try:
+        client.connect(endpoint["host"], port=endpoint["port"], username=endpoint["username"], key_filename=str(key),
+                       timeout=20, auth_timeout=20, banner_timeout=20, look_for_keys=False, allow_agent=False)
+    except BaseException:
+        client.close()
+        raise
     client.get_transport().set_keepalive(15)
     client.save_host_keys(str(known))
     return client
@@ -222,11 +248,15 @@ def command(client, text, timeout=600):
 
 
 def _transport_read(operation, cutoff):
-    """Retry only transient reads, never create requests, auth failures or host-key changes."""
+    """Retry transient reads, including an auth handshake timeout, never rejected keys."""
     for attempt in range(4):
         try:
             return operation()
-        except (paramiko.AuthenticationException, paramiko.BadHostKeyException, paramiko.PasswordRequiredException):
+        except paramiko.AuthenticationException as error:
+            if (str(error).strip().rstrip(".").casefold() != "authentication timeout" or
+                    attempt == 3 or now() + min(2 ** attempt, 4) >= cutoff):
+                raise
+        except (paramiko.BadHostKeyException, paramiko.PasswordRequiredException):
             raise
         except (OSError, EOFError, paramiko.SSHException):
             if attempt == 3 or now() + min(2 ** attempt, 4) >= cutoff:
@@ -411,7 +441,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     p = preflight(probe=True, network_storage=False) if pod_storage else preflight(probe=True)
     check_active_pods(c, api.request("GET", "/pods")["pods"], ledger())
     storage_admission = None
-    if completion and c.get("completion_arms") is not None:
+    if completion and (c.get("completion_arms") is not None or c.get("decoding_arms") is not None or c.get("training_chunk_policy") == "repeat_fixed"):
         from ..cloud.hf_storage import check_storage
         from ..workflow.completion import required_backup_bytes
         destination = read_json(STATE / "completion64-new-backup-destination.json", {})
@@ -445,10 +475,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         modern = ("ada", "blackwell", "a100", "a40", "a4000", "a4500", "a5000", "a6000", "l4", "h100", "h200", "b200", "b300", "geforce rtx 30", "geforce rtx 40", "geforce rtx 50")
         choices = [item for item in choices if item["vram_gb"] >= 16 and " mig " not in item["gpu"].casefold()
                    and any(value in item["gpu"].casefold() for value in modern)]
-    if c.get("required_gpu"):
-        required = c["required_gpu"].casefold().removeprefix("nvidia ")
-        choices = [x for x in choices if any(str(x.get(key, "")).casefold().removeprefix("nvidia ") == required
-                    for key in ("gpu", "name", "display_name", "gpu_name"))]
+    choices = configured_placements(c, choices)
     if not choices:
         raise RuntimeError("No compatible Secure Cloud GPU is currently available" if pod_storage else
                            "No compatible Secure Cloud GPU with Standard network storage is available")
@@ -460,6 +487,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         if not choices:
             raise RuntimeError("No compatible GPU is available beside this run's retained volume")
     choice = choices[0]
+    gpu_request = configured_gpu_request(c, choice)
     if gpu == "auto" or fresh_real or completion:
         c["required_gpu"] = choice["gpu"]  # Seal actual hardware into the protocol before certification.
     volume_gb = c["network_volume_gb"] if campaign or completion else 30
@@ -588,6 +616,8 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         raise RuntimeError("Official template differs from the pinned matched image")
     key = register_key(api)
     run_suffix = "-completion64" if completion else "-fresh-real" if fresh_real else "-mixed-campaign" if campaign else "-paired-final5" if paired else {"continued": "-continued", "reset_s0": "-reset-s0"}.get(c.get("initialization"), "")
+    if completion and c.get("decoding_arms") is not None:
+        run_suffix = "-completion64-decoding"
     if completion and c.get("completion_arms") is not None:
         from ..workflow.completion import arm_specs
         definitions = arm_specs(c)
@@ -616,7 +646,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         created = now()
         try:
             payload = {"name": "iib-" + run_id, "cloud": "SECURE", "image": template["image"],
-                "disk": 20, "gpu": {"id": choice["gpu"], "count": 1, "minCudaVersion": "12.8"},
+                "disk": 20, "gpu": gpu_request,
                 "dataCenterIds": [choice["data_center"]],
                 "mounts": {"persistent": {"size": volume_gb, "path": "/workspace"}} if pod_storage else {"network": [{"volumeId": volume["id"], "path": "/workspace"}]},
                 "startSsh": True, "startJupyter": False, "ports": ["22/tcp"]}
@@ -720,6 +750,10 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             raise RuntimeError("Pod did not become SSH-ready within provisioning health timeout")
         if pod["gpu"]["id"] != choice["gpu"] or pod["dataCenterId"] != choice["data_center"]:
             raise RuntimeError("Pod read-back configuration mismatch")
+        if c.get("required_host_cuda_version"):
+            if pod.get("cudaVersion") != c["required_host_cuda_version"]:
+                raise RuntimeError("Pod host CUDA read-back differs from its pinned placement")
+            resources["host_cuda_version"] = pod["cudaVersion"]
         if pod_storage:
             mounted = pod.get("mounts", {}).get("persistent", {})
             if mounted.get("path") != "/workspace" or mounted.get("size") != volume_gb:

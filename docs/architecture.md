@@ -21,7 +21,7 @@ The root-level package and `python -m model_collapse` CLI remain stable. These a
 
 | Package | Implementation and responsibility |
 | --- | --- |
-| `science/` | `engine.py`: shared model IO, training, generation and evaluation; `wikitext.py`: split packing/arrays; `metrics.py`: output statistics; `sampling.py`: pure mixture counts; `identity.py`: legacy int32 token hashes |
+| `science/` | `engine.py`: shared model IO, training, generation and evaluation; `decoding.py`: explicit training decoders and stable sampling seeds; `wikitext.py`: split packing/arrays; `metrics.py`: output statistics; `sampling.py`: pure mixture counts; `identity.py`: legacy int32 token hashes |
 | `workflow/` | `wikitext.py`, `fresh_real.py`, `completion.py`: scientific loops; `paired.py` and `mixed_campaign.py`: coordinators; selection/optimization/configuration: policies; lineage/branch/initial_data: verified inputs; registry: lazy CLI worker/report/validation routing |
 | `cloud/` | `execution.py`: guarded launch, SSH, resource registry and operations; `runpod.py`: API client; `supervisor.py`: detached processes and stdlib-only watchdog; `ownership.py`: states/session association; `ledger.py`/`budget.py`: transitions/costs; parallel/S3/private-capacity adapters |
 | `artifacts/` | `hub.py`: private backups, pinned fetch and restoration; `deployment.py`: immutable source bundles; `paths.py`: safe artifact destinations |

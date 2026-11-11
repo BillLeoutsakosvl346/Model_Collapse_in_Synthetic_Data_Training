@@ -1,0 +1,39 @@
+{
+  "generation": 10,
+  "initial_weights_sha256": "d27bcaca1a7132922b73639fd0454b81c0f8e54628195cc41f9e7e2700688a04",
+  "selected_weights_sha256": "ce965eb7ade03782bdd8ece0f8a0cc95bc58159a5ef72113d113564bf5982a4a",
+  "input_tokens_sha256": "dca68c78aa1a4a769cdde28cec0000c6c559719c6b572102222e0d9d3b8d0b5e",
+  "training_blocks": 10000,
+  "selected_epoch": 1,
+  "best_validation_loss": 3.3260956123615806,
+  "best_validation_epoch": 1,
+  "selected_validation_loss": 3.3260956123615806,
+  "executed_epochs": 1,
+  "terminal_weights_sha256": "ce965eb7ade03782bdd8ece0f8a0cc95bc58159a5ef72113d113564bf5982a4a",
+  "training_contract_sha256": "b0ef4b1ead5fead8f342f1dfc50e54a65724d0346dc2bdf8e2ad66e7f2b16355",
+  "seconds": 48.92427787114866,
+  "peak_allocated_gpu_bytes": 6479753728,
+  "checkpoint_files": {
+    "config.json": "80f73de9d7962ca49b28d34171af8f63a34b433fcaedca82c47b1ef369e5595f",
+    "generation_config.json": "60f783a5a46e55c0fb496d663a8404bf604d0763aa0c087954c0dbaf69b10c0c",
+    "model.safetensors": "6ccc4dd6d4a49d7694e43a439af0cb586a3509260a57d3a712e6265ac515db3f"
+  },
+  "initialization": "continued",
+  "optimizer_initialization": "carried_across_cycles",
+  "checkpoint_selection": "final_epoch",
+  "optimizer_parent_sha256": "12973abc90ff1a991d800195149e07580f89174601443b7856f9f3625200b4c5",
+  "global_step": 790,
+  "total_optimizer_steps": 790,
+  "state_files": {
+    "optimizer_state/cycle.pt": "accbfff1b4717bcea1064973b300c81d6236d25f250abcbcb7ebe382ca150361"
+  },
+  "lineage": {
+    "initializer_weights_sha256": "d27bcaca1a7132922b73639fd0454b81c0f8e54628195cc41f9e7e2700688a04",
+    "optimizer_parent_sha256": "12973abc90ff1a991d800195149e07580f89174601443b7856f9f3625200b4c5",
+    "generator_weights_sha256": null,
+    "generation_manifest_sha256": null,
+    "bank_manifest_sha256": "b5b598ae4a5391be5c38d6f0a05d247b98138193cf62d1603e9ca9cc093c2e89",
+    "chunk_manifest_sha256": "c6ff366e2cd04a0761ed27e8cdca8ddeab1bb55cce3861d74c3a80fa2cd54664",
+    "data_kind": "real"
+  }
+}

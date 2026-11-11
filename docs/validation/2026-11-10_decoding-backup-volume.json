@@ -1,0 +1,38 @@
+{
+  "created": {
+    "dataCenter": "EU-RO-1",
+    "id": "wff30vuwhp",
+    "name": "iib-decoding-backup-20261110",
+    "size": 60,
+    "tags": [],
+    "type": "STANDARD"
+  },
+  "verified": {
+    "dataCenter": "EU-RO-1",
+    "id": "wff30vuwhp",
+    "name": "iib-decoding-backup-20261110",
+    "size": 60,
+    "tags": [],
+    "type": "STANDARD"
+  },
+  "created_at": 1794350238.9141917,
+  "round_trip": {
+    "store": {
+      "backend": "runpod_s3",
+      "bucket": "wff30vuwhp",
+      "region": "EU-RO-1",
+      "prefix": "fineweb-decoding-20261110"
+    },
+    "bytes": 4096,
+    "sha256": "bd2dc7e154d068775e8daf2f8badbc27ef64e16f81b10d59017c7269c8902f29",
+    "cold_round_trip": true
+  },
+  "capacity": {
+    "quota_bytes": 60000000000,
+    "used_bytes": 4096,
+    "required_additional_bytes": 40000000000,
+    "reserve_bytes": 3000000000,
+    "available_after_reserve_bytes": 56999995904,
+    "admitted": true
+  }
+}

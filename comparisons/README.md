@@ -2,6 +2,7 @@
 
 | Comparison | Shared beginning | Deliberate difference | Report |
 | --- | --- | --- | --- |
+| [FineWeb training decoders](fineweb_completion64_decoding/README.md) | Same pretrained OPT, ten fresh chunks and historical evaluation | Greedy versus pure-sampled training targets; common five-beam output probes | Implementation and validation status in [current state](../docs/current-state.md) |
 | [99.9% FineWeb synthetic targets](fineweb_completion64_mixed99p9/README.md) | Same pretrained OPT and frozen ten-chunk bank | 9,990 own-checkpoint synthetic / 10 real targets per cycle; 1,000-pair smoke represents both sources | [GPU acceptance](../docs/validation/2026-11-07_completion-mixed99p9-setup.json); full launch state in [current state](../docs/current-state.md) |
 | [99% FineWeb synthetic targets](fineweb_completion64_mixed99/README.md) | Same pretrained OPT and frozen ten-chunk bank | 9,900 own-checkpoint synthetic / 100 real targets per cycle; match RTX PRO 4500 | [GPU acceptance](../docs/validation/2026-11-07_completion-mixed99-setup.json); current launch state in [current state](../docs/current-state.md) |
 | [85%](fineweb_completion64_mixed85/README.md), [90%](fineweb_completion64_mixed90/README.md), [95%](fineweb_completion64_mixed95/README.md) FineWeb synthetic targets | Same original pretrained OPT and frozen ten-chunk completion bank | Each condition replaces its own selected targets using its preceding checkpoint; three matching GPU jobs | [Validation and operations](../docs/fineweb-high-fractions-handoff.md) |

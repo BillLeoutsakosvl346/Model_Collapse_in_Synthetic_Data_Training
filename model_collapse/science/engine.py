@@ -327,13 +327,23 @@ class ValidationInterruption(Exception):
 
 
 def decoding_settings(c):
-    """One validated decoding definition shared by generation and throughput benchmarks."""
-    block, new, beams = (c.get("block_size", 64), c.get("new_tokens", 64), c.get("num_beams", 5))
-    penalty = c.get("repetition_penalty", 1.0)
-    if block != 64 or new != 64 or beams != 5 or not math.isfinite(penalty) or penalty <= 0:
-        raise ValueError("Generation requires 64-token blocks/continuations, five beams and a finite positive repetition penalty")
-    return {"num_beams": beams, "do_sample": False, "min_new_tokens": new, "max_new_tokens": new,
-            "repetition_penalty": penalty, "no_repeat_ngram_size": 0, "forced_eos_token_id": None, "use_cache": True}
+    from .decoding import decoding_settings as resolve
+    return resolve(c)
+
+
+@contextlib.contextmanager
+def generation_rng(c, generation, offset, provenance):
+    """Sampling is reproducible per batch and cannot consume the training stream."""
+    if c.get("generation_decoder") != "sampling":
+        yield
+        return
+    from .decoding import sampling_seed
+    state = capture_rng()
+    try:
+        torch.manual_seed(sampling_seed(c, generation, offset, provenance))
+        yield
+    finally:
+        restore_rng(state)
 
 
 @torch.inference_mode()
@@ -345,6 +355,14 @@ def generate(root, generation, model, prompts, c, parent_hash, inject=False):
     provenance = {"parent_weights_sha256": parent_hash, "prompt_tokens_sha256": hashlib.sha256(np.asarray(prompts).tobytes()).hexdigest(),
                   "prompt_count": len(prompts), "new_tokens": settings["max_new_tokens"], "num_beams": settings["num_beams"],
                   "repetition_penalty": settings["repetition_penalty"]}
+    if c.get("generation_decoder") is not None:
+        from .decoding import SAMPLING_POLICY
+        if c["generation_shard"] % c["generation_batch"]:
+            raise ValueError("Explicit decoding requires generation_shard divisible by generation_batch")
+        provenance.update(version=2, decoder=c["generation_decoder"], decoding=settings,
+                          seed=c["seed"], generation=generation, purpose=c.get("generation_purpose", "training"),
+                          sampling_policy=SAMPLING_POLICY if settings["do_sample"] else None,
+                          generation_batch=c["generation_batch"], generation_shard=c["generation_shard"])
     if np.asarray(prompts).ndim != 2 or np.asarray(prompts).shape[1] != prompt_length or not len(prompts):
         raise ValueError("Generation requires nonempty 64-token prompts")
     done = read_json(dest / "manifest.json")
@@ -372,7 +390,7 @@ def generate(root, generation, model, prompts, c, parent_hash, inject=False):
             parts = []
             for offset in range(start, end, c["generation_batch"]):
                 ids = tensor(prompts[offset:min(end, offset + c["generation_batch"])])
-                with autocast(c):
+                with generation_rng(c, generation, offset, provenance), autocast(c):
                     outputs = model.generate(input_ids=ids, attention_mask=torch.ones_like(ids), **settings)
                 continuation = outputs[:, prompt_length:].cpu().numpy()
                 if outputs.shape[1] != prompt_length + 64 or continuation.shape[1] != 64:
