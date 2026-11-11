@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-11-11T15:23:17.098642+00:00",
+  "code_tested_commit": "53e6268a66d94532a7841de3cab5725fac2755e7",
+  "publication_checked_commit": "2797508953d16fd19d259e641883da642ca78130",
+  "clean_checkout_tests_passed": 667,
+  "clean_checkout_test_seconds": 600.3,
+  "clean_checkout_started_without_runs_or_state": true,
+  "runtime_import_verified_from_clean_checkout": true,
+  "offline_environment": true,
+  "repository_check": {
+    "markdown_files": 132,
+    "configurations": 50,
+    "publication_manifests": 26,
+    "link_scope": "Relative targets and current-document Markdown heading anchors; external URLs are not fetched. Historical report/history anchors are preserved.",
+    "paid_operations": false,
+    "errors": [],
+    "passed": true
+  },
+  "numerical_audit": {
+    "out": "reports/20261111_fineweb_fraction_audit/generated/clean-reproduction/metrics-review.json",
+    "checks": {
+      "raw_stage_rows_verified": 77,
+      "trained_probe_arrays_recomputed": 70,
+      "available_example_loss_arrays_checked": 30,
+      "aggregate_conditions": 10,
+      "ppl_arithmetic_relative_tolerance": 1e-13,
+      "probe_metric_absolute_tolerance": 1e-12
+    },
+    "provenance_affected_rows": 44
+  },
+  "prior_clean_check_found_and_fixed": [
+    "Two test dependencies on ignored recovery configs",
+    "Windows CRLF conversion of frozen builder identity",
+    "Two archived smoke forwarding targets absent from Git"
+  ],
+  "archived_smoke_outputs_added": 40,
+  "archived_smoke_output_bytes": 2374243,
+  "source_or_test_changes_since_tested_commit": false,
+  "only_reports_added_after_full_test": true,
+  "logs_sha256": {
+    "20261111-clean-v2-tests.log": "3ca99c5fb7be66af76cac99927378da34a4ca2f1fdd372ed07de98124726355a",
+    "20261111-clean-final-repository.log": "0c4d2d92f754e4cf2309edd50b93d8eaca2ef734a5c1483f02735a96f8899232",
+    "20261111-clean-final-numerical_audit.log": "d9f47a921cb8bfd669f601158962242e1756dbddcdb3de9e507bd93e2e6f4243"
+  },
+  "historical_experiment_values_changed": false,
+  "new_paid_training_or_gpu_inference": false
+}
