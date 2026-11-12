@@ -1,0 +1,43 @@
+{
+  "generation": 6,
+  "initial_weights_sha256": "788013e094e8356c4bc0245d72699ea062e128d1d1b7448f54f87970bdeb2840",
+  "selected_weights_sha256": "9ac65b2aea237ecc7cbd676208eab749f4a08040c3d34e1ffc937ae392c1fe76",
+  "input_tokens_sha256": "6cd56fa20fa5188eb14510f2618a7d51a1cbba9a56137179b6892acb46e958f2",
+  "training_blocks": 10000,
+  "selected_epoch": 1,
+  "best_validation_loss": 2.920762124463359,
+  "best_validation_epoch": 1,
+  "selected_validation_loss": 2.920762124463359,
+  "executed_epochs": 1,
+  "terminal_weights_sha256": "9ac65b2aea237ecc7cbd676208eab749f4a08040c3d34e1ffc937ae392c1fe76",
+  "training_contract_sha256": "22c6af144744e2059e9bcb6f3e27ebb96b03f7f2695f0a32d997cc6df544e56d",
+  "seconds": 68.59886592399562,
+  "peak_allocated_gpu_bytes": 9008662528,
+  "checkpoint_files": {
+    "config.json": "103ae8552df3bc9eebb48d9a4d3f7924f5294bd645cc4d7e7da29c38fa7215c1",
+    "generation_config.json": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+    "model.safetensors": "6c1662877f2efa57cae3dbaae4230d45d8c947a69705d8fbb163b99e63238428"
+  },
+  "initialization": "continued",
+  "optimizer_initialization": "carried_across_cycles",
+  "checkpoint_selection": "final_epoch",
+  "optimizer_parent_sha256": "e21aa0114fa4f44f9884a83b877849a449c99bfe07ea16769378c5c5a72d1f2b",
+  "global_step": 474,
+  "total_optimizer_steps": 790,
+  "state_files": {
+    "optimizer_state/cycle.pt": "b10caacfee465a0d5b35ead634f56ae1db5cc285664047fcd93178b904b852c4"
+  },
+  "lineage": {
+    "initializer_weights_sha256": "788013e094e8356c4bc0245d72699ea062e128d1d1b7448f54f87970bdeb2840",
+    "optimizer_parent_sha256": "e21aa0114fa4f44f9884a83b877849a449c99bfe07ea16769378c5c5a72d1f2b",
+    "generator_weights_sha256": "788013e094e8356c4bc0245d72699ea062e128d1d1b7448f54f87970bdeb2840",
+    "generation_manifest_sha256": "1dddd3199927e54c0861eac7a5889b9c53f1c8840239a3dce347f45629da6a5f",
+    "bank_manifest_sha256": "8c475f058606fed0610d7555128139ea445b2f4753c2a1abc8eccd44e06c9837",
+    "chunk_manifest_sha256": "82b7b7b9865b43019072a30f183cdfdf1ae731884e096676cd12ca29b5ceeba8",
+    "data_kind": "mixed",
+    "mixture_manifest_sha256": "9ae8bedc000463a6d6bd1741ae3d1b6786addd338ba7615fa612ef62d590b0f6",
+    "synthetic_fraction": 0.5,
+    "real_pairs": 5000,
+    "synthetic_pairs": 5000
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "generation": 1,
+  "initial_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+  "selected_weights_sha256": "1447782a5abb6184209c455eb3d60fe2811d7a875428564c52b7b20424975d7b",
+  "input_tokens_sha256": "f509d99cc4abfc2827764d24309ec1832576d198b4108bece1d94fdc5825a52d",
+  "training_blocks": 10000,
+  "selected_epoch": 1,
+  "best_validation_loss": 2.964808690748331,
+  "best_validation_epoch": 1,
+  "selected_validation_loss": 2.964808690748331,
+  "executed_epochs": 1,
+  "terminal_weights_sha256": "1447782a5abb6184209c455eb3d60fe2811d7a875428564c52b7b20424975d7b",
+  "training_contract_sha256": "00fb6b9032b243a1cfef7c86ec117caefd4c3c67a40b8bd06e40e498bb614381",
+  "seconds": 66.01524028601125,
+  "peak_allocated_gpu_bytes": 9032307200,
+  "checkpoint_files": {
+    "config.json": "1e0e7695b89ce51d432e1386527e5a6d16ebe466f57609b41b16497d3736ceda",
+    "generation_config.json": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+    "model.safetensors": "e9653419e53bc01b9a7c51c9f208948cff49ff81e4da291134f81e424870ceb5"
+  },
+  "initialization": "continued",
+  "optimizer_initialization": "fresh_pretrained_start",
+  "checkpoint_selection": "final_epoch",
+  "optimizer_parent_sha256": null,
+  "global_step": 79,
+  "total_optimizer_steps": 790,
+  "state_files": {
+    "optimizer_state/cycle.pt": "067a3d225e4797f360931b39b5bd92f41b346d51b4e286982e03d42b72633656"
+  },
+  "lineage": {
+    "initializer_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+    "optimizer_parent_sha256": null,
+    "generator_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+    "generation_manifest_sha256": "f8c8016f27cc15d057b6bc32285a72bf4260d1fe0159e94d967e79d5c4b08ead",
+    "bank_manifest_sha256": "8c475f058606fed0610d7555128139ea445b2f4753c2a1abc8eccd44e06c9837",
+    "chunk_manifest_sha256": "7ea6dbfa0667b1513be5fda14363a1e7b7654ad4069fa5f91724a1535413923d",
+    "data_kind": "mixed",
+    "mixture_manifest_sha256": "b81dd6d6a3c106752a79b3d0c71723ee7b1b88402fc6868b0f86d0d1b9464dad",
+    "synthetic_fraction": 0.99,
+    "real_pairs": 100,
+    "synthetic_pairs": 9900
+  }
+}

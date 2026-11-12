@@ -1,0 +1,26 @@
+{
+  "selection_policy": "nested_seedsequence_6401_v1",
+  "cycle": 1,
+  "seed": 42,
+  "synthetic_fraction": 0.5,
+  "pairs": 10000,
+  "real_pairs": 5000,
+  "synthetic_pairs": 5000,
+  "effective_synthetic_fraction": 0.5,
+  "prompt_tokens_sha256": "34147b863a84c0ebc8a00f2f910f2dce39c4c5f9b20b758fc99f27bffd3045d8",
+  "real_targets_sha256": "647759c68df71857d74844edf9ad71a4b147e50c8377dcc0c8970fd5ebe371e3",
+  "generator_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+  "selection_sha256": "6d679af798733a3cb5045325582daf5f1f033a998cbe2ee85dd35b9419840782",
+  "generation_manifest_sha256": "1f5ab49cc388542932abf1d7d5ee26debc47908af431138d45aeb0d1253848c2",
+  "generated_targets_sha256": "00d112fd2b4789ef8d4dbecd609a24c1762c5a9fb4d0614025f262cac8965481",
+  "mixed_targets_sha256": "10c30142846670c7f28cedaac3bd8a119e14b3a9d28baa49b2d9ce47fcc8a138",
+  "scored_targets": 640000,
+  "files": {
+    "selection.json": "6d679af798733a3cb5045325582daf5f1f033a998cbe2ee85dd35b9419840782",
+    "targets.npy": "7335e24e2faa922453e9f1721f17e4815924950fc0cdebaf844ca5e18aa10289",
+    "permutation.npy": "6a264b212de454c3ac86eae1b2f6f6c39de6f107d8dd431267d4b30f5bc78fd2",
+    "synthetic_indices.npy": "b2f23ffce954b2e2c800c3feb7a589363311006a35eb797fc9cb6b70934d445e",
+    "source_labels.npy": "3e7b609b70361ca3ee37ba7a0ed3c36f94842dd85403878b11dbc260c8734f52",
+    "row_indices.npy": "b6128e5bfc4a1aa2c3e504425bd4be083a4cff98b413f66b36b49d65745173c0"
+  }
+}

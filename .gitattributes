@@ -102,3 +102,9 @@
 /model_collapse/fresh_data.py text eol=lf
 /model_collapse/science/completion_bank_v2.py text eol=lf
 /docs/validation/2026-11-11_smollm2*.json -text whitespace=cr-at-eol
+# Preserve the SmolLM2 replication's scientific records and rendered output bytes.
+/reports/20261111T210854Z-full-completion64-mixtures/** -text whitespace=cr-at-eol,-blank-at-eof
+/docs/validation/2026-11-12_smollm2-completion-analysis-and-doc.json -text whitespace=cr-at-eol
+/docs/history/2026-11-12_smollm2-pre-completion-current-state.txt -text whitespace=cr-at-eol
+/scripts/analysis/build_smollm_fraction_report.py text eol=lf
+/scripts/analysis/compose_smollm_fraction_report.py text eol=lf

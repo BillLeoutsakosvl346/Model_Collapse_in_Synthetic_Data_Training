@@ -1,6 +1,6 @@
 # SmolLM2 fraction sweep: execution handoff
 
-**11 November 2026: GPU acceptance passed; the full sweep is running with detached training verified.** The [acceptance/startup receipt](validation/2026-11-11_smollm2-acceptance-and-launch.json) records actual coverage, resource ownership and costs. The [earlier capacity-blocked receipt](validation/2026-11-11_smollm2-setup.json) remains historical evidence.
+**11 November 2026: All seven full conditions completed and were reported; compute is stopped.** The [acceptance/startup receipt](validation/2026-11-11_smollm2-acceptance-and-launch.json) records actual coverage, resource ownership and costs. The [earlier capacity-blocked receipt](validation/2026-11-11_smollm2-setup.json) remains historical evidence.
 
 ## Experiment
 
@@ -47,7 +47,7 @@ The user manually added USD 30 and authorized proceeding. Limits: **USD 110 cumu
 
 ## Operations
 
-Do not start a duplicate launch. Detached training is verified: the first epoch completed 79 updates / 640,000 targets and progressed across closed SSH sessions. The coordinator needs no laptop connection.
+Do not resume or duplicate this completed run. See the [completion report](../reports/20261111T210854Z-full-completion64-mixtures/report.md) and [delivery receipt](validation/2026-11-12_smollm2-completion-analysis-and-doc.json). The earlier forecast and startup checks below remain historical.
 
 ```powershell
 python -m model_collapse status 20261111T210854Z-full-completion64-mixtures

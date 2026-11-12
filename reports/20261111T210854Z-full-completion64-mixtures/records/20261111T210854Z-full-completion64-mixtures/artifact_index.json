@@ -1,0 +1,260 @@
+{
+  "run_id": "20261111T210854Z-full-completion64-mixtures",
+  "repos": {
+    "model": "iib-model-collapse-bill/iib-model-collapse-models",
+    "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+  },
+  "files": {
+    "benchmark.json": {
+      "sha256": "09f5bcd79ffad1f6718aaa0fce993aaa7dfef2e3c1e40385c6ca93cc1594df60",
+      "bytes": 662,
+      "repo_type": "dataset"
+    },
+    "child_snapshots.json": {
+      "sha256": "dbd073955d75584db874eb090a4854582f23f1048a97121cf8e72ef60a81b735",
+      "bytes": 3414,
+      "repo_type": "dataset"
+    },
+    "children.json": {
+      "sha256": "ae97c064a2cc7515dee886c950dbcdd258e7e9622031007cd1305cf83cd5c6c8",
+      "bytes": 481,
+      "repo_type": "dataset"
+    },
+    "completion.json": {
+      "sha256": "967490aba9d6c277bbf1cbb158597f34c31a134a4d667013eb7f61abe41e7b84",
+      "bytes": 165,
+      "repo_type": "dataset"
+    },
+    "config.json": {
+      "sha256": "7eaa8a0d44ea5efdf4152a3586bf4abf1092ae2df40bc4ea1b55139db2a0cebc",
+      "bytes": 4343,
+      "repo_type": "dataset"
+    },
+    "detached_verification.json": {
+      "sha256": "5f60b100a11c71ebfb5cba4869d122e6264231d874f6b8505d0094c6f3f8b9bf",
+      "bytes": 1396,
+      "repo_type": "dataset"
+    },
+    "environment.json": {
+      "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+      "bytes": 433,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/analysis_manifest.json": {
+      "sha256": "0bf52689dd31b81d07a1bcd8f396af1178a30859f7e80754dbfd5c777ccac2d5",
+      "bytes": 25581,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/distinct_2.png": {
+      "sha256": "6d15b9195aa3cabd6022cba20ce26de788d4f1d5df0e2b0995226186fd3f68bc",
+      "bytes": 197646,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/duplicate_continuation_rate.png": {
+      "sha256": "a483f4e90ce63c9855f862541255e6cc3e69be9502bf2425d387827ae761a1bf",
+      "bytes": 135065,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/examples.json": {
+      "sha256": "ad82ad401808152f1770613fca3b0fcf7f413a24030c846d005f5e5b7638710f",
+      "bytes": 138161,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/learning_rate_end.png": {
+      "sha256": "e066a075169db583e6f77d63091b34ee79ede4c15f7c8e9f2c1caa15c8819549",
+      "bytes": 97481,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/mean_within_entropy_nats.png": {
+      "sha256": "42300f19ece9ea63b5679db69b3b60fdf0052ade099617a698120ac6a41c886c",
+      "bytes": 210465,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/mean_within_repeated_4gram_rate.png": {
+      "sha256": "13fe9b46c7c6c658c176021e7ba3afd6b1e71937f87069568621e237be632672",
+      "bytes": 177907,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/metrics.csv": {
+      "sha256": "a9bf5eedae1cd5e9e9249e0f85c496214a81370087ae96b30f626dfc9910b75e",
+      "bytes": 64130,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/metrics.json": {
+      "sha256": "b25b355d883266e1357783f64bc0ffd61368ed302ca5712dd5482c7cbc657432",
+      "bytes": 169867,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/repeated_4gram_rate.png": {
+      "sha256": "8196eb93e641eaeb783ff9405b37378e7b3fdf10de37ca4ec2c487415414abc1",
+      "bytes": 183518,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/report.md": {
+      "sha256": "905a009d5e6cb79a470a53d3f0f8a03fbbd832d92c4c396fd0207963dccc1a60",
+      "bytes": 5566,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/secondary_ag_news_perplexity.png": {
+      "sha256": "3c6b55f485feff731c2180e6e8535e9d164735a536e33ba026de5a4d1327ed6e",
+      "bytes": 144601,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/secondary_c4_en_perplexity.png": {
+      "sha256": "78792ddca124bb6d4c104aa3aecf9bdef8de3403c24e414f5d17bc110486a879",
+      "bytes": 128652,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/secondary_fineweb_edu_perplexity.png": {
+      "sha256": "ba78a82101dad980459a6c48769133f151b14c91131e5c6036eed8d0fbad38b0",
+      "bytes": 135170,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/secondary_pg19_perplexity.png": {
+      "sha256": "21bb131e496f895649dd21dbff812f03b89c86cc8f3b2e24b07ad4111268e783",
+      "bytes": 135158,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/secondary_wikitext103_perplexity.png": {
+      "sha256": "255be46215c602cafd9f603983a546fa3a5130a971b3728edbc29f53cfcde91c",
+      "bytes": 134155,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/test_nll_p95.png": {
+      "sha256": "7229ae558ab685e9ead175888af6143d41e9f20c4e564eb1746fc2bdef723de2",
+      "bytes": 137750,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/test_perplexity.png": {
+      "sha256": "a6657348762a5d2c6937ed4124830ba697c9606d1f20ee6ceac3bdeabb8aee2b",
+      "bytes": 129068,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/token_entropy_nats.png": {
+      "sha256": "f78ec361225b3c2c32eda2baa8eaa338f4fc57f10d81b06ed7e10e0664152bf4",
+      "bytes": 210727,
+      "repo_type": "dataset"
+    },
+    "generated/20261112T171902Z-dbe85b8e/training_seconds.png": {
+      "sha256": "bd8f4563b4fc30794e8ad87bb3ebeca4dfacf0ba5e35fc864db348351988ad3e",
+      "bytes": 120803,
+      "repo_type": "dataset"
+    },
+    "manifest.json": {
+      "sha256": "9fb565ce7327ac51c0cef9492f0d54bbed0312a59e9b1c54213ab87e902ddca6",
+      "bytes": 173,
+      "repo_type": "dataset"
+    },
+    "requirements-tested.txt": {
+      "sha256": "8ee9b2f71d0cd8cc9d6bb26ef32c0bf4f4c0221f9a1e3cccac0d78ed863b4b2a",
+      "bytes": 3410,
+      "repo_type": "dataset"
+    },
+    "resources.json": {
+      "sha256": "295e8519ab8e9dd6da91b1127e92aca0a27cdc8eb3afbe78f7e13d6455c3b1aa",
+      "bytes": 2259,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/checkpoint/config.json": {
+      "sha256": "73854651dd184a773b3d7c5c45d8709153c91353df2a545b7c796d986759606d",
+      "bytes": 752,
+      "repo_type": "model"
+    },
+    "seed_42/gen_00/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_00/checkpoint/model.safetensors": {
+      "sha256": "19db913ad817fcd5d544972dfe168ed96f7c9c8cd40ef431da285f016cadbc1c",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19db913ad817fcd5d544972dfe168ed96f7c9c8cd40ef431da285f016cadbc1c"
+      }
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "dbc7345b7742f04f3db0adbac4704def96a12a9486f2bd04d59ae4c764333c50",
+      "bytes": 3824,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/probe/events.jsonl": {
+      "sha256": "e1b32a9eca931c345917075875a32ef24714cf97d0294f99c9b6b0d05b48caa3",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/manifest.json": {
+      "sha256": "242078ffd3cb35701b9fbaa97df03963fbcfc8daea166129a991065a0b89b190",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/shard_0000000.json": {
+      "sha256": "6f82e9a303f9b27d6c2179e553a99708623b26cff60dc1c9fd395f3480cf8611",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/shard_0000000.npy": {
+      "sha256": "bc8f47297eb6c451b8727d9d017edf5e48e0b3636f6fcbc2b3958bf41314eade",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/bc8f47297eb6c451b8727d9d017edf5e48e0b3636f6fcbc2b3958bf41314eade"
+      }
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/tokens.npy": {
+      "sha256": "bc8f47297eb6c451b8727d9d017edf5e48e0b3636f6fcbc2b3958bf41314eade",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/bc8f47297eb6c451b8727d9d017edf5e48e0b3636f6fcbc2b3958bf41314eade"
+      }
+    },
+    "seed_42/gen_00/probe_examples.json": {
+      "sha256": "010a0e49609e9d22df06b884103ad260b51b5544219c7f155ae87e96a32c85aa",
+      "bytes": 1704,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/test_sequences.json": {
+      "sha256": "d4783c9c5f8335889c55d0552bff96cf23884e63a54dec9c26009e87c4f43898",
+      "bytes": 230261,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/tokenizer/merges.txt": {
+      "sha256": "0b54e8aa4e53d5383e2e4bc635a56b43f9647f7b13832d5d9ecd8f82dac4f510",
+      "bytes": 466391,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/tokenizer/special_tokens_map.json": {
+      "sha256": "e786b595b9a23148bf1630df78d9037a048ea671e48bfd3549a1e3c233742bb3",
+      "bytes": 831,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/tokenizer/tokenizer.json": {
+      "sha256": "6ae489e54654605c859dec0fe2ba636baf64399dffe01ec44b3311778b269857",
+      "bytes": 2104528,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/tokenizer/tokenizer_config.json": {
+      "sha256": "4bb9af56a342753d39374f4016a16574cab299fe088e896f425ce3c433f61424",
+      "bytes": 3658,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/tokenizer/vocab.json": {
+      "sha256": "82b84012e3add4d01d12ba14442026e49b8cbbaead1f79ecf3d919784f82dc79",
+      "bytes": 800662,
+      "repo_type": "dataset"
+    }
+  }
+}

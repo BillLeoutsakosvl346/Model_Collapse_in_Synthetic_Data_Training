@@ -1,6 +1,6 @@
 # SmolLM2-135M: matched synthetic fractions
 
-**Execution status:** GPU acceptance passed; full run `20261111T210854Z-full-completion64-mixtures` is running with verified detached training on the accepted RTX PRO 4000 Blackwell. Do not launch a duplicate. See the [handoff](../../docs/smollm2-fractions-handoff.md).
+**Execution status:** All seven ten-cycle conditions completed on RTX PRO 4000 Blackwell; [report and verified metrics](../../reports/20261111T210854Z-full-completion64-mixtures/report.md) are published. Compute is stopped; do not resume or launch a duplicate. See the [handoff](../../docs/smollm2-fractions-handoff.md).
 
 Seven independently initialized conditions use synthetic fractions **0%, 50%, 80%, 95%, 99%, 99.9% and 100%**. This is a model-native replication of the OPT completion protocol, using base `HuggingFaceTB/SmolLM2-135M` at commit `93efa2f097d58c2a74874c7e644dbc9b0cee75a2`.
 

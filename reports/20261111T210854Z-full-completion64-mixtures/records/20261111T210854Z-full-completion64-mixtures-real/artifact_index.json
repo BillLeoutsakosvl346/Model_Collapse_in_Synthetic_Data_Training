@@ -1,0 +1,1479 @@
+{
+  "run_id": "20261111T210854Z-full-completion64-mixtures-real",
+  "repos": {
+    "model": "iib-model-collapse-bill/iib-model-collapse-models",
+    "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+  },
+  "files": {
+    "completion.json": {
+      "sha256": "fcd8dd6b04e82f7e4c32b50c7ac40aa8f507d862783078b22f7c12873df1ecd4",
+      "bytes": 92,
+      "repo_type": "dataset"
+    },
+    "config.json": {
+      "sha256": "11de888a0df865944f403e1b8821487a5134f63b8f004bce70045f1490b5b080",
+      "bytes": 6410,
+      "repo_type": "dataset"
+    },
+    "manifest.json": {
+      "sha256": "c0ed1e095b0e3ac0eb662ea3224886819d1595276fd7af6fff5bec149f1374d5",
+      "bytes": 258,
+      "repo_type": "dataset"
+    },
+    "requirements-tested.txt": {
+      "sha256": "8ee9b2f71d0cd8cc9d6bb26ef32c0bf4f4c0221f9a1e3cccac0d78ed863b4b2a",
+      "bytes": 3410,
+      "repo_type": "dataset"
+    },
+    "resources.json": {
+      "sha256": "15795807dee896135e582244f075ac33434bac6c712aa60dc02d617b62998039",
+      "bytes": 2588,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "dbc7345b7742f04f3db0adbac4704def96a12a9486f2bd04d59ae4c764333c50",
+      "bytes": 3824,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/checkpoint/config.json": {
+      "sha256": "1e0e7695b89ce51d432e1386527e5a6d16ebe466f57609b41b16497d3736ceda",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/checkpoint/model.safetensors": {
+      "sha256": "2d1c88ff312034fc6038c94408166b4cafc5bea4a249733f2db80785189b9ae7",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/2d1c88ff312034fc6038c94408166b4cafc5bea4a249733f2db80785189b9ae7"
+      }
+    },
+    "seed_42/gen_01/metrics.json": {
+      "sha256": "cf87faea8109421ca81e4541b683027e2fdc8e38fc185d561567eb909e231bd2",
+      "bytes": 5899,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/optimizer_state/cycle.pt": {
+      "sha256": "5a54ab47d67ab876d1567393a22683a59a2d0299c75dae3ce8af977381f3b71a",
+      "bytes": 1076325163,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/5a54ab47d67ab876d1567393a22683a59a2d0299c75dae3ce8af977381f3b71a"
+      }
+    },
+    "seed_42/gen_01/probe/events.jsonl": {
+      "sha256": "61d73fe6338dc162626f10bfd1761f451cc6d0975f8bfa252692693f83ef055a",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json": {
+      "sha256": "320583a77e4668d04b95a4a0a6b93faf19a9a20da4481e6562853af737f3b8cd",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/shard_0000000.json": {
+      "sha256": "814788e6912b3e8eb95ccd753dc2796fdd5effea9fea3712222fa126cb2d4ed6",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/shard_0000000.npy": {
+      "sha256": "0341149eccc8ba53f3d797b05c35f20e58c67098c843459931b67f85ed248277",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/0341149eccc8ba53f3d797b05c35f20e58c67098c843459931b67f85ed248277"
+      }
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/tokens.npy": {
+      "sha256": "0341149eccc8ba53f3d797b05c35f20e58c67098c843459931b67f85ed248277",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/0341149eccc8ba53f3d797b05c35f20e58c67098c843459931b67f85ed248277"
+      }
+    },
+    "seed_42/gen_01/probe_examples.json": {
+      "sha256": "c750cc9e1be2a7626a9b6b0f4188700df113e6bb916061594192b6eeeb33397d",
+      "bytes": 1763,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/stage_completion.json": {
+      "sha256": "360d9af1334532354b23519f578d6581a4c014072785ad92d39d84b9a43a7bc3",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/test_sequences.json": {
+      "sha256": "d094afb57567f298a9c8f329c5ee67a41db8aa29b3e940ea542043f30615ac12",
+      "bytes": 230163,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training.json": {
+      "sha256": "d4eab91c1876b5626b11ddc3c92ee10e3891c19f0aad2c996eaee9a4dd51afcd",
+      "bytes": 1877,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_history.json": {
+      "sha256": "c0248e013d8e799fe4c05319e60e09a2bb6f847d5ed07def97f6689d630da61b",
+      "bytes": 346,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_01/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_01/training_input/manifest.json": {
+      "sha256": "70119439a4dd9a31b8710be3aa67096ba70fc21b44c0bbd3e2cc8e1e319793ca",
+      "bytes": 1020,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/tokens.npy": {
+      "sha256": "5f0596931a5c698aea5b29b4a9d09d7165b53c2d7a62a9dbdbcfd4585d13373f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/5f0596931a5c698aea5b29b4a9d09d7165b53c2d7a62a9dbdbcfd4585d13373f"
+      }
+    },
+    "seed_42/gen_02/checkpoint/config.json": {
+      "sha256": "d30eb094015475c9915f151977316b675b1bfc8a6fd9b2432bec2524c1efdb41",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/checkpoint/model.safetensors": {
+      "sha256": "fd69f56cdc4fe3f6260c01830ddbcf3e24fc6be247e707e594f9414bfea7c72d",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/fd69f56cdc4fe3f6260c01830ddbcf3e24fc6be247e707e594f9414bfea7c72d"
+      }
+    },
+    "seed_42/gen_02/metrics.json": {
+      "sha256": "d4b8cc8cb5c36eae7f19c94baad1657c6c2d699e644e47c6af4f52deffba9b41",
+      "bytes": 6029,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/optimizer_state/cycle.pt": {
+      "sha256": "f589f8b6c21c31d13d02c9853148d122756034c9c3288c9c83aabf4defa41dd6",
+      "bytes": 1076328939,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/f589f8b6c21c31d13d02c9853148d122756034c9c3288c9c83aabf4defa41dd6"
+      }
+    },
+    "seed_42/gen_02/probe/events.jsonl": {
+      "sha256": "d6fe0e09dbeb5f2395e714a76e1c2ac36053aec071b69693c751346c7b1fd0ca",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json": {
+      "sha256": "b9b264d88d711650928ea97b099ea001705ef163e4ed579b1cf11dab2d0cd503",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/shard_0000000.json": {
+      "sha256": "ed266dc492bd43208c6af2099571eb43ab284ea72ddcf435b347a8d77f854f34",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/shard_0000000.npy": {
+      "sha256": "00e857a475992c91cc5f5d25d57f0dd7ed02c974184f9d13e61dfcee76288998",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/00e857a475992c91cc5f5d25d57f0dd7ed02c974184f9d13e61dfcee76288998"
+      }
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/tokens.npy": {
+      "sha256": "00e857a475992c91cc5f5d25d57f0dd7ed02c974184f9d13e61dfcee76288998",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/00e857a475992c91cc5f5d25d57f0dd7ed02c974184f9d13e61dfcee76288998"
+      }
+    },
+    "seed_42/gen_02/probe_examples.json": {
+      "sha256": "42396850d666aa19f0a2f3d4c7aba8dd54bf86ac2aad6a66eed4ebdff8df07f9",
+      "bytes": 1714,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/stage_completion.json": {
+      "sha256": "8eb8cb22bc406a0a5c28be71fbc690a0230e6ed0cd3afc33e89c0fbc0afb030e",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/test_sequences.json": {
+      "sha256": "5c6971098a7d66defcdec2d88218d9920e81fa206771ce171edeb333d10dd8eb",
+      "bytes": 230215,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training.json": {
+      "sha256": "5faf37f213ea01b3d73063c2f5a9d12155eebf705a2f649374acf4b45e872898",
+      "bytes": 2003,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_history.json": {
+      "sha256": "4bb57788db9ef35e3e1e1781441cdb52eb538094763388109a17060acc9c18cf",
+      "bytes": 363,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_02/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_02/training_input/manifest.json": {
+      "sha256": "b7eecbff9a18803c0d77ba84ba31563cb1421a35284c0f292d241ed138b8dce9",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/tokens.npy": {
+      "sha256": "93134406d355eb4bda77d05b4807b721fb780da05b0cfab516271c628570e2f3",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/93134406d355eb4bda77d05b4807b721fb780da05b0cfab516271c628570e2f3"
+      }
+    },
+    "seed_42/gen_03/checkpoint/config.json": {
+      "sha256": "d894e624c18dba85796c614442b13b96a382fb7093e6011a1d9db681644b208d",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_03/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_03/checkpoint/model.safetensors": {
+      "sha256": "1eaa4946beef724d5ace8e5117e49b366ce17c675f8c26852ae81a284429da59",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/1eaa4946beef724d5ace8e5117e49b366ce17c675f8c26852ae81a284429da59"
+      }
+    },
+    "seed_42/gen_03/metrics.json": {
+      "sha256": "a4ecd77811b93d340d9be1eeb938809f3ec427851b33d23b4ec1e4e2f5ab0baf",
+      "bytes": 6024,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/optimizer_state/cycle.pt": {
+      "sha256": "7369dbbade6505ac95547e60ec43d6e636190d59f8f430a4a71ca03454abe36a",
+      "bytes": 1076328939,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/7369dbbade6505ac95547e60ec43d6e636190d59f8f430a4a71ca03454abe36a"
+      }
+    },
+    "seed_42/gen_03/probe/events.jsonl": {
+      "sha256": "74109fb7375c5c56679ed969df29dd810bc2eb1c8456990f776929a19198a08c",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json": {
+      "sha256": "28d8f9ba18891c7be86718f48db431bbbcd16972977afaa9b7f7fe3643fe294f",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/shard_0000000.json": {
+      "sha256": "81f1778b90283b7d106f7df391445c1a0f53807bf43d3963bdc51dd3a1e6fef9",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/shard_0000000.npy": {
+      "sha256": "00f2aeed01023dfaa0adf9fc46f7532e9682d3b27dac28a67321ecf3ac69a550",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/00f2aeed01023dfaa0adf9fc46f7532e9682d3b27dac28a67321ecf3ac69a550"
+      }
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/tokens.npy": {
+      "sha256": "00f2aeed01023dfaa0adf9fc46f7532e9682d3b27dac28a67321ecf3ac69a550",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/00f2aeed01023dfaa0adf9fc46f7532e9682d3b27dac28a67321ecf3ac69a550"
+      }
+    },
+    "seed_42/gen_03/probe_examples.json": {
+      "sha256": "eaf9a088c056ff5f58cd393bc5fb95989e86b4bf4e322b022ee528d6b70d02e6",
+      "bytes": 1710,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/stage_completion.json": {
+      "sha256": "e4ab67929fcb6f83f4d62356915ba4ee2012cb08b53600e1ea17b3b950df4ae1",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/test_sequences.json": {
+      "sha256": "9cf86801da6939d8f3ca26fccfb959f7b7167260eef9ede31950ba9772c1b988",
+      "bytes": 230190,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training.json": {
+      "sha256": "8fd4dae13081f5f7db4eb2f525f3145b21f160cafaf4a39d3a594fe17601a334",
+      "bytes": 2001,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_history.json": {
+      "sha256": "2b4e5ff1ed0665a21ad81a76486675ba9a635d0437d2880f9347f930f09c4b12",
+      "bytes": 362,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_03/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_03/training_input/manifest.json": {
+      "sha256": "45d04395afcbea3a1d32b3a2327b07aaab82f6cf62ade8d3e2a544870bb7ffbd",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_input/tokens.npy": {
+      "sha256": "98dc3e5b00d71c34b4e99da603445f6b536c08ee43fdd78aee9ac879a96e6974",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/98dc3e5b00d71c34b4e99da603445f6b536c08ee43fdd78aee9ac879a96e6974"
+      }
+    },
+    "seed_42/gen_04/checkpoint/config.json": {
+      "sha256": "99a99ef4d4b4579aae076543eecf5ca79bb87b431aed96ace1ee75305c86c529",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_04/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_04/checkpoint/model.safetensors": {
+      "sha256": "cd4eda2f1035d5062424612d977bb43c1b097a16c55ab758ab110b464c412516",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/cd4eda2f1035d5062424612d977bb43c1b097a16c55ab758ab110b464c412516"
+      }
+    },
+    "seed_42/gen_04/metrics.json": {
+      "sha256": "2c7d05f22e305550d404f6db15465f289c943d00f2afd5ba51e16084f53421a2",
+      "bytes": 6026,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/optimizer_state/cycle.pt": {
+      "sha256": "091eeec801026f00dbfa4c0241959c7852433f66609e2b627bac6df7fb509ab4",
+      "bytes": 1076328939,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/091eeec801026f00dbfa4c0241959c7852433f66609e2b627bac6df7fb509ab4"
+      }
+    },
+    "seed_42/gen_04/probe/events.jsonl": {
+      "sha256": "cf2060b0a8cc8ec11a6daca9fb69abbc20b0205d855aa3859d3011e115d33c45",
+      "bytes": 132,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json": {
+      "sha256": "8f0949a6e36eeb223a7194537937a4d0f8d3401939f1a8ad1c8ca4ee309b0185",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/shard_0000000.json": {
+      "sha256": "08c668046ddb08ad9ecf7d77c9f29a073978e14358c03354fe97afdef2912365",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/shard_0000000.npy": {
+      "sha256": "30893d39bfd0647e6859cd44114f72fd5629106f786bee6d32a0c190eeb31cd1",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/30893d39bfd0647e6859cd44114f72fd5629106f786bee6d32a0c190eeb31cd1"
+      }
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/tokens.npy": {
+      "sha256": "30893d39bfd0647e6859cd44114f72fd5629106f786bee6d32a0c190eeb31cd1",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/30893d39bfd0647e6859cd44114f72fd5629106f786bee6d32a0c190eeb31cd1"
+      }
+    },
+    "seed_42/gen_04/probe_examples.json": {
+      "sha256": "cbb70882f5d9ceeaf5374246bd421f7c5d776a825b913238a52ce8a0a3a47a18",
+      "bytes": 1581,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/stage_completion.json": {
+      "sha256": "9f9142d1e0854a8fcbf2df6da8ba875053daeb7c01f1d6d38c2007a4851854b5",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/test_sequences.json": {
+      "sha256": "a833f54c9348d56580db8fc5104389a91e576f6ff45463be8f1c0e25d6420235",
+      "bytes": 230177,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training.json": {
+      "sha256": "fee7a3d243619da052f9b7f056f0868e76f76754f9074e4c8c246febf3bbdea6",
+      "bytes": 2002,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_history.json": {
+      "sha256": "b92c85d9e5fa915c04739a6964e01157293b66faca9007b5644853ed1ee0457b",
+      "bytes": 364,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_04/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_04/training_input/manifest.json": {
+      "sha256": "5e6d5f67f5ce9acf06adc68d7671717629963e32064e79a7c9ec41e89b43cefa",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_input/tokens.npy": {
+      "sha256": "f7d8219d5e8c130aef62a7d1a01154bfb8d23ae7ab20eb234134744296db41c5",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/f7d8219d5e8c130aef62a7d1a01154bfb8d23ae7ab20eb234134744296db41c5"
+      }
+    },
+    "seed_42/gen_05/checkpoint/config.json": {
+      "sha256": "1b4a595764a6d68e38668f6ac7003552710728cc0ec5397402ca4b69bfcb66b7",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_05/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_05/checkpoint/model.safetensors": {
+      "sha256": "e3d43bf5ca0912d6b058685ee46b8306116238272f9f87d2e4cc40a6e8ece8ed",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/e3d43bf5ca0912d6b058685ee46b8306116238272f9f87d2e4cc40a6e8ece8ed"
+      }
+    },
+    "seed_42/gen_05/metrics.json": {
+      "sha256": "60ddf890baffc8c0e15e0465975f1b57fb1d777f40559df194e25cc1723f9fc7",
+      "bytes": 6018,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/optimizer_state/cycle.pt": {
+      "sha256": "e86c493f3b779857a1d5437a0273dc8add90e62cd3505d23607f6119bae5f481",
+      "bytes": 1076328939,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/e86c493f3b779857a1d5437a0273dc8add90e62cd3505d23607f6119bae5f481"
+      }
+    },
+    "seed_42/gen_05/probe/events.jsonl": {
+      "sha256": "80741e444baf727a8e24b0695dc874f033eb8fe2354562544d8365371f44aae7",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json": {
+      "sha256": "1bccaf402db8b4816e645b6835f453ba92daf0e72fb0e0e1eb2350f2e370e73f",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/shard_0000000.json": {
+      "sha256": "25fab89fd5cec748b9cf95268e2bfd72749fd1f9e37bf30ed86ff0c1c12568e7",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/shard_0000000.npy": {
+      "sha256": "8d1d23d9e69a88e3415b1cbdb315062b5a3cce51e6f0a166d03d1e6fbe9450a4",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/8d1d23d9e69a88e3415b1cbdb315062b5a3cce51e6f0a166d03d1e6fbe9450a4"
+      }
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/tokens.npy": {
+      "sha256": "8d1d23d9e69a88e3415b1cbdb315062b5a3cce51e6f0a166d03d1e6fbe9450a4",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/8d1d23d9e69a88e3415b1cbdb315062b5a3cce51e6f0a166d03d1e6fbe9450a4"
+      }
+    },
+    "seed_42/gen_05/probe_examples.json": {
+      "sha256": "cab9e74441f235d9595a60cc1aacac99c7081ce504b3f62be2205358e80d0bcd",
+      "bytes": 1635,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/stage_completion.json": {
+      "sha256": "bcf9e6025103a3478639b13c4029f4d8fb8eef5a2dcbe663c212abac7a38b892",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/test_sequences.json": {
+      "sha256": "6efacccf35995a77b6a33ab8f8f37e8fe763d462f6036d7f6e92caa5b8f0edb2",
+      "bytes": 230133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training.json": {
+      "sha256": "798d84a2222ff9adbc9d18ea53d61e91ed5960d07ac59375910ffceab154d08c",
+      "bytes": 2000,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_history.json": {
+      "sha256": "b8b39547e49150d6d490b448d458c90dfae2e6bf70ebbbc5bd6c79efc789229f",
+      "bytes": 362,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_05/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_05/training_input/manifest.json": {
+      "sha256": "c124627cb582535d2b1a1b57a81cc9eafdd27ed53a78b95df6b2b2a5058f1be5",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_input/tokens.npy": {
+      "sha256": "13ca50ab49d7aa6d3fccb38dbab1f6c75d86df442154dd5c00aa0622d6b2189f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/13ca50ab49d7aa6d3fccb38dbab1f6c75d86df442154dd5c00aa0622d6b2189f"
+      }
+    },
+    "seed_42/gen_06/checkpoint/config.json": {
+      "sha256": "1ab9f086cd112d3bcb9916e0be00cdb5f97a0eb15bbb7f5a672d496e0ff9447f",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_06/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_06/checkpoint/model.safetensors": {
+      "sha256": "fc0deb4ec740930b1bc0251499e45b73773481e6b7bc2726962e2755bb8428f8",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/fc0deb4ec740930b1bc0251499e45b73773481e6b7bc2726962e2755bb8428f8"
+      }
+    },
+    "seed_42/gen_06/metrics.json": {
+      "sha256": "bf1ec8975819fc9d5e15eada213a7c2c0008fcb333ac70bda79a29fa342779ae",
+      "bytes": 6033,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/optimizer_state/cycle.pt": {
+      "sha256": "c930881f985897d31fd58d6ea1c55b772b5a841fd4e81799a194fc351b7cdf14",
+      "bytes": 1076328939,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/c930881f985897d31fd58d6ea1c55b772b5a841fd4e81799a194fc351b7cdf14"
+      }
+    },
+    "seed_42/gen_06/probe/events.jsonl": {
+      "sha256": "1f535563985a146e980fd8f58a7609d7869aedae0fbb6608ee96a3996526d89f",
+      "bytes": 132,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json": {
+      "sha256": "ab792334d0e0ee4754f045db042c52878e38bf80482ca034735c4d1c7cc3fb6f",
+      "bytes": 718,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/shard_0000000.json": {
+      "sha256": "7c5df614b83f89dff544aaf015c4b8c3ab5f0077f525b9271ab3a7ce57121731",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/shard_0000000.npy": {
+      "sha256": "17a51a9c0a2fd3e0564d565a098e55a77a0e70c8800608cb97c8829f1f0051d4",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/17a51a9c0a2fd3e0564d565a098e55a77a0e70c8800608cb97c8829f1f0051d4"
+      }
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/tokens.npy": {
+      "sha256": "17a51a9c0a2fd3e0564d565a098e55a77a0e70c8800608cb97c8829f1f0051d4",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/17a51a9c0a2fd3e0564d565a098e55a77a0e70c8800608cb97c8829f1f0051d4"
+      }
+    },
+    "seed_42/gen_06/probe_examples.json": {
+      "sha256": "0c9900a272946542ea3f44e2d8f33b7ba6314bfb3de6fe02a6110896aa45b754",
+      "bytes": 1605,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/stage_completion.json": {
+      "sha256": "346da771a20b446d62ad5c96d6c2ac946e8bd7c13d60990c2d6eabf94bf746b1",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/test_sequences.json": {
+      "sha256": "f6e308f6e42ed42051ad23e0d8daf088a9174a837c3130927085908eab80c2b8",
+      "bytes": 230211,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training.json": {
+      "sha256": "d6c31953ce6983a89241d537afb5e8687cc3708212ce23550642a82d27a0a958",
+      "bytes": 2003,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_history.json": {
+      "sha256": "90acc81daf1578a3b7fc47e4ff3993ed90216befc0596e46d9a121de183bba63",
+      "bytes": 365,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_06/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_06/training_input/manifest.json": {
+      "sha256": "b3f436cfedce78fb17b9069e19e113b241de01cb442caa8f73a5a8ef8ed40f34",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_input/tokens.npy": {
+      "sha256": "124a8d5b8054a0e40f0c0025e270e81a858e024e711ed8621f4b1670c29dae0d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/124a8d5b8054a0e40f0c0025e270e81a858e024e711ed8621f4b1670c29dae0d"
+      }
+    },
+    "seed_42/gen_07/checkpoint/config.json": {
+      "sha256": "63f75f58b1390e2fe9c1a768a2ac2f3a22e1c63790708ffddd4cad3a0a73b446",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_07/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_07/checkpoint/model.safetensors": {
+      "sha256": "4cd7dca1459fc7fcbfa431890dcaa5ab7ab9274bad31cd013462eb0a01d7b4fb",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/4cd7dca1459fc7fcbfa431890dcaa5ab7ab9274bad31cd013462eb0a01d7b4fb"
+      }
+    },
+    "seed_42/gen_07/metrics.json": {
+      "sha256": "279d5193be66d808eb047511122f05a5d0af53ca9503970f744b8e2b24166e2f",
+      "bytes": 6010,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/optimizer_state/cycle.pt": {
+      "sha256": "fe8398a0313f271a4b2cbf753ba1081ca8fc855233e2cdb016040bb92980ae4b",
+      "bytes": 1076328939,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/fe8398a0313f271a4b2cbf753ba1081ca8fc855233e2cdb016040bb92980ae4b"
+      }
+    },
+    "seed_42/gen_07/probe/events.jsonl": {
+      "sha256": "c1c995c3368c1ec8920c63073c99d6ffc91a154156a30265a422c8a6fe47ae14",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json": {
+      "sha256": "26f8aba3352e26aed1e62013a8c1cf4145b606b6674ebf4170db3b17f4e4f2e9",
+      "bytes": 719,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/shard_0000000.json": {
+      "sha256": "70f6952ce81e622f13585f2b4d1473ba241da763da9e64b5ff87aeb7f4371016",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/shard_0000000.npy": {
+      "sha256": "27e430c7c14096b1a61a7530aaf6e14bf88864184738e3585092f569a7aafb39",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/27e430c7c14096b1a61a7530aaf6e14bf88864184738e3585092f569a7aafb39"
+      }
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/tokens.npy": {
+      "sha256": "27e430c7c14096b1a61a7530aaf6e14bf88864184738e3585092f569a7aafb39",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/27e430c7c14096b1a61a7530aaf6e14bf88864184738e3585092f569a7aafb39"
+      }
+    },
+    "seed_42/gen_07/probe_examples.json": {
+      "sha256": "1330ae4297e49bf8f39c32dbd71b9d0de80b88ecf4a35c884558ecb64d8c5c66",
+      "bytes": 1701,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/stage_completion.json": {
+      "sha256": "208bcc83af8157af0f0bc82579ee0fdcafa2797931812d35a68215c918f9637e",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/test_sequences.json": {
+      "sha256": "f6dcea4c79763ce29128325bfc0a4027078e23696525d3daa596878669a6c1ae",
+      "bytes": 230129,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training.json": {
+      "sha256": "8b0a6e70314271cb59d2b54c6ec94a82dff3d6a02774f40b239d34e86fd6ea9b",
+      "bytes": 2003,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_history.json": {
+      "sha256": "82a3840f1d1c7714d72b2a5550052dd42c461233e46372f7742265f5ee3ea167",
+      "bytes": 365,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_07/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_07/training_input/manifest.json": {
+      "sha256": "ac41eacf52d8e3fd9b39839c368ed4afe12d145a416b1e13f8fada72adced6fb",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_input/tokens.npy": {
+      "sha256": "b7d393886d37d2a7dc9cd17223af7f0ba6c53b4b9fea7537e08976974d088343",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/b7d393886d37d2a7dc9cd17223af7f0ba6c53b4b9fea7537e08976974d088343"
+      }
+    },
+    "seed_42/gen_08/checkpoint/config.json": {
+      "sha256": "dda3c0430c112f29cd6b16ff3e64be961df4c1dd1bb36f864813022b49add4a6",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_08/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_08/checkpoint/model.safetensors": {
+      "sha256": "c12ffec17d50333ed7e57d4295fe90e6c3aa11bb73383a0d48de70bb65306fe0",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/c12ffec17d50333ed7e57d4295fe90e6c3aa11bb73383a0d48de70bb65306fe0"
+      }
+    },
+    "seed_42/gen_08/metrics.json": {
+      "sha256": "41bdb4995b91a98bb06ae756710ed67a3a619e15ac5e1b192a186fa00af957ff",
+      "bytes": 6022,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/optimizer_state/cycle.pt": {
+      "sha256": "7faaf48d24afe88699892e0e10d3e0ab3b0bb2e7ef7ebb10d54cf0dce49f9ff6",
+      "bytes": 1076328939,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/7faaf48d24afe88699892e0e10d3e0ab3b0bb2e7ef7ebb10d54cf0dce49f9ff6"
+      }
+    },
+    "seed_42/gen_08/probe/events.jsonl": {
+      "sha256": "6867b45a0ff68b6399354283d7d3f038064822c9f3edb436efd4491ecf0f2dfa",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json": {
+      "sha256": "29b02bf85cfcf23cbf54cc7d272239367982beefc7d507fc937c3285a31dc33c",
+      "bytes": 719,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/shard_0000000.json": {
+      "sha256": "b05c98837fb0cec9d977e8d4275be1ccba21b3a464986cb05bdcd85d18f6ffcc",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/shard_0000000.npy": {
+      "sha256": "307179640ce8e1baff4e4a1d898eedf0ae9fe7c9c61f427504f7efb28f723663",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/307179640ce8e1baff4e4a1d898eedf0ae9fe7c9c61f427504f7efb28f723663"
+      }
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/tokens.npy": {
+      "sha256": "307179640ce8e1baff4e4a1d898eedf0ae9fe7c9c61f427504f7efb28f723663",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/307179640ce8e1baff4e4a1d898eedf0ae9fe7c9c61f427504f7efb28f723663"
+      }
+    },
+    "seed_42/gen_08/probe_examples.json": {
+      "sha256": "54ea63fe6a5d78b23445b653205c2f384e2137e2096cf4912963dabb8b529278",
+      "bytes": 1682,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/stage_completion.json": {
+      "sha256": "eb57919776c07b559b3a5d082cf4b87d4af114b05d0117a7173e8087368f801b",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/test_sequences.json": {
+      "sha256": "f8e5e18d0d85574cd9e7aef858e0506a388b13c0c3549b55c68e234e4280bc5e",
+      "bytes": 230226,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training.json": {
+      "sha256": "5db3a305e2bfc3c00376f37f0a11c88380a915b599aab28c659893e99726f89b",
+      "bytes": 2003,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_history.json": {
+      "sha256": "2120f312d884b0a30a6f2d8181b01d28600b9c137169342660e0e40f9edbabd1",
+      "bytes": 365,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_08/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_08/training_input/manifest.json": {
+      "sha256": "a2193ba8ccb94192293e0e538a965f0f27df888763829d153bbf974c631add6e",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_input/tokens.npy": {
+      "sha256": "527f245a54a71085bfda917dc79a13f51b85128e0a3484a3822531bd3d230c2e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/527f245a54a71085bfda917dc79a13f51b85128e0a3484a3822531bd3d230c2e"
+      }
+    },
+    "seed_42/gen_09/checkpoint/config.json": {
+      "sha256": "4779610f5060ddf45612323aba309eeec7044c18a3a70b7c1aa3591db5209adb",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_09/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_09/checkpoint/model.safetensors": {
+      "sha256": "cc873b8736b6cd8e5c625e060b59a3531639b715e1e939f845d6c655f7ad2e68",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/cc873b8736b6cd8e5c625e060b59a3531639b715e1e939f845d6c655f7ad2e68"
+      }
+    },
+    "seed_42/gen_09/metrics.json": {
+      "sha256": "e30af630526d979b87b047698be44798e147acd68b2112fc64581184a5c5fdad",
+      "bytes": 6027,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/optimizer_state/cycle.pt": {
+      "sha256": "795528f72a3bfaf44727fe4dbe7280d29809f26b565e05999b1421ca2f36f305",
+      "bytes": 1076328939,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/795528f72a3bfaf44727fe4dbe7280d29809f26b565e05999b1421ca2f36f305"
+      }
+    },
+    "seed_42/gen_09/probe/events.jsonl": {
+      "sha256": "179b98876f2fad79ea8fb9c45aed6744fe8d1788a30c3e59edfd7ce53cd49e35",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json": {
+      "sha256": "7d70563eece80f0525e6f2b1919bec092b6360e00d49c4285cad04550891533b",
+      "bytes": 717,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/shard_0000000.json": {
+      "sha256": "82c7a6ee4b5326d47241aeadc2856db5256f1d8ffe2b5f09da2d688bcbae0a9b",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/shard_0000000.npy": {
+      "sha256": "9a13cfe83ea9b996ab2a72457878c5a7cc557255569e94ae02a660032ab77ad4",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/9a13cfe83ea9b996ab2a72457878c5a7cc557255569e94ae02a660032ab77ad4"
+      }
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/tokens.npy": {
+      "sha256": "9a13cfe83ea9b996ab2a72457878c5a7cc557255569e94ae02a660032ab77ad4",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/9a13cfe83ea9b996ab2a72457878c5a7cc557255569e94ae02a660032ab77ad4"
+      }
+    },
+    "seed_42/gen_09/probe_examples.json": {
+      "sha256": "676fc9b8451ccf1340f0676c807aaf34afca720ca7fbbe52583e3e4707e073e7",
+      "bytes": 1579,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/stage_completion.json": {
+      "sha256": "f451051ab26e178f9333e10308ab85d7543f163a4fea1464505b5cf6c7665f33",
+      "bytes": 1886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/test_sequences.json": {
+      "sha256": "cd54bb23b5f146c319d123396a5724febee30223578fd596d00dd996fd5b6d6f",
+      "bytes": 230187,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training.json": {
+      "sha256": "bb9e303fd8f495d499b1c47bb2a0b2332115facc98cb9bf92ab4a5bc00760a06",
+      "bytes": 2003,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_history.json": {
+      "sha256": "03258117f3d783a44f925dd45fbd9e17ef271175c33d6086d2c57d24237e241c",
+      "bytes": 365,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_09/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_09/training_input/manifest.json": {
+      "sha256": "ae8aa6148396f507fe295219ea606d91e83a167bbaa81d3270528d72486dd92b",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_input/tokens.npy": {
+      "sha256": "e6a006bc9db6f03c6731dbc9243a6977cd93a5ef58e6a2c386429819023740c4",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/e6a006bc9db6f03c6731dbc9243a6977cd93a5ef58e6a2c386429819023740c4"
+      }
+    },
+    "seed_42/gen_10/checkpoint/config.json": {
+      "sha256": "6dc84d9851112a5d1d6a5d54756e87d2d8f3ceafc7d2797d136d7aceacced5ef",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_10/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_10/checkpoint/model.safetensors": {
+      "sha256": "a7645f3ec5e58a34b8c2cf04966f94551f8a7d11adf7f5ead17d1c78cc9e8e30",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/a7645f3ec5e58a34b8c2cf04966f94551f8a7d11adf7f5ead17d1c78cc9e8e30"
+      }
+    },
+    "seed_42/gen_10/metrics.json": {
+      "sha256": "8cbba161e35dd55289f60322c87399de19d8d584226bf787fa9c7f37c56d6469",
+      "bytes": 6026,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/optimizer_state/cycle.pt": {
+      "sha256": "b6620bb813c0bff4804416551358b9ef5b217e556ddbd90e80bab9f4a35d95f1",
+      "bytes": 1076328939,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/b6620bb813c0bff4804416551358b9ef5b217e556ddbd90e80bab9f4a35d95f1"
+      }
+    },
+    "seed_42/gen_10/probe/events.jsonl": {
+      "sha256": "ed2b225eced7a38fe850bd1bdc3ad2d084813a0122e7e08b478b0ac2598e0f97",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json": {
+      "sha256": "59b9d26b81e8e6b9e01fbc54dd7c6fbb913ebc517812ee492de879dc486a242f",
+      "bytes": 720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/shard_0000000.json": {
+      "sha256": "6de7f0ab8012b06cf1c95cf2165fc9a5b22427f022cb5863f21f2ca243dc9093",
+      "bytes": 396,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/shard_0000000.npy": {
+      "sha256": "a909c44825784a85ea4813dedecf6d341d9d4adc6684c593f0a26dc821f6a869",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/a909c44825784a85ea4813dedecf6d341d9d4adc6684c593f0a26dc821f6a869"
+      }
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/tokens.npy": {
+      "sha256": "a909c44825784a85ea4813dedecf6d341d9d4adc6684c593f0a26dc821f6a869",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/a909c44825784a85ea4813dedecf6d341d9d4adc6684c593f0a26dc821f6a869"
+      }
+    },
+    "seed_42/gen_10/probe_examples.json": {
+      "sha256": "8f521325ad4364ac70d09c25d9a91e7dd8d98c957d4b728c728a20c6aa3e4416",
+      "bytes": 1705,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/stage_completion.json": {
+      "sha256": "591b19a0f6c4d695a2ba6e3f28a14f6369a9ce6d12724ebd3de69c0bcfecd95f",
+      "bytes": 1887,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/test_sequences.json": {
+      "sha256": "9cd7261c85b147c7ad62e80e71bf4a66ba80f6c7bca25d7108e6250400bf274b",
+      "bytes": 230139,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training.json": {
+      "sha256": "5c461a2aa1e7b7c8d0e1ff5978892d20bd5efb092aa2b412ddbcb595eed92309",
+      "bytes": 2004,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_history.json": {
+      "sha256": "ed26142b3aecbbb13b9d3c3270bd2ecef8bd04d19b3e1693b6a00e695aee3065",
+      "bytes": 347,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_10/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_10/training_input/manifest.json": {
+      "sha256": "327482af6961324e8c7ee310a1e9d50a792d37581b85eeab9908201315dfef47",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_input/tokens.npy": {
+      "sha256": "d61613c004a91cb479babca58c955932fcebf2f24ea60b9fd1c315c6b4aef105",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full",
+        "key": "smollm2-seven-fractions-full/objects/d61613c004a91cb479babca58c955932fcebf2f24ea60b9fd1c315c6b4aef105"
+      }
+    }
+  }
+}
