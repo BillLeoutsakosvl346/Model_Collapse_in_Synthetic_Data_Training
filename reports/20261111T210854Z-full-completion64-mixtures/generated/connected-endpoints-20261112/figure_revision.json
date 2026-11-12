@@ -1,0 +1,161 @@
+{
+  "source_metrics_sha256": "78e8ac5611eb622017d97e6ee4b55f3e56152407b3417033fb15353fedf17213",
+  "script_sha256": "e3bcd53ad5c59a0877202f1482be2b5fc6304473612e79aa7ce64d1ac5bec7aa",
+  "git_revision": "3de7565c1b6765c771bdd74852e055651896d7a7",
+  "data_unchanged": true,
+  "figures": [
+    {
+      "name": "13_endpoint_test_perplexity",
+      "x": [
+        0.0,
+        50.0,
+        80.0,
+        95.0,
+        99.0,
+        99.9,
+        100.0
+      ],
+      "y": [
+        17.712248337298032,
+        18.246345113983427,
+        19.73794299891082,
+        26.73748112413786,
+        58.36216237195294,
+        224.37392175307372,
+        312.4879458789992
+      ],
+      "metric": "test_perplexity",
+      "percentage_display": false
+    },
+    {
+      "name": "14_endpoint_token_entropy_nats",
+      "x": [
+        0.0,
+        50.0,
+        80.0,
+        95.0,
+        99.0,
+        99.9,
+        100.0
+      ],
+      "y": [
+        6.1704621771294725,
+        6.414928669300737,
+        6.49078079872372,
+        6.495639144840528,
+        6.4676115443042335,
+        6.4309688280207356,
+        6.416364816851518
+      ],
+      "metric": "token_entropy_nats",
+      "percentage_display": false
+    },
+    {
+      "name": "15_endpoint_mean_within_entropy_nats",
+      "x": [
+        0.0,
+        50.0,
+        80.0,
+        95.0,
+        99.0,
+        99.9,
+        100.0
+      ],
+      "y": [
+        3.1154297096643475,
+        3.0082983787311797,
+        3.097821400694072,
+        2.999627307434298,
+        2.917633665953742,
+        2.848815991830117,
+        2.857120004427654
+      ],
+      "metric": "mean_within_entropy_nats",
+      "percentage_display": false
+    },
+    {
+      "name": "16_endpoint_distinct_2",
+      "x": [
+        0.0,
+        50.0,
+        80.0,
+        95.0,
+        99.0,
+        99.9,
+        100.0
+      ],
+      "y": [
+        42.788938492063494,
+        42.50372023809524,
+        46.21155753968254,
+        42.051091269841265,
+        38.79588293650794,
+        37.15897817460318,
+        37.5
+      ],
+      "metric": "distinct_2",
+      "percentage_display": true
+    },
+    {
+      "name": "17_endpoint_distinct_3",
+      "x": [
+        0.0,
+        50.0,
+        80.0,
+        95.0,
+        99.0,
+        99.9,
+        100.0
+      ],
+      "y": [
+        57.56678427419355,
+        51.568800403225815,
+        55.657762096774185,
+        50.189012096774185,
+        46.106350806451616,
+        43.850806451612904,
+        44.323336693548384
+      ],
+      "metric": "distinct_3",
+      "percentage_display": true
+    },
+    {
+      "name": "18_endpoint_mean_within_repeated_4gram_rate",
+      "x": [
+        0.0,
+        50.0,
+        80.0,
+        95.0,
+        99.0,
+        99.9,
+        100.0
+      ],
+      "y": [
+        32.65881147540984,
+        44.95389344262295,
+        41.310194672131146,
+        47.30404713114754,
+        51.581711065573764,
+        54.00230532786885,
+        53.490010245901644
+      ],
+      "metric": "mean_within_repeated_4gram_rate",
+      "percentage_display": true
+    }
+  ],
+  "outputs": {
+    "13_endpoint_test_perplexity.pdf": "c5f2138523ddbe4a8f1edeb6bc77bdf6f2b9d1f154eff01a203dd8cfcc0a8629",
+    "13_endpoint_test_perplexity.png": "4b82b4cf1f641bbbd15995b6b0ce40c3561f0f635cd2cccf7ea3a05d301462d1",
+    "14_endpoint_token_entropy_nats.pdf": "37190cf1ce2ff4f079e5987c004184cf9c2a36547f9c44ea65543ca1b3c9c1fa",
+    "14_endpoint_token_entropy_nats.png": "c8a4f0bbb2b92c2b6c2e313b50f26b156263b2b97f67380b6073fc4904fbb889",
+    "15_endpoint_mean_within_entropy_nats.pdf": "50bb2c3d9b86fa0ffc92ff856e4d87e0b30113039727471fa5d5bf5333789625",
+    "15_endpoint_mean_within_entropy_nats.png": "ace1c8ebc66731ca633c0ad33ff67c383ae6a6790c4c42062aacffb21f5cab99",
+    "16_endpoint_distinct_2.pdf": "cb444724808e2383d616bd164cc45edaeed8a4c1c75425166fc134d5dd5d7871",
+    "16_endpoint_distinct_2.png": "26048993c4cc00fa3b280b60164999fae6fde90335b6c052f5a79d23a0d0e129",
+    "17_endpoint_distinct_3.pdf": "3483bb47df7634f55ff72f9d106f983a2bffa78d1f1d2c28d291a99c0fe7c640",
+    "17_endpoint_distinct_3.png": "875f9efda5648de0e20fb0d98917a51cacad9d64109818ba0458ef41124aa6fb",
+    "18_endpoint_mean_within_repeated_4gram_rate.pdf": "08bd996931050b63ef3ea696a515b42e413eff44697e78d4fd4d4a75b7fb36d8",
+    "18_endpoint_mean_within_repeated_4gram_rate.png": "2fe6f5dfad984986dde82628b0317d2f39d648606f4da19291f799023b024011",
+    "README.md": "e55433b3d95442a3ed6271f7a82e89d3d4a95990805578a8eb8ab9383c591b72"
+  }
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "name": "01_test_perplexity",
+    "caption": "SmolLM2: fixed real-test continuations",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "02_test_perplexity_zoom",
+    "caption": "Real-test perplexity: 0\u201399% synthetic",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "03_validation_perplexity",
+    "caption": "Fixed real-validation continuations",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "04_pooled_entropy",
+    "caption": "Vocabulary spread across the fixed probe",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "05_within_entropy",
+    "caption": "Token diversity inside individual outputs",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "06_distinct2",
+    "caption": "Unique two-token phrases across outputs",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "07_distinct3",
+    "caption": "Unique three-token phrases across outputs",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "08_repeated4",
+    "caption": "Repeated phrases inside individual outputs",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "09_training_nll",
+    "caption": "Fitting each cycle\u2019s actual training targets",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "10_nll_p95",
+    "caption": "More surprising held-out real passages",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "11_learning_rate",
+    "caption": "Common decreasing learning-rate schedule",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "12_newlines",
+    "caption": "Formatting in the fixed probe",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "13_endpoint_test_perplexity",
+    "caption": "Cycle-10 perplexity versus synthetic fraction",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "14_endpoint_token_entropy_nats",
+    "caption": "Cycle-10 pooled entropy versus synthetic fraction",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "15_endpoint_mean_within_entropy_nats",
+    "caption": "Cycle-10 local entropy versus synthetic fraction",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "16_endpoint_distinct_2",
+    "caption": "Cycle-10 distinct-2 versus synthetic fraction",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "17_endpoint_distinct_3",
+    "caption": "Cycle-10 distinct-3 versus synthetic fraction",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "18_endpoint_mean_within_repeated_4gram_rate",
+    "caption": "Cycle-10 repetition versus synthetic fraction",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "19_secondary_corpora",
+    "caption": "Secondary real-text evaluations; distinct from completion perplexity",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  },
+  {
+    "name": "20_cross_model_relative",
+    "caption": "Tokenizer, native bank and pretraining differences prevent a clean causal model-only comparison",
+    "width_inches": 7.5,
+    "height_inches": 7.5
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "document_url": "https://docs.google.com/document/d/1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk",
+  "before_revision": "AHj4eMSIRDcsIyCas6QSys6gJc9808iM3K_0__BzO2-SiNdx-Ww_P94LU_B_050o6c6NRU32XxOwFqdaPkCYxEAYSoMQZHw_nzDl-QtIYt4",
+  "after_revision": "AHj4eMTAkuxWN-wo0N89wz0GoXuCuyYuqWjAJkvZeGSPsd4bGb9I3Z_j6I5lftOpEk0vMmogb8U6lTPom2GGxidUZuS1afElM0r_Mxm1E2g",
+  "changed_image_paragraphs": 3,
+  "all_other_document_elements_unchanged": true,
+  "values_and_axes_unchanged": true,
+  "images": [
+    {
+      "oldId": "kix.to49w9qxi4",
+      "newId": "kix.4xb4rtxxweit",
+      "index": 191864,
+      "file": "15_endpoint_mean_within_entropy_nats.png"
+    },
+    {
+      "oldId": "kix.71n9aj9q2xdh",
+      "newId": "kix.tri6sg9g8kz",
+      "index": 191456,
+      "file": "14_endpoint_token_entropy_nats.png"
+    },
+    {
+      "oldId": "kix.9sbk29yp4cij",
+      "newId": "kix.ocyribqxpxos",
+      "index": 190869,
+      "file": "13_endpoint_test_perplexity.png"
+    }
+  ],
+  "changed_pdf_pages": [
+    146,
+    147,
+    148
+  ],
+  "other_152_pages_pixel_identical": true,
+  "pdf_sha256": "2f5eb7564f2a22a8ca98d95e190163473bac5a999a1bfbd60a07ce6c5ac8bbd3",
+  "rendered_page_count": 155,
+  "all_six_exported_endpoint_figures_connected": true,
+  "source_metrics_sha256": "78e8ac5611eb622017d97e6ee4b55f3e56152407b3417033fb15353fedf17213",
+  "original_publication_manifest_sha256": "c1864748185786187f596928b9f02ad4e81a2f2f6e589a21a6e9918edefb3fd6",
+  "new_figure_directory": "reports/20261111T210854Z-full-completion64-mixtures/generated/connected-endpoints-20261112",
+  "reproduce": "python -m scripts.analysis.render_connected_smollm_endpoints --metrics reports/20261111T210854Z-full-completion64-mixtures/generated/smollm2-20261112/metrics.json --out NEW_EMPTY_OUTPUT_DIRECTORY",
+  "scope": "Presentation only; points joined in increasing actual synthetic percentage. All values, axes, tables and report wording are unchanged. No cloud compute."
+}
