@@ -63,6 +63,16 @@ The `completion_comparison` workflow supplies BOS, 64 prompt tokens and 64 conti
 
 Repeated-chunk controls additionally score the fixed real first chunk at baseline and every checkpoint. `fixed_real_anchor_loss` uses the original real continuations in both arms; `real_anchor_generalization_gap` is test NLL minus this anchor NLL. The anchor is training data for the repeated-real arm, not a held-out collection. Interpret changes from its baseline because the two collections can differ in difficulty. Falling training loss together with rising held-out loss supports overfitting; a widening gap alone does not establish held-out deterioration. Synthetic own-target training NLL and real-anchor NLL score different targets and must remain separately labelled.
 
+## SGD per-update effects
+
+The SGD/greedy comparison uses the SmolLM2-native bank: 7,447 validation pairs and 7,303 test pairs, contributing 476,608 and 467,392 continuation targets respectively. These differ from the historical OPT counts above. Update diagnostics use one fixed 128-pair real-validation probe; complete validation/test evaluation remains separate.
+
+For an effective batch with `T` scored targets, its real contribution is `G_real = sum(real-target loss gradients) / T`; the synthetic contribution uses the same denominator. The ordinary batch gradient is authoritative, and the independently measured components must reconstruct it. Component norms therefore include the batch's source proportions. A source absent from a batch has a zero contribution and an undefined source-mean loss and alignment.
+
+From the same pre-update weights, evaluate unchanged, `weights - LR * G_real`, `weights - LR * G_synthetic` and the actual mixed update. All probe evaluations use FP32 without gradients; they never train on validation text. The real conditional effect is `NLL_mixed - NLL_synthetic`, and the synthetic conditional effect is `NLL_mixed - NLL_real`: negative means that component improves immediate real-text prediction. The interaction is `NLL_mixed - NLL_real - NLL_synthetic + NLL_unchanged`; loss changes need not add linearly.
+
+These are local counterfactual effects at the weights actually reached, not independent alternative training trajectories. Diagnostics preserve training mode and RNG, seal only the successful attempt, and label effects below the declared `1e-6` NLL resolution separately from exact shared measurements. Epoch summaries bootstrap paired document losses after averaging over that epoch's updates; optimizer updates are not treated as independent evaluation samples or training seeds. Gradient strength, direction and held-out effect answer different questions and should be reported together.
+
 ## What the existing results support
 
 The Week 2 run has clear overall deterioration in fixed-real-text prediction and increased final repetition, with an early perplexity recovery and mixed diversity. Its final distinct scores exceed S0 and its final empirical token entropy is close to S0; it does not establish uniform vocabulary collapse. A concrete repeated output illustrates a failure mode but does not estimate its full-corpus prevalence.

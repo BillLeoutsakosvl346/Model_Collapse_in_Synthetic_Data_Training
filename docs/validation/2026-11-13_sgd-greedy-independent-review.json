@@ -1,0 +1,33 @@
+{
+  "recorded_at": 1794609935.9493668,
+  "reviewer": "fresh independent subagent",
+  "scope": [
+    "scientific loop",
+    "bounded real-only calibration",
+    "same-graph source gradients",
+    "scratch interventions and RNG",
+    "resume and seals",
+    "cloud admission"
+  ],
+  "findings_resolved": [
+    {
+      "issue": "Full root required absent calibration work",
+      "fix": "Pinned accepted benchmark reused in admission and remote root; no recalibration"
+    },
+    {
+      "issue": "Seal before training commit prevented recovery",
+      "fix": "Verify and archive uncommitted seal; replay verified initializer; reject changed bindings"
+    },
+    {
+      "issue": "Completed stage binding checks",
+      "fix": "Verify current contract, probe and embedded seal before reuse"
+    },
+    {
+      "issue": "Private source authentication and backup prefix",
+      "fix": "Load credentials before reads; validated separate prefix and capacity margin"
+    }
+  ],
+  "remaining_material_findings": [],
+  "gpu_acceptance_required": true,
+  "full_experiments_launched": false
+}

@@ -45,6 +45,11 @@ def handler(c, operation):
     if operation not in ("worker", "report", "validate"):
         raise ValueError(f"Unknown workflow capability: {operation}")
     workflow = c.get("workflow")
+    if c.get("completion_profile") == "smollm2_sgd_greedy_effects_v1" and workflow == "completion_comparison":
+        target = {"report": "analysis.sgd_effects:report", "validate": "workflow.sgd_validation:validate_local"}.get(operation)
+        if target:
+            module, name = target.split(":")
+            return getattr(import_module("model_collapse." + module), name)
     if workflow is None:
         routes = {"worker": "workflow.wikitext:run", "report": "analysis.reporting:report",
                   "validate": "continued:validate_local" if c.get("initialization") in ("continued", "reset_s0") else "validate:validate"}

@@ -1,0 +1,21 @@
+{
+  "recorded_at": 1794608769.880253,
+  "allocation": "smollm2_sgd_greedy_effects_setup",
+  "budget_usd": 0.4,
+  "reserve_usd": 0.0,
+  "validation_cap_usd": 0.4,
+  "max_combined_compute_seconds": 1800,
+  "authorization": "User approved SGD/greedy setup plan: bounded real-only LR calibration and three-arm GPU acceptance; no full experiments.",
+  "cumulative_ceiling_usd": 110.0,
+  "historical_setup_ceiling_usd": 5.4,
+  "global_reserve_usd": 2.0,
+  "setup_remaining_at_authorization_usd": 0.5230750767911605,
+  "selected_options": {
+    "precision": "fp32",
+    "update_probe_pairs": 128,
+    "calibration_max_updates": 192
+  },
+  "full_runs_authorized": false,
+  "temporary_volume_gb": 30,
+  "historical_resources_preserved": true
+}

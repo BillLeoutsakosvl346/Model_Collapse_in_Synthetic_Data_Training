@@ -35,6 +35,12 @@ def training_contract(c):
             from ..science.decoding import decoding_settings, SAMPLING_POLICY
             settings.update(training_decoder=c["generation_decoder"], decoding=decoding_settings(c),
                             generation_batch=c["generation_batch"], sampling_policy=SAMPLING_POLICY)
+    if c.get("optimizer") == "sgd":
+        from ..science.decoding import decoding_settings
+        settings.update(optimizer="sgd", momentum=c["momentum"], foreach=False, fused=False,
+                        scheduler_policy="none", learning_rate_policy=c["learning_rate_policy"],
+                        training_decoder=decoding_settings(c), purpose=c.get("purpose", "production"),
+                        diagnostics=c.get("update_diagnostics"), calibration_reference=c.get("calibration_reference"))
     return digest(settings)
 
 

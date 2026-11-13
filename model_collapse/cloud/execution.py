@@ -414,6 +414,11 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             c["required_gpu"] = gpu.strip()
     from ..common import validate_config
     validate_config(c)
+    verified_sgd_benchmark = None
+    if c.get("completion_profile") == "smollm2_sgd_greedy_effects_v1" and c["kind"] == "full":
+        from .sgd_setup import verify_calibration_source
+        load_secrets()
+        verified_sgd_benchmark = verify_calibration_source(c)
     container_disk_gb, container_hourly = configured_container_disk(c)
     if c.get("workflow") == "completion_arm":
         raise ValueError("Completion arms are launched by their owning comparison coordinator")
@@ -447,9 +452,9 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
         from ..workflow.mixed_campaign import verified_resume_jobs
         resume_work = verified_resume_jobs(PROJECT / "runs" / resume_id, previous, c)
     api = Runpod()
-    if completion and c.get("completion_profile") == "smollm2_completion64_v1":
-        from ..workflow.smollm import resolve_backup
-        c = resolve_backup(c, api)
+    if completion and c.get("completion_profile") in ("smollm2_completion64_v1", "smollm2_sgd_greedy_effects_v1"):
+        from ..workflow.completion import native_profile
+        c = native_profile(c).resolve_backup(c, api)
     p = preflight(probe=True, network_storage=False) if pod_storage else preflight(probe=True)
     # Use preflight for the initial screen. Native-model launches recheck after
     # the slower storage/authentication work, immediately before acquisition.
@@ -484,13 +489,18 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             volume_info = api.request("GET", "/network-volumes/" + c["backup_store"]["bucket"])
             if volume_info["dataCenter"] != c["backup_store"]["region"]:
                 raise RuntimeError("Bulk backup volume capacity/region differs from admission")
-            bulk_capacity = check_capacity(c["backup_store"], volume_info["size"], required_backup_bytes(c))
+            capacity_options = {"reserve_bytes": 10_000_000_000} if c.get("completion_profile") == "smollm2_sgd_greedy_effects_v1" else {}
+            bulk_capacity = check_capacity(c["backup_store"], volume_info["size"], required_backup_bytes(c), **capacity_options)
         storage_admission = check_storage(p["hugging_face"]["repos"], destination["organization"],
             100_000_000_000, 50_000_000 if metadata_only else required_backup_bytes(c), 10_000_000_000,
             HfApi(token=os.environ.get("HF_TOKEN") or get_token()))
         if metadata_only:
             storage_admission["bulk_round_trip"] = bulk_probe
             storage_admission["bulk_capacity"] = bulk_capacity
+    bank_archive = None
+    if c.get("completion_profile") == "smollm2_sgd_greedy_effects_v1":
+        from .sgd_setup import bank_cache
+        bank_archive = bank_cache(c)
     archive, code_hash = source_archive()
     if previous and previous["code_sha256"] != code_hash and c["kind"] != "smoke":
         raise RuntimeError("Resume requires the original code; restore its recorded commit")
@@ -523,7 +533,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             raise RuntimeError("Completion comparison requires its recorded allocation")
         allocated = {**ledger_state, "launches": [x for x in ledger_state["launches"] if x.get("allocation") == allocation_name]}
         ids = {x["volume_id"] for x in allocated["launches"]}
-        if c.get("completion_profile") == "smollm2_completion64_v1":
+        if c.get("completion_profile") in ("smollm2_completion64_v1", "smollm2_sgd_greedy_effects_v1"):
             ids.update(k for k,v in ledger_state.get("volumes",{}).items() if v.get("allocation") == allocation_name)
         allocated["volumes"] = {k: v for k, v in ledger_state.get("volumes", {}).items() if k in ids}
         allowance = min(allowance, allocation["budget_usd"] - accrued(allocated) - allocation["reserve_usd"])
@@ -553,7 +563,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             from ..mixing import CAMPAIGN, mixture_enabled
             if mixture_enabled(c):
                 allowance = min(allowance, .75 - campaign_accrued(ledger(), CAMPAIGN))
-    if completion and c.get("completion_profile") == "smollm2_completion64_v1" and c["kind"] == "smoke":
+    if completion and c.get("completion_profile") in ("smollm2_completion64_v1", "smollm2_sgd_greedy_effects_v1") and c["kind"] == "smoke":
         elapsed = sum(max(0, x.get("compute_stopped_at", x.get("stopped_at", now())) - x.get("compute_started_at", x["created_at"])) for x in ledger_state["launches"] if x.get("allocation") == allocation_name and x.get("kind") == "smoke")
         if elapsed >= c["validation_max_seconds"]:
             raise RuntimeError("Combined fast-validation paid-time allowance exhausted")
@@ -570,7 +580,9 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
             benchmark_file = benchmark_filename(c)
         else:
             benchmark_file = "benchmark_fresh_real.json" if fresh_real else "benchmark.json"
-        b = read_json(STATE / benchmark_file)
+        b = verified_sgd_benchmark if verified_sgd_benchmark is not None else read_json(STATE / benchmark_file)
+        if verified_sgd_benchmark is not None and b["source_runtime_sha256"] != code_hash:
+            raise RuntimeError("Accepted SGD benchmark belongs to a different runtime")
         if not b:
             raise RuntimeError("Run the validated smoke test and fetch its benchmark before launching full data")
         estimate_kwargs = {"continued": c.get("initialization") in ("continued", "reset_s0")}
@@ -596,9 +608,9 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                 exclude_volume=previous.get("volume_id") if previous else None)
             estimate["seven_day_volume_storage_usd"] = volume_hourly * 24 * 7
             allowance -= estimate["historical_storage_during_run_usd"]
-            if c.get("completion_profile") == "smollm2_completion64_v1":
-                from ..workflow.smollm import retention_forecast
-                estimate.update(retention_forecast(c, storage_admission["bulk_capacity"]["quota_bytes"], RESERVE))
+            if c.get("completion_profile") in ("smollm2_completion64_v1", "smollm2_sgd_greedy_effects_v1"):
+                from ..workflow.completion import native_profile
+                estimate.update(native_profile(c).retention_forecast(c, storage_admission["bulk_capacity"]["quota_bytes"], RESERVE))
                 allowance -= estimate["retention_above_existing_reserve_usd"]
             if estimate["estimated_compute_and_running_storage_usd"] * 1.15 > allowance:
                 raise RuntimeError("Completion comparison forecast exceeds the padded watchdog allowance")
@@ -667,7 +679,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                 raise RuntimeError("Volume read-back mismatch")
         created = now()
         try:
-            if completion and c.get("completion_profile") == "smollm2_completion64_v1":
+            if completion and c.get("completion_profile") in ("smollm2_completion64_v1", "smollm2_sgd_greedy_effects_v1"):
                 live_choices = configured_placements(c, api.candidates())
                 if not live_choices or live_choices[0]["hourly_usd"] > choice["hourly_usd"]:
                     raise RuntimeError("GPU placement disappeared or became more expensive before acquisition")
@@ -720,7 +732,7 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                      "volume_hourly_usd": volume_hourly, "network_volume_gb": 0 if pod_storage else volume_gb, "volume_created_at": volume_created_at,
                      "session_allowance_usd": allowance, "repos": p["hugging_face"]["repos"], "code_sha256": code_hash,
                      "starting_balance_usd": p["account"]["clientBalance"], "remote_root": "/workspace/runs/" + run_id}
-        if completion and c.get("completion_profile") == "smollm2_completion64_v1" and c["kind"] == "smoke":
+        if completion and c.get("completion_profile") in ("smollm2_completion64_v1", "smollm2_sgd_greedy_effects_v1") and c["kind"] == "smoke":
             allocation_name = allocation_id(c) if completion else None
             used_seconds = sum(max(0, x.get("compute_stopped_at", x.get("stopped_at", now())) - x.get("compute_started_at", x["created_at"])) for x in ledger()["launches"] if x.get("allocation") == allocation_name and x.get("kind") == "smoke")
             resources["absolute_deadline"] = created + max(0, c["validation_max_seconds"] - used_seconds)
@@ -811,6 +823,9 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                          "assert m['runtime_sha256']==" + repr(code_hash) + "; "
                          "assert all(hashlib.sha256((p/n).read_bytes()).hexdigest()==h for n,h in m['files'].items())")
         command(client, "python3 -c " + shlex.quote(verify_bundle))
+        if bank_archive is not None:
+            from .sgd_setup import upload_bank
+            upload_bank(client, sftp, bank_archive, c)
         atomic_json(local / "launch_phase.json", {"phase": "code_transferred", "time": now()})
         upload_json(sftp, resources["remote_root"] + "/resources.json", resources)
         upload_json(sftp, resources["remote_root"] + "/config.json", c)
@@ -897,7 +912,11 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
                 elif fresh_real or completion:
                     client.close()
                     client = None
-                    progress = verify_detached(run_id, max_wait_seconds=600)
+                    wait = 600
+                    if c.get("completion_profile") == "smollm2_sgd_greedy_effects_v1" and c["kind"] == "smoke":
+                        from ..supervisor import deadline
+                        wait = max(1, deadline(resources) - now() - 90)
+                    progress = verify_detached(run_id, max_wait_seconds=wait)
                     atomic_json(local / "launch_verified.json", {**live, "detached_progress": progress})
                 print(json.dumps({"run_id": run_id, "pod_id": pod["id"], "state": "running",
                                   "detached_supervisor_and_watchdog_verified": True,
@@ -1145,8 +1164,8 @@ def cleanup(run_id):
         verify_recovery(local)
         verify_recovered_files(local, index["files"])
         if any(v["metadata_only"] for v in read_json(local / "recovery_verified.json")["children"].values()):
-            from ..workflow.smollm import enabled
-            shutdown_check = "independent_watchdog_and_provider_stop_verified" if enabled(read_json(local / "config.json")) else "independent_budget_guard_and_provider_stop_verified"
+            from ..workflow.completion import native_model
+            shutdown_check = "independent_watchdog_and_provider_stop_verified" if native_model(read_json(local / "config.json")) else "independent_budget_guard_and_provider_stop_verified"
             if not read_json(local / "validation_results.json", {}).get("checks", {}).get(shutdown_check):
                 raise RuntimeError("Completion cleanup requires full recovery or validated private restores")
     elif campaign:

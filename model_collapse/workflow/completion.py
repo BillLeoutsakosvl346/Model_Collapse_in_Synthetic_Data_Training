@@ -36,6 +36,15 @@ class BackupPending(RuntimeError):
     pass
 
 
+def native_profile(c):
+    from . import sgd_profile
+    return sgd_profile if sgd_profile.enabled(c) else smollm if smollm.enabled(c) else None
+
+
+def native_model(c):
+    return native_profile(c) is not None
+
+
 def source_collection(c, cycle):
     """Resolve scientific data identity independently of the training epoch."""
     policy = c.get("training_chunk_policy", "fresh_per_cycle")
@@ -54,8 +63,8 @@ def source_collection(c, cycle):
 
 
 def arm_specs(c):
-    if smollm.enabled(c):
-        return smollm.specs(c)
+    if native_model(c):
+        return native_profile(c).specs(c)
     decoders = c.get("decoding_arms")
     if decoders is not None:
         expected = [{"id": "greedy", "decoder": "greedy"}, {"id": "sampling", "decoder": "sampling"}]
@@ -86,8 +95,8 @@ def arm_specs(c):
 
 
 def allocation_id(c):
-    if smollm.enabled(c):
-        return smollm.ALLOCATION
+    if native_model(c):
+        return native_profile(c).SETUP_ALLOCATION if native_profile(c).__name__.endswith("sgd_profile") and c["kind"] == "smoke" else native_profile(c).ALLOCATION
     if c.get("decoding_arms") is not None:
         return DECODING_ALLOCATION
     if c.get("training_chunk_policy") == "repeat_fixed":
@@ -104,8 +113,8 @@ def acceptance_campaign(c):
 
 
 def benchmark_filename(c):
-    if smollm.enabled(c):
-        return "benchmark_smollm2_completion64.json"
+    if native_model(c):
+        return "benchmark_sgd_greedy_effects.json" if c.get("optimizer") == "sgd" else "benchmark_smollm2_completion64.json"
     if c.get("decoding_arms") is not None:
         return "benchmark_completion_decoding.json"
     if c.get("training_chunk_policy") == "repeat_fixed":
@@ -118,8 +127,8 @@ def benchmark_filename(c):
 
 
 def acceptance_checks(c):
-    if smollm.enabled(c):
-        return smollm.CHECKS
+    if native_model(c):
+        return native_profile(c).CHECKS
     extra = {"exact_mixture_reconstruction", "nested_selections", "sealed_private_stage_restores"}
     checks = CHECKS | extra if c.get("completion_arms") is not None else CHECKS
     if c.get("decoding_arms") is not None:
@@ -139,8 +148,8 @@ def acceptance_checks(c):
 
 
 def smoke_pair_count(c):
-    if smollm.enabled(c):
-        return 128
+    if native_model(c):
+        return 400 if c.get("optimizer") == "sgd" else 128
     """Keep historical scopes, with explicit larger smoke sets for sparse mixtures."""
     default = 320 if c.get("completion_arms") is not None else 256
     count = c.get("smoke_train_pairs", default)
@@ -150,8 +159,8 @@ def smoke_pair_count(c):
 
 
 def required_backup_bytes(c):
-    if smollm.enabled(c):
-        return 6_000_000_000 if c["kind"] == "smoke" else 131_000_000_000
+    if native_model(c):
+        return native_profile(c).required_backup_bytes(c) if c.get("optimizer") == "sgd" else (6_000_000_000 if c["kind"] == "smoke" else 131_000_000_000)
     if len(arm_specs(c)) == 2:
         return 40_000_000_000
     # The verified OPT stages use <1.53 GB each, including model, optimizer,
@@ -162,7 +171,7 @@ def required_backup_bytes(c):
 
 
 def arm_config(c, name):
-    if smollm.enabled(c):
+    if native_model(c):
         spec = next(x for x in arm_specs(c) if x["id"] == name)
         f = spec["synthetic_fraction"]
         return {**c, "workflow": "completion_arm", "arm_id": name, "synthetic_fraction": f,
@@ -179,8 +188,8 @@ def arm_config(c, name):
 
 
 def validate_config(c):
-    if smollm.enabled(c):
-        return smollm.validate(c)
+    if native_model(c):
+        return native_profile(c).validate(c)
     from .configuration import validate_training_numbers
     validate_training_numbers(c)
     specs = arm_specs(c)
@@ -254,8 +263,8 @@ def validate_config(c):
 
 
 def resolve_inputs(c):
-    if smollm.enabled(c):
-        return smollm.resolve_inputs(c)
+    if native_model(c):
+        return native_profile(c).resolve_inputs(c)
     c = copy.deepcopy(c)
     ref = c.get("prepared_bank") or read_json(STATE / "completion64_bank.json")
     if not ref or ref.get("contract") != bank_contract(c):
@@ -299,6 +308,17 @@ def _visible_prompt(prompt, bos):
     return np.concatenate([np.full((len(prompt), 1), bos, dtype=np.int32), prompt], axis=1)
 
 
+def sgd_update_probe(bank, c):
+    prompt, target, windows = load_pairs(bank, "validation")
+    indices = np.load(Path(bank) / "probe_indices.npy")[:128]
+    tokens, attention, scoring = assemble(prompt[indices], target[indices], c["bos_token_id"])
+    identity = digest({"bank": c["prepared_bank"]["manifest_sha256"],
+                       "indices": indices.tolist(), "tokens": hashlib.sha256(tokens.tobytes()).hexdigest(),
+                       "loss_mask": hashlib.sha256(scoring.tobytes()).hexdigest(), "precision": "fp32"})
+    return {"tokens": tokens, "attention": attention, "scoring": scoring,
+            "documents": windows[indices, 0], "identity": identity}
+
+
 def _primary(model, bank, split, c, export=None):
     from .. import engine
     prompt, target, _ = load_pairs(bank, split, c["evaluation_pairs"])
@@ -327,7 +347,7 @@ def measure(stage, model, bank, c, weights, cycle):
     for corpus in c["secondary_corpora"]:
         tokens = np.load(bank / "secondary" / corpus / "tokens.npy", mmap_mode="r")
         masks = np.load(bank / "secondary" / corpus / "masks.npy", mmap_mode="r")
-        limit = (1 if smollm.enabled(c) else 64) if c["kind"] == "smoke" else None
+        limit = (1 if native_model(c) else 64) if c["kind"] == "smoke" else None
         result["secondary"][corpus] = engine.evaluate(model, tokens[:limit], c, masks=masks[:limit])
     validation, _, _ = load_pairs(bank, "validation")
     indices = np.load(bank / "probe_indices.npy")[:c["probe_count"]]
@@ -338,7 +358,7 @@ def measure(stage, model, bank, c, weights, cycle):
         probe_c = {**decoder_config(c, "beam"), "generation_purpose": "probe"}
         result["probe_decoding"] = engine.decoding_settings(probe_c)
     values, provenance = engine.generate(stage / "probe", cycle, model, prompts, probe_c, weights)
-    diagnostics = smollm.probe_diagnostics(values, c["newline_token_ids"]) if smollm.enabled(c) else probe_diagnostics(values)
+    diagnostics = smollm.probe_diagnostics(values, c["newline_token_ids"]) if native_model(c) else probe_diagnostics(values)
     result["probe"] = {**diversity(values), **diagnostics,
                        "continuation_tokens_sha256": provenance["continuation_tokens_sha256"]}
     from transformers import AutoTokenizer
@@ -349,6 +369,9 @@ def measure(stage, model, bank, c, weights, cycle):
 
 
 def benchmark(root, c, bank):
+    if c.get("optimizer") == "sgd":
+        from .sgd_runtime import benchmark as sgd_benchmark
+        return sgd_benchmark(root, c, bank)
     import torch
     from .. import engine
     path = Path(root) / "benchmark.json"
@@ -359,7 +382,7 @@ def benchmark(root, c, bank):
     model = engine.load_model(c)
     optimizer = torch.optim.AdamW(model.parameters(), lr=c["learning_rate"])
     train_seconds = []
-    for step in range(2 if smollm.enabled(c) else 5):
+    for step in range(2 if native_model(c) else 5):
         model.train()
         optimizer.zero_grad(set_to_none=True)
         engine.sync()
@@ -370,7 +393,7 @@ def benchmark(root, c, bank):
             with engine.autocast(c):
                 loss = model(input_ids=ids, attention_mask=mask, labels=ids.masked_fill(~loss_mask.bool(), -100), use_cache=False).loss
             (loss * len(rows) / c["effective_batch"]).backward()
-        if not smollm.enabled(c):
+        if not native_model(c):
             optimizer.step()
         engine.sync()
         train_seconds.append(time.perf_counter() - start)
@@ -383,7 +406,7 @@ def benchmark(root, c, bank):
         for mode in modes:
             config = decoder_config(c, mode) if c.get("decoding_arms") is not None else c
             durations = []
-            for step in range(2 if smollm.enabled(c) else 3):
+            for step in range(2 if native_model(c) else 3):
                 ids = engine.tensor(_visible_prompt(prompts[:c["generation_batch"]], c["bos_token_id"]))
                 engine.sync()
                 start = time.perf_counter()
@@ -400,7 +423,7 @@ def benchmark(root, c, bank):
     secondary_tokens = np.load(bank / "secondary/fineweb_edu/tokens.npy", mmap_mode="r")[:64]
     secondary_masks = np.load(bank / "secondary/fineweb_edu/masks.npy", mmap_mode="r")[:64]
     secondary = engine.evaluate(model, secondary_tokens, c, masks=secondary_masks)
-    result = {"training_target_tokens_per_second": c["effective_batch"] * 64 / float(np.median(train_seconds[1:] if smollm.enabled(c) else train_seconds[2:])),
+    result = {"training_target_tokens_per_second": c["effective_batch"] * 64 / float(np.median(train_seconds[1:] if native_model(c) else train_seconds[2:])),
               "generation_new_tokens_per_second": c["generation_batch"] * 64 / float(np.median(generation_seconds[1:])),
               "primary_target_tokens_per_second": primary["scored_tokens"] / primary["seconds"],
               "secondary_target_tokens_per_second": secondary["scored_tokens"] / secondary["seconds"],
@@ -408,7 +431,7 @@ def benchmark(root, c, bank):
               "microbatch": c["microbatch"], "effective_batch": c["effective_batch"], "generation_batch": c["generation_batch"],
               "full_primary_targets": {s: read_json(bank / s / "manifest.json")["target_tokens"] for s in ("validation", "test")},
               "full_secondary_targets": sum(int(np.load(bank / "secondary" / name / "masks.npy", mmap_mode="r")[:, 1:].sum()) for name in c["secondary_corpora"]),
-              "benchmark_updates_discarded": 0 if smollm.enabled(c) else 5, "gpu": torch.cuda.get_device_name() if torch.cuda.is_available() else "cpu"}
+              "benchmark_updates_discarded": 0 if native_model(c) else 5, "gpu": torch.cuda.get_device_name() if torch.cuda.is_available() else "cpu"}
     if c.get("decoding_arms") is not None:
         result["decoder_rates"] = decoder_rates
     atomic_json(path, result)
@@ -420,6 +443,9 @@ def benchmark(root, c, bank):
 
 
 def forecast(b, c, hourly):
+    if c.get("optimizer") == "sgd":
+        from .sgd_runtime import forecast as sgd_forecast
+        return sgd_forecast(b, c, hourly)
     cycles = c.get("training_cycles", c["full_cycles"])
     targets = 10000 * 64 * cycles
     specs = arm_specs(c)
@@ -460,7 +486,7 @@ def _targets(root, cycle, prompt, c, parent_checkpoint, parent_hash, validation,
         model = engine.load_model(c, parent_checkpoint)
     try:
         values, manifest = engine.generate(root, cycle - 1, model, _visible_prompt(prompt, c["bos_token_id"]), c,
-                                           parent_hash, inject=validation and cycle == 2 and not smollm.enabled(c))
+                                           parent_hash, inject=validation and cycle == 2 and not native_model(c))
     finally:
         del model
         gc.collect()
@@ -493,7 +519,7 @@ def training_input(root, cycle, prompt, real, c, checkpoint, previous, optimizer
     stage = Path(root) / f"seed_42/gen_{cycle:02d}"
     selected_prompt = prompt
     selection = description = None
-    if c.get("completion_arms") is not None and not (smollm.enabled(c) and c["data_kind"] in ("real", "synthetic")):
+    if c.get("completion_arms") is not None and not (native_model(c) and c["data_kind"] in ("real", "synthetic")):
         from ..completion_mixing import freeze_selection
         selection, description = freeze_selection(stage, prompt, real, c["synthetic_fraction"],
                                                   c["seed"], cycle, previous, create=create)
@@ -524,8 +550,8 @@ def training_input(root, cycle, prompt, real, c, checkpoint, previous, optimizer
     return arrays, lineage
 
 
-def verify_stage(stage, c, lineage):
-    from .selection import verify_selection
+def verify_stage(stage, c, lineage, *, update_probe_identity=None):
+    from .selection import training_contract, verify_selection
     stage = Path(stage)
     seal = read_json(stage / "stage_completion.json")
     verify_files(stage, seal["files"])
@@ -533,6 +559,21 @@ def verify_stage(stage, c, lineage):
     verify_selection(training, read_json(stage / "training_history.json"), c)
     if training["lineage"] != lineage or training["initial_weights_sha256"] != lineage["initializer_weights_sha256"]:
         raise RuntimeError("Completed completion stage lineage differs")
+    if c.get("optimizer") == "sgd":
+        from ..science.sgd_effects import verify_seal
+        recorded = training["update_diagnostics"]
+        binding = {"training_contract_sha256": training_contract(c),
+                   "input_tokens_sha256": training["input_tokens_sha256"],
+                   "initial_weights_sha256": lineage["initializer_weights_sha256"],
+                   "optimizer_parent_sha256": lineage["optimizer_parent_sha256"],
+                   "lineage_sha256": digest(lineage),
+                   "total_optimizer_steps": training["total_optimizer_steps"]}
+        seal = verify_seal(stage, expected_weights=training["selected_weights_sha256"],
+                           expected_probe_identity=update_probe_identity or recorded["probe_identity"],
+                           expected_steps=math.ceil(c["train_pairs_per_cycle"] / c["effective_batch"]),
+                           expected_binding=binding)
+        if seal != recorded:
+            raise RuntimeError("Completed stage diagnostic seal differs from its training record")
     return read_json(stage / "metrics.json")
 
 
@@ -556,6 +597,7 @@ def run_arm(root, validation=False):
         val_prompt, val_target, _ = load_pairs(bank, "validation", c["evaluation_pairs"])
         val, val_attention, val_scoring = assemble(val_prompt, val_target, c["bos_token_id"])
         total_steps = c["generations"] * math.ceil(c["train_pairs_per_cycle"] / c["effective_batch"])
+        update_probe = sgd_update_probe(bank, c) if c.get("optimizer") == "sgd" else None
         for cycle in range(1, c["generations"] + 1):
             stage = root / f"seed_42/gen_{cycle:02d}"
             prompt, real, _ = load_pairs(bank, source_collection(c, cycle), c["train_pairs_per_cycle"])
@@ -579,7 +621,8 @@ def run_arm(root, validation=False):
             (tokens, attention, scoring), lineage = training_input(root, cycle, prompt, real, c, checkpoint,
                 previous, optimizer_hash, validation, create=not (stage / "stage_completion.json").exists())
             if (stage / "stage_completion.json").exists():
-                metrics = verify_stage(stage, c, lineage)
+                metrics = verify_stage(stage, c, lineage,
+                                       update_probe_identity=update_probe["identity"] if update_probe else None)
             else:
                 if shutil.disk_usage(root).free < 3_000_000_000:
                     raise RuntimeError("Insufficient space for completion stage recovery")
@@ -588,15 +631,26 @@ def run_arm(root, validation=False):
                     backup(root)
                     return
                 atomic_json(root / "status.json", {"state": "running", "generation": cycle, "stage": "training", "time": now()})
+                labels = (np.full(len(tokens), int(c["data_kind"] == "synthetic"), dtype=np.uint8)
+                          if c["data_kind"] != "mixed" else np.load(stage / "mixture/source_labels.npy")) if update_probe else None
+                def progress(step, **details):
+                    if deadline(resources) - now() < 90:
+                        raise RuntimeError("SGD training reached its shutdown reserve")
+                    atomic_json(root / "status.json", {"state": "running", "stage": "training", "generation": cycle,
+                                                       "global_step": step, "time": now()})
                 training = engine.train(root, cycle, tokens, val, c, previous, initial_checkpoint=checkpoint, lineage=lineage,
                                         masks=attention, val_masks=val_attention, loss_masks=scoring, val_loss_masks=val_scoring,
-                                        optimizer_checkpoint=optimizer_state, total_steps=total_steps, inject=validation and cycle == 2 and not smollm.enabled(c))
+                                        optimizer_checkpoint=optimizer_state, total_steps=total_steps,
+                                        source_labels=labels, update_probe=update_probe,
+                                        progress_callback=progress if update_probe else None,
+                                        inject=validation and cycle == 2 and (not native_model(c) or
+                                                (c.get("optimizer") == "sgd" and c["arm_id"] == "mixed99")))
                 model = engine.load_model(c, stage / "checkpoint")
                 metrics = measure(stage, model, bank, c, training["selected_weights_sha256"], cycle)
                 metrics["training"] = training
                 metrics["training_evaluation"] = engine.evaluate(model, tokens, c, masks=attention, loss_masks=scoring)
                 metrics["input_manifest_sha256"] = sha256(stage / "training_input/manifest.json")
-                if c.get("completion_arms") is not None and not (smollm.enabled(c) and c["data_kind"] in ("real", "synthetic")):
+                if c.get("completion_arms") is not None and not (native_model(c) and c["data_kind"] in ("real", "synthetic")):
                     metrics["mixture"] = {k: lineage[k] for k in ("synthetic_fraction", "real_pairs", "synthetic_pairs", "mixture_manifest_sha256")}
                 atomic_json(stage / "metrics.json", metrics)
                 files = {p.relative_to(stage).as_posix(): sha256(p) for p in stage.rglob("*") if p.is_file()
@@ -641,13 +695,14 @@ def verify_completed_arm(child, c):
     parent = child.parent / r["owner_completion_id"]
     bank = bank_path(child, c)
     restore_bank(c["prepared_bank"], bank)
+    update_probe_identity = sgd_update_probe(bank, c)["identity"] if c.get("optimizer") == "sgd" else None
     previous = read_json(parent / "seed_42/gen_00/metrics.json")["weights_sha256"]
     optimizer_hash = None
     for cycle in range(1, c["generations"] + 1):
         stage = child / f"seed_42/gen_{cycle:02d}"
         prompt, real, _ = load_pairs(bank, source_collection(c, cycle), c["train_pairs_per_cycle"])
         _, lineage = training_input(child, cycle, prompt, real, c, None, previous, optimizer_hash, create=False)
-        metrics = verify_stage(stage, c, lineage)
+        metrics = verify_stage(stage, c, lineage, update_probe_identity=update_probe_identity)
         expected_step = cycle * math.ceil(c["train_pairs_per_cycle"] / c["effective_batch"])
         if metrics["training"]["global_step"] != expected_step:
             raise RuntimeError("Completed optimizer step count differs")
@@ -681,18 +736,23 @@ def run(root, validation=False):
     with FileLock(str(root / "worker.lock"), timeout=0):
         c, r = read_json(root / "config.json"), read_json(root / "resources.json")
         validate_config(c)
-        _write_fixed(root / "manifest.json", {"config_hash": digest(c), "code_sha256": r["code_sha256"]})
+        if c.get("optimizer") != "sgd":
+            _write_fixed(root / "manifest.json", {"config_hash": digest(c), "code_sha256": r["code_sha256"]})
         atomic_json(root / "status.json", {"state": "running", "phase": "preparation", "time": now()})
         if not (root / "environment.json").exists():
             atomic_json(root / "environment.json", environment())
         bank = bank_path(root, c)
         data = restore_bank(c["prepared_bank"], bank)
         c["bos_token_id"] = data["bos_token_id"]
-        if smollm.enabled(c):
+        if native_model(c):
             c["newline_token_ids"] = data["newline_token_ids"]
+        if c.get("optimizer") == "sgd":
+            from .sgd_runtime import prepare
+            c = prepare(root, c, r, bank)
+            _write_fixed(root / "manifest.json", {"config_hash": digest(c), "code_sha256": r["code_sha256"]})
         atomic_json(root / "status.json", {"state": "running", "phase": "baseline", "time": now()})
         if not (root / "seed_42/gen_00/metrics.json").exists():
-            if shutil.disk_usage(root).free < ((8_000_000_000 if c["kind"] == "smoke" else 150_000_000_000) if smollm.enabled(c) else 40_000_000_000):
+            if shutil.disk_usage(root).free < ((8_000_000_000 if c["kind"] == "smoke" else 30_000_000_000 if c.get("optimizer") == "sgd" else 150_000_000_000) if native_model(c) else 40_000_000_000):
                 raise RuntimeError("Completion comparison requires 40 GB initially free")
             benchmark(root, c, bank)
             model = engine.load_model(c)
@@ -735,17 +795,25 @@ def run(root, validation=False):
             if not validation and c.get("training_chunk_policy") == "repeat_fixed":
                 from .completion_restore import verify_terminal_restore
                 verify_terminal_restore(root, child, arm)
-            if validation and not smollm.enabled(c) and name == next(iter(roots)) and not (root / ".handoff_injected").exists():
+            if validation and not native_model(c) and name == next(iter(roots)) and not (root / ".handoff_injected").exists():
                 (root / ".handoff_injected").touch()
                 event(root, "completion_handoff_interruption")
                 raise engine.ValidationInterruption("Injected completion coordinator handoff exit")
         if validation:
-            if smollm.enabled(c):
-                from .smollm_validation import validate_remote
+            if native_model(c):
+                if c.get("optimizer") == "sgd":
+                    from .sgd_runtime import finish_benchmark
+                    finish_benchmark(root, c)
+                    from .sgd_validation import validate_remote
+                else:
+                    from .smollm_validation import validate_remote
             else:
                 from .completion_validation import validate_remote
             validate_remote(root)
-        from ..analysis.completion import report
+        if c.get("optimizer") == "sgd":
+            from ..analysis.sgd_effects import report
+        else:
+            from ..analysis.completion import report
         report(root, for_backup=True)
         atomic_json(root / "completion.json", {"complete": True, "workflow": "completion_comparison", "cycles": c["generations"],
                     "unique_training_stages": c["generations"] * len(roots),
@@ -762,6 +830,9 @@ def fetch_comparison(root, resources, metadata_only=False):
     from ..hub import fetch
     root = Path(root)
     receipt = fetch(root.name, resources["repos"], root, metadata_only=metadata_only)
+    if read_json(root / "config.json").get("optimizer") == "sgd":
+        from ..cloud.sgd_setup import adopt_resolved_config
+        adopt_resolved_config(root)
     receipt["children"] = {}
     snapshots = read_json(root / "child_snapshots.json", {})
     for name, ref in snapshots.items():

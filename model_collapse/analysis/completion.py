@@ -29,7 +29,7 @@ def _collect(root):
             real_pairs, synthetic_pairs = mixture_counts(c["train_pairs_per_cycle"], fraction) if cycle else (0, 0)
             mixture = m.get("mixture", {})
             row = {"arm": arm, "cycle": cycle, "comparison_id": root.name,
-                   "training_decoder": definitions[arm].get("decoder", "beam" if fraction else "real_targets"),
+                   "training_decoder": definitions[arm].get("decoder", c.get("generation_decoder", "beam") if fraction else "real_targets"),
                    "synthetic_fraction": fraction,
                    "real_training_pairs": mixture.get("real_pairs", real_pairs),
                    "synthetic_training_pairs": mixture.get("synthetic_pairs", synthetic_pairs),
@@ -69,6 +69,9 @@ def comparison_contract(root):
             "secondary_corpora", "corpus_bank", "generations", "train_pairs_per_cycle", "evaluation_pairs",
             "required_gpu", "required_image", "required_environment")
     baseline = read_json(root / "seed_42/gen_00/metrics.json")
+    if c.get("optimizer") == "sgd":
+        keys += ("optimizer", "learning_rate_policy", "momentum", "scheduler_policy", "generation_decoder",
+                 "update_diagnostics", "calibration_reference")
     return {"settings": {k: c.get(k) for k in keys}, "bank_manifest_sha256": c["prepared_bank"]["manifest_sha256"],
             "baseline_weights_sha256": baseline["weights_sha256"],
             "primary_scored_tokens": {name: baseline[name]["scored_tokens"] for name in ("validation", "test")},

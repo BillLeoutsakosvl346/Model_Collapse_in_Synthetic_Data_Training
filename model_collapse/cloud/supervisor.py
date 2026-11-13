@@ -126,7 +126,7 @@ def supervise(root, validation=False):
     try:
         workflow = read_json(root / "config.json", {}).get("workflow")
         run_worker(root, validation=validation, max_restarts=1 if workflow == "paired" else 2, heartbeat_root=root)
-        if validation and read_json(root / "config.json", {}).get("completion_profile") != "smollm2_completion64_v1":
+        if validation and read_json(root / "config.json", {}).get("completion_profile") not in ("smollm2_completion64_v1", "smollm2_sgd_greedy_effects_v1"):
             # A deliberately tiny additional cost allowance exercises the real budget-guard shutdown.
             r = read_json(root / "resources.json")
             atomic_json(root / "validation_guard_deadline.json", {"deadline": now() + 8,

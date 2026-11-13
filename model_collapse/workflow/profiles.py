@@ -23,9 +23,14 @@ def protocol_fingerprint(c):
         if value.get("workflow") == "fresh_real":
             for key in ("source_tokens_per_cycle", "validation_documents", "test_documents"):
                 value.pop(key, None)
-        if value.get("completion_profile") == "smollm2_completion64_v1":
+        if value.get("completion_profile") in ("smollm2_completion64_v1", "smollm2_sgd_greedy_effects_v1"):
             value.pop("network_volume_gb", None)
             value.pop("backup_store", None)  # Physical destination; backend/capacity policy stays bound.
+        if value.get("completion_profile") == "smollm2_sgd_greedy_effects_v1" and value.get("calibration_reference"):
+            # Immutable receipt is scientific; its deployment/recovery location is operational.
+            value["calibration_reference"] = {k: v for k, v in value["calibration_reference"].items()
+                                                if k not in ("snapshot", "relative_path")}
+            value.pop("benchmark_reference", None)  # Accepted performance evidence is operational provenance.
         if value.get("workflow") in ("completion_comparison", "completion_arm"):
             for key in ("train_pairs_per_cycle", "evaluation_pairs", "probe_count", "bos_token_id", "newline_token_ids"):
                 value.pop(key, None)
