@@ -1,0 +1,41 @@
+{
+  "weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+  "model_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "validation_probe": {
+    "nll_sum": 185450.83750526267,
+    "scored_tokens": 65536,
+    "loss": 2.8297552109567667,
+    "perplexity": 16.94131326905741,
+    "seconds": 3.7594551839865744,
+    "mean_sequence_perplexity": 19.954473923070438,
+    "std_sequence_perplexity": 13.641246931128828,
+    "context_tokens": 129
+  },
+  "validation_full": {
+    "nll_sum": 1383237.404957883,
+    "scored_tokens": 476608,
+    "loss": 2.9022538542321636,
+    "perplexity": 18.215153439646627,
+    "seconds": 25.001170398900285,
+    "mean_sequence_perplexity": 22.019074542685185,
+    "std_sequence_perplexity": 16.91817609317404,
+    "context_tokens": 129
+  },
+  "training_probes": {
+    "1": {
+      "nll_sum": 95600.51290606752,
+      "scored_tokens": 32768,
+      "loss": 2.9174961214009865,
+      "perplexity": 18.494920399847242,
+      "seconds": 1.7128818400669843,
+      "mean_sequence_perplexity": 21.95922485295038,
+      "std_sequence_perplexity": 14.823190915182977,
+      "context_tokens": 129
+    }
+  },
+  "checkpoint_files": {
+    "config.json": "73854651dd184a773b3d7c5c45d8709153c91353df2a545b7c796d986759606d",
+    "generation_config.json": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+    "model.safetensors": "19db913ad817fcd5d544972dfe168ed96f7c9c8cd40ef431da285f016cadbc1c"
+  }
+}

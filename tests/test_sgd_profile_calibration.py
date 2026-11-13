@@ -19,12 +19,15 @@ def definition(kind="smoke"):
 
 
 @pytest.mark.parametrize("kind", ["smoke", "full"])
-def test_named_definitions_are_pending_but_valid(kind):
+def test_named_definitions_are_valid_and_pending_states_are_rejected(kind):
     c = definition(kind)
     profile.validate(c)
     assert [x["id"] for x in profile.specs(c)] == ["real", "mixed99", "synthetic"]
-    with pytest.raises(RuntimeError, match="Freeze"):
+    if not c["calibration_required"]:
         profile.require_calibration(c)
+    pending = {**c, "calibration_required": True, "calibration_reference": None}
+    with pytest.raises(RuntimeError, match="Freeze"):
+        profile.require_calibration(pending)
     assert c["precision"] == "fp32" and c["learning_rate_policy"] == "constant"
 
 
@@ -45,6 +48,7 @@ def test_legacy_seven_arm_profile_not_redefined():
 
 def test_rate_lock_binds_input_and_implementation():
     c = definition()
+    c.update(calibration_required=True, calibration_reference=None)
     receipt = {"complete": True, "selection_policy": calibration.POLICY, "selected_learning_rate": .001,
                "contract_sha256": calibration.calibration_contract(c)}
     resolved = profile.apply_calibration(c, receipt, "a" * 64)

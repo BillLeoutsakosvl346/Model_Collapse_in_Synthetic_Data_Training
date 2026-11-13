@@ -59,6 +59,8 @@ The Week 3 pair's logical arms are `<pair-id>-continued` and `<pair-id>-reset-s0
 
 ## GPU validation
 
+The [SGD/greedy setup](20261113T230319Z-smoke-completion64-mixtures/setup-report.md) passed twelve GPU/provider checks after 150 focused tests and independent review. The real-only learning-rate screen selected 0.01; all three small arms completed with actual-update source diagnostics, interrupted replay and three terminal cold restores with exact held-out NLL. Combined setup cost is conservatively USD 0.2882 / 25.92 paid minutes; temporary resources are removed and all full runs remain unlaunched. [Numerical evidence and frozen forecast](../docs/validation/2026-11-13_sgd-greedy-setup.json).
+
 The [repeated-chunk completion smoke](20261108T165042Z-smoke-completion64/report.md) passed sixteen GPU/provider checks after 627 offline tests. It exercised three repeated-prompt epochs per arm, optimizer continuity, worker/generation/handoff recovery, 9.02 GB of private child restores, restored evaluation and actual watchdog shutdown. Its temporary resources were removed. This is pipeline evidence; full-run status belongs in [current state](../docs/current-state.md).
 
 | Acceptance | Scope | Report and recovery |

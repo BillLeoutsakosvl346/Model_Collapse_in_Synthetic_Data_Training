@@ -1,0 +1,28 @@
+{
+  "policy": "actual_batch_weighted_sgd_effects_v1",
+  "attempt_id": "965574a3e63542fd9e784434d3f0ae47",
+  "cycle": 2,
+  "probe_identity": "459083803b95659a49ec1a8134cb53f58629fdc5dff8ce829fb887656d4d9b42",
+  "probe_pairs": 128,
+  "binding": {
+    "training_contract_sha256": "94cf5c8b820b9c7431d0eec006a0aef10faa743facebf2409e53dcfe0962a679",
+    "input_tokens_sha256": "8731c7ff5213da78c0923dc2dfe1166a1fe9eb826d53aec5f737cd9c4ea107a6",
+    "initial_weights_sha256": "be00e8b1e90f06a05e01a137b96102b3440f6190b9fd331684cc6abaa7a47399",
+    "optimizer_parent_sha256": "8f0e897ce1a766b04b5810b1ba2d472d24144d55b64812645ac1e3fe2878d32e",
+    "lineage_sha256": "b8045393a37f14f249045ec9fb96e1513c2b9a285e84015947198d1135b4d8a9",
+    "total_optimizer_steps": 8
+  },
+  "terminal_weights_sha256": "124f2bc4af7c3c9a48ae34b962e6b36cdd65bcdfa35c80f60acc74c397f4d06e",
+  "updates": 4,
+  "first_step": 5,
+  "last_step": 8,
+  "score_kind": "per_example_nll_sums",
+  "records_path": "update_diagnostics/attempts/965574a3e63542fd9e784434d3f0ae47/updates.jsonl",
+  "scores_path": "update_diagnostics/attempts/965574a3e63542fd9e784434d3f0ae47/probe_scores.npz",
+  "unique_probe_evaluations": 5,
+  "files": {
+    "update_diagnostics/attempts/965574a3e63542fd9e784434d3f0ae47/updates.jsonl": "bd908054ba1844440d19a45a319c8ed5bc0b89caf67d9003a0f06b3756d68b10",
+    "update_diagnostics/attempts/965574a3e63542fd9e784434d3f0ae47/probe_scores.npz": "c16d61e45846c42a0a4aca8ef12211282cc3965b2064a0207b0a9434892fb68b",
+    "update_diagnostics/attempts/965574a3e63542fd9e784434d3f0ae47/attempt.json": "b5b24cabff5dcb84d479b07432466a76aa1027b0291d41bbf30ff3e75790dce8"
+  }
+}

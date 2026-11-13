@@ -2,6 +2,8 @@
 
 This comparison prepares 0%, 99% and 100% synthetic-target conditions using the exact existing SmolLM2-135M checkpoint and native FineWeb completion bank. It is a new training recipe, rather than an optimizer-only ablation of the historical AdamW/five-beam experiment.
 
+[GPU validation and handoff](../../reports/20261113T230319Z-smoke-completion64-mixtures/setup-report.md): all twelve checks passed; selected constant LR **0.01**; full experiments remain unlaunched.
+
 ## Scientific protocol
 
 - Independently start every arm from original pretrained M0. Continue its own weights and training RNG over ten fresh 10,000-pair chunks; keep the terminal checkpoint after each one-epoch cycle.
@@ -13,11 +15,11 @@ This comparison prepares 0%, 99% and 100% synthetic-target conditions using the 
 
 ## Selecting the constant learning rate
 
-`learning_rate: 0.01` in an unresolved definition is explicitly a placeholder. It never authorizes training. Setup screens `1e-4`, `1e-3`, `1e-2` and `1e-1` using 32 real-only updates each, then extends the best two by 32 updates on fresh chunk-2 examples: at most 192 updates. Samples contain 4,096 distinct rows and use `SeedSequence([42, cycle, 7731])`.
+Both definitions now pin **constant LR 0.01** and its immutable calibration receipt. Unresolved definitions are rejected before full training. The completed setup screened `1e-4`, `1e-3`, `1e-2` and `1e-1` using 32 real-only updates each, then extends the best two by 32 updates on fresh chunk-2 examples: at most 192 updates. Samples contain 4,096 distinct rows and use `SeedSequence([42, cycle, 7731])`.
 
 Screen ranking uses a fixed 1,024-pair document-stratified validation probe. Final ranking uses the entire validation collection. Eligible candidates require finite losses/gradients, changed weights, training-probe NLL improvement over 1e-5, and held-out perplexity no more than 5% above the pretrained baseline. Ties within 1e-5 NLL favor the smaller rate. Test scores and synthetic outcomes never select the rate. The search never expands automatically.
 
-The selected receipt locks a numeric rate before acceptance. Every smoke/full arm restarts M0; calibration checkpoints are not production initializers. Temporary candidate tensors live in hidden calibration workspaces, while their numerical records, selections, hashes and the receipt remain recoverable. The result is the best tested short-screen rate, not a guarantee of long-term stability or a global optimum.
+The selected receipt locked the numeric rate before acceptance; subsequent smoke invocations reuse its verified numerical evidence without repeating calibration. Every smoke/full arm restarts M0; calibration checkpoints are not production initializers. Temporary candidate tensors live in hidden calibration workspaces, while their numerical records, selections, hashes and the receipt remain recoverable. The result is the best tested short-screen rate, not a guarantee of long-term stability or a global optimum.
 
 ## Update-level measurements
 
@@ -33,7 +35,7 @@ Completed journals and per-example probe scores are sealed with checkpoints. An 
 $comparison = "comparisons/smollm2_sgd_greedy_effects"
 python -m model_collapse smoke --config "$comparison/smoke.yaml"
 
-# Future command only, after calibration, acceptance and a separate launch instruction:
+# Future command only, after a separate launch instruction:
 python -m model_collapse launch --config "$comparison/full.yaml" --generations 10
 ```
 

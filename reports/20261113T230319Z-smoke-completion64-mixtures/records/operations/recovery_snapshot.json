@@ -1,0 +1,29 @@
+{
+  "run_id": "20261113T230319Z-smoke-completion64-mixtures",
+  "repos": {
+    "model": "iib-model-collapse-bill/iib-model-collapse-models",
+    "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+  },
+  "revisions": {
+    "model": "12d4da2260085489d898a140653ddcb2921b2f0e",
+    "dataset": "91b8f3878a2f6e6b73602f99c847054fd3164ff4"
+  },
+  "artifact_index_sha256": "117969baff72ff855fb79754f044b368792b0db71e03c4572bef09df83d4755b",
+  "indexed_files": 87,
+  "verified_files": 84,
+  "verified_bytes": 6168032,
+  "metadata_only": true,
+  "scope": "metadata_only",
+  "preserved_control_files": {
+    "resources.json": {
+      "recovered_path": "fetched_control/15b531718a5ef5307d8f63ea58dd27e20e13a348ae3d8f750cbcab103895e233/resources.json",
+      "sha256": "15b531718a5ef5307d8f63ea58dd27e20e13a348ae3d8f750cbcab103895e233",
+      "authoritative_local_sha256": "d5c7724330c38636d9ae016bc88aa4473c8af301979682203a773d3640b67c0c"
+    }
+  },
+  "operational_files_outside_immutable_index": [
+    "status.json",
+    "watchdog_exit.json"
+  ],
+  "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261113T230319Z-smoke-completion64-mixtures"
+}

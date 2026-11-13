@@ -2,6 +2,16 @@
 
 Snapshot refreshed on 13 November 2026. Recorded state is not a live check. Previous snapshots and dated receipts retain earlier authorization/execution chronology.
 
+## SGD/greedy comparison: validated, full runs unlaunched
+
+The [setup report](../reports/20261113T230319Z-smoke-completion64-mixtures/setup-report.md) and [receipt](validation/2026-11-13_sgd-greedy-setup.json) record GPU validation of independent 0/99/100% synthetic SmolLM2 arms using plain constant-rate SGD and greedy decoding. The bounded real-only screen selected **0.01**; the 0.1 candidate became non-finite. **181 calibration updates** were performed once. A corrected probe-loader integration error required a second setup attempt, importing verified numerical calibration evidence with zero additional calibration updates.
+
+**150 focused offline tests and independent review passed.** Accepted run `20261113T230319Z-smoke-completion64-mixtures` completed six small epochs / 24 logical updates plus one replay. All twelve checks passed, including same-graph gradient decomposition, exact shadow/actual equality, stateless constant-rate SGD, both fresh-chunk handoffs, recovery, detached progress and ordinary watchdog shutdown. All three terminal checkpoints/state/diagnostic stages were privately restored (78 files / 1.617 GB), reproducing held-out NLL exactly. Earlier trained stages were not individually cold-restored. Small evidence and the shared pretrained baseline were recovered locally; six trained acceptance checkpoints remain privately backed up.
+
+Frozen runtime is `02e45a8352f611b1004fa1bcf490e08384326eec141fa56576f9b28c70e839a0`, protocol `55a33f3c6cf32aa924fee1402fb7da95fb7d549ae7f8a57ebd8329ff7faa6699`, source commit `aa72fdb`. Both temporary Pods `bm3q2x5he5b2lt` / `8zochly9umow3w` and 30 GB volumes `7gwltxzji0` / `oinnma1jnm` are removed. Provider stops were verified at 22:56:27 and 23:19:19 UTC. No GPU remains active. All historical recovery resources are preserved.
+
+Combined paid compute was **25.92 minutes**, conservative setup cost **USD 0.2882**, below 30 minutes / USD 0.40. Existing USD 110 cumulative / USD 5.40 setup / USD 2 reserve limits remain unchanged. Forecast for the later thirty-stage sweep is **9.99 hours / USD 5.78 compute and running storage**, approximately USD 6.65 with watchdog padding, plus historical storage and reserved retention. It fits the recorded global allowance narrowly; retained storage continues accruing. Full allocation and dedicated 30 GB backup storage are intentionally deferred to separately authorized launch. **No full condition or full-run volume was started.**
+
 ## SmolLM2 gradient diagnostic: completed, recovered and temporary resources removed
 
 The [report](../reports/20261113T183849Z-gradient-diagnostic/report.md) examines M0/M4/M9 of the completed 99% and 100% SmolLM2 conditions. All six primary cases, 42 controlled updates and six supplementary cases / 13 exploratory updates completed on matching RTX PRO 4000 Blackwell. At M4, synthetic-only increases validation-probe NLL by 0.001818; the actual 1% real / 99% synthetic gradient decreases it by 0.001022 from identical weights/AdamW state. The weighted real norm is 58% of the synthetic component there. Later raw gradients align positively; zeroing only the inherited Adam first moment reverses the middle-checkpoint synthetic update's held-out effect. These local aggregate-gradient steps do not replay the historical minibatch trajectory or establish permanent stabilization.
@@ -55,7 +65,8 @@ Conservative task cost at the [analysis receipt](../reports/20261110T151528Z-ful
 | Cumulative spending ceiling | USD 110.00, existing credit only; later funded SmolLM2 launch authorization supersedes USD 80 |
 | SmolLM2 seven-condition sweep | USD 30 task allocation, USD 2 reserve, USD 0.50 combined validation; USD 10-15 user spending target |
 | High-fraction campaign | USD 11.75 including its separately reserved storage |
-| Total setup allowance | USD 5.40, including the authorized bounded gradient diagnostic acceptance |
+| Total setup allowance | USD 5.40, including bounded gradient diagnostics and SGD/greedy acceptance |
+| SGD/greedy setup | USD 0.40 / 30 paid minutes combined; USD 0.2882 and 25.92 minutes recorded; full training awaits a separate instruction |
 | Combined high-fraction validation cap | USD 0.90; recorded conservative spend USD 0.7843 |
 | Standalone 99% condition | USD 5 allocation including USD 2 reserve; USD 0.30 combined validation cap; accepted validation USD 0.21584 |
 | Standalone 99.9% condition | USD 5 allocation including USD 2 reserve; USD 0.30 combined validation cap; smoke then full launch authorized after checks pass |

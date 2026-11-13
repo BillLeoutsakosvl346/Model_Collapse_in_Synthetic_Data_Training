@@ -7,7 +7,11 @@ conditions:
   smollm2_sgd_greedy_effects:
     name: "SmolLM2 / FineWeb: plain SGD, greedy targets and actual-update source effects"
     workflow: completion_comparison
-    state: setup_in_progress
+    state: gpu_validated_full_unlaunched
+    selected_learning_rate: 0.01
+    acceptance_run_id: 20261113T230319Z-smoke-completion64-mixtures
+    acceptance: ../docs/validation/2026-11-13_sgd-greedy-setup.json
+    setup_report: ../reports/20261113T230319Z-smoke-completion64-mixtures/setup-report.md
     definition: ../comparisons/smollm2_sgd_greedy_effects/README.md
     comparison_config: ../comparisons/smollm2_sgd_greedy_effects/full.yaml
     smoke_config: ../comparisons/smollm2_sgd_greedy_effects/smoke.yaml

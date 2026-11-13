@@ -1,0 +1,48 @@
+{
+  "provenance": {
+    "parent_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+    "prompt_tokens_sha256": "bf12a3dbae848473af3867e4bb830dcc3f43c423240b9ce73a5dd6b6fe8265d7",
+    "prompt_count": 400,
+    "new_tokens": 64,
+    "num_beams": 1,
+    "repetition_penalty": 1.0,
+    "version": 2,
+    "decoder": "greedy",
+    "decoding": {
+      "num_beams": 1,
+      "do_sample": false,
+      "min_new_tokens": 64,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.0,
+      "no_repeat_ngram_size": 0,
+      "forced_eos_token_id": null,
+      "use_cache": true
+    },
+    "seed": 42,
+    "generation": 0,
+    "purpose": "training",
+    "sampling_policy": null,
+    "generation_batch": 32,
+    "generation_shard": 32
+  },
+  "continuation_tokens_sha256": "b263234c14972e52cc79dfb094d22e06ebc98019f512ecb94f8596b028fea601",
+  "files": {
+    "tokens.npy": "d899bb2719f586d9b9112a88b229bd7cc7250dd38369969fcdf5526cb3df6aef",
+    "shard_0000000.npy": "7394556543a782ccb38c9440a4eb2319642e6ce6e57892e9f8315f7f17aafd24",
+    "shard_0000032.npy": "98b300560f372f49a26d7fd3c32a010dd2531cc9b80044141ddfa092fc9fbabc",
+    "shard_0000064.npy": "eda28f8ca83d03046955b319ebe9187316457b4cfa6975ca2cb64e74b4315534",
+    "shard_0000096.npy": "2d578f6b6b45f21cc8c69304827344868042e2230e04afa6f1709d640e4a814a",
+    "shard_0000128.npy": "4c944ecfaab361384fc1060080d6b6a904d3c5b05854c364a3b1af7100b68364",
+    "shard_0000160.npy": "772bd5c1fa92aa64e2a9c41bcab33e64412eca1abf08c2f7f308ba0107a558b0",
+    "shard_0000192.npy": "f994dfe06440c7a41e78a7b2b9534e46912a74e9dab684f31116a35765a9ee69",
+    "shard_0000224.npy": "7dad227df61b5415335ca6bf3f88a3ba836a34632bcf4138390ca75e93db3215",
+    "shard_0000256.npy": "615550938aac8c72661def0fe14907db36205acb0baa6fdda0e3e8111d0298b0",
+    "shard_0000288.npy": "c6b3ede6f9b9fbfff6709d7142dcfec2efb746c9fc77e80aa274765dec335967",
+    "shard_0000320.npy": "b58e0a6a265d030f319b3cf7cd6e37a8a7733a3689a1a183368383c102e51408",
+    "shard_0000352.npy": "3c7de00a982bd22fb69f07f26c7fe4227698df88da7d7247b05d84d53601b8b8",
+    "shard_0000384.npy": "66b0b929b21354202c08ab7ab160d3b0880bbc6ad3a4371c1ce4d67948df714e"
+  },
+  "seconds": 22.408090594690293,
+  "reused_continuations": 0,
+  "new_tokens_per_second": 1142.444506452774
+}

@@ -1,0 +1,42 @@
+{
+  "training_target_tokens_per_second": 1960.3916942977214,
+  "generation_new_tokens_per_second": 1223.3131696008704,
+  "primary_target_tokens_per_second": 18689.837033500884,
+  "secondary_target_tokens_per_second": 30618.9667517964,
+  "full_primary_targets": {
+    "validation": 476608,
+    "test": 467392
+  },
+  "full_secondary_targets": 1521483,
+  "benchmark_updates_discarded": 0,
+  "calibration_update_limit": 192,
+  "calibration_throughput_provenance": {
+    "source": "sealed_calibration_complete_stage_wall_time",
+    "receipt_sha256": "8dc46a4fc9f5bf5cdbc7935d1ef814a735e45acb21d0ba8453eb10d1f0fea842",
+    "imported_execution": true,
+    "denominator": "training.seconds includes complete shared-engine stage wall time",
+    "additional_optimizer_updates": 0
+  },
+  "generation_batch_seconds": [
+    3.166275719180703,
+    1.6741420356556773
+  ],
+  "generation_batch": 32,
+  "microbatch": 32,
+  "effective_batch": 128,
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "training_includes_update_observer": true,
+  "benchmark_contract_sha256": "7fd80282d6a44d951462c2eed61cf0729e155cab5a3be31cd4109cfdfd847ee3",
+  "calibration_receipt_sha256": "8dc46a4fc9f5bf5cdbc7935d1ef814a735e45acb21d0ba8453eb10d1f0fea842",
+  "source_runtime_sha256": "02e45a8352f611b1004fa1bcf490e08384326eec141fa56576f9b28c70e839a0",
+  "step_seconds_by_arm": {
+    "real": 2.7901002787984908,
+    "mixed99": 4.178756737150252,
+    "synthetic": 2.4209876898676157
+  },
+  "calibration_physical_updates": 181,
+  "calibration_updates_imported": true,
+  "new_calibration_optimizer_updates": 0,
+  "measured_stage_bytes": 538963640,
+  "diagnostic_probe_pairs": 128
+}

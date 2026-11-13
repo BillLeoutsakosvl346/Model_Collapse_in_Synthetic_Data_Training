@@ -1,0 +1,29 @@
+{
+  "provenance": {
+    "parent_weights_sha256": "be00e8b1e90f06a05e01a137b96102b3440f6190b9fd331684cc6abaa7a47399",
+    "prompt_tokens_sha256": "415db7f9b5ef0cf7ef9fda9aa00a58140f347955717b65c96f497988012bd463",
+    "prompt_count": 400,
+    "new_tokens": 64,
+    "num_beams": 1,
+    "repetition_penalty": 1.0,
+    "version": 2,
+    "decoder": "greedy",
+    "decoding": {
+      "num_beams": 1,
+      "do_sample": false,
+      "min_new_tokens": 64,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.0,
+      "no_repeat_ngram_size": 0,
+      "forced_eos_token_id": null,
+      "use_cache": true
+    },
+    "seed": 42,
+    "generation": 1,
+    "purpose": "training",
+    "sampling_policy": null,
+    "generation_batch": 32,
+    "generation_shard": 32
+  },
+  "sha256": "61ab8a8c162cf90b26c2361304e42e83bfb8fb0e81706943e128affab3f5b408"
+}

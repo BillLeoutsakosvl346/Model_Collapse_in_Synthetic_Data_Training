@@ -1,0 +1,23 @@
+{
+  "contract_sha256": "e103500db90121ad369855a52cdaf9e7715c2bd1ddf4a3dd04bd4ab684fb80ad",
+  "policy": "bounded_real_only_192_updates_v1",
+  "settings": {
+    "rates": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "screen_updates": 32,
+    "confirm_updates": 32,
+    "sample_pairs": 4096,
+    "validation_probe_pairs": 1024,
+    "training_probe_pairs": 512,
+    "selection_seed_domain": 7731,
+    "validation_seed": 20261113,
+    "max_updates": 192,
+    "validation_perplexity_ratio": 1.05,
+    "minimum_train_nll_decrease": 1e-05,
+    "tie_nll": 1e-05
+  }
+}

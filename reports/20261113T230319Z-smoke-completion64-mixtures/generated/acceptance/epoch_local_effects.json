@@ -1,0 +1,158 @@
+[
+  {
+    "arm": "real",
+    "cycle": 1,
+    "updates": 4,
+    "probe_pairs": 128,
+    "probe_documents": 128,
+    "real_present_updates": 4,
+    "real_pairs": 400,
+    "synthetic_pairs": 0,
+    "real_conditional_mean_delta_nll": -0.000540990415324849,
+    "real_conditional_document_bootstrap_95": [
+      -0.000886634605211993,
+      -0.0002015980755695396
+    ],
+    "synthetic_conditional_mean_delta_nll": 0.0,
+    "synthetic_conditional_document_bootstrap_95": [
+      0.0,
+      0.0
+    ],
+    "actual_mixed_mean_delta_nll": -0.000540990415324849,
+    "actual_mixed_document_bootstrap_95": [
+      -0.000886634605211993,
+      -0.0002015980755695396
+    ],
+    "real_conditional_mean_when_present": -0.0005409904153245715
+  },
+  {
+    "arm": "real",
+    "cycle": 2,
+    "updates": 4,
+    "probe_pairs": 128,
+    "probe_documents": 128,
+    "real_present_updates": 4,
+    "real_pairs": 400,
+    "synthetic_pairs": 0,
+    "real_conditional_mean_delta_nll": -0.00036586357167500694,
+    "real_conditional_document_bootstrap_95": [
+      -0.0006705684432232225,
+      -8.39485507623722e-05
+    ],
+    "synthetic_conditional_mean_delta_nll": 0.0,
+    "synthetic_conditional_document_bootstrap_95": [
+      0.0,
+      0.0
+    ],
+    "actual_mixed_mean_delta_nll": -0.00036586357167500694,
+    "actual_mixed_document_bootstrap_95": [
+      -0.0006705684432232225,
+      -8.39485507623722e-05
+    ],
+    "real_conditional_mean_when_present": -0.0003658635716749514
+  },
+  {
+    "arm": "mixed99",
+    "cycle": 1,
+    "updates": 4,
+    "probe_pairs": 128,
+    "probe_documents": 128,
+    "real_present_updates": 2,
+    "real_pairs": 4,
+    "synthetic_pairs": 396,
+    "real_conditional_mean_delta_nll": -8.037433433738528e-05,
+    "real_conditional_document_bootstrap_95": [
+      -0.00010045470143991708,
+      -5.997348362467014e-05
+    ],
+    "synthetic_conditional_mean_delta_nll": 0.030300085316707026,
+    "synthetic_conditional_document_bootstrap_95": [
+      0.02764795996288112,
+      0.03302729430200092
+    ],
+    "actual_mixed_mean_delta_nll": 0.0302012544520478,
+    "actual_mixed_document_bootstrap_95": [
+      0.02753470354456449,
+      0.03292317530909412
+    ],
+    "real_conditional_mean_when_present": -0.00016074866867521465
+  },
+  {
+    "arm": "mixed99",
+    "cycle": 2,
+    "updates": 4,
+    "probe_pairs": 128,
+    "probe_documents": 128,
+    "real_present_updates": 3,
+    "real_pairs": 4,
+    "synthetic_pairs": 396,
+    "real_conditional_mean_delta_nll": -0.006108549728378598,
+    "real_conditional_document_bootstrap_95": [
+      -0.006726383792943347,
+      -0.005589983905261548
+    ],
+    "synthetic_conditional_mean_delta_nll": 0.054950774586639994,
+    "synthetic_conditional_document_bootstrap_95": [
+      0.051471494465066624,
+      0.058933416643253585
+    ],
+    "actual_mixed_mean_delta_nll": 0.04964303550531568,
+    "actual_mixed_document_bootstrap_95": [
+      0.04654171162181163,
+      0.0531778608556805
+    ],
+    "real_conditional_mean_when_present": -0.008144732971171317
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 1,
+    "updates": 4,
+    "probe_pairs": 128,
+    "probe_documents": 128,
+    "real_present_updates": 0,
+    "real_pairs": 0,
+    "synthetic_pairs": 400,
+    "real_conditional_mean_delta_nll": 0.0,
+    "real_conditional_document_bootstrap_95": [
+      0.0,
+      0.0
+    ],
+    "synthetic_conditional_mean_delta_nll": 0.030381734874388222,
+    "synthetic_conditional_document_bootstrap_95": [
+      0.02770833816885076,
+      0.033130755158229636
+    ],
+    "actual_mixed_mean_delta_nll": 0.030381734874388222,
+    "actual_mixed_document_bootstrap_95": [
+      0.02770833816885076,
+      0.033130755158229636
+    ],
+    "real_conditional_mean_when_present": null
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 2,
+    "updates": 4,
+    "probe_pairs": 128,
+    "probe_documents": 128,
+    "real_present_updates": 0,
+    "real_pairs": 0,
+    "synthetic_pairs": 400,
+    "real_conditional_mean_delta_nll": 0.0,
+    "real_conditional_document_bootstrap_95": [
+      0.0,
+      0.0
+    ],
+    "synthetic_conditional_mean_delta_nll": 0.050799221200735545,
+    "synthetic_conditional_document_bootstrap_95": [
+      0.047653704132432695,
+      0.05438505152275118
+    ],
+    "actual_mixed_mean_delta_nll": 0.050799221200735545,
+    "actual_mixed_document_bootstrap_95": [
+      0.047653704132432695,
+      0.05438505152275118
+    ],
+    "real_conditional_mean_when_present": null
+  }
+]

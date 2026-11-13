@@ -120,3 +120,5 @@
 # Plain-SGD acceptance evidence preserves its indexed bytes on Windows.
 /docs/validation/2026-11-13_sgd-greedy*.json -text whitespace=cr-at-eol
 /reports/20261113T224629Z-smoke-completion64-mixtures/** -text whitespace=cr-at-eol,-blank-at-eof
+/reports/20261113T230319Z-smoke-completion64-mixtures/** -text whitespace=cr-at-eol,-blank-at-eof
+/docs/history/2026-11-13_pre-sgd-current-state.txt -text whitespace=cr-at-eol

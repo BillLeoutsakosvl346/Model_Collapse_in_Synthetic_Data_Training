@@ -1,0 +1,998 @@
+{
+  "run_id": "20261113T230319Z-smoke-completion64-mixtures-mixed99",
+  "repos": {
+    "model": "iib-model-collapse-bill/iib-model-collapse-models",
+    "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+  },
+  "files": {
+    "completion.json": {
+      "sha256": "e8c8ad307422beef60ae85d48fddf400678379ed414fdd3fa34638c3ee1b8f64",
+      "bytes": 92,
+      "repo_type": "dataset"
+    },
+    "config.json": {
+      "sha256": "538742b6f81d5a9bb647401df79cdc5a28c4bc85e98ae24dc9f41ef54752674b",
+      "bytes": 7937,
+      "repo_type": "dataset"
+    },
+    "cycle1_snapshot.json": {
+      "sha256": "206b6756f49b68f9dd9e1969cf5e02d91ec6fb7ad6c13f097c73641d8da8c86f",
+      "bytes": 3133,
+      "repo_type": "dataset"
+    },
+    "manifest.json": {
+      "sha256": "1bb5ed5ac0661aa0d32ac124f9b282c7ea5e1b28c4cbb72dd1b94f57d7270f6c",
+      "bytes": 258,
+      "repo_type": "dataset"
+    },
+    "requirements-tested.txt": {
+      "sha256": "8ee9b2f71d0cd8cc9d6bb26ef32c0bf4f4c0221f9a1e3cccac0d78ed863b4b2a",
+      "bytes": 3410,
+      "repo_type": "dataset"
+    },
+    "resources.json": {
+      "sha256": "d8d54337212a512b1bb532e0853a8c2d78ba8269a22fe940d377ae99be49147f",
+      "bytes": 2006,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "7e12df48b53cdaf48c5d8856441ee2823457e8ecd82fe2cf810f98ac30876a93",
+      "bytes": 3717,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/checkpoint/config.json": {
+      "sha256": "719f2f4c88b246009ae0631cc38df516c76750dd46d7626f92f9a1f39aaa455d",
+      "bytes": 812,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/checkpoint/model.safetensors": {
+      "sha256": "28da1f94c2e669fea395114726a0b1a27672696b9bd1c57fd0f12ef4ada2e43d",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/28da1f94c2e669fea395114726a0b1a27672696b9bd1c57fd0f12ef4ada2e43d"
+      }
+    },
+    "seed_42/gen_01/diagnostics_manifest.json": {
+      "sha256": "3ee96f465aff5c33d2962608cf17dcf9dcb8dd7007a585f13e005fcd494b5de0",
+      "bytes": 1588,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/metrics.json": {
+      "sha256": "9e15af10390d5d5def99602bfcb6a59b0b1002399de34b871ea96f384a9c7f54",
+      "bytes": 8139,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/mixture/manifest.json": {
+      "sha256": "0f201437b24956431ec4b5d92bfa784f51102e08859fc8bae11ca784fcf1f202",
+      "bytes": 1475,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/mixture/permutation.npy": {
+      "sha256": "dbd36dfc08c4cdda848ddbb2d4ff27c95e0ef0698f628d90e05beb6219690853",
+      "bytes": 1728,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/dbd36dfc08c4cdda848ddbb2d4ff27c95e0ef0698f628d90e05beb6219690853"
+      }
+    },
+    "seed_42/gen_01/mixture/row_indices.npy": {
+      "sha256": "142e45b40c6e867ccb6c909a22d040b37eddd113912b077416138bec806ce38c",
+      "bytes": 1728,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/142e45b40c6e867ccb6c909a22d040b37eddd113912b077416138bec806ce38c"
+      }
+    },
+    "seed_42/gen_01/mixture/selection.json": {
+      "sha256": "adc510aacf26e7882f058265c1fcddbaa7b88b3e94dd25903c5b5eaaa8e58d24",
+      "bytes": 889,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/mixture/source_labels.npy": {
+      "sha256": "f43f865b9922e03a60cf3ad97c86bcd0e9add31048b8d1c430d7a3cbd49f4420",
+      "bytes": 1728,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/f43f865b9922e03a60cf3ad97c86bcd0e9add31048b8d1c430d7a3cbd49f4420"
+      }
+    },
+    "seed_42/gen_01/mixture/synthetic_indices.npy": {
+      "sha256": "07fe41c2a34f9edbaf347de33f9f829e0147778e289f1d1f936d56f7bceec063",
+      "bytes": 1712,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/07fe41c2a34f9edbaf347de33f9f829e0147778e289f1d1f936d56f7bceec063"
+      }
+    },
+    "seed_42/gen_01/mixture/targets.npy": {
+      "sha256": "fb4b5f01635e2dc90ecf3669eba0365ff25787de1d91dab7e51ce16fc8d7f992",
+      "bytes": 102528,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/fb4b5f01635e2dc90ecf3669eba0365ff25787de1d91dab7e51ce16fc8d7f992"
+      }
+    },
+    "seed_42/gen_01/optimizer_state/cycle.pt": {
+      "sha256": "5e76619cd0933ee25e597211efa4580e1c472c60e3e64ce3c973cf4620a3e890",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/5e76619cd0933ee25e597211efa4580e1c472c60e3e64ce3c973cf4620a3e890"
+      }
+    },
+    "seed_42/gen_01/probe/events.jsonl": {
+      "sha256": "8e3bd4ab674d4da4404ff5d17aa2c4fabe2e4237d3c4d840d4b6a5860c4bdda7",
+      "bytes": 131,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json": {
+      "sha256": "1e5031ed3314ed8571c6fe85c727432215cd109d9962656c6902c68cc562a2f7",
+      "bytes": 1166,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/shard_0000000.json": {
+      "sha256": "abc285235247a44a50c77020e3ae5336106894c2cb800a6a449e89b73561fc1c",
+      "bytes": 841,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/shard_0000000.npy": {
+      "sha256": "684c655c2c2b0bcfc66a7a0fe4020746e77d604e96290110f1acae979be9e16b",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/684c655c2c2b0bcfc66a7a0fe4020746e77d604e96290110f1acae979be9e16b"
+      }
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/tokens.npy": {
+      "sha256": "684c655c2c2b0bcfc66a7a0fe4020746e77d604e96290110f1acae979be9e16b",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/684c655c2c2b0bcfc66a7a0fe4020746e77d604e96290110f1acae979be9e16b"
+      }
+    },
+    "seed_42/gen_01/probe_examples.json": {
+      "sha256": "367b7f2425e56480bd180afa7ed0d89b3d494c1d726974ada2fe7ddfff1a5704",
+      "bytes": 1532,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/stage_completion.json": {
+      "sha256": "206b6756f49b68f9dd9e1969cf5e02d91ec6fb7ad6c13f097c73641d8da8c86f",
+      "bytes": 3133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/test_sequences.json": {
+      "sha256": "584775c47f5aee2ccded8be9b01d38625f50b413a97ff598e210fe91d86c1ff4",
+      "bytes": 4106,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training.json": {
+      "sha256": "fd5c30d83227bbd33cf6baa1ed1ccf9c8d3c99fbe779b04bb52dda218cee3dd5",
+      "bytes": 3946,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_history.json": {
+      "sha256": "bfd398dae15d2680bb494f2cfa05cefea62941f30235bb2eb1b313c7d08822ce",
+      "bytes": 325,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/attention.npy": {
+      "sha256": "c6dfc6e374164f4d00befda684f77a60d922521117cc3b36942c673b2f2ed57f",
+      "bytes": 206528,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/c6dfc6e374164f4d00befda684f77a60d922521117cc3b36942c673b2f2ed57f"
+      }
+    },
+    "seed_42/gen_01/training_input/loss_mask.npy": {
+      "sha256": "19163dd0948d99a3b1e172f8ca891af5184d3357159a116f7a03ab85722aae89",
+      "bytes": 206528,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/19163dd0948d99a3b1e172f8ca891af5184d3357159a116f7a03ab85722aae89"
+      }
+    },
+    "seed_42/gen_01/training_input/manifest.json": {
+      "sha256": "dfb78bac1be1807976464d501cc659fc6099b5259bdad6c0381ea743a7f1ce8b",
+      "bytes": 1322,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/tokens.npy": {
+      "sha256": "e3497c421ece716e7bb117ec4c6de42c24926118658428fca85f03b2ec18fc90",
+      "bytes": 206528,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/e3497c421ece716e7bb117ec4c6de42c24926118658428fca85f03b2ec18fc90"
+      }
+    },
+    "seed_42/gen_01/update_diagnostics/attempts/b43740019118456cacb32e8c11123ebc/attempt.json": {
+      "sha256": "b4340ec7f95762a98df73cdb4b60facb743c819129d398688ab5ac20c94352ba",
+      "bytes": 680,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/update_diagnostics/attempts/b43740019118456cacb32e8c11123ebc/probe_scores.npz": {
+      "sha256": "9fce8b07308564b954857c222c5d90f9d71eeef45493872854318c9ae3b25ba7",
+      "bytes": 14940,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/update_diagnostics/attempts/b43740019118456cacb32e8c11123ebc/updates.jsonl": {
+      "sha256": "7ee81ff47c5c9ddefca828bdbc2c856f4777321d2107875263843d024bdad47e",
+      "bytes": 48665,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/checkpoint/config.json": {
+      "sha256": "681c1d2249d943828f0347205a3446607f483b4d2b7ac369bbbb43a90595a570",
+      "bytes": 820,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/checkpoint/model.safetensors": {
+      "sha256": "07defca74e9f64b0a13b14b3ea390ab20340f961a4b59a265877668ca06981c5",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/07defca74e9f64b0a13b14b3ea390ab20340f961a4b59a265877668ca06981c5"
+      }
+    },
+    "seed_42/gen_02/diagnostics_manifest.json": {
+      "sha256": "68bdeacf77cabd54ffc1533be64efd48980b3791f0c9dcb17cdf544ef79d5dd8",
+      "bytes": 1651,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/metrics.json": {
+      "sha256": "06bbf48bc19b17c2a262f5cbb4bfb4205315b913bc462856295fad8f91d83219",
+      "bytes": 8321,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/mixture/manifest.json": {
+      "sha256": "6f82eca84a69b5937ba3929724db2e87a9de4c4d9d8c87cc166f99db6401d22e",
+      "bytes": 1475,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/mixture/permutation.npy": {
+      "sha256": "23d32eb8f3b0617e4ba64d5ca2c2403b11c597c0c2b076db2c5204c5202a0272",
+      "bytes": 1728,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/23d32eb8f3b0617e4ba64d5ca2c2403b11c597c0c2b076db2c5204c5202a0272"
+      }
+    },
+    "seed_42/gen_02/mixture/row_indices.npy": {
+      "sha256": "142e45b40c6e867ccb6c909a22d040b37eddd113912b077416138bec806ce38c",
+      "bytes": 1728,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/142e45b40c6e867ccb6c909a22d040b37eddd113912b077416138bec806ce38c"
+      }
+    },
+    "seed_42/gen_02/mixture/selection.json": {
+      "sha256": "a707219ebc26706ff394b22186897539487e864777b78e5ea80f446ade165be1",
+      "bytes": 889,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/mixture/source_labels.npy": {
+      "sha256": "e0f77287544d595d9c7d65da5f7140f81ed31fc5ad861d56e702bb89f9ebd58b",
+      "bytes": 1728,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/e0f77287544d595d9c7d65da5f7140f81ed31fc5ad861d56e702bb89f9ebd58b"
+      }
+    },
+    "seed_42/gen_02/mixture/synthetic_indices.npy": {
+      "sha256": "ad65877e00ea421aaa2ff2df135f6874ed9056c9c3e2be668b673d6a2ebcd1d9",
+      "bytes": 1712,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/ad65877e00ea421aaa2ff2df135f6874ed9056c9c3e2be668b673d6a2ebcd1d9"
+      }
+    },
+    "seed_42/gen_02/mixture/targets.npy": {
+      "sha256": "84adceb0a564975d5bbdd2a7c08036764aca391425107d3b359831d3a68e1f69",
+      "bytes": 102528,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/84adceb0a564975d5bbdd2a7c08036764aca391425107d3b359831d3a68e1f69"
+      }
+    },
+    "seed_42/gen_02/optimizer_state/cycle.pt": {
+      "sha256": "9118113e82e64bd856b173dee8879169877ebe3940e2ec49b0bd1951c9320788",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/9118113e82e64bd856b173dee8879169877ebe3940e2ec49b0bd1951c9320788"
+      }
+    },
+    "seed_42/gen_02/probe/events.jsonl": {
+      "sha256": "8113994dd71be4aae2c585004e5bd52eb59734579c1d836bc224c6f07347060d",
+      "bytes": 131,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json": {
+      "sha256": "7d1ca6be29e67edd7ff661f87a2de0efa33fb196b22a3a5a5162670fc1b18e36",
+      "bytes": 1166,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/shard_0000000.json": {
+      "sha256": "7047284bf845e321692be149c4b503c1983dd99d7aadba7af190e5dfe1c7c2e5",
+      "bytes": 841,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/shard_0000000.npy": {
+      "sha256": "6f7c2a14816b54657dd41b30a2e8bdd20648c571b31ed9f10e7868578f409862",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/6f7c2a14816b54657dd41b30a2e8bdd20648c571b31ed9f10e7868578f409862"
+      }
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/tokens.npy": {
+      "sha256": "6f7c2a14816b54657dd41b30a2e8bdd20648c571b31ed9f10e7868578f409862",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/6f7c2a14816b54657dd41b30a2e8bdd20648c571b31ed9f10e7868578f409862"
+      }
+    },
+    "seed_42/gen_02/probe_examples.json": {
+      "sha256": "e2688e1cf699e563433847bbe3cad349acffe4881b8ff958d86016b9227209f9",
+      "bytes": 1332,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/stage_completion.json": {
+      "sha256": "34b0677daf56265b9ec3ac31d8469ff2675e3c5d4263c4aa11265e02af86f890",
+      "bytes": 3432,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/test_sequences.json": {
+      "sha256": "79b9097e358f4cbbb06ab030a3cb04a8818c2d04707ee3b1c62d41629ca4a79a",
+      "bytes": 4102,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training.json": {
+      "sha256": "4dd277252b1bda99ea683704ec1cd9117efe99700436a37034df70b052241870",
+      "bytes": 4129,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_history.json": {
+      "sha256": "0b73dc6944cc45131f010f7e45091e77aa29dd6baf5d421d96b0691a02472438",
+      "bytes": 325,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/attention.npy": {
+      "sha256": "c6dfc6e374164f4d00befda684f77a60d922521117cc3b36942c673b2f2ed57f",
+      "bytes": 206528,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/c6dfc6e374164f4d00befda684f77a60d922521117cc3b36942c673b2f2ed57f"
+      }
+    },
+    "seed_42/gen_02/training_input/loss_mask.npy": {
+      "sha256": "19163dd0948d99a3b1e172f8ca891af5184d3357159a116f7a03ab85722aae89",
+      "bytes": 206528,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/19163dd0948d99a3b1e172f8ca891af5184d3357159a116f7a03ab85722aae89"
+      }
+    },
+    "seed_42/gen_02/training_input/manifest.json": {
+      "sha256": "5ae551687ffac84c9b3ed4fa4362605444326a6bc67720f1b350a2a6006d2e81",
+      "bytes": 1384,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/tokens.npy": {
+      "sha256": "4675696226d394b3bc9679974e983ca0932b879fee1dc8a64024ee476a43f3a8",
+      "bytes": 206528,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/4675696226d394b3bc9679974e983ca0932b879fee1dc8a64024ee476a43f3a8"
+      }
+    },
+    "seed_42/gen_02/update_diagnostics/attempts/0ebf8b58f5154c74a69b518c7488de53/attempt.json": {
+      "sha256": "f3c0868ac66df3fdb5a185dd9451c712de028a82b38f5c831100e5bcee4ef462",
+      "bytes": 742,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/update_diagnostics/attempts/0ebf8b58f5154c74a69b518c7488de53/probe_scores.npz": {
+      "sha256": "e11eb2e3fff8acf28dbd2f9b49441d61db6cbfecd2808e98cdd70408eb782a8e",
+      "bytes": 15030,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/update_diagnostics/attempts/0ebf8b58f5154c74a69b518c7488de53/updates.jsonl": {
+      "sha256": "daa2a34e1e1266fcb0650cf2a8f9d613c16ea27932b6cab5ef4dfbe8f01934c1",
+      "bytes": 51630,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/update_diagnostics/attempts/92ce0eeb28be48e88cc1846d5d793e66/attempt.json": {
+      "sha256": "7d783f48a8521b7ad1cf7342aa482043e38310002ba3c1f7c8b4f739f3bf5de5",
+      "bytes": 742,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/update_diagnostics/attempts/92ce0eeb28be48e88cc1846d5d793e66/updates.jsonl": {
+      "sha256": "dacd2fedc4f3fa1f1cfa544be811a685989682f7eeab053341633a5952ebddd7",
+      "bytes": 13758,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/manifest.json": {
+      "sha256": "1c66e62c8ae3a3f64b09256198c15a52c4a3ef13766f11b06669edb5403a5a84",
+      "bytes": 2282,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000000.json": {
+      "sha256": "245dbd6ff516daad71a504e1aa75313962752206bfe54c939d9a4d5915f04abb",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000000.npy": {
+      "sha256": "9c4293865cfb20788efb6ed6cb7a67f6abf8d96475e8745b94284c1065adebcd",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/9c4293865cfb20788efb6ed6cb7a67f6abf8d96475e8745b94284c1065adebcd"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000032.json": {
+      "sha256": "06db960eb92f89d79c5c1ef57c8de56dbb06ea0e4fe5a6089f1992c9025b5dcc",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000032.npy": {
+      "sha256": "fef267b17a46dd072e957e694156e4af1985bc6feb27d81b1c3e108edbaa8991",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/fef267b17a46dd072e957e694156e4af1985bc6feb27d81b1c3e108edbaa8991"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000064.json": {
+      "sha256": "873975e15df38836a90fc9288f428799b49ccfa44b7d06566d53780e04e4e9b1",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000064.npy": {
+      "sha256": "979952008d8dc19133f7e433167ce4a01bbcf984612062a433c6e99c2f95d4cd",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/979952008d8dc19133f7e433167ce4a01bbcf984612062a433c6e99c2f95d4cd"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000096.json": {
+      "sha256": "cbcc7c049f3e61f2d4fcf081b819405bb0676915156a9f41443876ae213abcc8",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000096.npy": {
+      "sha256": "a156af5b04ff01a05fe681fb35dc98b707c2d10619b7410da74127cf4e0122eb",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/a156af5b04ff01a05fe681fb35dc98b707c2d10619b7410da74127cf4e0122eb"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000128.json": {
+      "sha256": "8ff7cdc901bfb1dca653342930908da719eed58a2b1062a5daa94289a9075e92",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000128.npy": {
+      "sha256": "403c577e9303e2b24b92dcd3ea556cf47db794f2743c90173400e25e380d7257",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/403c577e9303e2b24b92dcd3ea556cf47db794f2743c90173400e25e380d7257"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000160.json": {
+      "sha256": "56892a09f0c47a1f14a82478701505bba8b06996b7bb5357ec8922a249974e3d",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000160.npy": {
+      "sha256": "2e065ea021b03ff0785363919f823d04f71c56c8aa5b54106a459d632fa1e6b5",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/2e065ea021b03ff0785363919f823d04f71c56c8aa5b54106a459d632fa1e6b5"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000192.json": {
+      "sha256": "39db636da59447c9a6eeefa102b9d82df3fbf73e433fcab259be5e0dda404140",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000192.npy": {
+      "sha256": "d45f1dc5cb78a9516dd89f775aef0741a0484ae8ff3aba82a9e7418d8a248c1e",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/d45f1dc5cb78a9516dd89f775aef0741a0484ae8ff3aba82a9e7418d8a248c1e"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000224.json": {
+      "sha256": "a2853264e8053ef6aee6f57fc599442049122b0afc72dcb829f72a1edc69a30d",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000224.npy": {
+      "sha256": "e1554f634ef92d5ca7466036e2750696c495e78d64ab1854e51323efe6621033",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/e1554f634ef92d5ca7466036e2750696c495e78d64ab1854e51323efe6621033"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000256.json": {
+      "sha256": "381699a82b736d27deebad1c2fb0fda49cac5d5d2404ef053a01a1f73530ba3e",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000256.npy": {
+      "sha256": "7c6a78c75b89e379d12a8a043650a49b0adb415c0ff6ee14b060bd5e7badb11f",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/7c6a78c75b89e379d12a8a043650a49b0adb415c0ff6ee14b060bd5e7badb11f"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000288.json": {
+      "sha256": "7081b924b85c5734d51969117ab9a15f7d8abfe2669dd12d1eda7d4ddd4d8592",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000288.npy": {
+      "sha256": "50abfe7872533f0e48ea28cb63bcb58e1fbc2b241a487fb2a4ec108811ed6152",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/50abfe7872533f0e48ea28cb63bcb58e1fbc2b241a487fb2a4ec108811ed6152"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000320.json": {
+      "sha256": "9f6e07bc7ea83e970c4ba4e7e638afb64f81b70bc666e3df9075e62b48c98de7",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000320.npy": {
+      "sha256": "66c0f0d12be9e95ca6ae3c09c99461efe23a9b39603c364c89cffe498a5da207",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/66c0f0d12be9e95ca6ae3c09c99461efe23a9b39603c364c89cffe498a5da207"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000352.json": {
+      "sha256": "8901d1d3a6bfe36840935b137c1cee86624cd89bf747153fd317d43993707873",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000352.npy": {
+      "sha256": "01258d6e6d4588da3a2d08b9f02eda324c8f44ba78c1eb4fd61a925f200e4dbe",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/01258d6e6d4588da3a2d08b9f02eda324c8f44ba78c1eb4fd61a925f200e4dbe"
+      }
+    },
+    "synthetic_for_gen_01/shard_0000384.json": {
+      "sha256": "0eea07ac4d2991f41399967528c355ee8bae05cb8de1c439cd500be247e091de",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_01/shard_0000384.npy": {
+      "sha256": "63b23547a0852344d3710f09c3f04e17f3bc13dd4559c8b705c5adda397b2cb5",
+      "bytes": 3200,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/63b23547a0852344d3710f09c3f04e17f3bc13dd4559c8b705c5adda397b2cb5"
+      }
+    },
+    "synthetic_for_gen_01/tokens.npy": {
+      "sha256": "9b2d0758af7ade408ddef8dadc7c2a3d3caf0a6f85770d6db2506041fb88954d",
+      "bytes": 101504,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/9b2d0758af7ade408ddef8dadc7c2a3d3caf0a6f85770d6db2506041fb88954d"
+      }
+    },
+    "synthetic_for_gen_02/manifest.json": {
+      "sha256": "fedbfe0bdd3a614386102da952925a4b32c3acc42bad67808b641ba494b70041",
+      "bytes": 2283,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000000.json": {
+      "sha256": "f8f988e41684509456ce35445aa794a5dd913692737908f21354d881c443ddf7",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000000.npy": {
+      "sha256": "04a7ddccd8df6b746c6d8de70b570c21ae9e4f09ec9daca8f0815e04c3d393b6",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/04a7ddccd8df6b746c6d8de70b570c21ae9e4f09ec9daca8f0815e04c3d393b6"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000032.json": {
+      "sha256": "5a2b7d31ab16750a6d119ee2ef09c3ad5d5a07e15660defbe430d28164fca696",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000032.npy": {
+      "sha256": "f7367524716ed1bf3efaac0bbf0c309cb5a515d994fc315117ac37cf2cd7a344",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/f7367524716ed1bf3efaac0bbf0c309cb5a515d994fc315117ac37cf2cd7a344"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000064.json": {
+      "sha256": "a6fba1e7b8b8a2cd9c862a95e8dd10c434b3b6fe6d24bab8407654bf06493148",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000064.npy": {
+      "sha256": "c2ea31383a49dec7dc604ec945a2c7eca09bd3fab7d3104df1fa7767287015fe",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/c2ea31383a49dec7dc604ec945a2c7eca09bd3fab7d3104df1fa7767287015fe"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000096.json": {
+      "sha256": "ff26c3a5a5b773a610be15f85642a953b9ade7fba44d7333152b5ea656d4b7ce",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000096.npy": {
+      "sha256": "9af88bda325df70843de6edd86b812f4e1bd5df19b1297bfe99576e55b7fafd5",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/9af88bda325df70843de6edd86b812f4e1bd5df19b1297bfe99576e55b7fafd5"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000128.json": {
+      "sha256": "37698114c06279e37c64bef0b2dfb714696c84a33fe8dab9a082c710a24f3644",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000128.npy": {
+      "sha256": "f6c3ba1d05f10b255ad91abf2d2a9f4b73b9423538635703d75704bfb1e7cad1",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/f6c3ba1d05f10b255ad91abf2d2a9f4b73b9423538635703d75704bfb1e7cad1"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000160.json": {
+      "sha256": "d26057a3dfaa0e3e9cfa749f854fd9b29979bfb56423cd2377206ee68c134520",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000160.npy": {
+      "sha256": "ab89e114db493bda3c8af97328ae736e0e817f53c295d490644db00673125ba2",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/ab89e114db493bda3c8af97328ae736e0e817f53c295d490644db00673125ba2"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000192.json": {
+      "sha256": "d1397ffc8fdd7383ebcbc4d84ef1e15ef52e3e5866180009764b7d32ed983a99",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000192.npy": {
+      "sha256": "8910c067db0731c3b26b274db26aacb7ab0aecd733891cd3e0df73a56fd4c44d",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/8910c067db0731c3b26b274db26aacb7ab0aecd733891cd3e0df73a56fd4c44d"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000224.json": {
+      "sha256": "26307b552133b5ec3380e8f648e3f81e4295f574ac3d0a452cfb9c46b0951c18",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000224.npy": {
+      "sha256": "b72b9d3f46e708ab504bc46fba693553a2fa0719f4b9df7127d3276b7e464a41",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/b72b9d3f46e708ab504bc46fba693553a2fa0719f4b9df7127d3276b7e464a41"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000256.json": {
+      "sha256": "d316e3fef0cd187acee90d44d77629afe88e360d3bd594b83016a2e678edb69b",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000256.npy": {
+      "sha256": "48c3c0f23f0ed3cb39c3e3b6f3b41933b09c4ddd1c7620ac93f8c7c66345bbb2",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/48c3c0f23f0ed3cb39c3e3b6f3b41933b09c4ddd1c7620ac93f8c7c66345bbb2"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000288.json": {
+      "sha256": "cdbf04dce1856fed8ccf748dd4741cc400da7da9d886001e5e4dadd280baa079",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000288.npy": {
+      "sha256": "3f791f28620aff80d1b43dbea5bf274d2471a995bc4403b4d8c4f7c674b273c5",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/3f791f28620aff80d1b43dbea5bf274d2471a995bc4403b4d8c4f7c674b273c5"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000320.json": {
+      "sha256": "4fa62c5dbcbce3ac1dd85f3a437babe444b7ac98038ae0c839e425b79cca87c8",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000320.npy": {
+      "sha256": "894dd74a1a87d68088e9e0ff68b9b1abfbd1160068da78aad1f6385e2149844f",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/894dd74a1a87d68088e9e0ff68b9b1abfbd1160068da78aad1f6385e2149844f"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000352.json": {
+      "sha256": "7acf0d571180acc6195e33d0b7475c7eae093014f312e7ed11f6dc8a47885b37",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000352.npy": {
+      "sha256": "f549cb2e5ef8eebeafdd25ddedee756b4eebf005c4fb7714ae7ca5bd7fd242ff",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/f549cb2e5ef8eebeafdd25ddedee756b4eebf005c4fb7714ae7ca5bd7fd242ff"
+      }
+    },
+    "synthetic_for_gen_02/shard_0000384.json": {
+      "sha256": "c2fbece7fa2336dcd7d8d37224e9ef736c7f420e91a8ab92a3fe60cfde5ef434",
+      "bytes": 842,
+      "repo_type": "dataset"
+    },
+    "synthetic_for_gen_02/shard_0000384.npy": {
+      "sha256": "769b7dd4cd8589b90e021c8521147608bd8a7502fe1e7d4732d3977c8e55ebd7",
+      "bytes": 3200,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/769b7dd4cd8589b90e021c8521147608bd8a7502fe1e7d4732d3977c8e55ebd7"
+      }
+    },
+    "synthetic_for_gen_02/tokens.npy": {
+      "sha256": "732563033433982fe2773d8500567e2c022c396d7206c4086bea2171467730b8",
+      "bytes": 101504,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/732563033433982fe2773d8500567e2c022c396d7206c4086bea2171467730b8"
+      }
+    }
+  }
+}

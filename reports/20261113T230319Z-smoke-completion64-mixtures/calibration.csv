@@ -1,0 +1,7 @@
+phase,learning_rate,eligible,training_nll,validation_nll,validation_perplexity,validation_scope,failure,global_step
+screen,0.0001,True,2.9170663348028336,2.829388728896364,16.935105719211943,1024_pair_probe,,32
+screen,0.001,True,2.91441133472366,2.82717349477586,16.897632017024694,1024_pair_probe,,32
+screen,0.01,True,2.9052357171949925,2.8221504655042673,16.81296753089145,1024_pair_probe,,32
+screen,0.1,False,,,,,Non-finite training loss,
+confirm,0.01,True,2.9049354629718875,2.8932922907813663,18.05264643233139,complete_validation,,64
+confirm,0.001,True,2.9132554764673686,2.8980676282238678,18.13906007371099,complete_validation,,64

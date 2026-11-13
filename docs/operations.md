@@ -46,6 +46,13 @@ python -m pytest -q
 python scripts/maintenance/check_repository.py
 ```
 
+On Windows, deeply nested diagnostic journals can exceed the normal Hugging Face cache path limit. The validated recovery used the extended path form for the existing cache; this changes local download paths only:
+
+```powershell
+$env:HF_HUB_CACHE = "\\?\C:\hf"
+python -m model_collapse fetch RUN_ID --metadata-only
+```
+
 For a separately authorized new condition, choose its named profiles. These placeholders deliberately do not choose a completed experiment:
 
 ```powershell

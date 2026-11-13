@@ -1,0 +1,100 @@
+{
+  "run_id": "20261113T230319Z-smoke-completion64-mixtures",
+  "repos": {
+    "model": "iib-model-collapse-bill/iib-model-collapse-models",
+    "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+  },
+  "revisions": {
+    "model": "12d4da2260085489d898a140653ddcb2921b2f0e",
+    "dataset": "91b8f3878a2f6e6b73602f99c847054fd3164ff4"
+  },
+  "artifact_index_sha256": "117969baff72ff855fb79754f044b368792b0db71e03c4572bef09df83d4755b",
+  "indexed_files": 87,
+  "verified_files": 84,
+  "verified_bytes": 6168032,
+  "metadata_only": true,
+  "scope": "metadata_only",
+  "preserved_control_files": {
+    "resources.json": {
+      "recovered_path": "fetched_control/15b531718a5ef5307d8f63ea58dd27e20e13a348ae3d8f750cbcab103895e233/resources.json",
+      "sha256": "15b531718a5ef5307d8f63ea58dd27e20e13a348ae3d8f750cbcab103895e233",
+      "authoritative_local_sha256": "d5c7724330c38636d9ae016bc88aa4473c8af301979682203a773d3640b67c0c"
+    }
+  },
+  "operational_files_outside_immutable_index": [
+    "status.json",
+    "watchdog_exit.json"
+  ],
+  "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261113T230319Z-smoke-completion64-mixtures",
+  "children": {
+    "real": {
+      "run_id": "20261113T230319Z-smoke-completion64-mixtures-real",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "d066874d54364bd789c1c4c60119d2a73e2bec4c",
+        "dataset": "536cb27896e5b088b80508c32bb1b5f00d866039"
+      },
+      "artifact_index_sha256": "54c0b46401c012b7a294d22e5d3cd989bbe733b2cebe359134243fa7e6af72c5",
+      "indexed_files": 53,
+      "verified_files": 39,
+      "verified_bytes": 187730,
+      "metadata_only": true,
+      "scope": "metadata_only",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261113T230319Z-smoke-completion64-mixtures-real"
+    },
+    "mixed99": {
+      "run_id": "20261113T230319Z-smoke-completion64-mixtures-mixed99",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "c16add465c88071290831394983606120f7ad546",
+        "dataset": "e1f1f7e211b452cdb4401d600b23140f45b936a9"
+      },
+      "artifact_index_sha256": "143a4bcd1ebd50f41374feea0144335a81224dc5b29d14e05ebf0fd2c1c0c5ef",
+      "indexed_files": 125,
+      "verified_files": 73,
+      "verified_bytes": 252822,
+      "metadata_only": true,
+      "scope": "metadata_only",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261113T230319Z-smoke-completion64-mixtures-mixed99"
+    },
+    "synthetic": {
+      "run_id": "20261113T230319Z-smoke-completion64-mixtures-synthetic",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "12d4da2260085489d898a140653ddcb2921b2f0e",
+        "dataset": "6461244c16eeb36e0250a4ab5da8bb2160e8f658"
+      },
+      "artifact_index_sha256": "057c45b61b93213ad74c58d93e4209dbc12796c3f74125fbfbd72a5a01a979c1",
+      "indexed_files": 109,
+      "verified_files": 67,
+      "verified_bytes": 215183,
+      "metadata_only": true,
+      "scope": "metadata_only",
+      "preserved_control_files": {},
+      "operational_files_outside_immutable_index": [
+        "events.jsonl",
+        "status.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261113T230319Z-smoke-completion64-mixtures-synthetic"
+    }
+  }
+}

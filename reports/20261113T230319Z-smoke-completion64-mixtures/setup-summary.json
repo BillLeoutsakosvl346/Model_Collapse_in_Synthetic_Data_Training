@@ -1,0 +1,115 @@
+{
+  "recorded_at": 1794612969.6269405,
+  "task": "Prepare SGD/greedy comparison; no full launch",
+  "accepted_run_id": "20261113T230319Z-smoke-completion64-mixtures",
+  "calibration_source_run_id": "20261113T224629Z-smoke-completion64-mixtures",
+  "runtime_sha256": "02e45a8352f611b1004fa1bcf490e08384326eec141fa56576f9b28c70e839a0",
+  "protocol_fingerprint": "55a33f3c6cf32aa924fee1402fb7da95fb7d549ae7f8a57ebd8329ff7faa6699",
+  "accepted_git_commit": "aa72fdba61474c03f5bfe6f69c712d8f603e6ae0",
+  "offline_tests": {
+    "focused_passed": 150,
+    "post_freeze_configuration_tests_passed": 43,
+    "historical_full_suite_run": false
+  },
+  "independent_review": {
+    "completed": true,
+    "initial_recovery_and_benchmark_findings_resolved": true,
+    "post_gpu_probe_fix_and_bounded_calibration_import_reviewed": true
+  },
+  "checks": {
+    "shadow_actual_update_equality": true,
+    "fp32_greedy": true,
+    "constant_lr_empty_optimizer_state": true,
+    "native_masks_and_lineage": true,
+    "training_replay_seals": true,
+    "diagnostic_rng_isolation": true,
+    "both_fresh_chunk_handoffs": true,
+    "terminal_private_restores_all_arms": true,
+    "source_gradient_reconstruction": true,
+    "twenty_four_sgd_updates": true,
+    "detached_progress_verified": true,
+    "independent_watchdog_and_provider_stop_verified": true
+  },
+  "selected_learning_rate": 0.01,
+  "calibration_optimizer_updates": 181,
+  "additional_retry_calibration_updates": 0,
+  "acceptance_logical_updates": 24,
+  "acceptance_replay_updates": 1,
+  "total_physical_optimizer_updates": 206,
+  "failed_attempt": "Calibration completed; real worker failed before acceptance updates due to manifest/window API mismatch. Corrected and covered by real-bank regression.",
+  "private_recovery": {
+    "terminal_stages": 3,
+    "terminal_files": 78,
+    "terminal_bytes": 1616616943,
+    "maximum_test_loss_error": 0.0,
+    "earlier_training_stages_individually_cold_restored": false,
+    "parent_snapshot": {
+      "run_id": "20261113T230319Z-smoke-completion64-mixtures",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "12d4da2260085489d898a140653ddcb2921b2f0e",
+        "dataset": "91b8f3878a2f6e6b73602f99c847054fd3164ff4"
+      },
+      "artifact_index_sha256": "117969baff72ff855fb79754f044b368792b0db71e03c4572bef09df83d4755b"
+    },
+    "local_metadata_verified_files": 263,
+    "local_metadata_verified_bytes": 6823767,
+    "local_baseline_bytes": 538107048,
+    "local_trained_child_weights_downloaded": false
+  },
+  "finance": {
+    "recorded_at": 1794612822.3989108,
+    "task_spend_conservative_estimate_usd": 0.2882079426262503,
+    "provider_debit_attribution": "Not inferred from account balance changes; those include other retained resources.",
+    "paid_compute_seconds": 1555.2811818122864,
+    "task_cap_usd": 0.4,
+    "combined_paid_time_cap_seconds": 1800,
+    "cumulative_ceiling_usd": 110.0,
+    "cumulative_accrued_estimate_usd": 98.80336861340403,
+    "historical_setup_ceiling_usd": 5.4,
+    "remaining_historical_setup_usd": 0.2273110700425116,
+    "account_credit_usd": 23.4621481836,
+    "automatic_payments": false,
+    "backup_payments": false,
+    "active_provider_pods": [],
+    "full_forecast": {
+      "estimated_hours": 9.990716340818262,
+      "estimated_compute_and_running_storage_usd": 5.779560973599386,
+      "unique_training_stages": 30,
+      "epochs": 30,
+      "optimizer_updates": 2370,
+      "generated_training_continuations": 199000,
+      "generated_training_tokens": 12736000,
+      "training_target_exposures": 19200000,
+      "probe_sets": 31,
+      "forecast_margin": 1.5,
+      "update_attribution_included": true,
+      "storage_and_backup_fixed_overhead_seconds": 2400,
+      "seven_day_new_working_and_backup_storage_usd": 1.4498630136986304,
+      "historical_storage_during_forecast_usd": 1.807909080302096,
+      "padded_watchdog_required_usd": 6.646495119639294,
+      "remaining_global_after_reserve_usd": 9.196669784401095,
+      "global_forecast_fits_now": true
+    },
+    "new_full_resources_provisioned": false,
+    "full_experiments_launched": false
+  },
+  "removed_resources": [
+    {
+      "pod": "bm3q2x5he5b2lt",
+      "volume": "7gwltxzji0"
+    },
+    {
+      "pod": "8zochly9umow3w",
+      "volume": "oinnma1jnm"
+    }
+  ],
+  "technical_readiness": "GPU validated for frozen runtime and selected rate; all full arms remain unlaunched",
+  "affordability": "Forecast fits current global ceiling/credit; full allocation and dedicated 30GB backup store are intentionally deferred until separately authorized launch. Live admission must recheck.",
+  "full_resources_provisioned": false,
+  "full_experiments_launched": false,
+  "report": "reports/20261113T230319Z-smoke-completion64-mixtures/setup-report.md"
+}

@@ -1,0 +1,43 @@
+{
+  "scope": "shared_pretrained_baseline_only",
+  "files": {
+    "seed_42/gen_00/checkpoint/model.safetensors": {
+      "sha256": "19db913ad817fcd5d544972dfe168ed96f7c9c8cd40ef431da285f016cadbc1c",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/19db913ad817fcd5d544972dfe168ed96f7c9c8cd40ef431da285f016cadbc1c"
+      }
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/shard_0000000.npy": {
+      "sha256": "f1405daf052dad129d4d657a3afcd65554bc05f70d7932cf210bec633d6b34f0",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/f1405daf052dad129d4d657a3afcd65554bc05f70d7932cf210bec633d6b34f0"
+      }
+    },
+    "seed_42/gen_00/probe/synthetic_for_gen_01/tokens.npy": {
+      "sha256": "f1405daf052dad129d4d657a3afcd65554bc05f70d7932cf210bec633d6b34f0",
+      "bytes": 8320,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "tsp5kiuw8v",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-seven-fractions-full-sgd-greedy-effects-setup",
+        "key": "smollm2-seven-fractions-full-sgd-greedy-effects-setup/objects/f1405daf052dad129d4d657a3afcd65554bc05f70d7932cf210bec633d6b34f0"
+      }
+    }
+  },
+  "verified_bytes": 538107048,
+  "trained_child_checkpoints_downloaded": false
+}

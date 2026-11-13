@@ -1,0 +1,28 @@
+{
+  "policy": "actual_batch_weighted_sgd_effects_v1",
+  "attempt_id": "0f6192be240f452f9d466692080b2d0b",
+  "cycle": 1,
+  "probe_identity": "459083803b95659a49ec1a8134cb53f58629fdc5dff8ce829fb887656d4d9b42",
+  "probe_pairs": 128,
+  "binding": {
+    "training_contract_sha256": "fe785a97b8d12e3c8d41b306ac502aa4e772c30f365021b3d8939aabbdd3035c",
+    "input_tokens_sha256": "d0a36886bcf808ccdff47ab727f3709a6af6bfba6f0ca247362f4a9be41f6f2b",
+    "initial_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+    "optimizer_parent_sha256": null,
+    "lineage_sha256": "7cd0384701dc7303d15cb7615420fdaeb58982c258271f508669e3093ce8ccae",
+    "total_optimizer_steps": 8
+  },
+  "terminal_weights_sha256": "b950e6ccb02ba5b426e1d1f981459123ba6546e7528baf1d39c43ac74baf8237",
+  "updates": 4,
+  "first_step": 1,
+  "last_step": 4,
+  "score_kind": "per_example_nll_sums",
+  "records_path": "update_diagnostics/attempts/0f6192be240f452f9d466692080b2d0b/updates.jsonl",
+  "scores_path": "update_diagnostics/attempts/0f6192be240f452f9d466692080b2d0b/probe_scores.npz",
+  "unique_probe_evaluations": 5,
+  "files": {
+    "update_diagnostics/attempts/0f6192be240f452f9d466692080b2d0b/updates.jsonl": "2f8ce293881d7575c912a402b3be83af0be0da9705ab416ec63e3c48e3c59f66",
+    "update_diagnostics/attempts/0f6192be240f452f9d466692080b2d0b/probe_scores.npz": "98bd5f59f348cee0e5418c35cd2d81563d023fe8c0a4a9dd9c2f0f097bd0fe7d",
+    "update_diagnostics/attempts/0f6192be240f452f9d466692080b2d0b/attempt.json": "fb2027af9aad91256dc8d25eeb07dc47224b6fc3925fe209eac1a34cea061888"
+  }
+}

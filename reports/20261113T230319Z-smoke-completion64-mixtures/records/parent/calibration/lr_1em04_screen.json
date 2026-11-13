@@ -1,0 +1,78 @@
+{
+  "contract_sha256": "e103500db90121ad369855a52cdaf9e7715c2bd1ddf4a3dd04bd4ab684fb80ad",
+  "learning_rate": 0.0001,
+  "phase": "screen",
+  "cycle": 1,
+  "global_step": 32,
+  "weights_sha256": "6ac27d1711c07568a17b22cd979b79bd00f7b3f347fb469b9ff47fe3a4104eb6",
+  "initializer_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+  "weights_changed": true,
+  "training_nll": 2.9170663348028336,
+  "baseline_training_nll": 2.9174961214009865,
+  "training_probe_source": "fixed_chunk_1_selection_first_512",
+  "validation_nll": 2.829388728896364,
+  "baseline_validation_nll": 2.8297552109567667,
+  "validation_scope": "1024_pair_probe",
+  "training": {
+    "generation": 1,
+    "initial_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+    "selected_weights_sha256": "6ac27d1711c07568a17b22cd979b79bd00f7b3f347fb469b9ff47fe3a4104eb6",
+    "input_tokens_sha256": "e0bd921f01fbfbcdcd66117bb24b74eca0c42cfa95d5b31fa3625bc5735d316a",
+    "training_blocks": 4096,
+    "selected_epoch": 1,
+    "best_validation_loss": 2.829388728896364,
+    "best_validation_epoch": 1,
+    "selected_validation_loss": 2.829388728896364,
+    "executed_epochs": 1,
+    "terminal_weights_sha256": "6ac27d1711c07568a17b22cd979b79bd00f7b3f347fb469b9ff47fe3a4104eb6",
+    "training_contract_sha256": "7468189f6753467fe49d162f8262d839f7ed97651239f4662f53b672e840d2eb",
+    "seconds": 51.278543947963044,
+    "peak_allocated_gpu_bytes": 9632227328,
+    "checkpoint_files": {
+      "config.json": "50668d944f737e3fed2f378a52451f478c6caa55d00737fd720e1f44e42e37ba",
+      "generation_config.json": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "model.safetensors": "a433ca224629eb8f95d74eedecc23af8bd7216c0fa08166e36ec79152d2d3f7a"
+    },
+    "initialization": "continued",
+    "optimizer_initialization": "fresh_pretrained_start",
+    "checkpoint_selection": "final_epoch",
+    "optimizer_parent_sha256": null,
+    "global_step": 32,
+    "total_optimizer_steps": 64,
+    "state_files": {
+      "optimizer_state/cycle.pt": "22bba7e0441698d49f4c8aacbf3a1200f7fcbad3a2c38ef1c50d3fe2936f00fa"
+    },
+    "lineage": {
+      "purpose": "real_only_lr_calibration",
+      "source_collection": "cycle_01",
+      "selection_sha256": "3b6e8af5bf451d172cd8e919be8500036da9e0ac16a839e6c04e8cebae8f867a",
+      "source_bank_sha256": "8c475f058606fed0610d7555128139ea445b2f4753c2a1abc8eccd44e06c9837"
+    },
+    "optimizer": "sgd",
+    "learning_rate_policy": "constant",
+    "momentum": 0,
+    "weight_decay": 0
+  },
+  "training_probe": {
+    "nll_sum": 95586.42965881925,
+    "scored_tokens": 32768,
+    "loss": 2.9170663348028336,
+    "perplexity": 18.48697323883946,
+    "seconds": 1.7463644060771912,
+    "mean_sequence_perplexity": 21.948528106442993,
+    "std_sequence_perplexity": 14.81464351174323,
+    "context_tokens": 129
+  },
+  "validation": {
+    "nll_sum": 185426.8197369521,
+    "scored_tokens": 65536,
+    "loss": 2.829388728896364,
+    "perplexity": 16.935105719211943,
+    "seconds": 3.350170986028388,
+    "mean_sequence_perplexity": 19.946068610281692,
+    "std_sequence_perplexity": 13.635187810286979,
+    "context_tokens": 129
+  },
+  "test_used": false,
+  "eligible": true
+}

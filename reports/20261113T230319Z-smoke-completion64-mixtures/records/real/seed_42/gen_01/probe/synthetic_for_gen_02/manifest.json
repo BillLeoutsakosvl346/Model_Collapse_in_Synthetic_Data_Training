@@ -1,0 +1,36 @@
+{
+  "provenance": {
+    "parent_weights_sha256": "b950e6ccb02ba5b426e1d1f981459123ba6546e7528baf1d39c43ac74baf8237",
+    "prompt_tokens_sha256": "ddfe154dd1eba41ec9467249d5c29f373ec455f68b0dca139bdb4815bc5492d6",
+    "prompt_count": 32,
+    "new_tokens": 64,
+    "num_beams": 1,
+    "repetition_penalty": 1.0,
+    "version": 2,
+    "decoder": "greedy",
+    "decoding": {
+      "num_beams": 1,
+      "do_sample": false,
+      "min_new_tokens": 64,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.0,
+      "no_repeat_ngram_size": 0,
+      "forced_eos_token_id": null,
+      "use_cache": true
+    },
+    "seed": 42,
+    "generation": 1,
+    "purpose": "training",
+    "sampling_policy": null,
+    "generation_batch": 32,
+    "generation_shard": 32
+  },
+  "continuation_tokens_sha256": "b35106f8c6a4022f735684073c83f0ddfc4dc42981d505939da39406dcd8dae5",
+  "files": {
+    "tokens.npy": "14d16a4d140204b32253145c420d51628be63d398254d7eca86bf74a04f36e5e",
+    "shard_0000000.npy": "14d16a4d140204b32253145c420d51628be63d398254d7eca86bf74a04f36e5e"
+  },
+  "seconds": 1.768069411162287,
+  "reused_continuations": 0,
+  "new_tokens_per_second": 1158.3255652014777
+}
