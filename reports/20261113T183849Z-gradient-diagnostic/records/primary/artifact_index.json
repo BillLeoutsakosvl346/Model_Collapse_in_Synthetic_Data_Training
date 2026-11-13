@@ -1,0 +1,549 @@
+{
+  "run_id": "20261113T183849Z-gradient-diagnostic",
+  "repos": {
+    "model": "iib-model-collapse-bill/iib-model-collapse-models",
+    "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+  },
+  "files": {
+    "acceptance.json": {
+      "sha256": "1715327ae28226edc84b9359cb9f7b5cbb85265ef9d1b94bb7a7f515b16f35c1",
+      "bytes": 565,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/common-mixed-probe.npz": {
+      "sha256": "59a01665dd66b2b2fcde034ff3f53b45ff72ec09abc0707361e51d79f434455e",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/common-optimizer_history-probe.npz": {
+      "sha256": "9589f698b9f9ef4a71270721ee6871addb07717a83b50289b279c67c6b9068a6",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/common-real_only-probe.npz": {
+      "sha256": "c86239e0686eb962f869a6bcbf70f07ab99da0509358d414b3a9ba9e16a316ab",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/common-synthetic_only-probe.npz": {
+      "sha256": "4fe48e29b7587662754d6ba25661c59df97f4a88efc9e5cce8b6bbb9aa12da1f",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/completion.json": {
+      "sha256": "d38198a19155b0ccef47467f75f40120645b871a94a77d30476980181f500197",
+      "bytes": 227,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/gradients.json": {
+      "sha256": "d23b197df926f5fa3e2e0a3b3e9fd70099ce3f93350bdeb0a21ea53554525e31",
+      "bytes": 39147,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/historical-mixed-probe.npz": {
+      "sha256": "912c5df07b8abb209e171edd78550725f65a978f2ba96042e4f5f2db0d90ab08",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/historical-optimizer_history-probe.npz": {
+      "sha256": "9589f698b9f9ef4a71270721ee6871addb07717a83b50289b279c67c6b9068a6",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/historical-real_only-probe.npz": {
+      "sha256": "620c7ad3b6ec1a10a5c9480e0d6c873254c8728010c5dac7f5f4659276f82fd6",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/historical-synthetic_only-probe.npz": {
+      "sha256": "8031a67bcddd079bc402e905ae5656c4a03c5f6d71f49f9fb68c3cb1eb0db5b9",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/interventions.json": {
+      "sha256": "cef22e741ecf0ebba1e6c4c118c0f25485019e127b14e0ab350572f48c96a4fc",
+      "bytes": 8881,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/mixed-validation.npz": {
+      "sha256": "8a1cdddd65262a5c0bde475bf8b42950cd23219909c38ee440483a25e67f7d9f",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/optimizer_history-validation.npz": {
+      "sha256": "1a59a2056a3e6f01b3397f9899c6403716b4a6c171e0ae816eb22a3b85e9046d",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/probe_before.npz": {
+      "sha256": "e75c11457fddff2e74e15f8d2052166432bb3ab25e375760cce7990aaea523b7",
+      "bytes": 21242,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle01/validation_before.npz": {
+      "sha256": "064733208c7f74aae662008615eba07bac4cb40d9c6da1d015c77d613502b437",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/common-mixed-probe.npz": {
+      "sha256": "04963c987035edc565646e3cacac57a7d46c343775df94e01074590f6760fa37",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/common-optimizer_history-probe.npz": {
+      "sha256": "e757b5e43c6841a0f8a97dffd85da6d4b943909bdcd991ccaeb0538c6d698e71",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/common-real_only-probe.npz": {
+      "sha256": "0632e54ab9a317db65fb55d201ffc496d38f84bcc57f6fbf6ca68b39074b1afb",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/common-synthetic_only-probe.npz": {
+      "sha256": "07569cb5e60e7d70649dd759e63c3ac51fffc429609d25d2fa7e8acaa449f83f",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/completion.json": {
+      "sha256": "1ab76784862374582d78eca7604308648e0e69c727bdadb59b2c037706ca4cf7",
+      "bytes": 228,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/gradients.json": {
+      "sha256": "3626acae05fa48d073f0f44225fd7d40e7a10badd6a228a0dfb3efcf4ffcea72",
+      "bytes": 38405,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/historical-mixed-probe.npz": {
+      "sha256": "c0b14a01c8c42350bbf894c87725eea56acc11ddc071daf4b0ced169c7342b50",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/historical-optimizer_history-probe.npz": {
+      "sha256": "ac4b1cb15093d351e510deef2cbaa41c9a669ed9057e79d095823be36eae81db",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/historical-real_only-probe.npz": {
+      "sha256": "473929eed59e00c6865f4b6709bf5825295bae2787695e0cd42adbdb44960500",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/historical-synthetic_only-probe.npz": {
+      "sha256": "aca3914dc1b789cd1b6536ee78813bbee7ee39d071e8f674841e45aba4b48237",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/interventions.json": {
+      "sha256": "3d0f65fab80c1b1d3d5ae7a15080103c86e4fa64fc655c18a236674f3105f882",
+      "bytes": 8936,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/mixed-validation.npz": {
+      "sha256": "b14402b0c2f42a3f0dcfd10370fd190d08319f659b4d700439e0a58d19844425",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/optimizer_history-validation.npz": {
+      "sha256": "95ba2073e64ba3a86cf3e8160981f392fc42add6734c5160f7a90e1e29fbf547",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/probe_before.npz": {
+      "sha256": "7a8a240d7f6da6f4b586ae0de3f7060008777174693797ef62ec329501dc1219",
+      "bytes": 21242,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle05/validation_before.npz": {
+      "sha256": "d725ca9ca82c09737c3c9ca5c7e956a11984f7b1d658563770890cc043e63cb3",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/common-mixed-probe.npz": {
+      "sha256": "be0c2419a42906608115be53eb59508d3e10a865fbe141ef6accddaf8f6e0256",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/common-optimizer_history-probe.npz": {
+      "sha256": "5c4f037f06a5ca2a5b16d6a7cff376d74857f2b4ef351f505de830b819a01f66",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/common-real_only-probe.npz": {
+      "sha256": "6ff4c5e3d82a682852ed48f37fe76b2448b5e948eacb54494135ebaa845230d4",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/common-synthetic_only-probe.npz": {
+      "sha256": "1041abb616b39f1de3ac26317124c7deba3c624860e8b0e201184eeb30d4315d",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/completion.json": {
+      "sha256": "157eb8461b9adc3c019da5a5a4289fbfc1afc3fc061d298f6560b7c798d74823",
+      "bytes": 228,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/gradients.json": {
+      "sha256": "1347ecef06b64ad41cf36ecdef0b56ab67ee7a95111f32f09922d4adb839dc3c",
+      "bytes": 38334,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/historical-mixed-probe.npz": {
+      "sha256": "bd76307b2563034e6130ee1b28844efd46d500cedb29736bb2c4a57e9fe1fad0",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/historical-optimizer_history-probe.npz": {
+      "sha256": "6eec7e4e1d060545cafd4cd182d22d07f0c4266cf26b682b78f29c0d78d236b5",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/historical-real_only-probe.npz": {
+      "sha256": "a17c6d68552c32c4918d307b1ebcb40da93785992c66bb0064be3a869bf21f5b",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/historical-synthetic_only-probe.npz": {
+      "sha256": "2f0aa68163f3dc0d94bb7c81c5208ae178837587a3b699a671efa12a6e0edc28",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/interventions.json": {
+      "sha256": "95632dadeb38a6270cae44d35228550d97eda407d654cf548d9904c8072f945f",
+      "bytes": 8898,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/mixed-validation.npz": {
+      "sha256": "6a6cc5a74bc6624ae5f1fe803cd57010885b25b2477dc67d8b117d2a0f0ee67f",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/optimizer_history-validation.npz": {
+      "sha256": "432a8886c04c151c5606f7a4c92824c63b94593a78861b459e439fc2939fa151",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/probe_before.npz": {
+      "sha256": "7308d8d5b5fd4e72c3040ddc50a346ed7e5deb8a58c9e1512fb3e4c8fcca7a1c",
+      "bytes": 21242,
+      "repo_type": "dataset"
+    },
+    "cases/mixed99-cycle10/validation_before.npz": {
+      "sha256": "6394294e1c7dcd4d071f21322657143c87991b3cd1e3d9ea606fd90bad730adb",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/common-optimizer_history-probe.npz": {
+      "sha256": "9589f698b9f9ef4a71270721ee6871addb07717a83b50289b279c67c6b9068a6",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/common-real_only-probe.npz": {
+      "sha256": "9ad7b5e109fcc978d912516e970b7f1b9bba4d855f8e8049ea3f64c51e3a0a82",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/common-synthetic_only-probe.npz": {
+      "sha256": "805905ceffe5578ead94e3ef433ccb268444a194f11dda9dfdced2a0929d1a3f",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/completion.json": {
+      "sha256": "b35fc1c2b452ae2630a6f9e9198a57540ee1b24969e8053f5f04c6d6f1a8ed45",
+      "bytes": 227,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/gradients.json": {
+      "sha256": "05acd938377431a4131909f0c90542bc3a5c1f95254bc8e73c36f83e3ce11bcb",
+      "bytes": 39245,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/historical-optimizer_history-probe.npz": {
+      "sha256": "9589f698b9f9ef4a71270721ee6871addb07717a83b50289b279c67c6b9068a6",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/historical-real_only-probe.npz": {
+      "sha256": "298b09b6480904b30ec15836f823f000515880d9cbbb10aeb567af2f74a82143",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/historical-synthetic_only-probe.npz": {
+      "sha256": "49be65dc30bcbfe260409b7c655bd22bb105bc4423aa581e7af3a74a5698021f",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/interventions.json": {
+      "sha256": "87e582fca6cd90fd030d95bf91bee90bdbdefe6c12b353a3228271b4f5881bc2",
+      "bytes": 6447,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/optimizer_history-validation.npz": {
+      "sha256": "1a59a2056a3e6f01b3397f9899c6403716b4a6c171e0ae816eb22a3b85e9046d",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/probe_before.npz": {
+      "sha256": "e75c11457fddff2e74e15f8d2052166432bb3ab25e375760cce7990aaea523b7",
+      "bytes": 21242,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle01/validation_before.npz": {
+      "sha256": "064733208c7f74aae662008615eba07bac4cb40d9c6da1d015c77d613502b437",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/common-optimizer_history-probe.npz": {
+      "sha256": "ed5b564ab1314c6ae078d81cf146fb5ca5ec62a0399fa9b98ed98fa65f8c7f11",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/common-real_only-probe.npz": {
+      "sha256": "1041637009617b1052b84a6b0c1f0bb162bd18d920479032db1bf7b14fd71c14",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/common-synthetic_only-probe.npz": {
+      "sha256": "26c7f8f327d5d44a1637f0934f61cda495e02f2db0324a13bd30a96ed6480f5e",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/completion.json": {
+      "sha256": "aa98ffdb85e0ca022656697defb76310e2756edae2f96792da6ef521f1b6e348",
+      "bytes": 228,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/gradients.json": {
+      "sha256": "106dcdb75440ab7ec70ee79e999ed32a5bdea4d36f0d7336bfd47e1613e38151",
+      "bytes": 38315,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/historical-optimizer_history-probe.npz": {
+      "sha256": "341399cfc8e1ae6f309b05483d521a78dbd6f4567599e48745581624a7766c66",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/historical-real_only-probe.npz": {
+      "sha256": "d11421d20b4f46f0070f6289891476cd32836673f354491f13fb8ff81c9f953e",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/historical-synthetic_only-probe.npz": {
+      "sha256": "6ba8cfe8e3e979a958bacc47a333b6af9756073882ae55af65af4b9e7f6698ee",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/interventions.json": {
+      "sha256": "81d9e424fa7afe623089b3e6e46a5946b5d602cc44ec9316e4bbccb09a6a92d7",
+      "bytes": 6440,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/optimizer_history-validation.npz": {
+      "sha256": "846d567f13712c8f33cdd4e4d0130c12fd71350e9d2a69897420cc25eaf651c8",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/probe_before.npz": {
+      "sha256": "20aa875c23382cfb1dfb8ff5435232fbe826033344d723b22581f4242182dfa1",
+      "bytes": 21242,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle05/validation_before.npz": {
+      "sha256": "463c90f10602755bad72da012db48d2d4d558e574edc499ca4746ed976cc6547",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/common-optimizer_history-probe.npz": {
+      "sha256": "bdbd9c347802a95a4aad72ba9f2f9da9d4082f4da954931dabbf589285bb960c",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/common-real_only-probe.npz": {
+      "sha256": "c2f13226b54c654e0bc2f599e720f17505b6fa26f2aca9c408a4e2853cc1174f",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/common-synthetic_only-probe.npz": {
+      "sha256": "6ebf171e49817b71dbfb60acc11b08a9f596141d97fb9df2073698febbb07101",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/completion.json": {
+      "sha256": "961a2077a0e8c72e200c328cbcc9ce0ab17b22feb17e5c3fad88f8c6955693a1",
+      "bytes": 228,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/gradients.json": {
+      "sha256": "8142addd9206f0ca185c816c05fa6c783de0d8d23bba0a49bfc21bc7b7db8801",
+      "bytes": 38153,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/historical-optimizer_history-probe.npz": {
+      "sha256": "340b450f3570e0b593e667491c423924ed62dee61cd535f4e2cae7fc152f90c8",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/historical-real_only-probe.npz": {
+      "sha256": "f9f64c7f62e03e54f75c833a7ad9a36244eb80bafd1f0850fd22f6a076440182",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/historical-synthetic_only-probe.npz": {
+      "sha256": "8a4946cb41593b7dcbbddeb2406e12952a53914bb6cf1ca5efa9c7111d726043",
+      "bytes": 16896,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/interventions.json": {
+      "sha256": "26f2dd98b2b75a487df1009c7030b707e868ddf0e47d45ed746937a95374099f",
+      "bytes": 6467,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/optimizer_history-validation.npz": {
+      "sha256": "daafab44f05df47d783a43de3f034b400ec12d8ed24dc953531e8c98e974d689",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/probe_before.npz": {
+      "sha256": "cfadf1c6662e3740fdb609865e93edfc4912a3f7c07a1bdc2b9d87a60d79b2a2",
+      "bytes": 21242,
+      "repo_type": "dataset"
+    },
+    "cases/synthetic-cycle10/validation_before.npz": {
+      "sha256": "571d41d47f08fc752642a565cc9d4267d9a22edf8ab000a65c99fefcf148f26b",
+      "bytes": 119664,
+      "repo_type": "dataset"
+    },
+    "completion.json": {
+      "sha256": "ab07bf885c17020e2726390f5c4c949211d19db09351bd4963aeb9dc65e33e58",
+      "bytes": 67,
+      "repo_type": "dataset"
+    },
+    "config.json": {
+      "sha256": "3fc312e1026c9e07eb1f740fbe05e0bda48f96ff5ba8d37f1432ba1d91708cb1",
+      "bytes": 959,
+      "repo_type": "dataset"
+    },
+    "environment.json": {
+      "sha256": "1b8a44f4ac87d07e02b10650dbf24e5928820d5829d8632730bc3fd63837de6f",
+      "bytes": 219,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/01_weighted_gradient_strength.pdf": {
+      "sha256": "281319c6a2467ba96a9d7086d5af3aeeaabe5eaf801b1b32a8703abf77e14b19",
+      "bytes": 17196,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/01_weighted_gradient_strength.png": {
+      "sha256": "639901ac15614acf5326fec7e616fadda9f6a8c14793060c0a9b5e3f18b8c90d",
+      "bytes": 126211,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/02_gradient_alignment.pdf": {
+      "sha256": "2610c0912f4b1f1a41709dccba8b555ece0c6e62151f26db6d8d12d16567b903",
+      "bytes": 17022,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/02_gradient_alignment.png": {
+      "sha256": "4ae05abd4b1a2823dfc8725d2d09f299e14374c7c6a65e0002b4ba4528584d4c",
+      "bytes": 95289,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/03_mixed99_common_update_effects.pdf": {
+      "sha256": "73d43f31511718aed9d1d119544f22a2bb260fb8ee39faf23b4c9417f6c9d4ef",
+      "bytes": 19205,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/03_mixed99_common_update_effects.png": {
+      "sha256": "d1174e33cbc7ad2807ea38a45a6180c1485e29a6082f59ddadff2a8ed1ebb4dc",
+      "bytes": 119699,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/03_mixed99_historical_update_effects.pdf": {
+      "sha256": "599830ce06b919c142c1116fd9ea944089f55eff016b1c1b3dbdc55a88054068",
+      "bytes": 20191,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/03_mixed99_historical_update_effects.png": {
+      "sha256": "8b6df48273649bcf091a214c50fc9c5c1d168865518e3df20a4d70aabdbb1a8f",
+      "bytes": 124016,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/03_synthetic_common_update_effects.pdf": {
+      "sha256": "c6dea1b429b045cf31148bac9be08d4275433d978f5b72f13e6904cbde43a60e",
+      "bytes": 18288,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/03_synthetic_common_update_effects.png": {
+      "sha256": "7555e8a6f0df33f8cd1b6c8f919a61b61f84963b4b2427c408d722c2b5c318f0",
+      "bytes": 116986,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/03_synthetic_historical_update_effects.pdf": {
+      "sha256": "5c338efa96bc82072076174a8892a21bbb5139cf737bdf764211d7690c4c8092",
+      "bytes": 17932,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/03_synthetic_historical_update_effects.png": {
+      "sha256": "8ba5e0aa02a4d58e3759049b2e96eaa657d1712f62b325e6e0e9db1c7ec73edf",
+      "bytes": 118332,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/analysis_manifest.json": {
+      "sha256": "ac2bb991f440bb327d1596538a6627d1da3b251fd40d2149ff9d0f761fc53906",
+      "bytes": 5226,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/gradients.json": {
+      "sha256": "2ea5a32a49f220ec029da051885c2d6e87534f413ff69c9f6ebac52e2a7c6da4",
+      "bytes": 238664,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/report.md": {
+      "sha256": "739f5b603d1e5c79ce4d69cbf5bb5f06ecd4335d9c1aed05af122c7a36fe3332",
+      "bytes": 2570,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/updates.csv": {
+      "sha256": "220e33f7d6baf30b39574435e9d92500851f1c622301dad079d8b035494d204a",
+      "bytes": 9209,
+      "repo_type": "dataset"
+    },
+    "generated/20261113T193534Z-105b8534/updates.json": {
+      "sha256": "96ff7b8e1768c0fdee0d8d550d42dc3bc2d56ad797e02fa0a363af29b269216e",
+      "bytes": 46054,
+      "repo_type": "dataset"
+    },
+    "probe_manifest.json": {
+      "sha256": "be009936feaf33ca7308742a37c79bca86eff6e29c0735ada20a691a54e16952",
+      "bytes": 246,
+      "repo_type": "dataset"
+    },
+    "resources.json": {
+      "sha256": "9cbb62b1ea7c3bea949b24c13e97c21da936dcc387eca4048636d92afffb2d3d",
+      "bytes": 1260,
+      "repo_type": "dataset"
+    },
+    "source_bundle.json": {
+      "sha256": "0ad1fc39f891712d3c861c2de1d36b4394ac75be58b008aa8d57535455c0355f",
+      "bytes": 8504,
+      "repo_type": "dataset"
+    },
+    "source_recovery.json": {
+      "sha256": "2ed181d61bf27c9d67a1b0bb0089fe603d037746a01205e7ffd5d788e1558311",
+      "bytes": 43521,
+      "repo_type": "dataset"
+    },
+    "source_tensor_checks.json": {
+      "sha256": "cae576109b675765a95c6e8d3b28f5e4634010b9c31f7dfdcab765b177cc5501",
+      "bytes": 1255,
+      "repo_type": "dataset"
+    },
+    "validation_probe_indices.npy": {
+      "sha256": "1abcf0f01e81a008779e00b1653accb2bb2830a0cc8c720a0e07da8057d6b394",
+      "bytes": 8320,
+      "repo_type": "dataset"
+    }
+  }
+}

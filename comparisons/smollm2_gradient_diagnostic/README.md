@@ -38,3 +38,7 @@ Pinned source indexes, source-recovery records, tensor/optimizer checks, raw mea
 The first deployed pass omitted synthetic per-parameter norms while retaining all global measurements and real per-parameter norms. A separately accepted `phase: layer_norms` supplement recovers that breakdown without changing primary records. It also measures exploratory held-out-gradient alignment and reproduces isolated synthetic/mixed AdamW steps to compare their first-order and observed loss effects. Held-out gradients never supply an update. Source checkpoint files remain read-only; temporary shadow weights are restored exactly.
 
 The user's subsequent broad execution instruction authorizes at most **90 minutes combined paid compute** for the primary and supplementary jobs, sequentially on one GPU, within the same USD 3/0.35 task/validation caps. The original primary watchdog remains limited to 60 minutes. The supplement is admitted only after verified primary completion/shutdown and uses its immutable pinned measurement snapshot.
+
+## Completed execution
+
+The [report](../../reports/20261113T183849Z-gradient-diagnostic/report.md) and [completion receipt](../../docs/validation/2026-11-13_gradient-diagnostic-completion.json) contain the final primary/supplementary results, limits, recovery and costs. Both temporary resources are removed. Reproduce figures from the published small records; the launcher refuses duplicate compute against the completed allocation. The private pinned source archives preserve both executed runtimes.

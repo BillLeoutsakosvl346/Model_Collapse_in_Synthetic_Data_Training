@@ -1,0 +1,11 @@
+{
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "transformers": "4.37.2",
+    "datasets": "3.4.1"
+  },
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "diagnostic_precision": "fp32",
+  "dropout": false,
+  "tf32": false
+}

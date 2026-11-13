@@ -1,0 +1,207 @@
+[
+  {
+    "arm": "synthetic",
+    "cycle": 5,
+    "action": "optimizer_history",
+    "learning_rate_policy": "historical",
+    "learning_rate": 3.6180339887499274e-06,
+    "before_nll": 4.281386996753529,
+    "after_nll": 4.288230038612371,
+    "delta_nll": 0.006843041858841659,
+    "before_perplexity": 72.3407067818603,
+    "after_perplexity": 72.83743489373283,
+    "delta_nll_document_bootstrap_95": [
+      0.0067187769993137724,
+      0.006963749522424365
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "eee42b15f7f2e5f1d34197e57a3deac2a5c8e58af2e467b75cadca675cb0ba87",
+    "full_validation": {
+      "before_nll": 4.35122256163521,
+      "after_nll": 4.358034209509691,
+      "delta_nll": 0.006811647874481075,
+      "before_perplexity": 77.57324304705338,
+      "after_perplexity": 78.10344839918983,
+      "delta_nll_document_bootstrap_95": [
+        0.0066893086767278375,
+        0.006938111104406445
+      ],
+      "documents": 983,
+      "scored_tokens": 476608
+    },
+    "relative_to_optimizer_history": {
+      "before_nll": 4.288230038612371,
+      "after_nll": 4.288230038612371,
+      "delta_nll": 0.0,
+      "before_perplexity": 72.83743489373283,
+      "after_perplexity": 72.83743489373283,
+      "delta_nll_document_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 5,
+    "action": "real_only",
+    "learning_rate_policy": "historical",
+    "learning_rate": 3.6180339887499274e-06,
+    "before_nll": 4.281386996753529,
+    "after_nll": 4.171243135176137,
+    "delta_nll": -0.11014386157739153,
+    "before_perplexity": 72.3407067818603,
+    "after_perplexity": 64.79595218823151,
+    "delta_nll_document_bootstrap_95": [
+      -0.1125685828155276,
+      -0.1079057340281421
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "ce2c32865c395626f4f3425dc9a465fa25559c65e7615be8b9ba5ca46b0122df",
+    "relative_to_optimizer_history": {
+      "before_nll": 4.288230038612371,
+      "after_nll": 4.171243135176137,
+      "delta_nll": -0.11698690343623319,
+      "before_perplexity": 72.83743489373283,
+      "after_perplexity": 64.79595218823151,
+      "delta_nll_document_bootstrap_95": [
+        -0.11953601694598828,
+        -0.11461851083648633
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 5,
+    "action": "synthetic_only",
+    "learning_rate_policy": "historical",
+    "learning_rate": 3.6180339887499274e-06,
+    "before_nll": 4.281386996753529,
+    "after_nll": 4.282180035813224,
+    "delta_nll": 0.0007930390596948556,
+    "before_perplexity": 72.3407067818603,
+    "after_perplexity": 72.3980985418901,
+    "delta_nll_document_bootstrap_95": [
+      0.0007023284421172625,
+      0.0008844217759477388
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "8670323ab8c4e221e3545e8e29de5793d2c1e3163b3df933d588f925a4e2fa4c",
+    "relative_to_optimizer_history": {
+      "before_nll": 4.288230038612371,
+      "after_nll": 4.282180035813224,
+      "delta_nll": -0.006050002799146803,
+      "before_perplexity": 72.83743489373283,
+      "after_perplexity": 72.3980985418901,
+      "delta_nll_document_bootstrap_95": [
+        -0.0061892816591374075,
+        -0.005915713297471779
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 5,
+    "action": "optimizer_history",
+    "learning_rate_policy": "common",
+    "learning_rate": 3e-06,
+    "before_nll": 4.281386996753529,
+    "after_nll": 4.287055492226189,
+    "delta_nll": 0.00566849547266024,
+    "before_perplexity": 72.3407067818603,
+    "after_perplexity": 72.7519341699122,
+    "delta_nll_document_bootstrap_95": [
+      0.00556549255508631,
+      0.00576843562353567
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "42d5d6c6e3ce08eabed7d48e442e4c2d0fdc876028f6c1e0df2d1235d8d9dc4f",
+    "relative_to_optimizer_history": {
+      "before_nll": 4.287055492226189,
+      "after_nll": 4.287055492226189,
+      "delta_nll": 0.0,
+      "before_perplexity": 72.7519341699122,
+      "after_perplexity": 72.7519341699122,
+      "delta_nll_document_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 5,
+    "action": "real_only",
+    "learning_rate_policy": "common",
+    "learning_rate": 3e-06,
+    "before_nll": 4.281386996753529,
+    "after_nll": 4.1894089541870265,
+    "delta_nll": -0.09197804256650244,
+    "before_perplexity": 72.3407067818603,
+    "after_perplexity": 65.98377999602118,
+    "delta_nll_document_bootstrap_95": [
+      -0.09400998077796546,
+      -0.09010287718723677
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "1d1f22bc400a2b9534c831b8a8a39e1a7572286137e991980d377858869e14b9",
+    "relative_to_optimizer_history": {
+      "before_nll": 4.287055492226189,
+      "after_nll": 4.1894089541870265,
+      "delta_nll": -0.09764653803916268,
+      "before_perplexity": 72.7519341699122,
+      "after_perplexity": 65.98377999602118,
+      "delta_nll_document_bootstrap_95": [
+        -0.09977925484350504,
+        -0.09567596095635156
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 5,
+    "action": "synthetic_only",
+    "learning_rate_policy": "common",
+    "learning_rate": 3e-06,
+    "before_nll": 4.281386996753529,
+    "after_nll": 4.282042612599753,
+    "delta_nll": 0.000655615846223867,
+    "before_perplexity": 72.3407067818603,
+    "after_perplexity": 72.38815004613207,
+    "delta_nll_document_bootstrap_95": [
+      0.000580388510631597,
+      0.0007313878928191542
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "c15c075c983e881f208c26919caa8769f363049b1b2efa781ee8d338521191f9",
+    "relative_to_optimizer_history": {
+      "before_nll": 4.287055492226189,
+      "after_nll": 4.282042612599753,
+      "delta_nll": -0.005012879626436373,
+      "before_perplexity": 72.7519341699122,
+      "after_perplexity": 72.38815004613207,
+      "delta_nll_document_bootstrap_95": [
+        -0.005128219396503149,
+        -0.004901501146822735
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  }
+]

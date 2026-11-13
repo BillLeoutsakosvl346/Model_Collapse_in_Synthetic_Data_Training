@@ -1,0 +1,168 @@
+{
+  "recorded_utc": "2026-11-13T20:05:19.733936+00:00",
+  "completed": true,
+  "primary_run_id": "20261113T183849Z-gradient-diagnostic",
+  "supplement_run_id": "20261113T193724Z-gradient-layers",
+  "checks": {
+    "focused_offline_tests": 72,
+    "miniature_gpu_acceptance_passes": 2,
+    "checks_per_acceptance": 6,
+    "primary_cases": 6,
+    "distinct_source_checkpoints": 5,
+    "original_optimizer_states_restored": 4,
+    "primary_update_records": 42,
+    "supplement_cases": 6,
+    "supplement_update_records": 13,
+    "heldout_gradient_applied_to_optimizer": false,
+    "full_validation_pairs": 7447,
+    "validation_probe_pairs": 1024,
+    "validation_probe_documents": 983,
+    "probe_scored_targets": 65536,
+    "maximum_mixture_gradient_relative_error": 7.417838663316679e-07,
+    "maximum_supplement_gradient_norm_relative_error": 9.396303403655621e-09,
+    "maximum_replayed_probe_nll_absolute_error": 1.768569205910786e-07,
+    "bitwise_shadow_update_replay_claimed": false,
+    "source_tensors_restored_exactly": true
+  },
+  "recovery": {
+    "primary": {
+      "run_id": "20261113T183849Z-gradient-diagnostic",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "6facfda7a36214b6c20f51c9d9e1ef168cecd303",
+        "dataset": "71f218c6209522a0577c8a84cf4130c239d233fa"
+      },
+      "artifact_index_sha256": "e48d6f3c958202bbc251e27711e9001f40c00e5e166b04acfd48661c818e3323",
+      "indexed_files": 108,
+      "verified_files": 108,
+      "verified_bytes": 4088084,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {
+        "resources.json": {
+          "recovered_path": "fetched_control/9cbb62b1ea7c3bea949b24c13e97c21da936dcc387eca4048636d92afffb2d3d/resources.json",
+          "sha256": "9cbb62b1ea7c3bea949b24c13e97c21da936dcc387eca4048636d92afffb2d3d",
+          "authoritative_local_sha256": "e3aa9be96a1f3bf1ef45a32d1ea6447b92c899f43c89e207de9e92d3168f4c16"
+        },
+        "status.json": {
+          "recovered_path": "fetched_control/580c7bc2029de06f8909bbc2e6e768e6656261a8f4046fd9970e6e39af34389f/status.json",
+          "sha256": "580c7bc2029de06f8909bbc2e6e768e6656261a8f4046fd9970e6e39af34389f",
+          "authoritative_local_sha256": "4f9966c0bdc21be71198a85b3951871364cd68d253147af93f7699a7200dd6d8"
+        }
+      },
+      "operational_files_outside_immutable_index": [
+        "status.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261113T183849Z-gradient-diagnostic"
+    },
+    "supplement": {
+      "run_id": "20261113T193724Z-gradient-layers",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "6facfda7a36214b6c20f51c9d9e1ef168cecd303",
+        "dataset": "c82acb6c3fe32166ea4419a4274f66a6922d0d5e"
+      },
+      "artifact_index_sha256": "5c591c63bf0b94f782fd91c46a776bc0629dd9a771af6aa0963ca326eb480923",
+      "indexed_files": 26,
+      "verified_files": 26,
+      "verified_bytes": 736164,
+      "metadata_only": false,
+      "scope": "full",
+      "preserved_control_files": {
+        "resources.json": {
+          "recovered_path": "fetched_control/df9cfd45035f6a0f43b44fef3db4b5e500c643aed72aca1dd3919c54290c8e30/resources.json",
+          "sha256": "df9cfd45035f6a0f43b44fef3db4b5e500c643aed72aca1dd3919c54290c8e30",
+          "authoritative_local_sha256": "a6d6c237a6870ed7ffd19200dcd67b64b27a41e594ef58c4e42e01c84c7ca873"
+        }
+      },
+      "operational_files_outside_immutable_index": [
+        "status.json",
+        "watchdog_exit.json"
+      ],
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261113T193724Z-gradient-layers"
+    },
+    "scope": "Selected five model checkpoints, four optimizer states, exact saved cycle-1/5/10 inputs/generations/mixtures restored and checked remotely. Unselected historical stages were not cold-restored. Historical stores preserved.",
+    "source_restored_bytes_including_inputs_metadata": 7112195288,
+    "source_archives_receipt": "docs/validation/2026-11-13_gradient-diagnostic-source-archives.json"
+  },
+  "cost": {
+    "conservative_resource_estimate_usd": 0.8969674166671749,
+    "validation_estimate_subset_usd": 0.0834346227816822,
+    "combined_paid_compute_seconds": 4879.764973163605,
+    "authorized_combined_paid_compute_seconds": 5400,
+    "gpu_time_at_live_rate_usd": 0.7726294540842373,
+    "observed_account_balance_decrease_usd": 1.0395493987000002,
+    "account_decrease_includes_historical_retained_storage": true,
+    "provider_gpu_billing_not_yet_posted_at_primary_read": true,
+    "task_cap_usd": 3.0,
+    "cumulative_cap_usd": 110.0,
+    "reserve_usd": 2.0,
+    "credits_purchased": false,
+    "payment_settings_changed": false
+  },
+  "resources": {
+    "task_pods_removed": [
+      "iz0crfjajzn95x",
+      "ywgrkn5pia0bis"
+    ],
+    "task_volumes_removed": [
+      "77wa7nk1mv",
+      "emnaa75w0i",
+      "i392os8umw",
+      "w7564tghw6"
+    ],
+    "active_task_gpu_count": 0,
+    "historical_recovery_resources_preserved": true,
+    "shutdowns": [
+      {
+        "run_id": "20261113T183849Z-gradient-diagnostic",
+        "provider_pod_id": "iz0crfjajzn95x",
+        "provider_status": "EXITED",
+        "field": "lastStatusChange",
+        "value": "Exited by user: Fri Nov 13 2026 19:35:59 GMT+0000 (Coordinated Universal Time)",
+        "provider_shutdown_epoch": 1794598559.0,
+        "observed_at": 1794598581.0308828
+      },
+      {
+        "run_id": "20261113T193724Z-gradient-layers",
+        "provider_pod_id": "ywgrkn5pia0bis",
+        "provider_status": "EXITED",
+        "field": "lastStatusChange",
+        "value": "Exited by user: Fri Nov 13 2026 20:01:39 GMT+0000 (Coordinated Universal Time)",
+        "provider_shutdown_epoch": 1794600099.0,
+        "observed_at": 1794600102.048116
+      }
+    ]
+  },
+  "outputs": {
+    "report": "reports/20261113T183849Z-gradient-diagnostic/report.md",
+    "analysis": "reports/20261113T183849Z-gradient-diagnostic/generated/diagnostic-20261113",
+    "square_figure_families": 12,
+    "raw_indexed_files": 134,
+    "raw_verified_bytes": 4824248,
+    "offline_from_published_records_without_network": true
+  },
+  "executed_runtimes": {
+    "primary": {
+      "run_id": "20261113T183849Z-gradient-diagnostic",
+      "runtime_sha256": "925f9ba422cf9d56c3e0b403b91757999f89ce1f67a206a3209134f86a9520fc",
+      "configuration_sha256": "5c27ad8e0affd7b91e47739d98e84d6fdf0aa75b22799c75bb62c5f2ee64ee00"
+    },
+    "supplement": {
+      "run_id": "20261113T193724Z-gradient-layers",
+      "runtime_sha256": "9b2811e1b2b0de95c70140031a59de7026ceab4ccc9def34963e9cf3c29a5c90",
+      "configuration_sha256": "f5741e7677306af10897d4d53a2e2a163a72c921c0414e741957b8cf9b2b6793"
+    }
+  },
+  "figure_visual_qa": {
+    "families_reviewed": 12,
+    "square_figures": true,
+    "method": "Contact sheet inspection; representative full-size figure checks."
+  }
+}

@@ -110,3 +110,10 @@
 /scripts/analysis/compose_smollm_fraction_report.py text eol=lf
 /scripts/analysis/render_connected_smollm_endpoints.py text eol=lf
 /docs/validation/2026-11-12_smollm2-connected-endpoint-figures.json -text whitespace=cr-at-eol
+# Diagnostic source comparisons and scientific output hashes survive Windows checkout.
+/model_collapse/science/engine.py text eol=lf
+/model_collapse/science/gradients.py text eol=lf
+/model_collapse/artifacts/gradient_sources.py text eol=lf
+/scripts/analysis/interpret_gradient_diagnostic.py text eol=lf
+/reports/20261113T183849Z-gradient-diagnostic/** -text whitespace=cr-at-eol,-blank-at-eof
+/docs/validation/2026-11-13_gradient-diagnostic*.json -text whitespace=cr-at-eol

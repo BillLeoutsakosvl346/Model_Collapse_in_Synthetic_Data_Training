@@ -1,0 +1,92 @@
+[
+  {
+    "cycle": 1,
+    "learning_rate_policy": "historical",
+    "before_nll": 2.8299318356588543,
+    "after_nll": 2.8299270625251567,
+    "delta_nll": -4.773133697622001e-06,
+    "before_perplexity": 16.94430578773511,
+    "after_perplexity": 16.94422491049119,
+    "delta_nll_document_bootstrap_95": [
+      -5.880969847952101e-06,
+      -3.641544505336711e-06
+    ],
+    "documents": 983,
+    "scored_tokens": 65536
+  },
+  {
+    "cycle": 1,
+    "learning_rate_policy": "common",
+    "before_nll": 2.829850076888101,
+    "after_nll": 2.829847204901739,
+    "delta_nll": -2.8719863620629837e-06,
+    "before_perplexity": 16.942920498753175,
+    "after_perplexity": 16.94287183898644,
+    "delta_nll_document_bootstrap_95": [
+      -3.535393730566284e-06,
+      -2.225177098039109e-06
+    ],
+    "documents": 983,
+    "scored_tokens": 65536
+  },
+  {
+    "cycle": 5,
+    "learning_rate_policy": "historical",
+    "before_nll": 3.927766056781108,
+    "after_nll": 3.924926194492925,
+    "delta_nll": -0.0028398622881828928,
+    "before_perplexity": 50.79338130280114,
+    "after_perplexity": 50.64933972068426,
+    "delta_nll_document_bootstrap_95": [
+      -0.002912158238887711,
+      -0.0027767472978216697
+    ],
+    "documents": 983,
+    "scored_tokens": 65536
+  },
+  {
+    "cycle": 5,
+    "learning_rate_policy": "common",
+    "before_nll": 3.9274551213295714,
+    "after_nll": 3.925097899881063,
+    "delta_nll": -0.002357221448508362,
+    "before_perplexity": 50.77759029496999,
+    "after_perplexity": 50.658037231903336,
+    "delta_nll_document_bootstrap_95": [
+      -0.002417274158810233,
+      -0.00230496150306636
+    ],
+    "documents": 983,
+    "scored_tokens": 65536
+  },
+  {
+    "cycle": 10,
+    "learning_rate_policy": "historical",
+    "before_nll": 4.584373248497522,
+    "after_nll": 4.582106931272143,
+    "delta_nll": -0.0022663172253789554,
+    "before_perplexity": 97.94178274197989,
+    "after_perplexity": 97.72006692675095,
+    "delta_nll_document_bootstrap_95": [
+      -0.0023078024500088794,
+      -0.002224917233610762
+    ],
+    "documents": 983,
+    "scored_tokens": 65536
+  },
+  {
+    "cycle": 10,
+    "learning_rate_policy": "common",
+    "before_nll": 4.582520421616014,
+    "after_nll": 4.5763504493335745,
+    "delta_nll": -0.006169972282439318,
+    "before_perplexity": 97.76048158578735,
+    "after_perplexity": 97.1591591032323,
+    "delta_nll_document_bootstrap_95": [
+      -0.006282278537336168,
+      -0.006056975033400564
+    ],
+    "documents": 983,
+    "scored_tokens": 65536
+  }
+]

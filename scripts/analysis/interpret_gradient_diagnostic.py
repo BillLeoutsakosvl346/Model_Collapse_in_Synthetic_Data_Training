@@ -51,7 +51,7 @@ def build(run, out, layers=None):
                   [r['delta_nll_document_bootstrap_95'][1] for r in rows],color=color,alpha=.4)
     ax.axhline(0,color='black',lw=1)
     ax.set(xlabel='Before training cycle',ylabel='Mixed-step NLL minus synthetic-only-step NLL',
-           title='Does replacing 1% of targets with real data help?\nSame 99% checkpoint and AdamW state')
+           title='Does the 1% real component improve the update?\nSame 99% checkpoint and AdamW state')
     ax.grid(alpha=.2);ax.legend();fig.tight_layout();name='06_effect_of_real_injection'
     fig.savefig(out/(name+'.png'),dpi=180);fig.savefig(out/(name+'.pdf'),metadata={'CreationDate':None,'ModDate':None});plt.close(fig);more.append(name+'.png')
     mixed_rows=sorted((r for r in gradients if r['arm']=='mixed99'),key=lambda r:r['cycle'])
@@ -84,6 +84,7 @@ def build(run, out, layers=None):
               "real_mean_gradient_norm":g['real_vs_synthetic']['norm'],"synthetic_mean_gradient_norm":g['real_vs_synthetic']['other_norm'],
               "weighted_real_norm":g['weighted_real_norm'],"weighted_synthetic_norm":g['weighted_synthetic_norm'],
               "actual_source_cosine":g['real_vs_synthetic']['cosine'],"matched_prompt_cosine":g['matched_real_vs_synthetic']['cosine'],
+              "matched_prompt_real_mean_gradient_norm":g['matched_real_vs_synthetic']['norm'],
               "real_source_nll":g['real_source']['loss'],"synthetic_source_nll":g['synthetic_source']['loss'],
               "source_real_pairs":g['real_source']['pairs'],"source_synthetic_pairs":g['synthetic_source']['pairs'],
               "historical_learning_rate":g['original_learning_rate']}
@@ -114,6 +115,11 @@ def build(run, out, layers=None):
                     'actual_weighted_real_norm':.01*real if item['arm']=='mixed99' else 0.,
                     'actual_weighted_synthetic_norm':(.99 if item['arm']=='mixed99' else 1.)*value})
             for direction in item.get('directional_interventions',[]):
+                array_path=layer_root/'directional_arrays'/f"{item['arm']}-cycle{item['cycle']:02d}-{direction['action']}.npz"
+                with np.load(array_path) as arrays, np.load(run/'cases'/f"{item['arm']}-cycle{item['cycle']:02d}"/'probe_before.npz') as primary_probe:
+                    uncertainty=paired_change(arrays['before_nll_sum'],arrays['after_nll_sum'],arrays['counts'],primary_probe['documents'])
+                    direction={**direction,'observed_validation_delta_nll_document_bootstrap_95':uncertainty['delta_nll_document_bootstrap_95']}
+                extra_inputs['layer_supplement/directional_arrays/'+array_path.name]=sha256(array_path)
                 directional_rows.append({'arm':item['arm'],'cycle':item['cycle'],
                     'synthetic_validation_gradient_cosine':item['synthetic_vs_validation_gradient']['cosine'],**direction})
             extra_inputs['layer_supplement/'+path.name]=sha256(path)

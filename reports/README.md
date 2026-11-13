@@ -2,6 +2,10 @@
 
 Full experiments measure scientific trajectories; smoke experiments validate the pipeline. All full conditions currently use one seed. A report's recorded recovery scope is not proof of live cloud state or complete bulk restoration. See [current state](../docs/current-state.md) for the latest recorded execution.
 
+## Checkpoint diagnostics
+
+The [SmolLM2 real/synthetic gradient study](20261113T183849Z-gradient-diagnostic/report.md) restores five selected checkpoints and four optimizer states from the completed 99%/100% comparison. Six primary cases / 42 controlled updates show a beneficial local real-data component, positively aligned late source gradients and a substantial role for AdamW history. The [completion receipt](../docs/validation/2026-11-13_gradient-diagnostic-completion.json) records an exploratory momentum follow-up, full small-evidence recovery, twelve square figure families and removed temporary resources. This is a local loss-landscape diagnostic, not another recursive-training run or a complete explanation of the historical trajectories.
+
 ## Audits
 
 The [independent FineWeb fraction audit](20261111_fineweb_fraction_audit/README.md) checks the original synthetic-mixture code, frozen bank, actual lineage, final 99% arrays,77 metric rows and 70 probes. No numerical/training fault was found;44 inherited source-hash fields have mixed checksum scope, resolved in a new explicit provenance map. Historical results remain unchanged. This is read-only analysis, not new training.

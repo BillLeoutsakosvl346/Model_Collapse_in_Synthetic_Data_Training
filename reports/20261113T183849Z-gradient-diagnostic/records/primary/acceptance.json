@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "finite_conditional_loss": true,
+    "exactly_64_scored_targets": true,
+    "mixture_gradient_identity": true,
+    "actual_isolated_weight_update": true,
+    "source_weights_unchanged": true,
+    "cuda_fp32": true
+  },
+  "gradient_relative_error": 0.0,
+  "pairs": 16,
+  "validation_pairs": 16,
+  "runtime_sha256": "925f9ba422cf9d56c3e0b403b91757999f89ce1f67a206a3209134f86a9520fc",
+  "config_sha256": "5c27ad8e0affd7b91e47739d98e84d6fdf0aa75b22799c75bb62c5f2ee64ee00",
+  "time": 1794595432.4449296,
+  "elapsed_paid_seconds": 300.9093475341797
+}

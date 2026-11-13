@@ -1,0 +1,207 @@
+[
+  {
+    "arm": "synthetic",
+    "cycle": 10,
+    "action": "optimizer_history",
+    "learning_rate_policy": "historical",
+    "learning_rate": 1.0978869674096952e-06,
+    "before_nll": 6.428555583568525,
+    "after_nll": 6.427278550452353,
+    "delta_nll": -0.0012770331161719994,
+    "before_perplexity": 619.2788052069504,
+    "after_perplexity": 618.4884704138169,
+    "delta_nll_document_bootstrap_95": [
+      -0.0013274670323759313,
+      -0.0012296054135525654
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "0c79e8e70ca5a36c0e7b7123a9b0a219c33212e8ac78396bf90a3a3a33123b02",
+    "full_validation": {
+      "before_nll": 6.5154588618447855,
+      "after_nll": 6.514213559664682,
+      "delta_nll": -0.0012453021801031028,
+      "before_perplexity": 675.503853363272,
+      "after_perplexity": 674.6631705027528,
+      "delta_nll_document_bootstrap_95": [
+        -0.0012765440223117303,
+        -0.0012147204453904225
+      ],
+      "documents": 983,
+      "scored_tokens": 476608
+    },
+    "relative_to_optimizer_history": {
+      "before_nll": 6.427278550452353,
+      "after_nll": 6.427278550452353,
+      "delta_nll": 0.0,
+      "before_perplexity": 618.4884704138169,
+      "after_perplexity": 618.4884704138169,
+      "delta_nll_document_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 10,
+    "action": "real_only",
+    "learning_rate_policy": "historical",
+    "learning_rate": 1.0978869674096952e-06,
+    "before_nll": 6.428555583568525,
+    "after_nll": 6.333686291973497,
+    "delta_nll": -0.09486929159502822,
+    "before_perplexity": 619.2788052069504,
+    "after_perplexity": 563.2289982979402,
+    "delta_nll_document_bootstrap_95": [
+      -0.096416903952427,
+      -0.09344128253427725
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "054763a1a7169bae035eb66d49744123fc2f0db165bbb086fb13429653e90d64",
+    "relative_to_optimizer_history": {
+      "before_nll": 6.427278550452353,
+      "after_nll": 6.333686291973497,
+      "delta_nll": -0.09359225847885622,
+      "before_perplexity": 618.4884704138169,
+      "after_perplexity": 563.2289982979402,
+      "delta_nll_document_bootstrap_95": [
+        -0.09510975792757675,
+        -0.09219376178618216
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 10,
+    "action": "synthetic_only",
+    "learning_rate_policy": "historical",
+    "learning_rate": 1.0978869674096952e-06,
+    "before_nll": 6.428555583568525,
+    "after_nll": 6.416610243020541,
+    "delta_nll": -0.011945340547984351,
+    "before_perplexity": 619.2788052069504,
+    "after_perplexity": 611.9253163882952,
+    "delta_nll_document_bootstrap_95": [
+      -0.012187092137369916,
+      -0.011711619118599045
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "5d8abfebc307617e83191d7ca3b902e691d34960256e43841aa969fb68ca0988",
+    "relative_to_optimizer_history": {
+      "before_nll": 6.427278550452353,
+      "after_nll": 6.416610243020541,
+      "delta_nll": -0.010668307431812352,
+      "before_perplexity": 618.4884704138169,
+      "after_perplexity": 611.9253163882952,
+      "delta_nll_document_bootstrap_95": [
+        -0.0108681954328702,
+        -0.010478767978345703
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 10,
+    "action": "optimizer_history",
+    "learning_rate_policy": "common",
+    "learning_rate": 3e-06,
+    "before_nll": 6.428555583568525,
+    "after_nll": 6.425053928712668,
+    "delta_nll": -0.0035016548558575167,
+    "before_perplexity": 619.2788052069504,
+    "after_perplexity": 617.1140968142914,
+    "delta_nll_document_bootstrap_95": [
+      -0.003639125581005734,
+      -0.003372296076042403
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "6e0f8521ad0e132dbd4b5739bbcc4d53dc7ee400507ec880a93b9d5c80b14691",
+    "relative_to_optimizer_history": {
+      "before_nll": 6.425053928712668,
+      "after_nll": 6.425053928712668,
+      "delta_nll": 0.0,
+      "before_perplexity": 617.1140968142914,
+      "after_perplexity": 617.1140968142914,
+      "delta_nll_document_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 10,
+    "action": "real_only",
+    "learning_rate_policy": "common",
+    "learning_rate": 3e-06,
+    "before_nll": 6.428555583568525,
+    "after_nll": 6.168080600647526,
+    "delta_nll": -0.26047498292099913,
+    "before_perplexity": 619.2788052069504,
+    "after_perplexity": 477.2691562648315,
+    "delta_nll_document_bootstrap_95": [
+      -0.26474537912392354,
+      -0.2565780748929967
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "6fd6764425e2931a6c5e108656a803c7b80649de97d8a59b26d27fc01d175c8d",
+    "relative_to_optimizer_history": {
+      "before_nll": 6.425053928712668,
+      "after_nll": 6.168080600647526,
+      "delta_nll": -0.2569733280651416,
+      "before_perplexity": 617.1140968142914,
+      "after_perplexity": 477.2691562648315,
+      "delta_nll_document_bootstrap_95": [
+        -0.26112828195621596,
+        -0.25316513060301443
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  },
+  {
+    "arm": "synthetic",
+    "cycle": 10,
+    "action": "synthetic_only",
+    "learning_rate_policy": "common",
+    "learning_rate": 3e-06,
+    "before_nll": 6.428555583568525,
+    "after_nll": 6.395865121172373,
+    "delta_nll": -0.03269046239615214,
+    "before_perplexity": 619.2788052069504,
+    "after_perplexity": 599.3616194229508,
+    "delta_nll_document_bootstrap_95": [
+      -0.033346130935499194,
+      -0.03205367996622042
+    ],
+    "documents": 983,
+    "scored_tokens": 65536,
+    "weights_after_sha256": "24674af5f2c61a85514b6dc7d3dfa67cf26566b1837aa23a8794a67f99a38a28",
+    "relative_to_optimizer_history": {
+      "before_nll": 6.425053928712668,
+      "after_nll": 6.395865121172373,
+      "delta_nll": -0.029188807540294626,
+      "before_perplexity": 617.1140968142914,
+      "after_perplexity": 599.3616194229508,
+      "delta_nll_document_bootstrap_95": [
+        -0.0297386092956597,
+        -0.02867171065516242
+      ],
+      "documents": 983,
+      "scored_tokens": 65536
+    }
+  }
+]
