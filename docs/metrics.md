@@ -2,6 +2,12 @@
 
 All comparisons must use matching tokenisation, context, masks, output counts and denominators. Raw measurements remain in the dated run reports and records; generated analysis must cite those inputs and hashes.
 
+## Checkpoint-gradient diagnostics
+
+Source gradients are means over scored continuation tokens. Their L2 norms describe magnitude, cosine alignment describes direction, and the actual 99% mixture is `0.01 * real_gradient + 0.99 * synthetic_gradient`. A norm ratio is not a percentage of causal influence. The same-prompt control replaces synthetic targets with the original real continuation at identical prompt rows.
+
+Isolated diagnostic updates use complete-source mean gradients, FP32 and disabled dropout. They are not historical minibatch replays. Validation NLL changes measure immediate held-out effects; explicit zero-gradient AdamW steps control for carried momentum and weight decay. Paired document-bootstrap intervals describe validation-sample variability, not independent training seeds. Undefined cosine for a near-zero gradient remains null.
+
 | Metric | Definition and unit | Interpretation limit |
 | --- | --- | --- |
 | Real validation/test NLL | Sum of next-token negative log-probabilities divided by the count of scored shifted targets; nats/token | Validation selects only under the best-validation policy; diagnostic under final-epoch selection. Test is reporting-only |

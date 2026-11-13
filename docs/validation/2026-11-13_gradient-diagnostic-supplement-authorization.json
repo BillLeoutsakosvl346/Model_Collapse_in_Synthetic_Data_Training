@@ -1,0 +1,15 @@
+{
+  "recorded_utc": "2026-11-13T19:15:52.540270+00:00",
+  "authorization": "User approved any costs/necessary work and requested continued execution until meaningful results, on 13 November 2026.",
+  "scope": "Finish missing synthetic per-parameter norms in one separately accepted read-only supplement after the main diagnostic has shut down. Add exploratory validation-gradient/AdamW-displacement alignment after the positive middle-checkpoint gradient alignment was observed. Validation gradients never update weights.",
+  "reason": "Primary diagnostic saved real per-parameter norms but omitted synthetic per-parameter norms; primary raw measurements and deployed source remain unchanged.",
+  "max_combined_paid_compute_seconds": 5400,
+  "allocation_budget_usd": 3.0,
+  "combined_validation_cap_usd": 0.35,
+  "cumulative_ceiling_usd": 110.0,
+  "historical_setup_ceiling_usd": 5.4,
+  "reserve_usd": 2.0,
+  "one_gpu_at_a_time": true,
+  "original_main_compute_deadline_unchanged": true,
+  "no_recursive_training_or_new_generated_targets": true
+}

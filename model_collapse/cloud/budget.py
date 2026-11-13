@@ -3,6 +3,10 @@
 def accrued_cost(d, timestamp, kind=None, *, default_volume_hourly=30 * 0.07 / 730):
     total = 0.0
     for x in d["launches"]:
+        if kind == "smoke" and x.get("kind") == "diagnostic":
+            # This is a subset of the already charged compute interval, not a second debit.
+            total += x.get("validation_estimated_usd", 0.0)
+            continue
         if kind and x["kind"] != kind:
             continue
         if x.get("compute_started_at") is not None:

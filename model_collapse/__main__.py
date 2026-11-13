@@ -10,6 +10,9 @@ def main():
     sub = p.add_subparsers(dest="command", required=True)
     pre = sub.add_parser("preflight")
     pre.add_argument("--probe", action="store_true", help="Verify private upload/download checksums")
+    diagnostic = sub.add_parser("diagnose-gradients", help="Guarded checkpoint diagnostic; no recursive training")
+    diagnostic.add_argument("--config", required=True)
+    diagnostic.add_argument("--preflight-only", action="store_true")
     launch = sub.add_parser("launch")
     launch.add_argument("--generations", type=int, choices=range(1, 11), default=None)
     launch_selection = launch.add_mutually_exclusive_group()
@@ -39,6 +42,10 @@ def main():
         s.add_argument("--generation", type=int, default=0)
         s.add_argument("--config", default="configs/full.yaml")
     a = p.parse_args()
+    if a.command == "diagnose-gradients":
+        from .cloud.gradient_diagnostic import launch
+        print(json.dumps(launch(a.config, preflight_only=a.preflight_only), indent=2))
+        return
     if a.command in ("prepare", "train", "generate", "evaluate"):
         from .stages import stage
         print(json.dumps(stage(a.command, a.root, a.generation, a.config), indent=2))

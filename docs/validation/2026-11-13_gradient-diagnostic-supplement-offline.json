@@ -1,0 +1,24 @@
+{
+  "recorded_at": 1794598336.057206,
+  "tests_passed": 72,
+  "tests": [
+    "tests/test_gradient_diagnostic.py",
+    "tests/repository/test_cli_config.py",
+    "tests/cloud/test_authorized_task_budget.py",
+    "tests/cloud/test_runpod_client_reads.py"
+  ],
+  "repository_check": {
+    "markdown": 140,
+    "configurations": 52,
+    "publication_manifests": 28,
+    "passed": true
+  },
+  "scope": "Separate supplement and final operational integration. Primary deployed runtime and original 66-test receipt remain unchanged.",
+  "added_checks": [
+    "read-only synthetic per-parameter reconstruction",
+    "validation gradient measured but never applied",
+    "isolated saved-momentum and zero-first-moment shadows",
+    "unchanged source tensors after shadow updates"
+  ],
+  "no_paid_work_from_tests": true
+}

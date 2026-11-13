@@ -65,6 +65,9 @@ def validate_config(c):
     from .workflow.registry import known_workflow
     if not known_workflow(c.get("workflow")):
         raise ValueError("Unknown workflow")
+    if c.get("workflow") == "gradient_diagnostic":
+        from .workflow.gradient_diagnostic import validate_config as validate_diagnostic
+        return validate_diagnostic(c)
     storage = c.get("storage_backend", "network")
     if storage not in ("network", "pod_persistent"):
         raise ValueError("Unknown storage backend")

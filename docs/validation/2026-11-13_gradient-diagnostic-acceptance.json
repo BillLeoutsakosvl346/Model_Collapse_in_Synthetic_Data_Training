@@ -1,0 +1,24 @@
+{
+  "checks": {
+    "finite_conditional_loss": true,
+    "exactly_64_scored_targets": true,
+    "mixture_gradient_identity": true,
+    "actual_isolated_weight_update": true,
+    "source_weights_unchanged": true,
+    "cuda_fp32": true
+  },
+  "gradient_relative_error": 0.0,
+  "pairs": 16,
+  "validation_pairs": 16,
+  "runtime_sha256": "925f9ba422cf9d56c3e0b403b91757999f89ce1f67a206a3209134f86a9520fc",
+  "config_sha256": "5c27ad8e0affd7b91e47739d98e84d6fdf0aa75b22799c75bb62c5f2ee64ee00",
+  "time": 1794595432.4449296,
+  "elapsed_paid_seconds": 300.9093475341797,
+  "run_id": "20261113T183849Z-gradient-diagnostic",
+  "pod_id": "iz0crfjajzn95x",
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "conservative_acceptance_usd": 0.055330450536126945,
+  "source_scope": "All five selected model files and four optimizer-state files checksum-restored; per-case tensor/state binding checked on load. Miniature M0 GPU acceptance passed.",
+  "recorded_at": 1794595799.9097407
+}

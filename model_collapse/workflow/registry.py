@@ -3,6 +3,11 @@ from importlib import import_module
 
 
 _ROUTES = {
+    "gradient_diagnostic": {
+        "worker": "workflow.gradient_diagnostic:run",
+        "report": "analysis.gradients:report",
+        "validate": "workflow.gradient_diagnostic:validate_local",
+    },
     "paired": {
         "worker": "workflow.paired:run_pair",
         "report": "analysis.paired:report_pair",

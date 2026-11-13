@@ -2,6 +2,8 @@
 
 The project has one scientific implementation and several named experimental conditions. Calendar weeks identify reports; they do not select training behaviour.
 
+The standalone `gradient_diagnostic` workflow uses `science/gradients.py` for FP32 source-mean gradients and isolated AdamW steps, `artifacts/gradient_sources.py` for pinned selective source recovery, and a dedicated guarded cloud launcher. Its data and reports are separate from recursive-training runs. It reuses the shared model/loss helpers, resource registry, ledger, supervision, watchdog and artifact publication; it never changes completed training stages.
+
 ## Identities and responsibility
 
 | Identity | Meaning | Home |

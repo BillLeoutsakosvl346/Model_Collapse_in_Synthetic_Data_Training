@@ -4,6 +4,18 @@ description: "Scientific conditions and their recorded runs; week labels are pre
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
 conditions:
+  smollm2_gradient_diagnostic:
+    name: "SmolLM2 99% versus 100%: checkpoint gradient and AdamW diagnostic"
+    workflow: gradient_diagnostic
+    state: running
+    run_id: 20261113T183849Z-gradient-diagnostic
+    definition: ../comparisons/smollm2_gradient_diagnostic/README.md
+    comparison_config: ../comparisons/smollm2_gradient_diagnostic/diagnostic.yaml
+    source_run_id: 20261111T210854Z-full-completion64-mixtures
+    source_arms: [mixed99, synthetic]
+    before_cycles: [1, 5, 10]
+    precision: fp32
+    authorization: ../docs/validation/2026-11-13_gradient-diagnostic-authorization.json
   smollm2_completion_fractions:
     name: "SmolLM2-135M / FineWeb-Edu: seven continued completion mixtures"
     workflow: completion_comparison

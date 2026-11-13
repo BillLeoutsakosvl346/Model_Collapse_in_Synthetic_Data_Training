@@ -1,6 +1,12 @@
 # Current recorded state
 
-Snapshot refreshed on 12 November 2026. Recorded state is not a live check. Previous snapshots and dated receipts retain earlier authorization/execution chronology.
+Snapshot refreshed on 13 November 2026. Recorded state is not a live check. Previous snapshots and dated receipts retain earlier authorization/execution chronology.
+
+## SmolLM2 gradient diagnostic: GPU acceptance passed; measurements running
+
+The [approved diagnostic](../comparisons/smollm2_gradient_diagnostic/README.md) restores M0/M4/M9 from the completed 99% and 100% conditions, measures actual source-mean gradients and isolated AdamW updates, and preserves all historical experiments. The [initial authorization](validation/2026-11-13_gradient-diagnostic-authorization.json) was followed by the user's broad execution authorization: the bounded [execution adjustment](validation/2026-11-13_gradient-diagnostic-execution-adjustment.json) sets a USD 3 allocation, USD 0.35 acceptance cap, 60-minute combined paid-compute deadline and USD 5.40 historical setup ceiling. The USD 110 cumulative ceiling and USD 2 reserve remain binding. Rejected 5090 placements acquired no GPU and their temporary volumes were removed; original RTX PRO 4000 stock subsequently returned.
+
+Sixty-six focused offline checks passed, and all six selected training inputs reconstruct from their original real and generated sources with exact masks and lineage. Preflight verified private checkpoint/state object access and a small evidence round trip. Diagnostic `20261113T183849Z-gradient-diagnostic` acquired matching RTX PRO 4000 Blackwell Pod `iz0crfjajzn95x` in EU-RO-1 at USD 0.57/hour and new 30 GB working volume. Deployed runtime is `925f9ba422cf9d56c3e0b403b91757999f89ce1f67a206a3209134f86a9520fc`. Its 16-training/16-validation-pair GPU acceptance passed all six checks after approximately 301 paid seconds. Detached supervision and the independent watchdog were observed running; full-source gradient measurements are in progress. Completion, numerical interpretation and cleanup are not yet claimed.
 
 ## SmolLM2 seven-fraction sweep: completed and reported
 
@@ -47,7 +53,7 @@ Conservative task cost at the [analysis receipt](../reports/20261110T151528Z-ful
 | Cumulative spending ceiling | USD 110.00, existing credit only; later funded SmolLM2 launch authorization supersedes USD 80 |
 | SmolLM2 seven-condition sweep | USD 30 task allocation, USD 2 reserve, USD 0.50 combined validation; USD 10-15 user spending target |
 | High-fraction campaign | USD 11.75 including its separately reserved storage |
-| Total setup allowance | USD 5.05, including the authorized bounded SmolLM2 compatibility test |
+| Total setup allowance | USD 5.40, including the authorized bounded gradient diagnostic acceptance |
 | Combined high-fraction validation cap | USD 0.90; recorded conservative spend USD 0.7843 |
 | Standalone 99% condition | USD 5 allocation including USD 2 reserve; USD 0.30 combined validation cap; accepted validation USD 0.21584 |
 | Standalone 99.9% condition | USD 5 allocation including USD 2 reserve; USD 0.30 combined validation cap; smoke then full launch authorized after checks pass |

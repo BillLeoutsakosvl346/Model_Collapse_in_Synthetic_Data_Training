@@ -1,0 +1,20 @@
+{
+  "recorded_at": 1794595445.2202606,
+  "tests_passed": 66,
+  "tests": [
+    "tests/test_gradient_diagnostic.py",
+    "tests/repository/test_cli_config.py",
+    "tests/cloud/test_authorized_task_budget.py",
+    "tests/cloud/test_runpod_client_reads.py"
+  ],
+  "runtime_sha256": "925f9ba422cf9d56c3e0b403b91757999f89ce1f67a206a3209134f86a9520fc",
+  "configuration_sha256": "280ef0ec93e9f13fa3c0502e65b52d083efe0c5235f9bb6be3b23a0ec2a0b80d",
+  "input_audit": {
+    "cases": 6,
+    "exact_input_and_generation_reconstruction": true,
+    "validation_pairs": 7447,
+    "scope": "Input arrays and indexed identities; bulk tensors require GPU restoration"
+  },
+  "repository_checks_passed": true,
+  "rechecked_after_integration": true
+}
