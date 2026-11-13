@@ -141,3 +141,80 @@ def test_benchmark_provenance_does_not_change_accepted_scientific_fingerprint(tm
     original = protocol_fingerprint(c)
     c.pop('benchmark_reference')
     assert protocol_fingerprint(c) == original
+
+
+def _setup_calibration_source(tmp_path):
+    from model_collapse.workflow.sgd_calibration import calibration_contract
+    source = tmp_path / 'prior-attempt'; source.mkdir()
+    c = yaml.safe_load(Path('comparisons/smollm2_sgd_greedy_effects/smoke.yaml').read_text())
+    atomic_json(source/'calibration/physical_updates.json', {'recorded_updates': 181})
+    atomic_json(source/'calibration/contract.json', {'contract_sha256': calibration_contract(c)})
+    receipt = {'complete': True, 'selection_policy': 'bounded_real_only_192_updates_v1',
+        'selected_learning_rate': .01, 'contract_sha256': calibration_contract(c),
+        'recorded_physical_updates': 181,
+        'screen': [{'training': {'training_blocks': 4096, 'seconds': 64.}}, {'reason': 'unstable'}],
+        'confirm': [{'training': {'training_blocks': 4096, 'seconds': 128.}}],
+        'files': {name: sha256(source/'calibration'/name) for name in ('contract.json', 'physical_updates.json')}}
+    atomic_json(source/'calibration/selection.json', receipt)
+    c = sgd_profile.apply_calibration(c, receipt, sha256(source/'calibration/selection.json'))
+    c['calibration_reference'].update(snapshot={'immutable': 'prior-attempt'}, relative_path='calibration/selection.json')
+    return source, c, receipt
+
+
+def test_setup_retry_imports_sealed_calibration_without_candidate_weights_or_updates(tmp_path, monkeypatch):
+    source, c, receipt = _setup_calibration_source(tmp_path)
+    _fake_snapshot(monkeypatch, source, c['calibration_reference']['snapshot'])
+    from model_collapse import common
+    from model_collapse.workflow import sgd_calibration
+    monkeypatch.setattr(common, 'load_secrets', lambda: None)
+    def forbidden(*args, **kwargs): raise AssertionError('Repeated calibration')
+    monkeypatch.setattr(sgd_calibration, 'calibrate', forbidden)
+    original = {str(p.relative_to(source)): sha256(p) for p in source.rglob('*') if p.is_file()}
+    fresh = tmp_path/'retry'
+    assert sgd_runtime.prepare(fresh, c, {'code_sha256': 'new-runtime'}, None) == c
+    assert sha256(fresh/'calibration/selection.json') == c['calibration_reference']['receipt_sha256']
+    for name in receipt['files']: assert sha256(fresh/'calibration'/name) == receipt['files'][name]
+    imported = read_json(fresh/'calibration_import.json')
+    assert imported['additional_optimizer_updates'] == 0
+    assert imported['original_recorded_physical_updates'] == 181
+    assert imported['candidate_weights_imported'] is False
+    assert not (fresh/'calibration/.work').exists()
+    assert original == {str(p.relative_to(source)): sha256(p) for p in source.rglob('*') if p.is_file()}
+    rates, provenance = sgd_runtime.calibration_training_rates(fresh, c)
+    assert rates == [4096., 2048.]
+    assert provenance['source'] == 'sealed_calibration_complete_stage_wall_time'
+    assert provenance['imported_execution'] and provenance['additional_optimizer_updates'] == 0
+
+
+@pytest.mark.parametrize('change', ['receipt', 'contract', 'file', 'missing', 'local_conflict', 'path'])
+def test_setup_retry_rejects_corrupt_or_incompatible_calibration(tmp_path, monkeypatch, change):
+    source, c, receipt = _setup_calibration_source(tmp_path)
+    _fake_snapshot(monkeypatch, source, c['calibration_reference']['snapshot'])
+    from model_collapse import common
+    monkeypatch.setattr(common, 'load_secrets', lambda: None)
+    fresh = tmp_path/'retry'
+    if change == 'receipt': (source/'calibration/selection.json').write_text('{}')
+    if change == 'contract': c['seed'] += 1
+    if change == 'file': (source/'calibration/contract.json').write_text('{}')
+    if change == 'missing': (source/'calibration/contract.json').unlink()
+    if change == 'local_conflict': atomic_json(fresh/'calibration/contract.json', {'wrong': True})
+    if change == 'path':
+        receipt['files']['../escape'] = 'a'*64
+        atomic_json(source/'calibration/selection.json', receipt)
+        c['calibration_reference']['receipt_sha256'] = sha256(source/'calibration/selection.json')
+    with pytest.raises((RuntimeError, FileNotFoundError, ValueError)):
+        sgd_setup.restore_setup_calibration(c, fresh)
+    assert not (fresh/'calibration/selection.json').exists()
+
+
+def test_local_completed_calibration_verifies_without_remote_snapshot(tmp_path, monkeypatch):
+    source, c, receipt = _setup_calibration_source(tmp_path)
+    c['calibration_reference'].pop('snapshot')
+    assert sgd_setup.restore_setup_calibration(c, source) == receipt
+    assert not (source/'calibration_import.json').exists()
+    rates, provenance = sgd_runtime.calibration_training_rates(source, c)
+    assert rates == [4096., 2048.]
+    assert not provenance['imported_execution']
+    (source/'calibration/physical_updates.json').write_text('{}')
+    with pytest.raises(RuntimeError, match='corrupt'):
+        sgd_setup.restore_setup_calibration(c, source)

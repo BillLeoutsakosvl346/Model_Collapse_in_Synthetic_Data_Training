@@ -9,6 +9,66 @@ from pathlib import Path
 from ..common import PROJECT, STATE, atomic_json, digest, read_json, sha256, verify_files
 
 
+def restore_setup_calibration(c, root):
+    """Reuse completed calibration evidence, never its candidate weights or updates."""
+    from ..workflow.sgd_profile import require_calibration
+    from ..workflow.sgd_calibration import calibration_contract
+    from ..artifacts.paths import atomic_copy, safe_relative
+    require_calibration(c)
+    if c.get("kind") != "smoke":
+        raise RuntimeError("Calibration import is restricted to setup smoke retries")
+    root = Path(root)
+    target = root / "calibration/selection.json"
+    ref = c["calibration_reference"]
+    source = None
+    if target.exists():
+        path = target
+    else:
+        if not ref.get("snapshot") or ref.get("relative_path") != "calibration/selection.json":
+            raise RuntimeError("Setup retry requires its immutable completed calibration snapshot")
+        from ..common import load_secrets
+        from ..artifacts.gradient_sources import Snapshot
+        load_secrets()
+        source = Snapshot(ref["snapshot"], root / ".calibration_source")
+        path = source.get(ref["relative_path"])
+    receipt = read_json(path)
+    if (sha256(path) != ref["receipt_sha256"] or not receipt.get("complete")
+            or receipt.get("selected_learning_rate") != c["learning_rate"]
+            or receipt.get("selection_policy") != ref["selection_policy"]
+            or receipt.get("contract_sha256") != calibration_contract(c)):
+        raise RuntimeError("Completed setup calibration source differs")
+    files = receipt.get("files", {})
+    if not files or "physical_updates.json" not in files:
+        raise RuntimeError("Completed setup calibration has no sealed numerical evidence")
+    for relative in files:
+        safe_relative(relative)
+    if source is None:
+        verify_files(root / "calibration", files)
+        return receipt
+    # Verify the entire immutable receipt before exposing any imported completion.
+    sources = {name: source.get("calibration/" + name) for name in files}
+    for name, original in sources.items():
+        expected = files[name]["sha256"] if isinstance(files[name], dict) else files[name]
+        if sha256(original) != expected:
+            raise RuntimeError("Completed setup calibration evidence differs: " + name)
+        destination = root / "calibration" / name
+        if destination.exists() and sha256(destination) != expected:
+            raise RuntimeError("Conflicting local calibration evidence: " + name)
+    for name, original in sources.items():
+        atomic_copy(original, root / "calibration" / name)
+    verify_files(root / "calibration", files)
+    physical = read_json(root / "calibration/physical_updates.json")["recorded_updates"]
+    if physical != receipt.get("recorded_physical_updates") or not 0 < physical <= 192:
+        raise RuntimeError("Imported calibration update accounting differs")
+    atomic_json(root / "calibration_import.json", {
+        "source": ref, "receipt_sha256": ref["receipt_sha256"],
+        "verified_files": files, "original_recorded_physical_updates": physical,
+        "additional_optimizer_updates": 0, "candidate_weights_imported": False,
+        "scope": "Numerical calibration evidence imported; all acceptance arms restart from pretrained M0."})
+    atomic_copy(path, target)  # Publish completion only after every sealed file is verified.
+    return receipt
+
+
 def verify_calibration_source(c):
     from ..workflow.sgd_profile import require_calibration
     from ..workflow.sgd_calibration import calibration_contract

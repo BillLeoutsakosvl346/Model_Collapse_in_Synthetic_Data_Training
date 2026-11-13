@@ -309,8 +309,11 @@ def _visible_prompt(prompt, bos):
 
 
 def sgd_update_probe(bank, c):
-    prompt, target, windows = load_pairs(bank, "validation")
+    prompt, target, _ = load_pairs(bank, "validation")
+    windows = np.load(Path(bank) / "validation/windows.npy", allow_pickle=False)
     indices = np.load(Path(bank) / "probe_indices.npy")[:128]
+    if indices.shape != (128,) or len(np.unique(indices)) != 128:
+        raise RuntimeError("SGD requires exactly 128 distinct frozen validation probe rows")
     tokens, attention, scoring = assemble(prompt[indices], target[indices], c["bos_token_id"])
     identity = digest({"bank": c["prepared_bank"]["manifest_sha256"],
                        "indices": indices.tolist(), "tokens": hashlib.sha256(tokens.tobytes()).hexdigest(),

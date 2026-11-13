@@ -71,12 +71,39 @@ def prepare(root, c, resources, bank):
             "setup_request_sha256": digest(read_json(root / "setup_request.json")),
             "resolved_configuration_sha256": digest(c), "receipt_sha256": c["calibration_reference"]["receipt_sha256"]})
     sgd_profile.require_calibration(c)
-    if c["kind"] == "smoke" and sha256(root / "calibration/selection.json") != c["calibration_reference"]["receipt_sha256"]:
-        raise RuntimeError("Resolved calibration receipt changed")
+    if c["kind"] == "smoke":
+        from ..cloud.sgd_setup import restore_setup_calibration
+        restore_setup_calibration(c, root)
     if c["kind"] == "full":
         from ..cloud.sgd_setup import restore_benchmark
         restore_benchmark(c, root, expected_runtime=resources["code_sha256"])
     return c
+
+
+def calibration_training_rates(root, c):
+    """Use measured work only; imported stage wall times give conservative rates."""
+    from ..cloud.sgd_setup import restore_setup_calibration
+    root = Path(root)
+    receipt = restore_setup_calibration(c, root)
+    histories = list((root / "calibration/.work").glob("*/seed_42/gen_*/training_history.json"))
+    rates = [row["training_target_tokens_per_second"] for p in histories for row in read_json(p)]
+    provenance = {"source": "local_calibration_training_history", "additional_optimizer_updates": 0}
+    if not rates:
+        rates = []
+        for row in receipt.get("screen", []) + receipt.get("confirm", []):
+            training = row.get("training", {})
+            blocks, seconds = training.get("training_blocks"), training.get("seconds")
+            if (type(blocks) is int and blocks > 0 and isinstance(seconds, (int, float))
+                    and math.isfinite(seconds) and seconds > 0):
+                rates.append(blocks * 64 / seconds)
+        provenance = {"source": "sealed_calibration_complete_stage_wall_time",
+            "receipt_sha256": c["calibration_reference"]["receipt_sha256"],
+            "imported_execution": (root / "calibration_import.json").exists(),
+            "denominator": "training.seconds includes complete shared-engine stage wall time",
+            "additional_optimizer_updates": 0}
+    if not rates or any(not math.isfinite(rate) or rate <= 0 for rate in rates):
+        raise RuntimeError("SGD benchmark requires verified actual calibration training timings")
+    return rates, provenance
 
 
 def benchmark(root, c, bank):
@@ -94,10 +121,7 @@ def benchmark(root, c, bank):
     previous = read_json(path)
     if previous:
         return verify_benchmark_record(previous, c, require_observer=False)
-    histories = list((Path(root) / "calibration/.work").glob("*/seed_42/gen_*/training_history.json"))
-    rates = [row["training_target_tokens_per_second"] for p in histories for row in read_json(p)]
-    if not rates:
-        raise RuntimeError("SGD benchmark requires actual calibration training, without extra warmup updates")
+    rates, training_provenance = calibration_training_rates(root, c)
     model = engine.load_model(c)
     prompt, _, _ = load_pairs(bank, "cycle_01", c["generation_batch"])
     ids = engine.tensor(_visible_prompt(prompt, c["bos_token_id"]))
@@ -119,6 +143,7 @@ def benchmark(root, c, bank):
               "full_primary_targets": {s: read_json(Path(bank) / s / "manifest.json")["target_tokens"] for s in ("validation", "test")},
               "full_secondary_targets": sum(int(np.load(Path(bank) / "secondary" / s / "masks.npy", mmap_mode="r")[:, 1:].sum()) for s in c["secondary_corpora"]),
               "benchmark_updates_discarded": 0, "calibration_update_limit": 192,
+              "calibration_throughput_provenance": training_provenance,
               "generation_batch_seconds": durations, "generation_batch": c["generation_batch"],
               "microbatch": c["microbatch"], "effective_batch": c["effective_batch"],
               "gpu": torch.cuda.get_device_name() if torch.cuda.is_available() else "cpu", "training_includes_update_observer": False,
@@ -148,6 +173,9 @@ def finish_benchmark(root, c):
     b.update(step_seconds_by_arm=seconds, training_includes_update_observer=True,
              training_target_tokens_per_second=128 * 64 / max(seconds.values()),
              calibration_physical_updates=read_json(Path(root) / "calibration/physical_updates.json")["recorded_updates"])
+    imported = read_json(Path(root) / "calibration_import.json", {})
+    b.update(calibration_updates_imported=bool(imported),
+             new_calibration_optimizer_updates=0 if imported else b["calibration_physical_updates"])
     atomic_json(path, b)
     return b
 

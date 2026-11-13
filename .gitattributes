@@ -117,3 +117,6 @@
 /scripts/analysis/interpret_gradient_diagnostic.py text eol=lf
 /reports/20261113T183849Z-gradient-diagnostic/** -text whitespace=cr-at-eol,-blank-at-eof
 /docs/validation/2026-11-13_gradient-diagnostic*.json -text whitespace=cr-at-eol
+# Plain-SGD acceptance evidence preserves its indexed bytes on Windows.
+/docs/validation/2026-11-13_sgd-greedy*.json -text whitespace=cr-at-eol
+/reports/20261113T224629Z-smoke-completion64-mixtures/** -text whitespace=cr-at-eol,-blank-at-eof
