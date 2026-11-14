@@ -1,0 +1,15 @@
+{
+  "recorded_at": 1794669793.8460147,
+  "scope": "Only evidence first introduced by this task; no historical publication files changed.",
+  "reason": "Git text normalization altered CRLF bytes in new staged scientific CSV/JSON evidence. Explicit -text restores raw checksum-indexed bytes without changing working source files.",
+  "working_files_match_original_publication_manifest": true,
+  "new_git_blob_repairs": [
+    "epoch_local_effects.csv",
+    "epoch_source_summary.csv",
+    "metrics.csv",
+    "provider_shutdown.json",
+    "update_effects.csv",
+    "validation_results.json"
+  ],
+  "runtime_changed": false
+}

@@ -140,3 +140,6 @@
 /scripts/analysis/sgd_gradient_cancellation.py text eol=lf
 /reports/20261114T001352Z-full-completion64-mixtures/generated/gradient-cancellation-20261114/** -text whitespace=cr-at-eol,-blank-at-eof
 /docs/history/2026-11-14_pre-gradient-cancellation-current-state.txt -text whitespace=cr-at-eol
+# New SGD mixture acceptance must retain cloud/local evidence hashes on every OS.
+/reports/20261114T144856Z-smoke-completion64-mixtures/** -text whitespace=cr-at-eol,-blank-at-eof
+/docs/validation/2026-11-14_sgd-mixtures*.json -text whitespace=cr-at-eol
