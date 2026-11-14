@@ -2,7 +2,7 @@
 
 | Comparison | Shared beginning | Deliberate difference | Report |
 | --- | --- | --- | --- |
-| [SmolLM2 SGD 50%/80%](smollm2_sgd_greedy_mixtures/README.md) | Same native FineWeb bank and pretrained model | Own-checkpoint greedy targets; constant SGD 0.01; actual-update source diagnostics | Preparing new acceptance and authorized automatic launch |
+| [SmolLM2 SGD 50%/80%](smollm2_sgd_greedy_mixtures/README.md) | Same native FineWeb bank and pretrained model | Own-checkpoint greedy targets; constant SGD 0.01; actual-update source diagnostics | GPU acceptance passed; full 50% then 80% comparison running |
 | [SmolLM2-135M fraction sweep](smollm2_135m_fineweb_completion64_fractions/README.md) | Same pretrained SmolLM2, native prompt chunks and fixed held-out documents | 0/50/80/95/99/99.9/100% own-checkpoint synthetic targets | Setup only; see [current state](../docs/current-state.md) |
 | [FineWeb training decoders](fineweb_completion64_decoding/README.md) | Same pretrained OPT, ten fresh chunks and historical evaluation | Greedy versus pure-sampled training targets; common five-beam output probes | Implementation and validation status in [current state](../docs/current-state.md) |
 | [99.9% FineWeb synthetic targets](fineweb_completion64_mixed99p9/README.md) | Same pretrained OPT and frozen ten-chunk bank | 9,990 own-checkpoint synthetic / 10 real targets per cycle; 1,000-pair smoke represents both sources | [GPU acceptance](../docs/validation/2026-11-07_completion-mixed99p9-setup.json); full launch state in [current state](../docs/current-state.md) |

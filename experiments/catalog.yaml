@@ -6,11 +6,16 @@ metrics: ../docs/metrics.md
 conditions:
   smollm2_sgd_greedy_mixtures:
     name: "SmolLM2-135M / FineWeb: 50% and 80% synthetic, SGD constant LR and greedy"
-    state: implementation_and_validation
+    state: running
     definition: ../comparisons/smollm2_sgd_greedy_mixtures/README.md
     comparison_config: ../comparisons/smollm2_sgd_greedy_mixtures/full.yaml
     smoke_config: ../comparisons/smollm2_sgd_greedy_mixtures/smoke.yaml
     authorization: ../docs/validation/2026-11-14_sgd-mixtures-authorization.json
+    full_comparison_run_id: 20261114T150912Z-full-completion64-mixtures
+    full_launch_record: ../docs/validation/2026-11-14_sgd-mixtures-full-launch.json
+    acceptance: ../docs/validation/2026-11-14_sgd-mixtures-setup.json
+    acceptance_run_id: 20261114T144856Z-smoke-completion64-mixtures
+    accepted_runtime_sha256: 790a2322864a98a5cd7efa66d776817511f2bfa035c613b50d9dec9c55e2971d
     historical_control: 20261114T001352Z-full-completion64-mixtures
     synthetic_fractions: [0.5, 0.8]
     optimizer: sgd

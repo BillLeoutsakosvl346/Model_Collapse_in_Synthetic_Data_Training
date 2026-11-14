@@ -1,0 +1,359 @@
+{
+  "recorded_at": 1794670295.153894,
+  "run_id": "20261114T150912Z-full-completion64-mixtures",
+  "state": "running",
+  "resources": {
+    "run_id": "20261114T150912Z-full-completion64-mixtures",
+    "launch_id": "20261114T150912003824Z",
+    "kind": "full",
+    "pod_id": "o9i0oynem3qpe3",
+    "volume_id": "hmcfo68us7",
+    "container_disk_gb": 20,
+    "data_center": "EU-RO-1",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "created_at": 1794668952.9471629,
+    "quoted_gpu_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6652671232876711,
+    "compute_hourly_usd": 0.6586506849315067,
+    "volume_hourly_usd": 0.005753424657534247,
+    "network_volume_gb": 60,
+    "volume_created_at": 1794668952.005826,
+    "session_allowance_usd": 8.260080161767828,
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "code_sha256": "790a2322864a98a5cd7efa66d776817511f2bfa035c613b50d9dec9c55e2971d",
+    "starting_balance_usd": 16.8225641188,
+    "remote_root": "/workspace/runs/20261114T150912Z-full-completion64-mixtures",
+    "runtime_sha256": "790a2322864a98a5cd7efa66d776817511f2bfa035c613b50d9dec9c55e2971d",
+    "git_commit": "8e2b0ec8c5e2f139f52fa9c3f60bfc4231e977c5",
+    "configuration_sha256": "c071b0edf432c9319ea5fb7d4a9feb6ba888d6cd46e449fdbeb0b7faa88621c7",
+    "backup_store": {
+      "backend": "runpod_s3",
+      "bucket": "efv7egm5i0",
+      "region": "EU-RO-1",
+      "prefix": "smollm2-sgd-mixtures-20261114"
+    },
+    "workflow": "completion_comparison",
+    "allocation": "smollm2_sgd_greedy_mixtures",
+    "admission_forecast": {
+      "estimated_hours": 7.9929381985103705,
+      "estimated_compute_and_running_storage_usd": 4.623860001686205,
+      "unique_training_stages": 20,
+      "epochs": 20,
+      "optimizer_updates": 1580,
+      "generated_training_continuations": 130000,
+      "generated_training_tokens": 8320000,
+      "training_target_exposures": 12800000,
+      "probe_sets": 21,
+      "forecast_margin": 1.5,
+      "update_attribution_included": true,
+      "storage_and_backup_fixed_overhead_seconds": 1800,
+      "historical_storage_during_run_usd": 1.5398997647108104,
+      "seven_day_volume_storage_usd": 0.9665753424657535,
+      "seven_day_backup_storage_usd": 0.4993972602739727,
+      "seven_day_combined_storage_usd": 1.4659726027397262,
+      "retention_above_existing_reserve_usd": 0.0
+    },
+    "host_cuda_version": "13.2",
+    "actual_pod_hourly_usd": 0.57,
+    "verified_ssh_direct": {
+      "command": "ssh root@213.173.104.22 -p 32083",
+      "host": "213.173.104.22",
+      "port": 32083,
+      "username": "root"
+    }
+  },
+  "first_full_stage": {
+    "blocks": 10000,
+    "scored_targets": 640000,
+    "updates": 79,
+    "executed_epochs": 1,
+    "selected_epoch": 1,
+    "training": {
+      "generation": 1,
+      "initial_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+      "selected_weights_sha256": "af2b0122eaf5ab1670363cbe05936d829dcd0aa4f843e24a5c0b21b6f3e95113",
+      "input_tokens_sha256": "8594f1234acd1445bd53eee9367354f9a83a15d4b537fe972ec454389412ec57",
+      "training_blocks": 10000,
+      "selected_epoch": 1,
+      "best_validation_loss": 2.9593995083635916,
+      "best_validation_epoch": 1,
+      "selected_validation_loss": 2.9593995083635916,
+      "executed_epochs": 1,
+      "terminal_weights_sha256": "af2b0122eaf5ab1670363cbe05936d829dcd0aa4f843e24a5c0b21b6f3e95113",
+      "training_contract_sha256": "cee4b7ad4fd4f1d6fb223962390e8420bf788db64aea3619d0648a937ae94d6b",
+      "seconds": 377.7828260739334,
+      "peak_allocated_gpu_bytes": 13331501056,
+      "checkpoint_files": {
+        "config.json": "3cddd046ca5ff5a842d56899211edb6c44c075fa2ee59c2dbe04f3daa4f966ea",
+        "generation_config.json": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+        "model.safetensors": "749023134f617d11d2e640c6c94f978461d2109338a3489a3dd52f9a675dd71a"
+      },
+      "initialization": "continued",
+      "optimizer_initialization": "fresh_pretrained_start",
+      "checkpoint_selection": "final_epoch",
+      "optimizer_parent_sha256": null,
+      "global_step": 79,
+      "total_optimizer_steps": 790,
+      "state_files": {
+        "optimizer_state/cycle.pt": "6071b681597b0fe37af17353afdcc5f1210533f6a86f4b3a37ebd0c7dbf8e993"
+      },
+      "lineage": {
+        "initializer_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+        "optimizer_parent_sha256": null,
+        "generator_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+        "generation_manifest_sha256": "0d546b4130c89594b05c2321c27e313b3a3afd07fffa87bd383713545829cb9f",
+        "bank_manifest_sha256": "8c475f058606fed0610d7555128139ea445b2f4753c2a1abc8eccd44e06c9837",
+        "chunk_manifest_sha256": "7ea6dbfa0667b1513be5fda14363a1e7b7654ad4069fa5f91724a1535413923d",
+        "data_kind": "mixed",
+        "mixture_manifest_sha256": "fe602bf5106509c492ccafe793954cfb2d68748c7214c6cd28dea175e9010591",
+        "synthetic_fraction": 0.5,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000
+      },
+      "update_diagnostics": {
+        "policy": "actual_batch_weighted_sgd_effects_v1",
+        "attempt_id": "32da866100dc4e119dacd1bc16902ab4",
+        "cycle": 1,
+        "probe_identity": "459083803b95659a49ec1a8134cb53f58629fdc5dff8ce829fb887656d4d9b42",
+        "probe_pairs": 128,
+        "binding": {
+          "training_contract_sha256": "cee4b7ad4fd4f1d6fb223962390e8420bf788db64aea3619d0648a937ae94d6b",
+          "input_tokens_sha256": "8594f1234acd1445bd53eee9367354f9a83a15d4b537fe972ec454389412ec57",
+          "initial_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+          "optimizer_parent_sha256": null,
+          "lineage_sha256": "1ea51fa77d78c7ffc9d82b5f194d0beeb7eb43b31822a048c462fe56e8d7cb78",
+          "total_optimizer_steps": 790
+        },
+        "terminal_weights_sha256": "af2b0122eaf5ab1670363cbe05936d829dcd0aa4f843e24a5c0b21b6f3e95113",
+        "updates": 79,
+        "first_step": 1,
+        "last_step": 79,
+        "score_kind": "per_example_nll_sums",
+        "records_path": "update_diagnostics/attempts/32da866100dc4e119dacd1bc16902ab4/updates.jsonl",
+        "scores_path": "update_diagnostics/attempts/32da866100dc4e119dacd1bc16902ab4/probe_scores.npz",
+        "unique_probe_evaluations": 238,
+        "files": {
+          "update_diagnostics/attempts/32da866100dc4e119dacd1bc16902ab4/updates.jsonl": "e680b65ff19dfe262512bb54b347c588d727e0990aa0c37d985f4abbbbc62402",
+          "update_diagnostics/attempts/32da866100dc4e119dacd1bc16902ab4/probe_scores.npz": "44a425f3dd87ea95b0661251e3157208a89038f5d057dcd62860c50bf2c44dd1",
+          "update_diagnostics/attempts/32da866100dc4e119dacd1bc16902ab4/attempt.json": "0905b5fcdb2ca8a23c87830a0246775cab2fde01159eb9fe6d3a1be1273877dd"
+        }
+      },
+      "optimizer": "sgd",
+      "learning_rate_policy": "constant",
+      "momentum": 0,
+      "weight_decay": 0
+    },
+    "history": [
+      {
+        "epoch": 1,
+        "learning_rate": 0.01,
+        "train_loss": 1.798560849761963,
+        "validation_loss": 2.9593995083635916,
+        "train_seconds": 343.2393203503452,
+        "training_target_tokens_per_second": 1864.5882393274478,
+        "global_step": 79,
+        "learning_rate_end": 0.01,
+        "scored_training_tokens": 640000
+      }
+    ],
+    "test": {
+      "nll_sum": 1376480.2286600869,
+      "scored_tokens": 467392,
+      "loss": 2.945023082680249,
+      "perplexity": 19.011101208574203,
+      "seconds": 24.457991362083703,
+      "mean_sequence_perplexity": 23.53320995267284,
+      "std_sequence_perplexity": 17.4319824681842,
+      "context_tokens": 129,
+      "median_example_nll": 2.9609127412077214,
+      "p95_example_nll": 3.9938623804962843
+    },
+    "mixture": {
+      "selection_policy": "nested_seedsequence_6401_v1",
+      "cycle": 1,
+      "seed": 42,
+      "synthetic_fraction": 0.5,
+      "pairs": 10000,
+      "real_pairs": 5000,
+      "synthetic_pairs": 5000,
+      "effective_synthetic_fraction": 0.5,
+      "prompt_tokens_sha256": "34147b863a84c0ebc8a00f2f910f2dce39c4c5f9b20b758fc99f27bffd3045d8",
+      "real_targets_sha256": "647759c68df71857d74844edf9ad71a4b147e50c8377dcc0c8970fd5ebe371e3",
+      "generator_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+      "selection_sha256": "6d679af798733a3cb5045325582daf5f1f033a998cbe2ee85dd35b9419840782",
+      "generation_manifest_sha256": "0d546b4130c89594b05c2321c27e313b3a3afd07fffa87bd383713545829cb9f",
+      "generated_targets_sha256": "89df07c31d506249a807a51e069390519fcbef0fb0179c539cd4209e8e31d4e0",
+      "mixed_targets_sha256": "013cd5cc1a22ad44ae71b2804daab5606fd4c4527fe797f2e2c3755d2d9f2f2d",
+      "scored_targets": 640000,
+      "files": {
+        "selection.json": "6d679af798733a3cb5045325582daf5f1f033a998cbe2ee85dd35b9419840782",
+        "targets.npy": "ed05822c4ef3885c59a42453f714a13e9ab53bf4ec5fd68d1b66076d84f1f1bc",
+        "permutation.npy": "6a264b212de454c3ac86eae1b2f6f6c39de6f107d8dd431267d4b30f5bc78fd2",
+        "synthetic_indices.npy": "b2f23ffce954b2e2c800c3feb7a589363311006a35eb797fc9cb6b70934d445e",
+        "source_labels.npy": "3e7b609b70361ca3ee37ba7a0ed3c36f94842dd85403878b11dbc260c8734f52",
+        "row_indices.npy": "b6128e5bfc4a1aa2c3e504425bd4be083a4cff98b413f66b36b49d65745173c0"
+      }
+    },
+    "completion_seal_sha256": "2bb6b4e4c7a0c292d16af0103d0b52f493a04124fa28b87d9bbd6bdad9f80423"
+  },
+  "children": {
+    "mixed50": "20261114T150912Z-full-completion64-mixtures-mixed50",
+    "mixed80": "20261114T150912Z-full-completion64-mixtures-mixed80"
+  },
+  "first_child_backup_snapshot": {
+    "run_id": "20261114T150912Z-full-completion64-mixtures-mixed50",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "bdb5d328be78316bd29cfcf1474dfcd26ac2969f",
+      "dataset": "7ad22c405b634a0ef3186515220152a0c2220fa4"
+    },
+    "artifact_index_sha256": "5d15a23b8c0b1f4971724b943861259e5ac01841e72808aa2402fb56d736d406"
+  },
+  "first_child_backup_stage_seal_verified": true,
+  "first_backup_verification_scope": "Working-volume copy of backup index matches announced pinned snapshot index SHA; raw stage seal matches that index. Local direct Hub snapshot read encountered a transient TLS reset; full first-stage bulk cold restoration is not claimed. Smoke private cold restorations are separately verified.",
+  "detached_verification": {
+    "pod_id": "o9i0oynem3qpe3",
+    "launch_id": "20261114T150912003824Z",
+    "run_id": "20261114T150912Z-full-completion64-mixtures",
+    "progress_after_disconnect": true,
+    "observations": [
+      {
+        "time": 1794669207.0930493,
+        "status": {
+          "state": "running",
+          "phase": "baseline",
+          "time": 1794669117.6229472
+        },
+        "child_status": {
+          "state": "running",
+          "phase": "baseline",
+          "time": 1794669117.6229472
+        },
+        "event_bytes": 0,
+        "epochs": 0,
+        "new_epochs": 0,
+        "finite_new_training": false,
+        "completed_new_stages": 0,
+        "supervisor": {
+          "pid": 253,
+          "child_pid": 255,
+          "time": 1794669206.5691397
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1794669206.7909994,
+          "deadline": 1794713651.2157853
+        }
+      },
+      {
+        "time": 1794670110.6380978,
+        "status": {
+          "state": "running",
+          "phase": "mixed50",
+          "active_child": "20261114T150912Z-full-completion64-mixtures-mixed50",
+          "time": 1794669284.3397408
+        },
+        "child_status": {
+          "state": "running",
+          "stage": "training",
+          "generation": 1,
+          "global_step": 79,
+          "time": 1794669905.7823386
+        },
+        "event_bytes": 3162,
+        "epochs": 1,
+        "new_epochs": 1,
+        "finite_new_training": true,
+        "completed_new_stages": 1,
+        "supervisor": {
+          "pid": 253,
+          "child_pid": 255,
+          "time": 1794670108.164699
+        },
+        "watchdog": {
+          "pid": 139,
+          "time": 1794670108.4283547,
+          "deadline": 1794713651.2157853
+        }
+      }
+    ],
+    "observations_sha256": "b9ff96f9e8f2e32141a898d469e3e9bb8c15ed92909a54d4775b15841765ef83",
+    "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+  },
+  "startup_observation_context": {
+    "recorded_at": 1794669895.9598482,
+    "original_observation_override_sha256": "72f93f0cf59ffe104a4cdfa9efd6368607275aed1f43f3f76e1fadda048072d6",
+    "run_id": "20261114T150912Z-full-completion64-mixtures",
+    "launch_id": "20261114T150912003824Z",
+    "pod_id": "o9i0oynem3qpe3",
+    "working_volume_id": "hmcfo68us7",
+    "runtime_sha256": "790a2322864a98a5cd7efa66d776817511f2bfa035c613b50d9dec9c55e2971d",
+    "original_local_processes": [
+      {
+        "pid": 25516,
+        "command": "C:/Users/vleou/Downloads/IIB_project/.venv/Scripts/python.exe -u -m model_collapse launch --config comparisons/smollm2_sgd_greedy_mixtures/full.yaml --generations 10"
+      },
+      {
+        "pid": 26228,
+        "command": "C:/Users/vleou/AppData/Local/Programs/Python/Python312/python.exe -u -m model_collapse launch --config comparisons/smollm2_sgd_greedy_mixtures/full.yaml --generations 10"
+      }
+    ],
+    "termination_method": "Stop-Process -Force on exact locally verified command/PID association; detached remote processes continued.",
+    "termination_completed_before_receipt_time": 1794669203.9189312,
+    "watchdog_deadline_unchanged": 1794713651.2157853,
+    "pre_observation_scope": "Live detached processes and fresh heartbeats only; zero completed training stages.",
+    "final_evidence_pending": false,
+    "observer_semantics": "Observes execution through independent connections and publishes its evidence receipt locally and remotely. It does not alter training, configuration, source or resources.",
+    "detached_verification_sha256": "760092a63e087eb2105d4d2c4d22785e3f9f6690bff4eecad2a3547f79039fbe",
+    "measured_observation_seconds": 903.5450484752655
+  },
+  "provider_startup_read": {
+    "checked_at": 1794670160.2984283,
+    "pod_id": "o9i0oynem3qpe3",
+    "provider_state": "RUNNING",
+    "active_account_pods": [
+      "o9i0oynem3qpe3"
+    ],
+    "cuda_version": "13.2",
+    "hourly_usd": 0.57
+  },
+  "watchdog_deadline_utc": "2026-11-15T03:34:11.215785+00:00",
+  "watchdog_deadline_unchanged": true,
+  "forecast": {
+    "estimated_hours": 7.9929381985103705,
+    "estimated_compute_and_running_storage_usd": 4.623860001686205,
+    "unique_training_stages": 20,
+    "epochs": 20,
+    "optimizer_updates": 1580,
+    "generated_training_continuations": 130000,
+    "generated_training_tokens": 8320000,
+    "training_target_exposures": 12800000,
+    "probe_sets": 21,
+    "forecast_margin": 1.5,
+    "update_attribution_included": true,
+    "storage_and_backup_fixed_overhead_seconds": 1800,
+    "historical_storage_during_run_usd": 1.5398997647108104,
+    "seven_day_volume_storage_usd": 0.9665753424657535,
+    "seven_day_backup_storage_usd": 0.4993972602739727,
+    "seven_day_combined_storage_usd": 1.4659726027397262,
+    "retention_above_existing_reserve_usd": 0.0
+  },
+  "conservative_task_forecast_with_validation_and_seven_day_new_storage_usd": 6.254818928559859,
+  "account_forecast_including_historical_storage_during_run_usd": 7.79471869327067,
+  "acceptance_record": "docs/validation/2026-11-14_sgd-mixtures-setup.json",
+  "recovery_scope": "Both terminal smoke stages cold-restored/evaluated. Full first-stage index/seal checked; no full-run bulk cold restoration claimed.",
+  "automatic_sequence": [
+    "mixed50",
+    "mixed80"
+  ],
+  "laptop_independent_execution_verified": true,
+  "full_training_restarted": false,
+  "credit_purchase_or_payment_changes": false
+}

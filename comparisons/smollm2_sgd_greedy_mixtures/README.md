@@ -43,3 +43,7 @@ python -m model_collapse cleanup COMPARISON_ID
 ```
 
 Full launch requires this suite's newly accepted runtime and pinned benchmark. Launch is authorized automatically after successful review/acceptance and affordability checks. Shutdown does not delete recovery storage; cleanup remains gated on verified recovery. See [current state](../../docs/current-state.md) for recorded execution, not live status.
+
+On this Windows workstation, deeply nested diagnostic paths require the extended-length Hugging Face cache path during fetching: set `$env:HF_HUB_CACHE = '\\?\C:\hf'` and `$env:HUGGINGFACE_HUB_CACHE = '\\?\C:\hf'` before the fetch command. That recovery path was exercised by acceptance; credentials and model tensors remain excluded from Git.
+
+The first full mixed checkpoint can take longer than the launcher's existing 600-second observation window, including generation, training and evaluation. The recorded launch releases only its local observer after verifying the detached processes, then uses the existing `verify_detached(run_id, max_wait_seconds=1800)` function to observe and publish complete-stage evidence. This changes neither remote training nor its watchdog deadline. It is an operational limitation of the default startup window, not a completed-stage claim from heartbeats alone; see the full launch receipt/current state for the actual outcome.
