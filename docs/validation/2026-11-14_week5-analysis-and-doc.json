@@ -1,0 +1,52 @@
+{
+  "run_id": "20261114T001352Z-full-completion64-mixtures",
+  "document_url": "https://docs.google.com/document/d/1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk",
+  "tab_id": "t.0",
+  "google_doc_pages": [
+    156,
+    167
+  ],
+  "native_revision": "AHj4eMS0tDIXyNiSkxxeUeoapwO0f9urG7jTIMd34XsOY1Yclm6jbD902vQvQCLdgmHXlOw-yYNvQ6jr5lHzAeHuVs67uJR2DbNccGY-jZs",
+  "authored_section": "reports/20261114T001352Z-full-completion64-mixtures/generated/week5-doc-20261114/section.md",
+  "source_analysis": "reports/20261114T001352Z-full-completion64-mixtures/generated/update-gradients-20261114/report.md",
+  "historical_adam_diagnostic": "reports/20261113T183849Z-gradient-diagnostic/report.md",
+  "native_verification": {
+    "document_id": "1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk",
+    "document_url": "https://docs.google.com/document/d/1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk",
+    "tab_id": "t.0",
+    "before_revision": "AHj4eMTAkuxWN-wo0N89wz0GoXuCuyYuqWjAJkvZeGSPsd4bGb9I3Z_j6I5lftOpEk0vMmogb8U6lTPom2GGxidUZuS1afElM0r_Mxm1E2g",
+    "after_revision": "AHj4eMS0tDIXyNiSkxxeUeoapwO0f9urG7jTIMd34XsOY1Yclm6jbD902vQvQCLdgmHXlOw-yYNvQ6jr5lHzAeHuVs67uJR2DbNccGY-jZs",
+    "startIndex": 200925,
+    "endIndex": 216850,
+    "historical_native_elements_preserved": 1235,
+    "historical_native_prefix_unchanged": true,
+    "exact_authored_blocks_verified": 85,
+    "native_tables": 9,
+    "inline_images": 5,
+    "bullets": 40,
+    "square_figures_pt": 400
+  },
+  "pdf_verification": {
+    "previous_155_pages_pixel_identical": true,
+    "new_page_count": 12,
+    "figures": 5,
+    "tables": 9,
+    "all_pages_rendered_and_visually_reviewed": true,
+    "content_bounds_checked": true
+  },
+  "publication_manifest_sha256": "aa4d1e1ac434135e88d8418a3daf26b1ec31b1937af466cbeabe8ae5dd5d91f0",
+  "new_paid_compute": false,
+  "new_inference": false,
+  "existing_evidence_unchanged": true,
+  "interpretation": "Growing corrective real component can nearly balance synthetic deterioration; small final batches explain sharp probe corrections. Finite-horizon, one-seed evidence; permanent stabilization not established. Historical AdamW and new SGD mechanisms distinguished.",
+  "recovery_scope": "Pinned diagnostic journals, scores, seals and saved metrics; no new bulk model/optimizer restoration. Historical storage preserved.",
+  "repository_checks": {
+    "passed": true,
+    "base": "806a5e3",
+    "configurations": 54,
+    "publication_manifests": 32,
+    "markdown_links": true,
+    "old_published_evidence_unchanged": true,
+    "staged_publication_bytes_match": true
+  }
+}

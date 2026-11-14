@@ -1,0 +1,708 @@
+{
+  "run_id": "20261114T001352Z-full-completion64-mixtures",
+  "analysis": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T001352Z-full-completion64-mixtures\\generated\\update-gradients-20261114",
+  "blocks": [
+    {
+      "type": "h1",
+      "text": "Week 5: Why can a small amount of real data restrain recursive deterioration?",
+      "page": true
+    },
+    {
+      "type": "h2",
+      "text": "1. Question and principal findings",
+      "page": false
+    },
+    {
+      "type": "body",
+      "text": "The earlier fraction sweeps showed much less deterioration at 99% synthetic targets than at 100%. We investigate the mechanism in two stages: local interventions on saved AdamW checkpoints, followed by new SGD runs that measure real and synthetic contributions at every training update."
+    },
+    {
+      "type": "bullet",
+      "text": "Real examples provide a measurable corrective signal. In the new 99% run, including the real component improves the fixed real-validation probe in all 563 updates that contain real examples; 227 updates contain none."
+    },
+    {
+      "type": "bullet",
+      "text": "Synthetic inclusion worsens that same probe in 778 of 790 updates in the 99% arm. The real correction strengthens as the model becomes worse at real text."
+    },
+    {
+      "type": "bullet",
+      "text": "The 99% full-test curve rises strongly and then oscillates. Small final batches explain sharp corrections at cycles 6 and 10. This supports a moving competition between corrections and deterioration, rather than permanent stabilization."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5.1. New conditions. Synthetic refers to the continuation targets; all prompts remain real. Each arm starts independently from pretrained SmolLM2."
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "conditions",
+      "rows": [
+        [
+          "Synthetic fraction",
+          "Real pairs/cycle",
+          "Generated pairs/cycle"
+        ],
+        [
+          "0%",
+          "10,000",
+          "0"
+        ],
+        [
+          "99%",
+          "100",
+          "9,900"
+        ],
+        [
+          "100%",
+          "0",
+          "10,000"
+        ]
+      ],
+      "widths": [
+        130,
+        160,
+        160
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "2. First diagnostic: the historical AdamW checkpoints",
+      "page": true
+    },
+    {
+      "type": "body",
+      "text": "Before changing the training recipe, we restored five distinct checkpoints from the earlier SmolLM2 99%/100% sweep: shared M0 and each arm's M4/M9, immediately before cycles 1/5/10. Exact saved targets and optimizer states were reused; no recursive trajectory or replacement synthetic targets were generated."
+    },
+    {
+      "type": "bullet",
+      "text": "FP32, dropout-disabled aggregate gradients separated the actual 100 real and 9,900 synthetic rows. At M4, the weighted real norm was 0.330 versus 0.569 for synthetic: a ratio of 58%, despite 1% of examples."
+    },
+    {
+      "type": "bullet",
+      "text": "At M4, one synthetic-only AdamW intervention increased real-probe NLL by 0.001818, while the original 1%/99% mixed intervention decreased it by 0.001022. Both began from identical weights and inherited optimizer state."
+    },
+    {
+      "type": "bullet",
+      "text": "Later raw source gradients were positively aligned, so a simple cancellation story was insufficient. Clearing only AdamW's inherited first moment reversed the synthetic intervention's effect in a supplementary control. Optimizer history affects the weight displacement."
+    },
+    {
+      "type": "bullet",
+      "text": "These are one-step aggregate-gradient interventions on a 1,024-pair validation probe, not historical minibatch replays. They motivated a simpler SGD experiment rather than establishing the complete cause of the earlier plateau."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5.2. Historical 99% diagnostic. Weighted norms precede AdamW; the numerical ratio is not a percentage of useful influence."
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "adam",
+      "rows": [
+        [
+          "Before cycle",
+          "Real/synthetic weighted norm ratio",
+          "Mixed probe \u0394NLL"
+        ],
+        [
+          "1 (M0)",
+          "0.00293",
+          "+0.0001719"
+        ],
+        [
+          "5 (M4)",
+          "0.580",
+          "\u22120.001022"
+        ],
+        [
+          "10 (M9)",
+          "0.461",
+          "\u22120.003313"
+        ]
+      ],
+      "widths": [
+        105,
+        225,
+        120
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "3. New experiment: constant-rate SGD and greedy decoding",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Reuse pinned SmolLM2-135M base and its frozen FineWeb-Edu sample-10BT native-tokenizer bank. Ten fresh, document-separated chunks contain 10,000 prompt/continuation pairs each. Both validation and test stay fixed and outside experimental training."
+    },
+    {
+      "type": "bullet",
+      "text": "At cycle k, each arm's preceding checkpoint generates greedy continuations for its selected synthetic rows. Scatter them into their original prompt positions, retain the original real targets elsewhere, freeze the mixture, and train that same checkpoint for one epoch. Weights continue across cycles; there is no reset."
+    },
+    {
+      "type": "bullet",
+      "text": "Use BOS + 64 real prompt tokens + 64 target tokens. Attention sees the prompt; loss scores only the 64 continuation tokens. Each cycle has 640,000 scored targets, and each arm has 6.4 million target-token exposures."
+    },
+    {
+      "type": "bullet",
+      "text": "A bounded real-only learning-rate screen selected 0.01 as the best tested rate. Test data and synthetic outcomes did not rank candidates; calibration weights were discarded. All three production arms restarted pretrained M0."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5.3. Shared SGD recipe. This changes several settings relative to the historical AdamW/five-beam sweep, so it is not an optimizer-only comparison."
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "recipe",
+      "rows": [
+        [
+          "Setting",
+          "Value"
+        ],
+        [
+          "Optimizer / learning rate",
+          "Plain SGD / constant 0.01"
+        ],
+        [
+          "Momentum / weight decay",
+          "0 / 0"
+        ],
+        [
+          "Schedule / warm-up / clipping",
+          "None / none / none"
+        ],
+        [
+          "Arithmetic",
+          "FP32; TF32 disabled"
+        ],
+        [
+          "Synthetic generation",
+          "Greedy; exactly 64 tokens; repetition penalty 1.0"
+        ],
+        [
+          "Microbatch / effective batch",
+          "32 / 128; final batch 16"
+        ],
+        [
+          "Cycles / epochs / updates per arm",
+          "10 / 10 / 790"
+        ],
+        [
+          "Seed / checkpoint policy",
+          "42 / terminal epoch"
+        ]
+      ],
+      "widths": [
+        180,
+        270
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "4. Primary result: held-out real-test perplexity",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Shared test PPL is 17.958. After ten cycles, real-only is 17.726, 99% synthetic is 164.413 and 100% synthetic is 1,408.607. The 1% real component substantially restrains deterioration, while the 99% condition remains far worse than baseline."
+    },
+    {
+      "type": "bullet",
+      "text": "The 99% endpoints are irregular, with drops at cycles 6 and 10. The 100% endpoints rise at every cycle. Constant learning rate removes LR decay as an explanation for these particular corrections."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T001352Z-full-completion64-mixtures\\generated\\update-gradients-20261114\\full_test_perplexity.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5.1. Token-weighted corpus perplexity on all 7,303 fixed real-test pairs / 467,392 continuation targets. Logarithmic y-axis; connecting lines join measured cycle endpoints. One seed per condition."
+    },
+    {
+      "type": "h2",
+      "text": "5. Measuring each source's immediate effect",
+      "page": true
+    },
+    {
+      "type": "body",
+      "text": "For each actual batch, directly measure the real and synthetic loss gradients at the same starting weights. Normalize both by the whole batch's scored-target count, so their sum reconstructs the ordinary combined gradient. The actual update remains authoritative."
+    },
+    {
+      "type": "equation",
+      "text": "g = gR + gS;       \u03b8next = \u03b8 \u2212 0.01(gR + gS)"
+    },
+    {
+      "type": "bullet",
+      "text": "On a scratch model, evaluate unchanged weights (L0), the real component alone (LR), synthetic alone (LS), and the actual mixed update (LM). Each intervention starts from identical weights and retains the original batch weighting."
+    },
+    {
+      "type": "bullet",
+      "text": "The same fixed 128 real-validation pairs, from 128 documents, supply 8,192 scored tokens. No held-out gradients train the model. The per-update probe is separate from complete epoch validation/test evaluation."
+    },
+    {
+      "type": "bullet",
+      "text": "Real conditional effect = LM \u2212 LS; synthetic conditional effect = LM \u2212 LR. Negative \u0394NLL improves real-text prediction; positive \u0394NLL worsens it. Omitting one component does not renormalize the other."
+    },
+    {
+      "type": "bullet",
+      "text": "Curvature means conditional effects need not add. The interaction is LM \u2212 LR \u2212 LS + L0. Document-bootstrap intervals measure evaluation-sample variability, not uncertainty across training seeds."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5.4. Mean conditional probe \u0394NLL per actual update in the 99% arm. Means include all 79 updates, including zero contributions from absent real sources."
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "effects",
+      "rows": [
+        [
+          "Cycle",
+          "Updates containing real",
+          "Real effect",
+          "Synthetic effect"
+        ],
+        [
+          "1",
+          "52 / 79",
+          "-0.002253",
+          "+0.009300"
+        ],
+        [
+          "5",
+          "61 / 79",
+          "-0.035495",
+          "+0.039134"
+        ],
+        [
+          "6",
+          "58 / 79",
+          "-0.045996",
+          "+0.042451"
+        ],
+        [
+          "10",
+          "59 / 79",
+          "-0.049390",
+          "+0.045491"
+        ]
+      ],
+      "widths": [
+        60,
+        150,
+        120,
+        120
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "6. Real corrections strengthen over training",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Including real data helps the probe in all 563 real-present updates. Synthetic inclusion hurts in 778/790 and helps in 12; this statement concerns the 99% trajectory, not every possible synthetic update."
+    },
+    {
+      "type": "bullet",
+      "text": "The average real correction grows from \u22120.00225 NLL/update in cycle 1 to \u22120.04939 in cycle 10. The corresponding synthetic effect grows from +0.00930 to +0.04549. Late corrections can therefore compete with the synthetic pressure."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T001352Z-full-completion64-mixtures\\generated\\update-gradients-20261114\\99_source_help_hurt.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5.2. Conditional local effects along the observed 99% training path. Below zero helps held-out real prediction. Bands are 95% paired document-bootstrap intervals, with 2,000 resamples; updates are not independent replicates."
+    },
+    {
+      "type": "h2",
+      "text": "7. Why 1% of examples can matter much more than 1%",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Actual weighted real-gradient norm averages 0.100 in cycle 1 and 0.297 in cycle 10; synthetic averages 0.877 and 0.485. Among batches containing both sources, the median weighted real/synthetic ratio grows from 0.165 to 0.703."
+    },
+    {
+      "type": "bullet",
+      "text": "Real-target training NLL rises from 3.215 to 5.333, while synthetic-target NLL falls from 0.508 to 0.060. The degraded model finds real continuations surprising but is increasingly confident on its own targets. These are fresh-chunk pre-update training averages, not fixed-set evaluations."
+    },
+    {
+      "type": "bullet",
+      "text": "Source directions also increasingly oppose: median cosine moves from \u22120.111 to \u22120.363 in both-source batches. Parameter-gradient size depends on errors, network derivatives and cancellation across examples; norm size alone does not establish usefulness."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T001352Z-full-completion64-mixtures\\generated\\update-gradients-20261114\\99_weighted_gradient_norms.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5.3. Mean gradient norms over all 79 updates/cycle, including real-absent zero contributions. Actual batch proportions are already included. The direct validation interventions, rather than norms alone, establish the measured benefit."
+    },
+    {
+      "type": "h2",
+      "text": "8. What causes the sharp cycle-6 and cycle-10 drops?",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Each cycle has 78 batches of 128 and a final batch of 16. In cycles 1, 6 and 10, that final batch contains one real example. Its averaging weight is 1/16 rather than 1/128: eight times the weight of one example in a full batch."
+    },
+    {
+      "type": "bullet",
+      "text": "The late final updates strongly improve the real probe. This makes the cycle endpoint sensitive to the random placement of scarce real examples, even though every cycle still contains exactly 100 real and 9,900 synthetic targets."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T001352Z-full-completion64-mixtures\\generated\\update-gradients-20261114\\99_tail_batch_corrections.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5.4. Actual per-update 99% probe perplexity. Crosses show measured synthetic-only shadows for the last update at cycles 6/10; arrows show the correction when real is included. These are 128-pair probe values, not full-test counterfactuals."
+    },
+    {
+      "type": "h2",
+      "text": "9. Direct numerical evidence for the final-batch effect",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "At cycle 6, the preceding 78 updates worsen probe NLL overall by +0.09146. The final update improves it by \u22120.34946, causing a net improving cycle. Its synthetic-only shadow would worsen the probe; the one real example supplies the correction."
+    },
+    {
+      "type": "bullet",
+      "text": "At cycle 10, the preceding 78 updates already improve NLL slightly (\u22120.02186), followed by \u22120.23980 at the tail. Thus most of that cycle's improvement also occurs at the final update."
+    },
+    {
+      "type": "bullet",
+      "text": "The complete test has dips at the same cycle endpoints. The probe provides direct one-step evidence for their timing; the full test was not evaluated before and after each shadow. We cannot assign the exact full-test drop to one component."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5.5. Final update in the 99% arm. Both shadows use the same starting weights and original batch-weighted components."
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "tails",
+      "rows": [
+        [
+          "Cycle",
+          "Real / total",
+          "PPL before",
+          "Synthetic only",
+          "Actual mixed"
+        ],
+        [
+          "6",
+          "1 / 16",
+          "210.45",
+          "222.77",
+          "148.38"
+        ],
+        [
+          "10",
+          "1 / 16",
+          "216.64",
+          "217.61",
+          "170.45"
+        ]
+      ],
+      "widths": [
+        50,
+        85,
+        100,
+        110,
+        105
+      ]
+    },
+    {
+      "type": "caption",
+      "text": "Table W5.6. Complete test PPL. These values use all fixed test pairs and differ from the miniature probe above."
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "endpoints",
+      "rows": [
+        [
+          "Cycle",
+          "0% synthetic",
+          "99% synthetic",
+          "100% synthetic"
+        ],
+        [
+          "0",
+          "17.96",
+          "17.96",
+          "17.96"
+        ],
+        [
+          "1",
+          "17.80",
+          "31.15",
+          "32.91"
+        ],
+        [
+          "5",
+          "17.74",
+          "184.26",
+          "343.06"
+        ],
+        [
+          "6",
+          "17.76",
+          "142.70",
+          "514.96"
+        ],
+        [
+          "9",
+          "17.73",
+          "211.99",
+          "1131.71"
+        ],
+        [
+          "10",
+          "17.73",
+          "164.41",
+          "1408.61"
+        ]
+      ],
+      "widths": [
+        60,
+        130,
+        130,
+        130
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "10. Why can the trajectory appear to stabilize?",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "The corrective real signal strengthens as the model drifts away from real text. In late cycles, it can nearly balance synthetic deterioration, or temporarily outweigh it. A plateau can therefore emerge from changing update effects even with constant LR. The 100% arm has no real-target gradient component to supply this correction."
+    },
+    {
+      "type": "bullet",
+      "text": "For additive accounting, average each source's isolated and conditional effects: real = \u00bd[(LR\u2212L0)+(LM\u2212LS)]; synthetic = \u00bd[(LS\u2212L0)+(LM\u2212LR)]. This splits the nonlinear interaction equally; it is a stated attribution convention."
+    },
+    {
+      "type": "bullet",
+      "text": "Across 790 updates the allocations are \u221224.884 real and +27.114 synthetic, giving net +2.231 probe NLL. The real allocation offsets about 91.8% of the local synthetic allocation under this convention. These sums follow the actual evolving path; they do not simulate removing a source for ten cycles."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T001352Z-full-completion64-mixtures\\generated\\update-gradients-20261114\\99_additive_local_allocation.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5.5. Per-cycle sums of symmetric local allocations, which add exactly to the observed net probe-NLL change. A moving near-balance and tail corrections explain the apparent flattening; ten cycles do not establish a limiting equilibrium."
+    },
+    {
+      "type": "h2",
+      "text": "11. Generated-text diagnostics and metric scope",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "The usual generation metrics use 256 fixed real-validation prompts and 64-token greedy outputs at each checkpoint. This is a different population from the 128-pair teacher-forced update probe."
+    },
+    {
+      "type": "bullet",
+      "text": "Pooled token entropy measures vocabulary-frequency spread across all outputs; within-output entropy measures local token variety. Neither is predictive-distribution entropy. Distinct-2/3 measure unique token phrases divided by all phrases within outputs, pooled across the fixed sample."
+    },
+    {
+      "type": "bullet",
+      "text": "Repeated four-grams inside an output detect loops. These statistics describe text form, while held-out PPL measures the probability of real continuations. They need not rank conditions identically, and a single repetitive example cannot establish a population rate."
+    },
+    {
+      "type": "bullet",
+      "text": "At cycle 10, the 99% and 100% arms have almost equal local entropy (about 2.64 nats) and repeated-four-gram rates (about 58.8%), despite an 8.6-fold test-PPL gap. Similar greedy text form can coexist with very different probabilities for held-out real continuations; these output statistics do not imply equal predictive ability."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5.7. Saved fixed-greedy-probe metrics at baseline and cycle 10. H is in nats; D2/D3 and local repeated four-grams are percentages."
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "outputs",
+      "rows": [
+        [
+          "Checkpoint",
+          "Pooled H",
+          "Local H",
+          "D2",
+          "D3",
+          "Local repeat-4"
+        ],
+        [
+          "M0",
+          "5.892",
+          "3.057",
+          "39.20",
+          "55.40",
+          "33.24"
+        ],
+        [
+          "0% M10",
+          "5.959",
+          "3.101",
+          "41.03",
+          "57.96",
+          "31.17"
+        ],
+        [
+          "99% M10",
+          "5.686",
+          "2.640",
+          "27.26",
+          "35.65",
+          "58.82"
+        ],
+        [
+          "100% M10",
+          "5.731",
+          "2.643",
+          "27.56",
+          "35.67",
+          "58.88"
+        ]
+      ],
+      "widths": [
+        80,
+        70,
+        70,
+        65,
+        65,
+        100
+      ]
+    },
+    {
+      "type": "caption",
+      "text": "Table W5.8. Complete held-out likelihood at terminal checkpoints; NLL is nats per scored continuation token."
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "losses",
+      "rows": [
+        [
+          "Synthetic",
+          "Validation PPL",
+          "Test NLL",
+          "Median example NLL",
+          "P95 example NLL"
+        ],
+        [
+          "0%",
+          "18.00",
+          "2.8750",
+          "2.8912",
+          "3.8946"
+        ],
+        [
+          "99%",
+          "169.67",
+          "5.1024",
+          "5.1786",
+          "6.5859"
+        ],
+        [
+          "100%",
+          "1477.80",
+          "7.2504",
+          "7.3135",
+          "9.4855"
+        ]
+      ],
+      "widths": [
+        65,
+        95,
+        80,
+        110,
+        100
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "12. Conclusions, limitations and the next control",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Measured: the rare real targets have a beneficial immediate effect and grow more influential along the 99% SGD path. Synthetic targets usually worsen real-probe predictions there. This is direct evidence for a corrective real-data mechanism under this recipe."
+    },
+    {
+      "type": "bullet",
+      "text": "Interpretation: as synthetic training moves the model away from real continuations, those continuations ask for increasingly strong corrections. Their sparse but large updates can approach a balance with synthetic updates. The smaller tail batch amplifies particular corrections and affects cycle endpoints."
+    },
+    {
+      "type": "bullet",
+      "text": "Stabilization remains provisional. The 99% endpoint is still about 9.2\u00d7 its initial full-test PPL, with large within-cycle fluctuations. One seed and ten cycles cannot establish a permanent plateau, universal real-data threshold or irreversible collapse."
+    },
+    {
+      "type": "bullet",
+      "text": "The earlier AdamW result also involves optimizer history, LR decay and five-beam targets. The new recipe changes optimizer, schedule, regularization, precision and decoding together. It shows that LR decay and Adam momentum are not necessary for these SGD corrections, but does not identify an optimizer-only causal effect."
+    },
+    {
+      "type": "bullet",
+      "text": "A targeted next control would give the 16-row tail the same per-example update weight as full batches, then repeat several training-order seeds. More cycles and LR sensitivity would test whether the apparent balance persists. These follow-up runs have not been performed."
+    },
+    {
+      "type": "bullet",
+      "text": "All 2,370 update journals and per-example scores were verified from pinned backups. Component reconstruction error is at most 2.65e-7 relative, mixed shadow weights match actual updates, and probe states telescope exactly. Bootstrap intervals describe probe-document variability only. Full model/optimizer cold restoration was not repeated during this offline analysis."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5.9. Execution and recovery scope. Historical resources remain preserved; no new GPU work was used to prepare this report."
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "execution",
+      "rows": [
+        [
+          "Item",
+          "Recorded outcome"
+        ],
+        [
+          "New SGD training",
+          "30 terminal epochs; 2,370 updates"
+        ],
+        [
+          "Hardware",
+          "RTX PRO 4000 Blackwell"
+        ],
+        [
+          "Automatic compute shutdown",
+          "14 Nov 2026, 07:30:26 UTC; provider verified"
+        ],
+        [
+          "Full Pod lifetime / provider bill",
+          "7 h 16 min / USD 4.166; storage/setup additional"
+        ],
+        [
+          "Offline analysis recovery",
+          "All selected update journals, scores and seals"
+        ],
+        [
+          "New report compute charge",
+          "USD 0"
+        ]
+      ],
+      "widths": [
+        190,
+        260
+      ]
+    }
+  ]
+}
