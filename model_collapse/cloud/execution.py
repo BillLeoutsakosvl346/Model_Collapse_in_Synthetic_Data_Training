@@ -500,7 +500,11 @@ def _launch(generations=10, smoke=False, resume_id=None, mode="fresh_base", conf
     bank_archive = None
     if c.get("completion_profile") == "smollm2_sgd_greedy_effects_v1":
         from .sgd_setup import bank_cache
-        bank_archive = bank_cache(c)
+        from ..workflow.sgd_profile import mixtures
+        # New mixtures restore the exact pinned bank cloud-to-cloud in the
+        # supervised worker. Avoid a slow laptop upload before the watchdog.
+        if not mixtures(c):
+            bank_archive = bank_cache(c)
     archive, code_hash = source_archive()
     if previous and previous["code_sha256"] != code_hash and c["kind"] != "smoke":
         raise RuntimeError("Resume requires the original code; restore its recorded commit")

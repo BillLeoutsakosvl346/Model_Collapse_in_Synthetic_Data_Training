@@ -95,7 +95,9 @@ def test_capacity_failure_prevents_any_new_provider_resource(tmp_path, monkeypat
     monkeypatch.setattr(remote, "STATE", tmp_path)
     monkeypatch.setattr(remote, "load_secrets", lambda: None)
     monkeypatch.setattr(remote, "Runpod", Provider)
-    monkeypatch.setattr(remote, "preflight", lambda **kwargs: {"hugging_face": {"repos": repos}})
+    monkeypatch.setattr(remote, "preflight", lambda **kwargs: {"hugging_face": {"repos": repos},
+        "gpu_candidates": [{"gpu": "NVIDIA RTX PRO 4000 Blackwell", "vram_gb": 24,
+                            "hourly_usd": .57, "data_center": "EU-RO-1"}]})
     monkeypatch.setattr(remote, "HfApi", lambda **kwargs: Hub())
     monkeypatch.setattr(completion, "resolve_inputs", lambda value: value)
     with pytest.raises(RuntimeError, match="capacity is insufficient"):

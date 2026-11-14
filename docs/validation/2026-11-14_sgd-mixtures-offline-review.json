@@ -1,0 +1,32 @@
+{
+  "recorded_at": 1794667600.2713273,
+  "runtime_sha256": "790a2322864a98a5cd7efa66d776817511f2bfa035c613b50d9dec9c55e2971d",
+  "source_archive_sha256": "7eceec6af986492861e3ea61d0ac3a80e83860343dc5adfb08e8682a98a40f46",
+  "focused_tests": {
+    "passed": 146,
+    "failed": 0,
+    "junit_sha256": "184ce6f065deae834a41fe0f9f5ddc7a3f0b5f78ad24ce33d72fe4793bb8ee0c"
+  },
+  "repository_checks": {
+    "markdown_files": 152,
+    "configurations": 56,
+    "publication_manifests": 34,
+    "errors": []
+  },
+  "independent_postcode_review": {
+    "agent": "sgd_mixtures_postcode_review",
+    "material_findings": [],
+    "followup_analysis_review": "No material issue; loss populations and perpendicular-reference interpretation verified"
+  },
+  "unchanged_calibration_implementations": {
+    "model_collapse/science/engine.py": true,
+    "model_collapse/workflow/optimization.py": true,
+    "model_collapse/workflow/sgd_calibration.py": true
+  },
+  "selected_learning_rate": 0.01,
+  "calibration_receipt_sha256": "8dc46a4fc9f5bf5cdbc7935d1ef814a735e45acb21d0ba8453eb10d1f0fea842",
+  "additional_calibration_updates": 0,
+  "validation_not_yet_executed": true,
+  "full_runs_not_yet_launched": true,
+  "historical_test_mock_repair": "Added already-required preflight gpu_candidates to capacity-admission test double; no resource calls added."
+}

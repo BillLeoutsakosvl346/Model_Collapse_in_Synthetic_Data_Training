@@ -12,6 +12,9 @@ ALLOCATION = "smollm2_sgd_greedy_effects"
 SETUP_ALLOCATION = ALLOCATION + "_setup"
 ARMS = [{"id": name, "synthetic_fraction": fraction} for name, fraction in
         (("real", 0.), ("mixed99", .99), ("synthetic", 1.))]
+MIXTURE_ARMS = [{"id": "mixed50", "synthetic_fraction": .5},
+                {"id": "mixed80", "synthetic_fraction": .8}]
+MIXTURE_ALLOCATION = "smollm2_sgd_greedy_mixtures"
 DIAGNOSTICS = {"enabled": True, "policy": "same_graph_sgd_components_v1", "probe_pairs": 128,
                "evaluation_precision": "fp32", "numerical_floor": 1e-6}
 CALIBRATION = {"rates": [1e-4, 1e-3, 1e-2, 1e-1], "screen_updates": 32, "confirm_updates": 32,
@@ -31,9 +34,31 @@ def enabled(c):
 
 
 def specs(c):
-    if c.get("completion_arms") != ARMS:
-        raise ValueError("SGD comparison requires real, mixed99 and synthetic in that order")
-    return copy.deepcopy(ARMS)
+    arms = c.get("completion_arms")
+    if arms != ARMS and arms != MIXTURE_ARMS:
+        raise ValueError("SGD comparison requires its declared historical or mixed50/mixed80 ordered suite")
+    return copy.deepcopy(arms)
+
+
+def mixtures(c):
+    return specs(c) == MIXTURE_ARMS
+
+
+def allocation_id(c):
+    name = MIXTURE_ALLOCATION if mixtures(c) else ALLOCATION
+    return name + "_setup" if c["kind"] == "smoke" else name
+
+
+def acceptance_scope(c):
+    return "smollm2_sgd_greedy_mixtures_v1" if mixtures(c) else PROFILE
+
+
+def checks(c):
+    return (CHECKS - {"twenty_four_sgd_updates"}) | {"sixteen_sgd_updates"} if mixtures(c) else CHECKS
+
+
+def interruption_arm(c):
+    return "mixed80" if mixtures(c) else "mixed99"
 
 
 def require_calibration(c):
@@ -96,14 +121,17 @@ def validate(c):
             or c.get("decoding_arms") or c.get("endpoint_arms")
             or c.get("training_chunk_policy", "fresh_per_cycle") != "fresh_per_cycle"):
         raise ValueError("SGD requires fresh chunks and explicit greedy generation")
-    if c["kind"] == "smoke" and (c.get("validation_max_seconds") != 1800 or c.get("max_session_usd") != .4):
-        raise ValueError("SGD setup requires its combined 30-minute/$0.40 limits")
+    limits = (900, .2) if mixtures(c) else (1800, .4)
+    if c["kind"] == "smoke" and (c.get("validation_max_seconds"), c.get("max_session_usd")) != limits:
+        raise ValueError("SGD setup differs from its authorized combined time/cost limits")
+    if mixtures(c) and (c.get("calibration_required") is not False or c["learning_rate"] != .01):
+        raise ValueError("Mixed SGD comparison reuses the verified 0.01 calibration without new calibration")
     if type(c.get("calibration_required")) is not bool:
         raise ValueError("SGD configuration must declare calibration readiness")
     if not c["calibration_required"]:
         require_calibration(c)
     if c["workflow"] == "completion_arm":
-        spec = next((v for v in ARMS if v["id"] == c.get("arm_id")), None)
+        spec = next((v for v in specs(c) if v["id"] == c.get("arm_id")), None)
         kind = "real" if spec and spec["synthetic_fraction"] == 0 else "synthetic" if spec and spec["synthetic_fraction"] == 1 else "mixed"
         if not spec or c.get("data_kind") != kind or c.get("synthetic_fraction") != spec["synthetic_fraction"]:
             raise ValueError("SGD child differs from its declared arm")
@@ -125,11 +153,12 @@ def resolve_inputs(c):
 def resolve_backup(c, api):
     result = copy.deepcopy(c)
     smoke = c.get("kind") == "smoke"
-    store = c.get("backup_store") or read_json(STATE / ("smollm2_backup_store.json" if smoke else "sgd_effects_backup_store.json"))
+    filename = "sgd_mixtures_backup_store.json" if mixtures(c) else "sgd_effects_backup_store.json"
+    store = c.get("backup_store") or read_json(STATE / ("smollm2_backup_store.json" if smoke else filename))
     if not store:
         raise RuntimeError("SGD requires a verified private backup store; setup does not provision full-run storage")
     store = copy.deepcopy(store)
-    suffix = "-sgd-greedy-effects-setup"
+    suffix = "-sgd-greedy-mixtures-setup" if mixtures(c) else "-sgd-greedy-effects-setup"
     if smoke and not store["prefix"].endswith(suffix):
         original = store["prefix"]
         base = original if len(original) + len(suffix) <= 100 else original[:100 - len(suffix) - 9] + "-" + digest(original)[:8]

@@ -191,13 +191,15 @@ def adopt_resolved_config(root):
 def write_full_configuration(root, destination):
     """Only called after accepted setup recovery; never provisions or launches."""
     import yaml
-    from ..workflow.sgd_profile import apply_calibration, validate, CHECKS
+    from ..workflow.sgd_profile import apply_calibration, validate, checks
     root, destination = Path(root), Path(destination)
     accepted = read_json(root / "validation_results.json", {})
-    if (not all(accepted.get("checks", {}).get(k) is True for k in CHECKS) or
-            accepted.get("source_code_sha256") != read_json(root / "resources.json")["code_sha256"]):
+    if not destination.is_file():
         raise RuntimeError("Accept the recovered SGD smoke before publishing its full configuration")
     raw = yaml.safe_load(destination.read_text())
+    if (not all(accepted.get("checks", {}).get(k) is True for k in checks(raw)) or
+            accepted.get("source_code_sha256") != read_json(root / "resources.json")["code_sha256"]):
+        raise RuntimeError("Accept the recovered SGD smoke before publishing its full configuration")
     receipt = read_json(root / "calibration/selection.json")
     resolved = apply_calibration(raw, receipt, sha256(root / "calibration/selection.json"))
     snapshot = read_json(root / "recovery_snapshot.json")

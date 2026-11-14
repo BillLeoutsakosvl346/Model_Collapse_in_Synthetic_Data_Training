@@ -96,6 +96,8 @@ def arm_specs(c):
 
 def allocation_id(c):
     if native_model(c):
+        if c.get("optimizer") == "sgd":
+            return native_profile(c).allocation_id(c)
         return native_profile(c).SETUP_ALLOCATION if native_profile(c).__name__.endswith("sgd_profile") and c["kind"] == "smoke" else native_profile(c).ALLOCATION
     if c.get("decoding_arms") is not None:
         return DECODING_ALLOCATION
@@ -114,6 +116,8 @@ def acceptance_campaign(c):
 
 def benchmark_filename(c):
     if native_model(c):
+        if c.get("optimizer") == "sgd":
+            return "benchmark_sgd_greedy_mixtures.json" if native_profile(c).mixtures(c) else "benchmark_sgd_greedy_effects.json"
         return "benchmark_sgd_greedy_effects.json" if c.get("optimizer") == "sgd" else "benchmark_smollm2_completion64.json"
     if c.get("decoding_arms") is not None:
         return "benchmark_completion_decoding.json"
@@ -128,6 +132,8 @@ def benchmark_filename(c):
 
 def acceptance_checks(c):
     if native_model(c):
+        if c.get("optimizer") == "sgd":
+            return native_profile(c).checks(c)
         return native_profile(c).CHECKS
     extra = {"exact_mixture_reconstruction", "nested_selections", "sealed_private_stage_restores"}
     checks = CHECKS | extra if c.get("completion_arms") is not None else CHECKS
@@ -647,7 +653,7 @@ def run_arm(root, validation=False):
                                         source_labels=labels, update_probe=update_probe,
                                         progress_callback=progress if update_probe else None,
                                         inject=validation and cycle == 2 and (not native_model(c) or
-                                                (c.get("optimizer") == "sgd" and c["arm_id"] == "mixed99")))
+                                                (c.get("optimizer") == "sgd" and c["arm_id"] == native_profile(c).interruption_arm(c))))
                 model = engine.load_model(c, stage / "checkpoint")
                 metrics = measure(stage, model, bank, c, training["selected_weights_sha256"], cycle)
                 metrics["training"] = training

@@ -72,7 +72,11 @@ def comparison_contract(root):
     if c.get("optimizer") == "sgd":
         keys += ("optimizer", "learning_rate_policy", "momentum", "scheduler_policy", "generation_decoder",
                  "update_diagnostics", "calibration_reference")
-    return {"settings": {k: c.get(k) for k in keys}, "bank_manifest_sha256": c["prepared_bank"]["manifest_sha256"],
+    settings = {k: c.get(k) for k in keys}
+    if c.get("optimizer") == "sgd":
+        settings["calibration_reference"] = {k: v for k, v in c["calibration_reference"].items()
+                                             if k not in ("snapshot", "relative_path")}
+    return {"settings": settings, "bank_manifest_sha256": c["prepared_bank"]["manifest_sha256"],
             "baseline_weights_sha256": baseline["weights_sha256"],
             "primary_scored_tokens": {name: baseline[name]["scored_tokens"] for name in ("validation", "test")},
             "objective": "bos_prompt64_continuation64_score_positions65_to128"}

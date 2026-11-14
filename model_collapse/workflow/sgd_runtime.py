@@ -44,9 +44,10 @@ def verify_benchmark_record(b, c, *, expected_runtime=None, require_observer=Tru
             type(v) is not int or v <= 0 for v in b["full_primary_targets"].values()):
         raise RuntimeError("SGD benchmark has invalid full evaluation counts")
     if require_observer:
+        from .sgd_profile import specs
         steps = b.get("step_seconds_by_arm", {})
         if (b.get("training_includes_update_observer") is not True
-                or set(steps) != {"real", "mixed99", "synthetic"}
+                or set(steps) != {arm["id"] for arm in specs(c)}
                 or any(not isinstance(v, (int, float)) or not math.isfinite(v) or v <= 0 for v in steps.values())
                 or not 0 < b.get("calibration_physical_updates", 0) <= 192):
             raise RuntimeError("SGD benchmark lacks accepted source-attribution measurements")
@@ -183,9 +184,13 @@ def finish_benchmark(root, c):
 def forecast(b, c, hourly):
     if not b.get("training_includes_update_observer"):
         raise RuntimeError("SGD full forecast requires measured update-attribution overhead")
-    cycles = c["generations"]; stages = 3 * cycles; sets = stages + 1
-    updates = cycles * math.ceil(10000 / 128)
-    generated = cycles * (9900 + 10000)
+    from .sgd_profile import specs
+    from ..mixing import mixture_counts
+    arms = specs(c)
+    cycles = c["generations"]; stages = len(arms) * cycles; sets = stages + 1
+    pairs = c["full_train_pairs"]
+    updates = cycles * math.ceil(pairs / c["effective_batch"])
+    generated = cycles * sum(mixture_counts(pairs, arm["synthetic_fraction"])[1] for arm in arms)
     train = sum(b["step_seconds_by_arm"].values()) * updates
     seconds = (train + (generated + sets * 256) * 64 / b["generation_new_tokens_per_second"] +
                sets * sum(b["full_primary_targets"].values()) / b["primary_target_tokens_per_second"] +
@@ -193,7 +198,7 @@ def forecast(b, c, hourly):
                stages * 640000 / b["primary_target_tokens_per_second"])
     hours = (seconds * 1.5 + stages * 60 + 600) / 3600
     return {"estimated_hours": hours, "estimated_compute_and_running_storage_usd": hours * hourly,
-            "unique_training_stages": stages, "epochs": stages, "optimizer_updates": 3 * updates,
+            "unique_training_stages": stages, "epochs": stages, "optimizer_updates": len(arms) * updates,
             "generated_training_continuations": generated, "generated_training_tokens": generated * 64,
             "training_target_exposures": stages * 640000, "probe_sets": sets, "forecast_margin": 1.5,
             "update_attribution_included": True, "storage_and_backup_fixed_overhead_seconds": stages * 60 + 600}

@@ -4,6 +4,22 @@ description: "Scientific conditions and their recorded runs; week labels are pre
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
 conditions:
+  smollm2_sgd_greedy_mixtures:
+    name: "SmolLM2-135M / FineWeb: 50% and 80% synthetic, SGD constant LR and greedy"
+    state: implementation_and_validation
+    definition: ../comparisons/smollm2_sgd_greedy_mixtures/README.md
+    comparison_config: ../comparisons/smollm2_sgd_greedy_mixtures/full.yaml
+    smoke_config: ../comparisons/smollm2_sgd_greedy_mixtures/smoke.yaml
+    authorization: ../docs/validation/2026-11-14_sgd-mixtures-authorization.json
+    historical_control: 20261114T001352Z-full-completion64-mixtures
+    synthetic_fractions: [0.5, 0.8]
+    optimizer: sgd
+    learning_rate: 0.01
+    learning_rate_policy: constant
+    initialization: continued
+    checkpoint_selection: final_epoch
+    epochs: 1
+    generations: 10
   smollm2_sgd_greedy_effects:
     name: "SmolLM2 / FineWeb: plain SGD, greedy targets and actual-update source effects"
     workflow: completion_comparison

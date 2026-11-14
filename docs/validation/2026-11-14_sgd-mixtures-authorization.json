@@ -1,0 +1,21 @@
+{
+  "authorized_at": 1794667235.4552217,
+  "source": "User-approved implementation plan: Run the 50% and 80% synthetic SGD comparison, 14 November 2026",
+  "previous_ledger_sha256": "c5986f9bad28482e65f9f519deeba1a1eb1f35135025593f3f8ae9f2cf648756",
+  "previous_cumulative_ceiling_usd": 110.0,
+  "cumulative_ceiling_usd": 125.0,
+  "previous_setup_ceiling_usd": 5.4,
+  "setup_ceiling_usd": 5.6,
+  "combined_task_cap_usd": 12.0,
+  "validation_cap_usd": 0.2,
+  "reserve_usd": 2.0,
+  "validation_max_paid_seconds": 900,
+  "full_training_authorized_after_acceptance": true,
+  "existing_credit_only": true,
+  "credit_purchase_authorized": false,
+  "payment_changes_authorized": false,
+  "allocation_split": {
+    "smollm2_sgd_greedy_mixtures_setup": 0.2,
+    "smollm2_sgd_greedy_mixtures": 11.8
+  }
+}

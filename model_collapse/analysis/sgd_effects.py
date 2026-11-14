@@ -12,6 +12,43 @@ import numpy as np
 from ..common import atomic_json, read_json, sha256
 
 
+def source_summary(rows):
+    """Separate scalar-loss shares, vector geometry and local held-out effects."""
+    result = []
+    for arm, cycle in sorted({(r["arm"], r["cycle"]) for r in rows}):
+        epoch = [r for r in rows if r["arm"] == arm and r["cycle"] == cycle]
+        for population in ("all_updates", "full_batches", "tail_batches"):
+            values = [r for r in epoch if population == "all_updates" or
+                      (r["real_pairs"] + r["synthetic_pairs"] == 128) == (population == "full_batches")]
+            if not values:
+                continue
+            real = math.fsum(r["real_weighted_training_nll"] for r in values)
+            synthetic = math.fsum(r["synthetic_weighted_training_nll"] for r in values)
+            tokens = math.fsum(r["total_scored_targets"] for r in values)
+            real_sum = math.fsum(r["real_weighted_training_nll"] * r["total_scored_targets"] for r in values)
+            synthetic_sum = math.fsum(r["synthetic_weighted_training_nll"] * r["total_scored_targets"] for r in values)
+            orthogonal = np.mean([math.hypot(r["real_gradient_norm"], r["synthetic_gradient_norm"]) for r in values])
+            total = np.mean([r["total_gradient_norm"] for r in values])
+            cosines = [r["source_cosine"] for r in values if r["source_cosine"] is not None]
+            result.append({"arm": arm, "cycle": cycle, "population": population, "updates": len(values),
+                "real_pairs": sum(r["real_pairs"] for r in values),
+                "synthetic_pairs": sum(r["synthetic_pairs"] for r in values),
+                "mean_weighted_real_nll": real / len(values), "mean_weighted_synthetic_nll": synthetic / len(values),
+                "real_share_of_mean_batch_loss": real / (real + synthetic) if real + synthetic else None,
+                "token_weighted_real_nll": real_sum / tokens,
+                "token_weighted_synthetic_nll": synthetic_sum / tokens,
+                "real_share_of_corpus_loss": real_sum / (real_sum + synthetic_sum) if real_sum + synthetic_sum else None,
+                "mean_real_gradient_norm": float(np.mean([r["real_gradient_norm"] for r in values])),
+                "mean_synthetic_gradient_norm": float(np.mean([r["synthetic_gradient_norm"] for r in values])),
+                "mean_combined_gradient_norm": float(total), "mean_orthogonal_reference_norm": float(orthogonal),
+                "cancellation_vs_orthogonal_reference": float(1 - total / orthogonal) if orthogonal else None,
+                "mean_source_cosine": float(np.mean(cosines)) if cosines else None,
+                "opposing_updates": sum(v < 0 for v in cosines), "both_source_updates": len(cosines),
+                **{key: float(np.mean([r[key] for r in values])) for key in
+                   ("real_conditional_delta_nll", "synthetic_conditional_delta_nll", "mixed_delta_nll", "interaction_nll")}})
+    return result
+
+
 def effect_summary(scores, records):
     """Document-bootstrap uncertainty of mean local effects along one epoch.
 
@@ -80,6 +117,9 @@ def _collect_updates(root, roots=None):
                         "synthetic_pairs": record["synthetic_pairs"],
                         "real_scored_targets": record["real_scored_targets"],
                         "synthetic_scored_targets": record["synthetic_scored_targets"],
+                        "total_scored_targets": record["total_scored_targets"],
+                        "real_weighted_training_nll": record["real_weighted_training_nll"],
+                        "synthetic_weighted_training_nll": record["synthetic_weighted_training_nll"],
                         "real_gradient_norm": g["real_norm"], "synthetic_gradient_norm": g["synthetic_norm"],
                         "total_gradient_norm": g["total_norm"], "source_cosine": g["real_synthetic_cosine"],
                         "gradient_reconstruction_relative_error": g["reconstruction_relative_error"],
@@ -118,6 +158,14 @@ def report(root, out=None, *, for_backup=False, reference=None):
     destination = Path(base["out"])
     c = read_json(root / "config.json")
     rows, layers, summaries, inputs = _collect_updates(root)
+    if reference is not None:
+        extra, extra_layers, extra_summaries, extra_inputs = _collect_updates(reference)
+        if rows and extra and rows[0]["probe_identity"] != extra[0]["probe_identity"]:
+            raise RuntimeError("Reference SGD diagnostic probe differs")
+        if {r["arm"] for r in rows} & {r["arm"] for r in extra}:
+            raise RuntimeError("Reference SGD arm identifiers overlap")
+        rows += extra; layers += extra_layers; summaries += extra_summaries
+        inputs.update({Path(reference).name + ":" + k: v for k, v in extra_inputs.items()})
     if not rows:
         raise RuntimeError("No sealed SGD update diagnostics are available")
     atomic_json(destination / "update_effects.json", rows)
@@ -125,6 +173,9 @@ def report(root, out=None, *, for_backup=False, reference=None):
     _csv(destination / "update_effects.csv", rows)
     _csv(destination / "layer_gradients.csv", layers)
     _csv(destination / "epoch_local_effects.csv", summaries)
+    sources = source_summary(rows)
+    atomic_json(destination / "epoch_source_summary.json", sources)
+    _csv(destination / "epoch_source_summary.csv", sources)
     colors = {"real": "#147d81", "synthetic": "#ad355c", "mixed": "#8b5fbf"}
     figures = []
 
@@ -134,29 +185,32 @@ def report(root, out=None, *, for_backup=False, reference=None):
         fig.savefig(destination / (name + ".pdf"), metadata={"CreationDate": None, "ModDate": None})
         plt.close(fig); figures.append(name + ".png")
 
-    mixed = sorted((r for r in rows if r["arm"] == "mixed99"), key=lambda r: r["step"])
-    if mixed:
+    for mixed_arm in dict.fromkeys(r["arm"] for r in rows if r["real_pairs"] and r["synthetic_pairs"]):
+        mixed = sorted((r for r in rows if r["arm"] == mixed_arm), key=lambda r: r["step"])
+        fraction = next(spec["synthetic_fraction"] for spec in c["completion_arms"] if spec["id"] == mixed_arm) if mixed_arm in {spec["id"] for spec in c["completion_arms"]} else .99
+        condition_label = f"{100 * fraction:g}% condition"
+        suffix = "" if mixed_arm == "mixed99" else "_" + mixed_arm
         fig, ax = plt.subplots(figsize=(7.5, 7.5)); ax.set_box_aspect(1)
         for prefix, label in (("real", "Weighted real component"), ("synthetic", "Weighted synthetic component"), ("total", "Actual combined gradient")):
             ax.plot([r["step"] for r in mixed], [r[prefix + "_gradient_norm"] for r in mixed],
                     color=colors.get(prefix, "#475569"), lw=1, label=label)
-        ax.set(xlabel="Optimizer update", ylabel="Gradient L2 norm", title="99% condition: actual batch-weighted gradient strengths")
-        ax.grid(alpha=.2); ax.legend(); finish(fig, "sgd_weighted_source_gradients")
+        ax.set(xlabel="Optimizer update", ylabel="Gradient L2 norm", title=f"{condition_label}: actual batch-weighted gradient strengths")
+        ax.grid(alpha=.2); ax.legend(); finish(fig, "sgd_weighted_source_gradients" + suffix)
         fig, ax = plt.subplots(figsize=(7.5, 7.5)); ax.set_box_aspect(1)
         ax.plot([r["step"] for r in mixed], [np.nan if r["source_cosine"] is None else r["source_cosine"] for r in mixed],
                 color=colors["mixed"], lw=1)
         ax.axhline(0, color="black", lw=1); ax.set(ylim=(-1, 1), xlabel="Optimizer update", ylabel="Real/synthetic gradient cosine",
-                   title="99% condition: source-gradient alignment\nEmpty-source alignments are undefined")
-        ax.grid(alpha=.2); finish(fig, "sgd_source_alignment")
+                   title=f"{condition_label}: source-gradient alignment\nEmpty-source alignments are undefined")
+        ax.grid(alpha=.2); finish(fig, "sgd_source_alignment" + suffix)
         fig, ax = plt.subplots(figsize=(7.5, 7.5)); ax.set_box_aspect(1)
         for key, label, color in (("real_conditional_delta_nll", "Including real: mixed minus synthetic-only", colors["real"]),
                                   ("synthetic_conditional_delta_nll", "Including synthetic: mixed minus real-only", colors["synthetic"])):
             ax.plot([r["step"] for r in mixed], [r[key] for r in mixed], lw=.9, color=color, label=label)
         ax.axhline(0, color="black", lw=1)
         ax.set(xlabel="Optimizer update", ylabel="Conditional real-validation NLL change",
-               title="99% condition: immediate effect of each source\nBelow zero improves predictions on the fixed real probe")
+               title=f"{condition_label}: immediate effect of each source\nBelow zero improves predictions on the fixed real probe")
         ax.ticklabel_format(axis="y", style="sci", scilimits=(-3, 3)); ax.grid(alpha=.2); ax.legend(fontsize=8)
-        finish(fig, "sgd_conditional_source_effects")
+        finish(fig, "sgd_conditional_source_effects" + suffix)
     for arm in dict.fromkeys(r["arm"] for r in rows):
         values = sorted((r for r in rows if r["arm"] == arm), key=lambda r: r["step"])
         fig, ax = plt.subplots(figsize=(7.5, 7.5)); ax.set_box_aspect(1)
@@ -168,8 +222,9 @@ def report(root, out=None, *, for_backup=False, reference=None):
                title=f"{arm}: one-step source interventions\nAll shadows start from the same actual pre-update weights")
         ax.ticklabel_format(axis="y", style="sci", scilimits=(-3, 3)); ax.legend(fontsize=8)
         finish(fig, "sgd_" + arm + "_local_update_effects")
-    mixed_layers = [r for r in layers if r["arm"] == "mixed99"]
-    if mixed_layers:
+    for mixed_arm in dict.fromkeys(r["arm"] for r in rows if r["real_pairs"] and r["synthetic_pairs"]):
+        mixed_layers = [r for r in layers if r["arm"] == mixed_arm]
+        suffix = "" if mixed_arm == "mixed99" else "_" + mixed_arm
         def order(value):
             match = re.search(r"layers\.(\d+)", value)
             return (1, int(match[1])) if match else (0, value)
@@ -183,9 +238,9 @@ def report(root, out=None, *, for_backup=False, reference=None):
         image = ax.imshow(matrix, aspect="auto", interpolation="nearest", origin="lower", cmap="coolwarm", vmin=-2, vmax=2,
                           extent=(steps[0] - .5, steps[-1] + .5, -.5, len(names) - .5))
         ax.set_yticks(range(len(names))); ax.set_yticklabels(names, fontsize=7)
-        ax.set(xlabel="Optimizer update", ylabel="Parameter layer/group", title="99%: weighted real/synthetic gradient-norm ratio\nLog10 scale; empty-source cells are unmeasured")
+        ax.set(xlabel="Optimizer update", ylabel="Parameter layer/group", title=f"{mixed_arm}: weighted real/synthetic gradient-norm ratio\nLog10 scale; empty-source cells are unmeasured")
         fig.colorbar(image, ax=ax, label="log10(real norm / synthetic norm)")
-        finish(fig, "sgd_layer_source_ratio")
+        finish(fig, "sgd_layer_source_ratio" + suffix)
     fig, ax = plt.subplots(figsize=(7.5, 7.5)); ax.set_box_aspect(1)
     for arm in dict.fromkeys(r["arm"] for r in summaries):
         values = sorted((r for r in summaries if r["arm"] == arm), key=lambda r: r["cycle"])
@@ -197,6 +252,38 @@ def report(root, out=None, *, for_backup=False, reference=None):
     ax.set(xlabel="Training cycle", ylabel="Mean local mixed-minus-synthetic NLL",
            title="Contribution of real data along the actual update path\nIntervals resample probe documents, not training updates")
     ax.ticklabel_format(axis="y", style="sci", scilimits=(-3, 3)); finish(fig, "sgd_epoch_real_effect")
+
+    for arm in dict.fromkeys(r["arm"] for r in sources):
+        values = [r for r in sources if r["arm"] == arm and r["population"] == "all_updates"]
+        x = [r["cycle"] for r in values]
+        fig, ax = plt.subplots(figsize=(7.5, 7.5)); ax.set_box_aspect(1)
+        for key, label, color in (("mean_weighted_real_nll", "Real weighted loss", colors["real"]),
+                                  ("mean_weighted_synthetic_nll", "Synthetic weighted loss", colors["synthetic"])):
+            ax.plot(x, [r[key] for r in values], "o-", label=label, color=color)
+        ax.set(xlabel="Training cycle", ylabel="Mean batch-weighted training NLL", title=f"{arm}: scalar training-loss contributions")
+        ax.grid(alpha=.2); ax.legend(); finish(fig, "sgd_" + arm + "_source_losses")
+        fig, ax = plt.subplots(figsize=(7.5, 7.5)); ax.set_box_aspect(1)
+        for key, label, color in (("mean_real_gradient_norm", "Weighted real", colors["real"]),
+                                  ("mean_synthetic_gradient_norm", "Weighted synthetic", colors["synthetic"]),
+                                  ("mean_combined_gradient_norm", "Actual combined", "#475569"),
+                                  ("mean_orthogonal_reference_norm", "Perpendicular reference", "#aaa")):
+            ax.plot(x, [r[key] for r in values], "o-", label=label, color=color)
+        ax.set(xlabel="Training cycle", ylabel="Mean gradient L2 norm", title=f"{arm}: actual gradients and perpendicular reference")
+        ax.grid(alpha=.2); ax.legend(); finish(fig, "sgd_" + arm + "_cycle_gradient_geometry")
+        fig, ax = plt.subplots(figsize=(7.5, 7.5)); ax.set_box_aspect(1)
+        for population, style in (("all_updates", "o-"), ("full_batches", "s--"), ("tail_batches", "^:")):
+            subset = [r for r in sources if r["arm"] == arm and r["population"] == population]
+            ax.plot([r["cycle"] for r in subset], [100 * r["real_share_of_mean_batch_loss"] for r in subset],
+                    style, label=population.replace("_", " "))
+        ax.set(xlabel="Training cycle", ylabel="Real share of mean batch loss (%)", ylim=(0, 100),
+               title=f"{arm}: real loss contribution\nRatio of source loss sums; not mean per-batch percentages")
+        ax.grid(alpha=.2); ax.legend(); finish(fig, "sgd_" + arm + "_real_loss_share")
+        fig, ax = plt.subplots(figsize=(7.5, 7.5)); ax.set_box_aspect(1)
+        ax.plot(x, [100 * r["cancellation_vs_orthogonal_reference"] for r in values], "o-", color="#475569")
+        ax.axhline(0, color="black", lw=1)
+        ax.set(xlabel="Training cycle", ylabel="Reduction versus perpendicular reference (%)",
+               title=f"{arm}: gradient cancellation\nPositive values indicate opposition, not held-out improvement")
+        ax.grid(alpha=.2); finish(fig, "sgd_" + arm + "_cycle_cancellation")
 
     text = (destination / "report.md").read_text(encoding="utf-8")
     text += ("\n## Actual-update SGD diagnostics\n\n"
@@ -223,6 +310,7 @@ def report(root, out=None, *, for_backup=False, reference=None):
     manifest = read_json(destination / "analysis_manifest.json")
     manifest["inputs"].update(inputs)
     manifest["sgd_analysis_script_sha256"] = sha256(__file__)
+    manifest["source_summary_populations"] = ["all_updates", "full_batches", "tail_batches"]
     manifest["sgd_effect_scope"] = "actual_batch_weighted_local_sgd_interventions_128_pair_fp32_validation_probe"
     manifest["outputs"] = {p.name: sha256(p) for p in destination.iterdir() if p.is_file() and p.name != "analysis_manifest.json"}
     atomic_json(destination / "analysis_manifest.json", manifest)

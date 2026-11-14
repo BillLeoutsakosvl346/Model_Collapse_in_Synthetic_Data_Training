@@ -173,9 +173,9 @@ def validate_remote(root):
     root = Path(root); c = read_json(root / "config.json"); resources = read_json(root / "resources.json")
     sgd_profile.validate(c); sgd_profile.require_calibration(c)
     if c["kind"] != "smoke" or c["generations"] != 2 or c["train_pairs_per_cycle"] != 400:
-        raise RuntimeError("SGD acceptance requires the bounded three-arm, two-cycle smoke")
+        raise RuntimeError("SGD acceptance requires its bounded two-cycle smoke")
     children = child_roots(root, c)
-    if list(children) != ["real", "mixed99", "synthetic"]:
+    if list(children) != [arm["id"] for arm in sgd_profile.specs(c)]:
         raise RuntimeError("SGD acceptance arm order differs")
     baseline = read_json(root / "seed_42/gen_00/metrics.json")
     original = engine.load_model(c)
@@ -247,7 +247,7 @@ def validate_remote(root):
             probe_folder = stage / "probe" / f"synthetic_for_gen_{cycle + 1:02d}"
             audit_greedy_generation(read_json(probe_folder / "manifest.json"),
                                      training["selected_weights_sha256"], c["probe_count"])
-            if name == "mixed99" and cycle == 2:
+            if name == sgd_profile.interruption_arm(c) and cycle == 2:
                 replay = audit_replay(stage, records)
             if not all(math.isfinite(metrics[split]["loss"]) and metrics[split]["scored_tokens"] == 8192
                        for split in ("validation", "test")):
@@ -260,7 +260,7 @@ def validate_remote(root):
             del state
         audits[name] = summaries
         restores[name] = verify_terminal_restore(root, child, arm)
-    interrupted = children["mixed99"]
+    interrupted = children[sgd_profile.interruption_arm(c)]
     events = []
     for path in (interrupted / "events.jsonl", root / "events.jsonl"):
         if path.exists(): events.extend(json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line)
@@ -268,12 +268,13 @@ def validate_remote(root):
     if (len(interruption) != 1 or interruption[0].get("generation") != 2
             or interruption[0].get("global_step") != 5):
         raise RuntimeError("Exactly one deliberate SGD training interruption must be recorded")
-    checks = {key: True for key in sgd_profile.CHECKS - {"detached_progress_verified", "independent_watchdog_and_provider_stop_verified"}}
-    if len(all_records) != 24:
+    checks = {key: True for key in sgd_profile.checks(c) - {"detached_progress_verified", "independent_watchdog_and_provider_stop_verified"}}
+    expected_updates = len(children) * c["generations"] * math.ceil(c["train_pairs_per_cycle"] / c["effective_batch"])
+    if len(all_records) != expected_updates:
         raise RuntimeError("SGD acceptance logical update count differs")
-    result = {"workflow": "completion_comparison", "acceptance_scope": "smollm2_sgd_greedy_effects_v1",
+    result = {"workflow": "completion_comparison", "acceptance_scope": sgd_profile.acceptance_scope(c),
               "source_code_sha256": resources["code_sha256"], "protocol_fingerprint": protocol_fingerprint(c),
-              "checks": checks, "optimizer_updates": 24, "additional_replay_updates": replay["abandoned_recorded_updates"],
+              "checks": checks, "optimizer_updates": expected_updates, "additional_replay_updates": replay["abandoned_recorded_updates"],
               "training_replay": replay,
               "stages": audits, "terminal_restores": restores, "direct_nll_absolute_error": abs(actual - direct),
               "coverage_limit": "Two reduced fresh chunks per arm and one injected training replay. No full-data execution, partial-generation interruption matrix or every historical-stage restore is claimed."}

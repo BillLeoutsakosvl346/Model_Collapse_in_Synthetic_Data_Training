@@ -2,6 +2,12 @@
 
 Snapshot refreshed on 14 November 2026. Recorded state is not a live check. Previous snapshots and dated receipts retain earlier authorization/execution chronology.
 
+## New 50%/80% SGD mixtures: implementation and validation in progress
+
+The user approved [implementation, short acceptance and automatic full launch](validation/2026-11-14_sgd-mixtures-authorization.json). The new [definition](../comparisons/smollm2_sgd_greedy_mixtures/README.md) retains the native FineWeb bank, original pretrained SmolLM2, constant SGD LR 0.01, FP32/TF32-off, greedy decoding and actual-update diagnostics. Each arm independently trains ten fresh 10,000-pair chunks; own-checkpoint synthetic targets replace 5,000 or 8,000 original continuations each cycle. The historical calibration receipt is reused; candidate weights are not.
+
+Authorized limits are **USD 125 cumulative / USD 5.60 historical setup / USD 12 combined task**, with **USD 0.20 and 900 combined paid seconds for validation**, and **USD 2 reserve**. Ledger suballocations reserve USD 0.20 setup plus USD 11.80 full to enforce the combined cap conservatively. Existing credit only; no purchases or payment changes. Full launch is conditional on fresh independent post-code review, this suite's GPU acceptance, matching hardware, verified recovery capacity and padded affordability. Neither new full arm has launched at this snapshot. Preserve every historical resource and evidence file.
+
 ## SGD/greedy comparison: completed, per-update effects analysed
 
 Full comparison **`20261114T001352Z-full-completion64-mixtures` completed all three ten-cycle arms / 30 terminal epochs / 2,370 optimizer updates**. The [completion-status receipt](validation/2026-11-14_sgd-greedy-full-completion-status.json) verifies every full metric record and all thirty continued initializer/generator/optimizer hash chains against the final pinned backup indexes. Each cycle trained 10,000 pairs for one terminal epoch; each arm reached 790 updates. Plain SGD retained constant **0.01**, zero momentum/decay and no scheduler/clipping, FP32/TF32-off and greedy decoding. Scientific settings and native FineWeb bank are unchanged from accepted runtime `02e45a8352f611b1004fa1bcf490e08384326eec141fa56576f9b28c70e839a0`.
