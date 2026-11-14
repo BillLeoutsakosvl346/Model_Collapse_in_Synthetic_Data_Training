@@ -1,0 +1,30 @@
+{
+  "source": "Runpod listPodBilling, filtered to the exact task Pod; excludes network volumes",
+  "metadata": {
+    "query": {
+      "bucketSize": "day",
+      "endTime": "2026-11-15T00:00:00Z",
+      "podId": "1j6xj517g49tjx",
+      "startTime": "2026-11-14T00:00:00Z"
+    },
+    "recordCount": 1,
+    "totals": {
+      "cpuAmount": 0,
+      "diskAmount": 0.020138891064561903,
+      "gpuAmount": 4.146219117566943,
+      "totalAmount": 4.166358008631505
+    },
+    "uniquePodCount": 1
+  },
+  "records": [
+    {
+      "cpuAmount": 0,
+      "diskAmount": 0.020138891064561903,
+      "endTime": "2026-11-15T00:00:00Z",
+      "gpuAmount": 4.146219117566943,
+      "podId": "1j6xj517g49tjx",
+      "startTime": "2026-11-14T00:00:00Z",
+      "totalAmount": 4.166358008631505
+    }
+  ]
+}

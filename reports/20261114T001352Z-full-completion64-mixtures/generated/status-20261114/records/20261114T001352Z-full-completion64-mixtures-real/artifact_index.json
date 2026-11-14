@@ -1,0 +1,1679 @@
+{
+  "run_id": "20261114T001352Z-full-completion64-mixtures-real",
+  "repos": {
+    "model": "iib-model-collapse-bill/iib-model-collapse-models",
+    "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+  },
+  "files": {
+    "completion.json": {
+      "sha256": "951689b7d9edd3e39567b44ba00d8917ed5b48fd543119cf912bded2887849ab",
+      "bytes": 92,
+      "repo_type": "dataset"
+    },
+    "config.json": {
+      "sha256": "3075cf8fbe941284684f7a6f86851ac3554dd03359652b42cd643093a9f4afde",
+      "bytes": 8601,
+      "repo_type": "dataset"
+    },
+    "manifest.json": {
+      "sha256": "33eb9a12bf1198b3903b71b26dd2d9691ea274276656f94b7cf661d19afe416d",
+      "bytes": 258,
+      "repo_type": "dataset"
+    },
+    "requirements-tested.txt": {
+      "sha256": "8ee9b2f71d0cd8cc9d6bb26ef32c0bf4f4c0221f9a1e3cccac0d78ed863b4b2a",
+      "bytes": 3410,
+      "repo_type": "dataset"
+    },
+    "resources.json": {
+      "sha256": "f8aca9b8e9ccf07db3fd41c61cb71fb6a87cbf37f9c575234845ad7c72eb4493",
+      "bytes": 2629,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_00/metrics.json": {
+      "sha256": "e71eb4fdece13d61c90bc895873bda27794e625c24ca796f0f93a86ffd569497",
+      "bytes": 3818,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/checkpoint/config.json": {
+      "sha256": "278b6adb7e47d5e407be1e99633a1a45c7a22facb9db7e9883d1b21bc5d45b62",
+      "bytes": 811,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_01/checkpoint/model.safetensors": {
+      "sha256": "417d694063b994dac6863bbc671af5ed38e44eac7d58729537ade8ecbb332e8c",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/417d694063b994dac6863bbc671af5ed38e44eac7d58729537ade8ecbb332e8c"
+      }
+    },
+    "seed_42/gen_01/diagnostics_manifest.json": {
+      "sha256": "c5c44fb0f0197d5f203ab2a493a1b9d409e8cb6df4e5f5813f608cff685e86d8",
+      "bytes": 1593,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/metrics.json": {
+      "sha256": "0dafc798a89e07a6ef3816ac84a2c657a3d656fc038d3d1d298d426edbba6584",
+      "bytes": 7735,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/optimizer_state/cycle.pt": {
+      "sha256": "cd33cb511334e9af3d099e752e6974899875888ac8e351e1a299da3b7441c2f9",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/cd33cb511334e9af3d099e752e6974899875888ac8e351e1a299da3b7441c2f9"
+      }
+    },
+    "seed_42/gen_01/probe/events.jsonl": {
+      "sha256": "3d8fdc9a19a5059829f4ac6de8a68eca1c7866d1d2e257851f0f77f15ad69fbd",
+      "bytes": 132,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/manifest.json": {
+      "sha256": "daf04fad083031a4581249586a8890e03ac3f2ece74cff1991314c657c19b582",
+      "bytes": 1168,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/shard_0000000.json": {
+      "sha256": "bf34573ab01b7cd6df2fedae84b1be0e74890ebe49bed5523554ee2a702dda88",
+      "bytes": 843,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/shard_0000000.npy": {
+      "sha256": "c26e19aa626b86846fc156992af6bde6f24456743ff79d0757ea95b533625406",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/c26e19aa626b86846fc156992af6bde6f24456743ff79d0757ea95b533625406"
+      }
+    },
+    "seed_42/gen_01/probe/synthetic_for_gen_02/tokens.npy": {
+      "sha256": "c26e19aa626b86846fc156992af6bde6f24456743ff79d0757ea95b533625406",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/c26e19aa626b86846fc156992af6bde6f24456743ff79d0757ea95b533625406"
+      }
+    },
+    "seed_42/gen_01/probe_examples.json": {
+      "sha256": "4d257868e1e6e867c29589543e81353f3c0bc11fdcfa982e856bd846fa29c632",
+      "bytes": 1554,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/stage_completion.json": {
+      "sha256": "13ac10b7a90272e60cdfe9901f79279108da8f833dbfc48a57bc3d62fc340fa2",
+      "bytes": 2439,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/test_sequences.json": {
+      "sha256": "0ef621578f565852d8a4735e6f038bb2632445d1da70c0069689449ca8ab202b",
+      "bytes": 230230,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training.json": {
+      "sha256": "cffc387637927f14f7dba4757c22a77bdd921d1ef8cada846cb57a7fe15fdcbb",
+      "bytes": 3651,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_history.json": {
+      "sha256": "c5be1d522e27bbd36dcab280ee19fbb624ce8fc2fa70de58806952c0a5863c24",
+      "bytes": 326,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_01/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_01/training_input/manifest.json": {
+      "sha256": "70119439a4dd9a31b8710be3aa67096ba70fc21b44c0bbd3e2cc8e1e319793ca",
+      "bytes": 1020,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/training_input/tokens.npy": {
+      "sha256": "5f0596931a5c698aea5b29b4a9d09d7165b53c2d7a62a9dbdbcfd4585d13373f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/5f0596931a5c698aea5b29b4a9d09d7165b53c2d7a62a9dbdbcfd4585d13373f"
+      }
+    },
+    "seed_42/gen_01/update_diagnostics/attempts/1dba1d7b6e8a4e35849b1111b0837796/attempt.json": {
+      "sha256": "bf60b14c3049dcb815a70a2e575a6c19d3913b067906611b90d8bef6c8e30134",
+      "bytes": 682,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/update_diagnostics/attempts/1dba1d7b6e8a4e35849b1111b0837796/probe_scores.npz": {
+      "sha256": "11cef80aebe4c9067a8dbd0ba7ddba59bf85b75fdb2346bb19b69511204cfd56",
+      "bytes": 248236,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_01/update_diagnostics/attempts/1dba1d7b6e8a4e35849b1111b0837796/updates.jsonl": {
+      "sha256": "a09a3e284b0fe609e4b0b6a624eb09ded97b8e7afa5ff3d4cb1309e798809861",
+      "bytes": 869666,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/checkpoint/config.json": {
+      "sha256": "c9bd1e2facd13da7cb37d280000801011026e0a3e79e5c0c9298f0b5178c6c29",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_02/checkpoint/model.safetensors": {
+      "sha256": "54d012495d1a5ef970ccb30696e243f21c78c31f3cce1d880ac20ec2d83517bf",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/54d012495d1a5ef970ccb30696e243f21c78c31f3cce1d880ac20ec2d83517bf"
+      }
+    },
+    "seed_42/gen_02/diagnostics_manifest.json": {
+      "sha256": "a223c9bf68eef99f0096555a5160bbf55bc5edc0540c906bda543ddb7a8ddf4b",
+      "bytes": 1657,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/metrics.json": {
+      "sha256": "14ebeff789f42dcbb9ddf11cf72b2666ea2de4a711214f71d0ef83faef6367db",
+      "bytes": 7924,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/optimizer_state/cycle.pt": {
+      "sha256": "6f1e4dc94927d41b45f03fde3d93dd45851c56a2a42513eee2ac7b1082b06186",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/6f1e4dc94927d41b45f03fde3d93dd45851c56a2a42513eee2ac7b1082b06186"
+      }
+    },
+    "seed_42/gen_02/probe/events.jsonl": {
+      "sha256": "b557162a936dc0585ce4fabf4e2b75d1cbf4d805cfcede58020f62a2531dfe70",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/manifest.json": {
+      "sha256": "a89e750398c0c64766752a709e5c1246e00617ba22281a6d2f4acda03a111f67",
+      "bytes": 1167,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/shard_0000000.json": {
+      "sha256": "6a35e35341fe84e07feea39535cbb9bec13705651e9b928415fffbf00ff1a9c2",
+      "bytes": 843,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/shard_0000000.npy": {
+      "sha256": "6602a372237f0a2e709b7681723803bfb09cfefe18c180a0333818d981d6bc3a",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/6602a372237f0a2e709b7681723803bfb09cfefe18c180a0333818d981d6bc3a"
+      }
+    },
+    "seed_42/gen_02/probe/synthetic_for_gen_03/tokens.npy": {
+      "sha256": "6602a372237f0a2e709b7681723803bfb09cfefe18c180a0333818d981d6bc3a",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/6602a372237f0a2e709b7681723803bfb09cfefe18c180a0333818d981d6bc3a"
+      }
+    },
+    "seed_42/gen_02/probe_examples.json": {
+      "sha256": "91c01006a7428c938b118b529c991a2355221d2a1884e1bedc907c34f4f719a6",
+      "bytes": 1534,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/stage_completion.json": {
+      "sha256": "14f37f40f2a7ebc233b1e019d7523d898f88717ce1205af053c4a0df15c0ea4a",
+      "bytes": 2439,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/test_sequences.json": {
+      "sha256": "d474dcb6a80c180078d303d76b12fe7d66f5bca6f49436dc795fc9d6f0a992da",
+      "bytes": 230201,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training.json": {
+      "sha256": "91a46df762171066eafefa8f7dcdf9680aa42bc625643a6cfda6a0c11aa16e7b",
+      "bytes": 3837,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_history.json": {
+      "sha256": "80c3842c499bf47c19789628d4bf56593f9b30de78a50ac8ad0fd83253083593",
+      "bytes": 327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_02/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_02/training_input/manifest.json": {
+      "sha256": "f77c27ce6d0fd9f1c7d8089ff9092e8c56854651ec68d7d0bc6fd63350af38c4",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/training_input/tokens.npy": {
+      "sha256": "93134406d355eb4bda77d05b4807b721fb780da05b0cfab516271c628570e2f3",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/93134406d355eb4bda77d05b4807b721fb780da05b0cfab516271c628570e2f3"
+      }
+    },
+    "seed_42/gen_02/update_diagnostics/attempts/d5f06260fec9468f965420dc7f063a93/attempt.json": {
+      "sha256": "a329ea0b12076f4a2354b9f02d13ac92a881690d4d8d6f5a4f172e42daafafe5",
+      "bytes": 744,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/update_diagnostics/attempts/d5f06260fec9468f965420dc7f063a93/probe_scores.npz": {
+      "sha256": "7a46387f61cdef2051ff563ec22498f5bc0dc2c13ce741242853db5ac4e51a3d",
+      "bytes": 248407,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_02/update_diagnostics/attempts/d5f06260fec9468f965420dc7f063a93/updates.jsonl": {
+      "sha256": "9dcb269fee202074c75e156ed3621151fc3e13f4d6e078e1e43b4a2bbacb0897",
+      "bytes": 869971,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/checkpoint/config.json": {
+      "sha256": "a5239a84aa215d9780e647bfae918d1d861971fee360939dd615f41e9197df5e",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_03/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_03/checkpoint/model.safetensors": {
+      "sha256": "f2cad7797070474a588587842069b754d2ede2485edd603bb975040f6eedf1c0",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/f2cad7797070474a588587842069b754d2ede2485edd603bb975040f6eedf1c0"
+      }
+    },
+    "seed_42/gen_03/diagnostics_manifest.json": {
+      "sha256": "ff7781835ab5901f4f3b4fbd8e313d9729b6ecea187077a5fd176e96313c8acd",
+      "bytes": 1658,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/metrics.json": {
+      "sha256": "ef100c5693bafc678909dc62dbe042d2825ef6ac653e5cb23437611b00ab6a4d",
+      "bytes": 7920,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/optimizer_state/cycle.pt": {
+      "sha256": "363d4d09abbe38ea43d13547e0590609dfcba0e30af187f93ce2b27099569a74",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/363d4d09abbe38ea43d13547e0590609dfcba0e30af187f93ce2b27099569a74"
+      }
+    },
+    "seed_42/gen_03/probe/events.jsonl": {
+      "sha256": "cf81523740f0c9cccd6fe038e4cea351ac44243ea08e37f14dec9214de344ad1",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/manifest.json": {
+      "sha256": "4f1f012001558285b66a08740c58e63dba7da6531ead964e38e6ec5ee9b4076a",
+      "bytes": 1168,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/shard_0000000.json": {
+      "sha256": "ee3cd62a409cbc66a484283dac7968df68be10f6095bd605dc7f9a9b5f167f43",
+      "bytes": 843,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/shard_0000000.npy": {
+      "sha256": "141ddefe67f1d72da44485dfae79dd088c1840468357be961ead7f5e31652587",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/141ddefe67f1d72da44485dfae79dd088c1840468357be961ead7f5e31652587"
+      }
+    },
+    "seed_42/gen_03/probe/synthetic_for_gen_04/tokens.npy": {
+      "sha256": "141ddefe67f1d72da44485dfae79dd088c1840468357be961ead7f5e31652587",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/141ddefe67f1d72da44485dfae79dd088c1840468357be961ead7f5e31652587"
+      }
+    },
+    "seed_42/gen_03/probe_examples.json": {
+      "sha256": "06a108882738abf5c437ff6567b94e24fd1dd1aefe4c693fd0fd0768de80a757",
+      "bytes": 1517,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/stage_completion.json": {
+      "sha256": "c77b9aaedcaccdb7973e8aa7fa0446b4abe805d216e3339aef31576a10c7bc27",
+      "bytes": 2439,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/test_sequences.json": {
+      "sha256": "25b05c1a06ec1891c604520be9c30af63d03ae62eb13c29a4583abd2d7d22b56",
+      "bytes": 230226,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training.json": {
+      "sha256": "31bc991957768d21965de3adfee4277dff9849723fe9634761bc9ead4b73964f",
+      "bytes": 3837,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_history.json": {
+      "sha256": "77093356042e88808a5381f9815554e7e3b556319b29f4152982ead630f7cdc1",
+      "bytes": 327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_03/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_03/training_input/manifest.json": {
+      "sha256": "0cd3297f1cd8df6d392dd34e95a04d9bc062f08a9d6c23d082bbb7d24783355a",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/training_input/tokens.npy": {
+      "sha256": "98dc3e5b00d71c34b4e99da603445f6b536c08ee43fdd78aee9ac879a96e6974",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/98dc3e5b00d71c34b4e99da603445f6b536c08ee43fdd78aee9ac879a96e6974"
+      }
+    },
+    "seed_42/gen_03/update_diagnostics/attempts/382fd10a842e4bbe87865fe0a9b14f7c/attempt.json": {
+      "sha256": "951a3ffc2f165a06252c35a0a640d7e16c44ae49add95dc4cc6939a6ae4105c5",
+      "bytes": 744,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/update_diagnostics/attempts/382fd10a842e4bbe87865fe0a9b14f7c/probe_scores.npz": {
+      "sha256": "e804dc66fac864c951c0cb9c4c0f9627a64eb9cc893edff024ac97973d42b972",
+      "bytes": 248205,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_03/update_diagnostics/attempts/382fd10a842e4bbe87865fe0a9b14f7c/updates.jsonl": {
+      "sha256": "f71e7033777ebd96f06355a0f713d9dfd15886423baeb140f0da2b3ea0e79852",
+      "bytes": 870018,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/checkpoint/config.json": {
+      "sha256": "682e80b3d8f6fae104587aedca42436e55b65489168f578c0bfe570d7e51bbe8",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_04/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_04/checkpoint/model.safetensors": {
+      "sha256": "d1faf7b6570186dc2666381fccb73decad00c79ec2354b10b678bf36fee56d0f",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/d1faf7b6570186dc2666381fccb73decad00c79ec2354b10b678bf36fee56d0f"
+      }
+    },
+    "seed_42/gen_04/diagnostics_manifest.json": {
+      "sha256": "f67b0854cba71217d30574963c8e0fc0a57fde6b6efe8d4f0064910e3ffc4c0f",
+      "bytes": 1658,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/metrics.json": {
+      "sha256": "1945193dd238f97f2457a2fe7ad5116a2f9d2684bde4d671cc4612c259df14c5",
+      "bytes": 7909,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/optimizer_state/cycle.pt": {
+      "sha256": "3bb39efa5e743e180e9b0d229e85b5aa89c5a013dba65321976632194049c66a",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/3bb39efa5e743e180e9b0d229e85b5aa89c5a013dba65321976632194049c66a"
+      }
+    },
+    "seed_42/gen_04/probe/events.jsonl": {
+      "sha256": "4f8c36675b4d42a315122d4be295253b38d14b15e438f7607db1dfd7262f9af1",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/manifest.json": {
+      "sha256": "bb5398ba9e30ca11931126f0ac13d1361c74d45ba816165abaa9d9ab95aea34b",
+      "bytes": 1168,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/shard_0000000.json": {
+      "sha256": "63acaf919cf8ca02655887e90100462339d03be3c0b82f0256edf5b559d523db",
+      "bytes": 843,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/shard_0000000.npy": {
+      "sha256": "599fff1fd71e1d0fcc0a4ee7106130389bbef21490ddfd6f66fff51a15bdce2a",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/599fff1fd71e1d0fcc0a4ee7106130389bbef21490ddfd6f66fff51a15bdce2a"
+      }
+    },
+    "seed_42/gen_04/probe/synthetic_for_gen_05/tokens.npy": {
+      "sha256": "599fff1fd71e1d0fcc0a4ee7106130389bbef21490ddfd6f66fff51a15bdce2a",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/599fff1fd71e1d0fcc0a4ee7106130389bbef21490ddfd6f66fff51a15bdce2a"
+      }
+    },
+    "seed_42/gen_04/probe_examples.json": {
+      "sha256": "2b0b0ed5704371c0a00fc8d0ef94105a33ba2fd0812ead1c36708ac03fbfd439",
+      "bytes": 1525,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/stage_completion.json": {
+      "sha256": "0241a0f905902409294cd0e0f749c77b75a73517cf6420348255824db3b7fe09",
+      "bytes": 2439,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/test_sequences.json": {
+      "sha256": "ef163f8b812a3942ece7911009de59f3f4defead727544ad86bf9f2408c8b8d6",
+      "bytes": 230299,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training.json": {
+      "sha256": "47df0356628ede37509a5c7cdbd9cb2294acc034c186515dcd6e3228c3709031",
+      "bytes": 3838,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_history.json": {
+      "sha256": "7d6b46c993c58226e0b495c44c81e4e88b3bda4e4b03e55bdef8ca2d7c3e535f",
+      "bytes": 328,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_04/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_04/training_input/manifest.json": {
+      "sha256": "9ccda131decfa31fe7724f4097278026baf1936b4087871932538fa73eae755d",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/training_input/tokens.npy": {
+      "sha256": "f7d8219d5e8c130aef62a7d1a01154bfb8d23ae7ab20eb234134744296db41c5",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/f7d8219d5e8c130aef62a7d1a01154bfb8d23ae7ab20eb234134744296db41c5"
+      }
+    },
+    "seed_42/gen_04/update_diagnostics/attempts/cd6e95574ab84804887069d86b8003da/attempt.json": {
+      "sha256": "4adc7cdef7d8aeb5603c059563185135b9dc80924ed44bd067ec5602c5e511bf",
+      "bytes": 744,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/update_diagnostics/attempts/cd6e95574ab84804887069d86b8003da/probe_scores.npz": {
+      "sha256": "4c281082c278bcc0a7639317138bf7ba67d43eceaa4d590f7a738594359e448f",
+      "bytes": 248114,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_04/update_diagnostics/attempts/cd6e95574ab84804887069d86b8003da/updates.jsonl": {
+      "sha256": "356607d0458f19f1ce82c751fe16278f5258466530fd6d38c836de7991e0fac2",
+      "bytes": 870093,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/checkpoint/config.json": {
+      "sha256": "230fa5be60edf2e12ffcb4f1eee38fd2ce061f5a81fe89d27d22abb58275dd2f",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_05/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_05/checkpoint/model.safetensors": {
+      "sha256": "bb384e6e4625ffb8fb4a2fdd050fb021116664f026125b810b74fc833c444fe8",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/bb384e6e4625ffb8fb4a2fdd050fb021116664f026125b810b74fc833c444fe8"
+      }
+    },
+    "seed_42/gen_05/diagnostics_manifest.json": {
+      "sha256": "fbf00a6de0a98bdf8e3771e383b1cb2c8a9b808a56eccc82838d160d7ce890f4",
+      "bytes": 1658,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/metrics.json": {
+      "sha256": "568de484305e295ca0466b02b5fc8f9e34f59f0aafe46b8994e87f0cf24d1f88",
+      "bytes": 7919,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/optimizer_state/cycle.pt": {
+      "sha256": "54b1472390529645dea6bad19d0f8d5bd3cd7e579624608283644575585b65a0",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/54b1472390529645dea6bad19d0f8d5bd3cd7e579624608283644575585b65a0"
+      }
+    },
+    "seed_42/gen_05/probe/events.jsonl": {
+      "sha256": "ccd8e4c67090d1f084feba91ebaeb846386fdb9868a36a9c51fbef3ddf2b7001",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/manifest.json": {
+      "sha256": "e6a743f8f96ee196ebf7ae50464fcb48829c12e3671fac6120503c54b6bd9f73",
+      "bytes": 1168,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/shard_0000000.json": {
+      "sha256": "47ac5b04949cc154c30603b1d54c137ad0cfc7e6122ca7a1066b5d9fd7a88c8c",
+      "bytes": 843,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/shard_0000000.npy": {
+      "sha256": "b1a630695b410798ce6c041a67a1cd08ee3e061b9fc00dd5117584d1f56d1552",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/b1a630695b410798ce6c041a67a1cd08ee3e061b9fc00dd5117584d1f56d1552"
+      }
+    },
+    "seed_42/gen_05/probe/synthetic_for_gen_06/tokens.npy": {
+      "sha256": "b1a630695b410798ce6c041a67a1cd08ee3e061b9fc00dd5117584d1f56d1552",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/b1a630695b410798ce6c041a67a1cd08ee3e061b9fc00dd5117584d1f56d1552"
+      }
+    },
+    "seed_42/gen_05/probe_examples.json": {
+      "sha256": "e60b8157bfb31e549104ef5fb8971c3679fe131c8d8e19f994e4bb8f4d264b09",
+      "bytes": 1526,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/stage_completion.json": {
+      "sha256": "f0bced248be6a69155da54646aa632ec20ae2277510e13d032fed0135fb02c3a",
+      "bytes": 2439,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/test_sequences.json": {
+      "sha256": "4e8e38fd8b97a7b2023187cdd5f1fb43c02b93537e05cd2e1bf398056551f0b3",
+      "bytes": 230242,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training.json": {
+      "sha256": "cc292567d94766eee61bfcc59ec4cb05350f6dea6c1f64c94d78c19ad0266b77",
+      "bytes": 3840,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_history.json": {
+      "sha256": "7d34c9f87dae3321763b79eec61b8ebc12447c84196ef5e74e5d5529bf54be71",
+      "bytes": 327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_05/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_05/training_input/manifest.json": {
+      "sha256": "2c406ee2aaf2f0134189a670aff27cb709d0fd45a5b1f362cfac796ab42159d3",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/training_input/tokens.npy": {
+      "sha256": "13ca50ab49d7aa6d3fccb38dbab1f6c75d86df442154dd5c00aa0622d6b2189f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/13ca50ab49d7aa6d3fccb38dbab1f6c75d86df442154dd5c00aa0622d6b2189f"
+      }
+    },
+    "seed_42/gen_05/update_diagnostics/attempts/895c7e1004524f2eb15d2d0bf80471e1/attempt.json": {
+      "sha256": "99f890955722a16746884ff6a129fc726a41a6a6325d3feeade173a162dbd226",
+      "bytes": 744,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/update_diagnostics/attempts/895c7e1004524f2eb15d2d0bf80471e1/probe_scores.npz": {
+      "sha256": "1aa09567febbd41239ce4317ae5124afbe6d88ecb8bd5657c5da0df9c99a6fe6",
+      "bytes": 248140,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_05/update_diagnostics/attempts/895c7e1004524f2eb15d2d0bf80471e1/updates.jsonl": {
+      "sha256": "ff7e951385cef94cd61b152a2fb62f213e93bd165d3016362b759003bade0160",
+      "bytes": 870086,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/checkpoint/config.json": {
+      "sha256": "5f7f2a97f89bd4f34aaac96d7068cf3431a34f05da97d8ba9c028f739cb6eee8",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_06/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_06/checkpoint/model.safetensors": {
+      "sha256": "0ecf01355976e768ab81daca4e858511e125c17bf1b3fcdcf25277e849875fa6",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/0ecf01355976e768ab81daca4e858511e125c17bf1b3fcdcf25277e849875fa6"
+      }
+    },
+    "seed_42/gen_06/diagnostics_manifest.json": {
+      "sha256": "a1c6cb763253676e5805acdb40f67faa885dac66ed5c774f49877e8fb70df44c",
+      "bytes": 1658,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/metrics.json": {
+      "sha256": "c3623f46f8dcca08f55324cedb9274df0ea98eeca59ebf88b4e70d941fcb79d4",
+      "bytes": 7924,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/optimizer_state/cycle.pt": {
+      "sha256": "d7f3072982e47a1840a1578e6ac1c049bdd6bbfbe43d8e42d3a774580975ff20",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/d7f3072982e47a1840a1578e6ac1c049bdd6bbfbe43d8e42d3a774580975ff20"
+      }
+    },
+    "seed_42/gen_06/probe/events.jsonl": {
+      "sha256": "fe9422d7d1ca4456ad6d905d2192422a6b3353d5de043c7e777a1b66a2a981a8",
+      "bytes": 132,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/manifest.json": {
+      "sha256": "059faaea7c22abe694376f9c21671e81395b05cfe4d9a6bee50ed54be4f142b6",
+      "bytes": 1168,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/shard_0000000.json": {
+      "sha256": "8c14eef1c11b220c9369e8db14d6cee49c99841dc6dafc2d71694970fe21cddf",
+      "bytes": 843,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/shard_0000000.npy": {
+      "sha256": "d62c75acb9021e91450de0c46689eb456d790e9ea7f77bc22e5a955a4eeda360",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/d62c75acb9021e91450de0c46689eb456d790e9ea7f77bc22e5a955a4eeda360"
+      }
+    },
+    "seed_42/gen_06/probe/synthetic_for_gen_07/tokens.npy": {
+      "sha256": "d62c75acb9021e91450de0c46689eb456d790e9ea7f77bc22e5a955a4eeda360",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/d62c75acb9021e91450de0c46689eb456d790e9ea7f77bc22e5a955a4eeda360"
+      }
+    },
+    "seed_42/gen_06/probe_examples.json": {
+      "sha256": "f939a639c4db3d2ef3e1eff5169d2ab9e2799c2a26bdb86f62a438a13ce12fe1",
+      "bytes": 1525,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/stage_completion.json": {
+      "sha256": "b12f203c108f15e2ba5751568d553a4938ec02ec49c9dd10d5e71f3f7f98c0f5",
+      "bytes": 2439,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/test_sequences.json": {
+      "sha256": "5ee6c5cc5928d589ccdfd3411fd1d13bec242f214fc8b07074108411eeefd500",
+      "bytes": 230228,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training.json": {
+      "sha256": "58b0f7772c231e45006dd804b889f5be11d12dd1102dd6e3fff8e5ddfaec3992",
+      "bytes": 3840,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_history.json": {
+      "sha256": "04645ec0bca3015a96e8cf2117f03685bc8203ea46789a941b9858ea36d0daf8",
+      "bytes": 328,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_06/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_06/training_input/manifest.json": {
+      "sha256": "ea6f3a314925b6088891fe35288c5e8f0551685cb0984c8158bd7f159cdf79fd",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/training_input/tokens.npy": {
+      "sha256": "124a8d5b8054a0e40f0c0025e270e81a858e024e711ed8621f4b1670c29dae0d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/124a8d5b8054a0e40f0c0025e270e81a858e024e711ed8621f4b1670c29dae0d"
+      }
+    },
+    "seed_42/gen_06/update_diagnostics/attempts/cfeab1233d024552a51ab3c7e33d52da/attempt.json": {
+      "sha256": "40652381c252e351efafa1256ca001002cd940f3b517c6a9dcb6c45504d5de2c",
+      "bytes": 744,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/update_diagnostics/attempts/cfeab1233d024552a51ab3c7e33d52da/probe_scores.npz": {
+      "sha256": "d20858d80ebc79fb99b06e35ca45b5ba91794725215b28dad44d447ace787af4",
+      "bytes": 247886,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_06/update_diagnostics/attempts/cfeab1233d024552a51ab3c7e33d52da/updates.jsonl": {
+      "sha256": "e3c234f56d990b8270cb2aec98c827a2afd1069aa29f9e427af00bc24836bb30",
+      "bytes": 870022,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/checkpoint/config.json": {
+      "sha256": "825b59c7a221aa1c35acc81c612a12f98748e1c36c47958cd4b508f871b4bda2",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_07/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_07/checkpoint/model.safetensors": {
+      "sha256": "a11ca6287db1b0eb02ed29bae7f717eebb38adc1f7e952d70befa1fcbc5e7b3a",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/a11ca6287db1b0eb02ed29bae7f717eebb38adc1f7e952d70befa1fcbc5e7b3a"
+      }
+    },
+    "seed_42/gen_07/diagnostics_manifest.json": {
+      "sha256": "6e4c4d49f68cfaef0673d8eca56b2a501f88be859452f843b4f02985b6be4eb8",
+      "bytes": 1658,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/metrics.json": {
+      "sha256": "7f3d4bf83d98e3d909045128c2e4afe33efa83e0c388734e1b960610d0ca4586",
+      "bytes": 7920,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/optimizer_state/cycle.pt": {
+      "sha256": "6730b06aa1dabc46359e97a5a854f88999dfde8211cbc2b0d93abbf916744a69",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/6730b06aa1dabc46359e97a5a854f88999dfde8211cbc2b0d93abbf916744a69"
+      }
+    },
+    "seed_42/gen_07/probe/events.jsonl": {
+      "sha256": "ee4f8798bb1bc417c8242d1de041f9963ae7bb0159ce80fd047926e7ef8da308",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/manifest.json": {
+      "sha256": "0c63163c10ee9cb5685917681c274fff9e2cfa0b126e43a07bc59690542df325",
+      "bytes": 1167,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/shard_0000000.json": {
+      "sha256": "1a30099478000821108da862e482a6358833ce0f55cf97cfa483f80beec373ee",
+      "bytes": 843,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/shard_0000000.npy": {
+      "sha256": "68675fa929de4420b5b5ae274bc14b4cbe1354c2c664b78a62334da77458f019",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/68675fa929de4420b5b5ae274bc14b4cbe1354c2c664b78a62334da77458f019"
+      }
+    },
+    "seed_42/gen_07/probe/synthetic_for_gen_08/tokens.npy": {
+      "sha256": "68675fa929de4420b5b5ae274bc14b4cbe1354c2c664b78a62334da77458f019",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/68675fa929de4420b5b5ae274bc14b4cbe1354c2c664b78a62334da77458f019"
+      }
+    },
+    "seed_42/gen_07/probe_examples.json": {
+      "sha256": "2b0b0ed5704371c0a00fc8d0ef94105a33ba2fd0812ead1c36708ac03fbfd439",
+      "bytes": 1525,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/stage_completion.json": {
+      "sha256": "c7824b211ec5a9f7688502a6017247db9a585d34cef32ed25daf8096c3d70528",
+      "bytes": 2439,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/test_sequences.json": {
+      "sha256": "dfc26ef231159beb4958125c1b858f2f30e12d96eb09343ce678fed21a8545f8",
+      "bytes": 230070,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training.json": {
+      "sha256": "caf221616e0a29cb979fe04b6b630a6158c5a413acc40da6320ea86f50d30d63",
+      "bytes": 3838,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_history.json": {
+      "sha256": "4c89a0ec23f84600e9be97c0f4b3e64ffd204478f6b62b9893c0115db1d060af",
+      "bytes": 328,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_07/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_07/training_input/manifest.json": {
+      "sha256": "234e1d0f76f4971f5873dc3457c7c9b98cf09b6738941eabf0975695fd333c47",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/training_input/tokens.npy": {
+      "sha256": "b7d393886d37d2a7dc9cd17223af7f0ba6c53b4b9fea7537e08976974d088343",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/b7d393886d37d2a7dc9cd17223af7f0ba6c53b4b9fea7537e08976974d088343"
+      }
+    },
+    "seed_42/gen_07/update_diagnostics/attempts/204a91d70cae41ef87846158ff716e3d/attempt.json": {
+      "sha256": "9e306fa3f390030176810e18d7314e653af3920c2c00f18f01e156221332d8ba",
+      "bytes": 744,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/update_diagnostics/attempts/204a91d70cae41ef87846158ff716e3d/probe_scores.npz": {
+      "sha256": "86ca7120d852d50ddc10efed93de781fb3e6058dfec9d548fe9c1ee8ffe8e6e6",
+      "bytes": 247977,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_07/update_diagnostics/attempts/204a91d70cae41ef87846158ff716e3d/updates.jsonl": {
+      "sha256": "8e9a68abc5b0a74ffa27580e3fd95d9a31779ae69f5f96add786551b99703c89",
+      "bytes": 870138,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/checkpoint/config.json": {
+      "sha256": "899ca80f56e0f8cc12ba3ec253669b108a2385ff3ed006e48af294391adbfda7",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_08/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_08/checkpoint/model.safetensors": {
+      "sha256": "f6c9bfcd6de278cc229557e8afbd48c291bd97c93c7269061d027a160b6acb70",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/f6c9bfcd6de278cc229557e8afbd48c291bd97c93c7269061d027a160b6acb70"
+      }
+    },
+    "seed_42/gen_08/diagnostics_manifest.json": {
+      "sha256": "5b0d45511daf07b89912b8b72c116ae372ed7ebf76c4289cf31d021f60210299",
+      "bytes": 1658,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/metrics.json": {
+      "sha256": "4442bc3a56d041c0e527741616bbe80473dd23b35909158ba1aca43f20cfeb02",
+      "bytes": 7924,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/optimizer_state/cycle.pt": {
+      "sha256": "fefbd77b179044a4e5bab8eb85fbf3bfa50145532a25513dea9bd93c2336e6c6",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/fefbd77b179044a4e5bab8eb85fbf3bfa50145532a25513dea9bd93c2336e6c6"
+      }
+    },
+    "seed_42/gen_08/probe/events.jsonl": {
+      "sha256": "d78bbb48aadb5fd27d4d9befad4ee89f8a65aed322170495a7b8431d5d26fd15",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/manifest.json": {
+      "sha256": "49dbffef9dfe484daf97afb788938c029054077f3361d5f672108fe5c129866c",
+      "bytes": 1167,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/shard_0000000.json": {
+      "sha256": "da09e1e99c16818bffaeb1439bcd0eb543c71fb95739218886a5596b20ab5e8f",
+      "bytes": 843,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/shard_0000000.npy": {
+      "sha256": "314c0d53ddbbee6cf01e658d6ff26dc3ce2c483bc6b3c6fc1466b094b1a7e638",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/314c0d53ddbbee6cf01e658d6ff26dc3ce2c483bc6b3c6fc1466b094b1a7e638"
+      }
+    },
+    "seed_42/gen_08/probe/synthetic_for_gen_09/tokens.npy": {
+      "sha256": "314c0d53ddbbee6cf01e658d6ff26dc3ce2c483bc6b3c6fc1466b094b1a7e638",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/314c0d53ddbbee6cf01e658d6ff26dc3ce2c483bc6b3c6fc1466b094b1a7e638"
+      }
+    },
+    "seed_42/gen_08/probe_examples.json": {
+      "sha256": "4bba02f48c54458ec6ac53347b4c2dad342a15ce52a9ec1353c591646e264141",
+      "bytes": 1720,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/stage_completion.json": {
+      "sha256": "fb58e32c0566cc9addd38186e871f46745218a34b84e4489218252bee0a1c065",
+      "bytes": 2439,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/test_sequences.json": {
+      "sha256": "9ab97c568ec86edc1e9bb33fda3f742a0bee75e8b38de45e293aec585140646c",
+      "bytes": 230230,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training.json": {
+      "sha256": "e534baa2663f091f426136f290949b6dff31fb8e6b6996449e5045516361117f",
+      "bytes": 3840,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_history.json": {
+      "sha256": "15dc15339528b3875b6ff4fc7bb765a6c395f2a062c9a20368fdefadd0edc3ae",
+      "bytes": 329,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_08/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_08/training_input/manifest.json": {
+      "sha256": "6d238334d898c807c007bcf57b65a14305d026b27242114f88ef6f65663a8eba",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/training_input/tokens.npy": {
+      "sha256": "527f245a54a71085bfda917dc79a13f51b85128e0a3484a3822531bd3d230c2e",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/527f245a54a71085bfda917dc79a13f51b85128e0a3484a3822531bd3d230c2e"
+      }
+    },
+    "seed_42/gen_08/update_diagnostics/attempts/d786bd40bdea4c7586e9a7bf3ee8b8ea/attempt.json": {
+      "sha256": "1a7e8553baaf0353cf7f04ed21dedf253d212cc99d4e03bc4f1527d0697ae600",
+      "bytes": 744,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/update_diagnostics/attempts/d786bd40bdea4c7586e9a7bf3ee8b8ea/probe_scores.npz": {
+      "sha256": "e4c5da96b97e77d9fef23859557c541df4a76c4b55ec85896329a9f7fcf35a97",
+      "bytes": 247795,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_08/update_diagnostics/attempts/d786bd40bdea4c7586e9a7bf3ee8b8ea/updates.jsonl": {
+      "sha256": "16cf05752ecaaceca9844e0fbc09004f2f74e06a22421821ab2e04d496b3d1ea",
+      "bytes": 870106,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/checkpoint/config.json": {
+      "sha256": "ca9af654be4823cfb407a1c6275248cce1929179aef8b8998e277edbad6c4589",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_09/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_09/checkpoint/model.safetensors": {
+      "sha256": "d23855bc901a9f1f8bbda86b598ab3773b82a0edece04880ae14d91625c5d83f",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/d23855bc901a9f1f8bbda86b598ab3773b82a0edece04880ae14d91625c5d83f"
+      }
+    },
+    "seed_42/gen_09/diagnostics_manifest.json": {
+      "sha256": "095ecdc222e29305f599e227002f6c822a00d07b2d7647f206851ee836d4e747",
+      "bytes": 1658,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/metrics.json": {
+      "sha256": "736ca644f055fdcd83cda16ce6fe6fde9464e37783a4f48f757ad212e7c83bad",
+      "bytes": 7929,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/optimizer_state/cycle.pt": {
+      "sha256": "bab532899bbf4eff9332700f567b288e3fedcdbb7dd7906e5291e39ff3f67f2a",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/bab532899bbf4eff9332700f567b288e3fedcdbb7dd7906e5291e39ff3f67f2a"
+      }
+    },
+    "seed_42/gen_09/probe/events.jsonl": {
+      "sha256": "6f5c6d639e9687e47978b1be60707debdabe118bbe9cbd01b94bb4fc6ecb6889",
+      "bytes": 133,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/manifest.json": {
+      "sha256": "422d49a6f1be7dafcda27211459a295248438c99e70ffa9b8d2a1ee830b1c992",
+      "bytes": 1168,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/shard_0000000.json": {
+      "sha256": "062ac925b994c4d3774e0e47350bcd83f4c7fff704d0e8790c509999d367160f",
+      "bytes": 843,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/shard_0000000.npy": {
+      "sha256": "e7b4ea8e478a0984b706028c39b526dd47441c9d17528b4ecf445e3c8659b9ca",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/e7b4ea8e478a0984b706028c39b526dd47441c9d17528b4ecf445e3c8659b9ca"
+      }
+    },
+    "seed_42/gen_09/probe/synthetic_for_gen_10/tokens.npy": {
+      "sha256": "e7b4ea8e478a0984b706028c39b526dd47441c9d17528b4ecf445e3c8659b9ca",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/e7b4ea8e478a0984b706028c39b526dd47441c9d17528b4ecf445e3c8659b9ca"
+      }
+    },
+    "seed_42/gen_09/probe_examples.json": {
+      "sha256": "8d74dadcfd31c333a3e7001b86301cf9f401527a1fe6a8f0e7a4c5b08c7f8df2",
+      "bytes": 1717,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/stage_completion.json": {
+      "sha256": "59160aaee624d7faec5ba4f08d564247fdf45c99a67fb4532ed997300162407a",
+      "bytes": 2439,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/test_sequences.json": {
+      "sha256": "1434e7a5a8595a347561df583a5be60918c4284f897939f32f60554f325dd26a",
+      "bytes": 230248,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training.json": {
+      "sha256": "490245696ef8d256d21b407195851628f2a094e2202182e052b00054d6cd4ac7",
+      "bytes": 3838,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_history.json": {
+      "sha256": "6eebf5beb3de9d89b460df169b193ff005dc044634619276def6f37615158288",
+      "bytes": 328,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_09/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_09/training_input/manifest.json": {
+      "sha256": "6921771cef00ba78a63e29609f4eb5cc71b98545e67442b04ed561f6cd2e40ad",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/training_input/tokens.npy": {
+      "sha256": "e6a006bc9db6f03c6731dbc9243a6977cd93a5ef58e6a2c386429819023740c4",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/e6a006bc9db6f03c6731dbc9243a6977cd93a5ef58e6a2c386429819023740c4"
+      }
+    },
+    "seed_42/gen_09/update_diagnostics/attempts/e626685f32fc467f834a1b7c04937ee3/attempt.json": {
+      "sha256": "c8e276012ff88807609a6bfcfea9e43531ec3b9f719dacd76ee75663944d3f65",
+      "bytes": 744,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/update_diagnostics/attempts/e626685f32fc467f834a1b7c04937ee3/probe_scores.npz": {
+      "sha256": "acca5998ed8e1179cffaf0082838918fdde2d720857f45b8bc0574fd48fe7ace",
+      "bytes": 248086,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_09/update_diagnostics/attempts/e626685f32fc467f834a1b7c04937ee3/updates.jsonl": {
+      "sha256": "45e25b1957ebcca7235c19e63500eee2839907437dbbb72a9a505b22f3b3eead",
+      "bytes": 870025,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/checkpoint/config.json": {
+      "sha256": "51f6fcad41345fa022fc79bc1c37b75075f12acb949f1a2864e7230533320343",
+      "bytes": 816,
+      "repo_type": "model"
+    },
+    "seed_42/gen_10/checkpoint/generation_config.json": {
+      "sha256": "0f61e8172e88a8e166d430193cd5f018c47f20623d75f23962aae28ab12b7ccb",
+      "bytes": 111,
+      "repo_type": "model"
+    },
+    "seed_42/gen_10/checkpoint/model.safetensors": {
+      "sha256": "d65e0620b2e592a4665e5c4a7bd7ca5240eefba03684d66e46b569faa6e7e465",
+      "bytes": 538090408,
+      "repo_type": "model",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/d65e0620b2e592a4665e5c4a7bd7ca5240eefba03684d66e46b569faa6e7e465"
+      }
+    },
+    "seed_42/gen_10/diagnostics_manifest.json": {
+      "sha256": "4b73b16a28bd38b6142708266cdff24a13eee199890dda9bc3819c819ad360c3",
+      "bytes": 1659,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/metrics.json": {
+      "sha256": "3bcd52ebcad928ff7dc61aa4cce9a207d816d1cff8556e5812c2905237dd9c4c",
+      "bytes": 7922,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/optimizer_state/cycle.pt": {
+      "sha256": "138f54363c411678756dcd274154cd6720db221face62e1fd7c0621dc6d20882",
+      "bytes": 15573,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/138f54363c411678756dcd274154cd6720db221face62e1fd7c0621dc6d20882"
+      }
+    },
+    "seed_42/gen_10/probe/events.jsonl": {
+      "sha256": "385c24e2da24f7a48c1253b175e8fa798dd603362fe4615ff92af09bbf017495",
+      "bytes": 134,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/manifest.json": {
+      "sha256": "5ade274b051d2828ae2d7b1b54f1250379365c68cd5bf426e9a2038365679f1c",
+      "bytes": 1169,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/shard_0000000.json": {
+      "sha256": "b07b938bdecb27b978b9796087a3e1171bdbf98b04d36768663f72e656896122",
+      "bytes": 844,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/shard_0000000.npy": {
+      "sha256": "ffa97fad4b973431e1c12ed60b639a80cfbb8dc2f1e2fdd832d08ffcf20b362c",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/ffa97fad4b973431e1c12ed60b639a80cfbb8dc2f1e2fdd832d08ffcf20b362c"
+      }
+    },
+    "seed_42/gen_10/probe/synthetic_for_gen_11/tokens.npy": {
+      "sha256": "ffa97fad4b973431e1c12ed60b639a80cfbb8dc2f1e2fdd832d08ffcf20b362c",
+      "bytes": 65664,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/ffa97fad4b973431e1c12ed60b639a80cfbb8dc2f1e2fdd832d08ffcf20b362c"
+      }
+    },
+    "seed_42/gen_10/probe_examples.json": {
+      "sha256": "c82755818732f12382f99c820b340011333153a40a5d71431f29b0b405434a8c",
+      "bytes": 1523,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/stage_completion.json": {
+      "sha256": "151ee0415abf9f2ea99414aab449acf101af5638cd1cac497af551bc81a801d5",
+      "bytes": 2440,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/test_sequences.json": {
+      "sha256": "7c3dadbcf76a501457375d3180f94862924eed036a026ce007d5807e93d4f3e5",
+      "bytes": 230277,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training.json": {
+      "sha256": "2111d355e869437e3c2063dbab6803a8501047fc8f64b941624caae95cc416cf",
+      "bytes": 3842,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_history.json": {
+      "sha256": "d24a07403f63686487e8352cd0162322442137a1f359d710ef6bc00c1e1fcd9a",
+      "bytes": 327,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_input/attention.npy": {
+      "sha256": "19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/19587e46f1ab0dec744a0b27e2da83bad074440c99b792ec1841d339617e044f"
+      }
+    },
+    "seed_42/gen_10/training_input/loss_mask.npy": {
+      "sha256": "495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/495e04b3afc0f127479f85ff8000349d95e711afb3dc2e726a446a43427ab83d"
+      }
+    },
+    "seed_42/gen_10/training_input/manifest.json": {
+      "sha256": "3cee21de6086684c09d36d777606b1e5bf17599d7d7cf0c7b12783065fad74f3",
+      "bytes": 1082,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/training_input/tokens.npy": {
+      "sha256": "d61613c004a91cb479babca58c955932fcebf2f24ea60b9fd1c315c6b4aef105",
+      "bytes": 5160128,
+      "repo_type": "dataset",
+      "storage": {
+        "backend": "runpod_s3",
+        "bucket": "ljutugtl9a",
+        "region": "EU-RO-1",
+        "prefix": "smollm2-sgd-greedy-full",
+        "key": "smollm2-sgd-greedy-full/objects/d61613c004a91cb479babca58c955932fcebf2f24ea60b9fd1c315c6b4aef105"
+      }
+    },
+    "seed_42/gen_10/update_diagnostics/attempts/b39979a9307740b5bf7b7c51a5caf303/attempt.json": {
+      "sha256": "4aac529fdc4c565cd274e99ad28041156562504218593bdc3f3514c426400dbe",
+      "bytes": 745,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/update_diagnostics/attempts/b39979a9307740b5bf7b7c51a5caf303/probe_scores.npz": {
+      "sha256": "1b52c36c6969682da9ae02f2795818a28f95d9584475fec926215214b7e461f2",
+      "bytes": 247608,
+      "repo_type": "dataset"
+    },
+    "seed_42/gen_10/update_diagnostics/attempts/b39979a9307740b5bf7b7c51a5caf303/updates.jsonl": {
+      "sha256": "78676baaf04fe0a6a21735f451040d20c6f6140827b81eeb16796122d4f70371",
+      "bytes": 870216,
+      "repo_type": "dataset"
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 This comparison prepares 0%, 99% and 100% synthetic-target conditions using the exact existing SmolLM2-135M checkpoint and native FineWeb completion bank. It is a new training recipe, rather than an optimizer-only ablation of the historical AdamW/five-beam experiment.
 
-[GPU validation and handoff](../../reports/20261113T230319Z-smoke-completion64-mixtures/setup-report.md): all twelve checks passed; selected constant LR **0.01**; the full comparison is now active as `20261114T001352Z-full-completion64-mixtures`. See the [launch record](../../docs/validation/2026-11-14_sgd-greedy-full-launch.json); do not duplicate this active run.
+[GPU validation and handoff](../../reports/20261113T230319Z-smoke-completion64-mixtures/setup-report.md): all twelve checks passed; selected constant LR **0.01**; the full comparison completed as `20261114T001352Z-full-completion64-mixtures`. See the [launch record](../../docs/validation/2026-11-14_sgd-greedy-full-launch.json); do not duplicate completed compute.
 
 ## Scientific protocol
 
@@ -35,7 +35,7 @@ Completed journals and per-example probe scores are sealed with checkpoints. An 
 $comparison = "comparisons/smollm2_sgd_greedy_effects"
 python -m model_collapse smoke --config "$comparison/smoke.yaml"
 
-# Recorded launch command; do not duplicate the active comparison:
+# Recorded launch command; do not repeat the completed comparison:
 python -m model_collapse launch --config "$comparison/full.yaml" --generations 10
 ```
 

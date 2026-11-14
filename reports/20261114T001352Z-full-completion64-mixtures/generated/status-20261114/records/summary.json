@@ -1,0 +1,181 @@
+{
+  "observed_at": 1794654185.8979425,
+  "parent_completion": {
+    "complete": true,
+    "workflow": "completion_comparison",
+    "cycles": 10,
+    "unique_training_stages": 30,
+    "executed_epochs": 30,
+    "time": 1794641409.9080484
+  },
+  "arms": [
+    {
+      "arm": "real",
+      "complete": {
+        "complete": true,
+        "cycles": 10,
+        "data_kind": "real",
+        "time": 1794620998.3429103
+      },
+      "initial_test_ppl": 17.957976671072558,
+      "final_test_ppl": 17.72565931286429,
+      "final_validation_ppl": 17.99832308056318,
+      "test_targets": 467392,
+      "final_global_step": 790,
+      "perplexity_trajectory": [
+        17.957976671072558,
+        17.79969724960991,
+        17.793697727154473,
+        17.75551578548905,
+        17.758810899152053,
+        17.738383902154144,
+        17.762205445515278,
+        17.743797218357802,
+        17.732269268878127,
+        17.732693164788824,
+        17.72565931286429
+      ],
+      "final_probe": {
+        "distinct_1": 0.15338134765625,
+        "distinct_2": 0.4103422619047619,
+        "distinct_3": 0.5795740927419355,
+        "repeated_4gram_rate": 0.3384989754098361,
+        "repeated_4gram_denominator": 15616,
+        "duplicate_continuation_rate": 0.0,
+        "token_entropy_nats": 5.9587375756654,
+        "probe_count": 256,
+        "mean_within_entropy_nats": 3.1008693923322297,
+        "mean_within_repeated_4gram_rate": 0.31173155737704916,
+        "fraction_outputs_with_repeated_4gram": 0.93359375,
+        "mean_within_distinct_1": 0.45318603515625,
+        "mean_within_distinct_2": 0.5971602182539683,
+        "mean_within_distinct_3": 0.652280745967742,
+        "mean_within_distinct_4": 0.6882684426229508,
+        "newline_token_count": 602,
+        "newline_token_share": 0.0367431640625,
+        "newline_heavy_outputs_ge32": 0,
+        "all_newline_outputs": 0,
+        "newline_policy": "tokens_containing_lf_v1",
+        "continuation_tokens_sha256": "6030d56b6e2b62d54587a8344be63f03e1588dc5e663bdc6e6e9a8eb334da8b8"
+      },
+      "learning_rate": 0.01
+    },
+    {
+      "arm": "mixed99",
+      "complete": {
+        "complete": true,
+        "cycles": 10,
+        "data_kind": "mixed",
+        "time": 1794631563.3354306
+      },
+      "initial_test_ppl": 17.957976671072558,
+      "final_test_ppl": 164.4125178159124,
+      "final_validation_ppl": 169.67367097116144,
+      "test_targets": 467392,
+      "final_global_step": 790,
+      "perplexity_trajectory": [
+        17.957976671072558,
+        31.15219130702509,
+        61.56510160456784,
+        97.94392850078613,
+        137.5275190608749,
+        184.26436108557587,
+        142.69559712120602,
+        183.1387530103792,
+        192.99443538286155,
+        211.98799476125564,
+        164.4125178159124
+      ],
+      "final_probe": {
+        "distinct_1": 0.11749267578125,
+        "distinct_2": 0.2725694444444444,
+        "distinct_3": 0.3565398185483871,
+        "repeated_4gram_rate": 0.6049564549180327,
+        "repeated_4gram_denominator": 15616,
+        "duplicate_continuation_rate": 0.0078125,
+        "token_entropy_nats": 5.686138774750036,
+        "probe_count": 256,
+        "mean_within_entropy_nats": 2.640045906241177,
+        "mean_within_repeated_4gram_rate": 0.5881787909836066,
+        "fraction_outputs_with_repeated_4gram": 0.98046875,
+        "mean_within_distinct_1": 0.30157470703125,
+        "mean_within_distinct_2": 0.3716517857142857,
+        "mean_within_distinct_3": 0.395539314516129,
+        "mean_within_distinct_4": 0.4118212090163934,
+        "newline_token_count": 701,
+        "newline_token_share": 0.04278564453125,
+        "newline_heavy_outputs_ge32": 0,
+        "all_newline_outputs": 0,
+        "newline_policy": "tokens_containing_lf_v1",
+        "continuation_tokens_sha256": "4a53ff67e64fa39fb33f6e5d431faa77bcf86a9b025a3fbf643c8185fbdb24a5"
+      },
+      "learning_rate": 0.01
+    },
+    {
+      "arm": "synthetic",
+      "complete": {
+        "complete": true,
+        "cycles": 10,
+        "data_kind": "synthetic",
+        "time": 1794641265.2386324
+      },
+      "initial_test_ppl": 17.957976671072558,
+      "final_test_ppl": 1408.6065073864352,
+      "final_validation_ppl": 1477.7970412462564,
+      "test_targets": 467392,
+      "final_global_step": 790,
+      "perplexity_trajectory": [
+        17.957976671072558,
+        32.91166867035465,
+        70.7652770024877,
+        130.63777655185072,
+        213.52220706073442,
+        343.057156609768,
+        514.956609979807,
+        688.5081084730984,
+        923.2076685115322,
+        1131.7083817752903,
+        1408.6065073864352
+      ],
+      "final_probe": {
+        "distinct_1": 0.1202392578125,
+        "distinct_2": 0.2756076388888889,
+        "distinct_3": 0.3567288306451613,
+        "repeated_4gram_rate": 0.606109118852459,
+        "repeated_4gram_denominator": 15616,
+        "duplicate_continuation_rate": 0.00390625,
+        "token_entropy_nats": 5.7313335273887835,
+        "probe_count": 256,
+        "mean_within_entropy_nats": 2.6430707927872135,
+        "mean_within_repeated_4gram_rate": 0.5887551229508197,
+        "fraction_outputs_with_repeated_4gram": 0.9921875,
+        "mean_within_distinct_1": 0.30615234375,
+        "mean_within_distinct_2": 0.3753720238095238,
+        "mean_within_distinct_3": 0.39673639112903225,
+        "mean_within_distinct_4": 0.41124487704918034,
+        "newline_token_count": 739,
+        "newline_token_share": 0.04510498046875,
+        "newline_heavy_outputs_ge32": 0,
+        "all_newline_outputs": 0,
+        "newline_policy": "tokens_containing_lf_v1",
+        "continuation_tokens_sha256": "ca9152a48e4ea0631531244c3581312c59446ba17cee6a8101547716e56560cf"
+      },
+      "learning_rate": 0.01
+    }
+  ],
+  "sha256_verification_scope": "Final parent index seals child snapshots; every child completion/configuration and all thirty metric records match their indexed hashes. Bulk weights not restored by this read.",
+  "observation_directory": "runs\\20261114T001352Z-full-completion64-mixtures\\observations\\20261114T110242Z",
+  "parent_backup_snapshot": {
+    "run_id": "20261114T001352Z-full-completion64-mixtures",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "a65a46e171052abad42dca18c5849ab3ec5bb107",
+      "dataset": "c404d5d5c07693056aed76a197f82f1e58fa2cf3"
+    },
+    "artifact_index_sha256": "8c595ac6bec67e3dac73825ab638b6c3fb76079ce3f1ba39d0e3fe198b08dc05"
+  },
+  "pinned_hf_parent_index_verified": true
+}
