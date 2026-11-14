@@ -2,6 +2,10 @@
 
 Full experiments measure scientific trajectories; smoke experiments validate the pipeline. All full conditions currently use one seed. A report's recorded recovery scope is not proof of live cloud state or complete bulk restoration. See [current state](../docs/current-state.md) for the latest recorded execution.
 
+## New pipeline validation
+
+The [50%/80% SGD mixture smoke](20261114T144856Z-smoke-completion64-mixtures/setup-report.md) passed 146 focused offline tests and twelve GPU/operational checks: sixteen updates plus one replay, exact source reconstruction and both terminal cold restores with identical held-out NLL. Validation took 896.81 paid seconds and approximately USD 0.165 conservatively; temporary resources were removed. These reduced-data measurements validate the pipeline, not the scientific trajectories of the separately authorized full runs.
+
 ## Checkpoint diagnostics
 
 The [SGD/greedy per-update study](20261114T001352Z-full-completion64-mixtures/report.md) verifies all 2,370 update journals and probe arrays from the completed 0/99/100% conditions. In the 99% arm, real examples improve the probe in all 563 updates containing them, and synthetic effects worsen it in 778/790 updates. Six square figure families show the growing corrective real signal, opposing gradients and large final-batch corrections at cycles 6 and 10. Full-test endpoints are 17.73 / 164.41 / 1,408.61. This is offline local-intervention analysis, with diagnostic-only recovery and one-seed limits explicit.

@@ -150,12 +150,17 @@ calibration_reference:
   selected_learning_rate: 0.01
   selection_policy: bounded_real_only_192_updates_v1
   relative_path: calibration/selection.json
-  snapshot:
-    run_id: 20261113T230319Z-smoke-completion64-mixtures
+  snapshot: &id001
+    run_id: 20261114T144856Z-smoke-completion64-mixtures
     repos:
       model: iib-model-collapse-bill/iib-model-collapse-models
       dataset: iib-model-collapse-bill/iib-model-collapse-data
     revisions:
-      model: 12d4da2260085489d898a140653ddcb2921b2f0e
-      dataset: 91b8f3878a2f6e6b73602f99c847054fd3164ff4
-    artifact_index_sha256: 117969baff72ff855fb79754f044b368792b0db71e03c4572bef09df83d4755b
+      model: 7e9cf5b5bdf8c3d2b06fe26c206e348dd980d03e
+      dataset: de99d50b48d4631a9fe2981ddf5c9c791d5ae5e5
+    artifact_index_sha256: dccc2d4f17b09e6c9cbff8cc6dc104bdc17af77aa15359a20f9402d7891809b1
+benchmark_reference:
+  snapshot: *id001
+  relative_path: benchmark.json
+  sha256: 9251e11041bd8d52908e8cfce375b1d464486d4ec526e59595b7a14373b226a3
+  source_runtime_sha256: 790a2322864a98a5cd7efa66d776817511f2bfa035c613b50d9dec9c55e2971d

@@ -1,0 +1,189 @@
+{
+  "recorded_at": 1794668986.575807,
+  "run_id": "20261114T144856Z-smoke-completion64-mixtures",
+  "accepted_runtime_sha256": "790a2322864a98a5cd7efa66d776817511f2bfa035c613b50d9dec9c55e2971d",
+  "accepted_protocol_sha256": "df23ffef0ca5faafc46dca192149d89f18724dc98b7797106c5609dbb70586a0",
+  "checks_passed": [
+    "training_replay_seals",
+    "source_gradient_reconstruction",
+    "both_fresh_chunk_handoffs",
+    "shadow_actual_update_equality",
+    "native_masks_and_lineage",
+    "terminal_private_restores_all_arms",
+    "sixteen_sgd_updates",
+    "constant_lr_empty_optimizer_state",
+    "diagnostic_rng_isolation",
+    "fp32_greedy",
+    "detached_progress_verified",
+    "independent_watchdog_and_provider_stop_verified"
+  ],
+  "logical_updates": 16,
+  "additional_physical_replay_updates": 1,
+  "new_calibration_updates": 0,
+  "selected_lr": 0.01,
+  "conservative_validation_resource_usd": 0.16498632413392872,
+  "validation_cap_usd": 0.2,
+  "paid_compute_seconds": 896.8106825351715,
+  "maximum_paid_compute_seconds": 900,
+  "provider_shutdown": {
+    "provider_pod_id": "5acg2tj6nnl513",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Sat Nov 14 2026 15:03:54 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1794668634.0,
+    "observed_at": 1794668735.1508927
+  },
+  "temporary_resources_removed": {
+    "pod": "5acg2tj6nnl513",
+    "volume": "uocistl0a4"
+  },
+  "cold_terminal_restores": {
+    "mixed50": {
+      "scope": "complete_terminal_stage_only",
+      "verified_files": 30,
+      "verified_bytes": 538950877,
+      "weights_sha256": "df29d6f9dd5a876a1230b5d603ea8dae3d390abab5ca5ed2bf7fd5f0e9cd6f8f",
+      "optimizer_sha256": "c39a771d037bbb03b9f9160ec2dc8fd5669488bb4ef4759c69ce2b830e024c37",
+      "test_loss_absolute_error": 0.0
+    },
+    "mixed80": {
+      "scope": "complete_terminal_stage_only",
+      "verified_files": 32,
+      "verified_bytes": 538966341,
+      "weights_sha256": "e5c409873189f5e74d1679feed41f1cb060419f8d7293ffb06a715cf86e63ec6",
+      "optimizer_sha256": "71acf929707c1f7b71da432a1ba2ad7bdb91d8cd8f4898f6b49b75dadb3a6307",
+      "test_loss_absolute_error": 0.0
+    }
+  },
+  "recovery": {
+    "run_id": "20261114T144856Z-smoke-completion64-mixtures",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "7e9cf5b5bdf8c3d2b06fe26c206e348dd980d03e",
+      "dataset": "de99d50b48d4631a9fe2981ddf5c9c791d5ae5e5"
+    },
+    "artifact_index_sha256": "dccc2d4f17b09e6c9cbff8cc6dc104bdc17af77aa15359a20f9402d7891809b1",
+    "indexed_files": 110,
+    "verified_files": 107,
+    "verified_bytes": 7455363,
+    "metadata_only": true,
+    "scope": "metadata_only",
+    "preserved_control_files": {
+      "resources.json": {
+        "recovered_path": "fetched_control/8ac4b42e2771e485fd9911d39e5ca2266142e99d0f3cbb8f6865b3ecabad7ba7/resources.json",
+        "sha256": "8ac4b42e2771e485fd9911d39e5ca2266142e99d0f3cbb8f6865b3ecabad7ba7",
+        "authoritative_local_sha256": "ab4a760a15d1ce76995c413f1442836f7b9475e16733410c68c74ba670bfc675"
+      }
+    },
+    "operational_files_outside_immutable_index": [
+      "status.json",
+      "watchdog_exit.json"
+    ],
+    "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261114T144856Z-smoke-completion64-mixtures",
+    "children": {
+      "mixed50": {
+        "run_id": "20261114T144856Z-smoke-completion64-mixtures-mixed50",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "952d2498ca5d213c204f2d17a654a7bf3488ae7c",
+          "dataset": "fe661e93926a1cd6abd03e35ee8fcd308d891159"
+        },
+        "artifact_index_sha256": "1fbd168edb5b224d83725a8b51408bcec372519803a1e205d994b8b33f83e4cd",
+        "indexed_files": 99,
+        "verified_files": 59,
+        "verified_bytes": 235175,
+        "metadata_only": true,
+        "scope": "metadata_only",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261114T144856Z-smoke-completion64-mixtures-mixed50"
+      },
+      "mixed80": {
+        "run_id": "20261114T144856Z-smoke-completion64-mixtures-mixed80",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "7e9cf5b5bdf8c3d2b06fe26c206e348dd980d03e",
+          "dataset": "692d63174a27961dda7218c805f20706699b020c"
+        },
+        "artifact_index_sha256": "bd51e51ca0c251e4f73a9b02b6277ff48b40dac09b56be7e30dd947a53a974ae",
+        "indexed_files": 113,
+        "verified_files": 67,
+        "verified_bytes": 255853,
+        "metadata_only": true,
+        "scope": "metadata_only",
+        "preserved_control_files": {},
+        "operational_files_outside_immutable_index": [
+          "events.jsonl",
+          "status.json"
+        ],
+        "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\runs\\20261114T144856Z-smoke-completion64-mixtures-mixed80"
+      }
+    }
+  },
+  "full_benchmark": {
+    "training_target_tokens_per_second": 1509.7581470904418,
+    "generation_new_tokens_per_second": 1252.106226835497,
+    "primary_target_tokens_per_second": 18319.73317996516,
+    "secondary_target_tokens_per_second": 31302.30786288084,
+    "full_primary_targets": {
+      "validation": 476608,
+      "test": 467392
+    },
+    "full_secondary_targets": 1521483,
+    "benchmark_updates_discarded": 0,
+    "calibration_update_limit": 192,
+    "calibration_throughput_provenance": {
+      "source": "sealed_calibration_complete_stage_wall_time",
+      "receipt_sha256": "8dc46a4fc9f5bf5cdbc7935d1ef814a735e45acb21d0ba8453eb10d1f0fea842",
+      "imported_execution": true,
+      "denominator": "training.seconds includes complete shared-engine stage wall time",
+      "additional_optimizer_updates": 0
+    },
+    "generation_batch_seconds": [
+      3.2379809450358152,
+      1.635643970221281
+    ],
+    "generation_batch": 32,
+    "microbatch": 32,
+    "effective_batch": 128,
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "training_includes_update_observer": true,
+    "benchmark_contract_sha256": "e5013f983b56472e5cb964af4db7947d30d27c970a2df46265a52903d63e0824",
+    "calibration_receipt_sha256": "8dc46a4fc9f5bf5cdbc7935d1ef814a735e45acb21d0ba8453eb10d1f0fea842",
+    "source_runtime_sha256": "790a2322864a98a5cd7efa66d776817511f2bfa035c613b50d9dec9c55e2971d",
+    "step_seconds_by_arm": {
+      "mixed50": 5.032091779168695,
+      "mixed80": 5.426034637261182
+    },
+    "calibration_physical_updates": 181,
+    "calibration_updates_imported": true,
+    "new_calibration_optimizer_updates": 0,
+    "measured_stage_bytes": 538966341,
+    "diagnostic_probe_pairs": 128
+  },
+  "full_backup_store": {
+    "backend": "runpod_s3",
+    "bucket": "efv7egm5i0",
+    "region": "EU-RO-1",
+    "prefix": "smollm2-sgd-mixtures-20261114"
+  },
+  "host_recovery_note": "Retried local metadata retrieval with Windows extended-length HF cache path. Parent M0 recovered by verified identical local cache hardlink; two small parent arrays downloaded. Both complete terminal stages were privately cold-restored and evaluated on acceptance GPU, not locally.",
+  "published_runtime_mapping": {
+    "implementation_commit": "e68d1e9d1f3bacd8b9ec21553fc7f90ad4b04b43",
+    "runtime_sha256": "790a2322864a98a5cd7efa66d776817511f2bfa035c613b50d9dec9c55e2971d",
+    "published_runtime_files_match_accepted_archive": true,
+    "archive_manifest_git_commit_role": "Baseline before committing the implemented changes; immutable runtime checksum and file inventory identify the deployed source."
+  }
+}
