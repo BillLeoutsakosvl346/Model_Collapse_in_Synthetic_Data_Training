@@ -1,0 +1,322 @@
+{
+  "recorded_at": 1794617634.101394,
+  "run_id": "20261114T001352Z-full-completion64-mixtures",
+  "state": "running",
+  "owner": {
+    "run_id": "20261114T001352Z-full-completion64-mixtures",
+    "launch_id": "20261114T001352371341Z",
+    "pod_id": "1j6xj517g49tjx",
+    "volume_id": "ncxkmsx6a9"
+  },
+  "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "gpu_stock_evidence": "LOW Secure Cloud in EU-RO-1, host CUDA13.2; actual Pod readback matches",
+  "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+  "image_source": "Live official runpod-torch-v280 template catalog read, matched inspected image",
+  "host_cuda_version": "13.2",
+  "quoted_gpu_hourly_usd": 0.57,
+  "compute_guard_hourly_usd": 0.6652671232876711,
+  "resources": {
+    "working_volume": {
+      "id": "ncxkmsx6a9",
+      "size_gb": 60,
+      "mount": "/workspace"
+    },
+    "private_backup_volume": {
+      "id": "ljutugtl9a",
+      "size_gb": 31,
+      "reason": "30GB intended capacity plus1GB headroom for verification objects beyond20GB projection and10GB margin"
+    },
+    "backup_store": {
+      "backend": "runpod_s3",
+      "bucket": "ljutugtl9a",
+      "region": "EU-RO-1",
+      "prefix": "smollm2-sgd-greedy-full"
+    }
+  },
+  "runtime_sha256": "02e45a8352f611b1004fa1bcf490e08384326eec141fa56576f9b28c70e839a0",
+  "source_commit": "aa72fdba61474c03f5bfe6f69c712d8f603e6ae0",
+  "configuration_sha256": "90ee930c572512874af160dedbc6e1ca8c9d496e0cffadf5bf30b1a5bec5d56c",
+  "repository_config_sha256": "101f5898cddf86cac06c87b232f86e27c08832be0d0bc8f27dd2e63d5e329e03",
+  "protocol": {
+    "model": "HuggingFaceTB/SmolLM2-135M",
+    "learning_rate": 0.01,
+    "optimizer": "sgd",
+    "precision": "fp32",
+    "tf32": false,
+    "momentum": 0,
+    "weight_decay": 0,
+    "scheduler": null,
+    "generation": "greedy64_tokens",
+    "cycles_per_arm": 10,
+    "training_pairs_per_cycle": 10000,
+    "updates_per_arm": 790,
+    "update_probe_pairs": 128
+  },
+  "job_order": [
+    {
+      "id": "20261114T001352Z-full-completion64-mixtures-real",
+      "synthetic_fraction": 0.0,
+      "state": "running"
+    },
+    {
+      "id": "20261114T001352Z-full-completion64-mixtures-mixed99",
+      "synthetic_fraction": 0.99,
+      "state": "queued"
+    },
+    {
+      "id": "20261114T001352Z-full-completion64-mixtures-synthetic",
+      "synthetic_fraction": 1.0,
+      "state": "queued"
+    }
+  ],
+  "first_completed_cycle": {
+    "initial_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+    "selected_weights_sha256": "d163d9923e6f2cedb1f00b07251079f00300b489c23981c724b4935c4c2d236a",
+    "weights_changed": true,
+    "global_step": 79,
+    "training_blocks": 10000,
+    "selected_epoch": 1,
+    "optimizer": "sgd",
+    "learning_rate_policy": "constant",
+    "history": [
+      {
+        "epoch": 1,
+        "learning_rate": 0.01,
+        "train_loss": 2.89774275970459,
+        "validation_loss": 2.8935644706942183,
+        "train_seconds": 148.08386765187606,
+        "training_target_tokens_per_second": 4321.875232922388,
+        "global_step": 79,
+        "learning_rate_end": 0.01,
+        "scored_training_tokens": 640000
+      }
+    ],
+    "validation": {
+      "nll_sum": 1379095.97524863,
+      "scored_tokens": 476608,
+      "loss": 2.8935644706942183,
+      "perplexity": 18.05756066881198,
+      "seconds": 25.25644648494199,
+      "mean_sequence_perplexity": 21.8267595426017,
+      "std_sequence_perplexity": 16.701893238890715,
+      "context_tokens": 129
+    },
+    "test": {
+      "nll_sum": 1345706.3756728997,
+      "scored_tokens": 467392,
+      "loss": 2.8791814487045126,
+      "perplexity": 17.79969724960991,
+      "seconds": 24.749776053708047,
+      "mean_sequence_perplexity": 21.707041421933635,
+      "std_sequence_perplexity": 15.370298060866713,
+      "context_tokens": 129,
+      "median_example_nll": 2.8974264944554307,
+      "p95_example_nll": 3.8984426500337572
+    },
+    "diagnostic_updates": 79,
+    "completion_sealed": true
+  },
+  "first_cycle_private_backup": {
+    "run_id": "20261114T001352Z-full-completion64-mixtures-real",
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "82267b50eee67c8974a4e48cb336dca4011a208f",
+      "dataset": "f5b778aaeea0b604a31396e9a0b1eb6bb16bc449"
+    },
+    "artifact_index_sha256": "57c3ede1591942d7a64ef8a1627c58bca2c04bc7a1f0b9266c7eb12397e2338d"
+  },
+  "live_snapshot": {
+    "observed_at": 1794617532.5751102,
+    "status": {
+      "state": "running",
+      "phase": "real",
+      "active_child": "20261114T001352Z-full-completion64-mixtures-real",
+      "time": 1794617025.7794385
+    },
+    "child_status": {
+      "state": "running",
+      "stage": "training",
+      "generation": 2,
+      "global_step": 138,
+      "time": 1794617531.329868
+    },
+    "watchdog": {
+      "pid": 215,
+      "time": 1794617532.0640302,
+      "deadline": 1794653991.3807309
+    },
+    "supervisor": {
+      "pid": 329,
+      "child_pid": 330,
+      "time": 1794617529.570324
+    },
+    "first_cycle": {
+      "initial_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+      "selected_weights_sha256": "d163d9923e6f2cedb1f00b07251079f00300b489c23981c724b4935c4c2d236a",
+      "weights_changed": true,
+      "global_step": 79,
+      "training_blocks": 10000,
+      "selected_epoch": 1,
+      "optimizer": "sgd",
+      "learning_rate_policy": "constant",
+      "history": [
+        {
+          "epoch": 1,
+          "learning_rate": 0.01,
+          "train_loss": 2.89774275970459,
+          "validation_loss": 2.8935644706942183,
+          "train_seconds": 148.08386765187606,
+          "training_target_tokens_per_second": 4321.875232922388,
+          "global_step": 79,
+          "learning_rate_end": 0.01,
+          "scored_training_tokens": 640000
+        }
+      ],
+      "validation": {
+        "nll_sum": 1379095.97524863,
+        "scored_tokens": 476608,
+        "loss": 2.8935644706942183,
+        "perplexity": 18.05756066881198,
+        "seconds": 25.25644648494199,
+        "mean_sequence_perplexity": 21.8267595426017,
+        "std_sequence_perplexity": 16.701893238890715,
+        "context_tokens": 129
+      },
+      "test": {
+        "nll_sum": 1345706.3756728997,
+        "scored_tokens": 467392,
+        "loss": 2.8791814487045126,
+        "perplexity": 17.79969724960991,
+        "seconds": 24.749776053708047,
+        "mean_sequence_perplexity": 21.707041421933635,
+        "std_sequence_perplexity": 15.370298060866713,
+        "context_tokens": 129,
+        "median_example_nll": 2.8974264944554307,
+        "p95_example_nll": 3.8984426500337572
+      },
+      "diagnostic_updates": 79,
+      "completion_sealed": true
+    },
+    "child_backup": {
+      "run_id": "20261114T001352Z-full-completion64-mixtures-real",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "82267b50eee67c8974a4e48cb336dca4011a208f",
+        "dataset": "f5b778aaeea0b604a31396e9a0b1eb6bb16bc449"
+      },
+      "artifact_index_sha256": "57c3ede1591942d7a64ef8a1627c58bca2c04bc7a1f0b9266c7eb12397e2338d"
+    }
+  },
+  "detached_verification": {
+    "pod_id": "1j6xj517g49tjx",
+    "launch_id": "20261114T001352371341Z",
+    "run_id": "20261114T001352Z-full-completion64-mixtures",
+    "progress_after_disconnect": true,
+    "observations": [
+      {
+        "time": 1794616958.957517,
+        "status": {
+          "state": "running",
+          "phase": "baseline",
+          "time": 1794616859.7924972
+        },
+        "child_status": {
+          "state": "running",
+          "phase": "baseline",
+          "time": 1794616859.7924972
+        },
+        "event_bytes": 0,
+        "epochs": 0,
+        "new_epochs": 0,
+        "finite_new_training": false,
+        "completed_new_stages": 0,
+        "supervisor": {
+          "pid": 329,
+          "child_pid": 330,
+          "time": 1794616956.335431
+        },
+        "watchdog": {
+          "pid": 215,
+          "time": 1794616957.061009,
+          "deadline": 1794653991.3807309
+        }
+      },
+      {
+        "time": 1794617392.5189152,
+        "status": {
+          "state": "running",
+          "phase": "real",
+          "active_child": "20261114T001352Z-full-completion64-mixtures-real",
+          "time": 1794617025.7794385
+        },
+        "child_status": {
+          "state": "running",
+          "stage": "training",
+          "generation": 1,
+          "global_step": 79,
+          "time": 1794617181.6233904
+        },
+        "event_bytes": 469,
+        "epochs": 1,
+        "new_epochs": 1,
+        "finite_new_training": true,
+        "completed_new_stages": 1,
+        "supervisor": {
+          "pid": 329,
+          "child_pid": 330,
+          "time": 1794617390.733233
+        },
+        "watchdog": {
+          "pid": 215,
+          "time": 1794617389.7508614,
+          "deadline": 1794653991.3807309
+        }
+      }
+    ],
+    "observations_sha256": "b338f2fd1e7331abfc7850a2c00bd345226323ff7e05c5049cc16577d334182b",
+    "scope": "Independent SSH sessions closed between observations; stage/epoch/event progress and advancing remote heartbeats."
+  },
+  "independent_shutdown": {
+    "supervisor_and_watchdog_confirmed": true,
+    "deadline_epoch": 1794653991.3807309,
+    "deadline_utc": "2026-11-14T10:59:51.380731+00:00",
+    "on_completion_or_failure": "Supervisor requests independent API GPU stop",
+    "laptop_or_browser_required": false
+  },
+  "budget": {
+    "allocation_usd": 11.0,
+    "reserve_usd": 2.0,
+    "cumulative_ceiling_usd": 110.0,
+    "session_allowance_usd": 7.162118580873251,
+    "forecast": {
+      "estimated_hours": 9.990716340818262,
+      "estimated_compute_and_running_storage_usd": 5.779560973599386,
+      "unique_training_stages": 30,
+      "epochs": 30,
+      "optimizer_updates": 2370,
+      "generated_training_continuations": 199000,
+      "generated_training_tokens": 12736000,
+      "training_target_exposures": 19200000,
+      "probe_sets": 31,
+      "forecast_margin": 1.5,
+      "update_attribution_included": true,
+      "storage_and_backup_fixed_overhead_seconds": 2400,
+      "historical_storage_during_run_usd": 1.8376075110686685,
+      "seven_day_volume_storage_usd": 0.9665753424657535,
+      "seven_day_backup_storage_usd": 0.4993972602739727,
+      "seven_day_combined_storage_usd": 1.4659726027397262,
+      "retention_above_existing_reserve_usd": 0.0
+    },
+    "startup_note": "Initial58MB frozen-bank SFTP transfer took about26 minutes before training; all provisioning time is counted in the fixed spending deadline."
+  },
+  "ssh_command": "ssh root@213.173.104.27 -p 19187",
+  "recovery_note": "Private backups and working volume retained after automatic compute stop; cleanup only after verified recovery. Local calibration receipt is an immutable reference, not new calibration work.",
+  "full_experiments_launched": true,
+  "all_three_completed": false
+}

@@ -1,0 +1,49 @@
+{
+  "recorded_at": 1794614891.553236,
+  "allocation": "smollm2_sgd_greedy_effects",
+  "budget_usd": 11.0,
+  "reserve_usd": 2.0,
+  "authorized_at": 1794614891.5482376,
+  "authorization": "User instructed start all three validated SGD/greedy runs on 14 November 2026. Full conditions sequentially on one GPU; unchanged USD110 cumulative ceiling, existing credit only. Allocation includes live forecast/watchdog margin and retained storage; no purchases or payment changes.",
+  "cumulative_ceiling_usd": 110.0,
+  "starting_accrued_estimate_usd": 98.90737747427353,
+  "runtime_sha256": "02e45a8352f611b1004fa1bcf490e08384326eec141fa56576f9b28c70e839a0",
+  "conditions": [
+    0.0,
+    0.99,
+    1.0
+  ],
+  "learning_rate": 0.01,
+  "working_volume_gb": 60,
+  "backup_volume_gb": 30,
+  "full_launch_authorized": true,
+  "backup_volume": {
+    "id": "ljutugtl9a",
+    "size_gb": 31,
+    "data_center": "EU-RO-1",
+    "store": {
+      "backend": "runpod_s3",
+      "bucket": "ljutugtl9a",
+      "region": "EU-RO-1",
+      "prefix": "smollm2-sgd-greedy-full"
+    },
+    "reason_for_extra_1gb": "20GB projected new artifacts plus10GB admission margin plus small verification objects",
+    "verified": true
+  },
+  "acquired_compute": {
+    "run_id": "20261114T001352Z-full-completion64-mixtures",
+    "launch_id": "20261114T001352371341Z",
+    "pod_id": "1j6xj517g49tjx",
+    "volume_id": "ncxkmsx6a9",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+    "data_center": "EU-RO-1",
+    "created_at": 1794615234.5776534,
+    "code_sha256": "02e45a8352f611b1004fa1bcf490e08384326eec141fa56576f9b28c70e839a0",
+    "quoted_gpu_hourly_usd": 0.57,
+    "guard_hourly_usd": 0.6652671232876711,
+    "session_allowance_usd": 7.162118580873251
+  },
+  "startup_confirmed": true,
+  "full_launch_record": "docs/validation/2026-11-14_sgd-greedy-full-launch.json"
+}

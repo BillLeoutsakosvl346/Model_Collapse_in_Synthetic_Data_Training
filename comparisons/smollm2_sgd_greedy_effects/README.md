@@ -2,7 +2,7 @@
 
 This comparison prepares 0%, 99% and 100% synthetic-target conditions using the exact existing SmolLM2-135M checkpoint and native FineWeb completion bank. It is a new training recipe, rather than an optimizer-only ablation of the historical AdamW/five-beam experiment.
 
-[GPU validation and handoff](../../reports/20261113T230319Z-smoke-completion64-mixtures/setup-report.md): all twelve checks passed; selected constant LR **0.01**; full experiments remain unlaunched.
+[GPU validation and handoff](../../reports/20261113T230319Z-smoke-completion64-mixtures/setup-report.md): all twelve checks passed; selected constant LR **0.01**; the full comparison is now active as `20261114T001352Z-full-completion64-mixtures`. See the [launch record](../../docs/validation/2026-11-14_sgd-greedy-full-launch.json); do not duplicate this active run.
 
 ## Scientific protocol
 
@@ -35,7 +35,7 @@ Completed journals and per-example probe scores are sealed with checkpoints. An 
 $comparison = "comparisons/smollm2_sgd_greedy_effects"
 python -m model_collapse smoke --config "$comparison/smoke.yaml"
 
-# Future command only, after a separate launch instruction:
+# Recorded launch command; do not duplicate the active comparison:
 python -m model_collapse launch --config "$comparison/full.yaml" --generations 10
 ```
 
@@ -43,4 +43,4 @@ Smoke uses all three arms, two fresh 400-pair chunks each, 128 held-out/update-p
 
 Setup uses one matching RTX PRO 4000 Blackwell, the inspected historical image and one temporary 30 GB Standard volume. All new calibration/acceptance attempts are limited together to USD 0.40 and 30 paid minutes, including bootstrap/restoration. Existing USD 110 cumulative, USD 5.40 historical setup and USD 2 reserve limits remain binding. Failed admission or incomplete verification leaves readiness blocked; no limits are silently increased. No full working/backup storage is provisioned during setup.
 
-The future full comparison runs real, mixed99 and synthetic sequentially with one owner/watchdog, 60 GB working storage and at least 30 GB private backup capacity. Current setup does not launch it. Existing operational status/fetch/report/resume/recovery-gated cleanup commands remain available.
+The future full comparison runs real, mixed99 and synthetic sequentially with one owner/watchdog, 60 GB working storage and at least 30 GB private backup capacity. Setup stopped before launch; the subsequent user-authorized full run is recorded above. Existing operational status/fetch/report/resume/recovery-gated cleanup commands remain available.
