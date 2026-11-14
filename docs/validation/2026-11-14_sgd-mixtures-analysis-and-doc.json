@@ -1,0 +1,306 @@
+{
+  "created_utc": "2026-11-14T23:39:58.875427+00:00",
+  "run_id": "20261114T150912Z-full-completion64-mixtures",
+  "document_url": "https://docs.google.com/document/d/1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk/edit",
+  "complete_cycles_each": 10,
+  "new_optimizer_updates": 1580,
+  "all_verified_updates": 3950,
+  "native_document": {
+    "document_id": "1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk",
+    "before_revision": "AHj4eMT5sMzwpzVYQp-6TumbiMykBqYh1Y-mBQkEqB6_sHg3XdSQpAaPIaeFs6NpVHaJjsuVir2RsmX6oTPAdLj4WPm9-VtwesIDHrh5_Fo",
+    "after_revision": "AHj4eMTgv2rr1H3XOTNnYcIU5nSDlTlfB4aYKAc2A5eZxH4fZBpwoMmr_4Cj44tfYkASjri6QuaitXU1eMiOIP8j_uYcBLqlx_5lh-WmvXg",
+    "append_start": 219456,
+    "original_body_and_styles_unchanged": true,
+    "original_images_unchanged_excluding_expiring_content_uri": true,
+    "original_lists_unchanged": true,
+    "tables_exact": true,
+    "all_authored_text_present": true,
+    "new_tables": 7,
+    "new_square_images": 10,
+    "images_400pt": true,
+    "headings": 14
+  },
+  "pdf_qa": {
+    "before_pages": 169,
+    "after_pages": 183,
+    "changed_previous_pages": [],
+    "new_pages": [
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183
+    ],
+    "before_pdf_sha256": "7018812a0a5c088bef5fe98c934ca4eda87567742cd0df19a734265878e4bc98",
+    "pdf_sha256": "69ed6d2f5b809a04721c2d4ce9ca5dab9886d9fb11cb94f329f60de8693d801f"
+  },
+  "source_recovery": {
+    "parent": {
+      "snapshot": {
+        "run_id": "20261114T150912Z-full-completion64-mixtures",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "89e9fbb9a48e7b4a249e5d5acbb56fc000e02a9f",
+          "dataset": "cf5834ca781f64ff403c64ff76ed69a80de2e14e"
+        },
+        "artifact_index_sha256": "fc598cadaeebe0a2cfb78df30c08ad2716dddaf304505727ef2e505aff9a867d"
+      },
+      "files": 8,
+      "verified_bytes": 79015,
+      "retrieval": "retained_volume_bytes_verified_against_sealed_private_backup_index"
+    },
+    "mixed50": {
+      "snapshot": {
+        "run_id": "20261114T150912Z-full-completion64-mixtures-mixed50",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "8e0ad27a0ebea4eb4a24023a6157ee22717f7967",
+          "dataset": "b7613c294c900b8436df218400334bdbae791c85"
+        },
+        "artifact_index_sha256": "a5d4a34da4d11cac06568dbfa2b54f95c7961ca628f0ae4314a47ee8eb64afd8"
+      },
+      "files": 143,
+      "verified_bytes": 14844736,
+      "retrieval": "retained_volume_bytes_verified_against_sealed_private_backup_index"
+    },
+    "mixed80": {
+      "snapshot": {
+        "run_id": "20261114T150912Z-full-completion64-mixtures-mixed80",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "89e9fbb9a48e7b4a249e5d5acbb56fc000e02a9f",
+          "dataset": "860cef1775a10efdb02c25cc7179927fe3bab903"
+        },
+        "artifact_index_sha256": "44b7a2c80540533a8d8a00ffd396a61b473f3aedc0fecfce53928bb2fd32c4fc"
+      },
+      "files": 143,
+      "verified_bytes": 14948269,
+      "retrieval": "retained_volume_bytes_verified_against_sealed_private_backup_index"
+    }
+  },
+  "recovery_scope": "Small diagnostics, scores, histories, metrics, source labels and fixed output probes; no full bulk checkpoint or optimizer cold restoration.",
+  "analysis_manifest": "reports/20261114T150912Z-full-completion64-mixtures/generated/source-effects-20261114-v2/analysis_manifest.json",
+  "analysis_manifest_sha256": "520295fcf2d2ed81f1c1574d47dcd01881213468f17d4cda674f7bffb5d5c10d",
+  "authored_section": "reports/20261114T150912Z-full-completion64-mixtures/generated/authored-source-effects-20261114-v3/section.md",
+  "composer_sha256": "63e004e60707b10923c107ec0d902c160cc8a8541e19bbd74697dba272c0095f",
+  "numerical_checks": {
+    "real": {
+      "updates": 790,
+      "probe_continuity_max_error": 0.0,
+      "gradient_reconstruction_max_error": 0.0,
+      "vector_identity_max_error": 0.0,
+      "real_effect_sign_counts": {
+        "helpful": 419,
+        "harmful": 366,
+        "unresolved": 5
+      },
+      "synthetic_effect_sign_counts": {
+        "helpful": 0,
+        "harmful": 0,
+        "unresolved": 790
+      }
+    },
+    "mixed50": {
+      "updates": 790,
+      "probe_continuity_max_error": 0.0,
+      "gradient_reconstruction_max_error": 3.1200988121325705e-07,
+      "vector_identity_max_error": 8.039100712334921e-08,
+      "real_effect_sign_counts": {
+        "helpful": 790,
+        "harmful": 0,
+        "unresolved": 0
+      },
+      "synthetic_effect_sign_counts": {
+        "helpful": 0,
+        "harmful": 790,
+        "unresolved": 0
+      }
+    },
+    "mixed80": {
+      "updates": 790,
+      "probe_continuity_max_error": 0.0,
+      "gradient_reconstruction_max_error": 2.5586798627622414e-07,
+      "vector_identity_max_error": 5.7266782525524614e-08,
+      "real_effect_sign_counts": {
+        "helpful": 790,
+        "harmful": 0,
+        "unresolved": 0
+      },
+      "synthetic_effect_sign_counts": {
+        "helpful": 0,
+        "harmful": 790,
+        "unresolved": 0
+      }
+    },
+    "mixed99": {
+      "updates": 790,
+      "probe_continuity_max_error": 0.0,
+      "gradient_reconstruction_max_error": 2.640622545339035e-07,
+      "vector_identity_max_error": 5.898973241859399e-08,
+      "real_effect_sign_counts": {
+        "helpful": 563,
+        "harmful": 0,
+        "unresolved": 227
+      },
+      "synthetic_effect_sign_counts": {
+        "helpful": 12,
+        "harmful": 778,
+        "unresolved": 0
+      }
+    },
+    "synthetic": {
+      "updates": 790,
+      "probe_continuity_max_error": 0.0,
+      "gradient_reconstruction_max_error": 0.0,
+      "vector_identity_max_error": 0.0,
+      "real_effect_sign_counts": {
+        "helpful": 0,
+        "harmful": 0,
+        "unresolved": 790
+      },
+      "synthetic_effect_sign_counts": {
+        "helpful": 254,
+        "harmful": 536,
+        "unresolved": 0
+      }
+    }
+  },
+  "scientific_compatibility": {
+    "shared_contract": {
+      "settings": {
+        "model": "HuggingFaceTB/SmolLM2-135M",
+        "model_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+        "dataset": "HuggingFaceFW/fineweb-edu",
+        "dataset_revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+        "dataset_config": "sample-10BT",
+        "seed": 42,
+        "learning_rate": 0.01,
+        "min_learning_rate": 0.01,
+        "weight_decay": 0.0,
+        "precision": "fp32",
+        "epochs": 1,
+        "checkpoint_selection": "final_epoch",
+        "initialization": "continued",
+        "optimizer_policy": "carry_across_cycles",
+        "max_sequence_length": 129,
+        "microbatch": 32,
+        "effective_batch": 128,
+        "generation_batch": 32,
+        "block_size": 64,
+        "new_tokens": 64,
+        "num_beams": 1,
+        "repetition_penalty": 1.0,
+        "probe_count": 256,
+        "secondary_corpora": [
+          "fineweb_edu",
+          "wikitext103",
+          "c4_en",
+          "pg19",
+          "ag_news"
+        ],
+        "corpus_bank": {
+          "repo": "Bill11235813/iib-model-collapse-week1-data",
+          "revision": "fa7fde7fde7b546d78020b29d1f176965f6404a8",
+          "path": "corpus_banks/cross_corpus_v1-42627bee2ea7",
+          "manifest_sha256": "5c30545587cdad7497314868cfa10117aedb59d0231f459135b6a97b9f04a275"
+        },
+        "generations": 10,
+        "train_pairs_per_cycle": 10000,
+        "evaluation_pairs": null,
+        "required_gpu": "NVIDIA RTX PRO 4000 Blackwell",
+        "required_image": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404",
+        "required_environment": {
+          "torch": "2.8.0+cu128",
+          "transformers": "4.37.2",
+          "datasets": "3.4.1"
+        },
+        "optimizer": "sgd",
+        "learning_rate_policy": "constant",
+        "momentum": 0.0,
+        "scheduler_policy": "none",
+        "generation_decoder": "greedy",
+        "update_diagnostics": {
+          "enabled": true,
+          "policy": "same_graph_sgd_components_v1",
+          "probe_pairs": 128,
+          "evaluation_precision": "fp32",
+          "numerical_floor": 1e-06
+        },
+        "calibration_reference": {
+          "receipt_sha256": "8dc46a4fc9f5bf5cdbc7935d1ef814a735e45acb21d0ba8453eb10d1f0fea842",
+          "selected_learning_rate": 0.01,
+          "selection_policy": "bounded_real_only_192_updates_v1"
+        }
+      },
+      "bank_manifest_sha256": "8c475f058606fed0610d7555128139ea445b2f4753c2a1abc8eccd44e06c9837",
+      "baseline_weights_sha256": "a0d487cdbeb5c74071aecac23d6978e7bad0e5015959eb0c833f5c398767cda0",
+      "primary_scored_tokens": {
+        "validation": 476608,
+        "test": 467392
+      },
+      "objective": "bos_prompt64_continuation64_score_positions65_to128"
+    },
+    "critical_runtime_files": {
+      "science/engine.py": "3c01a94550405541a48ddc370e540163395c37c6870b38969e3ba0f7ece99ded",
+      "science/sgd_effects.py": "bda72e4c9e70d94b03abd4d49a021f600fc22b01996ba487cd50ddfb7ac39588",
+      "workflow/optimization.py": "b8c6e35b8347c33e83214d4e41d65f56a38fb592bcb3cb597b9923f1ce7662e7",
+      "workflow/sgd_calibration.py": "3684b1ed45534cd32716fcf7969290720e949e8628837f26377db7310b3b9785",
+      "science/decoding.py": "bf8ee38c8e1be1815f52d946867a62f46c330fdd619626dee0e7e1d4b3d8e53b",
+      "science/metrics.py": "9d178411290bb3eff6aba8576c6b8490e985841a6389522132a737aa41515ba6",
+      "completion_mixing.py": "ab9f5ff852751b285a4c335fce150ac543f5caef2e19b4fcfa962614babf6551"
+    },
+    "historical_runtime": "02e45a8352f611b1004fa1bcf490e08384326eec141fa56576f9b28c70e839a0",
+    "new_runtime": "790a2322864a98a5cd7efa66d776817511f2bfa035c613b50d9dec9c55e2971d"
+  },
+  "provider_shutdown": {
+    "provider_pod_id": "o9i0oynem3qpe3",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Sat Nov 14 2026 20:45:56 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1794689156.0,
+    "observed_at": 1794697809.6664038
+  },
+  "analysis_environment": {
+    "python": "3.12.1",
+    "numpy": "2.1.2",
+    "matplotlib": "3.9.4"
+  },
+  "new_training_or_inference": false,
+  "new_gpu_compute_cost_usd": 0,
+  "cloud_resources_mutated": false,
+  "historical_resources_preserved": true,
+  "visual_qa": "All fourteen new pages visually inspected; all 169 previous pages pixel-identical at 0.5x rendering. Native paragraph/table/style prefix exact; old image metadata equal excluding expiring contentUri.",
+  "offline_publication_checks": {
+    "repository_check_base": "83596743910b1848f9a1c870765474b9142d0309",
+    "repository_check": {
+      "markdown_files": 154,
+      "configurations": 56,
+      "publication_manifests": 36,
+      "errors": [],
+      "passed": true
+    },
+    "targeted_new_links_and_publication_manifests": true,
+    "git_index_publication_hashes_verified": 42,
+    "git_index_analysis_script_bytes_verified": 3,
+    "python_compile": true,
+    "new_runtime_training_changes": false
+  }
+}

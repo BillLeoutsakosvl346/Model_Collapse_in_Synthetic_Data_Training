@@ -1,0 +1,82 @@
+{
+  "real": {
+    "updates": 790,
+    "probe_continuity_max_error": 0.0,
+    "gradient_reconstruction_max_error": 0.0,
+    "vector_identity_max_error": 0.0,
+    "real_effect_sign_counts": {
+      "helpful": 419,
+      "harmful": 366,
+      "unresolved": 5
+    },
+    "synthetic_effect_sign_counts": {
+      "helpful": 0,
+      "harmful": 0,
+      "unresolved": 790
+    }
+  },
+  "mixed50": {
+    "updates": 790,
+    "probe_continuity_max_error": 0.0,
+    "gradient_reconstruction_max_error": 3.1200988121325705e-07,
+    "vector_identity_max_error": 8.039100712334921e-08,
+    "real_effect_sign_counts": {
+      "helpful": 790,
+      "harmful": 0,
+      "unresolved": 0
+    },
+    "synthetic_effect_sign_counts": {
+      "helpful": 0,
+      "harmful": 790,
+      "unresolved": 0
+    }
+  },
+  "mixed80": {
+    "updates": 790,
+    "probe_continuity_max_error": 0.0,
+    "gradient_reconstruction_max_error": 2.5586798627622414e-07,
+    "vector_identity_max_error": 5.7266782525524614e-08,
+    "real_effect_sign_counts": {
+      "helpful": 790,
+      "harmful": 0,
+      "unresolved": 0
+    },
+    "synthetic_effect_sign_counts": {
+      "helpful": 0,
+      "harmful": 790,
+      "unresolved": 0
+    }
+  },
+  "mixed99": {
+    "updates": 790,
+    "probe_continuity_max_error": 0.0,
+    "gradient_reconstruction_max_error": 2.640622545339035e-07,
+    "vector_identity_max_error": 5.898973241859399e-08,
+    "real_effect_sign_counts": {
+      "helpful": 563,
+      "harmful": 0,
+      "unresolved": 227
+    },
+    "synthetic_effect_sign_counts": {
+      "helpful": 12,
+      "harmful": 778,
+      "unresolved": 0
+    }
+  },
+  "synthetic": {
+    "updates": 790,
+    "probe_continuity_max_error": 0.0,
+    "gradient_reconstruction_max_error": 0.0,
+    "vector_identity_max_error": 0.0,
+    "real_effect_sign_counts": {
+      "helpful": 0,
+      "harmful": 0,
+      "unresolved": 790
+    },
+    "synthetic_effect_sign_counts": {
+      "helpful": 254,
+      "harmful": 536,
+      "unresolved": 0
+    }
+  }
+}

@@ -1,12 +1,15 @@
 schema_version: 1
-updated: "2026-11-13"
+updated: "2026-11-14"
 description: "Scientific conditions and their recorded runs; week labels are presentation aliases."
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
 conditions:
   smollm2_sgd_greedy_mixtures:
     name: "SmolLM2-135M / FineWeb: 50% and 80% synthetic, SGD constant LR and greedy"
-    state: running
+    state: completed
+    completion: ../docs/validation/2026-11-14_sgd-mixtures-analysis-and-doc.json
+    report: ../reports/20261114T150912Z-full-completion64-mixtures/report.md
+    final_test_perplexity: {mixed50: 18.585788678928733, mixed80: 19.706884380006866}
     definition: ../comparisons/smollm2_sgd_greedy_mixtures/README.md
     comparison_config: ../comparisons/smollm2_sgd_greedy_mixtures/full.yaml
     smoke_config: ../comparisons/smollm2_sgd_greedy_mixtures/smoke.yaml

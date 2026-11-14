@@ -1,0 +1,798 @@
+{
+  "source": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2",
+  "blocks": [
+    {
+      "type": "h1",
+      "text": "Week 5 continued: Balancing real and synthetic updates",
+      "page": true
+    },
+    {
+      "type": "body",
+      "text": "The matched 50% and 80% synthetic conditions remain close to pretrained real-test performance. Direct source diagnostics show strong, continuing real corrections opposing synthetic updates. Evaluation can remain nearly stable while both gradients and parameter updates remain substantial."
+    },
+    {
+      "type": "bullet",
+      "text": "Each arm independently starts the same pretrained SmolLM2-135M and continues its own weights through ten different, document-separated 10,000-pair FineWeb-Edu chunks. One terminal epoch is retained per cycle; there is no reset."
+    },
+    {
+      "type": "bullet",
+      "text": "Reuse the native-tokenizer bank, fixed evaluation collections, seed 42, plain SGD at constant 0.01, FP32 with TF32 off, and greedy exactly-64-token generation. There is no momentum, decay, clipping or scheduler. Critical computation files match the earlier SGD controls."
+    },
+    {
+      "type": "bullet",
+      "text": "Inputs contain BOS + 64 real prompt tokens + 64 targets. Loss scores only targets. Each arm generates its own selected continuations using its preceding checkpoint, retains real targets elsewhere, freezes the mixture and then trains. The nested row selections are deterministic."
+    },
+    {
+      "type": "bullet",
+      "text": "Every cycle scores 640,000 targets. Microbatches of 32 accumulate into 78 updates of 128 examples and a final update of 16. Each arm has 790 updates. Held-out document identities and evaluation arrays never enter training."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5B.1. Matched cycle-10 outcomes. The 0%, 99% and 100% SGD controls are preserved historical runs; 50% and 80% are new. All share initial test PPL 17.958.",
+      "before_table": true
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "endpoints",
+      "rows": [
+        [
+          "Synthetic",
+          "Real / cycle",
+          "Synthetic / cycle",
+          "Final test PPL",
+          "Change vs M0"
+        ],
+        [
+          "0%",
+          "10,000",
+          "0",
+          "17.726",
+          "-1.3%"
+        ],
+        [
+          "50%",
+          "5,000",
+          "5,000",
+          "18.586",
+          "+3.5%"
+        ],
+        [
+          "80%",
+          "2,000",
+          "8,000",
+          "19.707",
+          "+9.7%"
+        ],
+        [
+          "99%",
+          "100",
+          "9,900",
+          "164.413",
+          "+815.5%"
+        ],
+        [
+          "100%",
+          "0",
+          "10,000",
+          "1408.607",
+          "+7743.9%"
+        ]
+      ],
+      "widths": [
+        65,
+        95,
+        110,
+        90,
+        90
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "1. The new conditions avoid the large likelihood deterioration",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Final real-test PPL is 18.586 at 50% synthetic and 19.707 at 80%, compared with 17.726 for real-only, 164.413 at 99% and 1,408.607 at 100%. These are full held-out continuation evaluations, not the small update probe."
+    },
+    {
+      "type": "bullet",
+      "text": "Both new mixtures are worse than real-only, but greatly outperform the high-synthetic controls. All conditions have constant learning rate; LR decay cannot explain their different trajectories. This remains one seed per condition."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2\\01_test_perplexity_all.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5B.1. Full real-test corpus PPL on 7,303 fixed pairs / 467,392 scored tokens. The logarithmic scale reveals all five conditions. Lines connect recorded cycle endpoints; the shared baseline is reused evidence."
+    },
+    {
+      "type": "h2",
+      "text": "2. A closer view shows an overshoot and partial recovery",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "At 50%, test PPL remains between 18.586 and 19.295 after adaptation, ending 3.5% above M0. At 80%, it peaks at 24.175 in cycle 2, then ends 9.7% above M0. The 80% trajectory improves after its early deterioration rather than becoming perfectly flat."
+    },
+    {
+      "type": "bullet",
+      "text": "The late 80% endpoints still fluctuate. Its final drop is partly amplified by the small final batch, examined below. Ten cycles show a bounded-looking observed trajectory; they do not establish a permanent equilibrium or a universal safe mixture fraction."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2\\02_test_perplexity_zoom.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5B.2. The same complete-test metric on a linear, expanded scale for 0%, 50% and 80% synthetic. The first point after baseline represents one complete epoch on a fresh 10,000-pair chunk."
+    },
+    {
+      "type": "h2",
+      "text": "3. Real examples supply much more loss than their row fraction",
+      "page": true
+    },
+    {
+      "type": "equation",
+      "text": "L_B = L_R + L_S;  L_R = (\u03a3real \u2113\u1d62)/N_B;  L_S = (\u03a3synthetic \u2113\u1d62)/N_B"
+    },
+    {
+      "type": "bullet",
+      "text": "Each \u2113\u1d62 is mean NLL over that example's 64 continuation tokens. N_B is 128, or 16 for the tail. Source terms already contain their actual batch proportions; we do not multiply their gradients by the mixture percentage a second time."
+    },
+    {
+      "type": "bullet",
+      "text": "At 50% synthetic, real examples supply 82.4% of mean batch loss in cycle 1 and 93.3% in cycle 10. At 80% synthetic, the 20% real examples supply 58.4% initially and 87.5% by cycle 10. Synthetic targets become easy for the model to predict while real targets remain comparatively surprising."
+    },
+    {
+      "type": "bullet",
+      "text": "These percentages describe scalar training loss. They are not percentages of the gradient, parameter change or predictive benefit. All-batch and corpus-token weighting agree closely here, and the full-batch-only results retain the same pattern."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2\\03_real_loss_shares.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5B.3. Real share = mean(L_R) / [mean(L_R) + mean(L_S)], averaging all 79 updates/cycle. This is a ratio of source loss sums, not the mean of per-batch percentages. The 99% reference contains only 1% real examples."
+    },
+    {
+      "type": "h2",
+      "text": "4. Per-cycle loss accounting",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "The following tables show the actual weighted terms entering backpropagation. For example, at 80% synthetic in cycle 10, mean real loss is 0.6120 and synthetic loss is 0.0871: real supplies 87.5% of their sum. Corresponding within-source corpus NLLs are 3.045 real versus 0.109 synthetic."
+    },
+    {
+      "type": "bullet",
+      "text": "Different chunks are used each cycle. These pre-update training averages follow changing weights and synthetic targets; they are not evaluations on one fixed training collection."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5B.2. 50% synthetic: mean batch-weighted source loss, in nats per target token. Counts remain fixed while loss shares evolve.",
+      "before_table": true
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "losses_mixed50",
+      "rows": [
+        [
+          "Cycle",
+          "Real loss term",
+          "Synthetic loss term",
+          "Real share"
+        ],
+        [
+          "1",
+          "1.4796",
+          "0.3171",
+          "82.4%"
+        ],
+        [
+          "2",
+          "1.4808",
+          "0.2009",
+          "88.1%"
+        ],
+        [
+          "3",
+          "1.4550",
+          "0.1744",
+          "89.3%"
+        ],
+        [
+          "4",
+          "1.4571",
+          "0.1468",
+          "90.8%"
+        ],
+        [
+          "5",
+          "1.4688",
+          "0.1233",
+          "92.3%"
+        ],
+        [
+          "6",
+          "1.4864",
+          "0.1268",
+          "92.1%"
+        ],
+        [
+          "7",
+          "1.4593",
+          "0.1350",
+          "91.5%"
+        ],
+        [
+          "8",
+          "1.4705",
+          "0.1233",
+          "92.3%"
+        ],
+        [
+          "9",
+          "1.4562",
+          "0.1175",
+          "92.5%"
+        ],
+        [
+          "10",
+          "1.4566",
+          "0.1038",
+          "93.3%"
+        ]
+      ],
+      "widths": [
+        50,
+        130,
+        140,
+        130
+      ]
+    },
+    {
+      "type": "caption",
+      "text": "Table W5B.3. 80% synthetic: mean batch-weighted source loss, in nats per target token. Counts remain fixed while loss shares evolve.",
+      "before_table": true
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "losses_mixed80",
+      "rows": [
+        [
+          "Cycle",
+          "Real loss term",
+          "Synthetic loss term",
+          "Real share"
+        ],
+        [
+          "1",
+          "0.6172",
+          "0.4400",
+          "58.4%"
+        ],
+        [
+          "2",
+          "0.6414",
+          "0.2371",
+          "73.0%"
+        ],
+        [
+          "3",
+          "0.6295",
+          "0.1843",
+          "77.4%"
+        ],
+        [
+          "4",
+          "0.6213",
+          "0.1509",
+          "80.5%"
+        ],
+        [
+          "5",
+          "0.6286",
+          "0.1331",
+          "82.5%"
+        ],
+        [
+          "6",
+          "0.6299",
+          "0.1205",
+          "83.9%"
+        ],
+        [
+          "7",
+          "0.6069",
+          "0.1188",
+          "83.6%"
+        ],
+        [
+          "8",
+          "0.6181",
+          "0.1050",
+          "85.5%"
+        ],
+        [
+          "9",
+          "0.6091",
+          "0.0936",
+          "86.7%"
+        ],
+        [
+          "10",
+          "0.6120",
+          "0.0871",
+          "87.5%"
+        ]
+      ],
+      "widths": [
+        50,
+        130,
+        140,
+        130
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "5. Backpropagation measures vectors rather than loss shares",
+      "page": true
+    },
+    {
+      "type": "equation",
+      "text": "g_R = \u2207\u03b8 L_R;   g_S = \u2207\u03b8 L_S;   \u03b8_next = \u03b8 \u2212 0.01(g_R + g_S)"
+    },
+    {
+      "type": "bullet",
+      "text": "Source gradients are directly differentiated from the same forward graphs at unchanged weights. Their sum reconstructs the ordinary batch gradient. Only that combined update advances training; the diagnostics do not supply an additional update."
+    },
+    {
+      "type": "bullet",
+      "text": "In the 50% condition at cycle 10, mean weighted real and synthetic norms are 1.096 and 0.936; the actual combined norm is 0.709. Thus 93.3% of loss does not mean 93.3% of an update. Direction matters, and the nonzero combined gradient shows continued learning."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2\\04_mixed50_gradients.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5B.4. Means of 79 per-update gradient norms. The grey reference is mean \u221a(\u2016g_R\u2016\u00b2+\u2016g_S\u2016\u00b2), as if the measured component vectors were perpendicular. It is not calculated from their epoch-mean vectors."
+    },
+    {
+      "type": "h2",
+      "text": "6. At 80% synthetic the minority real gradient is comparably strong",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Despite supplying 20% of examples, the weighted real norm grows from 0.729 to 1.371; synthetic grows from 0.985 to 1.321. By cycle 10 they have similar strengths. The actual combined norm is 0.907, considerably shorter than either component."
+    },
+    {
+      "type": "bullet",
+      "text": "Synthetic scalar loss falls even though its gradient norm rises late. Loss values do not determine parameter derivatives: model sensitivity, changing targets and cancellation among examples also matter. These records establish the divergence, but do not isolate which factor causes it."
+    },
+    {
+      "type": "bullet",
+      "text": "At constant LR 0.01, cycle-10 combined norms imply typical update lengths around 0.0071 (50%) and 0.0091 (80%). Evaluation stability therefore does not mean that updates or parameter movement have stopped."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2\\04_mixed80_gradients.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5B.5. Actual batch weighting is already included. Norms quantify movement in parameter space, not whether that movement improves real-text predictions. The held-out interventions below measure that separately."
+    },
+    {
+      "type": "h2",
+      "text": "7. The sources oppose much more strongly than at 99%",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Both new conditions have opposing source gradients in all 790 updates. Median cosine at cycle 10 is \u22120.809 at 50% and \u22120.899 at 80%, compared with \u22120.363 at 99% among batches containing both sources. Negative cosine means partial opposition."
+    },
+    {
+      "type": "bullet",
+      "text": "At cycle 10, opposition reduces mean combined length by 51.3% (50%) and 54.0% (80%) relative to the perpendicular reference. The corresponding 99% reduction is about 12.2%. Cancellation is substantial but incomplete, and its magnitude alone does not establish held-out benefit."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2\\07_gradient_cancellation.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5B.6. Reduction = 100 \u00d7 [1 \u2212 mean(\u2016g_R+g_S\u2016) / mean(\u221a(\u2016g_R\u2016\u00b2+\u2016g_S\u2016\u00b2))]. Positive values indicate opposition. Every source proportion is already included; this is not a percentage of synthetic-data damage removed."
+    },
+    {
+      "type": "h2",
+      "text": "8. At 50% real updates help and synthetic updates hurt locally",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "From the same actual starting weights, a scratch model scores unchanged weights (L0), real-only change (LR), synthetic-only change (LS) and the actual mixed change (LM) on 128 fixed real-validation pairs. Original source weights are retained; an omitted source is not renormalized."
+    },
+    {
+      "type": "bullet",
+      "text": "Real conditional effect is LM\u2212LS; synthetic conditional effect is LM\u2212LR. In all 790 updates, including real improves the probe and including synthetic worsens it. The isolated comparisons to unchanged weights have the same signs in this run."
+    },
+    {
+      "type": "bullet",
+      "text": "The two plotted effects use different counterfactual baselines and need not add to the actual change. They describe immediate effects along the observed path, not ten-cycle trajectories with one source removed."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2\\05_mixed50_help_hurt.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5B.7. Mean conditional \u0394NLL/update at 50% synthetic. Below zero improves the fixed real probe. Bands are 95% paired document-bootstrap intervals from 2,000 resamples; they do not measure training-seed uncertainty."
+    },
+    {
+      "type": "h2",
+      "text": "9. At 80% the opposing predictive effects grow larger",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Again, real inclusion helps and synthetic inclusion hurts in all 790 updates. By cycle 10, mean conditional effects are \u22120.114386 real and +0.054855 synthetic NLL/update, while the actual mixed change is only \u22120.001600."
+    },
+    {
+      "type": "bullet",
+      "text": "This is not an arithmetic contradiction: conditional effects include a nonlinear interaction. In cycle 10 that interaction averages \u22120.057932; actual change equals real conditional + synthetic conditional \u2212 interaction."
+    },
+    {
+      "type": "bullet",
+      "text": "The larger local effects indicate strong opposing pressures around the observed model, not a large net improvement each update. The next section gives an explicit additive accounting convention."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2\\05_mixed80_help_hurt.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5B.8. Same 128 real pairs / 8,192 scored tokens, distinct from the complete epoch test. No held-out gradient trains the model. These one-step interventions retain the actual learning rate and batch weighting."
+    },
+    {
+      "type": "h2",
+      "text": "10. Why prediction quality can stay nearly stable",
+      "page": true
+    },
+    {
+      "type": "equation",
+      "text": "I = LM \u2212 LR \u2212 LS + L0"
+    },
+    {
+      "type": "equation",
+      "text": "\u03c6_R = \u00bd[(LR\u2212L0)+(LM\u2212LS)];  \u03c6_S = \u00bd[(LS\u2212L0)+(LM\u2212LR)]"
+    },
+    {
+      "type": "equation",
+      "text": "\u03c6_R + \u03c6_S = LM \u2212 L0"
+    },
+    {
+      "type": "bullet",
+      "text": "Splitting the nonlinear interaction equally gives symmetric local allocations that add exactly to the actual probe change. This is a transparent attribution convention, not an experiment removing a source for ten epochs."
+    },
+    {
+      "type": "bullet",
+      "text": "Early synthetic deterioration slightly exceeds the correction. Later, the allocations almost balance: at 80%, cycle-10 means are \u22120.085420 real and +0.083820 synthetic, leaving \u22120.001600 net. At 50%, late average net change is only \u22120.000022 NLL/update."
+    },
+    {
+      "type": "bullet",
+      "text": "A plausible feedback explanation is that self-generated greedy targets encourage confidence in existing favourite continuations, while real targets restore probability to alternatives. The measured corrections support that explanation; a fixed point or complete causal account has not been established."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5B.4. Mean symmetric allocations per actual update, including tails. Early means cycles 1\u20133; late means cycles 6\u201310. Their sum equals the net column exactly before rounding.",
+      "before_table": true
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "balance",
+      "rows": [
+        [
+          "Synthetic",
+          "Window",
+          "Real allocation",
+          "Synthetic allocation",
+          "Actual net"
+        ],
+        [
+          "50%",
+          "1\u20133",
+          "-0.013777",
+          "+0.014068",
+          "+0.000291"
+        ],
+        [
+          "50%",
+          "6\u201310",
+          "-0.015739",
+          "+0.015717",
+          "-0.000022"
+        ],
+        [
+          "80%",
+          "1\u20133",
+          "-0.025664",
+          "+0.026846",
+          "+0.001182"
+        ],
+        [
+          "80%",
+          "6\u201310",
+          "-0.060946",
+          "+0.060669",
+          "-0.000277"
+        ],
+        [
+          "99%",
+          "1\u20133",
+          "-0.009802",
+          "+0.017004",
+          "+0.007202"
+        ],
+        [
+          "99%",
+          "6\u201310",
+          "-0.044366",
+          "+0.044064",
+          "-0.000302"
+        ]
+      ],
+      "widths": [
+        65,
+        50,
+        110,
+        115,
+        110
+      ]
+    },
+    {
+      "type": "caption",
+      "text": "Table W5B.5. Cycle-10 conditional effects and interaction. Actual net = real conditional + synthetic conditional \u2212 I; the conditional columns alone are not additive.",
+      "before_table": true
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "nonlinear",
+      "rows": [
+        [
+          "Synthetic",
+          "Real conditional",
+          "Synthetic conditional",
+          "Interaction I",
+          "Actual net"
+        ],
+        [
+          "50%",
+          "-0.023280",
+          "+0.014095",
+          "-0.008870",
+          "-0.000316"
+        ],
+        [
+          "80%",
+          "-0.114386",
+          "+0.054855",
+          "-0.057932",
+          "-0.001600"
+        ]
+      ],
+      "widths": [
+        65,
+        105,
+        105,
+        90,
+        85
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "11. The final small batch still affects cycle endpoints",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "The final 16 examples have eight times the per-example averaging weight of a full 128-row batch. At 80% in cycle 10, that tail contains 5 real and 11 synthetic examples; its probe change is \u22120.094650 NLL, about 75% of the cycle's \u22120.126389 total improvement."
+    },
+    {
+      "type": "bullet",
+      "text": "This is not the whole mechanism: late full batches also improve on average (\u22120.000572 NLL/update at 80%, \u22120.000102 at 50%). Over cycles 6\u201310, tails worsen the probe on average in both new runs. The strong opposing gradients and loss-share pattern persist when tails are excluded."
+    },
+    {
+      "type": "bullet",
+      "text": "Counts alone do not determine the sign. The 80% tails in cycles 5, 6 and 10 all contain five real examples, but their effects differ. Model state and example content matter alongside source proportions and batch size."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2\\10_update_path_and_tails.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5B.9. Actual per-update probe PPL, with final 16-row updates marked. The final 80% jump is real, but these are 128-pair probe values, not complete-test values or full alternative trajectories."
+    },
+    {
+      "type": "h2",
+      "text": "12. Likelihood preservation does not preserve every text statistic",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "On the fixed 256-prompt greedy-output probe, within-output entropy ends at 3.101 nats for real-only, 2.928 at 50% and 2.760 at 80%. Local repeated four-grams rise from 31.2% for real-only to 46.3% and 54.5%. Real targets restrain likelihood deterioration more strongly than they prevent all greedy-output repetition."
+    },
+    {
+      "type": "bullet",
+      "text": "Pooled entropy at 50% is higher than real-only (6.052 versus 5.959 nats), despite lower local variety. Different outputs can collectively use more vocabulary while each repeats internally. Neither quantity is the entropy of the model's next-token distribution."
+    },
+    {
+      "type": "bullet",
+      "text": "Distinct-2/3 count unique token phrases divided by phrase occurrences in this fixed sample, without crossing continuation boundaries. Their scope differs from within-output repetition and probability assigned to held-out real continuations."
+    },
+    {
+      "type": "image",
+      "text": "",
+      "path": "C:\\Users\\vleou\\Downloads\\IIB_project\\reports\\20261114T150912Z-full-completion64-mixtures\\generated\\source-effects-20261114-v2\\08_output_entropy.png"
+    },
+    {
+      "type": "caption",
+      "text": "Figure W5B.10. Mean empirical token entropy inside each 64-token generated continuation, averaged over 256 fixed prompts. Lower values mean less local token variety; they do not directly measure predictive uncertainty or factual accuracy."
+    },
+    {
+      "type": "h2",
+      "text": "13. Conclusions and remaining limitations",
+      "page": true
+    },
+    {
+      "type": "bullet",
+      "text": "Measured: the 50% and 80% mixtures have large, opposing real/synthetic gradients. Real source updates consistently improve the fixed real probe, while synthetic source updates worsen it. Their near-balanced additive allocations are consistent with the modest observed likelihood drift."
+    },
+    {
+      "type": "bullet",
+      "text": "At cycle 10, 50% real examples supply 93.3% of mean batch loss; 20% real examples supply 87.5%. These are loss shares, not percentages of gradient or causal benefit. The separate vector and intervention measurements establish their corrective influence."
+    },
+    {
+      "type": "bullet",
+      "text": "Stabilization is an evaluation-level, finite-horizon observation. Parameter updates remain nonzero; the 80% curve overshoots then partly recovers, and endpoint values remain sensitive to tail batches. One seed, ten cycles and one fixed diagnostic probe cannot establish permanent stability or a universal threshold."
+    },
+    {
+      "type": "bullet",
+      "text": "All 3,950 sealed updates across five conditions were rechecked. Gradient reconstruction error is at most 3.13e-7 relative, shadow/actual updates match, and probe states telescope exactly. The 21 unique new output arrays were recomputed; historical output rows are preserved saved measurements."
+    },
+    {
+      "type": "bullet",
+      "text": "No new model training or inference was needed for this analysis. Full checkpoint cold recovery was not repeated. A tail-normalization control and repeated training-order seeds would test how robust the apparent balance is; those follow-ups have not been run."
+    },
+    {
+      "type": "caption",
+      "text": "Table W5B.6. Cycle-10 fixed-greedy-probe outputs. H is empirical token entropy in nats; D2/D3 and repeated four-grams are percentages. Pooled and within-output scopes are distinct.",
+      "before_table": true
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "output_metrics",
+      "rows": [
+        [
+          "Synthetic",
+          "Pooled H",
+          "Local H",
+          "Distinct-2",
+          "Distinct-3",
+          "Local repeat-4"
+        ],
+        [
+          "0%",
+          "5.959",
+          "3.101",
+          "41.03",
+          "57.96",
+          "31.17"
+        ],
+        [
+          "50%",
+          "6.052",
+          "2.928",
+          "37.96",
+          "48.12",
+          "46.33"
+        ],
+        [
+          "80%",
+          "5.925",
+          "2.760",
+          "32.00",
+          "40.56",
+          "54.51"
+        ],
+        [
+          "99%",
+          "5.686",
+          "2.640",
+          "27.26",
+          "35.65",
+          "58.82"
+        ],
+        [
+          "100%",
+          "5.731",
+          "2.643",
+          "27.56",
+          "35.67",
+          "58.88"
+        ]
+      ],
+      "widths": [
+        65,
+        70,
+        70,
+        75,
+        75,
+        95
+      ]
+    },
+    {
+      "type": "caption",
+      "text": "Table W5B.7. Execution and analysis scope. Retained cloud recovery resources remain preserved.",
+      "before_table": true
+    },
+    {
+      "type": "table",
+      "text": "",
+      "id": "scope",
+      "rows": [
+        [
+          "Item",
+          "Outcome"
+        ],
+        [
+          "New full training",
+          "20 epochs; 1,580 updates; two independent arms"
+        ],
+        [
+          "GPU completion",
+          "14 Nov 2026, 20:45:56 UTC; provider EXITED"
+        ],
+        [
+          "New full Pod lifetime",
+          "5 h 37 min; storage remains retained"
+        ],
+        [
+          "Diagnostic analysis",
+          "3,950 sealed updates including historical controls"
+        ],
+        [
+          "Recovery scope",
+          "Small diagnostics/probes verified against sealed backup indexes; no full bulk cold restore"
+        ],
+        [
+          "New analysis GPU compute",
+          "None"
+        ]
+      ],
+      "widths": [
+        155,
+        295
+      ]
+    }
+  ]
+}

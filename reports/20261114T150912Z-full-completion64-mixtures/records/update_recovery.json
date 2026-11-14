@@ -1,0 +1,2024 @@
+{
+  "run_id": "20261114T150912Z-full-completion64-mixtures",
+  "sources": {
+    "parent": {
+      "snapshot": {
+        "run_id": "20261114T150912Z-full-completion64-mixtures",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "89e9fbb9a48e7b4a249e5d5acbb56fc000e02a9f",
+          "dataset": "cf5834ca781f64ff403c64ff76ed69a80de2e14e"
+        },
+        "artifact_index_sha256": "fc598cadaeebe0a2cfb78df30c08ad2716dddaf304505727ef2e505aff9a867d"
+      },
+      "files": {
+        "config.json": {
+          "sha256": "9220eff8935968fc686119947fd9b48cf5207111b3ef4f44c4b2d9b54bb3a8cf",
+          "bytes": 6243,
+          "repo_type": "dataset"
+        },
+        "manifest.json": {
+          "sha256": "04648a9cdffdfa64428feef2c3f3681d1588d7e6fdf0700fc5a2b7a75fb8c2cf",
+          "bytes": 173,
+          "repo_type": "dataset"
+        },
+        "environment.json": {
+          "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+          "bytes": 433,
+          "repo_type": "dataset"
+        },
+        "completion.json": {
+          "sha256": "bb0ceb72257b6ba725a57da6f7c88a095fdbb2ff5b97ca6c82a111e076400de1",
+          "bytes": 164,
+          "repo_type": "dataset"
+        },
+        "child_snapshots.json": {
+          "sha256": "96dc5d1f61f3434974884a696b5b1ebc312209c6a84034d425df2dd45a659de4",
+          "bytes": 977,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_00/metrics.json": {
+          "sha256": "222ff932d770ed4563ba44d52bf915e6fb2a378f36874a75df16c6939c180a4a",
+          "bytes": 3820,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_00/probe_examples.json": {
+          "sha256": "d84002af508c9f822af59a6225c63860826684c4bf336dce7951ef93e3e56e48",
+          "bytes": 1541,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_00/probe/synthetic_for_gen_01/tokens.npy": {
+          "sha256": "59f81ec57bc3428138bd07b4091b57da0fdb37219e959b23c1b7bfe85d1fb7bf",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/59f81ec57bc3428138bd07b4091b57da0fdb37219e959b23c1b7bfe85d1fb7bf"
+          }
+        }
+      },
+      "retrieval": "retained_volume_bytes_verified_against_sealed_private_backup_index",
+      "verified_bytes": 79015
+    },
+    "mixed50": {
+      "snapshot": {
+        "run_id": "20261114T150912Z-full-completion64-mixtures-mixed50",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "8e0ad27a0ebea4eb4a24023a6157ee22717f7967",
+          "dataset": "b7613c294c900b8436df218400334bdbae791c85"
+        },
+        "artifact_index_sha256": "a5d4a34da4d11cac06568dbfa2b54f95c7961ca628f0ae4314a47ee8eb64afd8"
+      },
+      "files": {
+        "config.json": {
+          "sha256": "310069dbedf874fb25375fcd0f6083e2367132098bd12fe144af4ca98cb7e9e5",
+          "bytes": 8544,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_00/metrics.json": {
+          "sha256": "222ff932d770ed4563ba44d52bf915e6fb2a378f36874a75df16c6939c180a4a",
+          "bytes": 3820,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/diagnostics_manifest.json": {
+          "sha256": "6383ddafd5ec382666848992bd8ae8839ad424bb9baa9d5958150a9a242d2d34",
+          "bytes": 1594,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training_history.json": {
+          "sha256": "4e833e2889795e7307bbf5d46168900eed20739a88fb38c4af3311ce22531909",
+          "bytes": 327,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training.json": {
+          "sha256": "cbf08aa54a56c3065612f6106cd9a19dfe000d35a012c35816afa20f7f0950f3",
+          "bytes": 3959,
+          "repo_type": "dataset"
+        },
+        "completion.json": {
+          "sha256": "a8a7fde3effca6db0184516f91108948f50583fae68c21f519a809098521c60a",
+          "bytes": 92,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/stage_completion.json": {
+          "sha256": "2bb6b4e4c7a0c292d16af0103d0b52f493a04124fa28b87d9bbd6bdad9f80423",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/mixture/source_labels.npy": {
+          "sha256": "3e7b609b70361ca3ee37ba7a0ed3c36f94842dd85403878b11dbc260c8734f52",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/3e7b609b70361ca3ee37ba7a0ed3c36f94842dd85403878b11dbc260c8734f52"
+          }
+        },
+        "seed_42/gen_01/metrics.json": {
+          "sha256": "6d04a3d2b12055ed7146a6b078a418e980560d46c565e3c8cac3b3db8684486e",
+          "bytes": 8251,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/probe_examples.json": {
+          "sha256": "3580786b644e316fe79a6fe897df30c5ae6e03eedb305a6015892b12d0144f71",
+          "bytes": 1514,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training_input/manifest.json": {
+          "sha256": "4d31c8088c6bf859d9f6075eb700aba0acb63f7095998b86ed839bffd08d1776",
+          "bytes": 1328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/mixture/selection.json": {
+          "sha256": "6d679af798733a3cb5045325582daf5f1f033a998cbe2ee85dd35b9419840782",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/diagnostics_manifest.json": {
+          "sha256": "c1a2f68c954e2121272024bc3f154c16ffd56d999e5da0013b4d19a489c2bca3",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/mixture/manifest.json": {
+          "sha256": "fe602bf5106509c492ccafe793954cfb2d68748c7214c6cd28dea175e9010591",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training.json": {
+          "sha256": "00e48664b51f1425502acdb0c8fcc7e6391a612fc612713da9727c851a39ca48",
+          "bytes": 4148,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training_history.json": {
+          "sha256": "cfe08ab7322b411605cb8251c40ef97ceb68cfc8d312315b6790575949dbfa42",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/stage_completion.json": {
+          "sha256": "649b7fef94ca77946e51ca245da14254e232425d5a7d492113ef05ce66cdfec9",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/probe/synthetic_for_gen_02/tokens.npy": {
+          "sha256": "0fdd38ac2588b7befc7459203cf620f9d6bbc7b645463b8b90c419073346f94e",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/0fdd38ac2588b7befc7459203cf620f9d6bbc7b645463b8b90c419073346f94e"
+          }
+        },
+        "seed_42/gen_02/metrics.json": {
+          "sha256": "ee04c043cd37a7b9511fc1600e2cc4dd8c320b1146532529930f7c9b28fc1abf",
+          "bytes": 8447,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/mixture/source_labels.npy": {
+          "sha256": "9c9458e601ef2a651ceb28aa98fcc5e728de99bcc1d440ab24859530f6168d7e",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/9c9458e601ef2a651ceb28aa98fcc5e728de99bcc1d440ab24859530f6168d7e"
+          }
+        },
+        "seed_42/gen_02/probe_examples.json": {
+          "sha256": "f10df6ac4dc66b1fe7f3b831c6a96e7248c166dcd7d61984d205b522ece90491",
+          "bytes": 1577,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training_input/manifest.json": {
+          "sha256": "344b3fc55311aecba520facce3f656f52b0d3c40723554be5ad24b34c7775603",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/mixture/manifest.json": {
+          "sha256": "ce4ceed92a2ed2bd97bb8f53a485b7e1e69d8c14d6aa8140ae7849bdf62c7ddf",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/diagnostics_manifest.json": {
+          "sha256": "f21b7869f065adbbdb3f487f428bb98f1b10b92403f96f2fcc395b547c335bf2",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/mixture/selection.json": {
+          "sha256": "247c5c15d1942ccf47778bc0da9486f5ab36f573f9e2aa66d786a60d6265af01",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training.json": {
+          "sha256": "0f6757f4d85d4b2d62f8b5a5cd9d85f57fbe12a5ccc470c0e621e26cc72ecbdb",
+          "bytes": 4148,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/stage_completion.json": {
+          "sha256": "5c77e23fb527d7029c70e6b85f21539ef4d68bb41ad08cf122c8849facda5d39",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training_history.json": {
+          "sha256": "4c8be967f42fcb8d3ef6d6706f95441ec793b851d86e9127a27c2eea95d07e9c",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/probe/synthetic_for_gen_03/tokens.npy": {
+          "sha256": "d35b078b64f9e7b8b80b315fe53f7cb529e12e8f0cbdf674281d167311470bf4",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/d35b078b64f9e7b8b80b315fe53f7cb529e12e8f0cbdf674281d167311470bf4"
+          }
+        },
+        "seed_42/gen_03/probe_examples.json": {
+          "sha256": "9ce9a74876e9243f5c08d5618b1b78a407cf227441df612081c6b5b028f9c405",
+          "bytes": 1379,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training_input/manifest.json": {
+          "sha256": "ea72983b11320786b7937073f825da19cfc0ee32f7521a10fff03db05ad30549",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/mixture/source_labels.npy": {
+          "sha256": "248a379bfe64818daafef52909ecf17a8c5951f22ae1cdee0a470e4702484478",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/248a379bfe64818daafef52909ecf17a8c5951f22ae1cdee0a470e4702484478"
+          }
+        },
+        "seed_42/gen_03/mixture/manifest.json": {
+          "sha256": "2daa172add5ebad3b0379f80f0d2f7bb25beb9dc78112b7dbcff38ac08a9b7c5",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/mixture/selection.json": {
+          "sha256": "b8145043e5369f45494f3ca85d6ccde6cd211833bcb085b27e49fd50d5a96f42",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/metrics.json": {
+          "sha256": "10aea669aa38cc3eeae6ca0762131d1f27e30ceb24c8531c33e86a3be8960537",
+          "bytes": 8444,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/training_history.json": {
+          "sha256": "97f2c4d53d16ede497391fa2d7e865f953f54e3532f1db9c67c05c18ba1fb04b",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/training.json": {
+          "sha256": "0e34b6820b68c0719ae663ab5573093d18ead4db69ec2568cb88e1f923b3961a",
+          "bytes": 4148,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/diagnostics_manifest.json": {
+          "sha256": "6d52d81b87760e0e4898415a2c619b947f01a3658ca3657e2dbc01c2e82f7fae",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/stage_completion.json": {
+          "sha256": "b16bdfedc72196c27926798bb046c9f72ea9b67ef9a6cf24ecfff5bacae9ed19",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/probe/synthetic_for_gen_04/tokens.npy": {
+          "sha256": "8816e945030e1e602b3e0bcf0589ec984cc26156c1d869313c79286ec4c5d8f7",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/8816e945030e1e602b3e0bcf0589ec984cc26156c1d869313c79286ec4c5d8f7"
+          }
+        },
+        "seed_42/gen_04/training_input/manifest.json": {
+          "sha256": "07ae2840fb7bbb8f465074cf727df5b56807f4c8343857dcb7e05a4bd25cef6a",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/metrics.json": {
+          "sha256": "ab06e36fa24280cf1ec3bb58ec7a2d548c4fbde2bfcf0221fe41bb7836b43066",
+          "bytes": 8445,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/mixture/source_labels.npy": {
+          "sha256": "b0a84123cd83fb174f97c2de13010104b3edc1ff54544f4975f8a4c708ba33d4",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/b0a84123cd83fb174f97c2de13010104b3edc1ff54544f4975f8a4c708ba33d4"
+          }
+        },
+        "seed_42/gen_04/probe_examples.json": {
+          "sha256": "d3be83eb5a7583a2376ac2b0c81aa48eb003905667e3ec3c5a139fa6baa10390",
+          "bytes": 1583,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/mixture/selection.json": {
+          "sha256": "5ce9126aa9f67bae69c31716ca5e17104a23778f3aeb5e74fe86802fba26cd3c",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/mixture/manifest.json": {
+          "sha256": "a5e8834ee055f57da6aab9dec4c0182303c5c8f6319fbb0aae007926bfae0271",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/diagnostics_manifest.json": {
+          "sha256": "514518bfca679b63187ce6dab8cff4f0980f4b008f051a37f1c2ee1289e0930a",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/stage_completion.json": {
+          "sha256": "5a507d238e1d457e5605cc4ae9a59fcbaa1a077799c3f574c68aa64e1b405fd1",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training_history.json": {
+          "sha256": "d888748c602007aec28c73b1666f050a6425b44f12e6006838e639ac7f77fc2a",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training.json": {
+          "sha256": "14aec8a3708117c7211816c0ea6d0c6292b3c9efcaa2a600645efd899792d136",
+          "bytes": 4146,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/probe/synthetic_for_gen_05/tokens.npy": {
+          "sha256": "d6549701efae4fdb2a893428e10151070b6ace99cce476c7edd8803310df4b6c",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/d6549701efae4fdb2a893428e10151070b6ace99cce476c7edd8803310df4b6c"
+          }
+        },
+        "seed_42/gen_05/mixture/source_labels.npy": {
+          "sha256": "575d83bc6b2a0d9e5f95850c33367d0002f1b260aa3b139e71132f5d1b077e78",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/575d83bc6b2a0d9e5f95850c33367d0002f1b260aa3b139e71132f5d1b077e78"
+          }
+        },
+        "seed_42/gen_05/metrics.json": {
+          "sha256": "25de5f0bd35cac90bd2534bf1ccf23dd9db5ad130a61400a7dc71ffd6d34623a",
+          "bytes": 8442,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/diagnostics_manifest.json": {
+          "sha256": "61b06cb81ae805861406114772bd2f4a0b9905fc2bc8558ea13f3f165f08ed0a",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/probe_examples.json": {
+          "sha256": "7dff3eb7ff37a4240a8aab0765b34fbf7d05e1a68f133cfb4ef95b3e294b9f91",
+          "bytes": 1571,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/mixture/manifest.json": {
+          "sha256": "576441cf7674b1460bae8953bc48f7aa8bd4558596cb7d046de5172fb5b1eaf2",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/mixture/selection.json": {
+          "sha256": "93f63490779bb24ad76584d62a0750cfd9b0562c8390aa08e920fe90538ad64b",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training_input/manifest.json": {
+          "sha256": "590c112b306467682837e7c0f9c04a3afabbd8482bdc9bddc7876eb7f6c4c152",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/stage_completion.json": {
+          "sha256": "0eebc2a4fdc82c360271f145d48d120fa3a20a68306c9e1aa6dd484f43304fc9",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/training_history.json": {
+          "sha256": "13756547a0244a2a25888702f12197a123858142c1f19f78c00962bc11074f55",
+          "bytes": 330,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/training.json": {
+          "sha256": "8baa6d206841b8a576e209e50397bae14583986c28f2691932367571dc97b85e",
+          "bytes": 4148,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/probe/synthetic_for_gen_06/tokens.npy": {
+          "sha256": "66494f342c042df764ed09fd2ca561edb6eba6517de6cd4e56eb9e83d83eeef4",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/66494f342c042df764ed09fd2ca561edb6eba6517de6cd4e56eb9e83d83eeef4"
+          }
+        },
+        "seed_42/gen_06/metrics.json": {
+          "sha256": "5348f2fd46ff46e317fa979b138e969c79bb8bd4b00d516ad4abcddd5aeb76a8",
+          "bytes": 8440,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/probe_examples.json": {
+          "sha256": "8130e6f062f178b08d9b0e05f96602ad3a0034d5bdcba154a6ebdc451eaef877",
+          "bytes": 1583,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/mixture/source_labels.npy": {
+          "sha256": "b606ebf29363684ddfb6a0831d7fc270e24f3ba50428c1c993d807dfcf1aace0",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/b606ebf29363684ddfb6a0831d7fc270e24f3ba50428c1c993d807dfcf1aace0"
+          }
+        },
+        "seed_42/gen_06/training_input/manifest.json": {
+          "sha256": "6f4012f949baf9add301efe12cc32301e39ff9ca077226d71bad4d4989162af4",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/mixture/manifest.json": {
+          "sha256": "d8ba9368d3c98a24df1581d78e209d6802a5b8696c252e933ac99ab6a305000b",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training.json": {
+          "sha256": "1239da11960faa6a99d829a8d5b7ac0aea6fd0ab055fc5f5ffa07244010364a7",
+          "bytes": 4147,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/mixture/selection.json": {
+          "sha256": "7fb91dc0b0c56d3fd9a51faac374d93b1b3919743d74e84b9c4d375913fd948b",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/diagnostics_manifest.json": {
+          "sha256": "24b9bab4dffc344c56c9a53affb31d4df56838fbb3fb24629d66ede505c531b2",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/probe/synthetic_for_gen_07/tokens.npy": {
+          "sha256": "065353a85ba7b68ce4a73485ea536ca63b0f52f86c67a088a941b16c005b2122",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/065353a85ba7b68ce4a73485ea536ca63b0f52f86c67a088a941b16c005b2122"
+          }
+        },
+        "seed_42/gen_07/training_history.json": {
+          "sha256": "562a6a5d30acf35337d0c791655c5a4b8b2189c0be1cb4e5a22960beba8ab799",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/stage_completion.json": {
+          "sha256": "dd51e36cba69d1d33eccff5574268332d558766706e22d912d0225a5507dde08",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/probe_examples.json": {
+          "sha256": "8130e6f062f178b08d9b0e05f96602ad3a0034d5bdcba154a6ebdc451eaef877",
+          "bytes": 1583,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training_input/manifest.json": {
+          "sha256": "df0ca458d28bff006b6e1c84393944457c0ea78f567a92acfcda15f4f89e77c7",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/mixture/source_labels.npy": {
+          "sha256": "b4198ac0abfd5eea3041c3f86a185c1f196a478786d0a36f8665e0ff56be623b",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/b4198ac0abfd5eea3041c3f86a185c1f196a478786d0a36f8665e0ff56be623b"
+          }
+        },
+        "seed_42/gen_07/metrics.json": {
+          "sha256": "36292b78635532363648e6bfe1fd49b944a57b3f57204a20f5124f33de3c2455",
+          "bytes": 8426,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/mixture/manifest.json": {
+          "sha256": "f9bdc921204a0e629dda4adc59b80cdf4062f3b5914bee3cf14348e54a60151b",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/mixture/selection.json": {
+          "sha256": "4a063e9dd6e41f80ae0ac13562ce67a218e0c5532bced719be2b1dd7d6d44649",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/diagnostics_manifest.json": {
+          "sha256": "1a745c45259c353a0a5c07fa97ec82a83f7b47d7a2b1a5fbd25e5841225ff894",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/stage_completion.json": {
+          "sha256": "5df8e6b71e236d97f6544e11d18797e888be43e7b756fbc37a9aebe9ff22de46",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training.json": {
+          "sha256": "8cd7cc55ef69b8f7370ce67963d6cb5a50d3f6dbc4634d28d717edb9e9356e49",
+          "bytes": 4145,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training_history.json": {
+          "sha256": "f8a22f3d23a1e4657aa05aca89818d600cf95d55369b7cdfd7abfad2179b9191",
+          "bytes": 327,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/probe/synthetic_for_gen_08/tokens.npy": {
+          "sha256": "f357751daaf74618886c27a7b409661ad876a0fe867a25b9890e2fed42ca83af",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/f357751daaf74618886c27a7b409661ad876a0fe867a25b9890e2fed42ca83af"
+          }
+        },
+        "seed_42/gen_08/probe_examples.json": {
+          "sha256": "8130e6f062f178b08d9b0e05f96602ad3a0034d5bdcba154a6ebdc451eaef877",
+          "bytes": 1583,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/metrics.json": {
+          "sha256": "7b133298d844edefe8a9344261f09ab3e2aae9efcf12f527e84173453936098e",
+          "bytes": 8444,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/mixture/source_labels.npy": {
+          "sha256": "57002b837ac957706379baa268cb8f558ef82591748912262f130f87d8ac9466",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/57002b837ac957706379baa268cb8f558ef82591748912262f130f87d8ac9466"
+          }
+        },
+        "seed_42/gen_08/mixture/manifest.json": {
+          "sha256": "821ac544f29902dd619c49155cf3012bf681122cd1cbbc3648ddf84732a46366",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training_input/manifest.json": {
+          "sha256": "444d27830ca53ccb564e21fec806a818c9870a55d281097d08734b5c5689a7eb",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/mixture/selection.json": {
+          "sha256": "ef82b5d3b535d816ef0241665829053064efca3a4c7de28644776f63cb185da8",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training.json": {
+          "sha256": "b3ea75029113155fee684734f9b9ad3ea1c70e88fccb28e94804f0ed310fa9cf",
+          "bytes": 4148,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/diagnostics_manifest.json": {
+          "sha256": "74c6405fdcf755a1ff51a52c0d23f313d9cfd0d6b71864ea97e9cbe17483a216",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training_history.json": {
+          "sha256": "5747c4cb14cbc9937667194339f3b513efdca1d2f8db2e112315d101e2589d21",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/stage_completion.json": {
+          "sha256": "c791c71dfdb084c3bf8ac75de43a8e64132c67b2c7a8b793d0d7594aacccc647",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/probe/synthetic_for_gen_09/tokens.npy": {
+          "sha256": "10220c00e1ee78309ee486a59150b31a8d32662f72e6f40c7161480e43c46c6f",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/10220c00e1ee78309ee486a59150b31a8d32662f72e6f40c7161480e43c46c6f"
+          }
+        },
+        "seed_42/gen_09/probe_examples.json": {
+          "sha256": "d3be83eb5a7583a2376ac2b0c81aa48eb003905667e3ec3c5a139fa6baa10390",
+          "bytes": 1583,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/metrics.json": {
+          "sha256": "2ca35aada3e762827a1f0cc5ea7a9cd8691936b8a0bb360cacb18d3ac2936b60",
+          "bytes": 8446,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/mixture/source_labels.npy": {
+          "sha256": "d5a6588bc14e68c647d5f4d8a236a1c8e762c72dbf59446c08e42d73117344be",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/d5a6588bc14e68c647d5f4d8a236a1c8e762c72dbf59446c08e42d73117344be"
+          }
+        },
+        "seed_42/gen_09/training_input/manifest.json": {
+          "sha256": "6af8706b66a666a7307b094aff2287eb536034c01f4bab215fde342494be0ea4",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/mixture/manifest.json": {
+          "sha256": "3e0d4ac2f72605cdaef64e714338ecf0d571d55b6daf8c9e1e0f7a0e84ba3a8b",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/diagnostics_manifest.json": {
+          "sha256": "7859601d48065c168dd36d4845944e486223a9a9b3971bd82eb5a9f06899a707",
+          "bytes": 1660,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/mixture/selection.json": {
+          "sha256": "cbdf1fa7e2bb1d181b673fa96cca4db4bf63d49b096a35a01318bf286e99854b",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/training_history.json": {
+          "sha256": "c49047e95f309c78aca817d2b8dc17bfab6cd88791055d1f42b2b88340a565f9",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/training.json": {
+          "sha256": "7da99b1c2ba9d7a95af1d69c2bf15e979051fb0040220ded6beda5dd4df0995b",
+          "bytes": 4150,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/stage_completion.json": {
+          "sha256": "3da7408d4dc36f159c005d1203bc836bc2d2143f847dc3c2968f2c54d750bbfd",
+          "bytes": 3134,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/probe/synthetic_for_gen_10/tokens.npy": {
+          "sha256": "dad4a13657b9d4fe402728aa4b252adf648696c57abacf5cb313341edb8e6beb",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/dad4a13657b9d4fe402728aa4b252adf648696c57abacf5cb313341edb8e6beb"
+          }
+        },
+        "seed_42/gen_10/probe_examples.json": {
+          "sha256": "72f0cfce01312ee2e8a3541cbcbf065d8e27f4f54f9f9ecbdc04aafab7623c36",
+          "bytes": 1583,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/metrics.json": {
+          "sha256": "5140331b6b23101dc035486494ab95fc5a082af5c73c10f4720a3b201925bae1",
+          "bytes": 8453,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/mixture/source_labels.npy": {
+          "sha256": "4b011ef3e0bccfeb7dcc156a59a96fa59b5d918d40f819d826cb3136b6cd6bac",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/4b011ef3e0bccfeb7dcc156a59a96fa59b5d918d40f819d826cb3136b6cd6bac"
+          }
+        },
+        "seed_42/gen_10/training_input/manifest.json": {
+          "sha256": "59fb3f3b1e0a6103d34b62b875e35d7e2031b674ac55b30712f930e80b9055da",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/mixture/selection.json": {
+          "sha256": "6f8f745eff11deaba60ee45bba8b73a16332ba7a52ab071332f77f159388c7a6",
+          "bytes": 894,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/mixture/manifest.json": {
+          "sha256": "271c2ab126dafb2e38a39133d50fff17d0bb1ea87ef4afcb02f516e5616d0a93",
+          "bytes": 1481,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/probe/synthetic_for_gen_11/tokens.npy": {
+          "sha256": "422da147fd591f5a725e194096f7371a18f29ef7f17e5c17350d848d86532ef7",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/422da147fd591f5a725e194096f7371a18f29ef7f17e5c17350d848d86532ef7"
+          }
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/b0caa05da1a14c3c8a4b31ddf6ec632c/attempt.json": {
+          "sha256": "dc0a61b5a4874b4bc7713c2fe9dde28e1d20660baf155482d1e7a970b7b2a270",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/b0caa05da1a14c3c8a4b31ddf6ec632c/updates.jsonl": {
+          "sha256": "4c25ec4921d86198156af7445aef041656550401c2928bcf8bfe5266f2e4007b",
+          "bytes": 1096787,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/32da866100dc4e119dacd1bc16902ab4/attempt.json": {
+          "sha256": "0905b5fcdb2ca8a23c87830a0246775cab2fde01159eb9fe6d3a1be1273877dd",
+          "bytes": 682,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/32da866100dc4e119dacd1bc16902ab4/probe_scores.npz": {
+          "sha256": "44a425f3dd87ea95b0661251e3157208a89038f5d057dcd62860c50bf2c44dd1",
+          "bytes": 257405,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/b0caa05da1a14c3c8a4b31ddf6ec632c/probe_scores.npz": {
+          "sha256": "838a175308a0c95b141bb89e848b94cf5405300188430110b55d6c125f69090d",
+          "bytes": 258293,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/32da866100dc4e119dacd1bc16902ab4/updates.jsonl": {
+          "sha256": "e680b65ff19dfe262512bb54b347c588d727e0990aa0c37d985f4abbbbc62402",
+          "bytes": 1096368,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/da79c0126b1e4fb5969c48f49cbe0471/attempt.json": {
+          "sha256": "280c5c643c5929b9e6566a1c4804313dbeeda1383e4288d921521f8013c9eda2",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/9cfd3e095e984262b18f6bb98bdbf328/updates.jsonl": {
+          "sha256": "b10fcbdeabb4c5aab6032894a547caaa4c8f2184ef6a14faf49caea1ec4a6134",
+          "bytes": 1097160,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/da79c0126b1e4fb5969c48f49cbe0471/updates.jsonl": {
+          "sha256": "386d0991dd9e90a918e21f3efea87b6d5062db37edbae97bf52af855c220176e",
+          "bytes": 1097183,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/9cfd3e095e984262b18f6bb98bdbf328/attempt.json": {
+          "sha256": "bae677e144aea78b2ea683b4f4d834d54042b7ef4bcfaf5c0b30e20beb54e0cb",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/da79c0126b1e4fb5969c48f49cbe0471/probe_scores.npz": {
+          "sha256": "2a27928c5a4ebc9fb9426358c89d01d8cf4f7edafa29959528e2d8ac495a94f9",
+          "bytes": 257607,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/9cfd3e095e984262b18f6bb98bdbf328/probe_scores.npz": {
+          "sha256": "ac6d4a01e6b1074d4c89f9adb132475463644bfcc2c9a9653294e592016747f2",
+          "bytes": 257208,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/f44e30161de14b75807ab844d339db86/attempt.json": {
+          "sha256": "46569f4e55ea87a98e9512edf42de00451dfcc1728b50bae9e28730899a349d4",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/f44e30161de14b75807ab844d339db86/probe_scores.npz": {
+          "sha256": "dda83ed53d4b2d5b1a743989f9766284e6c651937c14bf2c567c8758f247d0ed",
+          "bytes": 256132,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/b81efabe0a3d473ca0bed15eae930db1/attempt.json": {
+          "sha256": "5b4266faae6a8f30adec4afed8a0a3b083f76725544f6df3571a52c95314abea",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/b81efabe0a3d473ca0bed15eae930db1/probe_scores.npz": {
+          "sha256": "81227b083e41a49d4f5e640e10931897800e2bb3352ef912945de4c18abcfb79",
+          "bytes": 255218,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/f44e30161de14b75807ab844d339db86/updates.jsonl": {
+          "sha256": "24cf9f3f322ab256292895514cc44b9c1e6e25cc616eecccad32a662ec32e2ec",
+          "bytes": 1097271,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/b81efabe0a3d473ca0bed15eae930db1/updates.jsonl": {
+          "sha256": "0d7f62424d628025d09414511d98f0bab171029e39f4949d10da5a5604be33c0",
+          "bytes": 1097564,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/19809c22101449ef8414502d6b9c5c1a/attempt.json": {
+          "sha256": "9165ce1d7c5566956ebdaaa9db60795c81d2c79d4686d0c3a98ac7f231c72c52",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/1975adc912e3483a974dc64810dbc1fa/attempt.json": {
+          "sha256": "7955282d2d762b83538d54908f7f4b159682b775391abf77ddd37bd68ff9e958",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/19809c22101449ef8414502d6b9c5c1a/probe_scores.npz": {
+          "sha256": "74d882eff7974d2d077a73f57236d94134e77b2e0b790ef955cec03456f85135",
+          "bytes": 255359,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/1975adc912e3483a974dc64810dbc1fa/probe_scores.npz": {
+          "sha256": "6a629da0196b5f3f4d046c21a05bea3cb9e57af9cdc729254c39e459327a9758",
+          "bytes": 255402,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/19809c22101449ef8414502d6b9c5c1a/updates.jsonl": {
+          "sha256": "d03d9aa5eb17d5678240be21af6e3c2547a5947b82f592d3ab1bd3341289ed75",
+          "bytes": 1097978,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/1975adc912e3483a974dc64810dbc1fa/updates.jsonl": {
+          "sha256": "5afeabe40c8a1c5113dc1f274e4b56deb90dd788450a67807f5caaded9a958b7",
+          "bytes": 1097897,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/ac70de3d838449a3a40094a222765dd8/attempt.json": {
+          "sha256": "2cb5e3da9b13537dabd9ba766183072b0fc470a654d63f00c98e6360fd35a81e",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/ac70de3d838449a3a40094a222765dd8/probe_scores.npz": {
+          "sha256": "30acced156859f045da5cbd8c1a9f19f116978780c21f56a5184a0dc9df0782e",
+          "bytes": 255455,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/ac70de3d838449a3a40094a222765dd8/updates.jsonl": {
+          "sha256": "6650fd7461271459669f2da52426bde5d0110b9eacec9cee035c999458f4d12f",
+          "bytes": 1097651,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/2f4df5d23d8346e38c0bfaa0abb57621/attempt.json": {
+          "sha256": "f79abb1b4e2ff67ea71c486a15f7b1e71b6d4bc02e011510253df5767f8382b3",
+          "bytes": 745,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/2f4df5d23d8346e38c0bfaa0abb57621/probe_scores.npz": {
+          "sha256": "f59a35ccb23fefe2fea11374fe9a743cf1c15c271074ab32392b253d3a87cfef",
+          "bytes": 255591,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/2f4df5d23d8346e38c0bfaa0abb57621/updates.jsonl": {
+          "sha256": "d1b9b14de14f0fe09d139247eee6a7f43a386fa9f3dc4fc8c9602249a5c89ed0",
+          "bytes": 1097678,
+          "repo_type": "dataset"
+        }
+      },
+      "retrieval": "retained_volume_bytes_verified_against_sealed_private_backup_index",
+      "verified_bytes": 14844736
+    },
+    "mixed80": {
+      "snapshot": {
+        "run_id": "20261114T150912Z-full-completion64-mixtures-mixed80",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "89e9fbb9a48e7b4a249e5d5acbb56fc000e02a9f",
+          "dataset": "860cef1775a10efdb02c25cc7179927fe3bab903"
+        },
+        "artifact_index_sha256": "44b7a2c80540533a8d8a00ffd396a61b473f3aedc0fecfce53928bb2fd32c4fc"
+      },
+      "files": {
+        "config.json": {
+          "sha256": "a4901e40929804d1bb7adfbcf08c4ac33fd6babed24b964ca4925a5031a97104",
+          "bytes": 8544,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_00/metrics.json": {
+          "sha256": "222ff932d770ed4563ba44d52bf915e6fb2a378f36874a75df16c6939c180a4a",
+          "bytes": 3820,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/diagnostics_manifest.json": {
+          "sha256": "a417139e1b804dfbee41191a221fa11864dad7c2ff1d88ecd9ecb520d84126f9",
+          "bytes": 1594,
+          "repo_type": "dataset"
+        },
+        "completion.json": {
+          "sha256": "7e7312ef0ad7fa3d0354cf8359e1b32d0ce58fc8d096e422f9808b5276ee10f8",
+          "bytes": 93,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training.json": {
+          "sha256": "a39aa7b8baa5f7dd4d5ade9e1906c56b34fcd644f2df1577c33180c4e734ce19",
+          "bytes": 3959,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training_history.json": {
+          "sha256": "67b97a27b847f3d955868757e9f47b5235d74055f6ebeac609673b9ca1b358e4",
+          "bytes": 327,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/stage_completion.json": {
+          "sha256": "d84a18fd8452f668ce3cb6e9ab0578b67f61f737abec39256cecf92c69d65f21",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/mixture/selection.json": {
+          "sha256": "5c87fd098d25863b3ce5585508f1881b0e4efe8d5ee0a6223396eae8d4e437a0",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/mixture/source_labels.npy": {
+          "sha256": "cca6971824541f3668a34ff40fc010de497d1b75d8f22ccadb1c38256b991c4e",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/cca6971824541f3668a34ff40fc010de497d1b75d8f22ccadb1c38256b991c4e"
+          }
+        },
+        "seed_42/gen_01/mixture/manifest.json": {
+          "sha256": "da97e910f3d93678c778c21f633c76ff4a3265e689a8870c204be3bd9e280bbc",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training_input/manifest.json": {
+          "sha256": "a8bb4cf0d0c264849050c676dbdfcd3f01b3e89a911a71f523727bcf45b340f1",
+          "bytes": 1328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/probe_examples.json": {
+          "sha256": "eff2e663ea9777f50d2e08cd320936844b8c58630cf11502545ba6d4d3ff1b01",
+          "bytes": 1571,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/metrics.json": {
+          "sha256": "db95edc4acf8625e3e46a609d973e255004876ed5b23c1e5cb2c39b8ae798395",
+          "bytes": 8259,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/probe/synthetic_for_gen_02/tokens.npy": {
+          "sha256": "9d066ee7e485f50f0ae7ea253dc38e12ebecad7125d9a51d19f3ad9b005f839c",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/9d066ee7e485f50f0ae7ea253dc38e12ebecad7125d9a51d19f3ad9b005f839c"
+          }
+        },
+        "seed_42/gen_02/diagnostics_manifest.json": {
+          "sha256": "2ae98cd2a37b7f0406bf0edbe28721f1a0ac7a85809410ac8bb9600b4294fdff",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training.json": {
+          "sha256": "079669e8aa7e6ba9864e0a84b74c5c05b9f16e1bc7b0f0d67cbb038ac3f95f19",
+          "bytes": 4148,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/stage_completion.json": {
+          "sha256": "77f287f05930928e85044a1c93bf9a8b4bde620eba696a245f0f507f099f2bca",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training_history.json": {
+          "sha256": "8c56acf1c13eb7e3f7c20509f70d5f8adba1073c974f54abba1d0afe11e15a86",
+          "bytes": 330,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/mixture/source_labels.npy": {
+          "sha256": "56f8acba203f6c012a582a84781dc95a1b8216e9f28c9b809bcc57d9170c43c0",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/56f8acba203f6c012a582a84781dc95a1b8216e9f28c9b809bcc57d9170c43c0"
+          }
+        },
+        "seed_42/gen_02/metrics.json": {
+          "sha256": "540ca82035e213bcacf7a10b84c1596aeeedca34493f8b61d5399ed97a97a7da",
+          "bytes": 8442,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training_input/manifest.json": {
+          "sha256": "7ea83a76b8515bb6f50cdf1319e9fe56a94578d4c8cbb924468255fb38e74af4",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/mixture/selection.json": {
+          "sha256": "b00b11f55903346585f60b750b9dc77ff0027146a7c59bce8a1a37c6967f95ad",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/diagnostics_manifest.json": {
+          "sha256": "bf910e441cf2fc159127cdf4e3f324a74a50d98676e114441ac8e1dd0b932664",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/probe_examples.json": {
+          "sha256": "a57e8d1003e106a72791afabd69bd708c5d1dfe6705c6bd08df0fef78bb452b7",
+          "bytes": 1515,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/mixture/manifest.json": {
+          "sha256": "f170bbba1ccf21e6e0291f25fe024afc34bc33074cac6c20837961f6991c7cf9",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training_history.json": {
+          "sha256": "ed1caff4360fbccbe54ef92a389379f8d3592539010d3d78145f0b949b030091",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/stage_completion.json": {
+          "sha256": "45aa391210f3849814bba5d53d165c67ecf0056ec596cda3f5806238cdf8d486",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training.json": {
+          "sha256": "40a2f598d2b4500eb7c4242c8dc31fbc91b23bf78cee98285d6a9c566aea0316",
+          "bytes": 4145,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/probe/synthetic_for_gen_03/tokens.npy": {
+          "sha256": "78baa91463f8f4e7785d1db8f5fe85e541ab8101145446d0190221ad55fe1a77",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/78baa91463f8f4e7785d1db8f5fe85e541ab8101145446d0190221ad55fe1a77"
+          }
+        },
+        "seed_42/gen_03/metrics.json": {
+          "sha256": "9c05f5b13bbbca86f0080cee98c5039d3d85c041b08fc7052166714e281a8902",
+          "bytes": 8446,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/probe_examples.json": {
+          "sha256": "e1a96e444153d93e96661a7955532a681de4cb2ec3608b885daca6c2e1136197",
+          "bytes": 1594,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/mixture/source_labels.npy": {
+          "sha256": "7eef36beab7630520a51be0a145b29089b314247c1f42a10c8f28def91b1bde8",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/7eef36beab7630520a51be0a145b29089b314247c1f42a10c8f28def91b1bde8"
+          }
+        },
+        "seed_42/gen_03/training_input/manifest.json": {
+          "sha256": "c98c11966036c766250cf824e9b7ea22bfa643c6991bcfd6dabf5c2797d5562e",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/mixture/manifest.json": {
+          "sha256": "44ca4c7fee7dccc5930f4da0631dd7dfc7a8dfbb218be7ac1035ff34a3239833",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/mixture/selection.json": {
+          "sha256": "23eb4c85621f76dd2782ae4ec5976d5f5d4fb8eb095a9f727ed746025b8c2265",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/diagnostics_manifest.json": {
+          "sha256": "ec0ae66f3486989bd90d8fd25d0538a6001cd258c087efb97cbf7544c641133b",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/stage_completion.json": {
+          "sha256": "6cbb75856809566ca097e4254686a395a13d13aa073a8162242627bc212ef79c",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/training.json": {
+          "sha256": "87eead52eb80857debf518761f26bb071711ce145318dbc8d2667a3591fbc2bc",
+          "bytes": 4149,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/training_history.json": {
+          "sha256": "10578748cd6775ee5da7c06e4d36f3d97694550441818bcc9a33c656bc306b21",
+          "bytes": 330,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/probe/synthetic_for_gen_04/tokens.npy": {
+          "sha256": "164b02f33e02d5d1dcfe5c9376eacedbc91fa7d64a9e7239758e6337667b3155",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/164b02f33e02d5d1dcfe5c9376eacedbc91fa7d64a9e7239758e6337667b3155"
+          }
+        },
+        "seed_42/gen_04/metrics.json": {
+          "sha256": "57cc0232c423b9222455c347b730715221c581e004d3524a676d17c681337c3c",
+          "bytes": 8455,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/mixture/source_labels.npy": {
+          "sha256": "8a4ffeec55e920b08a3d0f5a76e1cd81112dbd1cf2bc2f5fb34120b0e8ae1d4c",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/8a4ffeec55e920b08a3d0f5a76e1cd81112dbd1cf2bc2f5fb34120b0e8ae1d4c"
+          }
+        },
+        "seed_42/gen_04/training_input/manifest.json": {
+          "sha256": "e2b71e2de048d81af46517f62a7733fcebf014efb8ffc8c1bfd3bd61ee0361f0",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/mixture/selection.json": {
+          "sha256": "3ae33397b691bf2f4d2bde1489caa55214933b0738935515f20ffddb6713aaa8",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/probe_examples.json": {
+          "sha256": "6ca84dd99b0cc247e0f7b9f3dfdcb1eb1829cda98189ac90baac3c0376c5ac98",
+          "bytes": 1527,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/mixture/manifest.json": {
+          "sha256": "ebf7e2ef97371ba86529683f1c5dca343a76e1f767b510757e0227b553321a6c",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training_history.json": {
+          "sha256": "722461581ff4634a0ea328157cb542e8cd57a6221ef2642273461cb123c26102",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/probe/synthetic_for_gen_05/tokens.npy": {
+          "sha256": "3b0140193b8c561b6f78ed7eab0e90eba32278c8fd25d31ae2679a3f9d8a9090",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/3b0140193b8c561b6f78ed7eab0e90eba32278c8fd25d31ae2679a3f9d8a9090"
+          }
+        },
+        "seed_42/gen_05/diagnostics_manifest.json": {
+          "sha256": "917664c3911a74160a1177eefd6c3f7522018b12fa987ca565b4f7337ff08904",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/stage_completion.json": {
+          "sha256": "ffe67cc5cf01871f61e3cfa298e34556b4e4a3027ef039d1c90bc099b3ee5418",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training.json": {
+          "sha256": "c834df034724d94ff55538fba38bc2d7325d2182c846303cb500ff1bb827e249",
+          "bytes": 4146,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/mixture/source_labels.npy": {
+          "sha256": "9f4ee0cd044331a581b226b9fd37671a7468a7d9d534d95582a5ea74ff1848cc",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/9f4ee0cd044331a581b226b9fd37671a7468a7d9d534d95582a5ea74ff1848cc"
+          }
+        },
+        "seed_42/gen_05/metrics.json": {
+          "sha256": "f719f41f235389d0d2aa888c9232c066f64ce8285112a7e2c46b49deee6bfdc7",
+          "bytes": 8431,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/probe_examples.json": {
+          "sha256": "d3be83eb5a7583a2376ac2b0c81aa48eb003905667e3ec3c5a139fa6baa10390",
+          "bytes": 1583,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training_input/manifest.json": {
+          "sha256": "d90a914a72daf44dcf0e256a2b58708f004ea430733a0421ca416ca3649cffa4",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/mixture/manifest.json": {
+          "sha256": "5c80745d8a49312012c98a9292f1bd5f462751716d3d6db67abaf36082c1a098",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/training.json": {
+          "sha256": "db428ba1e6be9f942e7ff6f496d997b75b18a57f9a5ba588dea714a604a85c13",
+          "bytes": 4148,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/diagnostics_manifest.json": {
+          "sha256": "312c5ba912c7328c76028a37232888ef9040d0f2cfb741ece378fdd69f34a653",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/mixture/selection.json": {
+          "sha256": "9c613d58d1e9d042ea3975f6e92c9a7a24483b4c17d45eb1a01b8bdd822c86f4",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/training_history.json": {
+          "sha256": "83f8fcd5480c86c7a4020d7848dae784cce9c4007a4bf0982c6bdae5a48469b0",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/stage_completion.json": {
+          "sha256": "3f6dd930c4c1e49b5da9c52cf866b3d9b5af9f90c069587a3a5c0c622cb386be",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/probe_examples.json": {
+          "sha256": "d3be83eb5a7583a2376ac2b0c81aa48eb003905667e3ec3c5a139fa6baa10390",
+          "bytes": 1583,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/probe/synthetic_for_gen_06/tokens.npy": {
+          "sha256": "faf2e954c94c9ae2ef2e8ce3f75217010fc48f4de247aa30590d61c333cda35b",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/faf2e954c94c9ae2ef2e8ce3f75217010fc48f4de247aa30590d61c333cda35b"
+          }
+        },
+        "seed_42/gen_06/training_input/manifest.json": {
+          "sha256": "edb92858c3e47049725f98b7f2d58c525e3e7179735d4afc1a34898a6d28269a",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/metrics.json": {
+          "sha256": "9a8c34247cd2cde41fab169a6904776c7dab0c284aec938a6b368a21b3ecdf50",
+          "bytes": 8446,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/mixture/source_labels.npy": {
+          "sha256": "e2ef0370581bafe2507e23c3a6d54cb8e3fb01f34e0768b4167b7a707bfcebdd",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/e2ef0370581bafe2507e23c3a6d54cb8e3fb01f34e0768b4167b7a707bfcebdd"
+          }
+        },
+        "seed_42/gen_07/diagnostics_manifest.json": {
+          "sha256": "fd5ff3cb10fd7b0344dba8b420d78ea9186082a0b4a6687fdbabdc3b164f1752",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training.json": {
+          "sha256": "f050b59a6a9bf719a4162c11d3a74c78ac6ee1ed9d2a4c3be15ff50bac2f5fd7",
+          "bytes": 4147,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/mixture/manifest.json": {
+          "sha256": "2e42428153d7ea2160a9071d08a4d2a54391ee9f0d86405faf0dfcfe8ae56805",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training_history.json": {
+          "sha256": "f64fb7af9cd3fa126d51bf80122f48d8331cf58da116750b37dc8d090bff17a7",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/probe/synthetic_for_gen_07/tokens.npy": {
+          "sha256": "b8951c33adc907b031b91dbad50825acfe636914de60ba91e58f77781ba5e907",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/b8951c33adc907b031b91dbad50825acfe636914de60ba91e58f77781ba5e907"
+          }
+        },
+        "seed_42/gen_06/mixture/selection.json": {
+          "sha256": "dc788a9c5ee49a0c8dd28e55d4514958230204890f5db659cf987ab696605ad3",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/probe_examples.json": {
+          "sha256": "d3be83eb5a7583a2376ac2b0c81aa48eb003905667e3ec3c5a139fa6baa10390",
+          "bytes": 1583,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/stage_completion.json": {
+          "sha256": "d0ba54655e1099c394206003e97e811cc520b2bcb7d41c852d9660074ec373c6",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/metrics.json": {
+          "sha256": "e20362a9f66f50643577c5eff9e5babd09ec732fbd25381b9c60ce11bbc3c6ab",
+          "bytes": 8442,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training_input/manifest.json": {
+          "sha256": "fd0bec417c032eed83f4ad31e087ac3f063aeea8262610364f4326a2f68b83fb",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/mixture/source_labels.npy": {
+          "sha256": "f05ca4877c549a6eb2d40e3596f66cf526ee95fbe466ce140dc115b7ed221934",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/f05ca4877c549a6eb2d40e3596f66cf526ee95fbe466ce140dc115b7ed221934"
+          }
+        },
+        "seed_42/gen_07/mixture/manifest.json": {
+          "sha256": "fa11f04a4c9f1c74cc0ac6dc4c050f057327045ada25e146bc523ce43cb87ed8",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/diagnostics_manifest.json": {
+          "sha256": "8e887593b752f8f0a5c2d73c5f7bcbba6d2f48d6ba27ed115af63193c398c176",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/mixture/selection.json": {
+          "sha256": "6b278ec509dccf28ca04c1deda337b3ea02162055f906b2287c8d7769b1ceeaf",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training.json": {
+          "sha256": "17cff72c0b46f4ab9216d6d29af63a0bea0c1249d7d5319b6a1c46af1ecf7f79",
+          "bytes": 4149,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/probe/synthetic_for_gen_08/tokens.npy": {
+          "sha256": "ff9fd3d662871dfa183ec4d1bc713c66e3787eba1950f6c2d254c3655afe30d0",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/ff9fd3d662871dfa183ec4d1bc713c66e3787eba1950f6c2d254c3655afe30d0"
+          }
+        },
+        "seed_42/gen_08/stage_completion.json": {
+          "sha256": "2d8725aa1ea7b3476a0a792cc67a7c4606594cbd81e4431ad5fa30fbc1311950",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training_history.json": {
+          "sha256": "b302ea03ed3eb40a5670878bc18e9cee103bf849df6880270819c0bd8863bf99",
+          "bytes": 330,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/probe_examples.json": {
+          "sha256": "d57c60730c209e9ac9a00362da3753e0ca72d5985f64cb617b8711dd8dbfe1e8",
+          "bytes": 1614,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/metrics.json": {
+          "sha256": "ce1d212eb77d33434a431ed0be756d874718a18e7a650fbd17dadcca475ed7e6",
+          "bytes": 8448,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/mixture/source_labels.npy": {
+          "sha256": "98b7f1ea41863d7dc512f67dca9f475268a9b90921d070c2fb81b3f89aa57949",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/98b7f1ea41863d7dc512f67dca9f475268a9b90921d070c2fb81b3f89aa57949"
+          }
+        },
+        "seed_42/gen_08/training_input/manifest.json": {
+          "sha256": "008a54827dcf19e826b35e55a58767a8d058b2768e3bf6e6489e2136aefe267d",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/mixture/manifest.json": {
+          "sha256": "97ef90ad7bbe113191850c3e2b0cf5ce97086180df6eb8cb021df92cf346264a",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training.json": {
+          "sha256": "7bbfb6c9d30278afff115680d90e0d2ba443eb29183d6917c909e56bebdaef04",
+          "bytes": 4148,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/diagnostics_manifest.json": {
+          "sha256": "5a76a8446fe0f1d3fde5a2cae90924f0666e8083a2961037a8bfcc423db4d18e",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/mixture/selection.json": {
+          "sha256": "f19273706248b622db5cadff9ba97aa197f55e4e506455ca41a2ebce50137e7d",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/probe/synthetic_for_gen_09/tokens.npy": {
+          "sha256": "1efd777fbbdd78c709a80879310ae93f82c22048e58d624c85844f6b669c6448",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/1efd777fbbdd78c709a80879310ae93f82c22048e58d624c85844f6b669c6448"
+          }
+        },
+        "seed_42/gen_09/stage_completion.json": {
+          "sha256": "5406a83fe127d530176c39e4f6c1f14a622e358d4f9e7a191c93dbcb37b3426e",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training_history.json": {
+          "sha256": "59c09c1b1d4c23aa548a21bdaec8bcbb5ea29c184fd4308c80c86e7d16fa84eb",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/probe_examples.json": {
+          "sha256": "d57c60730c209e9ac9a00362da3753e0ca72d5985f64cb617b8711dd8dbfe1e8",
+          "bytes": 1614,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/mixture/source_labels.npy": {
+          "sha256": "bd031f95dc12472e2f4689c84376e370472d4c0b76ac9cb704e28209ebb22370",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/bd031f95dc12472e2f4689c84376e370472d4c0b76ac9cb704e28209ebb22370"
+          }
+        },
+        "seed_42/gen_09/metrics.json": {
+          "sha256": "7c1744402298d477f4eb1208f6990bdce4ee5b80b96dee883014fa6ad6034d8d",
+          "bytes": 8456,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/mixture/manifest.json": {
+          "sha256": "b672d41da977496ca20d334a770f6ebb46988ec427b92f82e3a8a13c3835e74e",
+          "bytes": 1480,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training_input/manifest.json": {
+          "sha256": "7650f57ff6b00aa367ff068e4ad5a0a40ff091a930b82217eb970ff25b9d6a33",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/mixture/selection.json": {
+          "sha256": "110c070d709a6ad68473e109a9495cd4bb84596bd35ad51384b8b619578930d4",
+          "bytes": 893,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/diagnostics_manifest.json": {
+          "sha256": "0a7484bbcb30dd7d7eb824639ee3617b6c12e0b5cbba091b4540e1b5a82b2cf7",
+          "bytes": 1660,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/probe/synthetic_for_gen_10/tokens.npy": {
+          "sha256": "b9b4215f069dc5c2a69cdfd4aaca32b840aa66ef202fabe1c24c56c78582b9f8",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/b9b4215f069dc5c2a69cdfd4aaca32b840aa66ef202fabe1c24c56c78582b9f8"
+          }
+        },
+        "seed_42/gen_10/training.json": {
+          "sha256": "9f9f1cf8d7471124e8655f9e4872854eab31815019b15e564ec460cfad2d4b1e",
+          "bytes": 4150,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/stage_completion.json": {
+          "sha256": "6739a1c119eb3366c3d5d7f7594da7561776658b489a2346eab52183ef70e753",
+          "bytes": 3134,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/training_history.json": {
+          "sha256": "817cb29813241af47eb64b8c6d0fb31fdc6bb5a5042bf6acb461649afe8feda6",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/probe_examples.json": {
+          "sha256": "d3be83eb5a7583a2376ac2b0c81aa48eb003905667e3ec3c5a139fa6baa10390",
+          "bytes": 1583,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/mixture/source_labels.npy": {
+          "sha256": "f1fd19298261df4638809cbfe72db291cafbf4b704e58d59a2041d77da989ac0",
+          "bytes": 40128,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/f1fd19298261df4638809cbfe72db291cafbf4b704e58d59a2041d77da989ac0"
+          }
+        },
+        "seed_42/gen_10/metrics.json": {
+          "sha256": "38bd1b9c520a0102bd1d2a9899dfb4fd52c5922ce791f5a8bbcd3ae5f6621c91",
+          "bytes": 8458,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/training_input/manifest.json": {
+          "sha256": "234f2384cffc596e48c4cf5130d2f6087e54271988d212e8c8db6552528a2bbc",
+          "bytes": 1390,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/mixture/manifest.json": {
+          "sha256": "effa04447deef2fac42cfe8361ecde10da955bb55ccc9ad9e9d970cb9dd5a28e",
+          "bytes": 1481,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/mixture/selection.json": {
+          "sha256": "b799a84a091da1add618c5956d010f5c434216c065ffa4d8bf9abf730344766b",
+          "bytes": 894,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/probe/synthetic_for_gen_11/tokens.npy": {
+          "sha256": "39a592210b2c0ddca27d142f52f882fe9ebc3441e5c33b46dd86c4951904f0d7",
+          "bytes": 65664,
+          "repo_type": "dataset",
+          "storage": {
+            "backend": "runpod_s3",
+            "bucket": "efv7egm5i0",
+            "region": "EU-RO-1",
+            "prefix": "smollm2-sgd-mixtures-20261114",
+            "key": "smollm2-sgd-mixtures-20261114/objects/39a592210b2c0ddca27d142f52f882fe9ebc3441e5c33b46dd86c4951904f0d7"
+          }
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/cb2b3f199ac84a3fb473cb118cf6de3c/attempt.json": {
+          "sha256": "3cf9fecb5c4c7e60b2d90627567c34c857b8a143bcfca256d4edac79019e92c0",
+          "bytes": 682,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/cb2b3f199ac84a3fb473cb118cf6de3c/probe_scores.npz": {
+          "sha256": "a529fea15074aae63cc67d5603c42a7191109346b13a61738be3be5753ca3ac6",
+          "bytes": 265619,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/cb2b3f199ac84a3fb473cb118cf6de3c/updates.jsonl": {
+          "sha256": "a20da6474b7fe156bc1914e2e89a15098ef1240bfb398a2810fe6150fe01a497",
+          "bytes": 1097560,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/35bc1a72fba54a8aa23e34150d9ae19e/attempt.json": {
+          "sha256": "4b7867e627fc79678ca77b6a84a79fbeb2d254facd2ac9f2ffd0f84592cfd190",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/35bc1a72fba54a8aa23e34150d9ae19e/probe_scores.npz": {
+          "sha256": "0c80e3bdcd76c3593ed637b734e2226ee4121ebfa4f278b7f1c97ab4c6cf2622",
+          "bytes": 271069,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/35bc1a72fba54a8aa23e34150d9ae19e/updates.jsonl": {
+          "sha256": "befd9ec944b2efe0604cbc2722c04e2a207377b44b3687cd1cb89b8ef3a06c5c",
+          "bytes": 1097027,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/94a0b9724aca42f986ebcd6ab1d6a8dc/attempt.json": {
+          "sha256": "71f50e10f29503bf1316f26dd873786f2adaf0117c1fcb76dda8d667c3fd0a7c",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/4441b0dc1a844030bbad6460d72fc4dd/probe_scores.npz": {
+          "sha256": "188d3178d75b5d5772782d0d05aefd9c2da6d30918ad5413345077218a1b40e0",
+          "bytes": 270389,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/4441b0dc1a844030bbad6460d72fc4dd/attempt.json": {
+          "sha256": "068cbe762f3210ef667392bbf1ee55db3b43adda0bdb651c435e510ae3dce0e5",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/4441b0dc1a844030bbad6460d72fc4dd/updates.jsonl": {
+          "sha256": "9c1ac92b5d837309d8b65d5fb284397fe79674e89dd9aaa10c65f05e5a298884",
+          "bytes": 1097133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/94a0b9724aca42f986ebcd6ab1d6a8dc/probe_scores.npz": {
+          "sha256": "c1780e2f54ae0f3bdf7b2c4b50dead5156db04db363cbe46403f0068b0eb7313",
+          "bytes": 268966,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/4ccfb33fd95e471089519f1b0e0746ef/attempt.json": {
+          "sha256": "da450c4ce55f3f33c4497446e9ddd7ef2f8d7b1175bd427d0f572946541fa23d",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/94a0b9724aca42f986ebcd6ab1d6a8dc/updates.jsonl": {
+          "sha256": "21ef060ae3de2495284f038a1640e2ca4caad4dbb8d45e64c3ac44a3083a0023",
+          "bytes": 1096991,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/9d11816b4f1e4d70bc854af325f0d55b/attempt.json": {
+          "sha256": "388c0f141efbf4524312e16673ac0db39ccf35b063594641cd6a645c37421f29",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/9d11816b4f1e4d70bc854af325f0d55b/probe_scores.npz": {
+          "sha256": "39f9d91ba49dada86d48d4e68dc21e49823619056fc7523ea3853ce9b4579bd4",
+          "bytes": 265691,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/4ccfb33fd95e471089519f1b0e0746ef/probe_scores.npz": {
+          "sha256": "5f8d38bb994c1dae13a6de541ded556123dcdc8ebb42c64911a298db485b7a43",
+          "bytes": 267342,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/c95c44a9b3924281867476cd3ad1c146/attempt.json": {
+          "sha256": "d0c961ff004157cac5450feb6ac84ccef1f1485def49abf24f25591351e52a28",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/4ccfb33fd95e471089519f1b0e0746ef/updates.jsonl": {
+          "sha256": "b8d92406b56c5950d68625402e489bcb45073fe16cd7c5b4042397a0cb7a1055",
+          "bytes": 1097004,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/9d11816b4f1e4d70bc854af325f0d55b/updates.jsonl": {
+          "sha256": "4b4ce3af7c2d724124dc55298fd51c6c5353b341f18d048a468f8ac9a647e8fe",
+          "bytes": 1097416,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/c95c44a9b3924281867476cd3ad1c146/probe_scores.npz": {
+          "sha256": "f4a91ce4e0840354b9c4bc75f1a05a4ce231d084163da746452f7314311b8755",
+          "bytes": 264734,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/8b30930a5bdc4a5f96e1e46f966119d2/attempt.json": {
+          "sha256": "dc613c1bf8ae587dfd21b5128f022e5e9d2cf196de96c72ef66e14768bcfc382",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/c95c44a9b3924281867476cd3ad1c146/updates.jsonl": {
+          "sha256": "a5f29d8b39414c0d95214bd5e09609c8ffdc5d819baf5c3daa47ae2e87084289",
+          "bytes": 1097514,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/c3ff1ea0c51342f8897d3a01534345ac/probe_scores.npz": {
+          "sha256": "61064a220bc16fe669674dd36ed5755d5e971485138fc68d20fdbf1f24dacd4f",
+          "bytes": 264788,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/c3ff1ea0c51342f8897d3a01534345ac/updates.jsonl": {
+          "sha256": "416fd04f8cc0c6577b1afc8bd29672e2ce18197fcce73f7f7cef51c7bbed8f16",
+          "bytes": 1097265,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/8b30930a5bdc4a5f96e1e46f966119d2/probe_scores.npz": {
+          "sha256": "8f4a5a1b2c47160b4b739718f9c79982dfca5bf4d45ecfe94ce5d7de8fb27d84",
+          "bytes": 265504,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/aa2af12f2d914669a47d269e799bca15/attempt.json": {
+          "sha256": "e6106f4f890742cfc405c86c01c553b1dfb3e50e3e84a4c2dfa77b6ae3dc995a",
+          "bytes": 745,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/c3ff1ea0c51342f8897d3a01534345ac/attempt.json": {
+          "sha256": "f80d700ee4b5bcc0a1cd8d2a9b21cc4cc3836a9fff8d1ed2a05fcd320316b46f",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/8b30930a5bdc4a5f96e1e46f966119d2/updates.jsonl": {
+          "sha256": "45740bcac90f3065a6900e1800e13d4d8d9ded59796bafe3db3c445df3937a2a",
+          "bytes": 1097079,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/aa2af12f2d914669a47d269e799bca15/updates.jsonl": {
+          "sha256": "485a6f156c97c9b6e2b03a6b8b81a14938fcd2f46267e4623acfeb8aa1f0417b",
+          "bytes": 1097353,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/aa2af12f2d914669a47d269e799bca15/probe_scores.npz": {
+          "sha256": "916803927346b4373430fb0dc3b913eeb52e56b96715aa5fe0e2284603f82a1b",
+          "bytes": 264015,
+          "repo_type": "dataset"
+        }
+      },
+      "retrieval": "retained_volume_bytes_verified_against_sealed_private_backup_index",
+      "verified_bytes": 14948269
+    }
+  },
+  "audits": {
+    "mixed50": [
+      {
+        "cycle": 1,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000,
+        "maximum_reconstruction_relative_error": 3.1200988121325705e-07
+      },
+      {
+        "cycle": 2,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000,
+        "maximum_reconstruction_relative_error": 2.3801062820648628e-07
+      },
+      {
+        "cycle": 3,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000,
+        "maximum_reconstruction_relative_error": 2.5049015597904303e-07
+      },
+      {
+        "cycle": 4,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000,
+        "maximum_reconstruction_relative_error": 2.429810427213461e-07
+      },
+      {
+        "cycle": 5,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000,
+        "maximum_reconstruction_relative_error": 2.132310816186217e-07
+      },
+      {
+        "cycle": 6,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000,
+        "maximum_reconstruction_relative_error": 2.245322936920268e-07
+      },
+      {
+        "cycle": 7,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000,
+        "maximum_reconstruction_relative_error": 2.2842426353681593e-07
+      },
+      {
+        "cycle": 8,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000,
+        "maximum_reconstruction_relative_error": 2.1647446345033006e-07
+      },
+      {
+        "cycle": 9,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000,
+        "maximum_reconstruction_relative_error": 2.1127874857249788e-07
+      },
+      {
+        "cycle": 10,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 5000,
+        "synthetic_pairs": 5000,
+        "maximum_reconstruction_relative_error": 1.8801281231690865e-07
+      }
+    ],
+    "mixed80": [
+      {
+        "cycle": 1,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 2000,
+        "synthetic_pairs": 8000,
+        "maximum_reconstruction_relative_error": 2.5586798627622414e-07
+      },
+      {
+        "cycle": 2,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 2000,
+        "synthetic_pairs": 8000,
+        "maximum_reconstruction_relative_error": 2.0892114146333208e-07
+      },
+      {
+        "cycle": 3,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 2000,
+        "synthetic_pairs": 8000,
+        "maximum_reconstruction_relative_error": 2.0719370121159417e-07
+      },
+      {
+        "cycle": 4,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 2000,
+        "synthetic_pairs": 8000,
+        "maximum_reconstruction_relative_error": 1.8234068996368382e-07
+      },
+      {
+        "cycle": 5,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 2000,
+        "synthetic_pairs": 8000,
+        "maximum_reconstruction_relative_error": 1.6688454351105273e-07
+      },
+      {
+        "cycle": 6,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 2000,
+        "synthetic_pairs": 8000,
+        "maximum_reconstruction_relative_error": 1.587598559681823e-07
+      },
+      {
+        "cycle": 7,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 2000,
+        "synthetic_pairs": 8000,
+        "maximum_reconstruction_relative_error": 1.5888958132173253e-07
+      },
+      {
+        "cycle": 8,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 313,
+        "real_pairs": 2000,
+        "synthetic_pairs": 8000,
+        "maximum_reconstruction_relative_error": 1.6503237268062972e-07
+      },
+      {
+        "cycle": 9,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 312,
+        "real_pairs": 2000,
+        "synthetic_pairs": 8000,
+        "maximum_reconstruction_relative_error": 1.3597354126523953e-07
+      },
+      {
+        "cycle": 10,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 312,
+        "real_pairs": 2000,
+        "synthetic_pairs": 8000,
+        "maximum_reconstruction_relative_error": 1.499766201486193e-07
+      }
+    ]
+  },
+  "scope": "Selected diagnostic journals, scores, seals, metrics, source labels and fixed output probes only; no bulk checkpoint/optimizer restoration.",
+  "new_training_or_inference": false
+}

@@ -2,6 +2,8 @@
 
 This comparison extends the completed 0%/99%/100% SGD experiment with two independently initialized conditions. It uses the exact model-native FineWeb bank and original pretrained SmolLM2-135M, not checkpoints or synthetic targets from another condition.
 
+**Completed:** `20261114T150912Z-full-completion64-mixtures`. See the [source-effect analysis](../../reports/20261114T150912Z-full-completion64-mixtures/report.md) and [document delivery](../../docs/validation/2026-11-14_sgd-mixtures-analysis-and-doc.json). The launch examples below document the historical protocol; do not duplicate completed compute. Offline reproduction commands are in the report.
+
 ## Protocol
 
 | Synthetic fraction | Real / synthetic pairs each cycle | Cycles | Optimizer updates |

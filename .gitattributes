@@ -143,3 +143,9 @@
 # New SGD mixture acceptance must retain cloud/local evidence hashes on every OS.
 /reports/20261114T144856Z-smoke-completion64-mixtures/** -text whitespace=cr-at-eol,-blank-at-eof
 /docs/validation/2026-11-14_sgd-mixtures*.json -text whitespace=cr-at-eol
+# Preserve the completed SGD-mixture analysis and authored document evidence.
+/reports/20261114T150912Z-full-completion64-mixtures/** -text whitespace=cr-at-eol,-blank-at-eof
+/docs/history/2026-11-14_pre-sgd-mixtures-analysis-current-state.txt -text whitespace=cr-at-eol
+/comparisons/smollm2_sgd_greedy_mixtures/analyse_updates.py text eol=lf
+/comparisons/smollm2_sgd_greedy_mixtures/recover_updates.py text eol=lf
+/scripts/analysis/compose_sgd_mixture_report.py text eol=lf

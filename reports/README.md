@@ -1,5 +1,7 @@
 # Reports and preserved evidence
 
+The completed [50%/80% SmolLM2 SGD study](20261114T150912Z-full-completion64-mixtures/report.md) verifies 1,580 new and 2,370 historical updates. Its Week 5 extension includes source loss shares, combined-gradient cancellation, nonlinear held-out interventions, full/tail accounting and fixed-probe output statistics. [Delivery](../docs/validation/2026-11-14_sgd-mixtures-analysis-and-doc.json) verifies Google Doc pages 170–183, ten square figures, seven tables and unchanged earlier pages. Bulk checkpoint recovery remains separate.
+
 Full experiments measure scientific trajectories; smoke experiments validate the pipeline. All full conditions currently use one seed. A report's recorded recovery scope is not proof of live cloud state or complete bulk restoration. See [current state](../docs/current-state.md) for the latest recorded execution.
 
 ## New pipeline validation
