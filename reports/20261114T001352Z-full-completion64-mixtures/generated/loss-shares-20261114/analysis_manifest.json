@@ -1,0 +1,29 @@
+{
+  "run_id": "20261114T001352Z-full-completion64-mixtures",
+  "script_sha256": "f5b622e132cc6787de93b6a0844d9a925cd90e1bc1322b8aca6fea8643b0c64e",
+  "inputs": {
+    "reports\\20261114T001352Z-full-completion64-mixtures\\generated\\update-gradients-20261114\\per_update.csv": "ecd52ed63652f835427dff065c914e67776161a645479956d152c4c48b162040",
+    "reports\\20261114T001352Z-full-completion64-mixtures\\generated\\update-gradients-20261114\\cycle_summary.csv": "8dd323cb9b612806c252771b65931f227db1aa8522fafca36b5fa1c5cd2ba0c9",
+    "reports\\20261114T001352Z-full-completion64-mixtures\\generated\\update-gradients-20261114\\publication_manifest.json": "c4f28ad45cff874e863a249720e3184650178edf807134b739d549b020a57409"
+  },
+  "python": "3.12.1",
+  "numpy": "2.1.2",
+  "averaging": "Ratio of mean weighted batch loss terms; not mean of individual batch ratios.",
+  "checks": [
+    "Published input hashes",
+    "790 ordered updates",
+    "100 real/9900 synthetic per cycle",
+    "78 full batches and one 16-example tail",
+    "64 scored targets/example",
+    "Loss shares partition 100%"
+  ],
+  "training_or_inference": false,
+  "output_hashes": {
+    "99_training_loss_shares.pdf": "31b796033e0f315038463ca3f81f8cc76780759b2cc55d398e4d509fa8088bf7",
+    "99_training_loss_shares.png": "e2684ef57414aecef85b816db17acc6d5c6e6b6c1378fbdc0a1b0b5ad7b2725e",
+    "blocks.json": "ad439d932fa01dda5c5ee71a8c688c82c3f71b08b1ef3deaef01ecb858ab7e96",
+    "cycle_loss_shares.csv": "9203ead3bbf41cb00c056476285f5267bfc8c4b934fcd722f71c685f2a0ac010",
+    "section.md": "4121ac7406bc256df725d15609846c4d3864d76be7c28a4b426ab7ec27f3257c",
+    "summary.json": "1e6a3159b07fb74966f2d7eb9790ce60aa16f616a8b216b55ef9a35f2df427bb"
+  }
+}
