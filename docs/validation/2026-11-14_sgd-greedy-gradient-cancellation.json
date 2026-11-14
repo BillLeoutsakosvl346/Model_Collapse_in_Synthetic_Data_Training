@@ -1,0 +1,41 @@
+{
+  "run_id": "20261114T001352Z-full-completion64-mixtures",
+  "report": "reports/20261114T001352Z-full-completion64-mixtures/generated/gradient-cancellation-20261114/report.md",
+  "publication_manifest_sha256": "3d9312199dcf49a81e771d75ab8f5bd5148d7d64919efadb7575490150844ad6",
+  "updates_verified": 790,
+  "opposing_updates_when_both_present": 538,
+  "both_source_updates": 563,
+  "cycle10": {
+    "cycle": 10,
+    "updates": 79,
+    "both_source_updates": 59,
+    "opposing_updates": 55,
+    "mean_real_norm": 0.2970407431306215,
+    "mean_synthetic_norm": 0.48528181700265177,
+    "mean_combined_norm": 0.5336663575259765,
+    "mean_orthogonal_reference_norm": 0.6080107971891074,
+    "mean_norm_reduction_vs_orthogonal_percent": 12.2274867497144,
+    "median_source_cosine": -0.36250768663459426,
+    "source_cosine_q25": -0.4377329200668155,
+    "source_cosine_q75": -0.2513875115788566,
+    "squared_norm_reduction_vs_orthogonal_percent": 21.158248500349277,
+    "opposing_projection_fraction_of_synthetic_energy_percent": 17.863433635319332,
+    "combined_shorter_than_synthetic_updates": 25,
+    "max_quadratic_identity_relative_error": 3.6668424989841e-08
+  },
+  "max_quadratic_identity_relative_error": 6.041763848197337e-08,
+  "geometry": "Cycle cancellation = 1 - mean(measured combined norm)/mean(sqrt(real norm^2 + synthetic norm^2)); reference has perpendicular components of actual strengths. Cosine excludes absent sources; norms include all updates.",
+  "visual_qa": "All three square PNG figure families inspected.",
+  "new_compute_spend_usd": 0,
+  "new_training_or_inference": false,
+  "google_doc_modified": false,
+  "existing_recovery_resources_unchanged": true,
+  "repository_checks": {
+    "passed": true,
+    "base": "937020b",
+    "configurations": 54,
+    "publication_manifests": 34,
+    "old_evidence_unchanged": true,
+    "staged_output_checksums_match": true
+  }
+}
