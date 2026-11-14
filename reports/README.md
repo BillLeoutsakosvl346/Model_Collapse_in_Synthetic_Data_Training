@@ -4,6 +4,8 @@ Full experiments measure scientific trajectories; smoke experiments validate the
 
 ## Checkpoint diagnostics
 
+The [SGD/greedy per-update study](20261114T001352Z-full-completion64-mixtures/report.md) verifies all 2,370 update journals and probe arrays from the completed 0/99/100% conditions. In the 99% arm, real examples improve the probe in all 563 updates containing them, and synthetic effects worsen it in 778/790 updates. Six square figure families show the growing corrective real signal, opposing gradients and large final-batch corrections at cycles 6 and 10. Full-test endpoints are 17.73 / 164.41 / 1,408.61. This is offline local-intervention analysis, with diagnostic-only recovery and one-seed limits explicit.
+
 The [SmolLM2 real/synthetic gradient study](20261113T183849Z-gradient-diagnostic/report.md) restores five selected checkpoints and four optimizer states from the completed 99%/100% comparison. Six primary cases / 42 controlled updates show a beneficial local real-data component, positively aligned late source gradients and a substantial role for AdamW history. The [completion receipt](../docs/validation/2026-11-13_gradient-diagnostic-completion.json) records an exploratory momentum follow-up, full small-evidence recovery, twelve square figure families and removed temporary resources. This is a local loss-landscape diagnostic, not another recursive-training run or a complete explanation of the historical trajectories.
 
 ## Audits

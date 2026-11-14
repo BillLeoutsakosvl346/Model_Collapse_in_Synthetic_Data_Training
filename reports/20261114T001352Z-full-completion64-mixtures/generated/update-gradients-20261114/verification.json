@@ -1,0 +1,50 @@
+{
+  "real": {
+    "updates": 790,
+    "probe_continuity_max_error": 0.0,
+    "reconstruction_max_relative_error": 0.0,
+    "actual_total_probe_nll_change": -0.010974043825797697,
+    "real_effect_sign_counts": {
+      "helpful": 419,
+      "harmful": 366,
+      "unresolved": 5
+    },
+    "synthetic_effect_sign_counts": {
+      "helpful": 0,
+      "harmful": 0,
+      "unresolved": 790
+    }
+  },
+  "mixed99": {
+    "updates": 790,
+    "probe_continuity_max_error": 0.0,
+    "reconstruction_max_relative_error": 2.640622545339035e-07,
+    "actual_total_probe_nll_change": 2.2307828445220896,
+    "real_effect_sign_counts": {
+      "helpful": 563,
+      "harmful": 0,
+      "unresolved": 227
+    },
+    "synthetic_effect_sign_counts": {
+      "helpful": 12,
+      "harmful": 778,
+      "unresolved": 0
+    }
+  },
+  "synthetic": {
+    "updates": 790,
+    "probe_continuity_max_error": 0.0,
+    "reconstruction_max_relative_error": 0.0,
+    "actual_total_probe_nll_change": 4.445772100011363,
+    "real_effect_sign_counts": {
+      "helpful": 0,
+      "harmful": 0,
+      "unresolved": 790
+    },
+    "synthetic_effect_sign_counts": {
+      "helpful": 254,
+      "harmful": 536,
+      "unresolved": 0
+    }
+  }
+}

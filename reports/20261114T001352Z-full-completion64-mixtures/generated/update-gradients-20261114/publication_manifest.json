@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "scope": "Offline per-update SGD diagnostic analysis; no full model/optimizer recovery.",
+  "files": {
+    "99_additive_local_allocation.pdf": {
+      "sha256": "d2d1a9308bc70d622e66352142ea28276c7c70a4cb27c36ea8d104da34618170",
+      "bytes": 19406
+    },
+    "99_additive_local_allocation.png": {
+      "sha256": "fdb3c400ab32c9496de6279cea2a9808a1069abccac9038b5c3fb5b4c4278637",
+      "bytes": 133530
+    },
+    "99_gradient_alignment.pdf": {
+      "sha256": "ff74a634154f7ea8af7602d973e6d7ad5aa1e025b62fd093238a14c612c092fb",
+      "bytes": 16885
+    },
+    "99_gradient_alignment.png": {
+      "sha256": "ff6adbc5f7aaa3137b7bd07dda477e5c10342b4503af437c08fc7fff4c676ec2",
+      "bytes": 108074
+    },
+    "99_source_help_hurt.pdf": {
+      "sha256": "4b79afab4f632ad63c997f11273d396704b6115635a6a5976c8758cdeee9f8aa",
+      "bytes": 21038
+    },
+    "99_source_help_hurt.png": {
+      "sha256": "af238a1fd660f6cec61bc5ff6dafb0bbd55c8065541db600319f81b17f145d5d",
+      "bytes": 190855
+    },
+    "99_tail_batch_corrections.pdf": {
+      "sha256": "35da19a99ca45a14c1fd91500b58a45bb0365a0a6aec907dea26d199beef5b05",
+      "bytes": 28583
+    },
+    "99_tail_batch_corrections.png": {
+      "sha256": "d7b0b428d41e33d28f01c5eebed62360626157767f4f9b489caacec08e1d8a28",
+      "bytes": 174311
+    },
+    "99_weighted_gradient_norms.pdf": {
+      "sha256": "8ad3f74f97a56171fe8b1973283cedbe058738560b4b24c7be388a62caafee35",
+      "bytes": 18057
+    },
+    "99_weighted_gradient_norms.png": {
+      "sha256": "e003934e7af899c1a173537818afccc5d1cddc3503feba77c8e4f3331a56d777",
+      "bytes": 124124
+    },
+    "analysis_manifest.json": {
+      "sha256": "498cd2e70656f986514a7492b06bb80faf5ee8c9fcb2295eb6b23a4ccdf67f78",
+      "bytes": 55374
+    },
+    "bootstrap_intervals.json": {
+      "sha256": "e22a8321b354a209bfa914a858bb6558c2f8965ec5e1a2a319d2de907224a6fb",
+      "bytes": 56638
+    },
+    "cycle_summary.csv": {
+      "sha256": "8dd323cb9b612806c252771b65931f227db1aa8522fafca36b5fa1c5cd2ba0c9",
+      "bytes": 12932
+    },
+    "full_test_perplexity.pdf": {
+      "sha256": "c2dfb52624692c141ae553d2e460eb109c55431b68c84fada5a3baee22ec4d8a",
+      "bytes": 18785
+    },
+    "full_test_perplexity.png": {
+      "sha256": "9d289308a79a18c079be91dc90fdc84a8f86cef7f20eca4f4d985ea62116ba0c",
+      "bytes": 112778
+    },
+    "layer_cycle_summary.csv": {
+      "sha256": "65d955a89bce00dfc05699741e15c10a5c4ce0675cb73dd724d2236072f3b3bd",
+      "bytes": 62223
+    },
+    "per_update.csv": {
+      "sha256": "ecd52ed63652f835427dff065c914e67776161a645479956d152c4c48b162040",
+      "bytes": 1256250
+    },
+    "report.md": {
+      "sha256": "4369af33f64918d50825473b4ab4751b9405bd76cac82dcf0a8e3e9754d04806",
+      "bytes": 12023
+    },
+    "source_recovery.json": {
+      "sha256": "cf9353bedb47ff1cb7aeecf701ac5c52409dbd95c26e649bf67da1d14c266563",
+      "bytes": 69864
+    },
+    "tail_batches.csv": {
+      "sha256": "4dffd5f4b46d83f8fcaf61048e9709340961aad8334add951268f7965c354b0c",
+      "bytes": 5185
+    },
+    "test_trajectory.csv": {
+      "sha256": "936aa6ee1429fd03f326a88c83e8d8f9e04704c10687d04287e4d54502f1c722",
+      "bytes": 1604
+    },
+    "verification.json": {
+      "sha256": "4b364769fb6b6ca0fef32d51bfd711a500767cbea2a473c1353ace99c12917ae",
+      "bytes": 1261
+    }
+  }
+}

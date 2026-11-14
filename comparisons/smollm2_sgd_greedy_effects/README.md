@@ -4,6 +4,8 @@ This comparison prepares 0%, 99% and 100% synthetic-target conditions using the 
 
 [GPU validation and handoff](../../reports/20261113T230319Z-smoke-completion64-mixtures/setup-report.md): all twelve checks passed; selected constant LR **0.01**; the full comparison completed as `20261114T001352Z-full-completion64-mixtures`. See the [launch record](../../docs/validation/2026-11-14_sgd-greedy-full-launch.json); do not duplicate completed compute.
 
+The [completed per-update analysis](../../reports/20261114T001352Z-full-completion64-mixtures/report.md) verifies all 2,370 saved interventions. `recover_updates.py` selectively restores pinned diagnostic evidence; `analyse_updates.py` produces cycle summaries, square figures and source hashes into a new output directory. Neither script provisions resources or performs model inference/training.
+
 ## Scientific protocol
 
 - Independently start every arm from original pretrained M0. Continue its own weights and training RNG over ten fresh 10,000-pair chunks; keep the terminal checkpoint after each one-epoch cycle.

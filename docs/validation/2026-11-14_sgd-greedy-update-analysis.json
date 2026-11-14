@@ -1,0 +1,142 @@
+{
+  "run_id": "20261114T001352Z-full-completion64-mixtures",
+  "analysis_date": "2026-11-14",
+  "report": "reports/20261114T001352Z-full-completion64-mixtures/generated/update-gradients-20261114/report.md",
+  "publication_manifest_sha256": "c4f28ad45cff874e863a249720e3184650178edf807134b739d549b020a57409",
+  "analysis_script_sha256": "d3301cfed553b264b2a26dda9249a4b2a7cbd84391c9efc157fe049a2e8e13d2",
+  "recovery_script_sha256": "c06a553ebb6bee2ebb49c15959ae4702abbed4d3f34055b75413ac3cffe71b4e",
+  "logical_updates_verified": 2370,
+  "cycles_verified": 30,
+  "probe_pairs": 128,
+  "probe_documents": 128,
+  "scored_targets_per_probe": 8192,
+  "focused_offline_tests": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_sgd_validation_analysis.py -q",
+    "passed": 33
+  },
+  "checks": {
+    "real": {
+      "updates": 790,
+      "probe_continuity_max_error": 0.0,
+      "reconstruction_max_relative_error": 0.0,
+      "actual_total_probe_nll_change": -0.010974043825797697,
+      "real_effect_sign_counts": {
+        "helpful": 419,
+        "harmful": 366,
+        "unresolved": 5
+      },
+      "synthetic_effect_sign_counts": {
+        "helpful": 0,
+        "harmful": 0,
+        "unresolved": 790
+      }
+    },
+    "mixed99": {
+      "updates": 790,
+      "probe_continuity_max_error": 0.0,
+      "reconstruction_max_relative_error": 2.640622545339035e-07,
+      "actual_total_probe_nll_change": 2.2307828445220896,
+      "real_effect_sign_counts": {
+        "helpful": 563,
+        "harmful": 0,
+        "unresolved": 227
+      },
+      "synthetic_effect_sign_counts": {
+        "helpful": 12,
+        "harmful": 778,
+        "unresolved": 0
+      }
+    },
+    "synthetic": {
+      "updates": 790,
+      "probe_continuity_max_error": 0.0,
+      "reconstruction_max_relative_error": 0.0,
+      "actual_total_probe_nll_change": 4.445772100011363,
+      "real_effect_sign_counts": {
+        "helpful": 0,
+        "harmful": 0,
+        "unresolved": 790
+      },
+      "synthetic_effect_sign_counts": {
+        "helpful": 254,
+        "harmful": 536,
+        "unresolved": 0
+      }
+    }
+  },
+  "source_snapshots": {
+    "parent": {
+      "run_id": "20261114T001352Z-full-completion64-mixtures",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "a65a46e171052abad42dca18c5849ab3ec5bb107",
+        "dataset": "c404d5d5c07693056aed76a197f82f1e58fa2cf3"
+      },
+      "artifact_index_sha256": "8c595ac6bec67e3dac73825ab638b6c3fb76079ce3f1ba39d0e3fe198b08dc05"
+    },
+    "real": {
+      "run_id": "20261114T001352Z-full-completion64-mixtures-real",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "c14ce20c254ee3011fc7ef62770154a206544947",
+        "dataset": "57994de6869b04a49c8d911b1ddfa2a2c23b72a7"
+      },
+      "artifact_index_sha256": "5e634ad1d28eba2e95936805ab5c3b4713d6079bfa42a8ca34630d0a2832bdfd"
+    },
+    "mixed99": {
+      "run_id": "20261114T001352Z-full-completion64-mixtures-mixed99",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "386bef2c0f6e2fb5fe27dca3d355eb54dd46dd17",
+        "dataset": "621dd475a3422e638a6c2cadab14405659476d23"
+      },
+      "artifact_index_sha256": "59c878bba2aeb4d88e7c0604af4510d9335531d50c491d760277bea143393dc1"
+    },
+    "synthetic": {
+      "run_id": "20261114T001352Z-full-completion64-mixtures-synthetic",
+      "repos": {
+        "model": "iib-model-collapse-bill/iib-model-collapse-models",
+        "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+      },
+      "revisions": {
+        "model": "a65a46e171052abad42dca18c5849ab3ec5bb107",
+        "dataset": "54b13aad2fbb106d1cb0e07f2e622c2bc3e8a83d"
+      },
+      "artifact_index_sha256": "66c7aaa1290961b35c3ff255318325b838aac20fab576a8905b66f2503fb150c"
+    }
+  },
+  "verified_recovery_bytes": 36743276,
+  "scope": "All selected journals, per-example probe arrays and diagnostic seals from pinned private backups. No full-run bulk model/optimizer restore.",
+  "new_training": false,
+  "new_inference": false,
+  "new_cloud_resources": false,
+  "new_compute_spend_usd": 0,
+  "findings": [
+    "All 563 real-present updates improve the real probe conditionally in the 99% arm.",
+    "Synthetic conditional effects worsen the 99% probe in 778 of 790 updates.",
+    "A real example in the 16-example tail strongly corrects cycle-6 and cycle-10 endpoints.",
+    "All probe states telescope exactly; maximum gradient reconstruction relative error 2.640622545339035e-07."
+  ],
+  "uncertainty": "2,000 paired document-bootstrap draws; one training seed; no alternate full trajectories.",
+  "visual_qa": "All six square figure families rendered; primary source effects, norms, alignment, allocations and tail plots inspected.",
+  "google_doc_modified": false,
+  "historical_storage_preserved": true,
+  "repository_checks": {
+    "passed": true,
+    "historical_base": "ddaca46",
+    "configurations": 54,
+    "publication_manifests": 31,
+    "links": true,
+    "staged_publication_bytes_match": true,
+    "existing_evidence_unchanged": true
+  }
+}

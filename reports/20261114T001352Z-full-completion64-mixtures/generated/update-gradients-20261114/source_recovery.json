@@ -1,0 +1,1658 @@
+{
+  "run_id": "20261114T001352Z-full-completion64-mixtures",
+  "sources": {
+    "parent": {
+      "snapshot": {
+        "run_id": "20261114T001352Z-full-completion64-mixtures",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "a65a46e171052abad42dca18c5849ab3ec5bb107",
+          "dataset": "c404d5d5c07693056aed76a197f82f1e58fa2cf3"
+        },
+        "artifact_index_sha256": "8c595ac6bec67e3dac73825ab638b6c3fb76079ce3f1ba39d0e3fe198b08dc05"
+      },
+      "files": {
+        "config.json": {
+          "sha256": "5eb814b67704f2b4285ee630d20a9dad09fdc0aa3273947640429a199005f9e6",
+          "bytes": 6282,
+          "repo_type": "dataset"
+        },
+        "manifest.json": {
+          "sha256": "18b275ba2100a4dea12ea44c8d131ea8a627b80c1a25e4ea79d5c51ee8739e81",
+          "bytes": 173,
+          "repo_type": "dataset"
+        },
+        "environment.json": {
+          "sha256": "f769935f57f3784e7687e566736892faa7a67fab26ad5810f892d81181af2c2b",
+          "bytes": 433,
+          "repo_type": "dataset"
+        },
+        "completion.json": {
+          "sha256": "9dcda0301a2b698483be7c6751f89733b272f67e95da5503a92ec4028bbbadac",
+          "bytes": 165,
+          "repo_type": "dataset"
+        },
+        "child_snapshots.json": {
+          "sha256": "f4bf3be48b8de3f0d0efacbcf89dd24ee5c86dbb1bf0ba3bccb084cb5b28135a",
+          "bytes": 1462,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_00/metrics.json": {
+          "sha256": "e71eb4fdece13d61c90bc895873bda27794e625c24ca796f0f93a86ffd569497",
+          "bytes": 3818,
+          "repo_type": "dataset"
+        }
+      },
+      "verified_bytes": 12333
+    },
+    "real": {
+      "snapshot": {
+        "run_id": "20261114T001352Z-full-completion64-mixtures-real",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "c14ce20c254ee3011fc7ef62770154a206544947",
+          "dataset": "57994de6869b04a49c8d911b1ddfa2a2c23b72a7"
+        },
+        "artifact_index_sha256": "5e634ad1d28eba2e95936805ab5c3b4713d6079bfa42a8ca34630d0a2832bdfd"
+      },
+      "files": {
+        "seed_42/gen_00/metrics.json": {
+          "sha256": "e71eb4fdece13d61c90bc895873bda27794e625c24ca796f0f93a86ffd569497",
+          "bytes": 3818,
+          "repo_type": "dataset"
+        },
+        "completion.json": {
+          "sha256": "951689b7d9edd3e39567b44ba00d8917ed5b48fd543119cf912bded2887849ab",
+          "bytes": 92,
+          "repo_type": "dataset"
+        },
+        "config.json": {
+          "sha256": "3075cf8fbe941284684f7a6f86851ac3554dd03359652b42cd643093a9f4afde",
+          "bytes": 8601,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/diagnostics_manifest.json": {
+          "sha256": "c5c44fb0f0197d5f203ab2a493a1b9d409e8cb6df4e5f5813f608cff685e86d8",
+          "bytes": 1593,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/stage_completion.json": {
+          "sha256": "13ac10b7a90272e60cdfe9901f79279108da8f833dbfc48a57bc3d62fc340fa2",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training.json": {
+          "sha256": "cffc387637927f14f7dba4757c22a77bdd921d1ef8cada846cb57a7fe15fdcbb",
+          "bytes": 3651,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training_history.json": {
+          "sha256": "c5be1d522e27bbd36dcab280ee19fbb624ce8fc2fa70de58806952c0a5863c24",
+          "bytes": 326,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training.json": {
+          "sha256": "91a46df762171066eafefa8f7dcdf9680aa42bc625643a6cfda6a0c11aa16e7b",
+          "bytes": 3837,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/diagnostics_manifest.json": {
+          "sha256": "a223c9bf68eef99f0096555a5160bbf55bc5edc0540c906bda543ddb7a8ddf4b",
+          "bytes": 1657,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/metrics.json": {
+          "sha256": "0dafc798a89e07a6ef3816ac84a2c657a3d656fc038d3d1d298d426edbba6584",
+          "bytes": 7735,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/metrics.json": {
+          "sha256": "14ebeff789f42dcbb9ddf11cf72b2666ea2de4a711214f71d0ef83faef6367db",
+          "bytes": 7924,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training_history.json": {
+          "sha256": "80c3842c499bf47c19789628d4bf56593f9b30de78a50ac8ad0fd83253083593",
+          "bytes": 327,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/stage_completion.json": {
+          "sha256": "14f37f40f2a7ebc233b1e019d7523d898f88717ce1205af053c4a0df15c0ea4a",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training.json": {
+          "sha256": "31bc991957768d21965de3adfee4277dff9849723fe9634761bc9ead4b73964f",
+          "bytes": 3837,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/diagnostics_manifest.json": {
+          "sha256": "ff7781835ab5901f4f3b4fbd8e313d9729b6ecea187077a5fd176e96313c8acd",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/metrics.json": {
+          "sha256": "ef100c5693bafc678909dc62dbe042d2825ef6ac653e5cb23437611b00ab6a4d",
+          "bytes": 7920,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training_history.json": {
+          "sha256": "77093356042e88808a5381f9815554e7e3b556319b29f4152982ead630f7cdc1",
+          "bytes": 327,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/diagnostics_manifest.json": {
+          "sha256": "f67b0854cba71217d30574963c8e0fc0a57fde6b6efe8d4f0064910e3ffc4c0f",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/stage_completion.json": {
+          "sha256": "c77b9aaedcaccdb7973e8aa7fa0446b4abe805d216e3339aef31576a10c7bc27",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/training_history.json": {
+          "sha256": "7d6b46c993c58226e0b495c44c81e4e88b3bda4e4b03e55bdef8ca2d7c3e535f",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/training.json": {
+          "sha256": "47df0356628ede37509a5c7cdbd9cb2294acc034c186515dcd6e3228c3709031",
+          "bytes": 3838,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/stage_completion.json": {
+          "sha256": "0241a0f905902409294cd0e0f749c77b75a73517cf6420348255824db3b7fe09",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training.json": {
+          "sha256": "cc292567d94766eee61bfcc59ec4cb05350f6dea6c1f64c94d78c19ad0266b77",
+          "bytes": 3840,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/diagnostics_manifest.json": {
+          "sha256": "fbf00a6de0a98bdf8e3771e383b1cb2c8a9b808a56eccc82838d160d7ce890f4",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/metrics.json": {
+          "sha256": "1945193dd238f97f2457a2fe7ad5116a2f9d2684bde4d671cc4612c259df14c5",
+          "bytes": 7909,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training_history.json": {
+          "sha256": "7d34c9f87dae3321763b79eec61b8ebc12447c84196ef5e74e5d5529bf54be71",
+          "bytes": 327,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/metrics.json": {
+          "sha256": "568de484305e295ca0466b02b5fc8f9e34f59f0aafe46b8994e87f0cf24d1f88",
+          "bytes": 7919,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/training_history.json": {
+          "sha256": "04645ec0bca3015a96e8cf2117f03685bc8203ea46789a941b9858ea36d0daf8",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/training.json": {
+          "sha256": "58b0f7772c231e45006dd804b889f5be11d12dd1102dd6e3fff8e5ddfaec3992",
+          "bytes": 3840,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/stage_completion.json": {
+          "sha256": "f0bced248be6a69155da54646aa632ec20ae2277510e13d032fed0135fb02c3a",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/diagnostics_manifest.json": {
+          "sha256": "a1c6cb763253676e5805acdb40f67faa885dac66ed5c774f49877e8fb70df44c",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/stage_completion.json": {
+          "sha256": "b12f203c108f15e2ba5751568d553a4938ec02ec49c9dd10d5e71f3f7f98c0f5",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/metrics.json": {
+          "sha256": "c3623f46f8dcca08f55324cedb9274df0ea98eeca59ebf88b4e70d941fcb79d4",
+          "bytes": 7924,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/stage_completion.json": {
+          "sha256": "c7824b211ec5a9f7688502a6017247db9a585d34cef32ed25daf8096c3d70528",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training.json": {
+          "sha256": "caf221616e0a29cb979fe04b6b630a6158c5a413acc40da6320ea86f50d30d63",
+          "bytes": 3838,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/diagnostics_manifest.json": {
+          "sha256": "6e4c4d49f68cfaef0673d8eca56b2a501f88be859452f843b4f02985b6be4eb8",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training_history.json": {
+          "sha256": "4c89a0ec23f84600e9be97c0f4b3e64ffd204478f6b62b9893c0115db1d060af",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/metrics.json": {
+          "sha256": "7f3d4bf83d98e3d909045128c2e4afe33efa83e0c388734e1b960610d0ca4586",
+          "bytes": 7920,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training.json": {
+          "sha256": "e534baa2663f091f426136f290949b6dff31fb8e6b6996449e5045516361117f",
+          "bytes": 3840,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training_history.json": {
+          "sha256": "15dc15339528b3875b6ff4fc7bb765a6c395f2a062c9a20368fdefadd0edc3ae",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/diagnostics_manifest.json": {
+          "sha256": "5b0d45511daf07b89912b8b72c116ae372ed7ebf76c4289cf31d021f60210299",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/diagnostics_manifest.json": {
+          "sha256": "095ecdc222e29305f599e227002f6c822a00d07b2d7647f206851ee836d4e747",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/metrics.json": {
+          "sha256": "4442bc3a56d041c0e527741616bbe80473dd23b35909158ba1aca43f20cfeb02",
+          "bytes": 7924,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/stage_completion.json": {
+          "sha256": "fb58e32c0566cc9addd38186e871f46745218a34b84e4489218252bee0a1c065",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training_history.json": {
+          "sha256": "6eebf5beb3de9d89b460df169b193ff005dc044634619276def6f37615158288",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training.json": {
+          "sha256": "490245696ef8d256d21b407195851628f2a094e2202182e052b00054d6cd4ac7",
+          "bytes": 3838,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/stage_completion.json": {
+          "sha256": "59160aaee624d7faec5ba4f08d564247fdf45c99a67fb4532ed997300162407a",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/diagnostics_manifest.json": {
+          "sha256": "4b73b16a28bd38b6142708266cdff24a13eee199890dda9bc3819c819ad360c3",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/metrics.json": {
+          "sha256": "736ca644f055fdcd83cda16ce6fe6fde9464e37783a4f48f757ad212e7c83bad",
+          "bytes": 7929,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/stage_completion.json": {
+          "sha256": "151ee0415abf9f2ea99414aab449acf101af5638cd1cac497af551bc81a801d5",
+          "bytes": 2440,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/training.json": {
+          "sha256": "2111d355e869437e3c2063dbab6803a8501047fc8f64b941624caae95cc416cf",
+          "bytes": 3842,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/training_history.json": {
+          "sha256": "d24a07403f63686487e8352cd0162322442137a1f359d710ef6bc00c1e1fcd9a",
+          "bytes": 327,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/metrics.json": {
+          "sha256": "3bcd52ebcad928ff7dc61aa4cce9a207d816d1cff8556e5812c2905237dd9c4c",
+          "bytes": 7922,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/1dba1d7b6e8a4e35849b1111b0837796/attempt.json": {
+          "sha256": "bf60b14c3049dcb815a70a2e575a6c19d3913b067906611b90d8bef6c8e30134",
+          "bytes": 682,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/d5f06260fec9468f965420dc7f063a93/updates.jsonl": {
+          "sha256": "9dcb269fee202074c75e156ed3621151fc3e13f4d6e078e1e43b4a2bbacb0897",
+          "bytes": 869971,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/d5f06260fec9468f965420dc7f063a93/attempt.json": {
+          "sha256": "a329ea0b12076f4a2354b9f02d13ac92a881690d4d8d6f5a4f172e42daafafe5",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/1dba1d7b6e8a4e35849b1111b0837796/updates.jsonl": {
+          "sha256": "a09a3e284b0fe609e4b0b6a624eb09ded97b8e7afa5ff3d4cb1309e798809861",
+          "bytes": 869666,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/382fd10a842e4bbe87865fe0a9b14f7c/updates.jsonl": {
+          "sha256": "f71e7033777ebd96f06355a0f713d9dfd15886423baeb140f0da2b3ea0e79852",
+          "bytes": 870018,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/382fd10a842e4bbe87865fe0a9b14f7c/attempt.json": {
+          "sha256": "951a3ffc2f165a06252c35a0a640d7e16c44ae49add95dc4cc6939a6ae4105c5",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/cd6e95574ab84804887069d86b8003da/updates.jsonl": {
+          "sha256": "356607d0458f19f1ce82c751fe16278f5258466530fd6d38c836de7991e0fac2",
+          "bytes": 870093,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/cd6e95574ab84804887069d86b8003da/attempt.json": {
+          "sha256": "4adc7cdef7d8aeb5603c059563185135b9dc80924ed44bd067ec5602c5e511bf",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/895c7e1004524f2eb15d2d0bf80471e1/updates.jsonl": {
+          "sha256": "ff7e951385cef94cd61b152a2fb62f213e93bd165d3016362b759003bade0160",
+          "bytes": 870086,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/895c7e1004524f2eb15d2d0bf80471e1/attempt.json": {
+          "sha256": "99f890955722a16746884ff6a129fc726a41a6a6325d3feeade173a162dbd226",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/382fd10a842e4bbe87865fe0a9b14f7c/probe_scores.npz": {
+          "sha256": "e804dc66fac864c951c0cb9c4c0f9627a64eb9cc893edff024ac97973d42b972",
+          "bytes": 248205,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/cfeab1233d024552a51ab3c7e33d52da/updates.jsonl": {
+          "sha256": "e3c234f56d990b8270cb2aec98c827a2afd1069aa29f9e427af00bc24836bb30",
+          "bytes": 870022,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/895c7e1004524f2eb15d2d0bf80471e1/probe_scores.npz": {
+          "sha256": "1aa09567febbd41239ce4317ae5124afbe6d88ecb8bd5657c5da0df9c99a6fe6",
+          "bytes": 248140,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/cd6e95574ab84804887069d86b8003da/probe_scores.npz": {
+          "sha256": "4c281082c278bcc0a7639317138bf7ba67d43eceaa4d590f7a738594359e448f",
+          "bytes": 248114,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/1dba1d7b6e8a4e35849b1111b0837796/probe_scores.npz": {
+          "sha256": "11cef80aebe4c9067a8dbd0ba7ddba59bf85b75fdb2346bb19b69511204cfd56",
+          "bytes": 248236,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/d5f06260fec9468f965420dc7f063a93/probe_scores.npz": {
+          "sha256": "7a46387f61cdef2051ff563ec22498f5bc0dc2c13ce741242853db5ac4e51a3d",
+          "bytes": 248407,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/cfeab1233d024552a51ab3c7e33d52da/attempt.json": {
+          "sha256": "40652381c252e351efafa1256ca001002cd940f3b517c6a9dcb6c45504d5de2c",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/204a91d70cae41ef87846158ff716e3d/attempt.json": {
+          "sha256": "9e306fa3f390030176810e18d7314e653af3920c2c00f18f01e156221332d8ba",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/204a91d70cae41ef87846158ff716e3d/updates.jsonl": {
+          "sha256": "8e9a68abc5b0a74ffa27580e3fd95d9a31779ae69f5f96add786551b99703c89",
+          "bytes": 870138,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/d786bd40bdea4c7586e9a7bf3ee8b8ea/attempt.json": {
+          "sha256": "1a7e8553baaf0353cf7f04ed21dedf253d212cc99d4e03bc4f1527d0697ae600",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/d786bd40bdea4c7586e9a7bf3ee8b8ea/updates.jsonl": {
+          "sha256": "16cf05752ecaaceca9844e0fbc09004f2f74e06a22421821ab2e04d496b3d1ea",
+          "bytes": 870106,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/cfeab1233d024552a51ab3c7e33d52da/probe_scores.npz": {
+          "sha256": "d20858d80ebc79fb99b06e35ca45b5ba91794725215b28dad44d447ace787af4",
+          "bytes": 247886,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/204a91d70cae41ef87846158ff716e3d/probe_scores.npz": {
+          "sha256": "86ca7120d852d50ddc10efed93de781fb3e6058dfec9d548fe9c1ee8ffe8e6e6",
+          "bytes": 247977,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/e626685f32fc467f834a1b7c04937ee3/updates.jsonl": {
+          "sha256": "45e25b1957ebcca7235c19e63500eee2839907437dbbb72a9a505b22f3b3eead",
+          "bytes": 870025,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/e626685f32fc467f834a1b7c04937ee3/attempt.json": {
+          "sha256": "c8e276012ff88807609a6bfcfea9e43531ec3b9f719dacd76ee75663944d3f65",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/d786bd40bdea4c7586e9a7bf3ee8b8ea/probe_scores.npz": {
+          "sha256": "e4c5da96b97e77d9fef23859557c541df4a76c4b55ec85896329a9f7fcf35a97",
+          "bytes": 247795,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/b39979a9307740b5bf7b7c51a5caf303/updates.jsonl": {
+          "sha256": "78676baaf04fe0a6a21735f451040d20c6f6140827b81eeb16796122d4f70371",
+          "bytes": 870216,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/b39979a9307740b5bf7b7c51a5caf303/attempt.json": {
+          "sha256": "4aac529fdc4c565cd274e99ad28041156562504218593bdc3f3514c426400dbe",
+          "bytes": 745,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/e626685f32fc467f834a1b7c04937ee3/probe_scores.npz": {
+          "sha256": "acca5998ed8e1179cffaf0082838918fdde2d720857f45b8bc0574fd48fe7ace",
+          "bytes": 248086,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/b39979a9307740b5bf7b7c51a5caf303/probe_scores.npz": {
+          "sha256": "1b52c36c6969682da9ae02f2795818a28f95d9584475fec926215214b7e461f2",
+          "bytes": 247608,
+          "repo_type": "dataset"
+        }
+      },
+      "verified_bytes": 11362093
+    },
+    "mixed99": {
+      "snapshot": {
+        "run_id": "20261114T001352Z-full-completion64-mixtures-mixed99",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "386bef2c0f6e2fb5fe27dca3d355eb54dd46dd17",
+          "dataset": "621dd475a3422e638a6c2cadab14405659476d23"
+        },
+        "artifact_index_sha256": "59c878bba2aeb4d88e7c0604af4510d9335531d50c491d760277bea143393dc1"
+      },
+      "files": {
+        "seed_42/gen_00/metrics.json": {
+          "sha256": "e71eb4fdece13d61c90bc895873bda27794e625c24ca796f0f93a86ffd569497",
+          "bytes": 3818,
+          "repo_type": "dataset"
+        },
+        "completion.json": {
+          "sha256": "a24f2251611d8afe3b4150f69e764734a4956969271508a2a971d0ad4fb7f6bc",
+          "bytes": 93,
+          "repo_type": "dataset"
+        },
+        "config.json": {
+          "sha256": "fac4c846b9190463063d73aa4c4877c8aaa2912fefc312028ce5a190e16b92fb",
+          "bytes": 8606,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/diagnostics_manifest.json": {
+          "sha256": "d0b265f6263ca9259ac974140cb675ad20c49e7ba424731104188a0b156203c6",
+          "bytes": 1594,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training.json": {
+          "sha256": "1c76274d6e6e6640e0cd5b89b2441731f8b133309971e723d5bd16291c08877a",
+          "bytes": 3957,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training_history.json": {
+          "sha256": "28b7ed26bfaf1167bd210cbcbae3c8d5e810398f04923e8f23636707b7cffd66",
+          "bytes": 325,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/stage_completion.json": {
+          "sha256": "f45a294c0a4863582d727e276bf32f3d0a15b24896e25031655c771adc4bb6ae",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/diagnostics_manifest.json": {
+          "sha256": "94c6aca7c79c7f8e24800db9cfbe75f84425ef4371797e61c86c618431428dbe",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/metrics.json": {
+          "sha256": "f9e4ce58f7b10977d9a3c7e0278f215d92f3921457a83a768799fc1720c8dd44",
+          "bytes": 8253,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training.json": {
+          "sha256": "b5f928318802993fbf2f929276861fa1d1930d837387725156f4e07164e9f050",
+          "bytes": 4147,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/stage_completion.json": {
+          "sha256": "67ae97bb125c04659e753f265c1561a3c65b2229705bdcb7ff0890c2b65601fb",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training_history.json": {
+          "sha256": "e4b8a274657d6af9a1b21fc6a8302504cd98ff06c27aa23a1e76380d2070c9bf",
+          "bytes": 331,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/metrics.json": {
+          "sha256": "bc13a6218267d52101cd099150e15c5d749be77b3050c8949d4033a53964e4c5",
+          "bytes": 8447,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/diagnostics_manifest.json": {
+          "sha256": "6ae4f6308c9d8f3a6463ec530fd26e110eb70b53dfedb605e9ba43f62233232c",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training_history.json": {
+          "sha256": "df1a57949a9967f689360b446e8f0e9eaf950342db55c106e30e4db4e61ec585",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training.json": {
+          "sha256": "6e4ef0b0065886ba0c73e0e74e92cf05b0fe6af91f7527d873bfb7510270f4b0",
+          "bytes": 4147,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/stage_completion.json": {
+          "sha256": "48e8d9b42eab6ca9304584711fba953398f4575d2e5ea206dfa66dc7d7c18a1c",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/diagnostics_manifest.json": {
+          "sha256": "f6cabe949e49e5cba34d25d3d14c3815b0290ae7ea810c2b2f92227fc6fcb19b",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/metrics.json": {
+          "sha256": "8cc8087a4db19cca5f43dfbb4130939f127a3ce077b9a27d3b122e381226435c",
+          "bytes": 8444,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/training.json": {
+          "sha256": "054309d3cbe8953beac9a24867e0d661a7785c1860ffac6c9824ae7ff67c6947",
+          "bytes": 4147,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/training_history.json": {
+          "sha256": "8e5b0ddafdc54fbbbc13720860331d247e5a8c00d004f509b11f8e629deb60b3",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/stage_completion.json": {
+          "sha256": "92b6489842a793327d04e5aeb74a4d0ec13c02d4064a1be33921d7d3af5b6b39",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/metrics.json": {
+          "sha256": "406152d57cf5870d291bd416edc22e7a9142332724fcc90b6d3d2d7d59eaa675",
+          "bytes": 8450,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/diagnostics_manifest.json": {
+          "sha256": "ef7d0695ff6fdd946781d4a6d016bb2fac880954599a3f76236fa50c2c27b61b",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training.json": {
+          "sha256": "608c9645b60f02a0899978e2f7c63e2b537bf276b727ab584ebe11df44a73055",
+          "bytes": 4144,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/stage_completion.json": {
+          "sha256": "8025a4648a6a77bd592402d631c8b0363f9aaefbac3108d9fa3f9a07d7fca826",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/diagnostics_manifest.json": {
+          "sha256": "622399e8e1e237e2ba43f615680a218432897fe97585930777bcf50bb96a9303",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training_history.json": {
+          "sha256": "1d7afa0fd64df49f51f1b801433ebf668be9147673947143c434ee85707e7ade",
+          "bytes": 327,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/metrics.json": {
+          "sha256": "b6e1817a6ea1f495d80bfc5942c39b7b6dd3432a2e0dd172165f6b4662b8cb33",
+          "bytes": 8438,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/training.json": {
+          "sha256": "34d95f8afe7ceeeff54f4bbfaadf824c9b90bf7dea4c3b5fba77b744617798aa",
+          "bytes": 4147,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/training_history.json": {
+          "sha256": "2ed806d5b2014bcf0c5bb19c29d1b8d43b95f307fb93b2bda13bbd41de10c3dc",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/diagnostics_manifest.json": {
+          "sha256": "aa3839bf62a7b9bdfad00893b03cc6f466f8a2f62b570989a1188a72d237da58",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/metrics.json": {
+          "sha256": "9357e5b47c48e6412fc88816ee246327952d3e1d3f511aba3add0ea39f779cb4",
+          "bytes": 8447,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/stage_completion.json": {
+          "sha256": "f6fa2a48bd936e07805cf06d7ebedf3519825fc23d3f43195d02362224c3d299",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training.json": {
+          "sha256": "6bd37af4365ade4ee6c4d76305c78a17d02cc46b57899aefc312100267ff380b",
+          "bytes": 4146,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training_history.json": {
+          "sha256": "eb26651a3ed8ba21c2eaaf6b52862c312e37609bec397a53087dca3e7dc62348",
+          "bytes": 327,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/stage_completion.json": {
+          "sha256": "b8f68c22a3b1de7d55ac65cbc9b8b3242f7cac9935c561ebdde08b48e3f0b722",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/diagnostics_manifest.json": {
+          "sha256": "39b5cf4360ccf4438ace5ce70468dd93a5be2315cfec4f875cc125bb33514c70",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/metrics.json": {
+          "sha256": "27699cb7eb768fe68e553e99d085681ecd99a8e50af161b4ad92a365058fbcdc",
+          "bytes": 8435,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training.json": {
+          "sha256": "3a88f0eb5ce2073450f5ae34ef9a2d158292c4a4103c51936fd585b3a098e6e3",
+          "bytes": 4146,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training_history.json": {
+          "sha256": "aaef963c990b373787c23969c0f5811630d84ae68fb87fc161731cc2cedc1c29",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/stage_completion.json": {
+          "sha256": "0552c28b609d2a957c3535f2d1146427a9ce2b32b9746549cd3e467cb3bd18f3",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/metrics.json": {
+          "sha256": "35c401d83a1a1528bbbff5b59588a8b63f3e76317c422ac5803e13f6c36beb17",
+          "bytes": 8436,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/diagnostics_manifest.json": {
+          "sha256": "e07146b50f42ad005e79dc76163fc5a606e623867daa35900a6988df6beee217",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training_history.json": {
+          "sha256": "a59dd9c2bc5b580a5d3bab41b398f2f8aa63b89ed44434cceec620a62319fe85",
+          "bytes": 330,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training.json": {
+          "sha256": "48a5ddef1068b831c05fd9050571c976420509f7e6aa01a7840a19da599b17a7",
+          "bytes": 4145,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/stage_completion.json": {
+          "sha256": "814f2dd1ed3782727a58d4ce756e04d9c00eb80994c06cf685de0195f7925d5d",
+          "bytes": 3133,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/metrics.json": {
+          "sha256": "df0747c90a173f0e2d181fc6f97bb3d37281af0295a3c8934d59f23b70e84714",
+          "bytes": 8438,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/diagnostics_manifest.json": {
+          "sha256": "bf5c87c4ff705bc1efbed378e22f89fceb0407ccf042748c01aca60fdb1318bf",
+          "bytes": 1660,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/stage_completion.json": {
+          "sha256": "225035f5fbd53647841e9049a59a35efe2c8794d33004727ac0f83b4301fdc74",
+          "bytes": 3134,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/training_history.json": {
+          "sha256": "5c461f939fed17054d177ab832ee63d09498dafee333eefe5154403f82f8b9e1",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/training.json": {
+          "sha256": "01a1a5b97d5b81511a4c23ae8671b2d51d05a25549b3dd6c84d2d3dbdd9ba528",
+          "bytes": 4149,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/metrics.json": {
+          "sha256": "a5a5f0835dbf801b1ccf863099ed36f33b2e7525977d70d4f6f5845d3e82392f",
+          "bytes": 8450,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/def5978582c34fd98fc7898abc91b1f5/attempt.json": {
+          "sha256": "8f2e9aadd2a2fb0da501c47e99e904de4812044a5cf245c8bd87ac2de9dcfac9",
+          "bytes": 682,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/def5978582c34fd98fc7898abc91b1f5/updates.jsonl": {
+          "sha256": "ccba2966cec594ea6559153650d9b9b0b504f36ccf71081f062a14c17e17669d",
+          "bytes": 1021839,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/4f82b349470e4f09bcbdfb506aeb3fd2/attempt.json": {
+          "sha256": "14b760eac3041a9341bf7c2fbf4ca7f4c1546b947342b59b4c087c4a56fad4b3",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/4f82b349470e4f09bcbdfb506aeb3fd2/updates.jsonl": {
+          "sha256": "155d5894682c16daacf9f3f4023757aea8f11acae383860062b9efaeec16b71d",
+          "bytes": 1031359,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/44df02cd479d4c468f5d099fd492a8b9/updates.jsonl": {
+          "sha256": "528147202ee24bf5c6d1e9be62cba4137edf93f2ae12763a1328ddf4cf9bfaf2",
+          "bytes": 1022471,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/def5978582c34fd98fc7898abc91b1f5/probe_scores.npz": {
+          "sha256": "0ff8058251def28fa27f36280b88431d17adb1a5138f9ec36d9024ad7b2aa6ac",
+          "bytes": 273917,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/44df02cd479d4c468f5d099fd492a8b9/attempt.json": {
+          "sha256": "55ee306b3fa0a472bc1ce0734f375ac24948bac72d1410887a9debf090235ac0",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/4f82b349470e4f09bcbdfb506aeb3fd2/probe_scores.npz": {
+          "sha256": "f76972cdf48cc45791f9a26b20a5f1ba7ed31967ae3449ffb515ea8676e3d0bc",
+          "bytes": 291799,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/17a0dce8397a44c9aff22f63c732f533/updates.jsonl": {
+          "sha256": "e8d8313855afce54dec3907050b369e5f991059ac9da33a69a71683e1929db5f",
+          "bytes": 1040312,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/17a0dce8397a44c9aff22f63c732f533/attempt.json": {
+          "sha256": "18743ff69b082eb11dcf050c98481e28c90ae486c92999597d4f12fb14dea6e0",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/045d96f4e93f4bbbbb1befde3b7761b4/attempt.json": {
+          "sha256": "f9b4eb48d89046cb90b939b8cd1fc6d6e51fcd9df499b44dcc42018afb2c6330",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/045d96f4e93f4bbbbb1befde3b7761b4/updates.jsonl": {
+          "sha256": "515b8b00debc68c25a46693019eaa615faaddac1178734979a14f933e1786244",
+          "bytes": 1048980,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/44df02cd479d4c468f5d099fd492a8b9/probe_scores.npz": {
+          "sha256": "f8ab52586f8798c9787f944d7b635494a50483f2b09b4f4bc5ec10edb9be773e",
+          "bytes": 296599,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/5d42f476c69a47a58a3841fdf9fe738d/attempt.json": {
+          "sha256": "0c78f4e648e2b5cedefcc611e17bd97dbfb0bcd6052aa2521e677ce39da1500c",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/5d42f476c69a47a58a3841fdf9fe738d/updates.jsonl": {
+          "sha256": "84eb9a698f3c3f2620d9769b0af14885b858d70263b4327595107dbac49b2f86",
+          "bytes": 1039878,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/045d96f4e93f4bbbbb1befde3b7761b4/probe_scores.npz": {
+          "sha256": "f235a5094d30139c55f4258e416db9126d2368b1a5852186ca332766d30f7afc",
+          "bytes": 299412,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/ace02cdb2595481c8191c6547ca83bee/attempt.json": {
+          "sha256": "81bf4747b0ab7507b1355ef148fec963a5b9f03aa4c34d1ab6afae628f40bbcc",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/17a0dce8397a44c9aff22f63c732f533/probe_scores.npz": {
+          "sha256": "0fd8c6f9f9a2409fe92688968e74d4fcd362f4a7e4f1244d0b5d877b6ab66f2d",
+          "bytes": 298273,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/ace02cdb2595481c8191c6547ca83bee/updates.jsonl": {
+          "sha256": "c54108823ceb45b81dc2a02c6ae60cd9b4353fbb9caa7510b8abc1aab89393bc",
+          "bytes": 1025485,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/5d42f476c69a47a58a3841fdf9fe738d/probe_scores.npz": {
+          "sha256": "aa5aecb9f5f1cfd70fa777cc8747d163ebd938f4e2ef0e2005b3da9b7ac25e35",
+          "bytes": 299986,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/a405af55bc9a460facd3bdd353b59196/attempt.json": {
+          "sha256": "b4e54b24e5d30509bdd514d0566ab4c0a601f30206f443cbd63f716175b539e9",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/a405af55bc9a460facd3bdd353b59196/updates.jsonl": {
+          "sha256": "f96e4fb9117302ef4bda098b50f11d3eace479e1cc5c5e96c3b5c74f54407858",
+          "bytes": 1036745,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/4904b75aef6641eb99c9085c5b903279/updates.jsonl": {
+          "sha256": "9d85b6d9ef6e5ee403adb8ce0747e5205b4afef1cb17da6f75f2417718d025a2",
+          "bytes": 1039699,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/4904b75aef6641eb99c9085c5b903279/attempt.json": {
+          "sha256": "dbb94cbc088d8de46bf50b669c3734b2d3962c26d5ac9f58488433dffc7af42d",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/ace02cdb2595481c8191c6547ca83bee/probe_scores.npz": {
+          "sha256": "5a4b6cae375fc40d2325fa35df8784a3bebc274debf03b8926406acf45d842dc",
+          "bytes": 299045,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/cf8ed6b5804b440297c675943560b3f4/attempt.json": {
+          "sha256": "26a049b45c027f62d5125ae91eec2ed3bba145abf65590022b1be28a14410d28",
+          "bytes": 745,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/cf8ed6b5804b440297c675943560b3f4/updates.jsonl": {
+          "sha256": "4b4f30e4bcbac54dca50b5c3e1dde34fa1a41469728820b6ffbeb81cf8a5f9ee",
+          "bytes": 1043017,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/a405af55bc9a460facd3bdd353b59196/probe_scores.npz": {
+          "sha256": "e4ce2383ea00240ff216c94b5d3fb810d92e364fbff29c18d957fdc1150e3693",
+          "bytes": 299762,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/4904b75aef6641eb99c9085c5b903279/probe_scores.npz": {
+          "sha256": "7120561ec45091923e165b9bfb28326ed634cbdb22258164fa711bd5459c3271",
+          "bytes": 299772,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/cf8ed6b5804b440297c675943560b3f4/probe_scores.npz": {
+          "sha256": "5750233af40cd81e82239ad820d72af079ad1f7a5bfbd01980647c5c248955b1",
+          "bytes": 299739,
+          "repo_type": "dataset"
+        }
+      },
+      "verified_bytes": 13504636
+    },
+    "synthetic": {
+      "snapshot": {
+        "run_id": "20261114T001352Z-full-completion64-mixtures-synthetic",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "a65a46e171052abad42dca18c5849ab3ec5bb107",
+          "dataset": "54b13aad2fbb106d1cb0e07f2e622c2bc3e8a83d"
+        },
+        "artifact_index_sha256": "66c7aaa1290961b35c3ff255318325b838aac20fab576a8905b66f2503fb150c"
+      },
+      "files": {
+        "seed_42/gen_00/metrics.json": {
+          "sha256": "e71eb4fdece13d61c90bc895873bda27794e625c24ca796f0f93a86ffd569497",
+          "bytes": 3818,
+          "repo_type": "dataset"
+        },
+        "completion.json": {
+          "sha256": "c66338a9f8694001c3bdd90abdbdd735dccdbd80d301dd847d511081f4e88cc1",
+          "bytes": 97,
+          "repo_type": "dataset"
+        },
+        "config.json": {
+          "sha256": "9945c5e90189873ef3707b49653c9fb05cbe9cf15297b28996302d6abbcd6409",
+          "bytes": 8611,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/diagnostics_manifest.json": {
+          "sha256": "a79e7780926730b1c8e348d806958a365daaeb48be3cf3122cf718e302a6213e",
+          "bytes": 1593,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training.json": {
+          "sha256": "101e8d3db0f0db2e89fe37045229feac6c8ff1503aea5f102a1e4ccde9ca1410",
+          "bytes": 3779,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/metrics.json": {
+          "sha256": "da86c8d8f64ba7a107995f27193d7b675a3320c350d4d58a453c5d77d248faae",
+          "bytes": 7862,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/training_history.json": {
+          "sha256": "98c742ddfba75fccd5b38710f2389219b86155a26fd8e48cf7b43faacf445187",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/stage_completion.json": {
+          "sha256": "12e8a3441806a07786e45ba18f7362262a5aa77411752bc332be44b366548203",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training_history.json": {
+          "sha256": "b97d1e05509a49b9dd2bc8bda1189a0813bab8c7308fbe9280181630415c0069",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/training.json": {
+          "sha256": "ccd937513dec9c4e921dc43a7bdda68700c6d56d2659d6909547eaaadae4ac39",
+          "bytes": 3965,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/diagnostics_manifest.json": {
+          "sha256": "02648564fc0d80c2ed6b99e1e27169e604a2d05e7fff4468d08310ff4eb93581",
+          "bytes": 1657,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/metrics.json": {
+          "sha256": "43fb87fcd2d71e7c777c9da9a11a594bf5e8345c0b4f4436c212321ca4cbed40",
+          "bytes": 8044,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/diagnostics_manifest.json": {
+          "sha256": "f315fd339af1ae98979d0b9c001fb7636f32e7e1adcb41dbf9b99c4820403db4",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/stage_completion.json": {
+          "sha256": "9013eb16a861726f121e2e64c8a3388b7cd1b199884cc766759ec160fa2daba5",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training.json": {
+          "sha256": "93ba8e1d9cfb366ebe25132c044be7b7aae4b23abeab33bc7f6ea7eb7fa423f3",
+          "bytes": 3967,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/stage_completion.json": {
+          "sha256": "cacf8891b8cd56fef89251e9c7a13948b3e3477ac1351c81d74e769291edb013",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/training_history.json": {
+          "sha256": "c03a94d711845f7db12fd3fadb5fc297c4e06d783e41dc7b298a7bf6e35d3740",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/metrics.json": {
+          "sha256": "e216991fb9d00cb2fb2ab755683b9e5c3dd952adfdd03efec886436d4bf315e1",
+          "bytes": 8052,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/diagnostics_manifest.json": {
+          "sha256": "1850d7230a7b139771fe7a8d39bdd27bcebd13a1c6f3a082a07d5fa63efeb3b0",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/training.json": {
+          "sha256": "4e4468a0b838a54fe7958b9d622a109cec72db730d695cb758be45abe8e4a07d",
+          "bytes": 3967,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/metrics.json": {
+          "sha256": "4651260cc089370e86450519884e23481dc127416085510dae6bc9f7bf39d238",
+          "bytes": 8048,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training_history.json": {
+          "sha256": "60490d9b75cd27a0c47c47191013c2e7c8d4182dcac50061bb50f6cb8ebaf4ab",
+          "bytes": 330,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/training_history.json": {
+          "sha256": "ce8cadf71982a792d661a0c58a5bb796c9bb3db146f6ba0cb3a760a9262e5cc9",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/stage_completion.json": {
+          "sha256": "1bb4d691c43d2cbe1c822853ad14c8315e618d6eee0a5427d454e5a327f884ad",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/diagnostics_manifest.json": {
+          "sha256": "5215552bc93bdafb6dc76fa29a8059aeacf37897647e6b10ed56d97927997da1",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/training.json": {
+          "sha256": "cdf37b5a5af19da6aff9d283dc3aa4d0782a81964167bb8ce2dda50c2d17f59f",
+          "bytes": 3969,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/metrics.json": {
+          "sha256": "50e5af464539fd0c3c56309661e4da587e8f44849028336153095cf874abe467",
+          "bytes": 8049,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/stage_completion.json": {
+          "sha256": "42b930e519488e0f41591fe4b78996176f2334b914a8c656569a39392cb69f2a",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/training.json": {
+          "sha256": "443bc2eef7a9d3f62f1822ede0ed1aaa7a669d6af90c1926ba6f503043f83ba0",
+          "bytes": 3965,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/diagnostics_manifest.json": {
+          "sha256": "65bcaff7cef0ddca734651855bbafd2f711865da32eab074b43e9110f3cdc108",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/training_history.json": {
+          "sha256": "8d3fcd8089f6160bb68027440277a6b814d3e05419b86d1773fe2a53902a7cdc",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/stage_completion.json": {
+          "sha256": "3b047de641e16047af49e4a496378d872c3cabc390963ce9a7ed23608f1e535e",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/metrics.json": {
+          "sha256": "4e8c1ea345efa59c94f9146961fbba17ce99c2ff0a9a3a18fa9e27ef5e50522e",
+          "bytes": 8046,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/diagnostics_manifest.json": {
+          "sha256": "e682b7c697dd58883454dda09f492deddd03cd3cd9c0e013dcd3ea97abbe688b",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training.json": {
+          "sha256": "277de87e1979ee1e630679a682531901584199ee3d40d24180c9b48649cb737c",
+          "bytes": 3966,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/training_history.json": {
+          "sha256": "115e073d205d97cac69d2202bde71477a74fbce9111062c43458a9ac8073694d",
+          "bytes": 329,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/stage_completion.json": {
+          "sha256": "33d1ab754aa85d894f06a6712ec01e4febe0a1fe62d6eb6c9eb80751ab2abf9d",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training.json": {
+          "sha256": "062377ba22fdc4b585d22ef3ec7be2011f2737f396cf4f0cef28dd7cb29030d7",
+          "bytes": 3967,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/diagnostics_manifest.json": {
+          "sha256": "97eb2b219bc05614259328982d52314e9411ec6aff7b3c30d405e5b54ec8c259",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/metrics.json": {
+          "sha256": "fcf58ea9fafa2c4833b6d5bdc143c3a61cdc61064a6c2fe50a28a2cf86e02b51",
+          "bytes": 8051,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/training_history.json": {
+          "sha256": "59a2b039bc9d3912cc0e9081cef00d43256a57384e99dcdbc2f91e41b791a871",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/metrics.json": {
+          "sha256": "d6762a56b0fcd22cd16a49ff0e55008432231f1bc0aa9e66f9315497e6436a60",
+          "bytes": 8046,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/stage_completion.json": {
+          "sha256": "ada0a6c902ab896a742c6997a39c6eb6e3d9236c35cfc23b307321f7df0644cf",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/diagnostics_manifest.json": {
+          "sha256": "b83aade1383a43b7c5ab7c217f1d5846c7a7269d818d300327d61befb8623ac0",
+          "bytes": 1658,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training_history.json": {
+          "sha256": "67f6f2e996034578f36bc4431ef1bb66f3b2822d77c96129311bf8cbcef7c615",
+          "bytes": 327,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/training.json": {
+          "sha256": "e9b9b70232a708ed48cfe1492e7de88a56e8d261bbfba9225af708134fdac9fb",
+          "bytes": 3967,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/stage_completion.json": {
+          "sha256": "91162954934474481aa49cb1091d239c09e2396dc8ca146852aa554eb97a5334",
+          "bytes": 2439,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/metrics.json": {
+          "sha256": "ed2991ca6d17afd39cbc62d253cdc480a73c334f6ab5329b1d692ebf70e99533",
+          "bytes": 8058,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/diagnostics_manifest.json": {
+          "sha256": "a387f54421d45b1aed90451f288c15e458d8791928cc5abb62c83f83d0333d27",
+          "bytes": 1659,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/training.json": {
+          "sha256": "d09e9c04cf16bbd5ba68b911f5e1cd06f0783faf6ee5135ae8ec28256e273cc9",
+          "bytes": 3968,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/stage_completion.json": {
+          "sha256": "25ed37a23bb29743d78426ebe86330be72d6e14cfc6fe2d8f934d85170ab8dac",
+          "bytes": 2440,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/training_history.json": {
+          "sha256": "64131ad0805c2a08327d278df15765a58955320d3858bebbb130da2bea0ded5b",
+          "bytes": 328,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/metrics.json": {
+          "sha256": "7ba71e45c3fb2ffb018b60e52679e25b360314f22fe46fd502a33ae9fa543d21",
+          "bytes": 8057,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/c757353c9894477d9250cf4a22ca587b/updates.jsonl": {
+          "sha256": "2d58b26d96a9f6fb4920fe553bd9e4f258e08deebdeb1144907942d244906e7a",
+          "bytes": 869102,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/c757353c9894477d9250cf4a22ca587b/attempt.json": {
+          "sha256": "4f7fc01a81b859ef7828caa2eef50bf7170590f998cc60b8b10e7d098cddff5d",
+          "bytes": 682,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/09d1e94fa35f4bb39ab5ea5942910561/attempt.json": {
+          "sha256": "6958bbcd697e632fad7220983a8a899947e054aab4602a259b9895b328b822a0",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/09d1e94fa35f4bb39ab5ea5942910561/updates.jsonl": {
+          "sha256": "54e9be04613b3a68f8cc4db5216d1fc3c1f1defa4576db571724ae137ac83fb0",
+          "bytes": 869939,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/a66e3d320a5c4322af45073a1585a82f/updates.jsonl": {
+          "sha256": "81ffd349ca5de2a57ecb64d8e4573ae54439af9fb1752414e13b019c940a5611",
+          "bytes": 870560,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_01/update_diagnostics/attempts/c757353c9894477d9250cf4a22ca587b/probe_scores.npz": {
+          "sha256": "0cf0b93fed56396af72a1a56d9f7828e400c661526e02586d06887e46dce7a6a",
+          "bytes": 274416,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/a66e3d320a5c4322af45073a1585a82f/attempt.json": {
+          "sha256": "aed1d62d192b70fdb581bf052cf967a321b207c0a5c26bfdffe501165c0dac16",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/38828e849c4e4a19919a8bf8b068d3fb/updates.jsonl": {
+          "sha256": "bac2a4a43d5e9955004551f6aa67f5f96a42f6e3c032676ef94ad7247b62fccf",
+          "bytes": 870721,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/38828e849c4e4a19919a8bf8b068d3fb/attempt.json": {
+          "sha256": "e0be57abcfec806a625da8b0b9cdfb505fd08f5bbe1097a82b07a6daba2b4704",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_02/update_diagnostics/attempts/09d1e94fa35f4bb39ab5ea5942910561/probe_scores.npz": {
+          "sha256": "46ec222813557c93fb212379c215c2d0e48458f43f7f54f56cb9083fed5d8c5b",
+          "bytes": 293229,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/11588804f1344cc19f2f602ebd11d8fb/updates.jsonl": {
+          "sha256": "787e678a35801a1058040b7a09308b7325ef00b35c8f468e8cd478a30f0a0878",
+          "bytes": 870627,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/11588804f1344cc19f2f602ebd11d8fb/attempt.json": {
+          "sha256": "578684dae3911f50e291cea45024a1238ffce677415c8f8850b217b7d61cf28a",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_03/update_diagnostics/attempts/a66e3d320a5c4322af45073a1585a82f/probe_scores.npz": {
+          "sha256": "8ba20ad2a1242a2598d60c1ac6c9a0e9f467a5ddd6d4469631d96119d72dbeb0",
+          "bytes": 297681,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/c2665418d28a4e78a78ecbd182ad8ffb/updates.jsonl": {
+          "sha256": "ed5f8695ba930e526cb3ac8e069a96230e3e20b300c1b5d87eba5f244218674b",
+          "bytes": 870573,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/c2665418d28a4e78a78ecbd182ad8ffb/attempt.json": {
+          "sha256": "a7672a9d9caa7bfbbeb766dec043cec2bddae23853c93c4ceaf3ced8be1b59ed",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_04/update_diagnostics/attempts/38828e849c4e4a19919a8bf8b068d3fb/probe_scores.npz": {
+          "sha256": "cb16123a118c587ba0def17bfeb5a3b00b673ec1496d43fb6e0815848b6165da",
+          "bytes": 299530,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/970973793f8741efb765f98b05a284bc/updates.jsonl": {
+          "sha256": "cc21912bd4d30c4d10ff7a81042bfa07caa5d973330c0316ff06cf08c9da2f79",
+          "bytes": 870386,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/970973793f8741efb765f98b05a284bc/attempt.json": {
+          "sha256": "2f05bffd24b4fdb3ebd75200bd800f310fbfc2d728f949f3fd3f7ae7a9ee4b39",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_05/update_diagnostics/attempts/11588804f1344cc19f2f602ebd11d8fb/probe_scores.npz": {
+          "sha256": "deee653c1bd293908237a50d1f5bf3acb6521d561e63bce34da01d987c5319c7",
+          "bytes": 301030,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_06/update_diagnostics/attempts/c2665418d28a4e78a78ecbd182ad8ffb/probe_scores.npz": {
+          "sha256": "c9ca7dfdde69c27ab38c1855fcf398746233523ac557c9c35c7880903d7c64a8",
+          "bytes": 301754,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/d8d1e153d24e4d368aeb5eee748d8045/updates.jsonl": {
+          "sha256": "15231005580c9492a9d13d858b9a3bd1a0df21574c0b72eda1b87fe56c119b6f",
+          "bytes": 870536,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/d8d1e153d24e4d368aeb5eee748d8045/attempt.json": {
+          "sha256": "20a840c426c6710570f76ee6ad30be22d3e1b2ff276d13155fc76bb8b5b910d8",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/62e5aed121b24bcda3a4bfb9f3899b92/updates.jsonl": {
+          "sha256": "f5281d37e6a4545a8fe0682ab18e6d78f6840cc1c5072ce36cbc526aa9360908",
+          "bytes": 870255,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_07/update_diagnostics/attempts/970973793f8741efb765f98b05a284bc/probe_scores.npz": {
+          "sha256": "0e00a209d82612beac3606236c07b846e4c9f08c7edceb3e7c164a0a1188fbb1",
+          "bytes": 301941,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/62e5aed121b24bcda3a4bfb9f3899b92/attempt.json": {
+          "sha256": "3048ffea1f117d9d9c8bef980074f6291232fe5a434728c6322bce59602b162b",
+          "bytes": 744,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/a9b9b241199942148f32dad1182bb63b/updates.jsonl": {
+          "sha256": "d405900d718c66a0b6a3825366b46da061158a6fa397f3974537851a0e065a8b",
+          "bytes": 870766,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/a9b9b241199942148f32dad1182bb63b/attempt.json": {
+          "sha256": "3201e66f9852330abd0b76fe15e01f58113bcffad613c8f6ec6e2380efa73266",
+          "bytes": 745,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_08/update_diagnostics/attempts/d8d1e153d24e4d368aeb5eee748d8045/probe_scores.npz": {
+          "sha256": "468a2a5279da6b4fe0d8da5beff76f67206ac411ee51bd39b416b069f0c019c8",
+          "bytes": 302069,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_09/update_diagnostics/attempts/62e5aed121b24bcda3a4bfb9f3899b92/probe_scores.npz": {
+          "sha256": "042162ce6e549edfb72a78c1193eadc7a3267a05bb19a0d5d9e05d47f97a0f28",
+          "bytes": 302634,
+          "repo_type": "dataset"
+        },
+        "seed_42/gen_10/update_diagnostics/attempts/a9b9b241199942148f32dad1182bb63b/probe_scores.npz": {
+          "sha256": "c6d1b9d38676710f4bea3cb7c99be6c186fa6935166ee8ae7b40521f9ece050c",
+          "bytes": 302576,
+          "repo_type": "dataset"
+        }
+      },
+      "verified_bytes": 11864214
+    }
+  },
+  "audits": {
+    "real": [
+      {
+        "cycle": 1,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 0,
+        "real_pairs": 10000,
+        "synthetic_pairs": 0,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 2,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 0,
+        "real_pairs": 10000,
+        "synthetic_pairs": 0,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 3,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 0,
+        "real_pairs": 10000,
+        "synthetic_pairs": 0,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 4,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 0,
+        "real_pairs": 10000,
+        "synthetic_pairs": 0,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 5,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 0,
+        "real_pairs": 10000,
+        "synthetic_pairs": 0,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 6,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 0,
+        "real_pairs": 10000,
+        "synthetic_pairs": 0,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 7,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 0,
+        "real_pairs": 10000,
+        "synthetic_pairs": 0,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 8,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 0,
+        "real_pairs": 10000,
+        "synthetic_pairs": 0,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 9,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 0,
+        "real_pairs": 10000,
+        "synthetic_pairs": 0,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 10,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 79,
+        "mixed_microbatches": 0,
+        "real_pairs": 10000,
+        "synthetic_pairs": 0,
+        "maximum_reconstruction_relative_error": 0.0
+      }
+    ],
+    "mixed99": [
+      {
+        "cycle": 1,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 52,
+        "mixed_microbatches": 80,
+        "real_pairs": 100,
+        "synthetic_pairs": 9900,
+        "maximum_reconstruction_relative_error": 1.946608160289589e-07
+      },
+      {
+        "cycle": 2,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 55,
+        "mixed_microbatches": 88,
+        "real_pairs": 100,
+        "synthetic_pairs": 9900,
+        "maximum_reconstruction_relative_error": 1.8705712948843945e-07
+      },
+      {
+        "cycle": 3,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 52,
+        "mixed_microbatches": 86,
+        "real_pairs": 100,
+        "synthetic_pairs": 9900,
+        "maximum_reconstruction_relative_error": 2.068123172188874e-07
+      },
+      {
+        "cycle": 4,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 58,
+        "mixed_microbatches": 85,
+        "real_pairs": 100,
+        "synthetic_pairs": 9900,
+        "maximum_reconstruction_relative_error": 2.2874350906672885e-07
+      },
+      {
+        "cycle": 5,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 61,
+        "mixed_microbatches": 89,
+        "real_pairs": 100,
+        "synthetic_pairs": 9900,
+        "maximum_reconstruction_relative_error": 2.5929172296165984e-07
+      },
+      {
+        "cycle": 6,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 58,
+        "mixed_microbatches": 93,
+        "real_pairs": 100,
+        "synthetic_pairs": 9900,
+        "maximum_reconstruction_relative_error": 2.2797985686928986e-07
+      },
+      {
+        "cycle": 7,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 53,
+        "mixed_microbatches": 79,
+        "real_pairs": 100,
+        "synthetic_pairs": 9900,
+        "maximum_reconstruction_relative_error": 2.640622545339035e-07
+      },
+      {
+        "cycle": 8,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 57,
+        "mixed_microbatches": 87,
+        "real_pairs": 100,
+        "synthetic_pairs": 9900,
+        "maximum_reconstruction_relative_error": 1.8044598946184025e-07
+      },
+      {
+        "cycle": 9,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 58,
+        "mixed_microbatches": 80,
+        "real_pairs": 100,
+        "synthetic_pairs": 9900,
+        "maximum_reconstruction_relative_error": 1.9326865298638595e-07
+      },
+      {
+        "cycle": 10,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 59,
+        "mixed_microbatches": 89,
+        "real_pairs": 100,
+        "synthetic_pairs": 9900,
+        "maximum_reconstruction_relative_error": 2.5714753262007856e-07
+      }
+    ],
+    "synthetic": [
+      {
+        "cycle": 1,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 0,
+        "mixed_microbatches": 0,
+        "real_pairs": 0,
+        "synthetic_pairs": 10000,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 2,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 0,
+        "mixed_microbatches": 0,
+        "real_pairs": 0,
+        "synthetic_pairs": 10000,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 3,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 0,
+        "mixed_microbatches": 0,
+        "real_pairs": 0,
+        "synthetic_pairs": 10000,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 4,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 0,
+        "mixed_microbatches": 0,
+        "real_pairs": 0,
+        "synthetic_pairs": 10000,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 5,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 0,
+        "mixed_microbatches": 0,
+        "real_pairs": 0,
+        "synthetic_pairs": 10000,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 6,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 0,
+        "mixed_microbatches": 0,
+        "real_pairs": 0,
+        "synthetic_pairs": 10000,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 7,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 0,
+        "mixed_microbatches": 0,
+        "real_pairs": 0,
+        "synthetic_pairs": 10000,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 8,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 0,
+        "mixed_microbatches": 0,
+        "real_pairs": 0,
+        "synthetic_pairs": 10000,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 9,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 0,
+        "mixed_microbatches": 0,
+        "real_pairs": 0,
+        "synthetic_pairs": 10000,
+        "maximum_reconstruction_relative_error": 0.0
+      },
+      {
+        "cycle": 10,
+        "updates": 79,
+        "final_batch_pairs": 16,
+        "real_present_updates": 0,
+        "mixed_microbatches": 0,
+        "real_pairs": 0,
+        "synthetic_pairs": 10000,
+        "maximum_reconstruction_relative_error": 0.0
+      }
+    ]
+  },
+  "scope": "All selected diagnostic seals/journals/probe arrays verified; no bulk model or optimizer restoration.",
+  "new_training_or_inference": false
+}

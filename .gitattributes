@@ -126,3 +126,7 @@
 /docs/history/2026-11-14_pre-sgd-launch-current-state.txt -text whitespace=cr-at-eol
 /docs/history/2026-11-14_pre-sgd-completion-current-state.txt -text whitespace=cr-at-eol
 /reports/20261114T001352Z-full-completion64-mixtures/generated/status-20261114/** -text whitespace=cr-at-eol,-blank-at-eof
+/reports/20261114T001352Z-full-completion64-mixtures/generated/update-gradients-20261114/** -text whitespace=cr-at-eol,-blank-at-eof
+/comparisons/smollm2_sgd_greedy_effects/analyse_updates.py text eol=lf
+/comparisons/smollm2_sgd_greedy_effects/recover_updates.py text eol=lf
+/docs/history/2026-11-14_pre-sgd-update-analysis-current-state.txt -text whitespace=cr-at-eol
