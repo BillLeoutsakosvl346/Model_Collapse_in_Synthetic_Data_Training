@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-16",
+  "authority": "User approved the whole-epoch source-ablation plan and requested implementation, bounded GPU acceptance and automatic launch.",
+  "allocation": "smollm2_sgd_epoch_ablation",
+  "task_budget_usd": 4.0,
+  "reserve_usd": 2.0,
+  "cumulative_ceiling_usd": 130.0,
+  "setup_ceiling_usd": 6.10,
+  "validation_cap_usd": 0.15,
+  "validation_max_seconds": 900,
+  "combined_paid_max_seconds": 5400,
+  "cycles": [3, 6, 10],
+  "branches": ["both", "real", "synthetic"],
+  "required_gpu": "NVIDIA RTX PRO 4000 Blackwell",
+  "hardware_substitution_authorized": false,
+  "maximum_unpaid_capacity_wait_seconds": 7200,
+  "credit_purchases_authorized": false,
+  "payment_changes_authorized": false,
+  "historical_resources_must_be_preserved": true
+}

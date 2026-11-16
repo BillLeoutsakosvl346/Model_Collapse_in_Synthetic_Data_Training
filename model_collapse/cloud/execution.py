@@ -1125,7 +1125,7 @@ def status(run_id):
             client.close()
     elif terminal_state(pod["status"]):
         from huggingface_hub import hf_hub_download
-        for name in (("status.json", "watchdog_exit.json", "acceptance.json") if r.get("workflow") == "gradient_diagnostic" else ("status.json", "watchdog_exit.json")):
+        for name in (("status.json", "watchdog_exit.json", "acceptance.json") if r.get("workflow") in ("gradient_diagnostic","epoch_ablation") else ("status.json", "watchdog_exit.json")):
             try:
                 p = hf_hub_download(r["repos"]["dataset"], f"{run_id}/{name}", repo_type="dataset", force_download=True)
                 result[name] = read_json(p)
@@ -1133,12 +1133,12 @@ def status(run_id):
                 pass
         # Observation of a stopped provider state closes compute once. Storage remains open.
         stopped, updates = now(), {}
-        if r.get("workflow") in ("mixed_campaign", "fresh_real", "completion_comparison", "gradient_diagnostic") or r.get("storage_backend") == "pod_persistent":
+        if r.get("workflow") in ("mixed_campaign", "fresh_real", "completion_comparison", "gradient_diagnostic","epoch_ablation") or r.get("storage_backend") == "pod_persistent":
             stopped, proof = _provider_shutdown(api, pod, r)
             atomic_json(PROJECT / "runs" / run_id / "provider_shutdown.json", proof)
             result["provider_shutdown"] = proof
             updates = {"provider_shutdown_verified": True, "stop_observed_at": proof["observed_at"]}
-        if r.get("workflow") == "gradient_diagnostic":
+        if r.get("workflow") in ("gradient_diagnostic","epoch_ablation"):
             accepted = result.get("acceptance.json")
             validation_end = min(stopped, accepted["time"]) if accepted else stopped
             updates["validation_estimated_usd"] = max(0, validation_end-r["created_at"]) / 3600 * r["guard_hourly_usd"]

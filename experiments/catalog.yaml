@@ -1,9 +1,23 @@
 schema_version: 1
-updated: "2026-11-14"
+updated: "2026-11-16"
 description: "Scientific conditions and their recorded runs; week labels are presentation aliases."
 methodology: ../docs/methodology.md
 metrics: ../docs/metrics.md
 conditions:
+  smollm2_sgd_epoch_ablation:
+    name: "SmolLM2 99% SGD: whole-epoch source removal at cycles 3/6/10"
+    state: awaiting_gpu_acceptance
+    workflow: epoch_ablation
+    definition: ../comparisons/smollm2_sgd_epoch_ablation/README.md
+    diagnostic_config: ../comparisons/smollm2_sgd_epoch_ablation/diagnostic.yaml
+    authorization: ../docs/validation/2026-11-16_epoch-ablation-authorization.json
+    offline_setup: ../docs/validation/2026-11-16_epoch-ablation-offline-setup.json
+    source_run: 20261114T001352Z-full-completion64-mixtures
+    source_arm: mixed99
+    cycles: [3, 6, 10]
+    branches: [both, real, synthetic]
+    learning_rate: 0.01
+    weighting: original_batch_denominator
   smollm2_sgd_greedy_mixtures:
     name: "SmolLM2-135M / FineWeb: 50% and 80% synthetic, SGD constant LR and greedy"
     state: completed

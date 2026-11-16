@@ -41,6 +41,8 @@ def training_contract(c):
                         scheduler_policy="none", learning_rate_policy=c["learning_rate_policy"],
                         training_decoder=decoding_settings(c), purpose=c.get("purpose", "production"),
                         diagnostics=c.get("update_diagnostics"), calibration_reference=c.get("calibration_reference"))
+    if c.get("epoch_ablation") is not None:
+        settings["epoch_ablation"] = c["epoch_ablation"]
     return digest(settings)
 
 

@@ -3,6 +3,11 @@ from importlib import import_module
 
 
 _ROUTES = {
+    "epoch_ablation": {
+        "worker": "workflow.epoch_ablation:run",
+        "report": "analysis.epoch_ablation:report",
+        "validate": "workflow.epoch_ablation:validate_local",
+    },
     "gradient_diagnostic": {
         "worker": "workflow.gradient_diagnostic:run",
         "report": "analysis.gradients:report",

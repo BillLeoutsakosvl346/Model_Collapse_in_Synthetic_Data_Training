@@ -149,3 +149,9 @@
 /comparisons/smollm2_sgd_greedy_mixtures/analyse_updates.py text eol=lf
 /comparisons/smollm2_sgd_greedy_mixtures/recover_updates.py text eol=lf
 /scripts/analysis/compose_sgd_mixture_report.py text eol=lf
+# Whole-epoch source ablation: stable runtime source and byte-exact receipts.
+/model_collapse/**/epoch_ablation.py text eol=lf
+/model_collapse/artifacts/epoch_sources.py text eol=lf
+/tests/test_epoch_ablation*.py text eol=lf
+/docs/validation/2026-11-16_epoch-ablation*.json -text whitespace=cr-at-eol
+/docs/history/2026-11-16_pre-epoch-ablation-current-state.txt -text whitespace=cr-at-eol

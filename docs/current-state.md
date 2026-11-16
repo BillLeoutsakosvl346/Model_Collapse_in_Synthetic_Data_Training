@@ -1,6 +1,16 @@
 # Current recorded state
 
-Snapshot refreshed on 14 November 2026. Recorded state is not a live check. Previous snapshots and dated receipts retain earlier authorization/execution chronology.
+Snapshot refreshed on 16 November 2026. Recorded state is not a live check. Previous snapshots and dated receipts retain earlier authorization/execution chronology.
+
+## Whole-epoch 99% source ablations: offline checks passed, awaiting matching GPU
+
+The user approved implementation, bounded acceptance and automatic launch of independent **both / real-only / synthetic-only** branches from **M2/M5/M9**, replaying historical cycles **3/6/10** of `20261114T001352Z-full-completion64-mixtures-mixed99`. The [definition](../comparisons/smollm2_sgd_epoch_ablation/README.md) preserves original 128/16-row batch denominators, source targets and masks, SGD 0.01/FP32, RNG state and batch ordering. Both-source replay must match the historical epoch before interpreting its ablations. Nine branches have 711 scheduled positions; source-empty batches produce zero movement.
+
+[Offline setup](validation/2026-11-16_epoch-ablation-offline-setup.json) records **115 passing focused tests**, exact tiny-model historical replay, interruption recovery, zero-source/tail checks, CLI compatibility and source preparation. **110 pinned files / 100,899,873 bytes** were verified; all three saved target datasets reconstruct exactly and held-out identity is unchanged (7,447 validation / 7,303 test / 128 probe pairs). Model weights remain cloud-side and have **not** yet been restored for this task. The [independent review](validation/2026-11-16_epoch-ablation-review.json) found no remaining scientific or normal-launch blocker after fixes. Candidate runtime is `216b6438d9ae4d332c9a6d40f20b57b68957c415d47b5078d8205212b4814eee`; this is not a GPU acceptance certificate.
+
+Matching RTX PRO 4000 Blackwell stock is unavailable in the latest live CUDA-constrained catalogue read. Unpaid checks continue within the approved two-hour window. **No validation GPU or new volume has been rented, no acceptance has passed, and no full branch has launched.** Do not infer completion from prepared code or local source caches. The future launcher performs the nine-position miniature acceptance, then automatically launches the full matrix only after its certificate, forecast and budget checks pass.
+
+The [authorization](validation/2026-11-16_epoch-ablation-authorization.json) records **USD 4 task / USD 2 reserve / USD 0.15 acceptance / USD 130 cumulative / USD 6.10 historical setup**. Acceptance has at most 15 paid minutes and all attempts share a 90-minute paid deadline, including shutdown headroom. One new 30 GB working and 10 GB private backup volume are planned; none is currently allocated. Existing credit only, no purchases or payment changes, and historical recovery resources remain preserved.
 
 ## New 50%/80% SGD mixtures: completed and analysed
 

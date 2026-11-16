@@ -13,6 +13,9 @@ def main():
     diagnostic = sub.add_parser("diagnose-gradients", help="Guarded checkpoint diagnostic; no recursive training")
     diagnostic.add_argument("--config", required=True)
     diagnostic.add_argument("--preflight-only", action="store_true")
+    epoch = sub.add_parser("diagnose-epoch-branches", help="Bounded whole-epoch SGD source ablations")
+    epoch.add_argument("--config", required=True)
+    epoch.add_argument("--preflight-only", action="store_true")
     launch = sub.add_parser("launch")
     launch.add_argument("--generations", type=int, choices=range(1, 11), default=None)
     launch_selection = launch.add_mutually_exclusive_group()
@@ -42,6 +45,10 @@ def main():
         s.add_argument("--generation", type=int, default=0)
         s.add_argument("--config", default="configs/full.yaml")
     a = p.parse_args()
+    if a.command == "diagnose-epoch-branches":
+        from .cloud.epoch_ablation import launch
+        print(json.dumps(launch(a.config, preflight_only=a.preflight_only), indent=2))
+        return
     if a.command == "diagnose-gradients":
         from .cloud.gradient_diagnostic import launch
         print(json.dumps(launch(a.config, preflight_only=a.preflight_only), indent=2))
@@ -81,6 +88,19 @@ def main():
         print(json.dumps(result, indent=2), flush=True)
         return
     from . import remote
+    if a.command in ('status','resume','cleanup','verify-detached'):
+        r=remote.local_resources(a.run_id)
+        if r.get('workflow')=='epoch_ablation':
+            from .cloud import epoch_ablation as epochs
+            if a.command=='resume':
+                result=epochs.launch(PROJECT/'runs'/a.run_id/'config.json',resume_id=a.run_id)
+            elif a.command=='cleanup':
+                result=epochs.cleanup(a.run_id)
+            elif a.command=='verify-detached':
+                result=epochs.verify_detached(a.run_id)
+            else:
+                result=remote.status(a.run_id)
+            print(json.dumps(result,indent=2));return
     if a.command == "preflight":
         result = remote.preflight(probe=a.probe)
     elif a.command in ("launch", "smoke"):

@@ -6,6 +6,8 @@ The standalone `gradient_diagnostic` workflow uses `science/gradients.py` for FP
 
 ## Identities and responsibility
 
+The `epoch_ablation` diagnostic restores selected historical SGD checkpoints and targets, then runs independent whole-epoch source-removal branches. It uses the shared engine's optional source selector and post-update hook, pinned recovery in `artifacts/epoch_sources.py`, and dedicated workflow/cloud/analysis modules. Original batch denominators, source RNG state and historical replay checks are explicit contracts. Its separate resource owner and acceptance certificate cover the miniature test and automatically admitted nine-branch matrix.
+
 | Identity | Meaning | Home |
 | --- | --- | --- |
 | Condition | Scientific rules independent of a particular execution | `experiments/<model_dataset>/<condition>/` |

@@ -1,0 +1,132 @@
+{
+  "created_utc": "2026-11-16T18:45:07.075346+00:00",
+  "state": "offline_verified_gpu_acceptance_pending",
+  "source_parent": "20261114T001352Z-full-completion64-mixtures",
+  "source_arm": "mixed99",
+  "cycles": [
+    3,
+    6,
+    10
+  ],
+  "branches": [
+    "both",
+    "real",
+    "synthetic"
+  ],
+  "scheduled_update_positions": 711,
+  "source_preparation": {
+    "receipt_sha256": "385b2d78887697530594453ba6044bc92c6ea48e2c640dd461c16018ef94b3bc",
+    "pinned_files": 110,
+    "verified_bytes": 100899873,
+    "validation_pairs": 7447,
+    "test_pairs": 7303,
+    "probe_pairs": 128,
+    "probe_identity": "459083803b95659a49ec1a8134cb53f58629fdc5dff8ce829fb887656d4d9b42",
+    "bulk_model_weights_restored": false,
+    "selected_targets_reconstructed": true,
+    "sources": {
+      "parent": {
+        "run_id": "20261114T001352Z-full-completion64-mixtures",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "a65a46e171052abad42dca18c5849ab3ec5bb107",
+          "dataset": "c404d5d5c07693056aed76a197f82f1e58fa2cf3"
+        },
+        "artifact_index_sha256": "8c595ac6bec67e3dac73825ab638b6c3fb76079ce3f1ba39d0e3fe198b08dc05"
+      },
+      "child": {
+        "run_id": "20261114T001352Z-full-completion64-mixtures-mixed99",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "386bef2c0f6e2fb5fe27dca3d355eb54dd46dd17",
+          "dataset": "621dd475a3422e638a6c2cadab14405659476d23"
+        },
+        "artifact_index_sha256": "59c878bba2aeb4d88e7c0604af4510d9335531d50c491d760277bea143393dc1"
+      },
+      "bank": {
+        "run_id": "smollm2-completion64-bank-75c3da6d89516ffd",
+        "repos": {
+          "model": "iib-model-collapse-bill/iib-model-collapse-models",
+          "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+        },
+        "revisions": {
+          "model": "e159be342ba19fe2ec4c2a4a03ce8242287d1d36",
+          "dataset": "61b426c93d46c2e5caafa24b9c07f1fc342aa3d5"
+        },
+        "artifact_index_sha256": "f753ec670c96a4935447c13af31129aeef4c72191a4de608fb39302999283bdf",
+        "manifest_sha256": "8c475f058606fed0610d7555128139ea445b2f4753c2a1abc8eccd44e06c9837",
+        "contract": "75c3da6d89516ffde3e41649c059d26aed75af5ee1943821ab526d26964ceebf",
+        "bulk_store": {
+          "backend": "runpod_s3",
+          "bucket": "1b2vuplxer",
+          "region": "EU-RO-1",
+          "prefix": "smollm2-native-bank"
+        }
+      }
+    }
+  },
+  "offline_tests": {
+    "passed": 115,
+    "seconds": 27.83,
+    "files": [
+      "tests/test_epoch_ablation.py",
+      "tests/test_epoch_ablation_operations.py",
+      "tests/test_sgd_engine_integration.py",
+      "tests/test_sgd_effects.py",
+      "tests/test_sgd_mixtures.py",
+      "tests/test_sgd_validation_analysis.py",
+      "tests/repository/test_cli_config.py",
+      "tests/workflow/test_completion_training.py",
+      "tests/science/test_completion_data.py"
+    ]
+  },
+  "repository_check": {
+    "base": "7eaeefc",
+    "passed": true,
+    "errors": [],
+    "historical_publication_bytes_unchanged": true
+  },
+  "review": "docs/validation/2026-11-16_epoch-ablation-review.json",
+  "candidate_runtime_sha256": "216b6438d9ae4d332c9a6d40f20b57b68957c415d47b5078d8205212b4814eee",
+  "candidate_archive_note": "Archive preserves its original baseline Git field; runtime file inventory, not that field, identifies this worktree.",
+  "gpu_acceptance_passed": false,
+  "full_run_launched": false,
+  "new_gpu_spend_usd": 0,
+  "new_resources_created": false,
+  "historical_resources_preserved": true,
+  "current_launch_blocker": "Matching RTX PRO 4000 Blackwell stock unavailable under the pinned CUDA constraint; bounded unpaid checks continue.",
+  "limits": {
+    "date": "2026-11-16",
+    "authority": "User approved the whole-epoch source-ablation plan and requested implementation, bounded GPU acceptance and automatic launch.",
+    "allocation": "smollm2_sgd_epoch_ablation",
+    "task_budget_usd": 4.0,
+    "reserve_usd": 2.0,
+    "cumulative_ceiling_usd": 130.0,
+    "setup_ceiling_usd": 6.1,
+    "validation_cap_usd": 0.15,
+    "validation_max_seconds": 900,
+    "combined_paid_max_seconds": 5400,
+    "cycles": [
+      3,
+      6,
+      10
+    ],
+    "branches": [
+      "both",
+      "real",
+      "synthetic"
+    ],
+    "required_gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "hardware_substitution_authorized": false,
+    "maximum_unpaid_capacity_wait_seconds": 7200,
+    "credit_purchases_authorized": false,
+    "payment_changes_authorized": false,
+    "historical_resources_must_be_preserved": true
+  }
+}

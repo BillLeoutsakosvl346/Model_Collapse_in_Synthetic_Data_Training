@@ -112,13 +112,18 @@ def evaluate(model, blocks, c, export=None, *, masks=None, loss_masks=None):
 
 def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_checkpoint=None, lineage=None,
           masks=None, val_masks=None, optimizer_checkpoint=None, total_steps=None, inject=False,
-          loss_masks=None, val_loss_masks=None, source_labels=None, update_probe=None, progress_callback=None):
+          loss_masks=None, val_loss_masks=None, source_labels=None, update_probe=None, progress_callback=None,
+          training_source=None, row_order=None, step_observer=None):
     from ..workflow.selection import FINAL, selection_policy, training_contract, verify_selection
     policy, contract = selection_policy(c), training_contract(c)
     from ..workflow.optimization import is_plain_sgd, optimizer_and_scheduler, restore_optimizer
     sgd = is_plain_sgd(c)
     observing = sgd and c.get("update_diagnostics", {}).get("enabled", False)
     persistent = carries_optimizer(c)
+    ablation = training_source is not None
+    if ablation:
+        from .epoch_ablation import validate_training_source
+        validate_training_source(c, blocks, source_labels, training_source, row_order, step_observer)
     if persistent:
         if not total_steps or masks is None or val_masks is None:
             raise ValueError("Fresh-real training requires masks and a complete optimizer-step schedule")
@@ -140,6 +145,10 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
             raise ValueError("Update diagnostics require aligned source labels and a frozen probe")
         input_hash = hashlib.sha256((input_hash + hashlib.sha256(np.asarray(source_labels, dtype=np.uint8).tobytes()).hexdigest()
                                     + update_probe["identity"]).encode()).hexdigest()
+    if ablation:
+        input_hash = digest({"input": input_hash, "source_labels": sha_array(source_labels, np.uint8),
+                             "source": training_source, "order": sha_array(row_order, np.int64),
+                             "probe": step_observer.identity})
     parent_state_hash = sha256(optimizer_checkpoint) if optimizer_checkpoint else None
     observation_binding = {"training_contract_sha256": contract, "input_tokens_sha256": input_hash,
                            "initial_weights_sha256": expected_base_hash, "optimizer_parent_sha256": parent_state_hash,
@@ -161,6 +170,8 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
             verify_seal(dest, expected_weights=done["selected_weights_sha256"],
                         expected_steps=math.ceil(len(blocks) / c["effective_batch"]) * c["epochs"],
                         expected_probe_identity=update_probe["identity"], expected_binding=observation_binding)
+        if ablation:
+            step_observer.verify(done["selected_weights_sha256"])
         event(root, "training_reused", generation=generation, input_tokens_sha256=input_hash)
         return done
     if c.get("initialization") in ("continued", "reset_s0") and initial_checkpoint is None:
@@ -180,9 +191,9 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
         restore_rng(parent["rng"])
     resume = dest / "resume" / "epoch.pt"
     best, best_epoch, selected_epoch, first_epoch, history = math.inf, None, None, 0, []
-    if resume.exists() and observing:
+    if resume.exists() and (observing or ablation):
         event(root, "sgd_unfinished_cycle_replayed", generation=generation)
-    if resume.exists() and not observing:
+    if resume.exists() and not observing and not ablation:
         state = torch.load(resume, map_location=device(), weights_only=False)
         if state.get("training_contract_sha256") != contract:
             raise RuntimeError("Interrupted training selection policy or settings changed; legacy state requires its original runtime")
@@ -218,13 +229,17 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
         observer = UpdateObserver(model, probe=(update_probe["tokens"], update_probe["attention"], update_probe["scoring"]),
                                   root=dest, cycle=generation, probe_identity=update_probe["identity"],
                                   documents=update_probe["documents"], eval_batch=c["eval_batch"], binding=observation_binding)
+    if ablation:
+        step_observer.start(model, global_step)
     for epoch in range(first_epoch, c["epochs"]):
         # Epoch-local deterministic order/dropout makes epoch-boundary resume exact.
         if not persistent:
             seed_all(c["seed"] + epoch)
-        order = np.random.default_rng(c["seed"] + epoch + (generation if persistent else 0)).permutation(len(blocks))
+        order = (np.asarray(row_order, dtype=np.int64) if ablation else
+                 np.random.default_rng(c["seed"] + epoch + (generation if persistent else 0)).permutation(len(blocks)))
         model.train()
         total_loss, count = 0.0, 0
+        applied_loss_sum = 0.0
         lr = optimizer.param_groups[0]["lr"]
         sync()
         epoch_start = time.perf_counter()
@@ -240,6 +255,9 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
             if observer is not None:
                 from .sgd_effects import SourceAccumulator
                 accumulator = SourceAccumulator(model, window_targets)
+            if ablation:
+                from .epoch_ablation import SourceStep
+                source_step = SourceStep(model, window_targets, training_source)
             for j in range(0, len(window), c["microbatch"]):
                 rows = window[j:j + c["microbatch"]]
                 ids = tensor(blocks[rows])
@@ -248,7 +266,7 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
                 labels = ids if masks is None and loss_masks is None else ids.masked_fill(~scoring.bool(), -100)
                 targets = int(scoring[:, 1:].sum())
                 with autocast(c):
-                    if observer is not None:
+                    if observer is not None or ablation:
                         logits = model(input_ids=ids, attention_mask=attention, use_cache=False).logits
                         sequence_sums = shifted_nll(logits, ids, scoring).sum(1)
                         loss = sequence_sums.sum() / targets
@@ -258,6 +276,8 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
                     raise RuntimeError("Non-finite training loss")
                 if observer is not None:
                     accumulator.backward(sequence_sums, scoring[:, 1:].sum(1), np.asarray(source_labels)[rows])
+                elif ablation:
+                    source_step.backward(sequence_sums, scoring[:, 1:].sum(1), np.asarray(source_labels)[rows])
                 else:
                     (loss * (targets / window_targets)).backward()
                 total_loss += float(loss.detach()) * targets
@@ -272,6 +292,13 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
             if observer is not None:
                 observer.after_step(step_seconds=time.perf_counter() - window_start)
                 del accumulator
+            if ablation:
+                source_metrics = source_step.record()
+                applied_loss_sum += window_targets * sum(source_metrics[k+'_weighted_loss'] for k in ('real','synthetic')
+                    if training_source == 'both' or k == training_source)
+                step_observer.after_step(model, step=global_step + 1, batch_indices=window,
+                                         gradient_norm=float(norm), learning_rate=optimizer.param_groups[0]["lr"],
+                                         seconds=time.perf_counter() - window_start, **source_metrics)
             if progress_callback is not None:
                 progress_callback(global_step + 1, generation=generation, examples=len(window))
             if persistent:
@@ -292,6 +319,9 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
         history.append({"epoch": epoch + 1, "learning_rate": lr, "train_loss": total_loss / count,
                         "validation_loss": val_metrics["loss"], "train_seconds": train_seconds,
                         "training_target_tokens_per_second": count / train_seconds})
+        if ablation:
+            history[-1].update(mixed_forward_loss=total_loss/count, applied_objective_loss=applied_loss_sum/count,
+                               validation_metrics=val_metrics, train_loss_scope='ordinary_mixed_forward_loss')
         if persistent:
             history[-1].update(global_step=global_step, learning_rate_end=optimizer.param_groups[0]["lr"], scored_training_tokens=count)
         if not math.isfinite(val_metrics["loss"]):
@@ -328,6 +358,7 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
                     **({"optimizer_kind": "sgd"} if sgd else {})}, state_path.with_suffix(".partial"))
         state_path.with_suffix(".partial").replace(state_path)
     diagnostic_seal = observer.seal(terminal_hash) if observer is not None else None
+    ablation_seal = step_observer.seal(terminal_hash) if ablation else None
     del observer
     del model, optimizer, scheduler
     gc.collect()
@@ -357,6 +388,8 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
         done["lineage"] = lineage
     if diagnostic_seal is not None:
         done["update_diagnostics"] = diagnostic_seal
+    if ablation_seal is not None:
+        done["epoch_ablation"] = ablation_seal
     if sgd:
         done.update(optimizer="sgd", learning_rate_policy="constant", momentum=0, weight_decay=0)
     atomic_json(dest / "training.json", done)
@@ -364,6 +397,10 @@ def train(root, generation, blocks, val, c, expected_base_hash=None, *, initial_
     del selected
     gc.collect()
     return done
+
+
+def sha_array(values, dtype):
+    return hashlib.sha256(np.asarray(values, dtype=dtype).tobytes()).hexdigest()
 
 
 def capture_rng():
