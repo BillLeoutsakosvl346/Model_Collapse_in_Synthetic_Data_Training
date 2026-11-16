@@ -1,0 +1,26 @@
+{
+  "formula": "(real_only_probe_perplexity + synthetic_only_probe_perplexity) / 2",
+  "equal_weight_curve_average": true,
+  "target_metric": "perplexity",
+  "points": 240,
+  "inputs": {
+    "reports/20261116T195118Z-epoch-ablation/generated/verified-20261116/per_update.csv": "4f23ae92263332cae8e0f7bfc6984fde9f70e6d2611158497e2b393adb24e101",
+    "reports/20261116T195118Z-epoch-ablation/generated/verified-20261116/analysis_manifest.json": "dd19cda222da064a59506410a63c9aa0eddc81307f1957438f61ea22908c43bb",
+    "reports/20261114T001352Z-full-completion64-mixtures/generated/update-gradients-20261114/per_update.csv": "ecd52ed63652f835427dff065c914e67776161a645479956d152c4c48b162040",
+    "reports/20261114T001352Z-full-completion64-mixtures/generated/update-gradients-20261114/publication_manifest.json": "c4f28ad45cff874e863a249720e3184650178edf807134b739d549b020a57409"
+  },
+  "script_sha256": "534a7cec15c406e5672f816e4258215c3376f939e90eb5d26a80c52f9b2ae2c6",
+  "python": "3.12.1",
+  "matplotlib": "3.9.4",
+  "new_training_or_inference": false,
+  "outputs": {
+    "cycle_03_probe_perplexity_with_average.pdf": "3466ec48a7bf4874956b51bb512e3cd835d1afba8074c3d2494693897bc5f3f5",
+    "cycle_03_probe_perplexity_with_average.png": "b95f4c000d7bb2e0d1c4f808122f8c36d76e80bbc6a7cc12d6eba94448e4ba48",
+    "cycle_06_probe_perplexity_with_average.pdf": "7964cae41ddcd550118b2a79f9e1812bf559a016b9f4a178d9f1704c1d459a2b",
+    "cycle_06_probe_perplexity_with_average.png": "6cc7a6363b614391a424c313fb499b269e4303aa9cefbbac5bbb1f76ada3accb",
+    "cycle_10_probe_perplexity_with_average.pdf": "c3ed3946bc104df87ea4fd8a5b67a98d0a69a3b7f59b2dc1ed7e9562c42ac255",
+    "cycle_10_probe_perplexity_with_average.png": "5cda3ced141e709224515b2f59e41dcfd05b7d179e75b2c1b6c0ed4818ce78a5",
+    "pointwise_average.csv": "2421b74902d3fd9a08d55d097e4c65fcd29da0608da24fb3e0256a9dfdbe5056",
+    "report.md": "d5b8e47df986c76545aa2c4fed4639414ddd81a68f81680b00c86842de6eb002"
+  }
+}
