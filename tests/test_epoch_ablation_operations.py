@@ -9,6 +9,26 @@ from model_collapse.cloud import epoch_ablation as cloud
 from model_collapse.workflow.epoch_ablation import validate_local
 
 
+def test_input_bundle_reuses_only_matching_inventory_and_archive(tmp_path,monkeypatch):
+    import tarfile
+    cache=tmp_path/'cache';cache.mkdir()
+    (cache/'data.txt').write_text('original',encoding='utf-8')
+    monkeypatch.setattr(cloud,'STATE',tmp_path)
+    archive=cloud.input_archive(cache);original=archive.read_bytes()
+    before=archive.stat().st_mtime_ns
+    assert cloud.input_archive(cache)==archive
+    assert archive.stat().st_mtime_ns==before
+    archive.write_bytes(b'corrupt')
+    repaired=cloud.input_archive(cache)
+    with tarfile.open(repaired) as tar:
+        assert tar.extractfile('data.txt').read()==b'original'
+    (cache/'data.txt').write_text('changed',encoding='utf-8')
+    changed=cloud.input_archive(cache)
+    assert changed!=archive
+    with tarfile.open(changed) as tar:
+        assert tar.extractfile('data.txt').read()==b'changed'
+
+
 def test_volume_create_timeout_reconciles_one_owned_resource(tmp_path,monkeypatch):
     calls=[];recorded=[]
     def request(method,path,body=None):

@@ -26,6 +26,34 @@ def session_name(run_id, launch_no):
     return 'iib-'+run_id+f'-{launch_no:02d}'
 
 
+def input_archive(source_cache):
+    """Reuse only a content-verified bundle, avoiding recompression during stock races."""
+    source_cache=Path(source_cache)
+    files=sorted(p for p in source_cache.rglob('*') if p.is_file())
+    inventory=[{'path':p.relative_to(source_cache).as_posix(),'sha256':sha256(p),
+                'bytes':p.stat().st_size} for p in files]
+    identity=digest(inventory)
+    archive=STATE/('epoch-ablation-inputs-'+identity+'.tar.gz')
+    receipt=archive.with_suffix('.json')
+    previous=read_json(receipt) or {}
+    if (archive.is_file() and previous.get('inventory_sha256')==identity
+            and previous.get('bytes')==archive.stat().st_size
+            and previous.get('sha256')==sha256(archive)):
+        return archive
+    temporary=archive.with_suffix('.tmp')
+    with tarfile.open(temporary,'w:gz',compresslevel=1) as tar:
+        for p in files:
+            tar.add(p,arcname=p.relative_to(source_cache).as_posix())
+    # A concurrent source edit must never be certified as the earlier inventory.
+    if any(p.stat().st_size!=item['bytes'] or sha256(p)!=item['sha256']
+           for p,item in zip(files,inventory)):
+        raise RuntimeError('Input cache changed while packaging; retry from verified sources')
+    os.replace(temporary,archive)
+    atomic_json(receipt,{'inventory_sha256':identity,'sha256':sha256(archive),
+                         'bytes':archive.stat().st_size})
+    return archive
+
+
 def archive_controls(sftp, remote, launch_id):
     """Preserve previous-launch controls before a fresh independent watchdog starts."""
     parent=remote+'/control_history'
@@ -228,10 +256,7 @@ def launch(config_path, *, preflight_only=False, resume_id=None):
         launch_no=len([x for x in cloud.ledger()['launches'] if x['run_id']==run_id])+1
         local=PROJECT/'runs'/run_id;local.mkdir(parents=True,exist_ok=True)
         atomic_json(local/'preflight.json',checked)
-        source_cache=Path(checked['input_cache']); cache_archive=STATE/'epoch-ablation-inputs.tar.gz'
-        with tarfile.open(cache_archive,'w:gz') as tar:
-            for p in source_cache.rglob('*'):
-                if p.is_file():tar.add(p,arcname=p.relative_to(source_cache).as_posix())
+        source_cache=Path(checked['input_cache']); cache_archive=input_archive(source_cache)
         volume=backup_volume=pod=ssh=resources=None
         try:
             latest=api.request('GET','/catalog/gpus/'+quote(c['required_gpu'],safe='')+'?include=AVAILABILITY&product=POD&cloud=SECURE&count=1&minCudaVersion=13.2')

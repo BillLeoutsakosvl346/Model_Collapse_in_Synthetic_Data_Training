@@ -25,5 +25,15 @@
     "seconds": 9.25,
     "additional_material_blockers": [],
     "runtime_sha256": "216b6438d9ae4d332c9a6d40f20b57b68957c415d47b5078d8205212b4814eee"
+  },
+  "archive_cache_followup": {
+    "result": "No material correctness/security/source-identity issue found",
+    "independent_tests_passed": 8,
+    "seconds": 0.61,
+    "runtime_sha256": "ace2ac86af1a33094ddec8f99de5e7e0a6f39fa2f4072bdc0e6cfc2433f053e7",
+    "scientific_execution_changed": false,
+    "purpose": "Avoid repeated 80-second input compression while matching stock is transient",
+    "first_build_seconds": 9.078,
+    "verified_reuse_seconds": 3.0
   }
 }

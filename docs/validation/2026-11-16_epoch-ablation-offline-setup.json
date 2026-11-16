@@ -72,8 +72,8 @@
     }
   },
   "offline_tests": {
-    "passed": 115,
-    "seconds": 27.83,
+    "passed": 116,
+    "seconds": 63.82,
     "files": [
       "tests/test_epoch_ablation.py",
       "tests/test_epoch_ablation_operations.py",
@@ -93,7 +93,7 @@
     "historical_publication_bytes_unchanged": true
   },
   "review": "docs/validation/2026-11-16_epoch-ablation-review.json",
-  "candidate_runtime_sha256": "216b6438d9ae4d332c9a6d40f20b57b68957c415d47b5078d8205212b4814eee",
+  "candidate_runtime_sha256": "ace2ac86af1a33094ddec8f99de5e7e0a6f39fa2f4072bdc0e6cfc2433f053e7",
   "candidate_archive_note": "Archive preserves its original baseline Git field; runtime file inventory, not that field, identifies this worktree.",
   "gpu_acceptance_passed": false,
   "full_run_launched": false,
@@ -128,5 +128,12 @@
     "credit_purchases_authorized": false,
     "payment_changes_authorized": false,
     "historical_resources_must_be_preserved": true
+  },
+  "previous_candidate_runtime_sha256": "216b6438d9ae4d332c9a6d40f20b57b68957c415d47b5078d8205212b4814eee",
+  "archive_cache_followup": {
+    "operations_tests_passed": 8,
+    "initial_compression_seconds": 9.078,
+    "verified_reuse_seconds": 3.0,
+    "review_passed": true
   }
 }
