@@ -1,0 +1,70 @@
+{
+  "created_utc": "2026-11-16T21:42:33.081394+00:00",
+  "run_id": "20261116T195118Z-epoch-ablation",
+  "document_url": "https://docs.google.com/document/d/1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk",
+  "document_id": "1WyQia9SBCOtT9_X4X56BpTihz-X9q9LWZFVapFEB4uk",
+  "title": "4th year project Plan",
+  "section_title": "Week 5 continued: Whole-epoch source ablations",
+  "native_document": {
+    "checks": {
+      "original_body_unchanged": true,
+      "original_named_styles_unchanged": true,
+      "original_document_style_unchanged": true,
+      "original_lists_unchanged": true,
+      "original_images_unchanged": true,
+      "tables_exact": true,
+      "all_authored_text_present": true,
+      "no_object_markers": true,
+      "three_images_430pt": true
+    },
+    "before_revision": "AHj4eMTgv2rr1H3XOTNnYcIU5nSDlTlfB4aYKAc2A5eZxH4fZBpwoMmr_4Cj44tfYkASjri6QuaitXU1eMiOIP8j_uYcBLqlx_5lh-WmvXg",
+    "after_revision": "AHj4eMSyQ15wiYPC2tlzRXbS7KYPASIG3GYv0mY--3eBQDKWdNuDJwREgVSKGN1oykoty7XkYIrXO6CCgcWDK8Tkf6qTlII1yKxXrpDEHXQ",
+    "new_image_ids": [
+      "kix.9yg5zsp0k64z",
+      "kix.gy05vorrtoa",
+      "kix.ql6x0io6c9dw"
+    ],
+    "start": 236212,
+    "new_tables": 5,
+    "new_images": 3,
+    "image_size_pt": 430,
+    "new_heading_count": 9
+  },
+  "pdf_qa": {
+    "before_pages": 183,
+    "after_pages": 190,
+    "added_pages": [
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190
+    ],
+    "changed_previous_pages": [],
+    "before_pdf_sha256": "69ed6d2f5b809a04721c2d4ce9ca5dab9886d9fb11cb94f329f60de8693d801f",
+    "after_pdf_sha256": "751438e7e7a1557a8123edebc9ecb00ccf1e7e0205bb82306de38d6f3b979147",
+    "all_added_pages_visually_reviewed": true,
+    "captions_tables_and_figures_fit": true
+  },
+  "authored_section": "reports\\20261116T195118Z-epoch-ablation\\generated\\authored-doc-20261116-v2\\section.md",
+  "authorship_manifest_sha256": "e43c40499c8a9ed214c9db48671085d195e4e349f44bce64635c4a56260270f8",
+  "composer_sha256": "18d9a45e775e122a92958f5851dad5155d7715612a04352e59c8773ed53ebe5c",
+  "included_scientific_evidence": {
+    "branches": 9,
+    "scheduled_update_positions": 711,
+    "all_historical_replays_passed": true,
+    "per_update_probe_pairs": 128,
+    "complete_validation_pairs": 7447,
+    "complete_test_pairs": 7303,
+    "arithmetic_mean_formula": "(real_only_probe_perplexity + synthetic_only_probe_perplexity) / 2",
+    "source_weighting_preserved": true,
+    "three_square_case_plots_include_mean": true,
+    "probe_and_full_test_separated": true,
+    "independent_branch_nonlinearity_and_tail_limits_explicit": true
+  },
+  "new_training_or_inference": false,
+  "cloud_resources_changed": false,
+  "source_recovery_scope": "Previously checksum-verified small records; no additional model or optimization-state cold restoration. All retained recovery storage preserved."
+}
