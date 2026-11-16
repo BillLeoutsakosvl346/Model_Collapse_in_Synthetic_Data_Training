@@ -396,5 +396,26 @@
   ],
   "preserve_new_recovery_storage": true,
   "historical_resources_preserved": true,
-  "full_historical_replay_status": "Pending at the detached-startup observations; miniature acceptance is not full replay evidence."
+  "full_historical_replay_status": "Cycle 3 passed all required tolerances; cycle 6 and 10 replays remain pending.",
+  "first_full_replay": {
+    "cycle": 3,
+    "source": "both",
+    "verified_at_utc": "2026-11-16T20:03:24.628244+00:00",
+    "branch_completion_sha256": "d059170c0f20f343e11f2f0d09d219e54b124779677b6bf62d79638e40bb5348",
+    "replay": {
+      "relative_l2": 5.576153954538137e-09,
+      "max_absolute": 2.980232238769531e-07,
+      "bitwise_tensor_hash_equal": false,
+      "maximum_probe_nll_discrepancy": 1.3647823244866686e-06,
+      "validation_nll_discrepancy": 6.703414499042992e-07,
+      "test_nll_discrepancy": 6.909462193505078e-07
+    },
+    "test_perplexity": 97.94399617479661,
+    "updates": 79,
+    "complete": true,
+    "remaining_cycles_pending": [
+      6,
+      10
+    ]
+  }
 }
