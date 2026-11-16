@@ -1,0 +1,282 @@
+{
+  "date": "2026-11-16",
+  "run_id": "20261116T195118Z-epoch-ablation",
+  "complete": true,
+  "branches": 9,
+  "updates": 711,
+  "source_snapshot": {
+    "repos": {
+      "model": "iib-model-collapse-bill/iib-model-collapse-models",
+      "dataset": "iib-model-collapse-bill/iib-model-collapse-data"
+    },
+    "revisions": {
+      "model": "4402291d36b10656ddac1c3f62af9060be960488",
+      "dataset": "e67f3ef5f868d0f19c6a4d844948ef9262efac33"
+    },
+    "artifact_index_sha256": "ef46cb01a49b5f6b3119bf4f68ff51dac23a7fc254dd5e75255a801f92950082"
+  },
+  "recovery": {
+    "verified_files": 176,
+    "verified_bytes": 6450494,
+    "metadata_only": true,
+    "preserved_control_files": {
+      "resources.json": {
+        "recovered_path": "fetched_control/f6ca43616df2b694b558a0d01f16abcebd9ef833f054a490a537ccf0992e4ab2/resources.json",
+        "sha256": "f6ca43616df2b694b558a0d01f16abcebd9ef833f054a490a537ccf0992e4ab2",
+        "authoritative_local_sha256": "ce0fab276ae2ba32010db5ca59692da2ff1e0cabced63571cfe85693487f7399"
+      }
+    }
+  },
+  "recovery_scope": "All 176 selected small files recovered and checksummed; all 711 update records, complete endpoint metrics, reference records and branch seals verified. No full terminal checkpoint cold restore during this retrieval. Retain working and backup volumes.",
+  "checks": {
+    "all_branches_complete": true,
+    "unchanged_inputs_and_orders": true,
+    "original_denominators_and_tail": true,
+    "empty_real_batches_zero_movement": true,
+    "constant_learning_rate": true,
+    "three_historical_replays_within_tolerance": true,
+    "all_plot_input_output_hashes": true,
+    "remote_local_analysis_csv_equal": true
+  },
+  "results": [
+    {
+      "cycle": 3,
+      "source": "both",
+      "start_probe_ppl": 63.3312217453647,
+      "end_probe_ppl": 100.9397480479678,
+      "probe_nll_change": 0.46614534277772357,
+      "validation_ppl": 100.49662570155944,
+      "test_ppl": 97.94399617479661,
+      "zero_source_update_positions": 0
+    },
+    {
+      "cycle": 3,
+      "source": "real",
+      "start_probe_ppl": 63.3312217453647,
+      "end_probe_ppl": 37.96698268794778,
+      "probe_nll_change": -0.5116615366725585,
+      "validation_ppl": 37.926085104084805,
+      "test_ppl": 37.317064442379305,
+      "zero_source_update_positions": 27
+    },
+    {
+      "cycle": 3,
+      "source": "synthetic",
+      "start_probe_ppl": 63.3312217453647,
+      "end_probe_ppl": 117.13370864563021,
+      "probe_nll_change": 0.6149376491518197,
+      "validation_ppl": 116.27235278774292,
+      "test_ppl": 113.16383672276663,
+      "zero_source_update_positions": 0
+    },
+    {
+      "cycle": 6,
+      "source": "both",
+      "start_probe_ppl": 192.05798256099794,
+      "end_probe_ppl": 148.38248060734452,
+      "probe_nll_change": -0.2580040503847787,
+      "validation_ppl": 146.98616495646684,
+      "test_ppl": 142.69555263714176,
+      "zero_source_update_positions": 0
+    },
+    {
+      "cycle": 6,
+      "source": "real",
+      "start_probe_ppl": 192.05798256099794,
+      "end_probe_ppl": 52.91406125822748,
+      "probe_nll_change": -1.289128207114857,
+      "validation_ppl": 53.09570954629229,
+      "test_ppl": 52.256893710559,
+      "zero_source_update_positions": 21
+    },
+    {
+      "cycle": 6,
+      "source": "synthetic",
+      "start_probe_ppl": 192.05798256099794,
+      "end_probe_ppl": 299.7725805453063,
+      "probe_nll_change": 0.4452268033883504,
+      "validation_ppl": 293.8636660445052,
+      "test_ppl": 284.05972823917074,
+      "zero_source_update_positions": 0
+    },
+    {
+      "cycle": 10,
+      "source": "both",
+      "start_probe_ppl": 221.43255637323284,
+      "end_probe_ppl": 170.4535180567304,
+      "probe_nll_change": -0.26165541903286016,
+      "validation_ppl": 169.67362648056044,
+      "test_ppl": 164.4124674627246,
+      "zero_source_update_positions": 0
+    },
+    {
+      "cycle": 10,
+      "source": "real",
+      "start_probe_ppl": 221.43255637323284,
+      "end_probe_ppl": 56.257075702247015,
+      "probe_nll_change": -1.3701862337845538,
+      "validation_ppl": 56.376749320577325,
+      "test_ppl": 55.651947949608655,
+      "zero_source_update_positions": 20
+    },
+    {
+      "cycle": 10,
+      "source": "synthetic",
+      "start_probe_ppl": 221.43255637323284,
+      "end_probe_ppl": 325.44481024112224,
+      "probe_nll_change": 0.3850748362617189,
+      "validation_ppl": 320.26814615956914,
+      "test_ppl": 308.9954323367684,
+      "zero_source_update_positions": 0
+    }
+  ],
+  "historical_replays": [
+    {
+      "cycle": 3,
+      "relative_l2": 5.576153954538137e-09,
+      "max_absolute": 2.980232238769531e-07,
+      "bitwise_tensor_hash_equal": false,
+      "maximum_probe_nll_discrepancy": 1.3647823244866686e-06,
+      "validation_nll_discrepancy": 6.703414499042992e-07,
+      "test_nll_discrepancy": 6.909462193505078e-07
+    },
+    {
+      "cycle": 6,
+      "relative_l2": 5.890056858330113e-09,
+      "max_absolute": 2.384185791015625e-07,
+      "bitwise_tensor_hash_equal": false,
+      "maximum_probe_nll_discrepancy": 1.4001251802397974e-06,
+      "validation_nll_discrepancy": 2.729325228045809e-07,
+      "test_nll_discrepancy": 3.1174102144149174e-07
+    },
+    {
+      "cycle": 10,
+      "relative_l2": 6.288456888739948e-09,
+      "max_absolute": 2.384185791015625e-07,
+      "bitwise_tensor_hash_equal": false,
+      "maximum_probe_nll_discrepancy": 1.7413457049642034e-06,
+      "validation_nll_discrepancy": 2.622127910356653e-07,
+      "test_nll_discrepancy": 3.0626132474509404e-07
+    }
+  ],
+  "final_batches": [
+    {
+      "cycle": 3,
+      "source": "both",
+      "real_pairs": 0,
+      "synthetic_pairs": 16,
+      "denominator": 1024,
+      "probe_nll_before": 4.6043408634497425,
+      "probe_nll": 4.6145237848516185,
+      "gradient_norm": 1.1061562299728394
+    },
+    {
+      "cycle": 3,
+      "source": "real",
+      "real_pairs": 0,
+      "synthetic_pairs": 16,
+      "denominator": 1024,
+      "probe_nll_before": 3.6367169054013364,
+      "probe_nll": 3.6367169054013364,
+      "gradient_norm": 0.0
+    },
+    {
+      "cycle": 3,
+      "source": "synthetic",
+      "real_pairs": 0,
+      "synthetic_pairs": 16,
+      "denominator": 1024,
+      "probe_nll_before": 4.7938269330545875,
+      "probe_nll": 4.763316091225715,
+      "gradient_norm": 1.245991826057434
+    },
+    {
+      "cycle": 6,
+      "source": "both",
+      "real_pairs": 1,
+      "synthetic_pairs": 15,
+      "denominator": 1024,
+      "probe_nll_before": 5.34925771186438,
+      "probe_nll": 4.999793268557642,
+      "gradient_norm": 3.3044917583465576
+    },
+    {
+      "cycle": 6,
+      "source": "real",
+      "real_pairs": 1,
+      "synthetic_pairs": 15,
+      "denominator": 1024,
+      "probe_nll_before": 4.013089373104731,
+      "probe_nll": 3.968669111827564,
+      "gradient_norm": 1.2429745197296143
+    },
+    {
+      "cycle": 6,
+      "source": "synthetic",
+      "real_pairs": 1,
+      "synthetic_pairs": 15,
+      "denominator": 1024,
+      "probe_nll_before": 5.693955134386834,
+      "probe_nll": 5.703024122330771,
+      "gradient_norm": 0.9036824703216553
+    },
+    {
+      "cycle": 10,
+      "source": "both",
+      "real_pairs": 1,
+      "synthetic_pairs": 15,
+      "denominator": 1024,
+      "probe_nll_before": 5.37825891823254,
+      "probe_nll": 5.138462638187461,
+      "gradient_norm": 2.0543932914733887
+    },
+    {
+      "cycle": 10,
+      "source": "real",
+      "real_pairs": 1,
+      "synthetic_pairs": 15,
+      "denominator": 1024,
+      "probe_nll_before": 4.061808007826781,
+      "probe_nll": 4.029931823435767,
+      "gradient_norm": 0.9933009743690491
+    },
+    {
+      "cycle": 10,
+      "source": "synthetic",
+      "real_pairs": 1,
+      "synthetic_pairs": 15,
+      "denominator": 1024,
+      "probe_nll_before": 5.82450469639938,
+      "probe_nll": 5.78519289348204,
+      "gradient_norm": 1.110131025314331
+    }
+  ],
+  "analysis_manifest_sha256": "dd19cda222da064a59506410a63c9aa0eddc81307f1957438f61ea22908c43bb",
+  "provider_shutdown": {
+    "provider_pod_id": "bzt8tybkv3smiq",
+    "provider_status": "EXITED",
+    "field": "lastStatusChange",
+    "value": "Exited by user: Mon Nov 16 2026 20:39:23 GMT+0000 (Coordinated Universal Time)",
+    "provider_shutdown_epoch": 1794861563.0,
+    "observed_at": 1794863567.5504432
+  },
+  "watchdog": {
+    "reason": "complete",
+    "time": 1794861561.57484,
+    "pod_id": "bzt8tybkv3smiq"
+  },
+  "accepted_runtime_sha256": "ace2ac86af1a33094ddec8f99de5e7e0a6f39fa2f4072bdc0e6cfc2433f053e7",
+  "task_cost": {
+    "conservative_accrued_usd_at_retrieval": 0.5315457042620718,
+    "provider_debit_reconciled": false,
+    "validation_conservative_estimated_usd": 0.0673048963105066,
+    "retained_storage_still_accrues": true
+  },
+  "new_compute_started": false,
+  "historical_artifacts_changed": false,
+  "additional_authored_outputs": {
+    "reports\\20261116T195118Z-epoch-ablation\\report.md": "401680026f664654e37a9aef5b1728f733ac4049d55a94852dba98ba2e99a6ab",
+    "reports\\20261116T195118Z-epoch-ablation\\generated\\verified-20261116\\branch_summary.csv": "f7c127a23c1fc7e81429cf8b468258ee92f1b802d3950d3e5fcda7da2950704b"
+  },
+  "recovery_retry_note": "An initial concurrent local control read reserialized acceptance.json with Windows CRLF, causing a local hash failure. The immutable pinned original matched its index; a sequential pinned recovery restored the original bytes and all 176 checks passed. No source/run data changed."
+}

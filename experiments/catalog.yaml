@@ -6,8 +6,10 @@ metrics: ../docs/metrics.md
 conditions:
   smollm2_sgd_epoch_ablation:
     name: "SmolLM2 99% SGD: whole-epoch source removal at cycles 3/6/10"
-    state: running
+    state: completed
     workflow: epoch_ablation
+    completion: ../docs/validation/2026-11-16_epoch-ablation-completion-and-analysis.json
+    report: ../reports/20261116T195118Z-epoch-ablation/report.md
     run_id: 20261116T195118Z-epoch-ablation
     acceptance_and_launch: ../docs/validation/2026-11-16_epoch-ablation-gpu-and-launch.json
     definition: ../comparisons/smollm2_sgd_epoch_ablation/README.md
