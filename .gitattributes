@@ -161,3 +161,6 @@
 /scripts/analysis/epoch_ablation_average.py text eol=lf
 /scripts/analysis/compose_epoch_ablation_report.py text eol=lf
 /docs/history/2026-11-16_pre-epoch-ablation-doc-current-state.txt -text whitespace=cr-at-eol
+# Preserve the presentation's frozen numerical and authorship evidence on Windows.
+/presentations/2026-11-17_research-update/** -text whitespace=cr-at-eol,-blank-at-eof
+/scripts/presentations/*.py text eol=lf

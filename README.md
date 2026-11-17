@@ -1,6 +1,6 @@
 # Model collapse in synthetic-data training
 
-Cambridge Engineering IIB research with OPT-125M, WikiText-2 and FineWeb-Edu: recursively generate training data, train successive checkpoints, and measure prediction loss, repetition and output diversity. The experiments reconstruct selected ideas from [Shumailov et al. (2024)](https://doi.org/10.1038/s41586-024-07566-y); each condition records its own methodological differences.
+Cambridge Engineering IIB research with OPT-125M, SmolLM2-135M, WikiText-2 and FineWeb-Edu: recursively generate training data, train successive checkpoints, and measure prediction loss, repetition and output diversity. The experiments reconstruct selected ideas from [Shumailov et al. (2024)](https://doi.org/10.1038/s41586-024-07566-y); each condition records its own methodological differences.
 
 ## Experiments and results
 
@@ -58,6 +58,7 @@ Root-level compatibility modules preserve established imports. FineWeb data buil
 - [Documentation index](docs/README.md): methodology, metric definitions, operations, architecture and history.
 - [Experiments](experiments/README.md) and [comparisons](comparisons/README.md): scientific definitions and matched settings.
 - [Reports](reports/README.md): preserved evidence, published analyses and authored interpretation.
+- [Presentations](presentations/README.md): concise research talks, source data and speaker notes.
 - [Literature](literature/README.md): paper citations, local PDF locations and research context.
 - [Analysis tools](scripts/analysis/README.md): reproducible figures and report builders with protected output destinations.
 - [Legacy configurations](configs/README.md): compatibility paths; prefer named experiment configurations.
